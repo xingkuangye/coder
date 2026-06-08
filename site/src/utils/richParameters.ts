@@ -84,7 +84,7 @@ export const useValidationSchemaForRichParameters = (
 												path: ctx.path,
 												message:
 													parameterError(templateParameter, val) ??
-													`Value must be greater than ${templateParameter.validation_min}.`,
+													`值必须大于 ${templateParameter.validation_min}。`,
 											});
 										}
 									} else if (
@@ -96,7 +96,7 @@ export const useValidationSchemaForRichParameters = (
 												path: ctx.path,
 												message:
 													parameterError(templateParameter, val) ??
-													`Value must be less than ${templateParameter.validation_max}.`,
+													`值必须小于 ${templateParameter.validation_max}。`,
 											});
 										}
 									} else if (
@@ -111,7 +111,7 @@ export const useValidationSchemaForRichParameters = (
 												path: ctx.path,
 												message:
 													parameterError(templateParameter, val) ??
-													`Value must be between ${templateParameter.validation_min} and ${templateParameter.validation_max}.`,
+													`值必须在 ${templateParameter.validation_min} 和 ${templateParameter.validation_max} 之间。`,
 											});
 										}
 									}
@@ -129,7 +129,7 @@ export const useValidationSchemaForRichParameters = (
 													if (Number(lastBuildParameter.value) > Number(val)) {
 														return ctx.createError({
 															path: ctx.path,
-															message: `Value must only ever increase (last value was ${lastBuildParameter.value})`,
+															message: `值只能增加（上次值为 ${lastBuildParameter.value}）`,
 														});
 													}
 													break;
@@ -137,7 +137,7 @@ export const useValidationSchemaForRichParameters = (
 													if (Number(lastBuildParameter.value) < Number(val)) {
 														return ctx.createError({
 															path: ctx.path,
-															message: `Value must only ever decrease (last value was ${lastBuildParameter.value})`,
+															message: `值只能减少（上次值为 ${lastBuildParameter.value}）`,
 														});
 													}
 													break;

@@ -23,8 +23,8 @@ export const AgentAnalyticsPageView: FC<AgentAnalyticsPageViewProps> = ({
 		<div className="flex flex-col p-4 pt-8">
 			<div className="mx-auto w-full max-w-3xl">
 				<SectionHeader
-					label="Analytics"
-					description="Review your personal Coder Agents usage and cost breakdowns."
+					label="分析"
+					description="查看您的个人 Coder Agents 使用量和费用明细。"
 					action={
 						<div className="flex items-center gap-2 text-xs text-content-secondary">
 							<BarChart3Icon className="size-4" />
@@ -38,8 +38,8 @@ export const AgentAnalyticsPageView: FC<AgentAnalyticsPageViewProps> = ({
 					isLoading={isLoading}
 					error={error}
 					onRetry={onRetry}
-					loadingLabel="Loading analytics"
-					emptyMessage="No usage data for you in this period."
+					loadingLabel="正在加载分析数据"
+					emptyMessage="此时间段内没有您的使用数据。"
 				/>
 			</div>
 		</div>

@@ -66,15 +66,15 @@ export const SecretsTable: FC<SecretsTableProps> = ({
 				}}
 			/>
 
-			<Table aria-label="User secrets">
+			<Table aria-label="用户密钥">
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-[16%]">Name</TableHead>
-						<TableHead className="w-[14%]">Environment variable</TableHead>
-						<TableHead className="w-[18%]">File path</TableHead>
-						<TableHead className="w-[11%]">Type</TableHead>
-						<TableHead className="w-[23%]">Description</TableHead>
-						<TableHead className="w-[12%]">Updated</TableHead>
+						<TableHead className="w-[16%]">名称</TableHead>
+						<TableHead className="w-[14%]">环境变量</TableHead>
+						<TableHead className="w-[18%]">文件路径</TableHead>
+						<TableHead className="w-[11%]">类型</TableHead>
+						<TableHead className="w-[23%]">描述</TableHead>
+						<TableHead className="w-[12%]">更新时间</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>
@@ -82,11 +82,11 @@ export const SecretsTable: FC<SecretsTableProps> = ({
 					{isLoading && <TableLoader />}
 					{hasLoaded && !isLoading && (!secrets || secrets.length === 0) && (
 						<TableEmpty
-							message="No secrets yet"
-							description="Create a secret to inject it into workspaces you own."
+							message="暂无密钥"
+							description="创建密钥以将其注入您拥有的工作空间。"
 							cta={
 								<Button onClick={(event) => onAddSecret(event.currentTarget)}>
-									Add secret
+									添加密钥
 								</Button>
 							}
 						/>
@@ -109,7 +109,7 @@ export const SecretsTable: FC<SecretsTableProps> = ({
 								<TableCell>
 									<OptionalSecretValue
 										value={secret.description}
-										fallback="No description"
+										fallback="未设置"
 									/>
 								</TableCell>
 								<TableCell data-chromatic="ignore">
@@ -132,7 +132,7 @@ export const SecretsTable: FC<SecretsTableProps> = ({
 
 const OptionalSecretValue: FC<{ value?: string; fallback?: string }> = ({
 	value,
-	fallback = "Not set",
+	fallback = "未设置",
 }) => {
 	if (value) {
 		return value;
@@ -146,18 +146,18 @@ const SecretTypeBadge: FC<{ secret: UserSecret }> = ({ secret }) => {
 	const hasFile = Boolean(secret.file_path);
 
 	if (hasEnv && hasFile) {
-		return <Badge>env var + file</Badge>;
+		return <Badge>环境变量 + 文件</Badge>;
 	}
 
 	if (hasEnv) {
-		return <Badge>env var</Badge>;
+		return <Badge>环境变量</Badge>;
 	}
 
 	if (hasFile) {
-		return <Badge>file</Badge>;
+		return <Badge>文件</Badge>;
 	}
 
-	return <Badge>not injected</Badge>;
+	return <Badge>未注入</Badge>;
 };
 
 type SecretRowActionsProps = {
@@ -174,7 +174,7 @@ const SecretRowActions: FC<SecretRowActionsProps> = ({
 	onEditSecret,
 	onDeleteSecret,
 }) => {
-	const label = `Open secret actions for ${secret.name}`;
+	const label = `打开 ${secret.name} 的密钥操作`;
 	const triggerRef = useRef<HTMLButtonElement>(null);
 
 	return (
@@ -195,7 +195,7 @@ const SecretRowActions: FC<SecretRowActionsProps> = ({
 					onSelect={() => onEditSecret(secret, triggerRef.current)}
 				>
 					<PencilIcon className="size-icon-xs" />
-					Edit secret
+					编辑密钥
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem
@@ -203,7 +203,7 @@ const SecretRowActions: FC<SecretRowActionsProps> = ({
 					onSelect={() => onDeleteSecret(secret)}
 				>
 					<TrashIcon className="size-icon-xs" />
-					Delete
+					删除
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
@@ -228,11 +228,10 @@ const DeleteSecretDialog: FC<DeleteSecretDialogProps> = ({
 			type="delete"
 			open={Boolean(secret)}
 			confirmLoading={isDeleting}
-			title="Delete secret"
+			title="删除密钥"
 			description={
 				<p>
-					Deleting <strong>{secret?.name}</strong> is irreversible. Workspaces
-					that depend on this secret will no longer receive it on future starts.
+					删除 <strong>{secret?.name}</strong> 不可撤销。依赖此密钥的工作空间在后续启动时将不再收到该密钥。
 				</p>
 			}
 			onClose={() => {

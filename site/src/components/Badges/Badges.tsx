@@ -3,13 +3,13 @@ import { Badge } from "#/components/Badge/Badge";
 export const EnabledBadge: React.FC = () => {
 	return (
 		<Badge className="option-enabled" variant="green">
-			Enabled
+			已启用
 		</Badge>
 	);
 };
 
 export const EntitledBadge: React.FC = () => {
-	return <Badge variant="green">Entitled</Badge>;
+	return <Badge variant="green">已授权</Badge>;
 };
 
 export const DisabledBadge: React.FC<React.ComponentPropsWithRef<"div">> = ({
@@ -17,13 +17,13 @@ export const DisabledBadge: React.FC<React.ComponentPropsWithRef<"div">> = ({
 }) => {
 	return (
 		<Badge {...props} className="option-disabled">
-			Disabled
+			已禁用
 		</Badge>
 	);
 };
 
 export const EnterpriseBadge: React.FC = () => {
-	return <Badge variant="purple">Enterprise</Badge>;
+	return <Badge variant="purple">企业版</Badge>;
 };
 
 interface PremiumBadgeProps {
@@ -31,13 +31,13 @@ interface PremiumBadgeProps {
 }
 
 export const PremiumBadge: React.FC<PremiumBadgeProps> = ({
-	children = "Premium",
+	children = "高级版",
 }) => {
 	return <Badge variant="magenta">{children}</Badge>;
 };
 
 export const PreviewBadge: React.FC = () => {
-	return <Badge variant="purple">Preview</Badge>;
+	return <Badge variant="purple">预览版</Badge>;
 };
 
 export const AlphaBadge: React.FC = () => {
@@ -45,7 +45,7 @@ export const AlphaBadge: React.FC = () => {
 };
 
 export const DeprecatedBadge: React.FC = () => {
-	return <Badge variant="warning">Deprecated</Badge>;
+	return <Badge variant="warning">已弃用</Badge>;
 };
 
 export const Badges: React.FC<React.PropsWithChildren> = ({ children }) => {

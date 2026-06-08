@@ -67,23 +67,23 @@ export const OrganizationMembersTable: React.FC<
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-max">User</TableHead>
+					<TableHead className="w-max">用户</TableHead>
 					<TableHead className="w-1/6">
 						<div className="flex flex-row items-center gap-2">
-							<span>Roles</span>
+							<span>角色</span>
 							<RolesHelpPopover />
 						</div>
 					</TableHead>
 					<TableHead className="w-1/6">
 						<div className="flex flex-row items-center gap-2">
-							<span>Groups</span>
+							<span>组</span>
 							<GroupsHelpPopover />
 						</div>
 					</TableHead>
 					{showAISeatColumn && (
 						<TableHead className="w-1/6">
 							<div className="flex flex-row items-center gap-2">
-								<span>AI add-on</span>
+								<span>AI 附加组件</span>
 								<AiAddonHelpPopover />
 							</div>
 						</TableHead>
@@ -151,10 +151,10 @@ const OrganizationMembersTableBody: React.FC<OrganizationMembersTableProps> = ({
 										<Button
 											size="icon-lg"
 											variant="subtle"
-											aria-label="Open menu"
+											aria-label="打开菜单"
 										>
 											<EllipsisVerticalIcon aria-hidden="true" />
-											<span className="sr-only">Open menu</span>
+											<span className="sr-only">打开菜单</span>
 										</Button>
 									</DropdownMenuTrigger>
 									<DropdownMenuContent align="end">
@@ -162,7 +162,7 @@ const OrganizationMembersTableBody: React.FC<OrganizationMembersTableProps> = ({
 											<Link
 												to={`/workspaces?filter=${encodeURIComponent(`owner:${member.username} organization:${organizationName}`)}`}
 											>
-												View workspaces
+												查看工作区
 											</Link>
 										</DropdownMenuItem>
 
@@ -171,7 +171,7 @@ const OrganizationMembersTableBody: React.FC<OrganizationMembersTableProps> = ({
 												<Link
 													to={`/audit?filter=${encodeURIComponent(`username:${member.username} organization:${organizationName}`)}`}
 												>
-													View activity {!canViewActivity && <PremiumBadge />}
+													查看活动 {!canViewActivity && <PremiumBadge />}
 												</Link>
 											</DropdownMenuItem>
 										)}
@@ -180,7 +180,7 @@ const OrganizationMembersTableBody: React.FC<OrganizationMembersTableProps> = ({
 											disabled={isUpdatingMemberRoles}
 											onClick={() => onEditMemberRoles(member)}
 										>
-											Edit roles
+											编辑角色
 										</DropdownMenuItem>
 
 										<DropdownMenuSeparator />
@@ -189,7 +189,7 @@ const OrganizationMembersTableBody: React.FC<OrganizationMembersTableProps> = ({
 											className="text-content-destructive focus:text-content-destructive"
 											onClick={() => removeMember(member)}
 										>
-											Remove&hellip;
+											移除&hellip;
 										</DropdownMenuItem>
 									</DropdownMenuContent>
 								</DropdownMenu>

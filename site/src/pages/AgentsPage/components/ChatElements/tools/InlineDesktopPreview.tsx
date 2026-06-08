@@ -9,14 +9,12 @@ import {
 import { DEFAULT_ASPECT } from "./previewConstants";
 
 /**
- * Non-interactive inline VNC desktop preview. The noVNC canvas is
- * blocked from receiving pointer/keyboard events so it acts as a
- * read-only thumbnail. An invisible overlay captures clicks and
- * forwards them to `onClick` (e.g. opens the sidebar Desktop tab).
+ * 非交互式的内联 VNC 桌面预览。noVNC 画布被阻止接收指针/键盘事件，
+ * 因此它作为一个只读缩略图。一个不可见的覆盖层捕获点击并将它们转发
+ * 到 `onClick`（例如打开侧边栏的桌面选项卡）。
  *
- * The container's aspect-ratio is derived from the remote desktop's
- * framebuffer dimensions so there is no dead space around the
- * preview.
+ * 容器的纵横比从远程桌面的帧缓冲区尺寸推导得出，因此预览周围没有
+ * 空白区域。
  */
 export const InlineDesktopPreview: React.FC<{
 	chatId: string;
@@ -83,11 +81,11 @@ export const InlineDesktopPreview: React.FC<{
 				<button
 					type="button"
 					onClick={onClick}
-					aria-label="Open desktop tab"
+					aria-label="打开桌面标签页"
 					className="absolute inset-0 z-10 flex cursor-pointer items-center justify-center gap-1.5 border-0 bg-black/0 p-0 transition-colors group-hover/preview:bg-black/50"
 				>
 					<span className="text-[13px] font-medium text-white opacity-0 drop-shadow-md transition-opacity group-hover/preview:opacity-100">
-						View desktop
+						查看桌面
 					</span>
 					<PanelRightOpenIcon className="size-4 text-white opacity-0 drop-shadow-md transition-opacity group-hover/preview:opacity-100" />
 				</button>
@@ -112,7 +110,7 @@ export const InlineDesktopPreview: React.FC<{
 				className="flex w-full items-center justify-center text-xs text-content-secondary"
 				style={{ aspectRatio }}
 			>
-				Desktop disconnected. Reconnecting…
+				桌面已断开连接。正在重新连接…
 			</div>,
 		);
 	}
@@ -123,7 +121,7 @@ export const InlineDesktopPreview: React.FC<{
 				className="flex w-full items-center justify-center text-xs text-content-secondary"
 				style={{ aspectRatio: DEFAULT_ASPECT }}
 			>
-				Could not connect to desktop.
+				无法连接到桌面。
 			</div>,
 		);
 	}

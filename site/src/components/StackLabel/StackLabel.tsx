@@ -2,8 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { cn } from "#/utils/cn";
 
 /**
- * Use these components as the label in FormControlLabel when implementing radio
- * buttons, checkboxes, or switches to ensure proper styling.
+ * 在实现单选按钮、复选框或开关时，请将这些组件用作 FormControlLabel 内的标签，以确保样式正确。
  */
 
 export const StackLabel: FC<ComponentProps<"div">> = ({

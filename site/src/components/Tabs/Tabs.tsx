@@ -219,7 +219,7 @@ type TabLinkProps = LinkProps & {
 export const TabLink = ({ value, className, ...linkProps }: TabLinkProps) => {
 	const tabsContext = useContext(LinkTabsContext);
 	if (!tabsContext) {
-		throw new Error("TabLink must be used inside LinkTabs");
+		throw new Error("TabLink 必须在 LinkTabs 内部使用");
 	}
 
 	const isActive = tabsContext.active === value;

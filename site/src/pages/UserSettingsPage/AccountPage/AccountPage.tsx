@@ -28,9 +28,9 @@ const AccountPage: FC = () => {
 		<div className="flex flex-col gap-12">
 			<div>
 				<SettingsHeader>
-					<SettingsHeaderTitle>Account</SettingsHeaderTitle>
+					<SettingsHeaderTitle>账户</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Update your account info.
+						更新您的账户信息。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 				<AccountForm

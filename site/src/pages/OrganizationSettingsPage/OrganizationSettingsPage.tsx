@@ -17,9 +17,9 @@ import { pageTitle } from "#/utils/page";
 import { OrganizationSettingsPageView } from "./OrganizationSettingsPageView";
 
 const sharingUpdatedToastLabels: Record<ShareableWorkspaceOwners, string> = {
-	none: "Workspace sharing disabled.",
-	service_accounts: "Workspace sharing restricted to service accounts.",
-	everyone: "Workspace sharing enabled for all users.",
+	none: "工作空间共享已禁用。",
+	service_accounts: "工作空间共享仅限服务账号。",
+	everyone: "工作空间共享已对所有用户启用。",
 };
 
 const OrganizationSettingsPage: FC = () => {
@@ -44,12 +44,12 @@ const OrganizationSettingsPage: FC = () => {
 	);
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="组织未找到" />;
 	}
 
 	const title = (
 		<title>
-			{pageTitle("Settings", organization.display_name || organization.name)}
+			{pageTitle("设置", organization.display_name || organization.name)}
 		</title>
 	);
 
@@ -73,10 +73,10 @@ const OrganizationSettingsPage: FC = () => {
 		});
 
 		toast.promise(mutation, {
-			loading: "Updating workspace sharing settings...",
+			loading: "正在更新工作空间共享设置……",
 			success: sharingUpdatedToastLabels[value],
 			error: (error) => ({
-				message: "Failed to update workspace sharing settings.",
+				message: "更新工作空间共享设置失败。",
 				description: getErrorDetail(error),
 			}),
 		});
@@ -96,21 +96,21 @@ const OrganizationSettingsPage: FC = () => {
 						});
 					navigate(`/organizations/${updatedOrganization.name}/settings`);
 					toast.success(
-						`Organization "${updatedOrganization.name}" settings updated successfully.`,
+						`组织“${updatedOrganization.name}”设置已成功更新。`,
 					);
 				}}
 				onDeleteOrganization={async () => {
 					try {
 						await deleteOrganizationMutation.mutateAsync(organization.id);
 						toast.success(
-							`Organization "${organization.display_name || organization.name}" deleted successfully.`,
+							`组织“${organization.display_name || organization.name}”已成功删除。`,
 						);
 						navigate("/organizations");
 					} catch (error) {
 						toast.error(
 							getErrorMessage(
 								error,
-								`Failed to delete organization "${organization.name}".`,
+								`删除组织“${organization.name}”失败。`,
 							),
 							{
 								description: getErrorDetail(error),

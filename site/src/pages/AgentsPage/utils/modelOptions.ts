@@ -229,15 +229,15 @@ export const getModelSelectorPlaceholder = (
 	catalog?: TypesGen.ChatModelsResponse | null,
 ): string => {
 	if (modelOptions.length > 0) {
-		return "Select model";
+		return "选择模型";
 	}
 	if (isModelCatalogLoading) {
-		return "Loading models...";
+		return "加载模型中...";
 	}
 	if (hasConfiguredModels) {
 		return hasUserFixableProviders(catalog)
-			? "Configure API Keys"
-			: "No Models Available";
+			? "配置 API 密钥"
+			: "无可用模型";
 	}
-	return "No Models Configured";
+	return "未配置模型";
 };

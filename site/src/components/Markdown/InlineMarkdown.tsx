@@ -25,9 +25,9 @@ interface InlineMarkdownProps {
 }
 
 /**
- * Supports a strict subset of Markdown that behaves well as inline/confined
- * content. Separated from the full Markdown component so that importing it
- * does not pull in the heavy PrismJS syntax-highlighting bundle.
+ * 支持一个严格子集的Markdown，适合作为内联/受限内容。
+ * 与完整的Markdown组件分离，这样导入它时不会引入庞大的
+ * PrismJS语法高亮包。
  */
 export const InlineMarkdown: FC<InlineMarkdownProps> = (props) => {
 	const { children, allowedElements = [], className, components = {} } = props;

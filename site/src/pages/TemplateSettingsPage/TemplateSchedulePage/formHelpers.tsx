@@ -23,28 +23,28 @@ const MAX_TTL_DAYS = 30;
 export const getValidationSchema = (): Yup.AnyObjectSchema =>
 	Yup.object({
 		default_ttl_ms: Yup.number()
-			.integer("Default time until autostop must be an integer.")
+			.integer("默认自动停止等待时间必须是整数。")
 			.required()
-			.min(0, "Default time until autostop must not be less than 0.")
+			.min(0, "默认自动停止等待时间不能小于0。")
 			.max(
 				24 * MAX_TTL_DAYS /* 30 days in hours */,
-				"Please enter a limit that is less than or equal to 720 hours (30 days).",
+				"请输入小于或等于720小时（30天）的限制。",
 			),
 		activity_bump_ms: Yup.number()
-			.integer("Activity bump must be an integer.")
+			.integer("活动延长值必须为整数。")
 			.required()
-			.min(0, "Activity bump must not be less than 0.")
+			.min(0, "活动延长值不能小于0。")
 			.max(
 				24 * MAX_TTL_DAYS /* 30 days in hours */,
-				"Please enter an activity bump duration that is less than or equal to 720 hours (30 days).",
+				"请输入小于或等于720小时（30天）的活动延长持续时间。",
 			),
 		failure_ttl_ms: Yup.number()
-			.integer("Failure cleanup days must be an integer.")
+			.integer("失败清理天数必须是整数。")
 			.required()
-			.min(0, "Failure cleanup days must not be less than 0.")
+			.min(0, "失败清理天数不能小于0。")
 			.test(
 				"positive-if-enabled",
-				"Failure cleanup days must be greater than zero when enabled.",
+				"启用时失败清理天数必须大于零。",
 				function (value) {
 					const parent = this.parent as TemplateScheduleFormValues;
 					if (!parent.failure_cleanup_enabled) {
@@ -54,12 +54,12 @@ export const getValidationSchema = (): Yup.AnyObjectSchema =>
 				},
 			),
 		time_til_dormant_ms: Yup.number()
-			.integer("Dormancy threshold must be an integer.")
+			.integer("休眠阈值必须是整数。")
 			.required()
-			.min(0, "Dormancy threshold must not be less than 0.")
+			.min(0, "休眠阈值不能小于0。")
 			.test(
 				"positive-if-enabled",
-				"Dormancy threshold must be greater than zero when enabled.",
+				"启用时休眠阈值必须大于零。",
 				function (value) {
 					const parent = this.parent as TemplateScheduleFormValues;
 					if (parent.inactivity_cleanup_enabled) {
@@ -69,12 +69,12 @@ export const getValidationSchema = (): Yup.AnyObjectSchema =>
 				},
 			),
 		time_til_dormant_autodelete_ms: Yup.number()
-			.integer("Dormancy auto-deletion days must be an integer.")
+			.integer("休眠自动删除天数必须是整数。")
 			.required()
-			.min(0, "Dormancy auto-deletion days must not be less than 0.")
+			.min(0, "休眠自动删除天数不能小于0。")
 			.test(
 				"positive-if-enabled",
-				"Dormancy auto-deletion days must be greater than zero when enabled.",
+				"启用时休眠自动删除天数必须大于零。",
 				function (value) {
 					const parent = this.parent as TemplateScheduleFormValues;
 					if (parent.dormant_autodeletion_cleanup_enabled) {

@@ -16,19 +16,19 @@ export const BuildAuditDescription: FC<BuildAuditDescriptionProps> = ({
 	const user =
 		auditLog.additional_fields?.build_reason &&
 		systemBuildReasons.includes(auditLog.additional_fields?.build_reason)
-			? "Coder automatically"
+			? "Coder 自动"
 			: auditLog.user
 				? auditLog.user.username.trim()
-				: "Unauthenticated user";
+				: "未认证用户";
 
 	const action = useMemo(() => {
 		switch (auditLog.action) {
 			case "start":
-				return "started";
+				return "启动";
 			case "stop":
-				return "stopped";
+				return "停止";
 			case "delete":
-				return "deleted";
+				return "删除";
 			default:
 				return auditLog.action;
 		}
@@ -36,7 +36,7 @@ export const BuildAuditDescription: FC<BuildAuditDescriptionProps> = ({
 
 	return (
 		<span>
-			{user} <strong>{action}</strong> workspace{" "}
+			{user} <strong>{action}</strong> 工作区{" "}
 			{auditLog.resource_link ? (
 				<Link asChild showExternalIcon={false} className="text-base px-0">
 					<RouterLink to={auditLog.resource_link}>

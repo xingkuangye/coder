@@ -41,7 +41,7 @@ const CreateEditRolePage: FC = () => {
 	}
 
 	if (!organizationPermissions) {
-		return <ErrorAlert error="Failed to load organization permissions" />;
+		return <ErrorAlert error="无法加载组织权限" />;
 	}
 
 	return (
@@ -54,7 +54,7 @@ const CreateEditRolePage: FC = () => {
 		>
 			<title>
 				{pageTitle(
-					role !== undefined ? "Edit Custom Role" : "Create Custom Role",
+					role !== undefined ? "编辑自定义角色" : "创建自定义角色",
 				)}
 			</title>
 
@@ -76,23 +76,23 @@ const CreateEditRolePage: FC = () => {
 						mutation,
 						role
 							? {
-									loading: `Updating custom role "${data.name}"...`,
-									success: `Custom role "${data.name}" updated successfully.`,
+									loading: `正在更新自定义角色 "${data.name}"...`,
+									success: `自定义角色 "${data.name}" 更新成功。`,
 									error: (error) => ({
 										message: getErrorMessage(
 											error,
-											`Failed to update custom role "${data.name}".`,
+											`更新自定义角色 "${data.name}" 失败。`,
 										),
 										description: getErrorDetail(error),
 									}),
 								}
 							: {
-									loading: `Creating custom role "${data.name}"...`,
-									success: `Custom role "${data.name}" created successfully.`,
+									loading: `正在创建自定义角色 "${data.name}"...`,
+									success: `自定义角色 "${data.name}" 创建成功。`,
 									error: (error) => ({
 										message: getErrorMessage(
 											error,
-											`Failed to create custom role "${data.name}".`,
+											`创建自定义角色 "${data.name}" 失败。`,
 										),
 										description: getErrorDetail(error),
 									}),

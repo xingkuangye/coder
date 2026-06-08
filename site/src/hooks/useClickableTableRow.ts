@@ -1,17 +1,16 @@
 /**
- * @file 2024-02-19 - MES - Sadly, even though this hook aims to make elements
- * more accessible, it's doing the opposite right now. Per axe audits, the
- * current implementation will create a bunch of critical-level accessibility
- * violations:
+ * @file 2024-02-19 - MES - 遗憾的是，尽管这个 hook 旨在使元素更易访问，
+ * 但目前它却起到了相反的作用。根据 axe 审计，当前实现会产生一系列
+ * 严重级别的可访问性违规：
  *
- * 1. Nesting interactive elements (e.g., workspace table rows having checkboxes
- *    inside them)
- * 2. Overriding the native element's role (in this case, turning a native table
- *    row into a button, which means that screen readers lose the ability to
- *    announce the row's data as part of a larger table)
+ * 1. 嵌套交互元素（例如，工作区表格行内包含复选框
+ *    的情况）
+ * 2. 覆盖原生元素的角色（在此情况下，将原生表格行转换为按钮，
+ *    这意味着屏幕阅读器失去了将行数据作为更大表格一部分
+ *    进行播报的能力）
  *
- * It might not make sense to test this hook until the underlying design
- * problems are fixed.
+ * 在底层的设计问题得到修复之前，测试这个 hook
+ * 可能没有意义。
  */
 import type { HTMLAttributes, MouseEventHandler } from "react";
 import { cn } from "#/utils/cn";

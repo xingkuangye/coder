@@ -30,8 +30,7 @@ export const AgentExternal: FC<AgentExternalProps> = ({ agent, workspace }) => {
 	return (
 		<section className="text-base text-content-secondary pb-2 leading-relaxed">
 			<p>
-				Please run the following command to attach an agent to the{" "}
-				{workspace.name} workspace:
+				请运行以下命令将代理附加到 {workspace.name} 工作区：
 			</p>
 			<CodeExample
 				code={credentials?.command ?? ""}

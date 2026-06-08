@@ -21,7 +21,7 @@ export const AuditLogDescription: FC<AuditLogDescriptionProps> = ({
 	let target = auditLog.resource_target.trim();
 	let user = auditLog.user
 		? auditLog.user.username.trim()
-		: "Unauthenticated user";
+		: "未认证用户";
 
 	// SSH key entries have no links
 	if (auditLog.resource_type === "git_ssh_key") {
@@ -33,7 +33,7 @@ export const AuditLogDescription: FC<AuditLogDescriptionProps> = ({
 		auditLog.resource_type === "user" &&
 		auditLog.additional_fields?.automatic_actor === "coder"
 	) {
-		user = "Coder automatically";
+		user = "Coder 自动";
 	}
 
 	const truncatedDescription = auditLog.description
@@ -45,7 +45,7 @@ export const AuditLogDescription: FC<AuditLogDescriptionProps> = ({
 		auditLog.additional_fields.workspace_owner &&
 		auditLog.additional_fields.workspace_owner !== "unknown" &&
 		auditLog.additional_fields.workspace_owner.trim() !== user
-			? ` on behalf of ${auditLog.additional_fields.workspace_owner}`
+			? ` 代表 ${auditLog.additional_fields.workspace_owner}`
 			: "";
 
 	return (
@@ -71,14 +71,14 @@ function AppSessionAuditLogDescription({ auditLog }: AuditLogDescriptionProps) {
 
 	return (
 		<>
-			{connection_type} session to {workspace_owner}'s{" "}
+			{connection_type} 会话到 {workspace_owner} 的{" "}
 			<Link asChild showExternalIcon={false} className="text-base px-0">
 				<RouterLink to={`${auditLog.resource_link}`}>
 					<strong>{workspace_name}</strong>
 				</RouterLink>
 			</Link>{" "}
-			workspace{" "}
-			<strong>{auditLog.action === "disconnect" ? "closed" : "opened"}</strong>
+			工作空间{" "}
+			<strong>{auditLog.action === "disconnect" ? "已关闭" : "已打开"}</strong>
 		</>
 	);
 }

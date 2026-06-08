@@ -26,31 +26,31 @@ const getProviderStatus = (
 ): ProviderStatus => {
 	if (!provider.byok_enabled) {
 		return {
-			label: "User keys disabled",
+			label: "用户密钥已禁用",
 			variant: "default",
-			note: "Personal API keys are disabled by your admin.",
+			note: "个人 API 密钥已被管理员禁用。",
 		};
 	}
 
 	if (provider.has_user_api_key) {
 		return {
-			label: "Key saved",
+			label: "密钥已保存",
 			variant: "green",
 		};
 	}
 
 	if (provider.has_central_api_key_fallback) {
 		return {
-			label: "Using shared key",
+			label: "使用共享密钥",
 			variant: "default",
-			note: "The shared deployment key is being used. Add a personal key to use your own.",
+			note: "当前正在使用共享部署密钥。添加个人密钥以使用您自己的密钥。",
 		};
 	}
 
 	return {
-		label: "No key",
+		label: "无密钥",
 		variant: "warning",
-		note: "You must add a personal API key to use this provider.",
+		note: "您必须添加个人 API 密钥才能使用此提供程序。",
 	};
 };
 
@@ -130,8 +130,8 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 	};
 
 	const deleteDescription = provider.has_central_api_key_fallback
-		? "This will remove your personal API key. Requests will fall back to the shared deployment key for this provider."
-		: "This will remove your personal API key. You will need to add a new key before you can use this provider again.";
+		? "这将删除您的个人 API 密钥。请求将回退到此提供程序的共享部署密钥。"
+		: "这将删除您的个人 API 密钥。您需要添加新密钥才能再次使用此提供程序。";
 
 	return (
 		<article className="rounded-lg border border-solid border-border p-6">
@@ -154,7 +154,7 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 					htmlFor={apiKeyInputId}
 					className="text-sm font-medium text-content-primary"
 				>
-					API Key
+					API 密钥
 				</label>
 				<div className="flex flex-col gap-3 lg:flex-row lg:items-start">
 					<div className="flex flex-col gap-1.5 lg:flex-1">
@@ -179,13 +179,13 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 						/>
 						{hasAPIKeyWhitespace && (
 							<p className="m-0 text-xs text-content-destructive">
-								API key must not contain leading or trailing whitespace.
+								API 密钥不得包含前导或尾随空格。
 							</p>
 						)}
 					</div>
 					<div className="flex items-center gap-2">
 						<Button type="submit" size="sm" disabled={saveDisabled}>
-							Save
+							保存
 						</Button>
 						{provider.has_user_api_key && (
 							<Button
@@ -195,7 +195,7 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 								onClick={() => setIsDeleteDialogOpen(true)}
 								disabled={removeDisabled}
 							>
-								Remove
+								删除
 							</Button>
 						)}
 					</div>
@@ -204,15 +204,15 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 
 			<div className="mt-6 flex flex-col gap-2">
 				<p className="m-0 text-sm font-medium text-content-primary">
-					Enabled models
+					已启用的模型
 				</p>
 				{areModelsUnavailable ? (
 					<p className="m-0 text-sm text-content-secondary">
-						Enabled model badges are temporarily unavailable.
+						已启用的模型徽章暂时不可用。
 					</p>
 				) : isModelsLoading ? (
 					<p className="m-0 text-sm text-content-secondary">
-						Loading models...
+						正在加载模型...
 					</p>
 				) : enabledModels.length > 0 ? (
 					<div className="flex flex-wrap gap-2">
@@ -224,7 +224,7 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 					</div>
 				) : (
 					<p className="m-0 text-sm text-content-secondary">
-						No enabled models configured.
+						未配置已启用的模型。
 					</p>
 				)}
 			</div>
@@ -233,9 +233,9 @@ const ProviderKeyPanel: FC<ProviderKeyPanelProps> = ({
 				open={isDeleteDialogOpen}
 				onClose={() => setIsDeleteDialogOpen(false)}
 				onConfirm={handleRemoveKey}
-				title="Remove API key?"
+				title="删除 API 密钥？"
 				description={deleteDescription}
-				confirmText="Remove"
+				confirmText="删除"
 				confirmLoading={isRemoving}
 				type="delete"
 			/>
@@ -285,8 +285,8 @@ export const AgentSettingsAPIKeysPageView: FC<
 		<div>
 			<section className="flex flex-col gap-8">
 				<SectionHeader
-					label="Secrets (API keys)"
-					description="Add a personal API key for each provider. Your personal key takes precedence over the shared deployment key when both are available."
+					label="密钥（API 密钥）"
+					description="为每个提供程序添加个人 API 密钥。当两者都可用时，您的个人密钥优先于共享部署密钥。"
 				/>
 				<div>
 					{error ? (
@@ -295,8 +295,8 @@ export const AgentSettingsAPIKeysPageView: FC<
 						<Loader />
 					) : providerItems.length === 0 ? (
 						<EmptyState
-							message="No providers allow personal API keys."
-							description="Ask your administrator to enable personal API keys for at least one provider."
+							message="没有提供程序允许个人 API 密钥。"
+							description="请向管理员申请至少为一个提供程序启用个人 API 密钥。"
 						/>
 					) : (
 						<div className="flex flex-col gap-4">

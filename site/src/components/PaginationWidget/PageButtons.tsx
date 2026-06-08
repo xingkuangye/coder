@@ -18,7 +18,7 @@ export const NumberedPageButton: FC<NumberedPageButtonProps> = ({
 }) => {
 	return (
 		<BasePageButton
-			name="Page button"
+			name="页面按钮"
 			aria-label={getNumberedButtonLabel(pageNumber, totalPages, highlighted)}
 			onClick={onClick}
 			highlighted={highlighted}
@@ -41,8 +41,8 @@ export const PlaceholderPageButton: FC<PlaceholderPageButtonProps> = ({
 	return (
 		<BasePageButton
 			disabled
-			name="Omitted pages"
-			aria-label={`Omitting ${pagesOmitted} pages`}
+			name="省略的页码"
+			aria-label={`省略了${pagesOmitted}页`}
 		>
 			{children}
 		</BasePageButton>
@@ -87,16 +87,16 @@ function getNumberedButtonLabel(
 	highlighted: boolean,
 ): string {
 	if (highlighted) {
-		return "Current Page";
+		return "当前页";
 	}
 
 	if (page === 1) {
-		return "First Page";
+		return "第一页";
 	}
 
 	if (page === totalPages) {
-		return "Last Page";
+		return "最后一页";
 	}
 
-	return `Page ${page}`;
+	return `第${page}页`;
 }

@@ -128,7 +128,7 @@ const TemplateVersionEditorPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(templateName, "Template Editor")}</title>
+			<title>{pageTitle(templateName, "模板编辑器")}</title>
 
 			{!(templateQuery.data && activeTemplateVersion && fileTree) ? (
 				<Loader fullscreen />
@@ -266,7 +266,7 @@ const useFileTree = (templateVersion: TemplateVersion | undefined) => {
 				setState({ fileTree, tarFile });
 			} catch (error) {
 				console.error(error);
-				toast.error("Error on initializing the editor.", {
+				toast.error("编辑器初始化出错。", {
 					description: getErrorDetail(error),
 				});
 			}

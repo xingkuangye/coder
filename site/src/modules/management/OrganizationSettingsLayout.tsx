@@ -95,12 +95,12 @@ const OrganizationSettingsLayout: FC = () => {
 				<Breadcrumb>
 					<BreadcrumbList>
 						<BreadcrumbItem>
-							<BreadcrumbPage>Admin Settings</BreadcrumbPage>
+							<BreadcrumbPage>管理设置</BreadcrumbPage>
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
 							<BreadcrumbPage className="flex items-center gap-2">
-								Organizations
+								组织
 							</BreadcrumbPage>
 						</BreadcrumbItem>
 						{organization && (

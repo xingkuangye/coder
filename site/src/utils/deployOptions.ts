@@ -11,7 +11,7 @@ const deploymentOptions = (
 		if (option) {
 			found.push(option);
 		} else {
-			throw new Error(`Deployment option ${name} not found`);
+			throw new Error(`部署选项 ${name} 未找到`);
 		}
 	}
 	return found;

@@ -32,7 +32,7 @@ export const WorkspaceBuildData: React.FC<WorkspaceBuildDataProps> = ({
 						"whitespace-nowrap flex items-center gap-1",
 					)}
 				>
-					<span className="capitalize">{build.transition}</span> by{" "}
+					<span className="capitalize">{build.transition}</span> 由{" "}
 					<span className="font-medium">
 						{getDisplayWorkspaceBuildInitiatedBy(build)}
 					</span>

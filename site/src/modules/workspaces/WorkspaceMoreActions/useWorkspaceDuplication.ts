@@ -21,7 +21,7 @@ function getDuplicationUrlParams(
 	return new URLSearchParams({
 		...consolidatedParams,
 		mode: "duplicate" satisfies CreateWorkspaceMode,
-		name: `${workspace.name}-copy`,
+		name: `${workspace.name}-副本`,
 		version: workspace.template_active_version_id,
 	});
 }

@@ -34,7 +34,7 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 	if (!externalAuth.authenticated) {
 		return (
 			<SignInLayout>
-				<Welcome>Authenticate with {externalAuth.display_name}</Welcome>
+				<Welcome>使用 {externalAuth.display_name} 进行身份验证</Welcome>
 
 				{externalAuth.device && (
 					<GitDeviceAuth
@@ -49,7 +49,7 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 	const hasInstallations = externalAuth.installations.length > 0;
 
 	// We only want to wrap this with a link if an install URL is available!
-	let installTheApp: ReactNode = `install the ${externalAuth.display_name} App`;
+	let installTheApp: ReactNode = `安装 ${externalAuth.display_name} App`;
 	if (externalAuth.app_install_url) {
 		installTheApp = (
 			<Link
@@ -65,14 +65,14 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 	return (
 		<SignInLayout>
 			<Welcome>
-				You&apos;ve authenticated with {externalAuth.display_name}!
+				您已使用 {externalAuth.display_name} 完成身份验证！
 			</Welcome>
 
 			<p className="m-0 text-center text-base leading-relaxed text-content-secondary">
-				{externalAuth.user?.login && `Hey @${externalAuth.user?.login}! 👋`}
+				{externalAuth.user?.login && `嗨 @${externalAuth.user?.login}! 👋`}
 				{(!externalAuth.app_installable ||
 					externalAuth.installations.length > 0) &&
-					"You are now authenticated. Feel free to close this window!"}
+					"您现已通过身份验证，可以关闭此窗口了！"}
 			</p>
 
 			{externalAuth.installations.length > 0 && (
@@ -102,16 +102,15 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 						);
 					})}
 					&nbsp;
-					{externalAuth.installations.length} organization
-					{externalAuth.installations.length !== 1 && "s are"} authorized
+					{externalAuth.installations.length} 个组织
+					{externalAuth.installations.length !== 1 && ""}已授权
 				</div>
 			)}
 
 			<div className="m-4 flex flex-col gap-1">
 				{!hasInstallations && externalAuth.app_installable && (
 					<Alert severity="warning" className="m-4">
-						You must {installTheApp} to clone private repositories. Accounts
-						will appear here once authorized.
+						您必须先 {installTheApp} 才能克隆私有仓库。授权完成后，账户将显示在此处。
 					</Alert>
 				)}
 
@@ -125,8 +124,8 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 							className="flex items-center justify-center gap-2 text-base"
 						>
 							<ExternalLinkIcon className="size-icon-xs" />
-							{externalAuth.installations.length > 0 ? "Configure" : "Install"}{" "}
-							the {externalAuth.display_name} App
+							{externalAuth.installations.length > 0 ? "配置" : "安装"}{" "}
+							{externalAuth.display_name} 应用
 						</Link>
 					)}
 				<Link
@@ -136,7 +135,7 @@ const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 						onReauthenticate();
 					}}
 				>
-					<RotateCwIcon className="size-icon-xs" /> Reauthenticate
+					<RotateCwIcon className="size-icon-xs" /> 重新验证
 				</Link>
 			</div>
 		</SignInLayout>

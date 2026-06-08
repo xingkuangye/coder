@@ -28,7 +28,7 @@ import { formatDate } from "#/utils/time";
 
 const chartConfig = {
 	users: {
-		label: "Users",
+		label: "用户",
 		color: "hsl(var(--highlight-purple))",
 	},
 } satisfies ChartConfig;
@@ -52,7 +52,7 @@ export const LicenseSeatConsumptionChart: FC<
 				<Collapsible>
 					<header className="flex flex-col gap-2 items-start">
 						<h3 className="text-md m-0 font-medium">
-							License seat consumption
+							许可证席位消耗
 						</h3>
 
 						<CollapsibleTrigger asChild>
@@ -64,7 +64,7 @@ export const LicenseSeatConsumptionChart: FC<
 								`}
 							>
 								<ChevronRightIcon />
-								How we calculate license seat consumption
+								我们如何计算许可证席位消耗
 							</Button>
 						</CollapsibleTrigger>
 					</header>
@@ -77,41 +77,39 @@ export const LicenseSeatConsumptionChart: FC<
 						`}
 					>
 						<p>
-							Licenses are consumed based on the status of user accounts. Only
-							Active user accounts are consuming license seats.
+							许可证根据用户账户状态消耗。只有活跃用户账户才消耗许可证席位。
 						</p>
 						<ul>
 							<li className="flex items-center gap-2">
 								<div className="rounded-[2px] bg-highlight-green size-3 inline-block">
 									<span className="sr-only">
-										Legend for active users in the chart
+										图表中活跃用户的图例
 									</span>
 								</div>
-								The user was active at least once during the last 90 days.
+								用户在过去 90 天内至少活跃过一次。
 							</li>
 							<li className="flex items-center gap-2">
 								<div className="size-3 inline-flex items-center justify-center">
 									<span className="sr-only">
-										Legend for license seat limit in the chart
+										图表中许可证席位限制的图例
 									</span>
 									<div className="w-full border-b-1 border-t-1 border-dashed border-content-disabled" />
 								</div>
-								Current license seat limit, or the maximum number of allowed
-								Active accounts.
+								当前许可证席位限制，即允许的最大活跃账户数。
 							</li>
 						</ul>
 						<div>
-							You might also check:
+							您可能还想查看：
 							<ul>
 								<li>
 									<Link asChild>
-										<RouterLink to="/audit">Activity Audit</RouterLink>
+										<RouterLink to="/audit">活动审计</RouterLink>
 									</Link>
 								</li>
 								<li>
 									<Link asChild>
 										<RouterLink to="/deployment/overview">
-											Daily user activity
+											每日用户活动
 										</RouterLink>
 									</Link>
 								</li>
@@ -121,7 +119,7 @@ export const LicenseSeatConsumptionChart: FC<
 										target="_blank"
 										rel="noreferrer"
 									>
-										More details on user account statuses
+										用户账户状态的更多详情
 									</Link>
 								</li>
 							</ul>
@@ -183,11 +181,11 @@ export const LicenseSeatConsumptionChart: FC<
 												labelClassName="text-content-primary"
 												labelFormatter={(_, p) => {
 													const item = p[0];
-													return `${item.value} seats`;
+													return `${item.value} 个席位`;
 												}}
 												formatter={(_v, _n, item) => {
 													const date = new Date(item.payload.date);
-													return date.toLocaleString(undefined, {
+													return date.toLocaleString("zh-CN", {
 														month: "long",
 														day: "2-digit",
 													});
@@ -224,7 +222,7 @@ export const LicenseSeatConsumptionChart: FC<
 											ifOverflow="extendDomain"
 											y={limit}
 											label={{
-												value: "license seat limit",
+												value: "许可证席位限制",
 												position: "insideBottomRight",
 												className:
 													"text-2xs text-content-secondary font-regular",
@@ -242,7 +240,7 @@ export const LicenseSeatConsumptionChart: FC<
 									text-content-secondary text-sm font-medium
 								`}
 							>
-								No data available
+								暂无数据
 							</div>
 						)
 					) : (

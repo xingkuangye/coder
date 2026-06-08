@@ -47,19 +47,19 @@ export const EditFilesTool: React.FC<{
 	let label: string;
 	if (isRunning) {
 		if (files.length === 1) {
-			label = `Editing ${files[0].path.split("/").pop() || files[0].path}…`;
+			label = `正在编辑 ${files[0].path.split("/").pop() || files[0].path}…`;
 		} else if (files.length > 1) {
-			label = `Editing ${files.length} files…`;
+			label = `正在编辑 ${files.length} 个文件…`;
 		} else {
-			label = "Editing files…";
+			label = "正在编辑文件…";
 		}
 	} else if (files.length === 1) {
 		const filename = files[0].path.split("/").pop() || files[0].path;
-		label = `Edited ${filename}`;
+		label = `已编辑 ${filename}`;
 	} else if (files.length > 1) {
-		label = `Edited ${files.length} files`;
+		label = `已编辑 ${files.length} 个文件`;
 	} else {
-		label = "Edited files";
+		label = "已编辑文件";
 	}
 
 	return (
@@ -82,7 +82,7 @@ export const EditFilesTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to edit files"}
+								{errorMessage || "编辑文件失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}

@@ -82,15 +82,15 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 	const validationSchema = Yup.object({
 		name: Yup.string()
 			.trim()
-			.required("Name is required.")
+			.required("名称是必填项。")
 			.test(
 				"skill-name",
-				"Use kebab-case with lowercase letters, numbers, and single hyphens, up to 256 bytes.",
+				"使用 kebab-case，仅允许小写字母、数字和单个连字符，最多 256 字节。",
 				(value) => Boolean(value && isValidPersonalSkillName(value.trim())),
 			)
 			.test(
 				"unique-name",
-				"A skill with this name already exists.",
+				"已存在同名技能。",
 				(value) =>
 					!isCreate ||
 					!existingNames.includes(
@@ -99,10 +99,10 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 			),
 		description: Yup.string().test(
 			"description-size",
-			"Description must be 4096 bytes or smaller.",
+			"描述不得超过 4096 字节。",
 			(value) => isValidPersonalSkillDescription(value ?? ""),
 		),
-		body: Yup.string().test("body-required", "Body is required.", (value) =>
+		body: Yup.string().test("body-required", "正文是必填项。", (value) =>
 			Boolean(value?.trim()),
 		),
 	});
@@ -117,7 +117,7 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 			return {};
 		}
 		return {
-			body: `Skill content must be ${formatKiB(PERSONAL_SKILL_MAX_SIZE_BYTES)} or smaller.`,
+			body: `技能内容必须不超过 ${formatKiB(PERSONAL_SKILL_MAX_SIZE_BYTES)}。`,
 		};
 	};
 
@@ -148,7 +148,7 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 		if (!result.ok) {
 			setImportStatus({
 				kind: "error",
-				title: "Could not parse SKILL.md",
+				title: "无法解析 SKILL.md",
 				detail: result.error,
 			});
 			return;
@@ -175,10 +175,10 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 		setImportContent("");
 		setImportStatus({
 			kind: "success",
-			title: "Imported SKILL.md",
+			title: "已导入 SKILL.md",
 			detail: isCreate
-				? "Updated name, description, and body fields."
-				: "Updated description and body fields. Kept the existing name.",
+				? "已更新名称、描述和正文字段。"
+				: "已更新描述和正文字段，保留了原有名称。",
 		});
 	};
 
@@ -212,8 +212,8 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 	const bodyError = form.touched.body ? form.errors.body : undefined;
 	const isTooLarge = sizeBytes > PERSONAL_SKILL_MAX_SIZE_BYTES;
 	const isNearLimit = sizeBytes > PERSONAL_SKILL_MAX_SIZE_BYTES * 0.9;
-	const title = isCreate ? "Create personal skill" : "Edit personal skill";
-	const submitLabel = isCreate ? "Create skill" : "Save skill";
+	const title = isCreate ? "创建个人技能" : "编辑个人技能";
+	const submitLabel = isCreate ? "创建技能" : "保存技能";
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -225,10 +225,7 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 					<DialogHeader className="px-6 pt-6">
 						<DialogTitle>{title}</DialogTitle>
 						<DialogDescription>
-							Personal skills are available to your agents and stored as a
-							single SKILL.md file with frontmatter. For richer skills with
-							supporting files, add them to your repo under `.agents/skills/` or
-							load them from a workspace.
+							个人技能可供您的代理使用，并以带 frontmatter 的单个 SKILL.md 文件存储。如需更丰富的技能及支持文件，请将其添加到仓库的 `.agents/skills/` 目录下，或从工作区加载。
 						</DialogDescription>
 					</DialogHeader>
 
@@ -244,10 +241,9 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 
 						<div className="flex flex-col gap-3 rounded-md border border-border-default p-4">
 							<div className="flex flex-col gap-1">
-								<Label htmlFor={importId}>Import from SKILL.md</Label>
+								<Label htmlFor={importId}>从 SKILL.md 导入</Label>
 								<p className="m-0 text-xs text-content-secondary">
-									Paste a full SKILL.md file with frontmatter to auto-fill the
-									fields below.
+									粘贴带有 frontmatter 的完整 SKILL.md 文件，即可自动填充下方字段。
 								</p>
 							</div>
 							<TextareaAutosize
@@ -280,7 +276,7 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 											setImportStatus(null);
 										}}
 									>
-										Clear
+										清除
 									</Button>
 								)}
 								<Button
@@ -290,12 +286,12 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 										void importSkillMarkdown(importContent);
 									}}
 								>
-									Import
+									导入
 								</Button>
 							</div>
 						</div>
 						<div className="flex flex-col gap-2">
-							<Label htmlFor={nameId}>Name</Label>
+							<Label htmlFor={nameId}>名称</Label>
 							<Input
 								id={nameId}
 								name="name"
@@ -318,21 +314,20 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 								</p>
 							) : (
 								<p className="m-0 text-xs text-content-secondary">
-									Use lowercase letters, numbers, and hyphens. Names cannot be
-									changed after creation.
+									使用小写字母、数字和连字符。创建后名称无法修改。
 								</p>
 							)}
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<Label htmlFor={descriptionId}>Description</Label>
+							<Label htmlFor={descriptionId}>描述</Label>
 							<Input
 								id={descriptionId}
 								name="description"
 								value={form.values.description}
 								onChange={form.handleChange}
 								onBlur={form.handleBlur}
-								placeholder="When to use this skill"
+								placeholder="何时使用此技能"
 								disabled={isSubmitting}
 								aria-invalid={Boolean(descriptionError)}
 								aria-describedby={
@@ -350,14 +345,14 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<Label htmlFor={bodyId}>Body</Label>
+							<Label htmlFor={bodyId}>正文</Label>
 							<TextareaAutosize
 								id={bodyId}
 								name="body"
 								value={form.values.body}
 								onChange={form.handleChange}
 								onBlur={form.handleBlur}
-								placeholder="Describe when and how agents should use this skill."
+								placeholder="描述代理应在何时以及如何使用此技能。"
 								disabled={isSubmitting}
 								minRows={8}
 								aria-invalid={Boolean(bodyError)}
@@ -382,9 +377,8 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 									isTooLarge && "text-content-destructive",
 								)}
 							>
-								{formatKiB(sizeBytes)} of{" "}
-								{formatKiB(PERSONAL_SKILL_MAX_SIZE_BYTES)}
-								used.
+								已使用 {formatKiB(sizeBytes)}，上限{" "}
+								{formatKiB(PERSONAL_SKILL_MAX_SIZE_BYTES)}。
 							</p>
 						</div>
 					</div>
@@ -395,7 +389,7 @@ export const PersonalSkillEditor: FC<PersonalSkillEditorProps> = ({
 							disabled={isSubmitting}
 							onClick={() => onOpenChange(false)}
 						>
-							Cancel
+							取消
 						</Button>
 						<Button
 							type="submit"

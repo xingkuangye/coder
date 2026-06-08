@@ -8,7 +8,7 @@ const PremiumPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Premium Features")}</title>
+			<title>{pageTitle("高级功能")}</title>
 
 			<PremiumPageView isEnterprise={entitlements.has_license} />
 		</>

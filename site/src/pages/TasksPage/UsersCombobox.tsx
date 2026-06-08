@@ -66,7 +66,7 @@ export const UsersCombobox: FC<UsersComboboxProps> = ({
 						selectedOption ? (
 							<UserItem option={selectedOption} className="-ml-1" />
 						) : (
-							"Select user..."
+							"选择用户..."
 						)
 					) : (
 						<Skeleton variant="text" className="w-[120px] h-3" />
@@ -81,12 +81,12 @@ export const UsersCombobox: FC<UsersComboboxProps> = ({
 				 */}
 				<Command shouldFilter={false}>
 					<CommandInput
-						placeholder="Search user..."
+						placeholder="搜索用户..."
 						value={search}
 						onValueChange={setSearch}
 					/>
 					<CommandList>
-						<CommandEmpty>No users found.</CommandEmpty>
+						<CommandEmpty>未找到用户。</CommandEmpty>
 						<CommandGroup>
 							{options?.map((option) => (
 								<CommandItem

@@ -53,7 +53,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
 			type="delete"
 			hideCancel={false}
 			open={isOpen}
-			title={title ?? `Delete ${entity}`}
+			title={title ?? `删除${entity}`}
 			onConfirm={onConfirm}
 			onClose={onCancel}
 			confirmLoading={confirmLoading}
@@ -63,7 +63,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
 				<>
 					<div className="flex flex-col gap-3">
 						<p>
-							{verb ?? "Deleting"} this {entity} is irreversible!
+							{verb ?? "删除"}此{entity}是不可逆的！
 						</p>
 						{Boolean(info) && (
 							<Alert severity="warning" prominent>
@@ -71,7 +71,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
 							</Alert>
 						)}
 						<p>
-							Type <strong>{name}</strong> below to confirm.
+							请在下方输入 <strong>{name}</strong> 以确认。
 						</p>
 					</div>
 
@@ -88,12 +88,12 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({
 							onChange={(event) => setUserConfirmationText(event.target.value)}
 							onFocus={() => setIsFocused(true)}
 							onBlur={() => setIsFocused(false)}
-							label={label ?? `Name of the ${entity} to delete`}
+							label={label ?? `要删除的${entity}的名称`}
 							color={inputColor}
 							error={displayErrorMessage}
 							helperText={
 								displayErrorMessage &&
-								`${userConfirmationText} does not match the name of this ${entity}`
+								`${userConfirmationText} 与此${entity}的名称不匹配`
 							}
 							InputProps={{ color: inputColor }}
 							inputProps={{

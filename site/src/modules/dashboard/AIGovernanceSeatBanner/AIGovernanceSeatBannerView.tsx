@@ -36,8 +36,7 @@ export const AIGovernanceSeatBannerView: FC<AIGovernanceSeatBannerViewProps> = (
 				</div>
 				<div className="flex min-w-0 flex-wrap items-center gap-1 py-1.5 text-xs font-medium leading-4 text-content-primary">
 					<span>
-						Your organization is using {actual} / {limit} AI Governance user
-						seats ({overPercent}% over the limit). Contact{" "}
+						您的组织正在使用 {actual} / {limit} 个 AI Governance 用户席位 (超出限制 {overPercent}%)。请联系{" "}
 					</span>
 					<Link href="mailto:sales@coder.com" showExternalIcon={false}>
 						sales@coder.com

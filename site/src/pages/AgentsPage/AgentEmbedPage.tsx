@@ -306,16 +306,16 @@ const AgentEmbedPage: FC = () => {
 			<div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface-primary px-6 text-center">
 				<div className="space-y-2">
 					<h1 className="text-xl font-semibold text-content-primary">
-						Unable to start embedded agent.
+						无法启动嵌入式代理。
 					</h1>
 					<p className="max-w-md text-sm text-content-secondary">
 						{getErrorMessage(
 							embedSessionMutation.error,
-							"We couldn't exchange the VS Code bootstrap token for a session.",
+							"我们无法用 VS Code 引导令牌换取会话。",
 						)}
 					</p>
 				</div>
-				<Button onClick={handleBootstrapRetry}>Try again</Button>
+				<Button onClick={handleBootstrapRetry}>重试</Button>
 			</div>
 		);
 	}
@@ -323,9 +323,9 @@ const AgentEmbedPage: FC = () => {
 	if (embedSessionMutation.isPending) {
 		return (
 			<div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface-primary px-6 text-center">
-				<Loader label="Signing in to embedded agent" />
+				<Loader label="正在登录嵌入式代理" />
 				<p className="max-w-md text-sm text-content-secondary">
-					Signing in to the embedded agent…
+					正在登录嵌入式代理…
 				</p>
 			</div>
 		);
@@ -335,9 +335,9 @@ const AgentEmbedPage: FC = () => {
 	// postMessage from the parent frame.
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-surface-primary px-6 text-center">
-			<Loader label="Waiting for VS Code authentication" />
+			<Loader label="等待 VS Code 认证" />
 			<p className="max-w-md text-sm text-content-secondary">
-				{auth.isLoading ? "Loading…" : "Waiting for VS Code authentication…"}
+				{auth.isLoading ? "加载中…" : "等待 VS Code 认证…"}
 			</p>
 		</div>
 	);

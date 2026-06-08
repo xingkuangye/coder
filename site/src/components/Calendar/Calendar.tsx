@@ -1,10 +1,9 @@
 /**
- * Adapted from shadcn/ui on 2025-03-24.
+ * 基于 shadcn/ui 于 2025-03-24 改编。
  * @see {@link https://ui.shadcn.com/docs/components/calendar}
  *
- * Built on top of React DayPicker v9. Styled with Tailwind using the
- * project's existing design tokens so it matches every other primitive
- * in the component library.
+ * 构建于 React DayPicker v9 之上。使用项目现有设计令牌通过 Tailwind 进行样式设计，
+ * 以与组件库中的其他所有原语保持一致。
  */
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";

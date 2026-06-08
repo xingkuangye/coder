@@ -18,7 +18,7 @@ export const TemplateUpload: FC<TemplateUploadProps> = ({
 }) => {
 	const description = (
 		<>
-			The template has to be a .tar or .zip file. You can also use our{" "}
+			模板必须是 .tar 或 .zip 文件。你也可以使用我们的{" "}
 			<Link
 				component={RouterLink}
 				to="/starter-templates"
@@ -27,9 +27,9 @@ export const TemplateUpload: FC<TemplateUploadProps> = ({
 					e.stopPropagation();
 				}}
 			>
-				starter templates
+				入门模板
 			</Link>{" "}
-			to get started with Coder.
+			来开始使用 Coder。
 		</>
 	);
 
@@ -39,8 +39,8 @@ export const TemplateUpload: FC<TemplateUploadProps> = ({
 			onUpload={onUpload}
 			onRemove={onRemove}
 			file={file}
-			removeLabel="Remove file"
-			title="Upload template"
+			removeLabel="移除文件"
+			title="上传模板"
 			description={description}
 			extensions={["tar", "zip"]}
 		/>

@@ -102,7 +102,7 @@ const UsersPage: React.FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Users")}</title>
+			<title>{pageTitle("用户")}</title>
 
 			<UsersPageView
 				isLoading={isLoading}
@@ -146,10 +146,10 @@ const UsersPage: React.FC = () => {
 							userId: userToEditRoles!.id,
 							roles,
 						});
-						toast.success("User roles updated successfully.");
+						toast.success("用户角色更新成功。");
 						setUserToEditRoles(undefined);
 					} catch (e) {
-						toast.error(getErrorMessage(e, "Error updating user roles."), {
+						toast.error(getErrorMessage(e, "更新用户角色时出错。"), {
 							description: getErrorDetail(e),
 						});
 					}
@@ -162,7 +162,7 @@ const UsersPage: React.FC = () => {
 				isOpen={userToDelete !== undefined}
 				confirmLoading={deleteUserMutation.isPending}
 				name={userToDelete?.username ?? ""}
-				entity="user"
+				entity="用户"
 				onCancel={() => setUserToDelete(undefined)}
 				onConfirm={async () => {
 					if (!userToDelete) {
@@ -172,13 +172,13 @@ const UsersPage: React.FC = () => {
 						await deleteUserMutation.mutateAsync(userToDelete.id);
 						setUserToDelete(undefined);
 						toast.success(
-							`User "${userToDelete.username}" deleted successfully.`,
+							`用户 "${userToDelete.username}" 已成功删除。`,
 						);
 					} catch (e) {
 						toast.error(
 							getErrorMessage(
 								e,
-								`Error deleting user "${userToDelete.username}".`,
+								`删除用户 "${userToDelete.username}" 时出错。`,
 							),
 							{
 								description: getErrorDetail(e),
@@ -193,8 +193,8 @@ const UsersPage: React.FC = () => {
 				hideCancel={false}
 				open={userToSuspend !== undefined}
 				confirmLoading={suspendUserMutation.isPending}
-				title="Suspend user"
-				confirmText="Suspend"
+				title="暂停用户"
+				confirmText="暂停"
 				onClose={() => setUserToSuspend(undefined)}
 				onConfirm={async () => {
 					if (!userToSuspend) {
@@ -204,13 +204,13 @@ const UsersPage: React.FC = () => {
 						await suspendUserMutation.mutateAsync(userToSuspend.id);
 						setUserToSuspend(undefined);
 						toast.success(
-							`User "${userToSuspend.username}" suspended successfully.`,
+							`用户 "${userToSuspend.username}" 已暂停。`,
 						);
 					} catch (e) {
 						toast.error(
 							getErrorMessage(
 								e,
-								`Error suspending user "${userToSuspend.username}".`,
+								`暂停用户 "${userToSuspend.username}" 时出错。`,
 							),
 							{
 								description: getErrorDetail(e),
@@ -220,8 +220,8 @@ const UsersPage: React.FC = () => {
 				}}
 				description={
 					<>
-						Do you want to suspend the user{" "}
-						<strong>{userToSuspend?.username ?? ""}</strong>?
+						您要暂停用户{" "}
+						<strong>{userToSuspend?.username ?? ""}</strong> 吗？
 					</>
 				}
 			/>
@@ -231,8 +231,8 @@ const UsersPage: React.FC = () => {
 				hideCancel={false}
 				open={userToActivate !== undefined}
 				confirmLoading={activateUserMutation.isPending}
-				title="Activate user"
-				confirmText="Activate"
+				title="激活用户"
+				confirmText="激活"
 				onClose={() => setUserToActivate(undefined)}
 				onConfirm={async () => {
 					if (!userToActivate) {
@@ -242,13 +242,13 @@ const UsersPage: React.FC = () => {
 						await activateUserMutation.mutateAsync(userToActivate.id);
 						setUserToActivate(undefined);
 						toast.success(
-							`User "${userToActivate.username}" activated successfully.`,
+							`用户 "${userToActivate.username}" 已激活。`,
 						);
 					} catch (e) {
 						toast.error(
 							getErrorMessage(
 								e,
-								`Error activating user "${userToActivate.username}".`,
+								`激活用户 "${userToActivate.username}" 时出错。`,
 							),
 							{
 								description: getErrorDetail(e),
@@ -258,8 +258,8 @@ const UsersPage: React.FC = () => {
 				}}
 				description={
 					<>
-						Do you want to activate{" "}
-						<strong>{userToActivate?.username ?? ""}</strong>?
+						您要激活{" "}
+						<strong>{userToActivate?.username ?? ""}</strong> 吗？
 					</>
 				}
 			/>
@@ -285,13 +285,13 @@ const UsersPage: React.FC = () => {
 						});
 						setConfirmResetPassword(undefined);
 						toast.success(
-							`Password for "${confirmResetPassword.user.username}" updated successfully.`,
+							`用户 "${confirmResetPassword.user.username}" 的密码已更新。`,
 						);
 					} catch (e) {
 						toast.error(
 							getErrorMessage(
 								e,
-								`Error resetting password for "${confirmResetPassword.user.username}".`,
+								`重置用户 "${confirmResetPassword.user.username}" 的密码时出错。`,
 							),
 						);
 					}

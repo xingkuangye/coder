@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 11/13/2024
+ * 复制自 shadc/ui 于 2024年11月13日
  * @see {@link https://ui.shadcn.com/docs/components/switch}
  */
 import { cva, type VariantProps } from "class-variance-authority";

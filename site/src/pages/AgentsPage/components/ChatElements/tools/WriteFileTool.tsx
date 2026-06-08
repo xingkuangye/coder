@@ -44,7 +44,7 @@ export const WriteFileTool: React.FC<{
 	);
 
 	const filename = path.split("/").pop() || path;
-	const label = isRunning ? `Writing ${filename}…` : `Wrote ${filename}`;
+	const label = isRunning ? `正在写入 ${filename}…` : `已写入 ${filename}`;
 
 	return (
 		<AgentDisplayModeToolCollapsible
@@ -66,7 +66,7 @@ export const WriteFileTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to write file"}
+								{errorMessage || "文件写入失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}

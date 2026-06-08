@@ -20,7 +20,7 @@ import { formatDate } from "#/utils/time";
 
 const chartConfig = {
 	users: {
-		label: "Users",
+		label: "用户",
 		color: "hsl(var(--highlight-purple))",
 	},
 } satisfies ChartConfig;
@@ -40,7 +40,7 @@ export const UserEngagementChart: FC<UserEngagementChartProps> = ({ data }) => {
 			<div className="p-4">
 				<Collapsible>
 					<header className="flex flex-col gap-2 items-start">
-						<h3 className="text-md m-0 font-medium">User Engagement</h3>
+						<h3 className="text-md m-0 font-medium">用户活跃度</h3>
 
 						<CollapsibleTrigger asChild>
 							<Button
@@ -51,7 +51,7 @@ export const UserEngagementChart: FC<UserEngagementChartProps> = ({ data }) => {
 								`}
 							>
 								<ChevronRightIcon />
-								How we calculate engaged users
+								我们如何计算活跃用户
 							</Button>
 						</CollapsibleTrigger>
 					</header>
@@ -63,20 +63,17 @@ export const UserEngagementChart: FC<UserEngagementChartProps> = ({ data }) => {
 						`}
 					>
 						<p>
-							A user is considered "engaged" if they initiate a connection to
-							their workspace via apps, web terminal, or SSH. The graph displays
-							the daily count of unique users who engaged at least once, with
-							additional insights available through the{" "}
+							当用户通过应用、Web终端或SSH发起与其工作空间的连接时，即被视为“活跃用户”。图表显示每天至少活跃一次的独立用户数量，更多洞察可通过{" "}
 							<Link size="sm" asChild>
-								<RouterLink to="/audit">Activity Audit</RouterLink>
+								<RouterLink to="/audit">活动审计</RouterLink>
 							</Link>{" "}
-							and{" "}
+							和{" "}
 							<Link size="sm" asChild>
 								<RouterLink to="/deployment/licenses">
-									License Consumption
+									许可证消耗
 								</RouterLink>
 							</Link>{" "}
-							tools.
+							工具获取。
 						</p>
 					</CollapsibleContent>
 				</Collapsible>
@@ -133,7 +130,7 @@ export const UserEngagementChart: FC<UserEngagementChartProps> = ({ data }) => {
 												labelClassName="text-content-primary"
 												labelFormatter={(_, p) => {
 													const item = p[0];
-													return `${item.value} users`;
+													return `${item.value} 用户`;
 												}}
 												formatter={(_v, _n, item) => {
 													const date = new Date(item.payload.date);
@@ -178,7 +175,7 @@ export const UserEngagementChart: FC<UserEngagementChartProps> = ({ data }) => {
 									text-content-secondary text-sm font-medium
 								`}
 							>
-								No data available
+								暂无数据
 							</div>
 						)
 					) : (

@@ -36,19 +36,17 @@ export const AutoCreateConsentDialog: FC<AutoCreateConsentDialogProps> = ({
 				<DialogHeader>
 					<DialogTitle>
 						<TriangleAlertIcon className="size-icon-lg text-content-warning inline-block align-text-bottom mr-2" />
-						Warning: Automatic Workspace Creation
+						警告：自动创建工作区
 					</DialogTitle>
 					<DialogDescription>
-						A link is attempting to automatically create a workspace using the
-						following external configurations. Running scripts from untrusted
-						sources can be dangerous.
+						某个链接正尝试使用以下外部配置自动创建工作区。运行来自不受信任来源的脚本可能存在风险。
 					</DialogDescription>
 				</DialogHeader>
 
 				{presetName && (
 					<div className="flex min-w-0 flex-col gap-2">
 						<span className="text-sm font-semibold text-content-primary">
-							Preset:
+							预设：
 						</span>
 						<code className="block whitespace-pre overflow-x-auto">
 							{presetName}
@@ -59,7 +57,7 @@ export const AutoCreateConsentDialog: FC<AutoCreateConsentDialogProps> = ({
 				{autofillParameters.length > 0 && (
 					<div className="flex min-w-0 flex-col gap-2">
 						<span className="text-sm font-semibold text-content-primary">
-							Parameters:
+							参数：
 						</span>
 						<code className="block whitespace-pre overflow-x-auto">
 							{autofillParameters
@@ -71,10 +69,10 @@ export const AutoCreateConsentDialog: FC<AutoCreateConsentDialogProps> = ({
 
 				<DialogFooter>
 					<Button variant="outline" onClick={onDeny}>
-						Cancel
+						取消
 					</Button>
 					<Button variant="default" onClick={onConfirm}>
-						Confirm and Create
+						确认并创建
 					</Button>
 				</DialogFooter>
 			</DialogContent>

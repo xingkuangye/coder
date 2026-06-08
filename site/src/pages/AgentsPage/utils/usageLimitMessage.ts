@@ -55,7 +55,7 @@ function formatResetDate(isoString: string): string {
 	if (Number.isNaN(date.getTime())) {
 		return "";
 	}
-	return date.toLocaleDateString("en-US", {
+	return date.toLocaleDateString("zh-CN", {
 		month: "short",
 		day: "numeric",
 		year: "numeric",
@@ -88,7 +88,7 @@ export function isChatUsageLimitExceededResponse(
  */
 export function formatUsageLimitMessage(
 	data: UsageLimitData,
-	fallback = "Your usage limit has been reached.",
+	fallback = "您的使用限额已用尽。",
 ): string {
 	const { spent_micros, limit_micros, resets_at } = data;
 
@@ -108,8 +108,8 @@ export function formatUsageLimitMessage(
 	const resetDate = formatResetDate(resets_at);
 
 	if (!resetDate) {
-		return `You've used ${spent} of your ${limit} limit.`;
+		return `您已使用 ${spent}，总额度 ${limit}。`;
 	}
 
-	return `You've used ${spent} of your ${limit} limit. Resets ${resetDate}.`;
+	return `您已使用 ${spent}，总额度 ${limit}。于 ${resetDate} 重置。`;
 }

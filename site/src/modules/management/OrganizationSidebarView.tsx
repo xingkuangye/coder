@@ -77,16 +77,16 @@ export const OrganizationSidebarView: FC<
 								</span>
 							</>
 						) : (
-							<span className="truncate">No organization selected</span>
+							<span className="truncate">未选择组织</span>
 						)}
 						<ChevronDownIcon className="ml-auto !size-icon-sm" />
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent align="start" className="w-60">
 					<Command loop>
-						<CommandInput placeholder="Find organization" />
+						<CommandInput placeholder="查找组织" />
 						<CommandList>
-							<CommandEmpty>No organization found.</CommandEmpty>
+							<CommandEmpty>未找到组织。</CommandEmpty>
 							<CommandGroup className="pb-2">
 								<div className="flex flex-col max-h-[260px] overflow-y-auto">
 									{sortedOrganizations.map((organization) => (
@@ -129,7 +129,7 @@ export const OrganizationSidebarView: FC<
 												}, 200);
 											}}
 										>
-											<PlusIcon /> Create Organization
+											<PlusIcon /> 创建组织
 										</CommandItem>
 									</CommandGroup>
 								</>
@@ -166,20 +166,20 @@ const OrganizationSettingsNavigation: FC<
 	return (
 		<div className="flex flex-col gap-1 my-2">
 			<SettingsSidebarNavItem end href={urlForSubpage(organization.name)}>
-				Members
+				成员
 			</SettingsSidebarNavItem>
 			{orgPermissions.viewGroups && (
 				<SettingsSidebarNavItem
 					href={urlForSubpage(organization.name, "groups")}
 				>
-					Groups
+					组
 				</SettingsSidebarNavItem>
 			)}
 			{orgPermissions.viewOrgRoles && (
 				<SettingsSidebarNavItem
 					href={urlForSubpage(organization.name, "roles")}
 				>
-					Roles
+					角色
 				</SettingsSidebarNavItem>
 			)}
 			{orgPermissions.viewProvisioners &&
@@ -188,17 +188,17 @@ const OrganizationSettingsNavigation: FC<
 						<SettingsSidebarNavItem
 							href={urlForSubpage(organization.name, "provisioners")}
 						>
-							Provisioners
+							配置器
 						</SettingsSidebarNavItem>
 						<SettingsSidebarNavItem
 							href={urlForSubpage(organization.name, "provisioner-keys")}
 						>
-							Provisioner Keys
+							配置器密钥
 						</SettingsSidebarNavItem>
 						<SettingsSidebarNavItem
 							href={urlForSubpage(organization.name, "provisioner-jobs")}
 						>
-							Provisioner Jobs
+							配置器任务
 						</SettingsSidebarNavItem>
 					</>
 				)}
@@ -206,14 +206,14 @@ const OrganizationSettingsNavigation: FC<
 				<SettingsSidebarNavItem
 					href={urlForSubpage(organization.name, "idp-sync")}
 				>
-					IdP Sync
+					IdP 同步
 				</SettingsSidebarNavItem>
 			)}
 			{orgPermissions.editSettings && (
 				<SettingsSidebarNavItem
 					href={urlForSubpage(organization.name, "settings")}
 				>
-					Settings
+					设置
 				</SettingsSidebarNavItem>
 			)}
 		</div>

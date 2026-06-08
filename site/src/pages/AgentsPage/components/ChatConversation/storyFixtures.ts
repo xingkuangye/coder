@@ -76,7 +76,7 @@ export const buildRetryState = (
 	overrides: Partial<RetryState> = {},
 ): RetryState => ({
 	attempt: 1,
-	error: "Anthropic returned an unexpected error.",
+	error: "Anthropic 返回了一个意外错误。",
 	kind: "generic",
 	provider: "anthropic",
 	delayMs: 2000,
@@ -87,6 +87,6 @@ export const buildRetryState = (
 export const textResponseStreamParts = [
 	{
 		type: "text",
-		text: "Storybook streamed answer.",
+		text: "Storybook 流式响应。",
 	},
 ] satisfies readonly TypesGen.ChatMessagePart[];

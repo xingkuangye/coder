@@ -30,8 +30,7 @@ const SessionSummaryTooltip: FC<PropsWithChildren> = ({ children }) => (
 				className="max-w-xs flex flex-col gap-1 text-sm font-normal p-3"
 			>
 				<p className="m-0 leading-snug">
-					A session is a set of threads or interceptions logically grouped by a
-					session key issued by the client.
+					会话是由客户端发出的会话密钥逻辑分组的一组线程或拦截。
 				</p>
 			</TooltipContent>
 		</Tooltip>
@@ -82,19 +81,19 @@ export const SessionThreadsPageView: FC<SessionThreadsPageViewProps> = ({
 					asChild
 					variant="outline"
 					size="lg"
-					title="Back to AI Bridge sessions list"
+					title="返回 AI Bridge 会话列表"
 					onClick={onBackClicked}
 				>
 					<span>
 						<ArrowLeftIcon />
-						Back
+						返回
 					</span>
 				</Button>
 			</nav>
 			<div className="flex flex-col md:flex-row md:items-start gap-6">
 				<aside className="md:w-80 md:shrink-0 px-3 py-2.5 border border-solid rounded-md flex flex-col gap-1">
 					<h2 className="text-sm font-semibold flex items-center m-0">
-						Session summary
+						会话摘要
 						<SessionSummaryTooltip>
 							<InfoIcon className="ml-2 text-content-secondary size-icon-xs" />
 						</SessionSummaryTooltip>
@@ -108,7 +107,7 @@ export const SessionThreadsPageView: FC<SessionThreadsPageViewProps> = ({
 								session.ended_at ? new Date(session.ended_at) : undefined
 							}
 							initiator={session.initiator}
-							client={session.client ?? "Unknown client"}
+							client={session.client ?? "未知客户端"}
 							providers={session.providers}
 							inputTokens={session.token_usage_summary.input_tokens}
 							outputTokens={session.token_usage_summary.output_tokens}

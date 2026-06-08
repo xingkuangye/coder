@@ -49,8 +49,8 @@ export const CompactOrgSelector: FC<CompactOrgSelectorProps> = ({
 					data-testid="compact-org-selector"
 					aria-label={
 						value
-							? `Organization: ${value.display_name || value.name}`
-							: "Select organization"
+							? `组织：${value.display_name || value.name}`
+							: "选择组织"
 					}
 					className={cn(
 						"group flex h-6 w-auto cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none whitespace-nowrap transition-colors",
@@ -72,7 +72,7 @@ export const CompactOrgSelector: FC<CompactOrgSelectorProps> = ({
 							</span>
 						</>
 					) : (
-						<span>Select org…</span>
+						<span>选择组织…</span>
 					)}
 					<ChevronDownIcon
 						open={open}
@@ -86,10 +86,10 @@ export const CompactOrgSelector: FC<CompactOrgSelectorProps> = ({
 				className="mobile-full-width-dropdown mobile-full-width-dropdown-bottom w-64 p-0"
 			>
 				<Command loop>
-					<CommandInput placeholder="Find organization…" className="text-xs" />
+					<CommandInput placeholder="查找组织…" className="text-xs" />
 					<CommandList>
 						<CommandEmpty className="text-xs">
-							No organizations found
+							未找到组织
 						</CommandEmpty>
 						<CommandGroup>
 							{options.map((org) => (

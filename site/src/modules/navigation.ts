@@ -1,5 +1,5 @@
 /**
- * @fileoverview TODO: centralize navigation code here! URL constants, URL formatting, all of it
+ * @fileoverview 待办：将导航代码集中到此处！包括URL常量、URL格式化等全部内容。
  */
 
 import { useCallback } from "react";

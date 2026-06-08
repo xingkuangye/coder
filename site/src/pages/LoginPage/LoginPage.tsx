@@ -59,7 +59,7 @@ const LoginPage: FC = () => {
 			location.href = sanitizeRedirect(redirectTo);
 			// Setting the href should immediately request a new page. Show an
 			// error state if it doesn't.
-			redirectError = new Error("unable to redirect");
+			redirectError = new Error("无法重定向");
 		} else {
 			return (
 				<Navigate
@@ -76,7 +76,7 @@ const LoginPage: FC = () => {
 
 	return (
 		<>
-			<title>Sign in to {applicationName}</title>
+			<title>登录到 {applicationName}</title>
 			<LoginPageView
 				authMethods={authMethodsQuery.data}
 				error={signInError ?? redirectError}

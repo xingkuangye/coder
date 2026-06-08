@@ -20,7 +20,7 @@ export const WorkspaceBuildLogsSection: FC<WorkspaceBuildLogsSectionProps> = ({
 					"text-sm",
 				)}
 			>
-				Build logs
+				构建日志
 			</header>
 			<div className="h-[400px] overflow-y-auto">
 				{logs ? (

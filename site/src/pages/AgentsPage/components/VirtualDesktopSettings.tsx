@@ -78,11 +78,11 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 			<div className="flex items-center justify-between gap-4">
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Virtual desktop
+						虚拟桌面
 					</h3>
 					<Badge size="sm" variant="warning" className="cursor-default">
 						<TriangleAlertIcon className="size-3" />
-						Experimental feature
+						实验性功能
 					</Badge>
 				</div>
 				<div className="flex items-center gap-2">
@@ -94,7 +94,7 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 							onCheckedChange={(checked) =>
 								onSaveDesktopEnabled({ enable_desktop: checked })
 							}
-							aria-label="Enable"
+							aria-label="启用"
 							disabled={isDesktopSwitchDisabled}
 						/>
 					)}
@@ -102,17 +102,16 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 			</div>
 			<div className="m-0 flex-1 text-xs text-content-secondary">
 				<p className="m-0">
-					Allow agents to use a virtual, graphical desktop within workspaces.
-					Requires the{" "}
+					允许智能体在工作空间内使用虚拟图形桌面。
+					需要安装{" "}
 					<Link
 						href="https://registry.coder.com/modules/coder/portabledesktop"
 						target="_blank"
 						size="sm"
 					>
-						portabledesktop module
+						portabledesktop 模块
 					</Link>{" "}
-					to be installed in the workspace and the selected computer use
-					provider to be configured.
+					并配置选定的计算机使用提供程序。
 				</p>
 			</div>
 			<div className="ml-2 flex flex-col gap-2 border-0 border-l border-solid border-border pl-4 pt-2 sm:ml-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
@@ -121,14 +120,13 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 						id="computer-use-provider-label"
 						className="m-0 text-sm font-medium text-content-primary"
 					>
-						Computer use provider
+						计算机使用提供程序
 					</h4>
 					<p
 						id="computer-use-provider-description"
 						className="m-0 text-xs text-content-secondary"
 					>
-						Select the provider agents use for computer-use actions when virtual
-						desktop is enabled.
+						选择虚拟桌面启用时，智能体执行计算机使用操作所用的提供程序。
 					</p>
 				</div>
 				<Select
@@ -141,7 +139,7 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 						aria-describedby="computer-use-provider-description"
 						className="w-full sm:w-44"
 					>
-						<SelectValue placeholder="Select provider">
+						<SelectValue placeholder="选择提供程序">
 							{isLoadingComputerUseProvider ? (
 								<Skeleton className="h-4 w-20" aria-hidden="true" />
 							) : computerUseProvider ? (
@@ -162,12 +160,12 @@ export const VirtualDesktopSettings: FC<VirtualDesktopSettingsProps> = ({
 			</div>
 			{isSaveDesktopEnabledError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save desktop setting.
+					保存桌面设置失败。
 				</p>
 			)}
 			{computerUseProviderSaveError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save computer use provider.
+					保存计算机使用提供程序失败。
 				</p>
 			)}
 		</div>

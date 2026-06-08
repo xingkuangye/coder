@@ -43,23 +43,23 @@ export const BatchDeleteConfirmation: FC<BatchDeleteConfirmationProps> = ({
 	};
 
 	const workspaceCount = `${checkedWorkspaces.length} ${
-		checkedWorkspaces.length === 1 ? "workspace" : "workspaces"
+		checkedWorkspaces.length === 1 ? "个工作区" : "个工作区"
 	}`;
 
-	let confirmText: ReactNode = <>Review selected workspaces&hellip;</>;
+	let confirmText: ReactNode = <>查看选中的工作区&hellip;</>;
 	if (stage === "workspaces") {
-		confirmText = <>Confirm {workspaceCount}&hellip;</>;
+		confirmText = <>确认 {workspaceCount}&hellip;</>;
 	}
 	if (stage === "resources") {
 		const resources = checkedWorkspaces
 			.map((workspace) => workspace.latest_build.resources.length)
 			.reduce((a, b) => a + b, 0);
 		const resourceCount = `${resources} ${
-			resources === 1 ? "resource" : "resources"
+			resources === 1 ? "个资源" : "个资源"
 		}`;
 		confirmText = (
 			<>
-				Delete {workspaceCount} and {resourceCount}
+				删除 {workspaceCount} 和 {resourceCount}
 			</>
 		);
 	}
@@ -86,7 +86,7 @@ export const BatchDeleteConfirmation: FC<BatchDeleteConfirmationProps> = ({
 				setStage("consequences");
 				onClose();
 			}}
-			title={`Delete ${workspaceCount}`}
+			title={`删除 ${workspaceCount}`}
 			confirmLoading={isLoading}
 			confirmText={confirmText}
 			onConfirm={onProceed}
@@ -113,12 +113,12 @@ interface StageProps {
 const Consequences: FC = () => {
 	return (
 		<>
-			<p>Deleting workspaces is irreversible!</p>
+			<p>删除工作区不可撤销！</p>
 			<ul className="flex flex-col gap-2 pl-4 mb-0">
 				<li>
-					Terraform resources belonging to deleted workspaces will be destroyed.
+					属于已删除工作区的 Terraform 资源将被销毁。
 				</li>
-				<li>Any data stored in the workspace will be permanently deleted.</li>
+				<li>工作区中存储的任何数据将被永久删除。</li>
 			</ul>
 		</>
 	);
@@ -140,7 +140,7 @@ const Workspaces: FC<StageProps> = ({ workspaces }) => {
 	);
 
 	const owners = new Set(workspaces.map((it) => it.owner_id)).size;
-	const ownersCount = `${owners} ${owners === 1 ? "owner" : "owners"}`;
+	const ownersCount = `${owners} ${owners === 1 ? "个所有者" : "个所有者"}`;
 
 	return (
 		<>
@@ -181,7 +181,7 @@ const Workspaces: FC<StageProps> = ({ workspaces }) => {
 				{mostRecent && (
 					<div className="flex items-center gap-2">
 						<ClockIcon className="size-icon-xs" />
-						<span>Last used {dayjs(mostRecent.last_used_at).fromNow()}</span>
+						<span>上次使用 {dayjs(mostRecent.last_used_at).fromNow()}</span>
 					</div>
 				)}
 			</div>
@@ -207,9 +207,9 @@ const Resources: FC<StageProps> = ({ workspaces }) => {
 	return (
 		<div className="flex flex-col gap-4">
 			<p>
-				Deleting{" "}
-				{workspaces.length === 1 ? "this workspace" : "these workspaces"} will
-				also permanently destroy&hellip;
+				删除{" "}
+				{workspaces.length === 1 ? "此工作区" : "这些工作区"} 
+				也将被永久销毁&hellip;
 			</p>
 			<div className="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm">
 				{Object.entries(resources).map(([type, summary]) => (

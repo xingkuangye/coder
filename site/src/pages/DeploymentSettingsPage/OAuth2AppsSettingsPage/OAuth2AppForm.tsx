@@ -52,11 +52,11 @@ export const OAuth2AppForm: FC<OAuth2AppFormProps> = ({
 			<div className="flex flex-col gap-5">
 				<TextField
 					name="name"
-					label="Application name"
+					label="应用名称"
 					defaultValue={app?.name ?? defaultValues?.name}
 					error={Boolean(apiValidationErrors?.name)}
 					helperText={
-						apiValidationErrors?.name || "The name of your Coder app."
+						apiValidationErrors?.name || "您的 Coder 应用的名称。"
 					}
 					disabled={disabled}
 					autoFocus
@@ -64,23 +64,23 @@ export const OAuth2AppForm: FC<OAuth2AppFormProps> = ({
 				/>
 				<TextField
 					name="callback_url"
-					label="Callback URL"
+					label="回调 URL"
 					defaultValue={app?.callback_url ?? defaultValues?.callback_url}
 					error={Boolean(apiValidationErrors?.callback_url)}
 					helperText={
 						apiValidationErrors?.callback_url ||
-						"The full URL to redirect to after a user authorizes an installation."
+						"用户授权安装后重定向到的完整 URL。"
 					}
 					disabled={disabled}
 					fullWidth
 				/>
 				<TextField
 					name="icon"
-					label="Application icon"
+					label="应用图标"
 					defaultValue={app?.icon ?? defaultValues?.icon}
 					error={Boolean(apiValidationErrors?.icon)}
 					helperText={
-						apiValidationErrors?.icon || "A full or relative URL to an icon."
+						apiValidationErrors?.icon || "指向图标的完整或相对 URL。"
 					}
 					disabled={disabled}
 					fullWidth
@@ -89,7 +89,7 @@ export const OAuth2AppForm: FC<OAuth2AppFormProps> = ({
 				<div className="flex flex-row gap-4">
 					<Button disabled={isUpdating || disabled} type="submit">
 						<Spinner loading={isUpdating} />
-						{app ? "Update application" : "Create application"}
+						{app ? "更新应用" : "创建应用"}
 					</Button>
 					{actions}
 				</div>

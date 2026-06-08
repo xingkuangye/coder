@@ -32,12 +32,12 @@ import { RemoteDiffPanel } from "../DiffViewer/RemoteDiffPanel";
 
 type GitView = { type: "remote" } | { type: "local"; repoRoot: string };
 
-const GIT_NOT_SETUP_TITLE = "Git is not set up for this chat";
-const GIT_NOT_SETUP_SENTENCE = "Git is not set up for this chat.";
+const GIT_NOT_SETUP_TITLE = "此聊天未配置 Git";
+const GIT_NOT_SETUP_SENTENCE = "此聊天未配置 Git。";
 const GIT_NOT_SETUP_BODY =
-	"Git status will appear here once a Git repository is detected in the workspace.";
-const GIT_STATUS_LOADING_TITLE = "Waiting for Git status";
-const GIT_STATUS_LOADING_BODY = "Checking the workspace for Git repositories.";
+	"在工作空间中检测到 Git 仓库后，Git 状态将显示在此处。";
+const GIT_STATUS_LOADING_TITLE = "等待 Git 状态";
+const GIT_STATUS_LOADING_BODY = "正在检查工作空间中的 Git 仓库。";
 
 interface DiffStats {
 	additions: number;
@@ -180,9 +180,9 @@ export const GitPanel: FC<GitPanelProps> = ({
 	const handleRefresh = () => {
 		const sent = onRefresh();
 		if (!sent) {
-			toast.error("Unable to refresh git status.", {
+			toast.error("无法刷新 Git 状态。", {
 				id: "git-refresh-disconnected",
-				description: "Connection lost. Reconnecting\u2026",
+				description: "连接丢失。正在重连\u2026",
 			});
 			return;
 		}
@@ -227,7 +227,7 @@ export const GitPanel: FC<GitPanelProps> = ({
 								) : (
 									<>
 										<GitBranchIcon className="!size-3.5 shrink-0" />
-										<span className="truncate">Branch</span>
+										<span className="truncate">分支</span>
 									</>
 								)}
 							</Button>
@@ -256,7 +256,7 @@ export const GitPanel: FC<GitPanelProps> = ({
 										)}
 									/>
 									<span className="truncate">
-										Working{" "}
+										工作区{" "}
 										<span className="opacity-50">{repoTabLabel(repoRoot)}</span>
 									</span>
 								</Button>
@@ -270,7 +270,7 @@ export const GitPanel: FC<GitPanelProps> = ({
 						<button
 							type="button"
 							onClick={() => handleDiffStyleChange("unified")}
-							aria-label="Unified diff"
+							aria-label="统一差异视图"
 							disabled={!hasGitContext}
 							title={!hasGitContext ? GIT_NOT_SETUP_TITLE : undefined}
 							className={cn(
@@ -285,7 +285,7 @@ export const GitPanel: FC<GitPanelProps> = ({
 						<button
 							type="button"
 							onClick={() => handleDiffStyleChange("split")}
-							aria-label="Split diff"
+							aria-label="并排差异视图"
 							disabled={!hasGitContext}
 							title={!hasGitContext ? GIT_NOT_SETUP_TITLE : undefined}
 							className={cn(
@@ -309,7 +309,7 @@ export const GitPanel: FC<GitPanelProps> = ({
 							variant="subtle"
 							size="icon"
 							onClick={handleRefresh}
-							aria-label="Refresh"
+							aria-label="刷新"
 							disabled={!hasGitContext}
 							className="size-6 text-content-secondary hover:text-content-primary"
 						>
@@ -385,14 +385,14 @@ const RemoteContent: FC<{
 				</div>
 				<p className="text-sm font-medium text-content-primary">
 					{hasGitContext
-						? "No pushed changes yet"
+						? "尚无已推送的更改"
 						: isGitStatusLoading
 							? GIT_STATUS_LOADING_TITLE
 							: GIT_NOT_SETUP_SENTENCE}
 				</p>
 				<p className="mt-1 max-w-52 text-xs text-content-secondary">
 					{hasGitContext
-						? "Once commits are pushed, the branch diff will appear here."
+						? "推送提交后，分支差异将显示在此处。"
 						: isGitStatusLoading
 							? GIT_STATUS_LOADING_BODY
 							: GIT_NOT_SETUP_BODY}
@@ -486,7 +486,7 @@ const RepoHeader: FC<{
 					className="inline-flex cursor-pointer items-center gap-1 rounded-sm border border-solid border-border-default bg-transparent px-2 text-[13px] font-medium leading-5 text-content-secondary no-underline transition-colors hover:bg-surface-secondary hover:text-content-primary disabled:pointer-events-none disabled:opacity-50"
 				>
 					<CheckIcon className="size-3" />
-					Commit
+					提交
 				</button>
 			</div>
 		</div>

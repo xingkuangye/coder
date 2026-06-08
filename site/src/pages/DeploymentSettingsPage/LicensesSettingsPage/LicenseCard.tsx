@@ -60,10 +60,10 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 		license.claims.features?.ai_governance_user_limit ?? 0;
 
 	const licenseType = license.claims.trial
-		? "Trial"
+		? "试用"
 		: isPremium
-			? "Premium"
-			: "Enterprise";
+			? "高级版"
+			: "企业版";
 
 	const hasExplicitAiGovernanceAddOn = licenseShowsAiGovernanceAddOn(license);
 	// Overage/display checks only apply to licenses that are currently effective.
@@ -96,12 +96,12 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 				? "text-content-warning"
 				: "text-content-success";
 	const statusText = isAiGovernanceAddOnExceeded
-		? "Add-on exceeded"
+		? "附加组件超限"
 		: isExpired
-			? "Expired"
+			? "已过期"
 			: isNotYetValid
-				? "Not started"
-				: "Active";
+				? "未开始"
+				: "有效";
 	const hasCollapsibleContent = isPremium && hasExplicitAiGovernanceAddOn;
 	const headerContent = (
 		<>
@@ -119,22 +119,22 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 
 			<div className="ml-auto flex items-center gap-12 text-xs font-medium">
 				<div className="flex flex-col items-center">
-					<span className="text-content-secondary">Status</span>
+					<span className="text-content-secondary">状态</span>
 					<span className={statusClassName}>{statusText}</span>
 				</div>
 				<div className="flex flex-col items-center">
-					<span className="text-content-secondary">Users</span>
+					<span className="text-content-secondary">用户</span>
 					<span className="text-content-primary user-limit">
-						{userLimitActual} {` / ${currentUserLimit || "Unlimited"}`}
+						{userLimitActual} {` / ${currentUserLimit || "无限制"}`}
 					</span>
 				</div>
 				{license.claims.nbf && (
 					<div className="flex flex-col items-center">
-						<span className="text-content-secondary">Valid From</span>
+						<span className="text-content-secondary">生效日期</span>
 						<span
 							className={cn("license-valid-from", {
-								"text-content-warning": statusText === "Not started",
-								"text-content-primary": statusText !== "Not started",
+								"text-content-warning": statusText === "未开始",
+								"text-content-primary": statusText !== "未开始",
 							})}
 						>
 							{dayjs.unix(license.claims.nbf).format("MMMM D, YYYY")}
@@ -142,7 +142,7 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 					</div>
 				)}
 				<div className="flex flex-col items-center">
-					<span className="text-content-secondary">Valid Until</span>
+					<span className="text-content-secondary">失效日期</span>
 					<span className="text-content-primary license-expires">
 						{dayjs.unix(license.claims.license_expires).format("MMMM D, YYYY")}
 					</span>
@@ -164,14 +164,14 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 				onCancel={() => setLicenseIDMarkedForRemoval(undefined)}
 				entity="license"
 				name={confirmationName}
-				label="ID of the license to remove"
-				title="Confirm license removal"
-				verb="Removing"
-				confirmText="Remove"
+				label="要删除的许可证 ID"
+				title="确认删除许可证"
+				verb="正在删除"
+				confirmText="删除"
 				info={
 					isExpired
-						? "This license has already expired and is not providing any features. Removing it will not affect your current entitlements."
-						: "Removing this license will disable all Premium features. You can add a new license at any time."
+						? "此许可证已过期，不再提供任何功能。删除它不会影响您当前的权利。"
+						: "删除此许可证将禁用所有高级版功能。您可以随时添加新许可证。"
 				}
 				confirmLoading={isRemoving}
 			/>
@@ -204,7 +204,7 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 								className="size-[30px]"
 							>
 								<EllipsisVerticalIcon />
-								<span className="sr-only">Show license actions</span>
+								<span className="sr-only">显示许可证操作</span>
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
@@ -213,7 +213,7 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 								onClick={() => setLicenseIDMarkedForRemoval(license.id)}
 							>
 								<TrashIcon />
-								Remove&hellip;
+								删除&hellip;
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
@@ -223,12 +223,12 @@ export const LicenseCard: FC<LicenseCardProps> = ({
 					{hasCollapsibleContent && (
 						<div className="border-0 border-t border-solid border-border bg-surface-primary px-4 py-4">
 							<div className="text-sm font-medium text-content-secondary">
-								Add-ons
+								附加组件
 							</div>
 							<div className="mt-3 flex flex-wrap gap-3">
 								<AIGovernanceAddOnCard
-									title="AI Governance"
-									unit="Seats"
+									title="AI 治理"
+									unit="席位"
 									actual={aiGovernanceDisplayActual}
 									limit={aiGovernanceLimit}
 									isExceeded={isAiGovernanceAddOnExceeded}

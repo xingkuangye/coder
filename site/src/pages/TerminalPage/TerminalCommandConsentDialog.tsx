@@ -30,17 +30,16 @@ export const TerminalCommandConsentDialog: FC<
 				<DialogHeader>
 					<DialogTitle>
 						<TriangleAlertIcon className="size-icon-lg text-content-warning inline-block align-text-bottom mr-2" />
-						Warning: Terminal Command Execution
+						警告：终端命令执行
 					</DialogTitle>
 					<DialogDescription>
-						A link is requesting to run a command in your terminal. Running
-						commands from untrusted sources can be dangerous.
+						有链接请求在您的终端中运行命令。运行来自不可信来源的命令可能很危险。
 					</DialogDescription>
 				</DialogHeader>
 
 				<div className="flex min-w-0 flex-col gap-2">
 					<span className="text-sm font-semibold text-content-primary">
-						Command:
+						命令：
 					</span>
 					<code className="block whitespace-pre overflow-x-auto">
 						{command}
@@ -49,10 +48,10 @@ export const TerminalCommandConsentDialog: FC<
 
 				<DialogFooter>
 					<Button variant="outline" onClick={onDeny}>
-						Cancel
+						取消
 					</Button>
 					<Button variant="default" onClick={onConfirm}>
-						Run command
+						运行命令
 					</Button>
 				</DialogFooter>
 			</DialogContent>

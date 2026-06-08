@@ -80,7 +80,7 @@ export interface AgentSettingsPersonalSkillsPageViewProps {
 const formatUpdatedAt = (value: string) => {
 	const date = new Date(value);
 	if (!Number.isFinite(date.getTime())) {
-		return "Unknown";
+		return "未知";
 	}
 	return formatDate(date, {
 		locale: "en-US",
@@ -107,9 +107,9 @@ const EditSkillDialog: FC<{
 			<Dialog open onOpenChange={handleOpenChange}>
 				<DialogContent>
 					<DialogHeader>
-						<DialogTitle>Loading personal skill</DialogTitle>
+						<DialogTitle>正在加载个人技能</DialogTitle>
 						<DialogDescription>
-							Fetching the latest SKILL.md content.
+							正在获取最新的 SKILL.md 内容。
 						</DialogDescription>
 					</DialogHeader>
 					<Loader />
@@ -123,9 +123,9 @@ const EditSkillDialog: FC<{
 			<Dialog open onOpenChange={handleOpenChange}>
 				<DialogContent>
 					<DialogHeader>
-						<DialogTitle>Unable to load personal skill</DialogTitle>
+						<DialogTitle>无法加载个人技能</DialogTitle>
 						<DialogDescription>
-							The skill could not be loaded for editing.
+							无法加载该技能以供编辑。
 						</DialogDescription>
 					</DialogHeader>
 					{state.loadError ? (
@@ -133,17 +133,17 @@ const EditSkillDialog: FC<{
 					) : (
 						<Alert severity="error">
 							<AlertDescription>
-								The saved content could not be parsed as SKILL.md.
+								保存的内容无法解析为 SKILL.md。
 							</AlertDescription>
 						</Alert>
 					)}
 					<DialogFooter>
 						<Button variant="outline" onClick={state.onClose}>
-							Close
+							关闭
 						</Button>
 						<Button onClick={state.onRetry} disabled={state.isRetrying}>
 							{state.isRetrying && <Spinner className="h-4 w-4" loading />}
-							Retry
+							重试
 						</Button>
 					</DialogFooter>
 				</DialogContent>
@@ -181,8 +181,7 @@ const DeleteSkillDialog: FC<{ state: PersonalSkillDeleteState }> = ({
 			entity="skill"
 			description={
 				<>
-					Delete {state.skill.name}? Agents will no longer be able to use this
-					skill. This action cannot be undone.
+					删除 {state.skill.name}？代理将无法再使用此技能。此操作无法撤消。
 				</>
 			}
 			onConfirm={state.onConfirm}
@@ -217,23 +216,23 @@ export const AgentSettingsPersonalSkillsPageView: FC<
 	const isAtLimit = skills.length >= PERSONAL_SKILLS_MAX_PER_USER;
 	const addSkillAction = (
 		<Button size="sm" onClick={onCreate} disabled={isLoading || isAtLimit}>
-			Add skill
+			添加技能
 		</Button>
 	);
 
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Personal skills"
-				description="Reusable instructions your agents can pick when they need specialized guidance. Personal skills hold a single SKILL.md file. For richer skills with supporting files, add them to your repo under `.agents/skills/` or load them from a workspace."
+				label="个人技能"
+				description="您的代理在需要专门指导时可选择的可重用指令。个人技能包含一个单独的 SKILL.md 文件。如需包含支持文件的更丰富的技能，请将它们添加到仓库的 `.agents/skills/` 目录下，或从工作区加载。"
 				action={addSkillAction}
 			/>
 
 			{isAtLimit && (
 				<Alert severity="warning">
 					<AlertDescription>
-						You have reached the limit of {PERSONAL_SKILLS_MAX_PER_USER}{" "}
-						personal skills. Delete a skill before creating another one.
+						您已达到 {PERSONAL_SKILLS_MAX_PER_USER}{" "}
+						个个人技能的上限。请先删除一个技能再创建新的。
 					</AlertDescription>
 				</Alert>
 			)}
@@ -248,25 +247,25 @@ export const AgentSettingsPersonalSkillsPageView: FC<
 						disabled={isRetrying}
 					>
 						{isRetrying && <Spinner className="h-4 w-4" loading />}
-						Retry
+						重试
 					</Button>
 				</div>
 			) : isLoading ? (
 				<Loader />
 			) : skills.length === 0 ? (
 				<EmptyState
-					message="No personal skills yet"
-					description="Create a personal skill to save reusable agent guidance for your workflows."
+					message="暂无个人技能"
+					description="创建个人技能以保存工作流程中可重用的代理指南。"
 					cta={addSkillAction}
 				/>
 			) : (
-				<Table aria-label="Personal skills">
+				<Table aria-label="个人技能">
 					<TableHeader>
 						<TableRow>
-							<TableHead>Name</TableHead>
-							<TableHead>Description</TableHead>
-							<TableHead>Updated</TableHead>
-							<TableHead className="text-right">Actions</TableHead>
+							<TableHead>名称</TableHead>
+							<TableHead>描述</TableHead>
+							<TableHead>更新时间</TableHead>
+							<TableHead className="text-right">操作</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -278,7 +277,7 @@ export const AgentSettingsPersonalSkillsPageView: FC<
 								<TableCell>
 									{skill.description || (
 										<span className="text-content-secondary">
-											No description
+											无描述
 										</span>
 									)}
 								</TableCell>
@@ -290,14 +289,14 @@ export const AgentSettingsPersonalSkillsPageView: FC<
 											variant="outline"
 											onClick={() => onEdit(skill.name)}
 										>
-											Edit
+											编辑
 										</Button>
 										<Button
 											size="xs"
 											variant="destructive"
 											onClick={() => onDelete(skill)}
 										>
-											Delete
+											删除
 										</Button>
 									</div>
 								</TableCell>

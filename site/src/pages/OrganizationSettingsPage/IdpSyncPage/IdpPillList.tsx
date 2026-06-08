@@ -20,7 +20,7 @@ export const IdpPillList: FC<PillListProps> = ({ roles }) => {
 					{roles[0]}
 				</Pill>
 			) : (
-				<p>None</p>
+				<p>无</p>
 			)}
 
 			{roles.length > 1 && <OverflowPill roles={roles.slice(1)} />}
@@ -37,7 +37,7 @@ const OverflowPill: FC<OverflowPillProps> = ({ roles }) => {
 		<Tooltip>
 			<TooltipTrigger asChild>
 				<Pill type="muted" className="w-fit" data-testid="overflow-pill">
-					+{roles.length} more
+					+{roles.length} 更多
 				</Pill>
 			</TooltipTrigger>
 

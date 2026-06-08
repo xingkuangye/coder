@@ -225,7 +225,7 @@ export function useFileAttachments(
 			setUploadStates((prev) =>
 				new Map(prev).set(file, {
 					status: "error",
-					error: "Unable to upload: no organization context.",
+					error: "无法上传：缺少组织上下文。",
 				}),
 			);
 			return;

@@ -60,7 +60,7 @@ export const VSCodeDevContainerButton: FC<VSCodeDevContainerButtonProps> = (
 						isVariantMenuOpen ? "vscode-variant-button-menu" : undefined
 					}
 					aria-expanded={isVariantMenuOpen ? "true" : undefined}
-					aria-label="select VSCode variant"
+					aria-label="选择 VSCode 版本"
 					aria-haspopup="menu"
 					onClick={() => {
 						setIsVariantMenuOpen(true);

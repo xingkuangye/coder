@@ -42,7 +42,7 @@ export const DownloadSelectedAgentLogsButton: FC<
 			const file = new Blob([logsText], { type: "text/plain" });
 			await download(file, `${agentName}-${filenameSuffix}.txt`);
 		} catch (error) {
-			toast.error(`Failed to download "${agentName}" logs.`, {
+			toast.error(`下载 "${agentName}" 日志失败。`, {
 				description: getErrorDetail(error),
 			});
 		} finally {
@@ -63,7 +63,7 @@ export const DownloadSelectedAgentLogsButton: FC<
 				>
 					<DownloadIcon />
 					<span className="sr-only">
-						{isDownloading ? "Downloading..." : "Download agent logs"}
+						{isDownloading ? "下载中..." : "下载代理日志"}
 					</span>
 					<ChevronDownIcon className="size-icon-sm" />
 				</Button>
@@ -80,7 +80,7 @@ export const DownloadSelectedAgentLogsButton: FC<
 					}}
 				>
 					<PackageIcon />
-					Download all logs
+					下载所有日志
 				</DropdownMenuItem>
 				{logSets.map((logSet) => (
 					<DropdownMenuItem
@@ -91,7 +91,7 @@ export const DownloadSelectedAgentLogsButton: FC<
 						}}
 					>
 						{logSet.startIcon}
-						<span>Download {logSet.label}</span>
+						<span>下载 {logSet.label}</span>
 					</DropdownMenuItem>
 				))}
 			</DropdownMenuContent>

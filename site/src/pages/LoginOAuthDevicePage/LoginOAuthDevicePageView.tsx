@@ -21,7 +21,7 @@ const LoginOAuthDevicePageView: FC<LoginOAuthDevicePageViewProps> = ({
 	if (!authenticated) {
 		return (
 			<SignInLayout>
-				<Welcome>Authenticate with GitHub</Welcome>
+				<Welcome>使用 GitHub 进行认证</Welcome>
 
 				<GitDeviceAuth
 					deviceExchangeError={deviceExchangeError}
@@ -33,11 +33,11 @@ const LoginOAuthDevicePageView: FC<LoginOAuthDevicePageViewProps> = ({
 
 	return (
 		<SignInLayout>
-			<Welcome>You&apos;ve authenticated with GitHub!</Welcome>
+			<Welcome>您已通过 GitHub 认证！</Welcome>
 
 			<p className="m-0 text-center text-base leading-relaxed text-content-secondary">
-				If you&apos;re not redirected automatically,{" "}
-				<a href={redirectUrl}>click here</a>.
+				如果您没有自动跳转，请{" "}
+				<a href={redirectUrl}>点击这里</a>。
 			</p>
 		</SignInLayout>
 	);

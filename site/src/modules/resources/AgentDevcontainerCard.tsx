@@ -143,8 +143,8 @@ export const AgentDevcontainerCard: FC<AgentDevcontainerCardProps> = ({
 			}
 
 			const errorMessage =
-				error instanceof Error ? error.message : "An unknown error occurred.";
-			toast.error(`Failed to rebuild devcontainer "${devcontainer.name}".`, {
+				error instanceof Error ? error.message : "发生未知错误。";
+			toast.error(`重建开发容器 "${devcontainer.name}" 失败。`, {
 				description: errorMessage,
 			});
 			console.error("Failed to rebuild devcontainer:", error);
@@ -188,15 +188,14 @@ export const AgentDevcontainerCard: FC<AgentDevcontainerCardProps> = ({
 				{devcontainer.subagent_id ? (
 					<Tooltip>
 						<TooltipTrigger asChild>
-							<span>dev container (terraform agent)</span>
+							<span>开发容器 (Terraform 代理)</span>
 						</TooltipTrigger>
 						<TooltipContent>
-							This dev container agent is defined in Terraform and has limited
-							configurability via the devcontainer.json file.
+							此开发容器代理在 Terraform 中定义，并且通过 devcontainer.json 文件进行有限配置。
 						</TooltipContent>
 					</Tooltip>
 				) : (
-					<span>dev container</span>
+					<span>开发容器</span>
 				)}
 			</div>
 			<header
@@ -299,7 +298,7 @@ export const AgentDevcontainerCard: FC<AgentDevcontainerCardProps> = ({
 					{subAgent &&
 						workspace.latest_app_status?.agent_id === subAgent.id && (
 							<section>
-								<h3 className="sr-only">App statuses</h3>
+								<h3 className="sr-only">应用状态</h3>
 								<AppStatuses workspace={workspace} agent={subAgent} />
 							</section>
 						)}
@@ -344,7 +343,7 @@ export const AgentDevcontainerCard: FC<AgentDevcontainerCardProps> = ({
 										port.host_port !== undefined && port.host_ip !== undefined;
 									const helperText = hasHostBind
 										? `${port.host_ip}:${port.host_port}`
-										: "Not bound to host";
+										: "未绑定到主机";
 									const linkDest = hasHostBind
 										? portForwardURL(
 												wildcardHostname,
@@ -387,16 +386,16 @@ export const AgentDevcontainerCard: FC<AgentDevcontainerCardProps> = ({
 function rebuildButtonLabel(devcontainer: WorkspaceAgentDevcontainer) {
 	switch (devcontainer.status) {
 		case "deleting":
-			return "Deleting";
+			return "删除中";
 
 		case "stopping":
-			return "Stopping";
+			return "停止中";
 
 		default:
 			if (devcontainer.container) {
-				return "Rebuild";
+				return "重建";
 			}
-			return "Start";
+			return "启动";
 	}
 }
 
@@ -414,7 +413,7 @@ const DevcontainerDeleteErrorDialog: FC<DevcontainerDeleteErrorDialogProps> = ({
 	const errorDetail = getErrorDetail(error);
 	const errorMessage = getErrorMessage(
 		error,
-		"Failed to delete dev container.",
+		"删除开发容器失败。",
 	);
 
 	return (
@@ -428,14 +427,14 @@ const DevcontainerDeleteErrorDialog: FC<DevcontainerDeleteErrorDialogProps> = ({
 		>
 			<DialogContent variant="destructive">
 				<DialogHeader>
-					<DialogTitle>Error deleting dev container</DialogTitle>
+					<DialogTitle>删除开发容器出错</DialogTitle>
 					<DialogDescription className="flex flex-row gap-4">
-						<strong className="text-content-primary">Message</strong>{" "}
+						<strong className="text-content-primary">消息</strong>{" "}
 						<span>{errorMessage}</span>
 					</DialogDescription>
 					{errorDetail && (
 						<DialogDescription className="flex flex-row gap-9">
-							<strong className="text-content-primary">Detail</strong>{" "}
+							<strong className="text-content-primary">详情</strong>{" "}
 							{/* TODO(DanielleMaywood): `[overflow-wrap:anywhere]` should be replaced with `wrap-anywhere` when we hit tailwind v4 */}
 							<span className="[overflow-wrap:anywhere] break-normal">
 								{errorDetail}
@@ -445,7 +444,7 @@ const DevcontainerDeleteErrorDialog: FC<DevcontainerDeleteErrorDialogProps> = ({
 				</DialogHeader>
 				<DialogFooter>
 					<DialogClose asChild>
-						<Button>Ok</Button>
+						<Button>确定</Button>
 					</DialogClose>
 				</DialogFooter>
 			</DialogContent>

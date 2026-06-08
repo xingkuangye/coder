@@ -16,7 +16,7 @@ export function useWorkspaceSettings() {
 	const value = useContext(WorkspaceSettings);
 	if (!value) {
 		throw new Error(
-			"This hook can only be used from a workspace settings page",
+			"此钩子只能在工作区设置页面中使用",
 		);
 	}
 

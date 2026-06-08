@@ -23,13 +23,13 @@ const OrganizationProvisionerKeysPage: FC = () => {
 	});
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="未找到组织" />;
 	}
 
 	const title = (
 		<title>
 			{pageTitle(
-				"Provisioner Keys",
+				"配置器密钥",
 				organization.display_name || organization.name,
 			)}
 		</title>

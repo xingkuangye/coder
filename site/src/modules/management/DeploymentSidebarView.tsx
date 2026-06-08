@@ -32,74 +32,74 @@ export const DeploymentSidebarView: FC<DeploymentSidebarViewProps> = ({
 		<BaseSidebar>
 			<div className="flex flex-col gap-1">
 				{permissions.viewDeploymentConfig && (
-					<SidebarNavItem href="/deployment/overview">Overview</SidebarNavItem>
+					<SidebarNavItem href="/deployment/overview">概览</SidebarNavItem>
 				)}
 				{permissions.viewAllLicenses && (
-					<SidebarNavItem href="/deployment/licenses">Licenses</SidebarNavItem>
+					<SidebarNavItem href="/deployment/licenses">许可证</SidebarNavItem>
 				)}
 				{permissions.editDeploymentConfig && (
 					<SidebarNavItem href="/deployment/appearance">
-						Appearance
+						外观
 					</SidebarNavItem>
 				)}
 				{permissions.viewDeploymentConfig && (
 					<SidebarNavItem href="/deployment/userauth">
-						User Authentication
+						用户认证
 					</SidebarNavItem>
 				)}
 				{permissions.viewDeploymentConfig && (
 					<SidebarNavItem href="/deployment/external-auth">
-						External Authentication
+						外部认证
 					</SidebarNavItem>
 				)}
 				{permissions.viewDeploymentConfig &&
 					(experiments.includes("oauth2") ||
 						getPrereleaseFlag(buildInfo) === "devel") && (
 						<SidebarNavItem href="/deployment/oauth2-provider/apps">
-							OAuth2 Applications
+							OAuth2 应用程序
 						</SidebarNavItem>
 					)}
 				{permissions.viewDeploymentConfig && (
-					<SidebarNavItem href="/deployment/network">Network</SidebarNavItem>
+					<SidebarNavItem href="/deployment/network">网络</SidebarNavItem>
 				)}
 				{permissions.readWorkspaceProxies && (
 					<SidebarNavItem href="/deployment/workspace-proxies">
-						Workspace Proxies
+						工作区代理
 					</SidebarNavItem>
 				)}
 				{permissions.viewDeploymentConfig && (
-					<SidebarNavItem href="/deployment/security">Security</SidebarNavItem>
+					<SidebarNavItem href="/deployment/security">安全</SidebarNavItem>
 				)}
 				{permissions.viewDeploymentConfig && (
 					<SidebarNavItem href="/deployment/observability">
-						Observability
+						可观测性
 					</SidebarNavItem>
 				)}
 
 				{permissions.viewAllUsers && (
-					<SidebarNavItem href="/deployment/users">Users</SidebarNavItem>
+					<SidebarNavItem href="/deployment/users">用户</SidebarNavItem>
 				)}
 				{permissions.viewAnyGroup && (
 					<SidebarNavItem href="/deployment/groups">
 						<div className="flex flex-row items-center gap-1">
-							Groups {showOrganizations && <ArrowUpRightIcon size={16} />}
+							组 {showOrganizations && <ArrowUpRightIcon size={16} />}
 						</div>
 					</SidebarNavItem>
 				)}
 				{permissions.viewOrganizationIDPSyncSettings && (
 					<SidebarNavItem href="/deployment/idp-org-sync">
-						IdP Organization Sync
+						IdP 组织同步
 					</SidebarNavItem>
 				)}
 				{permissions.viewNotificationTemplate && (
 					<SidebarNavItem href="/deployment/notifications">
 						<div className="flex flex-row items-center gap-2">
-							<span>Notifications</span>
+							<span>通知</span>
 						</div>
 					</SidebarNavItem>
 				)}
 				{!hasPremiumLicense && (
-					<SidebarNavItem href="/deployment/premium">Premium</SidebarNavItem>
+					<SidebarNavItem href="/deployment/premium">高级版</SidebarNavItem>
 				)}
 			</div>
 		</BaseSidebar>

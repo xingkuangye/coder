@@ -76,7 +76,7 @@ export const PaywallDescription: FC<React.ComponentProps<"p">> = ({
 };
 
 export const PaywallDocumentationLink: FC<React.ComponentProps<"a">> = ({
-	children = "Read the documentation",
+	children = "阅读文档",
 	className,
 	href,
 	...props

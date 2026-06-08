@@ -96,10 +96,9 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="max-w-2xl">
 				<DialogHeader>
-					<DialogTitle>Modify Task Prompt</DialogTitle>
+					<DialogTitle>修改任务提示词</DialogTitle>
 					<DialogDescription>
-						Modifying the prompt will cancel the current workspace build and
-						restart it with the updated prompt.
+						修改提示词将取消当前工作区构建并使用更新后的提示词重新启动。
 					</DialogDescription>
 				</DialogHeader>
 
@@ -108,7 +107,7 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 						<ErrorAlert error={updatePromptMutation.error} />
 					)}
 					{workspaceBuildRunning && (
-						<ErrorAlert error="Cannot modify the prompt of a running task" />
+						<ErrorAlert error="无法修改正在运行的任务的提示词" />
 					)}
 
 					<div>
@@ -116,7 +115,7 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 							htmlFor={`${formId}-prompt`}
 							className="block text-sm font-medium text-content-primary mb-2"
 						>
-							Prompt
+							提示词
 						</label>
 						<Textarea
 							id={`${formId}-prompt`}
@@ -126,7 +125,7 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 							rows={10}
 							disabled={updatePromptMutation.isPending || workspaceBuildRunning}
 							className="w-full"
-							placeholder="Enter your task prompt..."
+							placeholder="请输入任务提示词..."
 						/>
 					</div>
 				</form>
@@ -134,7 +133,7 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 				<DialogFooter>
 					<DialogClose asChild>
 						<Button variant="outline" disabled={updatePromptMutation.isPending}>
-							Cancel
+							取消
 						</Button>
 					</DialogClose>
 					<Button
@@ -149,7 +148,7 @@ export const ModifyPromptDialog: FC<ModifyPromptDialogProps> = ({
 						}
 					>
 						<Spinner loading={updatePromptMutation.isPending} />
-						Update and Restart Build
+						更新并重新启动构建
 					</Button>
 				</DialogFooter>
 			</DialogContent>

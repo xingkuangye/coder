@@ -45,7 +45,7 @@ export const DeploymentDropdown: FC<DeploymentDropdownProps> = ({
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline" size="lg">
-					Admin settings
+					管理设置
 					<ChevronDownIcon className="text-content-primary" />
 				</Button>
 			</DropdownMenuTrigger>
@@ -77,11 +77,11 @@ const DeploymentDropdownContent: FC<DeploymentDropdownProps> = ({
 		<nav>
 			{canViewDeployment && (
 				<DropdownMenuItem asChild>
-					<Link to="/deployment">Deployment</Link>
+					<Link to="/deployment">部署</Link>
 				</DropdownMenuItem>
 			)}
 			<DropdownMenuItem asChild>
-				<Link to="/organizations">Organizations</Link>
+				<Link to="/organizations">组织</Link>
 			</DropdownMenuItem>
 			{canViewAISettings && (
 				<DropdownMenuItem asChild>
@@ -90,22 +90,22 @@ const DeploymentDropdownContent: FC<DeploymentDropdownProps> = ({
 			)}
 			{canViewAuditLog && (
 				<DropdownMenuItem asChild>
-					<Link to={linkToAuditing}>Audit Logs</Link>
+					<Link to={linkToAuditing}>审计日志</Link>
 				</DropdownMenuItem>
 			)}
 			{canViewConnectionLog && (
 				<DropdownMenuItem asChild>
-					<Link to="/connectionlog">Connection Logs</Link>
+					<Link to="/connectionlog">连接日志</Link>
 				</DropdownMenuItem>
 			)}
 			{canViewAIBridge && (
 				<DropdownMenuItem asChild>
-					<Link to="/aibridge/sessions">AI Sessions</Link>
+					<Link to="/aibridge/sessions">AI 会话</Link>
 				</DropdownMenuItem>
 			)}
 			{canViewHealth && (
 				<DropdownMenuItem asChild>
-					<Link to="/health">Healthcheck</Link>
+					<Link to="/health">健康检查</Link>
 				</DropdownMenuItem>
 			)}
 		</nav>

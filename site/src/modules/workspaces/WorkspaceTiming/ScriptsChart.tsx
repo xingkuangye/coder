@@ -77,7 +77,7 @@ export const ScriptsChart: FC<ScriptsChartProps> = ({
 					]}
 				/>
 				<ChartSearch
-					placeholder="Filter results..."
+					placeholder="筛选脚本..."
 					value={filter}
 					onChange={setFilter}
 				/>
@@ -86,7 +86,7 @@ export const ScriptsChart: FC<ScriptsChartProps> = ({
 			<ChartContent>
 				<YAxis>
 					<YAxisSection>
-						<YAxisHeader>{stage.name} stage</YAxisHeader>
+						<YAxisHeader>{stage.name} 阶段</YAxisHeader>
 						<YAxisLabels>
 							{visibleTimings.map((t) => (
 								<YAxisLabel key={t.name} id={encodeURIComponent(t.name)}>
@@ -120,7 +120,7 @@ export const ScriptsChart: FC<ScriptsChartProps> = ({
 											side="bottom"
 											className="border-surface-quaternary text-content-primary"
 										>
-											Script exited with <strong>code {t.exitCode}</strong>
+											脚本退出，代码为 <strong>{t.exitCode}</strong>
 										</TooltipContent>
 									</Tooltip>
 
@@ -138,21 +138,21 @@ export const ScriptsChart: FC<ScriptsChartProps> = ({
 function getLegendsByStatus(theme: Theme): Record<string, ChartLegend> {
 	return {
 		ok: {
-			label: "success",
+			label: "成功",
 			colors: {
 				fill: theme.roles.success.background,
 				stroke: theme.roles.success.outline,
 			},
 		},
 		exit_failure: {
-			label: "failure",
+			label: "失败",
 			colors: {
 				fill: theme.roles.error.background,
 				stroke: theme.roles.error.outline,
 			},
 		},
 		timeout: {
-			label: "timed out",
+			label: "超时",
 			colors: {
 				fill: theme.roles.warning.background,
 				stroke: theme.roles.warning.outline,

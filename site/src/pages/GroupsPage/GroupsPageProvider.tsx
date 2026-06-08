@@ -16,7 +16,7 @@ export const useGroupsSettings = (): OrganizationSettingsValue => {
 	const context = useContext(GroupsPageContext);
 	if (!context) {
 		throw new Error(
-			"useGroupsSettings should be used inside of GroupsPageContext",
+			"useGroupsSettings 应在 GroupsPageContext 内部使用",
 		);
 	}
 

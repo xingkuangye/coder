@@ -165,7 +165,7 @@ const WorkspacesPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Workspaces")}</title>
+			<title>{pageTitle("工作区")}</title>
 
 			<WorkspacesPageView
 				canCreateTemplate={permissions.createTemplates}
@@ -223,7 +223,7 @@ const WorkspacesPage: FC = () => {
 					});
 				}}
 				onActionError={(error) => {
-					toast.error(getErrorMessage(error, "Failed to perform action."), {
+					toast.error(getErrorMessage(error, "操作失败。"), {
 						description: getErrorDetail(error),
 					});
 				}}

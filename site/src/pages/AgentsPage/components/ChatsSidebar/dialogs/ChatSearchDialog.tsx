@@ -36,23 +36,23 @@ type FilterDefinition = {
 const FILTER_DEFINITIONS: readonly FilterDefinition[] = [
 	{
 		key: "has_unread",
-		label: "Unread",
+		label: "未读",
 		icon: CircleDotIcon,
 		defaultValue: "true",
 	},
 	{
 		key: "archived",
-		label: "Archived",
+		label: "已归档",
 		icon: ArchiveIcon,
 		defaultValue: "true",
 	},
 	{
 		key: "pr_status",
-		label: "PR status",
+		label: "PR 状态",
 		icon: FileTextIcon,
 		defaultValue: null,
 	},
-	{ key: "diff_url", label: "Diff URL", icon: LinkIcon, defaultValue: null },
+	{ key: "diff_url", label: "差异 URL", icon: LinkIcon, defaultValue: null },
 ];
 
 // Set of recognized filter keys for detecting typed filter patterns
@@ -395,7 +395,7 @@ const ChatSearchDialogContent: FC<ChatSearchDialogContentProps> = ({
 
 	return (
 		<>
-			<DialogTitle className="sr-only">Search chats</DialogTitle>
+			<DialogTitle className="sr-only">搜索聊天</DialogTitle>
 			{/* Wrap input + dropdown so onBlur on the container closes
 				   the dropdown, but clicks within the dropdown (which is
 				   inside the same container) don't trigger blur. */}
@@ -454,7 +454,7 @@ const FilterDropdown: FC<{
 	return (
 		<div className="absolute left-0 right-0 top-full z-10 mt-1 rounded-md border border-solid border-border bg-surface-primary p-3 shadow-md">
 			<h3 className="m-0 mb-2 text-xs font-medium text-content-secondary">
-				Filter by
+				筛选条件
 			</h3>
 			<div className="flex flex-wrap gap-2">
 				{FILTER_DEFINITIONS.map((def) => {

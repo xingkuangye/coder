@@ -41,13 +41,13 @@ const getProviderName = (provider: string): string => {
 		case "google":
 			return "Google";
 		case "openai-compat":
-			return "OpenAI-compatible";
+			return "OpenAI 兼容";
 		case "openrouter":
 			return "OpenRouter";
 		case "vercel":
 			return "Vercel";
 		default:
-			return provider || "Unknown provider";
+			return provider || "未知提供商";
 	}
 };
 

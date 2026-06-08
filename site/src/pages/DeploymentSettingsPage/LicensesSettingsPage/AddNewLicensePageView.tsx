@@ -34,7 +34,7 @@ export const AddNewLicensePageView: FC<AddNewLicenseProps> = ({
 			onSaveLicenseKey(licenseKey);
 
 			fileReader.onerror = (error) => {
-				toast.error("Failed to read file.", {
+				toast.error("读取文件失败。", {
 					description: getErrorDetail(error),
 				});
 			};
@@ -53,16 +53,16 @@ export const AddNewLicensePageView: FC<AddNewLicenseProps> = ({
 		<>
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<SettingsHeader>
-					<SettingsHeaderTitle>Add a license</SettingsHeaderTitle>
+					<SettingsHeaderTitle>添加许可证</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Get access to high availability, RBAC, quotas, and more.
+						获取高可用性、RBAC、配额等功能。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
 				<Button asChild variant="outline">
 					<RouterLink to="/deployment/licenses">
 						<ChevronLeftIcon />
-						All Licenses
+						所有许可证
 					</RouterLink>
 				</Button>
 			</div>
@@ -72,16 +72,16 @@ export const AddNewLicensePageView: FC<AddNewLicenseProps> = ({
 			<FileUpload
 				isUploading={isUploading}
 				onUpload={onUpload}
-				removeLabel="Remove File"
-				title="Upload Your License"
-				description="Select a text file that contains your license key."
+				removeLabel="移除文件"
+				title="上传您的许可证"
+				description="选择包含您的许可证密钥的文本文件。"
 			/>
 
 			<div className="flex flex-col gap-4 pt-10">
-				<DividerWithText>or</DividerWithText>
+				<DividerWithText>或者</DividerWithText>
 
 				<Fieldset
-					title="Paste Your License"
+					title="粘贴您的许可证"
 					onSubmit={(e) => {
 						e.preventDefault();
 
@@ -94,13 +94,13 @@ export const AddNewLicensePageView: FC<AddNewLicenseProps> = ({
 					}}
 					button={
 						<Button type="submit" disabled={isSavingLicense}>
-							Upload License
+							上传许可证
 						</Button>
 					}
 				>
 					<TextField
 						name="licenseKey"
-						placeholder="Enter your license..."
+						placeholder="输入您的许可证..."
 						multiline
 						rows={3}
 						fullWidth

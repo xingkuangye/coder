@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 03/05/2025
+ * 从 shadcn/ui 复制于 2025年3月5日
  * @see {@link https://ui.shadcn.com/docs/components/scroll-area}
  */
 import { ScrollArea as ScrollAreaPrimitive } from "radix-ui";

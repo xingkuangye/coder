@@ -67,7 +67,7 @@ const NavItemContent: FC<{
 								<ShieldIcon className="size-3 shrink-0 opacity-50" />
 							</span>
 						</TooltipTrigger>
-						<TooltipContent side="right">Admin only</TooltipContent>
+						<TooltipContent side="right">仅管理员</TooltipContent>
 					</Tooltip>
 				)}
 				{TrailingIcon && <TrailingIcon className="size-4 shrink-0" />}

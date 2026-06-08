@@ -42,14 +42,14 @@ export const DownloadAgentLogsButton: FC<DownloadAgentLogsButtonProps> = ({
 					setIsDownloading(true);
 					const logs = await fetchLogs();
 					if (!logs) {
-						throw new Error("No logs found");
+						throw new Error("未找到日志");
 					}
 					const text = logs.map((l) => l.output).join("\n");
 					const file = new Blob([text], { type: "text/plain" });
 					download(file, `${agent.name}-logs.txt`);
 				} catch (error) {
 					console.error(error);
-					toast.error(`Failed to download "${agent.name}" logs.`, {
+					toast.error(`无法下载“${agent.name}”的日志。`, {
 						description: getErrorDetail(error),
 					});
 				} finally {
@@ -58,7 +58,7 @@ export const DownloadAgentLogsButton: FC<DownloadAgentLogsButtonProps> = ({
 			}}
 		>
 			<DownloadIcon />
-			{isDownloading ? "Downloading..." : "Download agent logs"}
+			{isDownloading ? "正在下载..." : "下载代理日志"}
 		</Button>
 	);
 };

@@ -16,14 +16,13 @@ export const AuditHelpPopover: FC = () => {
 			<HelpPopoverIconTrigger />
 
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is an audit log?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是审计日志？</HelpPopoverTitle>
 				<HelpPopoverText>
-					An audit log is a record of events and changes made throughout a
-					system.
+					审计日志是记录整个系统中发生的事件和更改的记录。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/security/audit-logs")}>
-						Events we track
+						我们追踪的事件
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>

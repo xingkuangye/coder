@@ -33,10 +33,10 @@ export const ExternalAuthSettingsPageView: FC<
 			<SettingsHeader
 				actions={<SettingsHeaderDocsLink href={docs("/admin/external-auth")} />}
 			>
-				<SettingsHeaderTitle>External Authentication</SettingsHeaderTitle>
+				<SettingsHeaderTitle>外部认证</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Coder integrates with GitHub, GitLab, BitBucket, Azure Repos, and
-					OpenID Connect to authenticate developers with external services.
+					Coder 集成了 GitHub、GitLab、BitBucket、Azure Repos 和 OpenID
+					Connect，用于通过外部服务验证开发者身份。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -54,8 +54,7 @@ export const ExternalAuthSettingsPageView: FC<
 
 			<div className="mt-6 mb-6">
 				<Alert severity="info" actions={<PremiumBadge key="enterprise" />}>
-					Integrating with multiple External authentication providers is an
-					Premium feature.
+					集成多个外部认证提供者是一项 Premium 功能。
 				</Alert>
 			</div>
 
@@ -63,8 +62,8 @@ export const ExternalAuthSettingsPageView: FC<
 				<TableHeader>
 					<TableRow>
 						<TableHead className="w-1/3">ID</TableHead>
-						<TableHead className="w-1/3">Client ID</TableHead>
-						<TableHead className="w-1/3">Match</TableHead>
+						<TableHead className="w-1/3">客户端 ID</TableHead>
+						<TableHead className="w-1/3">匹配</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -73,7 +72,7 @@ export const ExternalAuthSettingsPageView: FC<
 						<TableRow>
 							<TableCell colSpan={999}>
 								<div className="text-center">
-									No providers have been configured!
+									尚未配置任何提供程序！
 								</div>
 							</TableCell>
 						</TableRow>
@@ -84,7 +83,7 @@ export const ExternalAuthSettingsPageView: FC<
 								<TableRow key={name}>
 									<TableCell>{name}</TableCell>
 									<TableCell>{git.client_id}</TableCell>
-									<TableCell>{git.regex || "Not Set"}</TableCell>
+									<TableCell>{git.regex || "未设置"}</TableCell>
 								</TableRow>
 							);
 						})}

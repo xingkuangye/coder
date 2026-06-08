@@ -32,14 +32,14 @@ export const StartWorkspaceTool: FC<StartWorkspaceToolProps> = ({
 	const isRunning = status === "running";
 
 	const label = isRunning
-		? "Starting workspace…"
+		? "正在启动工作空间…"
 		: labelOverride
 			? labelOverride
 			: isError
-				? `Failed to start ${workspaceName || "workspace"}`
+				? `启动 ${workspaceName || "工作空间"} 失败`
 				: workspaceName
-					? `Started ${workspaceName}`
-					: "Started workspace";
+					? `已启动 ${workspaceName}`
+					: "已启动工作空间";
 
 	const header = (
 		<>
@@ -59,7 +59,7 @@ export const StartWorkspaceTool: FC<StartWorkspaceToolProps> = ({
 						<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 					</TooltipTrigger>
 					<TooltipContent>
-						{errorMessage || "Failed to start workspace"}
+						{errorMessage || "工作空间启动失败"}
 					</TooltipContent>
 				</Tooltip>
 			)}

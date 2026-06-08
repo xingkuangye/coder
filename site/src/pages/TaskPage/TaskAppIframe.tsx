@@ -63,7 +63,7 @@ export const TaskAppIFrame: FC<TaskAppIFrameProps> = ({
 						}}
 					>
 						<HouseIcon />
-						<span className="sr-only">Home</span>
+						<span className="sr-only">主页</span>
 					</Button>
 
 					{/* Possibly we will put a URL bar here, but for now we cannot due to
@@ -72,16 +72,16 @@ export const TaskAppIFrame: FC<TaskAppIFrameProps> = ({
 
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button size="icon" variant="subtle" aria-label="More options">
+							<Button size="icon" variant="subtle" aria-label="更多选项">
 								<EllipsisVerticalIcon aria-hidden="true" />
-								<span className="sr-only">More options</span>
+								<span className="sr-only">更多选项</span>
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
 							<DropdownMenuItem asChild>
 								<RouterLink to={link.href} target="_blank">
 									<ExternalLinkIcon />
-									Open app in new tab
+									在新标签页中打开应用
 								</RouterLink>
 							</DropdownMenuItem>
 						</DropdownMenuContent>
@@ -94,19 +94,19 @@ export const TaskAppIFrame: FC<TaskAppIFrameProps> = ({
 			) : app.health === "unhealthy" ? (
 				<div className="w-full h-full flex flex-col items-center justify-center p-4">
 					<h3 className="m-0 font-medium text-content-primary text-base text-center">
-						App "{app.display_name}" is unhealthy
+						应用 "{app.display_name}" 运行状况不佳
 					</h3>
 					<div className="text-content-secondary text-sm">
 						<span className="block text-center">
-							Here are some troubleshooting steps you can take:
+							您可以尝试以下故障排除步骤：
 						</span>
 						<ul className="m-0 pt-4 flex flex-col gap-4">
 							{app.healthcheck && (
 								<li>
 									<span className="block font-medium text-content-primary mb-1">
-										Verify healthcheck
+										验证健康检查
 									</span>
-									Try running the following inside your workspace:{" "}
+									尝试在工作区中运行以下命令：{" "}
 									<code className="font-mono text-content-primary select-all">
 										curl -v "{app.healthcheck.url}"
 									</code>
@@ -114,13 +114,13 @@ export const TaskAppIFrame: FC<TaskAppIFrameProps> = ({
 							)}
 							<li>
 								<span className="block font-medium text-content-primary mb-1">
-									Check logs
+									检查日志
 								</span>
-								See{" "}
+								在工作区 "{workspace.name}" 中查看{" "}
 								<code className="font-mono text-content-primary select-all">
 									/tmp/coder-agent.log
 								</code>{" "}
-								inside your workspace "{workspace.name}" for more information.
+								以获取更多信息。
 							</li>
 						</ul>
 					</div>
@@ -132,10 +132,10 @@ export const TaskAppIFrame: FC<TaskAppIFrameProps> = ({
 			) : (
 				<div className="w-full h-full flex flex-col items-center justify-center">
 					<h3 className="m-0 font-medium text-content-primary text-base">
-						Error
+						错误
 					</h3>
 					<span className="text-content-secondary text-sm">
-						The app is in an unknown health state.
+						应用处于未知的健康状态。
 					</span>
 				</div>
 			)}

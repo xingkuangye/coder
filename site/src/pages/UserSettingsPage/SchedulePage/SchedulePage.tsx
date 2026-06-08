@@ -44,10 +44,9 @@ const SchedulePage: FC = () => {
 	return (
 		<>
 			<SettingsHeader>
-				<SettingsHeaderTitle>Quiet hours</SettingsHeaderTitle>
+				<SettingsHeaderTitle>安静时间</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Workspaces may be automatically updated during your quiet hours, as
-					configured by your administrators.
+					工作区可能会在您的安静时间内自动更新，具体由管理员配置。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 			<ScheduleForm
@@ -57,7 +56,7 @@ const SchedulePage: FC = () => {
 				onSubmit={(values) => {
 					onSubmit(values, {
 						onSuccess: () => {
-							toast.success("Schedule updated successfully.");
+							toast.success("安静时间安排已成功更新。");
 						},
 					});
 				}}

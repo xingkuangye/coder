@@ -47,13 +47,13 @@ const personalSkillError = (
 	const status = isAxiosError(error) ? error.response?.status : undefined;
 	let statusFallback = fallback;
 	if (status === 400) {
-		statusFallback = "Skill content is invalid.";
+		statusFallback = "技能内容无效。";
 	} else if (status === 403) {
-		statusFallback = "You do not have permission to manage personal skills.";
+		statusFallback = "你没有管理个人技能的权限。";
 	} else if (status === 404) {
-		statusFallback = "That personal skill was not found.";
+		statusFallback = "未找到该个人技能。";
 	} else if (status === 409) {
-		statusFallback = "A skill with that name already exists.";
+		statusFallback = "已存在同名技能。";
 	}
 
 	return {
@@ -87,7 +87,7 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 					? null
 					: current,
 			);
-			toast.success("Personal skill created.");
+			toast.success("个人技能创建成功。");
 		},
 	});
 
@@ -103,11 +103,11 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 					? null
 					: current,
 			);
-			toast.success("Personal skill saved.");
+			toast.success("个人技能已保存。");
 		},
 		onError: (error, variables) => {
 			if (isAxiosError(error) && error.response?.status === 404) {
-				toast.info("That skill was deleted while you were editing it.");
+				toast.info("该技能在你编辑时已被删除。");
 				setDialogState((current) =>
 					current?.type === "edit" &&
 					current.name === variables.name &&
@@ -132,7 +132,7 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 					? null
 					: current,
 			);
-			toast.success("Personal skill deleted.");
+			toast.success("个人技能已删除。");
 		},
 		onError: (error, variables) => {
 			if (isAxiosError(error) && error.response?.status === 404) {
@@ -173,7 +173,7 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 				createMutation.variables?.content === dialogState.submittedContent
 					? personalSkillError(
 							createMutation.error,
-							"Failed to create personal skill.",
+							"创建个人技能失败。",
 						)
 					: undefined,
 			isSubmitting: createMutation.isPending,
@@ -200,7 +200,7 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 				updateMutation.variables.req.content === dialogState.submittedContent
 					? personalSkillError(
 							updateMutation.error,
-							"Failed to save personal skill.",
+							"保存个人技能失败。",
 						)
 					: undefined,
 			isSubmitting: updateMutation.isPending,
@@ -231,7 +231,7 @@ const AgentSettingsPersonalSkillsPage: FC = () => {
 				dialogState.submittedName === dialogState.skill.name
 					? personalSkillError(
 							deleteMutation.error,
-							"Failed to delete personal skill.",
+							"删除个人技能失败。",
 						)
 					: undefined,
 			isDeleting:

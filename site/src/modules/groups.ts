@@ -38,14 +38,14 @@ export const isEveryoneGroup = (group: Group): boolean =>
 export const getGroupSubtitle = (group: Group): string => {
 	// It is the everyone group when a group id is the same of the org id
 	if (group.id === group.organization_id) {
-		return "All users";
+		return "所有用户";
 	}
 
 	const total = group.total_member_count ?? group.members?.length ?? 0;
 
 	if (total === 1) {
-		return "1 member";
+		return "1 名成员";
 	}
 
-	return `${total} members`;
+	return `${total} 名成员`;
 };

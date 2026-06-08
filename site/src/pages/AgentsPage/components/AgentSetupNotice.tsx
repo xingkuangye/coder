@@ -23,8 +23,7 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 	if (!isAdmin) {
 		return (
 			<NoticeContainer>
-				AI models aren't available yet. Your admin is still getting things set
-				up.
+				AI 模型尚不可用。您的管理员仍在进行设置。
 			</NoticeContainer>
 		);
 	}
@@ -33,26 +32,26 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 	if (!hasProvider) {
 		return (
 			<NoticeContainer>
-				To chat with Coder Agents, set up a{" "}
+				要与 Coder Agents 聊天，请设置一个{" "}
 				<Link
 					to="/ai/settings"
 					className="text-content-link transition-colors hover:text-content-link/80"
 				>
-					provider
+					提供商
 				</Link>
 				{!hasModel && (
 					<>
 						{" "}
-						then add a{" "}
+						，然后添加一个{" "}
 						<Link
 							to="/agents/settings/models"
 							className="text-content-link transition-colors hover:text-content-link/80"
 						>
-							model
+							模型
 						</Link>
 					</>
 				)}
-				.
+				。
 			</NoticeContainer>
 		);
 	}
@@ -60,14 +59,14 @@ export const AgentSetupNotice: FC<AgentSetupNoticeProps> = ({
 	// Admin: has providers but no models
 	return (
 		<NoticeContainer>
-			To chat with Coder Agents, set up a{" "}
+			要与 Coder Agents 聊天，请设置一个{" "}
 			<Link
 				to="/agents/settings/models"
 				className="text-content-link transition-colors hover:text-content-link/80"
 			>
-				model
+				模型
 			</Link>
-			.
+			。
 		</NoticeContainer>
 	);
 };

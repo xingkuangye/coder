@@ -16,11 +16,11 @@ export const CliInstallPageView: FC<CliInstallPageViewProps> = ({ origin }) => {
 				"flex flex-1 flex-col items-center justify-center",
 			)}
 		>
-			<Welcome>Install the Coder CLI</Welcome>
+			<Welcome>安装 Coder CLI</Welcome>
 
 			<p className="pb-2 text-center text-base leading-[1.4] text-content-secondary">
-				Copy the command below and{" "}
-				<strong className="block">paste it in your terminal.</strong>
+				复制下面的命令并{" "}
+				<strong className="block">将其粘贴到终端中。</strong>
 			</p>
 
 			<CodeExample
@@ -34,7 +34,7 @@ export const CliInstallPageView: FC<CliInstallPageViewProps> = ({ origin }) => {
 					to="/workspaces"
 					className="block py-4 text-center text-content-primary underline decoration-[hsla(0,0%,100%,0.7)] underline-offset-[3px] hover:no-underline"
 				>
-					Go to workspaces
+					前往工作区
 				</RouterLink>
 			</div>
 			<div className="mt-6 text-xs text-content-secondary">

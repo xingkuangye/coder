@@ -91,19 +91,19 @@ interface UserMenuProps {
 export const UserMenu: FC<UserMenuProps> = ({ menu, width, placeholder }) => {
 	return (
 		<SelectFilter
-			label="Select user"
-			placeholder={placeholder ?? "All users"}
-			emptyText="No users found"
+			label="选择用户"
+			placeholder={placeholder ?? "所有用户"}
+			emptyText="未找到用户"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}
 			width={width}
 			selectFilterSearch={
 				<ComboboxInput
-					placeholder="Search user..."
+					placeholder="搜索用户..."
 					value={menu.query}
 					onValueChange={menu.setQuery}
-					aria-label="Search user"
+					aria-label="搜索用户"
 				/>
 			}
 		/>

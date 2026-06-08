@@ -15,18 +15,17 @@ const AIBridgeSessionsLayout: FC<PropsWithChildren> = () => {
 			<PageHeader>
 				<PageHeaderTitle>
 					<div className="flex items-center gap-2">
-						<span>AI Sessions</span>
+						<span>AI 会话</span>
 					</div>
 				</PageHeaderTitle>
 				<PageHeaderSubtitle>
-					Review and audit AI activity, token usage, and prompt history across
-					sessions.{" "}
+					查看并审计跨会话的 AI 活动、token 使用与提示历史。{" "}
 					<Link
 						href={docs("/ai-coder/ai-bridge/audit")}
 						className="ml-auto"
 						target="_blank"
 					>
-						Learn how to audit AI sessions
+						了解如何审计 AI 会话
 					</Link>
 				</PageHeaderSubtitle>
 			</PageHeader>

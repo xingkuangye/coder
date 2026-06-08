@@ -25,12 +25,10 @@ interface WorkspaceBuildLogSectionProps {
 const LOG_LOAD_TIMEOUT_MS = 30_000;
 
 /**
- * Streams or fetches workspace build logs for display inside a tool
- * collapsible. While the tool is running, logs stream via WebSocket
- * from the build tracked by the chat binding (or the workspace's
- * latest active build as a fallback). Once completed, logs
- * are fetched via REST and cached by React Query so expand/collapse
- * cycles don't re-fetch.
+ * 流式传输或获取工作区构建日志，以便在工具折叠面板中显示。工具运行时，
+ * 日志通过 WebSocket 流式传输，来自聊天绑定跟踪的构建（或回退到工作区
+ * 的最新活跃构建）。完成后，日志通过 REST 获取并由 React Query 缓存，
+ * 因此展开/折叠不会重新获取。
  */
 export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 	status,
@@ -109,7 +107,7 @@ export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 			return (
 				<div className="flex items-center gap-2 py-3 px-4 text-xs text-content-secondary">
 					<LoaderIcon className="size-3 animate-spin motion-reduce:animate-none" />
-					<span>Loading build logs…</span>
+					<span>正在加载构建日志…</span>
 				</div>
 			);
 		}
@@ -120,7 +118,7 @@ export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 		return (
 			<div className="flex items-center gap-2 py-3 px-4 text-xs text-content-secondary">
 				<TriangleAlertIcon className="size-3" />
-				<span>Failed to load build logs.</span>
+				<span>加载构建日志失败。</span>
 			</div>
 		);
 	}
@@ -129,7 +127,7 @@ export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 		return (
 			<div className="flex items-center gap-2 py-3 px-4 text-xs text-content-secondary">
 				<TriangleAlertIcon className="size-3" />
-				<span>Build logs are taking longer than expected.</span>
+				<span>构建日志加载时间比预期更长。</span>
 			</div>
 		);
 	}
@@ -142,7 +140,7 @@ export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 	) {
 		return (
 			<div className="flex items-center gap-2 py-3 px-4 text-xs text-content-secondary">
-				<span>No build logs available.</span>
+				<span>没有可用的构建日志。</span>
 			</div>
 		);
 	}
@@ -151,7 +149,7 @@ export const WorkspaceBuildLogSection: FC<WorkspaceBuildLogSectionProps> = ({
 		return (
 			<div className="flex items-center gap-2 py-3 px-4 text-xs text-content-secondary">
 				<LoaderIcon className="size-3 animate-spin motion-reduce:animate-none" />
-				<span>Loading build logs…</span>
+				<span>正在加载构建日志…</span>
 			</div>
 		);
 	}

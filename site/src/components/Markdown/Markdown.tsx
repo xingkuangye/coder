@@ -216,7 +216,7 @@ function parseChildrenAsAlertContent(
 					children: (
 						<>
 							{recastProps.children}
-							<span className="sr-only"> (link opens in new tab)</span>
+							<span className="sr-only">（链接将在新标签页中打开）</span>
 						</>
 					),
 				},
@@ -290,6 +290,14 @@ type MarkdownGfmAlertProps = Readonly<
 	}
 >;
 
+const alertTypeLabels: Record<string, string> = {
+	tip: "提示",
+	note: "注意",
+	important: "重要",
+	warning: "警告",
+	caution: "谨慎",
+};
+
 const MarkdownGfmAlert: FC<MarkdownGfmAlertProps> = ({
 	alertType,
 	children,
@@ -320,7 +328,7 @@ const MarkdownGfmAlert: FC<MarkdownGfmAlertProps> = ({
 				)}
 			>
 				<p className="font-bold">
-					{alertType[0]?.toUpperCase() + alertType.slice(1).toLowerCase()}
+					{alertTypeLabels[alertType] ?? alertType}
 				</p>
 				{children}
 			</aside>

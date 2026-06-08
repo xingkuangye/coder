@@ -41,7 +41,7 @@ export const Latency: FC<LatencyProps> = ({
 						<Spinner loading className={cn("!size-icon-xs", latencyColor)} />
 					</div>
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Loading latency...</TooltipContent>
+				<TooltipContent side="bottom">正在加载延迟...</TooltipContent>
 			</Tooltip>
 		);
 	}
@@ -51,20 +51,20 @@ export const Latency: FC<LatencyProps> = ({
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<CircleHelpIcon
-						aria-label="Latency not available"
+						aria-label="延迟数据不可用"
 						className={cn("!size-icon-sm", latencyColor, className)}
 					/>
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Latency not available</TooltipContent>
+				<TooltipContent side="bottom">延迟数据不可用</TooltipContent>
 			</Tooltip>
 		);
 	}
 
 	return (
 		<div className={cn("text-sm", latencyColor, className)}>
-			<span className="sr-only">Latency: </span>
+			<span className="sr-only">延迟： </span>
 			{latency.toFixed(0)}
-			<Abbr title="milliseconds">ms</Abbr>
+			<Abbr title="毫秒">ms</Abbr>
 		</div>
 	);
 };

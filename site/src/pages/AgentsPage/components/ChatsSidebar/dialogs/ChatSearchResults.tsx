@@ -73,14 +73,14 @@ export const ChatSearchResults: FC<ChatSearchResultsProps> = ({
 	const resultSummary =
 		resultCount === CHAT_SEARCH_LIMIT ? (
 			<>
-				Showing first{" "}
+				显示前{" "}
 				<span className="text-content-primary">{CHAT_SEARCH_LIMIT}</span>{" "}
-				results.
+				条结果。
 			</>
 		) : (
 			<>
 				<span className="text-content-primary">{resultCount}</span>{" "}
-				{resultCount === 1 ? "result" : "results"}
+				条结果
 			</>
 		);
 
@@ -94,7 +94,7 @@ export const ChatSearchResults: FC<ChatSearchResultsProps> = ({
 							loading
 							size="sm"
 							className="ml-1.5 inline-block align-text-bottom text-content-secondary"
-							aria-label="Searching chats"
+							aria-label="正在搜索聊天"
 						/>
 					)}
 				</p>
@@ -140,13 +140,13 @@ const DefaultView: FC<DefaultViewProps> = ({
 				{visibleRecentChats.length > 0 && (
 					<div>
 						<h3 className="m-0 mb-3 text-sm font-medium text-content-secondary">
-							Recent chats
+							最近的聊天
 						</h3>
 						<ScrollArea {...SCROLL_AREA_PROPS}>
 							<div
 								id={listboxId}
 								role="listbox"
-								aria-label="Recent chats"
+								aria-label="最近的聊天"
 								className="space-y-1"
 							>
 								{visibleRecentChats.map((chat, index) => (
@@ -196,7 +196,7 @@ const ChatSearchResultsList: FC<ChatSearchResultsListProps> = ({
 	if ((chats?.length ?? 0) === 0) {
 		return (
 			<div className="flex h-[300px] items-center justify-center">
-				<p className="text-sm text-content-secondary">No matching chats</p>
+				<p className="text-sm text-content-secondary">没有匹配的聊天</p>
 			</div>
 		);
 	}
@@ -205,7 +205,7 @@ const ChatSearchResultsList: FC<ChatSearchResultsListProps> = ({
 		<div
 			id={listboxId}
 			role="listbox"
-			aria-label="Chat search results"
+			aria-label="聊天搜索结果"
 			className="space-y-1"
 		>
 			{chats?.map((chat, index) => (
@@ -249,7 +249,7 @@ const ChatSearchResultRow: FC<ChatSearchResultRowProps> = ({
 	const hasLineStats =
 		Boolean(diffStatus?.url) &&
 		(additions > 0 || deletions > 0 || changedFiles > 0);
-	const subtitle = chat.last_turn_summary?.trim() || "No summary available";
+	const subtitle = chat.last_turn_summary?.trim() || "无可用摘要";
 
 	useEffect(() => {
 		if (isSelected) {

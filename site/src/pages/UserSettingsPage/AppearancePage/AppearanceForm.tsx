@@ -160,7 +160,7 @@ export const AppearanceForm: FC<AppearanceFormProps> = ({
 			<Section
 				title={
 					<div className="flex flex-row items-center gap-2">
-						<span>Theme</span>
+						<span>主题</span>
 						<Spinner loading={isUpdating} size="sm" />
 					</div>
 				}
@@ -170,7 +170,7 @@ export const AppearanceForm: FC<AppearanceFormProps> = ({
 				<div className="flex flex-col gap-4">
 					<div className="flex flex-col gap-2">
 						<Label htmlFor={themeModeId} className="text-sm font-medium">
-							Theme mode
+							主题模式
 						</Label>
 						<div className="flex items-center gap-4">
 							<Select
@@ -188,8 +188,8 @@ export const AppearanceForm: FC<AppearanceFormProps> = ({
 									<SelectValue />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectItem value="sync">Sync with system</SelectItem>
-									<SelectItem value="single">Single theme</SelectItem>
+									<SelectItem value="sync">与系统同步</SelectItem>
+									<SelectItem value="single">单一主题</SelectItem>
 								</SelectContent>
 							</Select>
 						</div>
@@ -216,7 +216,7 @@ export const AppearanceForm: FC<AppearanceFormProps> = ({
 			<Section
 				title={
 					<div className="flex flex-row items-center gap-2">
-						<span id={fontGroupLabelId}>Terminal Font</span>
+						<span id={fontGroupLabelId}>终端字体</span>
 						<Spinner loading={isUpdating} size="sm" />
 					</div>
 				}

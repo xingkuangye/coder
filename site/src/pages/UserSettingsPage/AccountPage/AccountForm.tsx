@@ -14,7 +14,7 @@ import {
 } from "#/utils/formUtils";
 
 const validationSchema = Yup.object({
-	username: nameValidator("Username"),
+	username: nameValidator("用户名"),
 	name: Yup.string(),
 });
 
@@ -55,7 +55,7 @@ export const AccountForm: FC<AccountFormProps> = ({
 
 				<FormField
 					field={getFieldHelpers("email")}
-					label="Email"
+					label="邮箱"
 					value={email}
 					disabled
 				/>
@@ -66,17 +66,17 @@ export const AccountForm: FC<AccountFormProps> = ({
 					autoComplete="username"
 					disabled={!editable}
 					className="w-full"
-					label="Username"
+					label="用户名"
 				/>
 				<FormField
 					field={{
 						...getFieldHelpers("name"),
 						helperText:
-							'The human-readable name is optional and can be accessed in a template via the "data.coder_workspace_owner.me.full_name" property.',
+							'可读名称是可选的，可在模板中通过 "data.coder_workspace_owner.me.full_name" 属性访问。',
 					}}
 					autoComplete="name"
 					className="w-full"
-					label="Name"
+					label="姓名"
 					onBlur={(event) => {
 						event.target.value = event.target.value.trim();
 						form.handleChange(event);
@@ -85,7 +85,7 @@ export const AccountForm: FC<AccountFormProps> = ({
 				<div>
 					<Button disabled={isLoading} type="submit">
 						<Spinner loading={isLoading} />
-						Update account
+						更新账户
 					</Button>
 				</div>
 			</FormFields>

@@ -1,19 +1,17 @@
 import { type RefObject, useLayoutEffect, useState } from "react";
 
 /**
- * Observes a flex container whose children are laid out as:
+ * 观察一个 flex 容器，其子元素布局如下：
  *
  *   [item₀] [item₁] … [itemₙ₋₁] [pill]
  *
- * and reports how many of the first `itemCount` children overflow
- * past the container's visible width. The count updates
- * automatically when the container resizes or children change.
+ * 并报告前 `itemCount` 个子元素中有多少超出了容器的可见宽度。
+ * 当容器大小改变或子元素变化时，计数会自动更新。
  *
- * The caller should always render a "+N" pill as the last child
- * (using `visibility: hidden` when the count is 0) so its layout
- * space is permanently reserved. The hook reads the pill's actual
- * rendered width and the container's CSS `gap` from the DOM, so
- * there are no hardcoded sizing assumptions.
+ * 调用方应始终将 "+N" 标记作为最后一个子元素渲染
+ * （当计数为 0 时使用 `visibility: hidden`），以便其布局空间始终被保留。
+ * 此 hook 从 DOM 中读取标记的实际渲染宽度和容器的 CSS `gap`，
+ * 因此没有硬编码的尺寸假设。
  */
 export function useOverflowCount(
 	containerRef: RefObject<HTMLElement | null>,

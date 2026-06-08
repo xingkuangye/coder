@@ -38,7 +38,7 @@ export const CreateTemplateGalleryPageView: FC<
 								rel="noopener noreferrer"
 								className="flex items-center"
 							>
-								Browse other Templates on the Coder Registry
+								在 Coder Registry 上浏览其他模板
 								<ExternalLinkIcon className="size-icon-sm ml-1" />
 							</a>
 						</Button>
@@ -49,20 +49,20 @@ export const CreateTemplateGalleryPageView: FC<
 								rel="noopener noreferrer"
 								className="flex items-center"
 							>
-								Use our template agent skill
+								使用我们的模板代理技能
 								<ExternalLinkIcon className="size-icon-sm ml-1" />
 							</a>
 						</Button>
 					</div>
 				}
 			>
-				<PageHeaderTitle>Create a Template</PageHeaderTitle>
+				<PageHeaderTitle>创建模板</PageHeaderTitle>
 			</PageHeader>
 			<Stack spacing={8}>
 				<Stack direction="row" spacing={4}>
 					<div className="w-[202px]">
 						<h2 css={styles.sectionTitle}>
-							Choose a starting point for your new template
+							为您的新模板选择起点
 						</h2>
 					</div>
 					<div className="flex flex-wrap gap-8 h-max">
@@ -81,9 +81,9 @@ export const CreateTemplateGalleryPageView: FC<
 											/>
 										</div>
 										<div>
-											<h4 css={styles.cardTitle}>Upload Template</h4>
+											<h4 css={styles.cardTitle}>上传模板</h4>
 											<span css={styles.cardDescription}>
-												Get started by uploading an existing template
+												通过上传现有模板开始
 											</span>
 										</div>
 									</Stack>

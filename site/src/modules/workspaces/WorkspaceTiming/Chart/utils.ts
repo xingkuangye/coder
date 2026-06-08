@@ -91,29 +91,29 @@ export const formatTime = (time: number): string => {
 
 	if (absTime < second) {
 		value = time;
-		unit = "ms";
+		unit = "毫秒";
 	} else if (absTime < minute) {
 		value = time / second;
-		unit = "s";
+		unit = "秒";
 	} else if (absTime < hour) {
 		value = time / minute;
-		unit = "m";
+		unit = "分";
 		frac = 1;
 	} else if (absTime < day) {
 		value = time / hour;
-		unit = "h";
+		unit = "时";
 		frac = 0;
 	} else if (absTime < week) {
 		value = time / day;
-		unit = "d";
+		unit = "天";
 		frac = 0;
 	} else if (absTime < year) {
 		value = time / week;
-		unit = "w";
+		unit = "周";
 		frac = 0;
 	} else {
 		value = time / year;
-		unit = "y";
+		unit = "年";
 		frac = 0;
 	}
 	return `${value.toLocaleString(undefined, {

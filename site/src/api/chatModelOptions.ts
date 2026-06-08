@@ -1,44 +1,44 @@
 import schema from "./chatModelOptionsGenerated.json";
 
 /**
- * Describes a single configurable field for a chat model provider.
- * Generated from Go struct tags via `scripts/modeloptionsgen`.
+ * 描述一个聊天模型提供商的单个可配置字段。
+ * 通过 `scripts/modeloptionsgen` 从 Go 结构体标签生成。
  */
 export interface FieldSchema {
-	/** The JSON key used in API payloads (may use dot-notation for nested fields). */
+	/** API 载荷中使用的 JSON 键（可使用点号表示法表示嵌套字段）。 */
 	json_name: string;
-	/** The corresponding Go struct field name. */
+	/** 对应的 Go 结构体字段名称。 */
 	go_name: string;
-	/** The JSON Schema type of this field. */
+	/** 该字段的 JSON Schema 类型。 */
 	type: "string" | "integer" | "number" | "boolean" | "array" | "object";
-	/** Human-readable description of the field. May be absent for some fields. */
+	/** 字段的人类可读描述。某些字段可能没有。 */
 	description?: string;
-	/** Optional display label override. When absent, derive from json_name. */
+	/** 可选的显示标签覆盖。如果未提供，则从 json_name 推导。 */
 	label?: string;
-	/** Whether this field is required when configuring the provider. */
+	/** 配置提供商时该字段是否为必填项。 */
 	required: boolean;
-	/** Hint for how the frontend should render the input control. */
+	/** 前端应如何渲染输入控件的提示。 */
 	input_type: "input" | "select" | "json";
-	/** If present, the field value must be one of these options. */
+	/** 如果存在，字段值必须为这些选项之一。 */
 	enum?: string[];
-	/** If true, this field should not be rendered in admin UI forms. */
+	/** 如果为 true，则不应在管理界面表单中渲染该字段。 */
 	hidden?: boolean;
 }
 
 /**
- * A group of fields belonging to a single provider or the general section.
+ * 属于单个提供商或通用部分的字段组。
  */
 export interface ProviderSchema {
 	fields: FieldSchema[];
 }
 
 /**
- * Top-level schema describing all configurable chat model options.
+ * 描述所有可配置聊天模型选项的顶层模式。
  *
- * - `general` contains provider-independent fields (e.g. temperature).
- * - `providers` maps canonical provider names to their specific fields.
- * - `provider_aliases` maps alternate names to canonical provider names
- *   (e.g. "azure" → "openai").
+ * - `general` 包含与提供商无关的字段（例如 temperature）。
+ * - `providers` 将规范的提供商名称映射到其特定字段。
+ * - `provider_aliases` 将替代名称映射到规范的提供商名称
+ *   （例如 "azure" → "openai"）。
  */
 export interface ModelOptionsSchema {
 	general: ProviderSchema;
@@ -46,7 +46,7 @@ export interface ModelOptionsSchema {
 	provider_aliases: Record<string, string>;
 }
 
-/** The imported schema, typed as {@link ModelOptionsSchema}. */
+/** 导入的模式，类型为 {@link ModelOptionsSchema}。 */
 export const modelOptionsSchema: ModelOptionsSchema =
 	schema as ModelOptionsSchema;
 
@@ -55,7 +55,7 @@ const syntheticGeneralFields: FieldSchema[] = [
 		json_name: "cost.input_price_per_million_tokens",
 		go_name: "Cost.InputPricePerMillionTokens",
 		type: "number",
-		description: "Input token price in USD per 1M tokens",
+		description: "输入 token 价格（美元/百万 token）",
 		required: false,
 		input_type: "input",
 	},
@@ -63,7 +63,7 @@ const syntheticGeneralFields: FieldSchema[] = [
 		json_name: "cost.output_price_per_million_tokens",
 		go_name: "Cost.OutputPricePerMillionTokens",
 		type: "number",
-		description: "Output token price in USD per 1M tokens",
+		description: "输出 token 价格（美元/百万 token）",
 		required: false,
 		input_type: "input",
 	},
@@ -71,7 +71,7 @@ const syntheticGeneralFields: FieldSchema[] = [
 		json_name: "cost.cache_read_price_per_million_tokens",
 		go_name: "Cost.CacheReadPricePerMillionTokens",
 		type: "number",
-		description: "Cache read token price in USD per 1M tokens",
+		description: "缓存读取 token 价格（美元/百万 token）",
 		required: false,
 		input_type: "input",
 	},
@@ -80,15 +80,14 @@ const syntheticGeneralFields: FieldSchema[] = [
 		go_name: "Cost.CacheWritePricePerMillionTokens",
 		type: "number",
 		description:
-			"Cache write or cache creation token price in USD per 1M tokens",
+			"缓存写入或缓存创建 token 价格（美元/百万 token）",
 		required: false,
 		input_type: "input",
 	},
 ];
 
 /**
- * Get the general (provider-independent) fields such as temperature
- * and max_output_tokens.
+ * 获取通用（与提供商无关）字段，例如 temperature 和 max_output_tokens。
  */
 export function getGeneralFields(): FieldSchema[] {
 	const fields = [...modelOptionsSchema.general.fields];
@@ -101,9 +100,9 @@ export function getGeneralFields(): FieldSchema[] {
 }
 
 /**
- * Get provider-specific fields for a given provider name.
- * Handles aliases (e.g. "azure" → "openai", "bedrock" → "anthropic").
- * Returns an empty array for unknown providers.
+ * 获取给定提供商的提供商特定字段。
+ * 处理别名（例如 "azure" → "openai"，"bedrock" → "anthropic"）。
+ * 对于未知提供商，返回空数组。
  */
 export function getProviderFields(provider: string): FieldSchema[] {
 	const resolved = resolveProvider(provider);
@@ -111,9 +110,9 @@ export function getProviderFields(provider: string): FieldSchema[] {
 }
 
 /**
- * Resolve a provider name through the alias table.
- * If the name is an alias it returns the canonical provider;
- * otherwise the original name is returned unchanged.
+ * 通过别名表解析提供商名称。
+ * 如果名称是别名，则返回规范的提供商；
+ * 否则原样返回原始名称。
  *
  * @example
  * resolveProvider("azure")   // "openai"
@@ -125,16 +124,15 @@ export function resolveProvider(provider: string): string {
 }
 
 /**
- * Get all canonical provider names (excludes aliases).
- * The order matches the JSON schema and is not guaranteed to be stable
- * across regenerations.
+ * 获取所有规范提供商名称（不包括别名）。
+ * 顺序与 JSON 模式一致，且不保证在重新生成时保持稳定。
  */
 export function getProviderNames(): string[] {
 	return Object.keys(modelOptionsSchema.providers);
 }
 
 /**
- * Check whether a provider is known, either as a canonical name or an alias.
+ * 检查提供商是否已知，无论是作为规范名称还是别名。
  */
 export function isKnownProvider(provider: string): boolean {
 	const resolved = resolveProvider(provider);
@@ -142,23 +140,21 @@ export function isKnownProvider(provider: string): boolean {
 }
 
 /**
- * Convert a snake_case segment to camelCase.
- * Only the first character after each underscore is uppercased;
- * the leading character stays lowercase.
+ * 将 snake_case 段转换为 camelCase。
+ * 仅将每个下划线后的第一个字符大写；
+ * 前导字符保持小写。
  */
 export function snakeToCamel(s: string): string {
 	return s.replace(/_([a-z0-9])/g, (_, ch: string) => ch.toUpperCase());
 }
 
 /**
- * Convert a dot-notation `json_name` into a form field key namespaced
- * under the given provider.
+ * 将点号表示法的 `json_name` 转换为给定提供商下的表单字段键。
+ * 每个由点分隔的段都从 snake_case 转换为 camelCase 并用点重新连接，
+ * 然后再加上提供商名称作为前缀。
  *
- * Each dot-separated segment is converted from snake_case to camelCase
- * and joined back with dots, then prefixed with the provider name.
- *
- * This bridges between the JSON schema (snake_case, flat `json_name`)
- * and a typical React form state tree (camelCase, dot-separated paths).
+ * 这在 JSON 模式（snake_case、扁平的 `json_name`）和
+ * 典型的 React 表单状态树（camelCase、点分隔路径）之间架起了桥梁。
  *
  * @example
  * toFormFieldKey("anthropic", "thinking.budget_tokens")
@@ -172,12 +168,12 @@ export function toFormFieldKey(provider: string, jsonName: string): string {
 	return `${provider}.${camelSegments.join(".")}`;
 }
 
-/** Get only the visible (non-hidden) fields for a provider. */
+/** 仅获取提供商的可见（非隐藏）字段。 */
 export function getVisibleProviderFields(provider: string): FieldSchema[] {
 	return getProviderFields(provider).filter((f) => !f.hidden);
 }
 
-/** Get only the visible (non-hidden) general fields. */
+/** 仅获取通用可见（非隐藏）字段。 */
 export function getVisibleGeneralFields(): FieldSchema[] {
 	return getGeneralFields().filter((f) => !f.hidden);
 }

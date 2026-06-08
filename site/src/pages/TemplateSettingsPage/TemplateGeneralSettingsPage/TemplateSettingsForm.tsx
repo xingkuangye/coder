@@ -37,11 +37,11 @@ import {
 } from "#/utils/formUtils";
 
 const MAX_DESCRIPTION_CHAR_LIMIT = 128;
-const MAX_DESCRIPTION_MESSAGE = `Please enter a description that is no longer than ${MAX_DESCRIPTION_CHAR_LIMIT} characters.`;
+const MAX_DESCRIPTION_MESSAGE = `请输入不超过 ${MAX_DESCRIPTION_CHAR_LIMIT} 个字符的描述。`;
 
 export const validationSchema = Yup.object({
-	name: nameValidator("Name"),
-	display_name: displayNameValidator("Display name"),
+	name: nameValidator("名称"),
+	display_name: displayNameValidator("显示名称"),
 	description: Yup.string().max(
 		MAX_DESCRIPTION_CHAR_LIMIT,
 		MAX_DESCRIPTION_MESSAGE,
@@ -107,11 +107,11 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 	return (
 		<HorizontalForm
 			onSubmit={form.handleSubmit}
-			aria-label="Template settings form"
+			aria-label="模板设置表单"
 		>
 			<FormSection
-				title="General info"
-				description="The name is used to identify the template in URLs and the API."
+				title="基本信息"
+				description="名称用于在 URL 和 API 中标识模板。"
 			>
 				<FormFields>
 					<TextField
@@ -120,21 +120,21 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						onChange={onChangeTrimmed(form)}
 						autoFocus
 						fullWidth
-						label="Name"
+						label="名称"
 					/>
 				</FormFields>
 			</FormSection>
 
 			<FormSection
-				title="Display info"
-				description="A friendly name, description, and icon to help developers identify your template."
+				title="显示信息"
+				description="友好的名称、描述和图标，帮助开发者识别您的模板。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("display_name")}
 						disabled={isSubmitting}
 						fullWidth
-						label="Display name"
+						label="显示名称"
 					/>
 
 					<TextField
@@ -144,7 +144,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						multiline
 						disabled={isSubmitting}
 						fullWidth
-						label="Description"
+						label="描述"
 						rows={2}
 					/>
 
@@ -153,15 +153,15 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						disabled={isSubmitting}
 						onChange={onChangeTrimmed(form)}
 						fullWidth
-						label="Icon"
+						label="图标"
 						onPickEmoji={(value) => form.setFieldValue("icon", value)}
 					/>
 				</FormFields>
 			</FormSection>
 
 			<FormSection
-				title="Operations"
-				description="Regulate actions allowed on workspaces created from this template."
+				title="操作"
+				description="管理从此模板创建的工作区可执行的操作。"
 			>
 				<FormFields className="gap-12">
 					<FormControlLabel
@@ -177,13 +177,11 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						}
 						label={
 							<StackLabel>
-								Allow users to cancel in-progress workspace jobs.
+								允许用户取消进行中的工作区任务。
 								<StackLabelHelperText>
-									Depending on your template, canceling builds may leave
-									workspaces in an unhealthy state. This option isn&apos;t
-									recommended for most use cases.{" "}
+									根据您的模板，取消构建可能导致工作区处于不健康状态。不推荐大多数用例使用此选项。{" "}
 									<strong>
-										If checked, users may be able to corrupt their workspace.
+										如果勾选，用户可能会损坏其工作区。
 									</strong>
 								</StackLabelHelperText>
 							</StackLabel>
@@ -205,20 +203,19 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						}
 						label={
 							<StackLabel>
-								Require workspaces automatically update when started.
+								要求工作区启动时自动更新。
 								<StackLabelHelperText>
 									<span>
-										Workspaces that are manually started or auto-started will
-										use the active template version.{" "}
+										手动启动或自动启动的工作区将使用活动模板版本。{" "}
 										<strong>
-											This setting is not enforced for template admins.
+											此设置对模板管理员不强制执行。
 										</strong>
 									</span>
 
 									{!advancedSchedulingEnabled && (
 										<div className="flex flex-row gap-4 items-center mt-4">
 											<PremiumBadge />
-											<span>Premium license required to be enabled.</span>
+											<span>需要高级许可证才能启用。</span>
 										</div>
 									)}
 								</StackLabelHelperText>
@@ -244,15 +241,11 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						label={
 							<StackLabel>
 								<span className="flex flex-row gap-2">
-									Enable dynamic parameters for workspace creation (recommended)
+									为工作区创建启用动态参数（推荐）
 								</span>
 								<StackLabelHelperText>
 									<div>
-										The dynamic workspace form allows you to design your
-										template with additional form types and identity-aware
-										conditional parameters. This is the default option for new
-										templates. The classic workspace creation flow will be
-										deprecated in a future release.
+										动态工作区表单允许您使用其他表单类型和身份感知条件参数来设计模板。这是新模板的默认选项。经典工作区创建流程将在未来版本中弃用。
 									</div>
 									<Link
 										className="text-xs"
@@ -260,7 +253,7 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 											"/admin/templates/extending-templates/dynamic-parameters",
 										)}
 									>
-										Learn more
+										了解更多
 									</Link>
 								</StackLabelHelperText>
 							</StackLabel>
@@ -279,13 +272,11 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 						}
 						label={
 							<StackLabel>
-								Disable Terraform module caching
+								禁用 Terraform 模块缓存
 								<StackLabelHelperText>
-									When checked, Terraform modules are re-downloaded for each
-									workspace build instead of using cached versions.{" "}
+									勾选后，每次工作区构建都会重新下载 Terraform 模块，而非使用缓存版本。{" "}
 									<strong>
-										Warning: This makes workspace builds less predictable and is
-										not recommended for production templates.
+										警告：这会使工作区构建变得不可预测，不推荐用于生产模板。
 									</strong>
 								</StackLabelHelperText>
 							</StackLabel>
@@ -295,28 +286,28 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 			</FormSection>
 
 			<FormSection
-				title="Deprecate"
-				description="Deprecating a template prevents any new workspaces from being created. Existing workspaces will continue to function."
+				title="弃用"
+				description="弃用模板会阻止创建任何新工作区。现有工作区将继续运行。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("deprecation_message", {
 							helperText:
-								"Leave the message empty to keep the template active. Any message provided will mark the template as deprecated. Use this message to inform users of the deprecation and how to migrate to a new template.",
+								"留空消息以保持模板处于活动状态。提供任何消息都会将模板标记为已弃用。使用此消息通知用户弃用信息以及如何迁移到新模板。",
 						})}
 						disabled={
 							isSubmitting || (!template.deprecated && !accessControlEnabled)
 						}
 						fullWidth
-						label="Deprecation Message"
+						label="弃用消息"
 					/>
 					{!accessControlEnabled && (
 						<div className="flex flex-row gap-4 items-center">
 							<PremiumBadge />
 							<FormHelperText>
-								Premium license required to deprecate templates.
+								需要高级许可证才能弃用模板。
 								{template.deprecated &&
-									" You cannot change the message, but you may remove it to mark this template as no longer deprecated."}
+									" 您无法更改消息，但可以将其删除以将此模板标记为不再弃用。"}
 							</FormHelperText>
 						</div>
 					)}
@@ -324,17 +315,14 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 			</FormSection>
 
 			<FormSection
-				title="Port Sharing"
-				description="Shared ports with the Public sharing level can be accessed by anyone,
-          while ports with the Authenticated sharing level can only be accessed
-          by authenticated Coder users. Ports with the Owner sharing level can
-          only be accessed by the workspace owner."
+				title="端口共享"
+				description="具有 Public 共享级别的共享端口任何人都可以访问，而具有 Authenticated 共享级别的端口只能由经过身份验证的 Coder 用户访问。具有 Owner 共享级别的端口只能由工作区所有者访问。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("max_port_share_level", {
 							helperText:
-								"The maximum level of port sharing allowed for workspaces.",
+								"允许工作区使用的最大端口共享级别。",
 						})}
 						disabled={isSubmitting || !portSharingControlsEnabled}
 						fullWidth
@@ -344,18 +332,18 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 								? form.values.max_port_share_level
 								: "public"
 						}
-						label="Maximum Port Sharing Level"
+						label="最大端口共享级别"
 					>
-						<MenuItem value="owner">Owner</MenuItem>
-						<MenuItem value="organization">Organization</MenuItem>
-						<MenuItem value="authenticated">Authenticated</MenuItem>
-						<MenuItem value="public">Public</MenuItem>
+						<MenuItem value="owner">所有者</MenuItem>
+						<MenuItem value="organization">组织</MenuItem>
+						<MenuItem value="authenticated">已认证</MenuItem>
+						<MenuItem value="public">公共</MenuItem>
 					</TextField>
 					{!portSharingControlsEnabled && (
 						<div className="flex flex-row gap-4 items-center">
 							<PremiumBadge />
 							<FormHelperText>
-								Premium license required to control max port sharing level.
+								需要高级许可证才能控制最大端口共享级别。
 							</FormHelperText>
 						</div>
 					)}
@@ -363,35 +351,35 @@ export const TemplateSettingsForm: FC<TemplateSettingsForm> = ({
 			</FormSection>
 
 			<FormSection
-				title="CORS Behavior"
-				description="Control how Cross-Origin Resource Sharing (CORS) requests are handled for all shared ports."
+				title="CORS 行为"
+				description="控制如何处理所有共享端口的跨域资源共享 (CORS) 请求。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("cors_behavior", {
 							helperText:
-								"Use Passthru to bypass Coder's built-in CORS protection.",
+								"使用 Passthru 绕过 Coder 内置的 CORS 保护。",
 						})}
 						disabled={isSubmitting}
 						fullWidth
 						select
 						value={form.values.cors_behavior}
-						label="CORS Behavior"
+						label="CORS 行为"
 					>
-						<MenuItem value="simple">Simple (recommended)</MenuItem>
-						<MenuItem value="passthru">Passthru</MenuItem>
+						<MenuItem value="simple">简单（推荐）</MenuItem>
+						<MenuItem value="passthru">直通</MenuItem>
 					</TextField>
 				</FormFields>
 			</FormSection>
 
 			<FormFooter>
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 
 				<Button type="submit" disabled={isSubmitting}>
 					<Spinner loading={isSubmitting} />
-					Save
+					保存
 				</Button>
 			</FormFooter>
 		</HorizontalForm>

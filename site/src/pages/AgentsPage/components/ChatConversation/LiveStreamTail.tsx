@@ -78,7 +78,7 @@ export const LiveStreamTailContent = ({
 		>
 			{shouldRenderEmptyState && (
 				<div className="py-12 text-center text-content-secondary">
-					<p className="text-sm">Start a conversation with your agent.</p>
+					<p className="text-sm">开始与你的智能体对话。</p>
 				</div>
 			)}
 			{shouldRenderStreamSection && (
@@ -98,7 +98,7 @@ export const LiveStreamTailContent = ({
 					severity="info"
 					actions={
 						<Button asChild size="sm">
-							<Link to="/agents/analytics">View usage</Link>
+							<Link to="/agents/analytics">查看使用情况</Link>
 						</Button>
 					}
 				>

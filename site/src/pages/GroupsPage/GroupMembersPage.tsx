@@ -77,12 +77,12 @@ const GroupMembersPage: FC = () => {
 				)}
 			</div>
 
-			<PaginationContainer query={membersQuery} paginationUnitLabel="members">
+			<PaginationContainer query={membersQuery} paginationUnitLabel="成员">
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead className="w-2/5">User</TableHead>
-							<TableHead className="w-3/5">Status</TableHead>
+							<TableHead className="w-2/5">用户</TableHead>
+							<TableHead className="w-3/5">状态</TableHead>
 							<TableHead className="w-auto" />
 						</TableRow>
 					</TableHeader>
@@ -91,7 +91,7 @@ const GroupMembersPage: FC = () => {
 						{members.length === 0 ? (
 							<TableRow>
 								<TableCell colSpan={999}>
-									<EmptyState message="No members found" />
+									<EmptyState message="未找到成员" />
 								</TableCell>
 							</TableRow>
 						) : (
@@ -107,10 +107,10 @@ const GroupMembersPage: FC = () => {
 											userId: member.id,
 										});
 										toast.promise(mutation, {
-											loading: `Removing member "${member.username}" from "${groupData.name}"...`,
-											success: `Member "${member.username}" has been removed from "${groupData.name}" successfully.`,
+											loading: `正在从「${groupData.name}」中移除成员「${member.username}」...`,
+											success: `已成功从「${groupData.name}」中移除成员「${member.username}」。`,
 											error: (error) => ({
-												message: `Failed to remove member "${member.username}" from "${groupData.name}".`,
+												message: `从「${groupData.name}」中移除成员「${member.username}」失败。`,
 												description: getErrorDetail(error),
 											}),
 										});
@@ -150,7 +150,7 @@ const AddUsersDialog: FC<AddUsersDialogProps> = ({
 		<>
 			<Button size="lg" onClick={() => setAddUserDialogOpen(true)}>
 				<UserPlusIcon />
-				Add users
+				添加用户
 			</Button>
 			<Dialog
 				open={addUserDialogOpen}
@@ -165,7 +165,7 @@ const AddUsersDialog: FC<AddUsersDialogProps> = ({
 					className="max-w-md gap-4 border-border-default bg-surface-primary p-8 text-content-primary"
 				>
 					<DialogTitle className="font-semibold text-content-primary">
-						Add user(s)
+						添加用户
 					</DialogTitle>
 					<MultiMemberSelect
 						organizationId={organizationId}
@@ -186,7 +186,7 @@ const AddUsersDialog: FC<AddUsersDialogProps> = ({
 							onClick={closeDialog}
 							disabled={submitting}
 						>
-							Cancel
+							取消
 						</Button>
 						<Button
 							disabled={submitting || selected.length === 0}
@@ -197,7 +197,7 @@ const AddUsersDialog: FC<AddUsersDialogProps> = ({
 									closeDialog();
 								} catch (error) {
 									toast.error(
-										getErrorMessage(error, "Failed to add members."),
+										getErrorMessage(error, "添加成员失败。"),
 										{
 											description: getErrorDetail(error),
 										},
@@ -208,7 +208,7 @@ const AddUsersDialog: FC<AddUsersDialogProps> = ({
 							}}
 						>
 							<Spinner loading={submitting} />
-							Add users
+							添加用户
 						</Button>
 					</DialogFooter>
 				</DialogContent>
@@ -243,7 +243,7 @@ const GroupMemberRow: FC<GroupMemberRowProps> = ({
 					}
 					title={member.username}
 					subtitle={
-						member.is_service_account ? "Service Account" : member.email
+						member.is_service_account ? "服务账号" : member.email
 					}
 				/>
 			</TableCell>
@@ -261,9 +261,9 @@ const GroupMemberRow: FC<GroupMemberRowProps> = ({
 				{canUpdate && (
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button size="icon-lg" variant="subtle" aria-label="Open menu">
+							<Button size="icon-lg" variant="subtle" aria-label="打开菜单">
 								<EllipsisVerticalIcon aria-hidden="true" />
-								<span className="sr-only">Open menu</span>
+								<span className="sr-only">打开菜单</span>
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
@@ -272,7 +272,7 @@ const GroupMemberRow: FC<GroupMemberRowProps> = ({
 								onClick={onRemove}
 								disabled={group.id === group.organization_id}
 							>
-								Remove
+								移除
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>

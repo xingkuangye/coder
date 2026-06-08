@@ -26,7 +26,7 @@ export const FullPageHorizontalForm: FC<FullPageHorizontalFormProps> = ({
 				actions={
 					onCancel && (
 						<Button variant="outline" onClick={onCancel}>
-							Cancel
+							取消
 						</Button>
 					)
 				}

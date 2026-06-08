@@ -1,6 +1,6 @@
 import type { ChangeTypes } from "@pierre/diffs";
 
-/** Maps a diff change type to a Tailwind text-color class. */
+/** 将差异更改类型映射到 Tailwind 文本颜色类。 */
 export function changeColor(type?: ChangeTypes): string | undefined {
 	switch (type) {
 		case "new":
@@ -17,7 +17,7 @@ export function changeColor(type?: ChangeTypes): string | undefined {
 	}
 }
 
-/** Short letter shown after the filename, matching VS Code style. */
+/** 文件名后显示的简短字母，与 VS Code 风格一致。 */
 export function changeLabel(type: ChangeTypes): string {
 	switch (type) {
 		case "new":

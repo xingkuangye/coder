@@ -34,7 +34,7 @@ const TemplateSchedulePage: FC = () => {
 				queryKey: templateByNameKey(organizationName, templateName),
 			});
 			toast.success(
-				`Template "${template.name}" schedule updated successfully.`,
+				`模板“${template.name}”调度已成功更新。`,
 			);
 			// clear browser storage of workspaces impending deletion
 			localStorage.removeItem("dismissedWorkspaceList"); // workspaces page
@@ -44,7 +44,7 @@ const TemplateSchedulePage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(template.name, "Schedule")}</title>
+			<title>{pageTitle(template.name, "调度")}</title>
 
 			<TemplateSchedulePageView
 				allowAdvancedScheduling={allowAdvancedScheduling}

@@ -59,8 +59,8 @@ export function useAgentLogs(
 
 		socket.addEventListener("error", (error) => {
 			console.error("Error in agent log socket: ", error);
-			toast.error(`Unable to watch "${agentId}" agent logs.`, {
-				description: "Please try refreshing the browser.",
+			toast.error(`无法监视 "${agentId}" 的代理日志。`, {
+				description: "请尝试刷新浏览器。",
 			});
 			socket.close();
 		});

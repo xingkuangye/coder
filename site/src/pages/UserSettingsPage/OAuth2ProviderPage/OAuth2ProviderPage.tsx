@@ -24,7 +24,7 @@ const OAuth2ProviderPage: FC = () => {
 	return (
 		<>
 			<SettingsHeader>
-				<SettingsHeaderTitle>OAuth2 Applications</SettingsHeaderTitle>
+				<SettingsHeaderTitle>OAuth2 应用程序</SettingsHeaderTitle>
 			</SettingsHeader>
 			<OAuth2ProviderPageView
 				isLoading={userOAuth2AppsQuery.isLoading}
@@ -36,25 +36,25 @@ const OAuth2ProviderPage: FC = () => {
 			/>
 			{appToRevoke !== undefined && (
 				<DeleteDialog
-					title="Revoke Application"
-					verb="Revoking"
-					info={`This will invalidate any tokens created by the OAuth2 application "${appToRevoke.name}".`}
-					label="Name of the application to revoke"
+					title="撤销应用程序"
+					verb="撤销中"
+					info={`这将使 OAuth2 应用程序 "${appToRevoke.name}" 创建的所有令牌失效。`}
+					label="要撤销的应用程序名称"
 					isOpen
 					confirmLoading={revokeAppMutation.isPending}
 					name={appToRevoke.name}
-					entity="application"
+					entity="应用程序"
 					onCancel={() => setAppIdToRevoke(undefined)}
 					onConfirm={async () => {
 						try {
 							await revokeAppMutation.mutateAsync(appToRevoke.id);
 							toast.success(
-								`OAuth2 application "${appToRevoke.name}" revoked successfully.`,
+								`OAuth2 应用程序 "${appToRevoke.name}" 已成功撤销。`,
 							);
 							setAppIdToRevoke(undefined);
 						} catch (error) {
 							toast.error(
-								getErrorMessage(error, "Failed to revoke application."),
+								getErrorMessage(error, "撤销应用程序失败。"),
 								{
 									description: getErrorDetail(error),
 								},

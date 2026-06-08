@@ -65,27 +65,27 @@ export const AnnouncementBannerSettings: FC<
 			<div className="mt-8 overflow-hidden rounded-lg border border-solid border-border">
 				<div className="p-6">
 					<div className="flex items-center justify-between gap-4">
-						<h3 className="m-0 text-xl font-semibold">Announcement Banners</h3>
+						<h3 className="m-0 text-xl font-semibold">公告横幅</h3>
 						<Button
 							disabled={!isEntitled}
 							onClick={() => addBanner()}
 							variant="outline"
 						>
 							<PlusIcon />
-							New
+							新增
 						</Button>
 					</div>
 					<div className="mt-2 text-sm text-content-secondary">
-						Display message banners to all users.
+						向所有用户显示消息横幅。
 					</div>
 
 					<div className="pt-4 text-sm">
 						<Table>
 							<TableHeader>
 								<TableRow>
-									<TableHead className="w-[1%]">Enabled</TableHead>
-									<TableHead>Message</TableHead>
-									<TableHead className="w-[2%]">Color</TableHead>
+									<TableHead className="w-[1%]">已启用</TableHead>
+									<TableHead>消息</TableHead>
+									<TableHead className="w-[2%]">颜色</TableHead>
 									<TableHead className="w-[1%]" />
 								</TableRow>
 							</TableHeader>
@@ -94,7 +94,7 @@ export const AnnouncementBannerSettings: FC<
 									<TableCell colSpan={999}>
 										<EmptyState
 											className="min-h-[160px]"
-											message="No announcement banners"
+											message="暂无公告横幅"
 										/>
 									</TableCell>
 								) : (
@@ -122,11 +122,7 @@ export const AnnouncementBannerSettings: FC<
 					<footer className="bg-surface-secondary px-6 py-4 text-sm">
 						<div className="text-content-secondary">
 							<p>
-								Your license does not include Service Banners.{" "}
-								<Link href="mailto:sales@coder.com" showExternalIcon={false}>
-									Contact sales
-								</Link>{" "}
-								to learn more.
+								您的许可证不包含服务横幅。<Link href="mailto:sales@coder.com" showExternalIcon={false}>联系销售</Link>以了解更多。
 							</p>
 						</div>
 					</footer>
@@ -149,7 +145,7 @@ export const AnnouncementBannerSettings: FC<
 				<ConfirmDialog
 					type="delete"
 					open
-					title="Delete this banner?"
+					title="删除此横幅？"
 					description={deletingBanner.message}
 					onClose={() => setDeletingBannerId(null)}
 					onConfirm={async () => {

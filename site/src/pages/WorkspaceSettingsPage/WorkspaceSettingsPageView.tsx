@@ -22,7 +22,7 @@ export const WorkspaceSettingsPageView: FC<WorkspaceSettingsPageViewProps> = ({
 	return (
 		<>
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>Workspace Settings</PageHeaderTitle>
+				<PageHeaderTitle>工作区设置</PageHeaderTitle>
 			</PageHeader>
 
 			<WorkspaceSettingsForm

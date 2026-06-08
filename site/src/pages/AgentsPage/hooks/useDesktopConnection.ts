@@ -124,7 +124,7 @@ export function useDesktopConnection({
 	const { copyToClipboard: syncRemoteClipboardToLocal } = useClipboard({
 		onError: () => {
 			toast.error(
-				"Failed to sync the remote clipboard to your local clipboard.",
+				"无法将远程剪贴板同步到本地剪贴板。",
 			);
 		},
 	});
@@ -323,7 +323,7 @@ export function useDesktopConnection({
 							});
 							if (permStatus.state === "denied") {
 								toast.error(
-									"Clipboard permission denied. Allow clipboard access in your browser settings to paste.",
+									"剪贴板权限被拒绝。请在浏览器设置中允许剪贴板访问以进行粘贴。",
 								);
 								return;
 							}

@@ -8,24 +8,24 @@ import type { WorkspaceAgent } from "#/api/typesGenerated";
  */
 export const agentScriptMessages = {
 	start_error: {
-		title: "Startup script failed",
+		title: "启动脚本失败",
 		detail:
-			"A startup script exited with an error. Check the agent logs for details.",
+			"启动脚本以错误退出。请检查代理日志了解详情。",
 	},
 	start_timeout: {
-		title: "Startup script is taking longer than expected",
+		title: "启动脚本花费的时间比预期长",
 		detail:
-			"A startup script has exceeded the expected time. Check the agent logs for details.",
+			"启动脚本已超过预期时间。请检查代理日志了解详情。",
 	},
 	shutdown_error: {
-		title: "Shutdown script failed",
+		title: "关闭脚本失败",
 		detail:
-			"A shutdown script exited with an error. Check the agent logs for details.",
+			"关闭脚本以错误退出。请检查代理日志了解详情。",
 	},
 	shutdown_timeout: {
-		title: "Shutdown script is taking longer than expected",
+		title: "关闭脚本花费的时间比预期长",
 		detail:
-			"A shutdown script has exceeded the expected time. Check the agent logs for details.",
+			"关闭脚本已超过预期时间。请检查代理日志了解详情。",
 	},
 } as const;
 
@@ -35,19 +35,19 @@ export const agentScriptMessages = {
  */
 export const agentConnectionMessages = {
 	connecting: {
-		title: "Workspace agent is connecting",
+		title: "工作区代理正在连接",
 		detail:
-			"The workspace agent has not connected yet. Wait for it to connect or check the logs if it does not.",
+			"工作区代理尚未连接。请等待其连接，或者如果未连接则检查日志。",
 	},
 	timeout: {
-		title: "Agent is taking longer than expected to connect",
+		title: "代理连接花费的时间比预期长",
 		detail:
-			"Continue to wait and check the log output for errors. If agents do not connect, try restarting the workspace.",
+			"继续等待并检查日志输出中的错误。如果代理未连接，请尝试重新启动工作区。",
 	},
 	disconnected: {
-		title: "Workspace agent has disconnected",
+		title: "工作区代理已断开连接",
 		detail:
-			"Check the log output for errors. If agents do not reconnect, try restarting the workspace.",
+			"检查日志输出中的错误。如果代理未重新连接，请尝试重新启动工作区。",
 	},
 } as const;
 
@@ -93,8 +93,8 @@ export function getAgentHealthIssues(
 		agent.lifecycle_state === "shutdown_timeout"
 	) {
 		issues.push({
-			title: "Workspace agent is shutting down",
-			detail: "The workspace is not available while agents shut down.",
+			title: "工作区代理正在关闭",
+			detail: "代理关闭期间，工作区不可用。",
 			severity: "info",
 			prominent: false,
 		});
@@ -107,8 +107,8 @@ export function getAgentHealthIssues(
 		switch (script.status) {
 			case "timed_out":
 				issues.push({
-					title: `"${script.display_name}" is taking longer than expected`,
-					detail: `"${script.display_name}" has exceeded the expected time. Check the agent logs for details.`,
+					title: `"${script.display_name}" 花费的时间比预期长`,
+					detail: `"${script.display_name}" 已超过预期时间。请检查代理日志了解详情。`,
 					severity: "warning",
 					prominent: false,
 				});
@@ -116,15 +116,15 @@ export function getAgentHealthIssues(
 			case "exit_failure":
 				if (script.exit_code) {
 					issues.push({
-						title: `"${script.display_name}" failed`,
-						detail: `"${script.display_name}" exited with ${script.exit_code}. Check the agent logs for details.`,
+						title: `"${script.display_name}" 失败`,
+						detail: `"${script.display_name}" 以代码 ${script.exit_code} 退出。请检查代理日志了解详情。`,
 						severity: "warning",
 						prominent: false,
 					});
 				} else {
 					issues.push({
-						title: `"${script.display_name}" failed`,
-						detail: `"${script.display_name}" has exited with an error. Check the agent logs for details.`,
+						title: `"${script.display_name}" 失败`,
+						detail: `"${script.display_name}" 已因错误退出。请检查代理日志了解详情。`,
 						severity: "warning",
 						prominent: false,
 					});
@@ -132,8 +132,8 @@ export function getAgentHealthIssues(
 				break;
 			case "pipes_left_open":
 				issues.push({
-					title: `"${script.display_name}" left pipes open`,
-					detail: "Check the agent logs for details.",
+					title: `"${script.display_name}" 留有未关闭的管道`,
+					detail: "请检查代理日志了解详情。",
 					severity: "warning",
 					prominent: false,
 				});

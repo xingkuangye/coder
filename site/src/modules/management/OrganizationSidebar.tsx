@@ -5,7 +5,7 @@ import { useOrganizationSettings } from "#/modules/management/OrganizationSettin
 import { OrganizationSidebarView } from "./OrganizationSidebarView";
 
 /**
- * Sidebar for the OrganizationSettingsLayout
+ * OrganizationSettingsLayout 的侧边栏
  */
 export const OrganizationSidebar: FC = () => {
 	const { permissions } = useAuthenticated();

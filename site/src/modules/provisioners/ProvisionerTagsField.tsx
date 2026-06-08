@@ -56,15 +56,15 @@ export const ProvisionerTagsField: FC<ProvisionerTagsFieldProps> = ({
 
 const newTagSchema = Yup.object({
 	key: Yup.string()
-		.required("Key is required")
-		.notOneOf(["owner"], "Cannot override owner tag"),
+		.required("键名必填")
+		.notOneOf(["owner"], "无法覆盖 owner 标签"),
 	value: Yup.string()
-		.required("Value is required")
+		.required("值必填")
 		.when("key", ([key], schema) => {
 			if (key === "scope") {
 				return schema.oneOf(
 					["organization", "scope"],
-					"Scope value must be 'organization' or 'user'",
+					"范围值必须为 'organization' 或 'user'",
 				);
 			}
 
@@ -117,27 +117,27 @@ const NewTagControl: FC<NewTagControlProps> = ({ onAdd }) => {
 		<div className="flex flex-col gap-1 max-w-72">
 			<div className="flex items-center gap-2">
 				<label className="sr-only" htmlFor="tag-key-input">
-					Tag key
+					标签键
 				</label>
 				<TextField
 					inputRef={keyInputRef}
 					size="small"
 					id="tag-key-input"
 					name="key"
-					placeholder="Key"
+					placeholder="键名"
 					value={newTag.key}
 					onChange={(e) => setNewTag({ ...newTag, key: e.target.value.trim() })}
 					onKeyDown={addNewTagOnEnter}
 				/>
 
 				<label className="sr-only" htmlFor="tag-value-input">
-					Tag value
+					标签值
 				</label>
 				<TextField
 					size="small"
 					id="tag-value-input"
 					name="value"
-					placeholder="Value"
+					placeholder="值"
 					value={newTag.value}
 					onChange={(e) =>
 						setNewTag({ ...newTag, value: e.target.value.trim() })
@@ -152,7 +152,7 @@ const NewTagControl: FC<NewTagControlProps> = ({ onAdd }) => {
 					onClick={addNewTag}
 				>
 					<PlusIcon />
-					<span className="sr-only">Add tag</span>
+					<span className="sr-only">添加标签</span>
 				</Button>
 			</div>
 			{error && (

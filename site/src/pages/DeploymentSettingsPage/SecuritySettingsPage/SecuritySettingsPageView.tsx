@@ -36,9 +36,9 @@ export const SecuritySettingsPageView: FC<SecuritySettingsPageViewProps> = ({
 		<div className="flex flex-col gap-12">
 			<div>
 				<SettingsHeader>
-					<SettingsHeaderTitle>Security</SettingsHeaderTitle>
+					<SettingsHeaderTitle>安全</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Ensure your Coder deployment is secure.
+						确保您的 Coder 部署是安全的。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -61,11 +61,10 @@ export const SecuritySettingsPageView: FC<SecuritySettingsPageViewProps> = ({
 					}
 				>
 					<SettingsHeaderTitle level="h2" hierarchy="secondary">
-						Browser-Only Connections
+						仅限浏览器连接
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Block all workspace access via SSH, port forward, and other
-						non-browser connections.
+						阻止所有通过 SSH、端口转发和其他非浏览器连接的工作区访问。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -82,7 +81,7 @@ export const SecuritySettingsPageView: FC<SecuritySettingsPageViewProps> = ({
 							TLS
 						</SettingsHeaderTitle>
 						<SettingsHeaderDescription>
-							Ensure TLS is properly configured for your Coder deployment.
+							确保为您的 Coder 部署正确配置了 TLS。
 						</SettingsHeaderDescription>
 					</SettingsHeader>
 

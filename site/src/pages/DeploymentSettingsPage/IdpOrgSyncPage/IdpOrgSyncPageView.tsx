@@ -160,7 +160,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 					<div className="flex flex-row">
 						<div className="grid items-center gap-1">
 							<Label className="text-sm" htmlFor={`${id}-sync-field`}>
-								Organization sync field
+								组织同步字段
 							</Label>
 							<div className="flex flex-row items-center gap-5">
 								<div className="flex flex-row gap-2 w-72">
@@ -182,7 +182,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 										}}
 									>
 										<Spinner loading={form.isSubmitting} />
-										Save
+										保存
 									</Button>
 								</div>
 								<div className="flex flex-row items-center gap-3">
@@ -203,14 +203,14 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 									/>
 									<span className="flex flex-row items-center gap-1">
 										<Label htmlFor={`${id}-assign-default-org`}>
-											Assign Default Organization
+											分配默认组织
 										</Label>
 										<AssignDefaultOrgHelpPopover />
 									</span>
 								</div>
 							</div>
 							<p className="text-content-secondary text-2xs m-0">
-								If empty, organization sync is deactivated
+								如果为空，组织同步将被停用
 							</p>
 						</div>
 					</div>
@@ -223,7 +223,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 						<div className="flex flex-row pt-8 gap-2 justify-between items-start">
 							<div className="grid items-center gap-1 w-72">
 								<Label className="text-sm" htmlFor={`${id}-idp-org-name`}>
-									IdP organization name
+									IdP 组织名称
 								</Label>
 
 								{claimFieldValues ? (
@@ -241,14 +241,14 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 														? { label: idpOrgName, value: idpOrgName }
 														: undefined
 												}
-												placeholder="Select IdP organization"
+												placeholder="选择 IdP 组织"
 											/>
 										</ComboboxTrigger>
 										<ComboboxContent className="w-72">
 											<ComboboxInput
 												value={inputValue}
 												onValueChange={setInputValue}
-												placeholder="Search..."
+												placeholder="搜索..."
 												onKeyDown={handleKeyDown}
 											/>
 											<ComboboxList>
@@ -283,7 +283,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 							</div>
 							<div className="grid items-center gap-1 flex-1">
 								<Label className="text-sm" htmlFor={`${id}-coder-org`}>
-									Coder organization
+									Coder 组织
 								</Label>
 								<MultiSelectCombobox
 									inputProps={{
@@ -297,10 +297,10 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 										value: org.id,
 									}))}
 									hidePlaceholderWhenSelected
-									placeholder="Select organization"
+									placeholder="选择组织"
 									emptyIndicator={
 										<p className="text-center text-md text-content-primary">
-											No organizations found
+											未找到组织
 										</p>
 									}
 								/>
@@ -328,7 +328,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 									<Spinner loading={form.isSubmitting}>
 										<PlusIcon />
 									</Spinner>
-									Add IdP organization
+									添加 IdP 组织
 								</Button>
 							</div>
 						</div>
@@ -361,17 +361,15 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 				<DialogContent className="flex flex-col gap-12 max-w-lg">
 					<DialogHeader className="flex flex-col gap-4">
 						<DialogTitle>
-							Switch off default organization assignment
+							关闭默认组织分配
 						</DialogTitle>
 						<DialogDescription>
-							Warning: This will remove all users from the default organization
-							unless otherwise specified in an organization mapping defined
-							below.
+							警告：这将从默认组织中移除所有用户，除非在下面定义的组织映射中另有指定。
 						</DialogDescription>
 					</DialogHeader>
 					<DialogFooter className="flex flex-row">
 						<Button variant="outline" onClick={() => setIsDialogOpen(false)}>
-							Cancel
+							取消
 						</Button>
 						<Button
 							onClick={() => {
@@ -382,7 +380,7 @@ export const IdpOrgSyncPageView: FC<IdpSyncPageViewProps> = ({
 							type="submit"
 						>
 							<Spinner loading={form.isSubmitting} />
-							Confirm
+							确认
 						</Button>
 					</DialogFooter>
 				</DialogContent>
@@ -401,8 +399,8 @@ const IdpMappingTable: FC<IdpMappingTableProps> = ({ isEmpty, children }) => {
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-2/5">IdP organization</TableHead>
-					<TableHead className="w-3/5">Coder organization</TableHead>
+					<TableHead className="w-2/5">IdP 组织</TableHead>
+					<TableHead className="w-3/5">Coder 组织</TableHead>
 					<TableHead className="w-auto" />
 				</TableRow>
 			</TableHeader>
@@ -411,11 +409,11 @@ const IdpMappingTable: FC<IdpMappingTableProps> = ({ isEmpty, children }) => {
 					<TableRow>
 						<TableCell colSpan={999}>
 							<EmptyState
-								message="No organization mappings"
+								message="无组织映射"
 								isCompact
 								cta={
 									<Link href={docs("/admin/users/idp-sync#organization-sync")}>
-										How to set up IdP organization sync
+										如何设置 IdP 组织同步
 									</Link>
 								}
 							/>
@@ -458,9 +456,7 @@ const OrganizationRow: FC<OrganizationRowProps> = ({
 								sideOffset={8}
 								className="p-2 text-xs text-content-secondary max-w-sm"
 							>
-								This value has not be seen in the specified claim field before.
-								You might want to check your IdP configuration and ensure that
-								this value is not misspelled.
+								此前未在指定的声明字段中看到该值。您可能需要检查 IdP 配置，确保该值没有拼写错误。
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -474,11 +470,11 @@ const OrganizationRow: FC<OrganizationRowProps> = ({
 					variant="outline"
 					size="icon"
 					className="text-content-primary"
-					aria-label="delete"
+					aria-label="删除"
 					onClick={() => onDelete(idpOrg)}
 				>
 					<TrashIcon />
-					<span className="sr-only">Delete IdP mapping</span>
+					<span className="sr-only">删除 IdP 映射</span>
 				</Button>
 			</TableCell>
 		</TableRow>
@@ -491,8 +487,7 @@ const AssignDefaultOrgHelpPopover: FC = () => {
 			<HelpPopoverIconTrigger />
 			<HelpPopoverContent>
 				<HelpPopoverText>
-					Disabling will remove all users from the default organization if a
-					mapping for the default organization is not defined.
+					禁用后，如果没有为默认组织定义映射，将从默认组织中移除所有用户。
 				</HelpPopoverText>
 			</HelpPopoverContent>
 		</HelpPopover>

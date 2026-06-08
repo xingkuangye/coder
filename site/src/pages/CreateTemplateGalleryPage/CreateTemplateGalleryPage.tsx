@@ -13,7 +13,7 @@ const CreateTemplatesGalleryPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Create a Template")}</title>
+			<title>{pageTitle("创建模板")}</title>
 
 			<CreateTemplateGalleryPageView
 				error={templateExamplesQuery.error}

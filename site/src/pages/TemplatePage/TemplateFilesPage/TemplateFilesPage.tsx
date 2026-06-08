@@ -51,16 +51,15 @@ const TemplateFilesPage: FC = () => {
 
 	return (
 		<>
-			<title>{getTemplatePageTitle("Source Code", template)}</title>
+			<title>{getTemplatePageTitle("源代码", template)}</title>
 
 			{justCreated && (
 				<Alert severity="info" dismissible className="mb-6">
 					<AlertTitle className="font-semibold">
-						Awesome, you just created a new template!
+						太棒了，您刚刚创建了一个新模板！
 					</AlertTitle>
 					<AlertDescription>
-						To customize it further you can edit the Terraform or Coder Template
-						directly. You can use our template agent skill to help you.
+						要进一步自定义，您可以直接编辑 Terraform 或 Coder 模板。您可以使用我们的模板代理技能来帮助您。
 					</AlertDescription>
 					<div className="flex items-center gap-2 mt-4">
 						<Button asChild size="sm" variant="default">
@@ -70,7 +69,7 @@ const TemplateFilesPage: FC = () => {
 								rel="noopener noreferrer"
 								className="flex items-center"
 							>
-								View agent skill
+								查看代理技能
 								<ExternalLinkIcon className="size-icon-sm ml-1" />
 							</a>
 						</Button>
@@ -81,7 +80,7 @@ const TemplateFilesPage: FC = () => {
 								rel="noopener noreferrer"
 								className="flex items-center"
 							>
-								View docs
+								查看文档
 								<ExternalLinkIcon className="size-icon-sm ml-1" />
 							</a>
 						</Button>

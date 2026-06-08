@@ -122,7 +122,7 @@ export const ResizableChatsSidebarFrame = ({
 			<div
 				role="separator"
 				aria-orientation="vertical"
-				aria-label="Resize agents sidebar"
+				aria-label="调整代理侧边栏大小"
 				aria-valuemin={LEFT_SIDEBAR_MIN_WIDTH}
 				aria-valuemax={maxWidth}
 				aria-valuenow={width}

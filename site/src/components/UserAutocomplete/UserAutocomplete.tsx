@@ -203,7 +203,7 @@ const InnerAutocomplete = <T extends SelectedUser>({
 									fallback={value.username}
 								/>
 							)}
-							{value?.email ?? value?.username ?? "Select a user"}
+							{value?.email ?? value?.username ?? "选择用户"}
 						</span>
 						<ChevronDownIcon className="p-0.5" />
 					</Button>
@@ -213,7 +213,7 @@ const InnerAutocomplete = <T extends SelectedUser>({
 					shouldFilter={shouldFilter}
 				>
 					<ComboboxInput
-						placeholder="Username or email"
+						placeholder="用户名或邮箱"
 						value={inputValue}
 						onValueChange={(nextInputValue) => {
 							setInputValue(nextInputValue);
@@ -250,9 +250,9 @@ const InnerAutocomplete = <T extends SelectedUser>({
 								<Spinner size="sm" loading />
 							</div>
 						) : error ? (
-							getErrorMessage(error, "Unable to fetch users")
+							getErrorMessage(error, "无法获取用户信息")
 						) : (
-							"No users found"
+							"未找到用户"
 						)}
 					</ComboboxEmpty>
 				</ComboboxContent>

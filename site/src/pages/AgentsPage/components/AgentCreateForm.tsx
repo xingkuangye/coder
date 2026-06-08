@@ -406,7 +406,7 @@ export const AgentCreateForm: FC<AgentCreateFormProps> = ({
 		}
 		if (skippedErrors > 0) {
 			toast.warning(
-				`${skippedErrors} attachment${skippedErrors > 1 ? "s" : ""} could not be sent (upload failed)`,
+				`${skippedErrors} 个附件无法发送（上传失败）`,
 			);
 		}
 		const fileArg = fileIds.length > 0 ? fileIds : undefined;
@@ -476,7 +476,7 @@ export const AgentCreateForm: FC<AgentCreateFormProps> = ({
 								severity="info"
 								actions={
 									<Button asChild size="sm">
-										<Link to="/agents/analytics">View usage</Link>
+										<Link to="/agents/analytics">查看用量</Link>
 									</Button>
 								}
 							>
@@ -512,7 +512,7 @@ export const AgentCreateForm: FC<AgentCreateFormProps> = ({
 					<AgentChatInput
 						onSend={handleSendWithAttachments}
 						sendShortcut={sendShortcut}
-						placeholder="Ask Coder to build, fix bugs, or explore your project..."
+						placeholder="让 Coder 构建、修复错误或探索您的项目..."
 						isDisabled={
 							isCreating ||
 							isForbidden ||
@@ -562,19 +562,19 @@ export const AgentCreateForm: FC<AgentCreateFormProps> = ({
 							rel="noreferrer"
 							className="text-content-secondary/50 underline hover:text-content-secondary"
 						>
-							Introductory access
+							体验访问
 						</a>{" "}
-						to Coder Agents through September 2026
+						Coder Agents 体验有效期至 2026 年 9 月
 					</p>
 				</div>
 			</div>
 			<ConfirmDialog
 				open={pendingOrgChange !== null}
-				title="Change organization?"
-				description="Changing organization will remove your current attachments."
+				title="更改组织？"
+				description="更改组织将移除当前附件。"
 				type="info"
 				hideCancel={false}
-				confirmText="Continue"
+				confirmText="继续"
 				onConfirm={() => {
 					resetAttachments();
 					handleWorkspaceChange(null);

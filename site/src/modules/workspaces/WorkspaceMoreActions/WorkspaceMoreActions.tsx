@@ -88,7 +88,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 			toast.error(
 				getErrorMessage(
 					error,
-					`Failed to delete workspace "${workspace.name}".`,
+					`删除工作区 "${workspace.name}" 失败。`,
 				),
 				{
 					description: getErrorDetail(error),
@@ -135,7 +135,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 						disabled={disabled}
 					>
 						<EllipsisVerticalIcon aria-hidden="true" />
-						<span className="sr-only">Workspace actions</span>
+						<span className="sr-only">工作区操作</span>
 					</Button>
 				</DropdownMenuTrigger>
 
@@ -143,7 +143,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 					{onStop && (
 						<DropdownMenuItem onClick={onStop} disabled={isStopping}>
 							<SquareIcon />
-							Stop&hellip;
+							停止&hellip;
 						</DropdownMenuItem>
 					)}
 
@@ -152,7 +152,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 							to={`/@${workspace.owner_name}/${workspace.name}/settings`}
 						>
 							<SettingsIcon />
-							Settings
+							设置
 						</RouterLink>
 					</DropdownMenuItem>
 
@@ -163,7 +163,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 							}}
 						>
 							<HistoryIcon />
-							Change version&hellip;
+							更改版本&hellip;
 						</DropdownMenuItem>
 					)}
 
@@ -172,12 +172,12 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 						disabled={!isDuplicationReady}
 					>
 						<CopyIcon />
-						Duplicate&hellip;
+						复制&hellip;
 					</DropdownMenuItem>
 
 					<DropdownMenuItem onClick={() => setIsDownloadDialogOpen(true)}>
 						<DownloadIcon />
-						Download logs&hellip;
+						下载日志&hellip;
 					</DropdownMenuItem>
 
 					<DropdownMenuSeparator />
@@ -190,7 +190,7 @@ export const WorkspaceMoreActions: FC<WorkspaceMoreActionsProps> = ({
 						data-testid="delete-button"
 					>
 						<TrashIcon />
-						Delete&hellip;
+						删除&hellip;
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>

@@ -6,28 +6,28 @@ export type ScopedSlimRole = SlimRole & {
 
 export const roleDescriptions: Record<string, string> = {
 	owner:
-		"Owner can manage all resources, including users, groups, templates, and workspaces.",
-	"user-admin": "User admin can manage all users and groups.",
-	"template-admin": "Template admin can manage all templates and workspaces.",
-	auditor: "Auditor can access the audit logs.",
-	"agents-access": "Grants access to Coder Agents chat.",
+		"拥有者可以管理所有资源，包括用户、组、模板和工作区。",
+	"user-admin": "用户管理员可以管理所有用户和组。",
+	"template-admin": "模板管理员可以管理所有模板和工作区。",
+	auditor: "审计员可以访问审计日志。",
+	"agents-access": "授予访问 Coder Agents 聊天的权限。",
 	"organization-admin":
-		"Organization admin can manage all resources within this organization.",
+		"组织管理员可以管理此组织内的所有资源。",
 	"organization-user-admin":
-		"Organization user admin can manage members and groups within this organization.",
+		"组织用户管理员可以管理此组织内的成员和组。",
 	"organization-template-admin":
-		"Organization template admin can manage templates and workspaces within this organization.",
+		"组织模板管理员可以管理此组织内的模板和工作区。",
 	"organization-auditor":
-		"Organization auditor can access audit logs for this organization.",
+		"组织审计员可以访问此组织的审计日志。",
 	"organization-workspace-creation-ban":
-		"Prevents this user from creating new workspaces in this organization.",
+		"禁止此用户在此组织中创建新工作区。",
 	member:
-		"Everybody is a member. This is a shared and default role for all users.",
+		"每个人都是成员。这是所有用户的共享默认角色。",
 };
 
 export const memberRole: ScopedSlimRole = {
 	name: "member",
-	display_name: "Member",
+	display_name: "成员",
 } as const;
 
 export function getRoleNames(roles: readonly SlimRole[]): string[] {

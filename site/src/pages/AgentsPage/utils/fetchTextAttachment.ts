@@ -22,7 +22,7 @@ export function formatTextAttachmentPreview(
 	const truncated = text.slice(0, maxLength * 4);
 	const normalized = truncated.replace(/\s+/g, " ").trim();
 	const preview = Array.from(normalized).slice(0, maxLength).join("");
-	return preview || "Pasted text";
+	return preview || "粘贴的文本";
 }
 
 /**
@@ -57,7 +57,7 @@ export function getTextAttachmentErrorMessage(error: unknown): string | null {
 		return null;
 	}
 
-	return "Couldn't load preview. Select again to retry.";
+	return "无法加载预览。请重新选择以重试。";
 }
 
 /**

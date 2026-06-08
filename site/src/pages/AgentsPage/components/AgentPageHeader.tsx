@@ -109,8 +109,8 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 				await webPush.subscribe();
 			}
 		} catch (error) {
-			const action = webPush.subscribed ? "disable" : "enable";
-			toast.error(getErrorMessage(error, `Failed to ${action} notifications.`));
+			const action = webPush.subscribed ? "禁用" : "启用";
+			toast.error(getErrorMessage(error, `无法${action}通知。`));
 		}
 	};
 
@@ -141,7 +141,7 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 					variant="subtle"
 					size="icon"
 					onClick={onExpandSidebar}
-					aria-label="Expand sidebar"
+					aria-label="展开侧边栏"
 					className="hidden size-7 min-w-0 shrink-0 sm:inline-flex"
 				>
 					<PanelLeftIcon />
@@ -158,7 +158,7 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 						<Button
 							variant="subtle"
 							size="icon"
-							aria-label="More options"
+							aria-label="更多选项"
 							className="size-7 text-content-secondary hover:text-content-primary sm:hidden"
 						>
 							<EllipsisIcon />
@@ -174,7 +174,7 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 								state={{ from: location.pathname + location.search }}
 							>
 								<SettingsIcon className="size-icon-sm" />
-								Settings
+								设置
 							</Link>
 						</DropdownMenuItem>
 						<DropdownMenuItem asChild>
@@ -182,7 +182,7 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 								to={{ pathname: "/agents/analytics", search: location.search }}
 							>
 								<BarChart3Icon className="size-icon-sm" />
-								Analytics
+								分析
 							</Link>
 						</DropdownMenuItem>
 						<DropdownMenuItem
@@ -196,7 +196,7 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 							) : (
 								<VolumeOffIcon className="size-icon-sm" />
 							)}
-							{chimeEnabled ? "Turn sound off" : "Turn sound on"}
+							{chimeEnabled ? "关闭声音" : "开启声音"}
 						</DropdownMenuItem>
 						{webPush.enabled && (
 							<DropdownMenuItem
@@ -214,8 +214,8 @@ export const AgentPageHeader: FC<AgentPageHeaderProps> = ({
 									<BellOffIcon className="size-icon-sm" />
 								)}
 								{webPush.subscribed
-									? "Turn notifications off"
-									: "Turn notifications on"}
+									? "关闭通知"
+									: "开启通知"}
 							</DropdownMenuItem>
 						)}
 					</DropdownMenuContent>

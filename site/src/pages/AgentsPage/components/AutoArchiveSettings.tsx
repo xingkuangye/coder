@@ -33,10 +33,10 @@ interface AutoArchiveSettingsProps {
 // Keep in sync with autoArchiveDaysMaximum in coderd/exp_chats.go.
 const validationSchema = Yup.object({
 	auto_archive_days: Yup.number()
-		.integer("Auto-archive days must be a whole number.")
-		.min(1, "Auto-archive period must be at least 1 day.")
-		.max(3650, "Must not exceed 3650 days (~10 years).")
-		.required("Auto-archive days is required."),
+		.integer("自动归档天数必须为整数。")
+		.min(1, "自动归档期限至少为 1 天。")
+		.max(3650, "不得超过 3650 天（约 10 年）。")
+		.required("自动归档天数为必填项。"),
 });
 
 // Sensible default offered when an admin enables auto-archive for
@@ -112,19 +112,18 @@ export const AutoArchiveSettings: FC<AutoArchiveSettingsProps> = ({
 			<div className="flex items-center justify-between gap-4">
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Auto-archive inactive conversations
+						自动归档不活跃对话
 					</h3>
 				</div>
 				<Switch
 					checked={isAutoArchiveEnabled}
 					onCheckedChange={handleToggleAutoArchive}
-					aria-label="Enable auto-archive"
+					aria-label="启用自动归档"
 					disabled={isSavingAutoArchiveDays || isAutoArchiveDaysLoading}
 				/>
 			</div>
 			<p className="!mt-0.5 m-0 flex-1 text-xs text-content-secondary">
-				Inactive conversations are automatically archived after this period.
-				Pinned conversations are exempt.
+				不活跃对话将在此期限后自动归档。已置顶对话除外。
 			</p>
 			{isAutoArchiveEnabled && (
 				<>
@@ -135,7 +134,7 @@ export const AutoArchiveSettings: FC<AutoArchiveSettingsProps> = ({
 							min={1}
 							max={3650}
 							step={1}
-							aria-label="Auto-archive period in days"
+							aria-label="自动归档期限（天）"
 							value={form.values.auto_archive_days}
 							onChange={form.handleChange}
 							onBlur={form.handleBlur}
@@ -144,7 +143,7 @@ export const AutoArchiveSettings: FC<AutoArchiveSettingsProps> = ({
 							className="flex-1"
 						/>
 						<span className="flex h-10 w-[120px] items-center px-3 text-sm text-content-secondary">
-							Days
+							天
 						</span>
 					</div>
 					{form.errors.auto_archive_days && form.touched.auto_archive_days && (
@@ -169,7 +168,7 @@ export const AutoArchiveSettings: FC<AutoArchiveSettingsProps> = ({
 									{isSavingAutoArchiveDays && (
 										<Spinner loading className="h-4 w-4" />
 									)}
-									Save
+									保存
 								</Button>
 							))}
 					</div>
@@ -177,12 +176,12 @@ export const AutoArchiveSettings: FC<AutoArchiveSettingsProps> = ({
 			)}
 			{isSaveAutoArchiveDaysError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save auto-archive setting.
+					无法保存自动归档设置。
 				</p>
 			)}
 			{isAutoArchiveDaysLoadError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load auto-archive setting.
+					无法加载自动归档设置。
 				</p>
 			)}
 		</form>

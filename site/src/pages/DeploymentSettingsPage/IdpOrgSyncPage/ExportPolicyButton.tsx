@@ -34,7 +34,7 @@ export const ExportPolicyButton: FC<ExportPolicyButtonProps> = ({
 						download(file, "organizations_policy.json");
 					} catch (error) {
 						console.error(error);
-						toast.error("Failed to export organizations policy JSON.", {
+						toast.error("导出组织策略 JSON 失败。", {
 							description: getErrorDetail(error),
 						});
 					} finally {
@@ -44,7 +44,7 @@ export const ExportPolicyButton: FC<ExportPolicyButtonProps> = ({
 			}}
 		>
 			<DownloadIcon />
-			Export Policy
+			导出策略
 		</Button>
 	);
 };

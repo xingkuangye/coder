@@ -48,7 +48,7 @@ export const ProposePlanTool: React.FC<{
 	const fetchError = fileQuery.isError
 		? fileQuery.error instanceof Error
 			? fileQuery.error.message
-			: "Failed to load plan"
+			: "加载计划失败"
 		: undefined;
 	const fetchLoading = fileQuery.isLoading;
 	const displayContent = hasInlineContent
@@ -81,18 +81,18 @@ export const ProposePlanTool: React.FC<{
 					isRunning={isRunning}
 				/>
 				<span className="text-[13px] leading-6">
-					{isRunning ? `Proposing ${filename}…` : `Proposed ${filename}`}
+					{isRunning ? `正在制定 ${filename}…` : `已制定 ${filename}`}
 				</span>
 				{effectiveError && (
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<TriangleAlertIcon
-								aria-label="Error"
+								aria-label="错误"
 								className="size-3.5 shrink-0 text-content-secondary"
 							/>
 						</TooltipTrigger>
 						<TooltipContent>
-							{effectiveErrorMessage || "Failed to propose plan"}
+							{effectiveErrorMessage || "制定计划失败"}
 						</TooltipContent>
 					</Tooltip>
 				)}
@@ -104,7 +104,7 @@ export const ProposePlanTool: React.FC<{
 				<>
 					<Response>{displayContent}</Response>
 					<div className="flex items-center gap-2">
-						<CopyButton text={displayContent} label="Copy plan" />
+						<CopyButton text={displayContent} label="复制计划" />
 						{canImplementPlan && (
 							<Tooltip>
 								<TooltipTrigger asChild>
@@ -118,7 +118,7 @@ export const ProposePlanTool: React.FC<{
 										disabled={
 											!canImplementPlan || implementPlanMutation.isPending
 										}
-										aria-label="Implement plan"
+										aria-label="实施计划"
 									>
 										{implementPlanMutation.isPending ? (
 											<LoaderIcon className="size-3.5 animate-spin motion-reduce:animate-none" />
@@ -126,11 +126,11 @@ export const ProposePlanTool: React.FC<{
 											<PlayIcon />
 										)}
 										{implementPlanMutation.isPending
-											? "Implementing..."
-											: "Implement"}
+											? "正在实施..."
+											: "实施"}
 									</Button>
 								</TooltipTrigger>
-								<TooltipContent>Implement plan</TooltipContent>
+								<TooltipContent>实施计划</TooltipContent>
 							</Tooltip>
 						)}
 					</div>
@@ -139,14 +139,14 @@ export const ProposePlanTool: React.FC<{
 				!fetchLoading &&
 				!effectiveError && (
 					<p className="text-[13px] text-content-secondary italic">
-						No plan content.
+						无计划内容。
 					</p>
 				)
 			)}
 			{fetchLoading && (
 				<TranscriptRow className="gap-2 text-[13px] text-content-secondary">
 					<LoaderIcon className="size-3.5 animate-spin motion-reduce:animate-none" />
-					Loading plan…
+					正在加载计划…
 				</TranscriptRow>
 			)}
 		</div>

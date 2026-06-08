@@ -15,11 +15,11 @@ export const CliAuthPageView: FC<CliAuthPageViewProps> = ({ sessionToken }) => {
 	const clipboardState = useClipboard();
 	return (
 		<SignInLayout>
-			<Welcome>Session token</Welcome>
+			<Welcome>会话令牌</Welcome>
 
 			<p className="m-0 text-center text-sm text-content-secondary leading-normal">
-				Copy the session token below and{" "}
-				<strong className="block">paste it in your terminal.</strong>
+				复制下方的会话令牌并{" "}
+				<strong className="block">将其粘贴到终端中。</strong>
 			</p>
 
 			<div className="flex flex-col items-center gap-1 w-full mt-4">
@@ -41,12 +41,12 @@ export const CliAuthPageView: FC<CliAuthPageViewProps> = ({ sessionToken }) => {
 						</Spinner>
 					)}
 					{clipboardState.showCopiedSuccess
-						? "Session token copied!"
-						: "Copy session token"}
+						? "会话令牌已复制！"
+						: "复制会话令牌"}
 				</Button>
 
 				<Button className="w-full" variant="subtle" asChild>
-					<RouterLink to="/workspaces">Go to workspaces</RouterLink>
+					<RouterLink to="/workspaces">转到工作区</RouterLink>
 				</Button>
 			</div>
 		</SignInLayout>

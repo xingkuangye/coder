@@ -11,9 +11,9 @@ interface ThemePreviewProps {
 }
 
 /**
- * Mini mockup of the Coder UI under a given theme.
- * The header bar's two accent swatches visibly change between
- * colorblind variants because they use `bg-git-added` / `bg-git-deleted`.
+ * 给定主题下 Coder UI 的迷你模型。
+ * 标题栏的两个强调色块在色盲变体之间明显变化，
+ * 因为它们使用了 `bg-git-added` / `bg-git-deleted`。
  */
 export const ThemePreview: FC<ThemePreviewProps> = ({
 	theme,

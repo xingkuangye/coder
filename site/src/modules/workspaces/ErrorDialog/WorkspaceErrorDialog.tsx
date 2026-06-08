@@ -55,21 +55,21 @@ export const WorkspaceErrorDialog: FC<WorkspaceErrorDialogProps> = ({
 			<DialogContent variant="destructive">
 				<DialogHeader>
 					<DialogTitle>
-						Error {isDeleting ? "deleting" : "building"} workspace
+						错误{isDeleting ? "删除" : "构建"}工作区
 					</DialogTitle>
 					<DialogDescription className="flex flex-row gap-4">
-						<strong className="text-content-primary">Message</strong>{" "}
-						<span>{getErrorMessage(error, "Failed to build workspace.")}</span>
+						<strong className="text-content-primary">信息</strong>{" "}
+						<span>{getErrorMessage(error, "构建工作区失败。")}</span>
 					</DialogDescription>
 					{errorDetail && showDetail && (
 						<DialogDescription className="flex flex-row gap-9">
-							<strong className="text-content-primary">Detail</strong>{" "}
+							<strong className="text-content-primary">详情</strong>{" "}
 							<span>{errorDetail}</span>
 						</DialogDescription>
 					)}
 					{validations && (
 						<DialogDescription className="flex flex-row gap-4">
-							<strong className="text-content-primary">Validations</strong>{" "}
+							<strong className="text-content-primary">验证结果</strong>{" "}
 							<span>
 								{validations.map((validation) => validation.detail).join(", ")}
 							</span>
@@ -78,7 +78,7 @@ export const WorkspaceErrorDialog: FC<WorkspaceErrorDialogProps> = ({
 				</DialogHeader>
 				<DialogFooter>
 					<Button onClick={handleGoToParameters}>
-						Review workspace settings
+						查看工作区设置
 					</Button>
 				</DialogFooter>
 			</DialogContent>

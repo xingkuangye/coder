@@ -14,17 +14,15 @@ export const ChatAccessDeniedAlert: FC = () => {
 			severity="info"
 			actions={
 				<Button size="sm" onClick={() => location.reload()}>
-					Refresh
+					刷新
 				</Button>
 			}
 		>
-			<AlertTitle>Permission required</AlertTitle>
+			<AlertTitle>需要访问权限</AlertTitle>
 			<AlertDescription>
-				You don't have permission to use Coder Agents. Contact your Coder
-				administrator for access. Refresh this page after access has been
-				granted.{" "}
+				您没有使用 Coder Agents 的权限。请联系您的 Coder 管理员获取访问权限。获得访问权限后刷新此页面。{" "}
 				<Link href={docsLink} target="_blank" rel="noreferrer">
-					View Docs
+					查看文档
 				</Link>
 			</AlertDescription>
 		</Alert>

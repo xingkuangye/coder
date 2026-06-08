@@ -7,7 +7,7 @@ import { ToolIcon } from "../ChatElements/tools/ToolIcon";
 import { getProviderStatusURL } from "./chatStatusHelpers";
 import type { LiveStatusModel } from "./liveStatusModel";
 
-const THINKING_TEXT = "Thinking...";
+const THINKING_TEXT = "思考中...";
 
 type RetryOrFailedStatus = Extract<
 	LiveStatusModel,
@@ -104,12 +104,12 @@ const StatusAlert: FC<{ status: RetryOrFailedStatus }> = ({ status }) => {
 			<StatusCountdown
 				key="countdown"
 				deadline={status.retryingAt}
-				label="Retrying in"
+				label="重试倒计时："
 			/>,
 		);
 	}
 	if (status.phase === "retrying") {
-		metadataItems.push(<span key="attempt">Attempt {status.attempt}</span>);
+		metadataItems.push(<span key="attempt">尝试 {status.attempt}</span>);
 	}
 	if (status.phase === "failed" && status.statusCode != null) {
 		metadataItems.push(<span key="code">HTTP {status.statusCode}</span>);
@@ -132,7 +132,7 @@ const StatusAlert: FC<{ status: RetryOrFailedStatus }> = ({ status }) => {
 					{status.message}{" "}
 					{statusURL && (
 						<Link href={statusURL} target="_blank" rel="noreferrer">
-							Status
+							状态
 						</Link>
 					)}
 				</span>
@@ -160,9 +160,9 @@ const ReconnectingAlert: FC<{ status: ReconnectingStatus }> = ({ status }) => {
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-content-secondary">
 					<StatusCountdown
 						deadline={status.retryingAt}
-						label="Reconnecting in"
+						label="重新连接倒计时："
 					/>
-					<span>Attempt {status.attempt}</span>
+					<span>尝试 {status.attempt}</span>
 				</div>
 			}
 		>

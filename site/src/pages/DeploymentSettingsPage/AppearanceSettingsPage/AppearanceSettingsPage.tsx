@@ -38,12 +38,12 @@ const AppearanceSettingsPage: FC = () => {
 		});
 
 		toast.promise(mutation, {
-			loading: "Updating appearance settings...",
-			success: "Appearance settings updated successfully.",
+			loading: "更新外观设置中...",
+			success: "外观设置已成功更新。",
 			error: (error) => ({
 				message: getErrorMessage(
 					error,
-					"Failed to update appearance settings.",
+					"更新外观设置失败。",
 				),
 				description: getErrorDetail(error),
 			}),
@@ -52,7 +52,7 @@ const AppearanceSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Appearance Settings")}</title>
+			<title>{pageTitle("外观设置")}</title>
 
 			<RequirePermission isFeatureVisible={canEditAppearance}>
 				<AppearanceSettingsPageView

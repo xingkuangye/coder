@@ -33,7 +33,7 @@ const OAuth2ProviderPageView: FC<OAuth2ProviderPageViewProps> = ({
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead>Name</TableHead>
+						<TableHead>名称</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>
@@ -46,7 +46,7 @@ const OAuth2ProviderPageView: FC<OAuth2ProviderPageViewProps> = ({
 						<TableRow>
 							<TableCell colSpan={999}>
 								<div className="text-center">
-									No OAuth2 applications have been authorized.
+									尚未授权任何 OAuth2 应用。
 								</div>
 							</TableCell>
 						</TableRow>
@@ -74,7 +74,7 @@ const OAuth2AppRow: FC<OAuth2AppRowProps> = ({ app, revoke }) => {
 
 			<TableCell>
 				<Button size="sm" variant="destructive" onClick={() => revoke(app)}>
-					Revoke&hellip;
+					吊销&hellip;
 				</Button>
 			</TableCell>
 		</TableRow>

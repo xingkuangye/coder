@@ -14,14 +14,14 @@ export interface NormalizedAttempt {
 }
 
 const RUN_KIND_LABELS: Record<string, string> = {
-	chat_turn: "Chat Turn",
-	title_generation: "Title Generation",
-	compaction: "Compaction",
-	quickgen: "Quick Gen",
-	quick_gen: "Quick Gen",
-	llm_call: "LLM Call",
-	post_process: "Post-process",
-	tool_call: "Tool Call",
+	chat_turn: "对话轮次",
+	title_generation: "标题生成",
+	compaction: "压缩",
+	quickgen: "快速生成",
+	quick_gen: "快速生成",
+	llm_call: "LLM 调用",
+	post_process: "后处理",
+	tool_call: "工具调用",
 };
 
 export const SUCCESS_STATUSES = new Set([
@@ -133,7 +133,7 @@ const normalizeAttemptEntry = (
 		toFiniteNumber(candidate.attempt_number) ??
 		toFiniteNumber(candidate.number) ??
 		fallbackAttemptNumber;
-	const status = toOptionalString(candidate.status) ?? "unknown";
+	const status = toOptionalString(candidate.status) ?? "未知";
 	const method = toOptionalString(candidate.method);
 	const url = toOptionalString(candidate.url);
 	const path = toOptionalString(candidate.path);
@@ -304,7 +304,7 @@ const tryDecodeBase64 = (value: string): string | undefined => {
 
 export const getRunKindLabel = (kind: string): string => {
 	if (!kind.trim()) {
-		return "Unknown";
+		return "未知";
 	}
 	return RUN_KIND_LABELS[kind] ?? humanizeToken(kind);
 };
@@ -594,9 +594,9 @@ const coerceNormalizedMessagePart = (
 		toOptionalString(part.tool_call_id) ?? toOptionalString(part.toolCallId);
 
 	if (isToolCallPartType(partType)) {
-		const label = toolName ?? toolCallId ?? "tool";
+		const label = toolName ?? toolCallId ?? "工具";
 		return {
-			rendered: `[tool call: ${label}]`,
+			rendered: `[工具调用: ${label}]`,
 			kind: "tool-call",
 			toolCallId,
 			toolName,
@@ -605,9 +605,9 @@ const coerceNormalizedMessagePart = (
 	}
 
 	if (isToolResultPartType(partType)) {
-		const label = toolCallId ?? toolName ?? "tool";
+		const label = toolCallId ?? toolName ?? "工具";
 		return {
-			rendered: `[tool result: ${label}]`,
+			rendered: `[工具结果: ${label}]`,
 			kind: "tool-result",
 			toolCallId,
 			toolName,
@@ -624,7 +624,7 @@ const coerceNormalizedMessagePart = (
 
 	const filename = toOptionalString(part.filename);
 	if (filename) {
-		return { rendered: `[file: ${filename}]` };
+		return { rendered: `[文件: ${filename}]` };
 	}
 
 	if (partType) {
@@ -640,7 +640,7 @@ const coerceMessage = (value: unknown): MessagePart | null => {
 		return null;
 	}
 
-	const role = toOptionalString(parsed.role) ?? "unknown";
+	const role = toOptionalString(parsed.role) ?? "未知";
 
 	// The backend normalizes messages as { role, parts: [...] }.
 	// Support that shape alongside older content-based shapes.
@@ -1192,13 +1192,13 @@ export const extractTokenCounts = (
 
 export const formatTokenSummary = (input?: number, output?: number): string => {
 	if (input !== undefined && output !== undefined) {
-		return `${input.toLocaleString("en-US")}→${output.toLocaleString("en-US")} tok`;
+		return `${input.toLocaleString("en-US")}→${output.toLocaleString("en-US")} 令牌`;
 	}
 	if (input !== undefined) {
-		return `${input.toLocaleString("en-US")} in`;
+		return `${input.toLocaleString("en-US")} 输入`;
 	}
 	if (output !== undefined) {
-		return `${output.toLocaleString("en-US")} out`;
+		return `${output.toLocaleString("en-US")} 输出`;
 	}
 	return "";
 };

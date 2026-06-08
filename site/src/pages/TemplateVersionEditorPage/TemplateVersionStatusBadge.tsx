@@ -17,7 +17,7 @@ export const TemplateVersionStatusBadge: FC<
 		<Pill
 			icon={icon}
 			type={type}
-			title={`Build status is ${text}`}
+			title={`构建状态为 ${text}`}
 			role="status"
 		>
 			{text}
@@ -36,7 +36,7 @@ const getStatus = (
 		case "running":
 			return {
 				type: "active",
-				text: "Running",
+				text: "运行中",
 				icon: <PillSpinner />,
 			};
 		case "pending":
@@ -48,26 +48,26 @@ const getStatus = (
 		case "canceling":
 			return {
 				type: "inactive",
-				text: "Canceling",
+				text: "正在取消",
 				icon: <PillSpinner />,
 			};
 		case "canceled":
 			return {
 				type: "inactive",
-				text: "Canceled",
+				text: "已取消",
 				icon: <CircleAlertIcon className="size-icon-sm" />,
 			};
 		case "unknown":
 		case "failed":
 			return {
 				type: "error",
-				text: "Failed",
+				text: "失败",
 				icon: <CircleAlertIcon className="size-icon-sm" />,
 			};
 		case "succeeded":
 			return {
 				type: "success",
-				text: "Success",
+				text: "成功",
 				icon: <CheckIcon className="size-icon-sm" />,
 			};
 	}

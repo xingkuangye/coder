@@ -90,7 +90,7 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 			window.URL.revokeObjectURL(url);
 		} catch (error) {
 			console.error("Failed to export template:", error);
-			toast.error("Failed to export template.", {
+			toast.error("导出模板失败。", {
 				description: getErrorDetail(error),
 			});
 		}
@@ -100,9 +100,9 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<ShadcnButton size="icon-lg" variant="subtle" aria-label="Open menu">
+					<ShadcnButton size="icon-lg" variant="subtle" aria-label="打开菜单">
 						<EllipsisVerticalIcon aria-hidden="true" />
-						<span className="sr-only">Open menu</span>
+						<span className="sr-only">打开菜单</span>
 					</ShadcnButton>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align="end">
@@ -110,7 +110,7 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 						onClick={() => navigate(`${templateLink}/settings`)}
 					>
 						<SettingsIcon className="size-icon-sm" />
-						Settings
+						设置
 					</DropdownMenuItem>
 
 					<DropdownMenuItem
@@ -119,7 +119,7 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 						}
 					>
 						<EditIcon />
-						Edit files
+						编辑文件
 					</DropdownMenuItem>
 
 					<DropdownMenuItem
@@ -128,17 +128,17 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 						}
 					>
 						<CopyIcon className="size-icon-sm" />
-						Duplicate&hellip;
+						复制&hellip;
 					</DropdownMenuItem>
 
 					<DropdownMenuItem onClick={() => handleExport()}>
 						<DownloadIcon className="size-icon-sm" />
-						Export as TAR
+						导出为 TAR
 					</DropdownMenuItem>
 
 					<DropdownMenuItem onClick={() => handleExport("zip")}>
 						<DownloadIcon className="size-icon-sm" />
-						Export as ZIP
+						导出为 ZIP
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem
@@ -146,7 +146,7 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 						onClick={dialogState.openDeleteConfirmation}
 					>
 						<TrashIcon />
-						Delete&hellip;
+						删除&hellip;
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>
@@ -156,17 +156,17 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 					isOpen={dialogState.isDeleteDialogOpen}
 					onConfirm={dialogState.confirmDelete}
 					onCancel={dialogState.cancelDeleteConfirmation}
-					entity="template"
+					entity="模板"
 					name={templateName}
 				/>
 			) : (
 				<ConfirmDialog
 					type="info"
-					title="Unable to delete"
+					title="无法删除"
 					hideCancel={false}
 					open={dialogState.isDeleteDialogOpen}
 					onClose={dialogState.cancelDeleteConfirmation}
-					confirmText="See workspaces"
+					confirmText="查看工作空间"
 					confirmLoading={workspaceCountQuery.status !== "success"}
 					onConfirm={() => {
 						navigate({
@@ -178,21 +178,20 @@ const TemplateMenu: FC<TemplateMenuProps> = ({
 						<>
 							{workspaceCountQuery.isSuccess && (
 								<>
-									This template is used by{" "}
+									此模板被{" "}
 									<strong>
-										{workspaceCountQuery.data} workspace
+										{workspaceCountQuery.data} 个工作空间
 										{workspaceCountQuery.data === 1 ? "" : "s"}
 									</strong>
-									. Please delete all related workspaces before deleting this
-									template.
+									使用。 请在删除此模板之前删除所有相关的工作空间。
 								</>
 							)}
 
 							{workspaceCountQuery.isLoading &&
-								"Loading information about workspaces used by this template."}
+								"正在加载此模板使用的工作空间信息。"}
 
 							{workspaceCountQuery.isError &&
-								"Unable to determine workspaces used by this template."}
+								"无法确定此模板使用的工作空间。"}
 						</>
 					}
 				/>
@@ -231,7 +230,7 @@ export const TemplatePageHeader: FC<TemplatePageHeaderProps> = ({
 								<Button asChild>
 									<RouterLink to={`${templateLink}/workspace`}>
 										<PlusIcon />
-										Create Workspace
+										创建工作空间
 									</RouterLink>
 								</Button>
 							)}
@@ -263,7 +262,7 @@ export const TemplatePageHeader: FC<TemplatePageHeaderProps> = ({
 									? template.display_name
 									: template.name}
 							</PageHeaderTitle>
-							{template.deprecated && <Pill type="warning">Deprecated</Pill>}
+							{template.deprecated && <Pill type="warning">已弃用</Pill>}
 						</div>
 
 						{template.deprecation_message !== "" ? (

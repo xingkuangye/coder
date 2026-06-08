@@ -72,9 +72,9 @@ const LicensesSettingsPageView: FC<Props> = ({
 
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<SettingsHeader>
-					<SettingsHeaderTitle>Licenses</SettingsHeaderTitle>
+					<SettingsHeaderTitle>许可证</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Manage licenses to unlock Premium features.
+						管理许可证以解锁高级功能。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -82,7 +82,7 @@ const LicensesSettingsPageView: FC<Props> = ({
 					<Button variant="outline" asChild>
 						<RouterLink to="/deployment/licenses/add">
 							<PlusIcon />
-							Add a license
+							添加许可证
 						</RouterLink>
 					</Button>
 					<Tooltip>
@@ -95,12 +95,11 @@ const LicensesSettingsPageView: FC<Props> = ({
 								<Spinner loading={isRefreshing}>
 									<RotateCwIcon />
 								</Spinner>
-								Refresh
+								刷新
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent side="bottom" className="max-w-xs">
-							Refresh license entitlements. This is done automatically every 10
-							minutes.
+							刷新许可证权益。每10分钟自动执行一次。
 						</TooltipContent>
 					</Tooltip>
 				</div>
@@ -136,16 +135,15 @@ const LicensesSettingsPageView: FC<Props> = ({
 						<div className="flex flex-col gap-2 items-center">
 							<div className="flex flex-col gap-1 items-center">
 								<span className="text-base">
-									You don&apos;t have any licenses!
+									您没有任何许可证！
 								</span>
 								<span className="text-content-secondary text-center max-w-[464px] mt-2">
-									You&apos;re missing out on high availability, RBAC, quotas,
-									and much more. Contact{" "}
-									<MuiLink href="mailto:sales@coder.com">sales</MuiLink> or{" "}
+									您错失了高可用性、RBAC、配额等诸多功能。请联系{" "}
+									<MuiLink href="mailto:sales@coder.com">销售</MuiLink> 或{" "}
 									<MuiLink href="https://coder.com/trial">
-										request a trial license
+										申请试用许可证
 									</MuiLink>{" "}
-									to get started.
+									开始使用。
 								</span>
 							</div>
 						</div>
@@ -166,7 +164,7 @@ const LicensesSettingsPageView: FC<Props> = ({
 						<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 							{hasUserLimitEntitlementData && (
 								<SeatUsageBarCard
-									title="Seat usage"
+									title="席位使用情况"
 									actual={userLimitActual}
 									limit={userLimitLimit}
 									allowUnlimited

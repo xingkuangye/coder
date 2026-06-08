@@ -29,22 +29,20 @@ function getKeyType(name: string) {
 const infoByType: Record<KeyType, ReactNode> = {
 	builtin: (
 		<>
-			These provisioners are running as part of a coderd instance. Built-in
-			provisioners are only available for the default organization.{" "}
+			这些 provisioner 作为 coderd 实例的一部分运行。内置 provisioner
+			仅适用于默认组织。{" "}
 		</>
 	),
 	userAuth: (
 		<>
-			These provisioners are connected by users using the <code>coder</code>{" "}
-			CLI, and are authorized by the users credentials. They can be tagged to
-			only run provisioner jobs for that user. User-authenticated provisioners
-			are only available for the default organization.
+			这些 provisioner 由用户通过 <code>coder</code> CLI
+			连接，并通过用户凭据进行授权。可以为其打上标签，使其仅运行该用户的
+			provisioner 作业。用户认证的 provisioner 仅适用于默认组织。
 		</>
 	),
 	psk: (
 		<>
-			These provisioners all use pre-shared key authentication. PSK provisioners
-			are only available for the default organization.
+			这些 provisioner 均使用预共享密钥身份验证。PSK provisioner 仅适用于默认组织。
 		</>
 	),
 	key: null,
@@ -65,7 +63,7 @@ export const ProvisionerKey: FC<ProvisionerKeyProps> = ({ name }) => {
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<span className="flex items-center">
-							<span className="sr-only">More info</span>
+							<span className="sr-only">更多信息</span>
 							<InfoIcon
 								tabIndex={0}
 								className="cursor-pointer size-icon-xs p-0.5"

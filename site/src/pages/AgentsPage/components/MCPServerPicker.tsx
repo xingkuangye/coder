@@ -38,11 +38,11 @@ interface MCPServerPickerProps {
 const availabilityLabel = (a: string) => {
 	switch (a) {
 		case "force_on":
-			return "Always on";
+			return "始终开启";
 		case "default_on":
-			return "On by default";
+			return "默认开启";
 		case "default_off":
-			return "Optional";
+			return "可选";
 		default:
 			return a;
 	}
@@ -54,7 +54,7 @@ const MCPIcon: FC<{ iconUrl: string; name: string; className?: string }> = ({
 	className,
 }) => {
 	const icon = iconUrl ? (
-		<ExternalImage src={iconUrl} alt={`${name} icon`} className="size-3/5" />
+		<ExternalImage src={iconUrl} alt={`${name} 图标`} className="size-3/5" />
 	) : (
 		<ServerIcon className="size-3/5 text-content-secondary" />
 	);
@@ -272,7 +272,7 @@ export const MCPServerPicker: FC<MCPServerPickerProps> = ({
 				<button
 					type="button"
 					disabled={disabled}
-					aria-label="MCP servers"
+					aria-label="MCP 服务器"
 					className="group flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary disabled:cursor-not-allowed disabled:opacity-50"
 				>
 					<span>MCP</span>
@@ -318,12 +318,12 @@ export const MCPServerPicker: FC<MCPServerPickerProps> = ({
 														handleConnect(server);
 													}}
 													disabled={disabled || connectingServerId !== null}
-													aria-label={`Authenticate with ${server.display_name}`}
+													aria-label={`与 ${server.display_name} 进行身份验证`}
 												>
 													{isConnecting ? (
 														<Spinner loading className="h-2.5 w-2.5" />
 													) : null}
-													Auth
+													授权
 												</Button>
 											) : (
 												<Switch
@@ -332,7 +332,7 @@ export const MCPServerPicker: FC<MCPServerPickerProps> = ({
 														handleToggle(server.id, checked)
 													}
 													disabled={disabled || isForceOn}
-													aria-label={`${isSelected ? "Disable" : "Enable"} ${server.display_name}`}
+													aria-label={`${isSelected ? "禁用" : "启用"} ${server.display_name}`}
 												/>
 											)}
 										</div>
@@ -356,8 +356,8 @@ export const MCPServerPicker: FC<MCPServerPickerProps> = ({
 										{server.auth_type !== "none" && (
 											<span className="block text-content-secondary leading-tight">
 												{server.auth_connected
-													? "Authenticated"
-													: "Not authenticated"}
+													? "已认证"
+													: "未认证"}
 											</span>
 										)}
 									</TooltipContent>

@@ -9,30 +9,30 @@ export const TaskWildcardWarning = () => {
 
 	return (
 		<div className="text-center max-w-md">
-			<h3 className="font-medium text-content-primary text-base mb-3">Error</h3>
+			<h3 className="font-medium text-content-primary text-base mb-3">错误</h3>
 			<div className="text-content-secondary text-sm flex flex-col gap-3 items-center">
 				<div className="px-4">
-					This application has{" "}
+					此应用程序已设置
 					<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary">
 						subdomain = true
 					</code>
 					{permissions.editDeploymentConfig ? (
 						<>
-							, but subdomain applications are not configured. This application
-							won't be accessible until you configure the{" "}
+							，但子域名应用程序未配置。在启动 Coder 服务器时，您需要配置
 							<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary whitespace-nowrap">
 								--wildcard-access-url
-							</code>{" "}
-							flag when starting the Coder server.
+							</code>
+							{" "}
+							标志，否则此应用程序将无法访问。
 						</>
 					) : (
-						", which requires a Coder deployment with a Wildcard Access URL configured. Please contact your administrator."
+						"，这需要配置了通配符访问 URL 的 Coder 部署。请联系您的管理员。"
 					)}
 				</div>
 				<Button size="sm" variant="outline" asChild>
 					<RouterLink to={docs("/admin/networking/wildcard-access-url")}>
 						<SquareArrowOutUpRightIcon />
-						Learn more about wildcard access URL
+						了解更多关于通配符访问 URL 的信息
 					</RouterLink>
 				</Button>
 			</div>

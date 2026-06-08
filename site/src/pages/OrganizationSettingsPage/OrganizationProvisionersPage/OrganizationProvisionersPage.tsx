@@ -34,13 +34,13 @@ const OrganizationProvisionersPage: FC = () => {
 	});
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="未找到组织" />;
 	}
 
 	const title = (
 		<title>
 			{pageTitle(
-				"Provisioners",
+				"配置器",
 				organization.display_name || organization.name,
 			)}
 		</title>

@@ -21,7 +21,7 @@ export const getProviderDisplayName = (provider: string) => {
 		case "copilot":
 			return "Github";
 		default:
-			return "Unknown";
+			return "未知";
 	}
 };
 

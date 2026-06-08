@@ -29,7 +29,7 @@ export const ReadSkillTool: React.FC<{
 				<>
 					<ToolIcon name="read_skill" isError={isError} isRunning={isRunning} />
 					<span className="text-[13px] leading-6">
-						{isRunning ? `Reading ${label}…` : `Read ${label}`}
+						{isRunning ? `正在读取 ${label}…` : `已读取 ${label}`}
 					</span>
 				</>
 			}
@@ -41,7 +41,7 @@ export const ReadSkillTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to read skill"}
+								{errorMessage || "读取技能失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}

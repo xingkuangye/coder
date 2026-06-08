@@ -126,7 +126,7 @@ export const WorkspaceTopbar: FC<WorkspaceTopbarProps> = ({
 						</RouterLink>
 					</TopbarIconButton>
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Back to workspaces</TooltipContent>
+				<TooltipContent side="bottom">返回工作区</TooltipContent>
 			</Tooltip>
 
 			<div className="flex items-center gap-y-6 gap-x-2 flex-wrap px-3 py-2 mr-auto">
@@ -174,21 +174,21 @@ export const WorkspaceTopbar: FC<WorkspaceTopbarProps> = ({
 						}
 						title={
 							showOrganizations
-								? `See affected workspaces for ${orgDisplayName}`
-								: "See affected workspaces"
+								? `查看 ${orgDisplayName} 的受影响工作区`
+								: "查看受影响的工作区"
 						}
 					>
 						<TopbarData>
 							<TopbarIcon>
 								<CircleDollarSignIcon
 									className="size-icon-sm"
-									aria-label="Daily usage"
+									aria-label="每日用量"
 								/>
 							</TopbarIcon>
 
 							<span>
 								{workspace.latest_build.daily_cost}{" "}
-								<span className="text-content-secondary">credits of</span>{" "}
+								<span className="text-content-secondary">积分 /</span>{" "}
 								{quota.budget}
 							</span>
 						</TopbarData>
@@ -203,13 +203,13 @@ export const WorkspaceTopbar: FC<WorkspaceTopbarProps> = ({
 						<Link
 							component={RouterLink}
 							to={`${templateLink}/settings/schedule`}
-							title="Schedule settings"
+							title="调度设置"
 							className="text-inherit"
 						>
 							{workspace.deleting_at ? (
-								<>Deletion on {formatDate(new Date(workspace.deleting_at))}</>
+								<>将于 {formatDate(new Date(workspace.deleting_at))} 删除</>
 							) : (
-								"Deletion soon"
+								"即将删除"
 							)}
 						</Link>
 					</TopbarData>
@@ -276,7 +276,7 @@ const OwnerBreadcrumb: FC<OwnerBreadcrumbProps> = ({
 			</HelpPopoverTrigger>
 
 			<HelpPopoverContent align="center">
-				<AvatarData title={ownerName} subtitle="Owner" src={ownerAvatarUrl} />
+				<AvatarData title={ownerName} subtitle="所有者" src={ownerAvatarUrl} />
 			</HelpPopoverContent>
 		</HelpPopover>
 	);
@@ -322,7 +322,7 @@ const OrganizationBreadcrumb: FC<OrganizationBreadcrumbProps> = ({
 							orgName
 						)
 					}
-					subtitle="Organization"
+					subtitle="组织"
 					avatar={
 						orgIconUrl && (
 							<Avatar
@@ -390,7 +390,7 @@ const WorkspaceBreadcrumb: FC<WorkspaceBreadcrumbProps> = ({
 								to={`${rootTemplateUrl}/versions/${encodeURIComponent(templateVersionName)}`}
 								className="text-inherit"
 							>
-								Version: {latestBuildVersionName}
+								版本：{latestBuildVersionName}
 							</Link>
 						}
 						avatar={
@@ -405,7 +405,7 @@ const WorkspaceBreadcrumb: FC<WorkspaceBreadcrumbProps> = ({
 					/>
 				</HelpPopoverContent>
 			</HelpPopover>
-			<CopyButton text={workspaceName} label="Copy workspace name" />
+			<CopyButton text={workspaceName} label="复制工作区名称" />
 		</div>
 	);
 };

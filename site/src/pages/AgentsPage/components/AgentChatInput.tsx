@@ -245,11 +245,11 @@ const ToolBadge: FC<{
 		return (
 			<span data-testid="planning-badge" className={badgeCls}>
 				<PencilIcon className="size-3" />
-				Planning
+				规划
 				{onRemovePlanning && (
 					<BadgeDismissButton
 						onClick={onRemovePlanning}
-						ariaLabel="Disable plan mode"
+						ariaLabel="关闭规划模式"
 						isDisabled={isDisabled}
 					/>
 				)}
@@ -279,7 +279,7 @@ const ToolBadge: FC<{
 						{onRemoveWorkspace && (
 							<BadgeDismissButton
 								onClick={onRemoveWorkspace}
-								ariaLabel={`Remove workspace ${badge.name}`}
+								ariaLabel={`移出工作区 ${badge.name}`}
 							/>
 						)}
 					</span>
@@ -297,7 +297,7 @@ const ToolBadge: FC<{
 				{onRemoveWorkspace && (
 					<BadgeDismissButton
 						onClick={onRemoveWorkspace}
-						ariaLabel={`Remove workspace ${badge.name}`}
+						ariaLabel={`移出工作区 ${badge.name}`}
 					/>
 				)}
 			</span>
@@ -320,7 +320,7 @@ const ToolBadge: FC<{
 			{!isForceOn && onRemoveMcp && (
 				<BadgeDismissButton
 					onClick={() => onRemoveMcp(badge.server.id)}
-					ariaLabel={`Remove ${badge.server.display_name}`}
+					ariaLabel={`移出 ${badge.server.display_name}`}
 				/>
 			)}
 		</span>
@@ -330,7 +330,7 @@ const ToolBadge: FC<{
 export const AgentChatInput: FC<AgentChatInputProps> = ({
 	onSend,
 	sendShortcut = DEFAULT_AGENT_CHAT_SEND_SHORTCUT,
-	placeholder = "Type a message...",
+	placeholder = "输入消息...",
 	isDisabled,
 	isLoading,
 	inputRef,
@@ -1003,10 +1003,10 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 
 	const sendButtonLabel =
 		editingQueuedMessageID !== null
-			? "Save"
+			? "保存"
 			: isEditingHistoryMessage
-				? "Save Edit"
-				: "Send";
+				? "保存编辑"
+				: "发送";
 	const sendShortcutLabel =
 		sendShortcut === MODIFIER_AGENT_CHAT_SEND_SHORTCUT
 			? "Cmd/Ctrl+Enter"
@@ -1065,7 +1065,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 				{editingQueuedMessageID !== null && (
 					<div className="flex items-center justify-between border-b border-border-default/70 bg-surface-primary/25 px-3 py-1.5">
 						<span className="text-sm text-content-secondary">
-							Editing queued message
+							编辑队列消息
 						</span>
 						<Button
 							type="button"
@@ -1074,7 +1074,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 							onClick={onCancelQueueEdit}
 							className="h-7 px-2 text-content-secondary hover:text-content-primary"
 						>
-							Cancel
+							取消
 						</Button>
 					</div>
 				)}
@@ -1082,14 +1082,13 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 					<div className="flex items-center justify-between border-b border-border-warning/50 px-3 py-1.5">
 						<span className="flex items-center gap-1.5 text-xs font-medium text-content-warning">
 							<PencilIcon className="size-3.5" />
-							Editing will delete all subsequent messages and restart the
-							conversation here.
+							编辑将会删除所有后续消息并在此处重新开始对话。
 						</span>
 						<Button
 							type="button"
 							variant="subtle"
 							size="icon"
-							aria-label="Cancel editing"
+							aria-label="取消编辑"
 							onClick={onCancelHistoryEdit}
 							disabled={isLoading}
 							className="size-6 rounded text-content-warning hover:text-content-primary"
@@ -1114,7 +1113,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 					ref={internalRef}
 					onFilePaste={onAttach ? handleFilePaste : undefined}
 					onPaste={resetPromptCycle}
-					aria-label="Chat message"
+					aria-label="聊天消息"
 					className="min-h-[60px] sm:min-h-24 w-full resize-none bg-transparent px-3 py-2 font-sans text-[13px] leading-relaxed text-content-primary placeholder:text-content-secondary disabled:cursor-not-allowed disabled:opacity-70"
 					placeholder={placeholder}
 					initialValue={initialValue}
@@ -1140,9 +1139,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 					<div className="px-3 pb-1">
 						<Alert severity="warning">
 							<AlertDescription>
-								This message contains {invisibleCharCount} invisible Unicode
-								character{invisibleCharCount !== 1 ? "s" : ""} that could hide
-								content. Review carefully before sending.
+								此消息包含 {invisibleCharCount} 个不可见的 Unicode 字符，可能隐藏内容。发送前请仔细检查。
 							</AlertDescription>
 						</Alert>
 					</div>
@@ -1179,7 +1176,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 									disabled={
 										isDisabled && !agentSetupNotice && !canUseWorkspacePicker
 									}
-									aria-label="More options"
+									aria-label="更多选项"
 								>
 									<PlusIcon />
 								</Button>
@@ -1197,7 +1194,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 											className="flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary"
 										>
 											<ArrowLeftIcon className="size-3.5 shrink-0" />
-											<span>Back</span>
+											<span>返回</span>
 										</button>
 										<Separator className="my-1" />
 										<WorkspacePickerList
@@ -1223,7 +1220,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 												className="group flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary"
 											>
 												<PaperclipIcon className="size-3.5 shrink-0" />
-												Attach file
+												添加文件
 											</button>
 										)}
 										{onPlanModeToggle && (
@@ -1236,7 +1233,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 												className="group flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary disabled:cursor-not-allowed disabled:opacity-50"
 											>
 												<PencilIcon className="size-3.5 shrink-0" />
-												<span>Plan first</span>
+												<span>先规划</span>
 												{planModeEnabled && (
 													<CheckIcon className="ml-auto size-icon-sm shrink-0" />
 												)}
@@ -1252,7 +1249,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 													className="group flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary disabled:cursor-not-allowed disabled:opacity-50"
 												>
 													<MonitorIcon className="size-3.5 shrink-0" />
-													<span>Attach workspace</span>
+													<span>附加工作区</span>
 													<ChevronRightIcon className="ml-auto size-icon-sm" />
 												</button>
 											) : (
@@ -1267,7 +1264,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 															className="group flex h-8 w-full cursor-pointer items-center gap-1.5 border-none bg-transparent px-1 text-xs text-content-secondary shadow-none transition-colors hover:text-content-primary disabled:cursor-not-allowed disabled:opacity-50"
 														>
 															<MonitorIcon className="size-3.5 shrink-0" />
-															<span>Attach workspace</span>
+															<span>附加工作区</span>
 															<ChevronRightIcon
 																className={cn(
 																	"ml-auto size-icon-sm transition-transform",
@@ -1338,7 +1335,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 																	{isConnecting ? (
 																		<Spinner loading className="h-2.5 w-2.5" />
 																	) : null}
-																	Auth
+																	认证
 																</Button>
 															) : (
 																<Switch
@@ -1348,7 +1345,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 																		handleMcpToggle(server.id, checked)
 																	}
 																	disabled={isDisabled || isForceOn}
-																	aria-label={`${isSelected ? "Disable" : "Enable"} ${server.display_name}`}
+																	aria-label={`${isSelected ? "禁用" : "启用"} ${server.display_name}`}
 																/>
 															)}
 														</div>
@@ -1382,11 +1379,11 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 								className="hidden shrink-0 items-center gap-1 rounded-full bg-surface-secondary px-2 py-0.5 text-xs font-medium text-content-secondary sm:inline-flex"
 							>
 								<PencilIcon className="size-3" />
-								Planning
+								规划
 								{onPlanModeToggle && (
 									<BadgeDismissButton
 										onClick={handleDisablePlanMode}
-										ariaLabel="Disable plan mode"
+										ariaLabel="关闭规划模式"
 										isDisabled={isDisabled}
 									/>
 								)}
@@ -1445,7 +1442,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 											"inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border-0 bg-surface-secondary px-2 py-0.5 text-xs font-medium text-content-secondary transition-colors hover:bg-surface-tertiary hover:text-content-primary",
 											overflowCount === 0 && "invisible",
 										)}
-										aria-label={`${overflowCount} more item${overflowCount !== 1 ? "s" : ""}`}
+										aria-label={`${overflowCount} 个更多项目`}
 										aria-hidden={overflowCount === 0}
 									>
 										+{overflowCount}
@@ -1491,7 +1488,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 									}
 									disabled={isDisabled}
 									aria-label={
-										speech.isRecording ? "Cancel voice input" : "Voice input"
+										speech.isRecording ? "取消语音输入" : "语音输入"
 									}
 								>
 									{speech.isRecording ? <XIcon /> : <MicIcon />}
@@ -1502,8 +1499,8 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 										role="alert"
 									>
 										{speech.error === "not-allowed"
-											? "Mic access denied"
-											: "Voice input failed"}
+											? "麦克风权限被拒绝"
+											: "语音输入失败"}
 									</span>
 								)}
 							</>
@@ -1520,7 +1517,7 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 								disabled={isInterruptPending}
 							>
 								<SquareIcon className="fill-current" />
-								<span className="sr-only">Stop</span>
+								<span className="sr-only">停止</span>
 							</Button>
 						)}
 						{!(isStreaming && editingQueuedMessageID === null) && (
@@ -1545,14 +1542,14 @@ export const AgentChatInput: FC<AgentChatInputProps> = ({
 										)}
 										<span className="sr-only">
 											{speech.isRecording
-												? "Accept voice input"
+												? "接受语音输入"
 												: sendButtonLabel}
 										</span>
 									</Button>
 								</TooltipTrigger>
 								<TooltipContent side="top">
 									{speech.isRecording
-										? "Accept voice input"
+										? "接受语音输入"
 										: `${sendButtonLabel}: ${sendShortcutLabel}`}
 								</TooltipContent>
 							</Tooltip>
@@ -1615,9 +1612,9 @@ const WorkspacePickerList: FC<WorkspacePickerListProps> = ({
 }) => {
 	return (
 		<Command loop>
-			<CommandInput placeholder="Search workspaces..." className="text-xs" />
+			<CommandInput placeholder="搜索工作区..." className="text-xs" />
 			<CommandList>
-				<CommandEmpty className="text-xs">No workspaces found</CommandEmpty>
+				<CommandEmpty className="text-xs">未找到工作区</CommandEmpty>
 				<CommandGroup>
 					{workspaceOptions?.map((workspace) => {
 						const isCrossOrg =
@@ -1656,7 +1653,7 @@ const WorkspacePickerList: FC<WorkspacePickerListProps> = ({
 										<div>{item}</div>
 									</TooltipTrigger>
 									<TooltipContent side="top">
-										Chat and workspace must be in the same organization
+										聊天和工作区必须在同一个组织中
 									</TooltipContent>
 								</Tooltip>
 							);

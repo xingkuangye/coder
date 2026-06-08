@@ -86,10 +86,10 @@ const NotificationsPage: FC = () => {
 		disableMutation
 			.mutateAsync(disabledId)
 			.then(() => {
-				toast.success("Notification has been disabled.");
+				toast.success("通知已被禁用。");
 			})
 			.catch((error) => {
-				toast.error("Error disabling notification.", {
+				toast.error("禁用通知时出错。", {
 					description: getErrorDetail(error),
 				});
 			});
@@ -113,12 +113,12 @@ const NotificationsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Notifications Settings")}</title>
+			<title>{pageTitle("通知设置")}</title>
 
 			<SettingsHeader>
-				<SettingsHeaderTitle>Notifications</SettingsHeaderTitle>
+				<SettingsHeaderTitle>通知</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Control which notifications you receive.
+					控制您接收哪些通知。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -156,12 +156,12 @@ const NotificationsPage: FC = () => {
 														{
 															onSuccess: () => {
 																toast.success(
-																	"Notification preferences updated.",
+																	"通知偏好已更新。",
 																);
 															},
 															onError: (error) => {
 																toast.error(
-																	"Error updating notification preferences.",
+																	"更新通知偏好时出错。",
 																	{
 																		description: getErrorDetail(error),
 																	},
@@ -206,12 +206,12 @@ const NotificationsPage: FC = () => {
 																	{
 																		onSuccess: () => {
 																			toast.success(
-																				"Notification preferences updated.",
+																				"通知偏好已更新。",
 																			);
 																		},
 																		onError: (error) => {
 																			toast.error(
-																				"Error updating notification preferences.",
+																				"更新通知偏好时出错。",
 																				{
 																					description: getErrorDetail(error),
 																				},
@@ -251,7 +251,7 @@ const NotificationsPage: FC = () => {
 															/>
 														</TooltipTrigger>
 														<TooltipContent side="bottom">
-															Delivery via {label}
+															通过 {label} 发送
 														</TooltipContent>
 													</Tooltip>
 												</div>

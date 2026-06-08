@@ -56,7 +56,7 @@ export const getReadFileToolData = ({
 	const path = parsedArgs ? asString(parsedArgs.path).trim() : "";
 	const rec = asRecord(result);
 	return {
-		path: path || "file",
+		path: path || "文件",
 		content: rec ? asString(rec.content).trim() : "",
 		isError,
 		errorMessage: rec ? asString(rec.error || rec.message) : undefined,
@@ -64,8 +64,7 @@ export const getReadFileToolData = ({
 };
 
 /**
- * Collapsed-by-default rendering for `read_file` tool calls. Shows
- * "Read <filename>" with a chevron; expanding reveals the file viewer.
+ * 默认折叠的 `read_file` 工具调用渲染。显示“已读取 <filename>”和展开箭头；展开后显示文件查看器。
  */
 export const ReadFileTool: React.FC<{
 	path: string;
@@ -87,7 +86,7 @@ export const ReadFileTool: React.FC<{
 	const hasContent = content.length > 0 || isError;
 	const isRunning = status === "running";
 	const filename = path.split("/").pop() || path;
-	const label = isRunning ? `Reading ${filename}…` : `Read ${filename}`;
+	const label = isRunning ? `正在读取 ${filename}…` : `已读取 ${filename}`;
 
 	return (
 		<ToolCollapsible
@@ -109,7 +108,7 @@ export const ReadFileTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to read file"}
+								{errorMessage || "读取文件失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -121,7 +120,7 @@ export const ReadFileTool: React.FC<{
 		>
 			{isError && (
 				<div className="mt-1 text-xs text-content-destructive">
-					{errorMessage || "Failed to read file"}
+					{errorMessage || "读取文件失败"}
 				</div>
 			)}
 			{content.length > 0 && <ReadFileContent path={path} content={content} />}

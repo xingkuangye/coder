@@ -42,59 +42,59 @@ interface FlagInfo {
 const flagDescriptions: Record<BooleanKeys<NetcheckReport>, FlagInfo> = {
 	UDP: {
 		label: "UDP",
-		description: "Whether a UDP STUN round trip completed successfully.",
+		description: "UDP STUN 往返是否成功完成。",
 	},
 	IPv6: {
 		label: "IPv6",
-		description: "Whether an IPv6 STUN round trip completed successfully.",
+		description: "IPv6 STUN 往返是否成功完成。",
 	},
 	IPv4: {
 		label: "IPv4",
-		description: "Whether an IPv4 STUN round trip completed successfully.",
+		description: "IPv4 STUN 往返是否成功完成。",
 	},
 	IPv6CanSend: {
-		label: "IPv6 Send",
-		description: "Whether this server can send IPv6 packets.",
+		label: "IPv6 发送",
+		description: "此服务器是否可以发送 IPv6 数据包。",
 	},
 	IPv4CanSend: {
-		label: "IPv4 Send",
-		description: "Whether this server can send IPv4 packets.",
+		label: "IPv4 发送",
+		description: "此服务器是否可以发送 IPv4 数据包。",
 	},
 	OSHasIPv6: {
-		label: "OS IPv6 Support",
-		description: "Whether the operating system supports IPv6.",
+		label: "操作系统 IPv6 支持",
+		description: "操作系统是否支持 IPv6。",
 	},
 	ICMPv4: {
 		label: "ICMP Ping",
-		description: "Whether an ICMPv4 round trip completed successfully.",
+		description: "ICMPv4 往返是否成功完成。",
 	},
 	MappingVariesByDestIP: {
-		label: "No Symmetric NAT",
+		label: "无对称 NAT",
 		description:
-			"Whether STUN results are consistent across destinations. Symmetric NAT may degrade peer-to-peer connectivity.",
+			"STUN 结果在不同目标之间是否一致。对称 NAT 可能会降低对等连接的连通性。",
 		invert: true,
 	},
 	HairPinning: {
-		label: "NAT Hairpinning",
+		label: "NAT 回流",
 		description:
-			"Whether the router supports communication between local devices through the public IP address.",
+			"路由器是否支持通过公共 IP 地址在本地设备之间进行通信。",
 	},
 	UPnP: {
 		label: "UPnP",
-		description: "Whether Universal Plug and Play was detected on the LAN.",
+		description: "在局域网中是否检测到通用即插即用 (UPnP)。",
 	},
 	PMP: {
 		label: "NAT-PMP",
-		description: "Whether NAT Port Mapping Protocol was detected on the LAN.",
+		description: "在局域网中是否检测到 NAT 端口映射协议 (NAT-PMP)。",
 	},
 	PCP: {
 		label: "PCP",
-		description: "Whether Port Control Protocol was detected on the LAN.",
+		description: "在局域网中是否检测到端口控制协议 (PCP)。",
 	},
 	CaptivePortal: {
-		label: "No Captive Portal",
+		label: "无强制门户",
 		description:
-			"Whether HTTP traffic is free from captive portal interception.",
+			"HTTP 流量是否不受强制门户拦截。",
 		invert: true,
 	},
 };
@@ -106,19 +106,19 @@ interface FlagGroup {
 
 const flagGroups: FlagGroup[] = [
 	{
-		title: "Connectivity",
+		title: "连接性",
 		flags: ["UDP", "IPv4", "IPv6", "ICMPv4", "CaptivePortal"],
 	},
 	{
-		title: "IPv6 Support",
+		title: "IPv6 支持",
 		flags: ["OSHasIPv6", "IPv4CanSend", "IPv6CanSend"],
 	},
 	{
-		title: "NAT Traversal",
+		title: "NAT 穿透",
 		flags: ["MappingVariesByDestIP", "HairPinning"],
 	},
 	{
-		title: "Port Mapping",
+		title: "端口映射",
 		flags: ["UPnP", "PMP", "PCP"],
 	},
 ];
@@ -131,7 +131,7 @@ const DERPPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("DERP - Health")}</title>
+			<title>{pageTitle("DERP - 健康")}</title>
 
 			<Header>
 				<HeaderTitle>
@@ -156,7 +156,7 @@ const DERPPage: FC = () => {
 				})}
 
 				<section>
-					<SectionLabel>Network Checks</SectionLabel>
+					<SectionLabel>网络检查</SectionLabel>
 					{flagGroups.map((group) => (
 						<div key={group.title} className="mb-6">
 							<h5 className="text-xs uppercase tracking-wide text-content-secondary m-0 mb-2">
@@ -192,7 +192,7 @@ const DERPPage: FC = () => {
 				</section>
 
 				<section>
-					<SectionLabel>Regions</SectionLabel>
+					<SectionLabel>区域</SectionLabel>
 					<div className="flex flex-wrap gap-3">
 						{Object.values(regions ?? {})
 							.filter((region) => {
@@ -228,7 +228,7 @@ const DERPPage: FC = () => {
 					</div>
 				</section>
 				<section>
-					<SectionLabel>Logs</SectionLabel>
+					<SectionLabel>日志</SectionLabel>
 					<Logs
 						lines={logs}
 						className="rounded-lg border border-solid border-border text-content-secondary"

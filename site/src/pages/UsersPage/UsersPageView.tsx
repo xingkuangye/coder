@@ -35,21 +35,21 @@ export const UsersPageView: FC<UsersPageViewProps> = ({
 						<Button asChild>
 							<Link to="create">
 								<UserPlusIcon />
-								Create user
+								创建用户
 							</Link>
 						</Button>
 					)
 				}
 			>
-				<SettingsHeaderTitle>Users</SettingsHeaderTitle>
+				<SettingsHeaderTitle>用户</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Manage user accounts and permissions.
+					管理用户账户与权限。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
 			<UsersFilter {...filterProps} />
 
-			<PaginationContainer query={usersQuery} paginationUnitLabel="users">
+			<PaginationContainer query={usersQuery} paginationUnitLabel="用户">
 				<UsersTable users={usersQuery.data?.users} {...props} />
 			</PaginationContainer>
 		</>

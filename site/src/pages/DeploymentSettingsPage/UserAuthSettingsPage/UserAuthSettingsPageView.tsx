@@ -36,7 +36,7 @@ export const UserAuthSettingsPageView = ({
 		<div className="flex flex-col gap-12">
 			<div>
 				<SettingsHeader>
-					<SettingsHeaderTitle>User Authentication</SettingsHeaderTitle>
+					<SettingsHeaderTitle>用户认证</SettingsHeaderTitle>
 				</SettingsHeader>
 
 				<SettingsHeader
@@ -47,10 +47,10 @@ export const UserAuthSettingsPageView = ({
 					}
 				>
 					<SettingsHeaderTitle level="h2" hierarchy="secondary">
-						Login with OpenID Connect
+						使用 OpenID Connect 登录
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Set up authentication to login with OpenID Connect.
+						配置认证以使用 OpenID Connect 登录。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -72,10 +72,10 @@ export const UserAuthSettingsPageView = ({
 					}
 				>
 					<SettingsHeaderTitle level="h2" hierarchy="secondary">
-						Login with GitHub
+						使用 GitHub 登录
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Set up authentication to login with GitHub.
+						配置认证以使用 GitHub 登录。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 

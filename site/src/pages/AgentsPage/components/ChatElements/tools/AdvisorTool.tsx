@@ -21,12 +21,12 @@ type AdvisorToolProps = {
 	remainingUses?: number;
 };
 
-const FALLBACK_QUESTION = "No question provided.";
-const FALLBACK_ERROR = "Advisor could not return guidance.";
+const FALLBACK_QUESTION = "未提供问题。";
+const FALLBACK_ERROR = "顾问无法返回指导。";
 const LIMIT_REACHED_MESSAGE =
-	"You have reached the advisor limit for this conversation.";
-const RUNNING_MESSAGE = "Consulting advisor…";
-const EMPTY_ADVICE_MESSAGE = "Advisor returned no guidance.";
+	"您已达到此对话的顾问使用上限。";
+const RUNNING_MESSAGE = "正在咨询顾问…";
+const EMPTY_ADVICE_MESSAGE = "顾问未返回任何建议。";
 
 export const AdvisorTool: React.FC<AdvisorToolProps> = ({
 	question,
@@ -77,7 +77,7 @@ export const AdvisorTool: React.FC<AdvisorToolProps> = ({
 						)}
 						{remainingUses !== undefined && (
 							<span className="shrink-0 rounded-full border border-solid border-border-default px-2 text-[13px] leading-4 text-content-secondary">
-								{remainingUses.toLocaleString("en-US")} uses left
+								{remainingUses.toLocaleString("en-US")}次剩余
 							</span>
 						)}
 					</div>
@@ -112,7 +112,7 @@ export const AdvisorTool: React.FC<AdvisorToolProps> = ({
 				<div className="space-y-3 px-3 py-2">
 					{isRunning && adviceText.length === 0 ? (
 						<div role="status" className="text-sm text-content-secondary">
-							Reviewing context and preparing guidance.
+							正在审查上下文并准备指导。
 						</div>
 					) : showLimitReached ? (
 						<div
@@ -121,7 +121,7 @@ export const AdvisorTool: React.FC<AdvisorToolProps> = ({
 						>
 							<TriangleAlertIcon className="mt-0.5 size-4 shrink-0 text-content-warning" />
 							<div className="space-y-1">
-								<p className="m-0 font-medium">Advisor limit reached.</p>
+								<p className="m-0 font-medium">顾问使用上限已到达。</p>
 								<p className="m-0 text-content-primary">
 									{LIMIT_REACHED_MESSAGE}
 								</p>
@@ -134,17 +134,17 @@ export const AdvisorTool: React.FC<AdvisorToolProps> = ({
 						>
 							<CircleAlertIcon className="mt-0.5 size-4 shrink-0 text-content-destructive" />
 							<div className="space-y-1">
-								<p className="m-0 font-medium">Advisor request failed.</p>
+								<p className="m-0 font-medium">顾问请求失败。</p>
 								<p className="m-0 text-content-primary [overflow-wrap:anywhere]">
 									{effectiveErrorMessage}
 								</p>
 							</div>
 						</div>
 					) : (
-						<section className="space-y-2" aria-label="Advisor advice">
+						<section className="space-y-2" aria-label="顾问建议">
 							<div>
 								<span className="inline-flex rounded-full border border-solid border-border-default px-2 text-[13px] leading-4 text-content-secondary">
-									Advice
+									建议
 								</span>
 							</div>
 							<Response

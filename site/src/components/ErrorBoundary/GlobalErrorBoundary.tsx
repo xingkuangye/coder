@@ -10,7 +10,7 @@ import { ProductLogo } from "#/components/Icons/ProductLogo";
 import { Link } from "#/components/Link/Link";
 import { useEmbeddedMetadata } from "#/hooks/useEmbeddedMetadata";
 
-const errorPageTitle = "Something went wrong";
+const errorPageTitle = "出了点问题";
 
 // Mocking React Router's error-handling logic is a pain; the next best thing is
 // to split it off from the rest of the code, and pass the value via props
@@ -42,17 +42,16 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 					<div className="text-content-primary flex flex-col gap-1">
 						<h1 className="text-2xl font-semibold m-0">{errorPageTitle}</h1>
 						<p className="leading-6 m-0 text-content-secondary text-sm">
-							Please try reloading the page. If reloading does not work, you can
-							ask for help in the{" "}
+							请尝试重新加载页面。如果重新加载无效，你可以在{" "}
 							<Link
 								href="https://discord.gg/coder"
 								target="_blank"
 								rel="noreferrer"
 							>
-								Coder Discord community
-								<span className="sr-only"> (link opens in a new tab)</span>
+								Coder Discord 社区
+								<span className="sr-only">（链接在新标签页中打开）</span>
 							</Link>{" "}
-							or{" "}
+							或{" "}
 							<Link
 								target="_blank"
 								rel="noreferrer"
@@ -62,8 +61,8 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 									error,
 								)}
 							>
-								open an issue on GitHub
-								<span className="sr-only"> (link opens in a new tab)</span>
+								在 GitHub 上提交 issue
+								<span className="sr-only">（链接在新标签页中打开）</span>
 							</Link>
 							.
 						</p>
@@ -72,7 +71,7 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 
 				<div className="flex flex-row flex-nowrap justify-center gap-2">
 					<Button asChild className="min-w-32 ">
-						<a href={location.pathname}>Reload page</a>
+						<a href={location.pathname}>刷新页面</a>
 					</Button>
 
 					{isRenderableError && (
@@ -81,7 +80,7 @@ export const GlobalErrorBoundaryInner: FC<GlobalErrorBoundaryInnerProps> = ({
 							className="min-w-32"
 							onClick={() => setShowErrorMessage(!showErrorMessage)}
 						>
-							{showErrorMessage ? "Hide error" : "Show error"}
+							{showErrorMessage ? "隐藏错误" : "显示错误"}
 						</Button>
 					)}
 				</div>

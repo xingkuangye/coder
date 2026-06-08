@@ -34,16 +34,16 @@ export const CreateOAuth2AppPageView: FC<CreateOAuth2AppProps> = ({
 		<>
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<SettingsHeader>
-					<SettingsHeaderTitle>Add an OAuth2 application</SettingsHeaderTitle>
+					<SettingsHeaderTitle>添加 OAuth2 应用</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Configure an application to use Coder as an OAuth2 provider.
+						配置应用以将 Coder 用作 OAuth2 提供商。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
 				<Button variant="outline" asChild>
 					<RouterLink to="/deployment/oauth2-provider/apps">
 						<ChevronLeftIcon />
-						All OAuth2 Applications
+						所有 OAuth2 应用
 					</RouterLink>
 				</Button>
 			</div>

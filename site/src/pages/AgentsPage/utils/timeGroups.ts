@@ -1,12 +1,11 @@
 /**
- * Time-based grouping utility used by the sidebar to categorize
- * chats into "Today", "Yesterday", "This Week", and "Older".
+ * 基于时间的分组工具，侧边栏用于将聊天归类为“今天”、“昨天”、“本周”和“更早”。
  */
 export const TIME_GROUPS = [
-	"Today",
-	"Yesterday",
-	"This Week",
-	"Older",
+	"今天",
+	"昨天",
+	"本周",
+	"更早",
 ] as const;
 type TimeGroup = (typeof TIME_GROUPS)[number];
 
@@ -19,8 +18,8 @@ export function getTimeGroup(dateStr: string): TimeGroup {
 	const weekAgo = new Date(today);
 	weekAgo.setDate(weekAgo.getDate() - 7);
 
-	if (date >= today) return "Today";
-	if (date >= yesterday) return "Yesterday";
-	if (date >= weekAgo) return "This Week";
-	return "Older";
+	if (date >= today) return "今天";
+	if (date >= yesterday) return "昨天";
+	if (date >= weekAgo) return "本周";
+	return "更早";
 }

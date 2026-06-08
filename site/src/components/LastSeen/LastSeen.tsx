@@ -25,7 +25,7 @@ export const LastSeen: FC<LastSeenProps> = ({ at, className, ...attrs }) => {
 	if (isAfter(at, oneHourAgo)) {
 		// Since the agent reports on a 10m interval,
 		// the last_used_at can be inaccurate when recent.
-		message = "Now";
+		message = "现在";
 		color = theme.roles.success.fill.solid;
 	} else if (isAfter(at, threeDaysAgo)) {
 		color = theme.experimental.l2.text;
@@ -34,7 +34,7 @@ export const LastSeen: FC<LastSeenProps> = ({ at, className, ...attrs }) => {
 	} else if (isAfter(at, centuryAgo)) {
 		color = theme.roles.error.fill.solid;
 	} else {
-		message = "Never";
+		message = "从未";
 	}
 
 	return (

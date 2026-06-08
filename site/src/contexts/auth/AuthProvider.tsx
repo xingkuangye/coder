@@ -100,9 +100,9 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 		(req: UpdateUserProfileRequest) => {
 			const mutation = updateProfileMutation.mutateAsync(req);
 			toast.promise(mutation, {
-				loading: "Updating profile...",
-				success: "Profile updated successfully.",
-				error: "Failed to update profile.",
+				loading: "更新个人资料中…",
+				success: "个人资料更新成功。",
+				error: "个人资料更新失败。",
 			});
 		},
 		[updateProfileMutation],

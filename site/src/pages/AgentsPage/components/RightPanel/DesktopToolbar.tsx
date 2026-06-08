@@ -32,7 +32,7 @@ export const DesktopToolbar: FC<DesktopToolbarProps> = ({
 		<div
 			className="flex h-8 shrink-0 items-center justify-end gap-1 border-0 border-b border-solid border-border-default bg-surface-primary px-1.5"
 			role="group"
-			aria-label="Desktop controls"
+			aria-label="桌面控制"
 		>
 			{/* Take/Release control */}
 			<Button
@@ -45,12 +45,12 @@ export const DesktopToolbar: FC<DesktopToolbarProps> = ({
 				{isControlling ? (
 					<>
 						<HandIcon className="size-3.5" />
-						Release control
+						释放控制
 					</>
 				) : (
 					<>
 						<MousePointer2Icon className="size-3.5" />
-						Take control
+						获取控制
 					</>
 				)}
 			</Button>
@@ -64,20 +64,20 @@ export const DesktopToolbar: FC<DesktopToolbarProps> = ({
 				}
 				aria-label={
 					scaleMode === "native"
-						? "Zoom to fit (Ctrl+0)"
-						: "Zoom to 100% (Ctrl+1)"
+						? "缩放以适应 (Ctrl+0)"
+						: "缩放至100% (Ctrl+1)"
 				}
 				className="h-6 gap-1.5 px-2 text-xs"
 			>
 				{scaleMode === "native" ? (
 					<>
 						<ScalingIcon className="size-3.5" />
-						Zoom to fit
+						缩放以适应
 					</>
 				) : (
 					<>
 						<MaximizeIcon className="size-3.5" />
-						Zoom to 100%
+						缩放至100%
 					</>
 				)}
 			</Button>
@@ -88,11 +88,11 @@ export const DesktopToolbar: FC<DesktopToolbarProps> = ({
 					variant="subtle"
 					size="sm"
 					onClick={onPopOut}
-					aria-label="Detach desktop to new window"
+					aria-label="将桌面分离到新窗口"
 					className="h-6 gap-1.5 px-2 text-xs"
 				>
 					<ExternalLinkIcon className="size-3.5" />
-					Detach
+					分离
 				</Button>
 			)}
 		</div>

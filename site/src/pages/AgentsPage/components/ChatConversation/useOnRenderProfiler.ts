@@ -15,16 +15,12 @@ const WARN_THROTTLE_MS = 2000;
 const MAX_MEASURE_ENTRIES = 500;
 
 /**
- * Returns a stable onRender callback for React's <Profiler> component.
- * Every render emits a performance.measure() entry visible in browser
- * devtools (including Safari Timeline). Renders exceeding
- * SLOW_RENDER_THRESHOLD_MS additionally log a console.warn with
- * timing details (throttled per profiler id).
+ * 返回一个稳定的 onRender 回调，用于 React 的 <Profiler> 组件。
+ * 每次渲染都会生成一个 performance.measure() 条目，可在浏览器开发者工具（包括 Safari 时间线）中查看。
+ * 超过 SLOW_RENDER_THRESHOLD_MS 的渲染会额外输出一条 console.warn，包含时间细节（按 profiler id 节流）。
  *
- * In standard production builds, React does not call the onRender
- * callback with timing data, so the hook is effectively inert. It
- * only produces output when built with react-dom/profiling (enabled
- * via CODER_REACT_PROFILING=true).
+ * 在标准生产构建中，React 不会调用含有时间数据的 onRender 回调，因此该 Hook 实际上不执行任何操作。
+ * 只有在使用 react-dom/profiling 进行构建（通过 CODER_REACT_PROFILING=true 启用）时才会产生输出。
  */
 export function useOnRenderProfiler(): ProfilerOnRenderCallback {
 	const lastWarnTime = useRef(0);

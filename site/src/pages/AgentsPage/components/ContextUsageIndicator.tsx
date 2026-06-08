@@ -123,8 +123,8 @@ export const ContextUsageIndicator: FC<{ usage: AgentContextUsage | null }> = ({
 		: 100;
 	const toneClassName = getIndicatorToneClassName(percentUsed);
 	const ariaLabel = hasPercent
-		? `Context usage ${percentLabel}. ${formatTokenCount(usedTokens)} of ${formatTokenCount(contextLimitTokens)} tokens used.`
-		: "Context usage";
+		? `上下文用量 ${percentLabel}。已使用 ${formatTokenCount(usedTokens)} / ${formatTokenCount(contextLimitTokens)} 令牌。`
+		: "上下文用量";
 
 	// Extract context files and skills from lastInjectedContext.
 	const contextFiles =
@@ -136,13 +136,13 @@ export const ContextUsageIndicator: FC<{ usage: AgentContextUsage | null }> = ({
 	const panelContent = (
 		<div className="text-xs text-content-primary">
 			{hasPercent
-				? `${percentLabel} – ${formatTokenCountCompact(usedTokens)} / ${formatTokenCountCompact(contextLimitTokens)} context used`
-				: "Context usage unavailable"}
+				? `${percentLabel} – ${formatTokenCountCompact(usedTokens)} / ${formatTokenCountCompact(contextLimitTokens)} 上下文使用量`
+				: "上下文使用量不可用"}
 			{hasPercent &&
 				usage?.compressionThreshold !== undefined &&
 				usage.compressionThreshold > 0 && (
 					<div className="mt-1 text-content-secondary">
-						{`Compacts at ${usage.compressionThreshold}%`}
+						{`压缩发生于 ${usage.compressionThreshold}%`}
 					</div>
 				)}
 			{hasInjectedContext && (
@@ -155,7 +155,7 @@ export const ContextUsageIndicator: FC<{ usage: AgentContextUsage | null }> = ({
 					{contextFiles.length > 0 && (
 						<div className="flex flex-col gap-1">
 							<span className="font-medium text-content-primary">
-								Context files
+								上下文文件
 							</span>
 							{contextFiles.map((part) => {
 								if (part.type !== "context-file") return null;
@@ -170,7 +170,7 @@ export const ContextUsageIndicator: FC<{ usage: AgentContextUsage | null }> = ({
 										</span>
 										{part.context_file_truncated && (
 											<span className="shrink-0 text-content-warning">
-												(truncated)
+												(已截断)
 											</span>
 										)}
 									</div>
@@ -180,7 +180,7 @@ export const ContextUsageIndicator: FC<{ usage: AgentContextUsage | null }> = ({
 					)}
 					{skills.length > 0 && (
 						<div className="flex flex-col gap-1">
-							<span className="font-medium text-content-primary">Skills</span>
+							<span className="font-medium text-content-primary">技能</span>
 							<TooltipProvider delayDuration={300}>
 								{skills.map((part) => {
 									if (part.type !== "skill") return null;

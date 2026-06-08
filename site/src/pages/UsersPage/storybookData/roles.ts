@@ -4,7 +4,7 @@ import type { AssignableRoles, RBACAction, Role } from "#/api/typesGenerated";
 export const MockRoles: (AssignableRoles | Role)[] = [
 	{
 		name: "owner",
-		display_name: "Owner",
+		display_name: "所有者",
 		site_permissions: [
 			{
 				negate: false,
@@ -205,7 +205,7 @@ export const MockRoles: (AssignableRoles | Role)[] = [
 	},
 	{
 		name: "template-admin",
-		display_name: "Template Admin",
+		display_name: "模板管理员",
 		site_permissions: [
 			{
 				negate: false,
@@ -301,7 +301,7 @@ export const MockRoles: (AssignableRoles | Role)[] = [
 	},
 	{
 		name: "user-admin",
-		display_name: "User Admin",
+		display_name: "用户管理员",
 		site_permissions: [
 			{
 				negate: false,
@@ -417,7 +417,7 @@ export const MockRoles: (AssignableRoles | Role)[] = [
 	},
 	{
 		name: "auditor",
-		display_name: "Auditor",
+		display_name: "审计员",
 		site_permissions: [
 			{
 				negate: false,

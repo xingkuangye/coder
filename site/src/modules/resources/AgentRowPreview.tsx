@@ -36,7 +36,7 @@ export const AgentRowPreview: FC<AgentRowPreviewProps> = ({
 							alignValues && "sm:min-w-[240px]",
 						)}
 					>
-						<span>Agent:</span>
+						<span>代理：</span>
 						<span className="text-content-primary">{agent.name}</span>
 					</div>
 
@@ -46,14 +46,14 @@ export const AgentRowPreview: FC<AgentRowPreviewProps> = ({
 							alignValues && "sm:min-w-[100px]",
 						)}
 					>
-						<span>OS:</span>
+						<span>操作系统：</span>
 						<span className="font-normal text-sm capitalize text-content-primary">
 							{agent.operating_system}
 						</span>
 					</div>
 
 					<div className="flex flex-row items-center gap-2 max-md:w-fit max-md:flex-col max-md:items-start max-md:gap-2">
-						<span>Apps:</span>
+						<span>应用：</span>
 						<div className="flex flex-row items-center gap-1 flex-wrap">
 							{/* We display all modules returned in agent.apps */}
 							{agent.apps.map((app) => (
@@ -93,7 +93,7 @@ export const AgentRowPreview: FC<AgentRowPreviewProps> = ({
 								)
 							)}
 							{agent.apps.length === 0 && agent.display_apps.length === 0 && (
-								<span className="text-content-primary">None</span>
+								<span className="text-content-primary">无</span>
 							)}
 						</div>
 					</div>

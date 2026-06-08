@@ -26,7 +26,7 @@ export const OrganizationPills: FC<OrganizationPillsProps> = ({
 					{orgs[0].name}
 				</Pill>
 			) : (
-				<p>None</p>
+				<p>无</p>
 			)}
 
 			{orgs.length > 1 && <OverflowPillList organizations={orgs.slice(1)} />}

@@ -100,7 +100,7 @@ export const WorkspaceBuildLogs: FC<WorkspaceBuildLogsProps> = ({
 							<div>{stage}</div>
 							{shouldDisplayDuration && (
 								<div className="ml-auto text-xs text-content-secondary">
-									{duration} seconds
+									{duration} 秒
 								</div>
 							)}
 						</div>

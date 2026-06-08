@@ -120,7 +120,7 @@ export const TemplateFiles: FC<TemplateFilesProps> = ({
 												className="flex items-center gap-1 text-sm no-underline text-content-secondary hover:text-content-primary"
 											>
 												<EditIcon className="text-inherit size-icon-xs" />
-												Edit
+												编辑
 											</RouterLink>
 										</div>
 									</header>

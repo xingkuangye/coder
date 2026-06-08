@@ -37,7 +37,7 @@ import {
 import { getFormHelpers, nameValidator } from "#/utils/formUtils";
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
+	name: nameValidator("名称"),
 });
 
 type CreateEditRolePageViewProps = {
@@ -81,10 +81,10 @@ const CreateEditRolePageView: FC<CreateEditRolePageViewProps> = ({
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<SettingsHeader>
 					<SettingsHeaderTitle>
-						{role ? "Edit" : "Create"} Custom Role
+						{role ? "编辑" : "创建"}自定义角色
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Set a name and permissions for this role.
+						为此角色设置名称和权限。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -95,7 +95,7 @@ const CreateEditRolePageView: FC<CreateEditRolePageViewProps> = ({
 							navigate(`/organizations/${organizationName}/roles`);
 						}}
 					>
-						Cancel
+						取消
 					</Button>
 					<Button
 						onClick={() => {
@@ -103,7 +103,7 @@ const CreateEditRolePageView: FC<CreateEditRolePageViewProps> = ({
 						}}
 					>
 						<Spinner loading={isLoading} />
-						{role !== undefined ? "Save" : "Create Role"}
+						{role !== undefined ? "保存" : "创建角色"}
 					</Button>
 				</div>
 			</div>
@@ -117,19 +117,19 @@ const CreateEditRolePageView: FC<CreateEditRolePageViewProps> = ({
 					<TextField
 						{...getFieldHelpers("name", {
 							helperText:
-								"The role name cannot be modified after the role is created.",
+								"角色创建后，名称无法修改。",
 						})}
 						autoFocus
 						fullWidth
 						disabled={role !== undefined}
-						label="Name"
+						label="名称"
 					/>
 					<TextField
 						{...getFieldHelpers("display_name", {
-							helperText: "Optional: keep empty to default to the name.",
+							helperText: "可选：留空则默认使用名称。",
 						})}
 						fullWidth
-						label="Display Name"
+						label="显示名称"
 					/>
 					<ActionCheckboxes
 						permissions={role?.organization_permissions || []}
@@ -139,12 +139,12 @@ const CreateEditRolePageView: FC<CreateEditRolePageViewProps> = ({
 				</FormFields>
 				<FormFooter>
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 
 					<Button type="submit" disabled={isLoading}>
 						<Spinner loading={isLoading} />
-						{role ? "Save role" : "Create Role"}
+						{role ? "保存角色" : "创建角色"}
 					</Button>
 				</FormFooter>
 			</VerticalForm>
@@ -256,7 +256,7 @@ const ActionCheckboxes: FC<ActionCheckboxesProps> = ({
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead>Permission</TableHead>
+					<TableHead>权限</TableHead>
 					<TableHead className="py-1 text-right">
 						<ShowAllResourcesCheckbox
 							showAllResources={showAllResources}
@@ -393,8 +393,8 @@ const ShowAllResourcesCheckbox: FC<ShowAllResourcesCheckboxProps> = ({
 			label={
 				<span style={{ fontSize: 12 }}>
 					{showAllResources
-						? "Hide advanced permissions"
-						: "Show advanced permissions"}
+						? "隐藏高级权限"
+						: "显示高级权限"}
 				</span>
 			}
 		/>

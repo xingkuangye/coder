@@ -17,6 +17,6 @@ export const formatTemplateBuildTime = (
 	buildTimeMs?: number | null,
 ): string => {
 	return buildTimeMs === undefined || buildTimeMs === null
-		? "Unknown"
-		: `${Math.round(dayjs.duration(buildTimeMs, "milliseconds").asSeconds())}s`;
+		? "未知"
+		: `${Math.round(dayjs.duration(buildTimeMs, "milliseconds").asSeconds())}秒`;
 };

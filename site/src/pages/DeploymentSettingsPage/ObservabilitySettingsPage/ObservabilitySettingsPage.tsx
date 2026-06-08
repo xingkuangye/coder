@@ -12,7 +12,7 @@ const ObservabilitySettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Observability Settings")}</title>
+			<title>{pageTitle("可观测性设置")}</title>
 
 			<ObservabilitySettingsPageView
 				options={deploymentConfig.options}

@@ -51,12 +51,12 @@ const WorkspaceSchedulePage: FC = () => {
 				),
 			});
 			toast.success(
-				`Schedule for workspace "${workspaceName}" updated successfully.`,
+				`工作空间 "${workspaceName}" 的调度更新成功。`,
 			);
 		},
 		onError: (error) =>
 			toast.error(
-				`Failed to update schedule for workspace "${workspaceName}".`,
+				`更新工作空间 "${workspaceName}" 的调度失败。`,
 				{
 					description: getErrorDetail(error),
 				},
@@ -72,10 +72,10 @@ const WorkspaceSchedulePage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(workspaceName, "Schedule")}</title>
+			<title>{pageTitle(workspaceName, "调度")}</title>
 
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>Workspace Schedule</PageHeaderTitle>
+				<PageHeaderTitle>工作空间调度</PageHeaderTitle>
 			</PageHeader>
 
 			{error && <ErrorAlert error={error} />}
@@ -84,27 +84,25 @@ const WorkspaceSchedulePage: FC = () => {
 
 			{permissions && !permissions.updateWorkspace && (
 				<Alert severity="error">
-					You don&apos;t have permissions to update the schedule for this
-					workspace.
+					您没有权限更新此工作空间的调度。
 				</Alert>
 			)}
 
 			{template &&
 				(workspace.is_prebuild ? (
 					<Alert severity="info">
-						Prebuilt workspaces ignore workspace-level scheduling until they are
-						claimed. For prebuilt workspace specific scheduling refer to the{" "}
+						预构建工作空间在被认领之前会忽略工作空间级别的调度。有关预构建工作空间的具体调度，请参阅{" "}
 						<Link
-							title="Prebuilt Workspaces Scheduling"
+							title="预构建工作空间调度"
 							href={docs(
 								"/admin/templates/extending-templates/prebuilt-workspaces#scheduling",
 							)}
 							target="_blank"
 							rel="noreferrer"
 						>
-							Prebuilt Workspaces Scheduling
+							预构建工作空间调度
 						</Link>{" "}
-						documentation page.
+						文档页面。
 					</Alert>
 				) : (
 					<WorkspaceScheduleForm
@@ -149,10 +147,10 @@ const WorkspaceSchedulePage: FC = () => {
 
 			<ConfirmDialog
 				open={isConfirmingApply}
-				title="Restart workspace?"
-				description="Would you like to restart your workspace now to apply your new autostop setting, or let it apply after your next workspace start?"
-				confirmText="Restart"
-				cancelText="Apply later"
+				title="重启工作空间？"
+				description="您要立即重启工作空间以应用新的自动停止设置，还是等到下次工作空间启动后自动应用？"
+				confirmText="重启"
+				cancelText="稍后应用"
 				hideCancel={false}
 				onConfirm={() => {
 					restartWorkspace();

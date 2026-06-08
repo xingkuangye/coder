@@ -93,8 +93,8 @@ export const AgentSettingsExperimentsPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Experiments"
-				description="Opt in to experimental features."
+				label="实验"
+				description="选择加入实验性功能。"
 			/>
 			<VirtualDesktopSettings
 				desktopEnabledData={desktopEnabledData}

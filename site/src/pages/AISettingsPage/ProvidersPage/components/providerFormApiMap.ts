@@ -157,7 +157,7 @@ export const providerFormValuesToCreate = (
 	// `""` is unreachable here (Yup blocks it, Bedrock and Copilot branched
 	// out), but the union still includes it; narrow so TS stays honest.
 	if (values.type === "") {
-		throw new Error("provider type is required");
+		throw new Error("提供商类型为必填项");
 	}
 	return {
 		type: values.type,

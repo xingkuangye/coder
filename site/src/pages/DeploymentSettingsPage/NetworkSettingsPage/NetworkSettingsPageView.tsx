@@ -30,9 +30,9 @@ export const NetworkSettingsPageView: FC<NetworkSettingsPageViewProps> = ({
 			<SettingsHeader
 				actions={<SettingsHeaderDocsLink href={docs("/admin/networking")} />}
 			>
-				<SettingsHeaderTitle>Network</SettingsHeaderTitle>
+				<SettingsHeaderTitle>网络</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Configure your deployment connectivity.
+					配置您的部署网络连接。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -52,11 +52,10 @@ export const NetworkSettingsPageView: FC<NetworkSettingsPageViewProps> = ({
 				}
 			>
 				<SettingsHeaderTitle level="h2" hierarchy="secondary">
-					Port Forwarding
+					端口转发
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Port forwarding lets developers securely access processes on their
-					Coder workspace from a local machine.
+					端口转发允许开发者从本地计算机安全地访问其 Coder 工作区中的进程。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 

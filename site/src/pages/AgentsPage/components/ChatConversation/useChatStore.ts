@@ -29,7 +29,7 @@ import type { RetryState } from "./types";
 
 const normalizeRetryState = (retry: TypesGen.ChatStreamRetry): RetryState => ({
 	attempt: Math.max(1, retry.attempt),
-	error: retry.error.trim() || "Retrying request shortly.",
+	error: retry.error.trim() || "即将重试请求。",
 	kind: retry.kind ?? "generic",
 	provider: retry.provider?.trim() || undefined,
 	delayMs: retry.delay_ms,
@@ -413,7 +413,7 @@ export const useChatStore = (
 			if (payload.parseError || !payload.parsedMessage) {
 				store.setStreamError({
 					kind: "generic",
-					message: "Failed to parse chat stream update.",
+					message: "无法解析聊天流更新。",
 				});
 				return;
 			}
@@ -534,7 +534,7 @@ export const useChatStore = (
 							}
 							const reason = normalizeChatErrorPayload(streamEvent.error) ?? {
 								kind: "generic",
-								message: "Chat processing failed.",
+								message: "聊天处理失败。",
 							};
 							store.setChatStatus("error");
 							store.setStreamError(reason);

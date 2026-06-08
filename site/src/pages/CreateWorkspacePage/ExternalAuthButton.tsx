@@ -33,13 +33,13 @@ export const ExternalAuthButton: FC<ExternalAuthButtonProps> = ({
 					<ExternalImage
 						className="w-5 h-5"
 						src={auth.display_icon}
-						alt={`${auth.display_name} Icon`}
+						alt={`${auth.display_name} 图标`}
 					/>
 				)}
 				<p className="font-semibold text-sm m-0">{auth.display_name}</p>
 				{!auth.authenticated && !auth.optional && (
 					<Badge size="sm" variant={error ? "destructive" : "warning"}>
-						Required
+						必填
 					</Badge>
 				)}
 			</span>
@@ -49,7 +49,7 @@ export const ExternalAuthButton: FC<ExternalAuthButtonProps> = ({
 					<>
 						<CheckIcon className="w-4 h-4 text-content-success" />
 						<p className="text-xs font-semibold text-content-secondary m-0">
-							Authenticated
+							已认证
 						</p>
 					</>
 				) : (
@@ -67,7 +67,7 @@ export const ExternalAuthButton: FC<ExternalAuthButtonProps> = ({
 						}}
 					>
 						<Spinner loading={isLoading} />
-						Login with {auth.display_name}
+						使用 {auth.display_name} 登录
 					</Button>
 				)}
 
@@ -76,11 +76,11 @@ export const ExternalAuthButton: FC<ExternalAuthButtonProps> = ({
 						<TooltipTrigger asChild>
 							<Button variant="outline" size="icon" onClick={onStartPolling}>
 								<RedoIcon />
-								<span className="sr-only">Refresh external auth</span>
+								<span className="sr-only">刷新外部认证</span>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							Retry login with {auth.display_name}
+							使用 {auth.display_name} 重试登录
 						</TooltipContent>
 					</Tooltip>
 				)}

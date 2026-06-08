@@ -32,18 +32,18 @@ export const RequestLogsFilter: FC<RequestLogsFilterProps> = ({
 			isLoading={menus.user.isInitializing}
 			presets={[
 				{
-					name: "All requests",
+					name: "所有请求",
 					query: "",
 				},
 				{
-					name: "My requests",
+					name: "我的请求",
 					query: "initiator:me",
 				},
 			]}
 			error={error}
 			options={
 				<>
-					<UserMenu menu={menus.user} placeholder="All initiators" />
+					<UserMenu menu={menus.user} placeholder="所有发起人" />
 					<ProviderFilter menu={menus.provider} />
 					<ModelFilter menu={menus.model} />
 					<ClientFilter menu={menus.client} />

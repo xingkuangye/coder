@@ -42,27 +42,27 @@ type FilterPreset = {
 const PRESET_FILTERS: FilterPreset[] = [
 	{
 		query: workspaceFilterQuery.me,
-		name: "My workspaces",
+		name: "我的工作空间",
 	},
 	{
 		query: workspaceFilterQuery.all,
-		name: "All workspaces",
+		name: "所有工作空间",
 	},
 	{
 		query: workspaceFilterQuery.running,
-		name: "Running workspaces",
+		name: "正在运行的工作空间",
 	},
 	{
 		query: workspaceFilterQuery.failed,
-		name: "Failed workspaces",
+		name: "失败的工作空间",
 	},
 	{
 		query: workspaceFilterQuery.outdated,
-		name: "Outdated workspaces",
+		name: "已过期的工作空间",
 	},
 	{
 		query: workspaceFilterQuery.shared,
-		name: "Shared workspaces",
+		name: "共享的工作空间",
 	},
 ];
 
@@ -71,7 +71,7 @@ const PRESETS_WITH_DORMANT: FilterPreset[] = [
 	...PRESET_FILTERS,
 	{
 		query: workspaceFilterQuery.dormant,
-		name: "Dormant workspaces",
+		name: "休眠的工作空间",
 	},
 ];
 

@@ -58,7 +58,7 @@ export const getQueuedMessageInfo = (
 		};
 	}
 	return {
-		displayText: "[Queued message]",
+		displayText: "[队列中的消息]",
 		rawText: "",
 		attachmentCount: fileBlocks.length,
 		fileBlocks,
@@ -207,7 +207,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 							{item.attachmentCount > 0 && (
 								<span
 									role="img"
-									aria-label={`${item.attachmentCount} image attachment${item.attachmentCount !== 1 ? "s" : ""}`}
+									aria-label={`${item.attachmentCount} 个图片附件`}
 									className="flex shrink-0 items-center gap-1 text-xs text-content-secondary"
 								>
 									<ImageIcon className="size-3" aria-hidden="true" />
@@ -222,7 +222,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 									)}
 								>
 									<CornerDownLeftIcon className="size-3" />
-									to send
+									待发送
 								</span>
 							)}
 							<div
@@ -237,7 +237,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 											<Button
 												variant="subtle"
 												size="icon"
-												aria-label="Edit"
+												aria-label="编辑"
 												disabled={isBusy}
 												onClick={() =>
 													onEdit(item.id, item.rawText, item.fileBlocks)
@@ -247,7 +247,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 												<PencilIcon className="size-3.5" />
 											</Button>
 										</TooltipTrigger>
-										<TooltipContent side="top">Edit</TooltipContent>
+										<TooltipContent side="top">编辑</TooltipContent>
 									</Tooltip>
 								)}
 								<Tooltip>
@@ -255,7 +255,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 										<Button
 											variant="subtle"
 											size="icon"
-											aria-label="Send now"
+											aria-label="立即发送"
 											disabled={isBusy}
 											onClick={() => void handlePromote(item.id)}
 											className="size-6 rounded text-content-secondary hover:bg-surface-tertiary hover:text-content-primary"
@@ -267,14 +267,14 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 											)}
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent side="top">Send now</TooltipContent>
+									<TooltipContent side="top">立即发送</TooltipContent>
 								</Tooltip>
 								<Tooltip>
 									<TooltipTrigger asChild>
 										<Button
 											variant="subtle"
 											size="icon"
-											aria-label="Remove from queue"
+											aria-label="从队列中移除"
 											disabled={isBusy}
 											onClick={() => void handleDelete(item.id)}
 											className="size-6 rounded text-content-secondary hover:bg-surface-tertiary hover:text-content-destructive"
@@ -286,7 +286,7 @@ export const QueuedMessagesList: FC<QueuedMessagesListProps> = ({
 											)}
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent side="top">Remove</TooltipContent>
+									<TooltipContent side="top">移除</TooltipContent>
 								</Tooltip>
 							</div>
 						</div>

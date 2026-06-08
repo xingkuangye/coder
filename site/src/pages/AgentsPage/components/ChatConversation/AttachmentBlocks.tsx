@@ -111,12 +111,12 @@ const getAttachmentDisplayName = (
 		return name;
 	}
 	if (block.media_type.startsWith("image/")) {
-		return "Attached image";
+		return "附加图片";
 	}
 	if (isTextPreviewAttachmentMediaType(block.media_type)) {
-		return "Pasted text";
+		return "粘贴的文本";
 	}
-	return "Attached file";
+	return "附加文件";
 };
 
 const getAttachmentDownloadName = (
@@ -146,7 +146,7 @@ const DownloadOverlay: FC<{
 		href={href}
 		download={downloadName}
 		onClick={(event) => event.stopPropagation()}
-		aria-label={`Download ${displayName}`}
+		aria-label={`下载 ${displayName}`}
 		className="invisible absolute right-1 top-1 flex size-6 items-center justify-center rounded bg-surface-primary/80 text-content-secondary opacity-0 shadow-sm backdrop-blur-sm transition-opacity hover:text-content-primary group-hover/attachment:visible group-hover/attachment:opacity-100 group-focus-within/attachment:visible group-focus-within/attachment:opacity-100 [@media(hover:none)]:visible [@media(hover:none)]:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-content-link"
 	>
 		<DownloadIcon aria-hidden="true" className="size-3.5" />
@@ -181,13 +181,13 @@ type AttachmentFailureLabels = {
 };
 
 const imageAttachmentFailureLabels: AttachmentFailureLabels = {
-	expired: "Image expired",
-	failed: "Image failed to load",
+	expired: "图片已过期",
+	failed: "图片加载失败",
 };
 
 const textAttachmentFailureLabels: AttachmentFailureLabels = {
-	expired: "Attachment expired",
-	failed: "Attachment failed to load",
+	expired: "附件已过期",
+	failed: "附件加载失败",
 };
 
 const AttachmentFallbackTile: FC<{
@@ -221,7 +221,7 @@ const AttachmentFallbackTile: FC<{
 	// browser exposes nothing useful) stays a plain tile.
 	const tooltipBody =
 		state.kind === "expired"
-			? "Chat attachments are deleted after the retention window set for this deployment."
+			? "聊天附件将在本次部署设置的保留期限后删除。"
 			: state.detail;
 	if (!tooltipBody) {
 		return tile;
@@ -248,9 +248,9 @@ const InlineTextAttachmentButton: FC<{
 		<button
 			type="button"
 			aria-label={
-				fileName && fileName !== "Pasted text"
-					? `View ${fileName}`
-					: "View text attachment"
+				fileName && fileName !== "粘贴的文本"
+					? `查看 ${fileName}`
+					: "查看文本附件"
 			}
 			className="inline-flex h-16 max-w-sm items-center gap-2 rounded-md border-0 bg-surface-tertiary px-3 py-2 text-left transition-colors hover:bg-surface-quaternary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-content-link"
 			onClick={(event) => {
@@ -323,7 +323,7 @@ const RemoteTextAttachmentButton: FC<{
 
 	const button = (
 		<InlineTextAttachmentButton
-			content={content ?? fileName ?? "Pasted text"}
+			content={content ?? fileName ?? "粘贴的文本"}
 			fileName={fileName}
 			icon={
 				showStatus && isLoading ? (
@@ -383,7 +383,7 @@ const RemoteTextAttachmentButton: FC<{
 	const framedButton = frameHref ? (
 		<AttachmentPreviewFrame
 			href={frameHref}
-			displayName={fileName ?? "Pasted text"}
+			displayName={fileName ?? "粘贴的文本"}
 			downloadName={downloadName}
 		>
 			{button}
@@ -401,7 +401,7 @@ const RemoteTextAttachmentButton: FC<{
 					aria-live="polite"
 					className="text-xs text-content-secondary"
 				>
-					Loading attachment preview…
+					正在加载附件预览...
 				</span>
 			) : null}
 		</div>
@@ -451,7 +451,7 @@ const RemoteImageBlock: FC<{
 	return (
 		<button
 			type="button"
-			aria-label={`View ${displayName}`}
+			aria-label={`查看 ${displayName}`}
 			className="inline-block rounded-md border-0 bg-transparent p-0"
 			onClick={(event) => {
 				event.stopPropagation();
@@ -531,7 +531,7 @@ const FileCard: FC<{
 			href={href}
 			download={downloadName}
 			onClick={(event) => event.stopPropagation()}
-			aria-label={`Download ${displayName}`}
+			aria-label={`下载 ${displayName}`}
 			className="inline-flex h-16 max-w-sm items-center gap-3 rounded-md border border-solid border-border-default bg-surface-tertiary px-3 py-2 no-underline transition-colors hover:bg-surface-quaternary"
 		>
 			<div className="flex size-10 shrink-0 items-center justify-center rounded-md bg-surface-secondary">
@@ -550,7 +550,7 @@ const FileCard: FC<{
 				<div className="truncate text-sm text-content-primary">
 					{displayName}
 				</div>
-				<div className="text-xs text-content-secondary">Download file</div>
+				<div className="text-xs text-content-secondary">下载文件</div>
 			</div>
 			<DownloadIcon
 				aria-hidden="true"
@@ -598,7 +598,7 @@ export const AttachmentBlock: FC<{
 		const content = decodeInlineTextAttachment(block.data);
 		const button = (
 			<InlineTextAttachmentButton
-				content={revealedInlineText ? content : "Pasted text"}
+				content={revealedInlineText ? content : "粘贴的文本"}
 				fileName={displayName}
 				isPlaceholder={!revealedInlineText}
 				onPreview={() => {

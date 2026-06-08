@@ -14,12 +14,9 @@ type RequireAuthProps = Readonly<{
 }>;
 
 /**
- * Wraps any component and ensures that the user has been authenticated before
- * they can access the component's contents.
+ * 包装任何组件，确保用户在访问组件内容之前已通过身份验证。
  *
- * In production, it is assumed that this component will not be called with any
- * props at all. But to make testing easier, you can call this component with
- * specific providers to mock them out.
+ * 在生产环境中，假设不会为此组件传入任何属性。但为了便于测试，您可以传入特定的 Provider 来模拟它们。
  */
 export const RequireAuth: FC<RequireAuthProps> = ({
 	DashboardProvider = ProductionDashboardProvider,

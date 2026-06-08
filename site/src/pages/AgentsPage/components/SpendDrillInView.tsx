@@ -48,8 +48,8 @@ export const SpendDrillInView: FC<SpendDrillInViewProps> = ({
 
 	const header = (
 		<SectionHeader
-			label="Spend management"
-			description="Review spend details for a specific user."
+			label="支出管理"
+			description="查看特定用户的支出明细。"
 			action={
 				<DateRangePicker
 					value={displayDateRange}
@@ -68,7 +68,7 @@ export const SpendDrillInView: FC<SpendDrillInViewProps> = ({
 				</div>
 				<div
 					role="status"
-					aria-label="Loading user details"
+					aria-label="正在加载用户详情"
 					className="flex min-h-[240px] items-center justify-center"
 				>
 					<Spinner size="lg" loading className="text-content-secondary" />
@@ -86,10 +86,10 @@ export const SpendDrillInView: FC<SpendDrillInViewProps> = ({
 				</div>
 				<div className="flex min-h-[240px] flex-col items-center justify-center gap-4 text-center">
 					<p className="m-0 text-sm text-content-secondary">
-						{getErrorMessage(error, "Failed to load user profile.")}
+						{getErrorMessage(error, "加载用户资料失败。")}
 					</p>
 					<Button variant="outline" size="sm" type="button" onClick={onRetry}>
-						Retry
+						重试
 					</Button>
 				</div>
 			</div>
@@ -110,7 +110,7 @@ export const SpendDrillInView: FC<SpendDrillInViewProps> = ({
 					imgFallbackText={selectedUser.username}
 				/>
 				<div className="min-w-0 text-xs text-content-secondary">
-					<div>User ID: {selectedUser.id}</div>
+					<div>用户ID：{selectedUser.id}</div>
 					<div>{dateRangeLabel}</div>
 				</div>
 			</div>
@@ -120,8 +120,8 @@ export const SpendDrillInView: FC<SpendDrillInViewProps> = ({
 				isLoading={isSummaryLoading}
 				error={summaryError}
 				onRetry={onSummaryRetry}
-				loadingLabel="Loading usage details"
-				emptyMessage="No usage data for this user in the selected period."
+				loadingLabel="正在加载使用详情"
+				emptyMessage="所选时间段内此用户无使用数据。"
 			/>
 		</div>
 	);

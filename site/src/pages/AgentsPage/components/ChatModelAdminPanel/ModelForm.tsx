@@ -53,19 +53,19 @@ import { ProviderIcon } from "./ProviderIcon";
 // ── Validation ──────────────────────────────────────────────────
 
 const validationSchema = Yup.object({
-	model: Yup.string().trim().required("Model ID is required."),
+	model: Yup.string().trim().required("模型 ID 是必填项。"),
 	displayName: Yup.string(),
 	enabled: Yup.boolean(),
 	contextLimit: Yup.string()
-		.required("Context limit is required.")
+		.required("上下文限制是必填项。")
 		.test(
 			"positive-integer",
-			"Context limit must be a positive integer.",
+			"上下文限制必须为正整数。",
 			(value) => !value?.trim() || parsePositiveInteger(value) !== null,
 		),
 	compressionThreshold: Yup.string().test(
 		"threshold-range",
-		"Compression threshold must be a number between 0 and 100.",
+		"压缩阈值必须是 0 到 100 之间的数字。",
 		(value) => !value?.trim() || parseThresholdInteger(value) !== null,
 	),
 	isDefault: Yup.boolean(),
@@ -129,12 +129,12 @@ export const ModelForm: FC<ModelFormProps> = ({
 				selectedProviderState.providerConfig.allow_user_api_key),
 	);
 	const formTitle = isEditing
-		? "Edit model"
+		? "编辑模型"
 		: isDuplicating
-			? "Duplicate model"
-			: "Add model";
+			? "复制模型"
+			: "添加模型";
 	const formDescription = isDuplicating
-		? "Review the copied settings, then save to create a new model."
+		? "检查复制后的设置，然后保存以创建新模型。"
 		: undefined;
 	const mode: "add" | "edit" | "duplicate" = (() => {
 		if (isEditing) return "edit";
@@ -258,7 +258,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 				htmlFor="providerSelect"
 				className="text-[13px] font-medium text-content-primary"
 			>
-				Provider
+				提供商
 			</Label>
 			<Select
 				value={selectedProvider ?? ""}
@@ -272,7 +272,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 					id="providerSelect"
 					className="h-10 max-w-[240px] text-[13px]"
 				>
-					<SelectValue placeholder="Select provider" />
+					<SelectValue placeholder="选择提供商" />
 				</SelectTrigger>
 				<SelectContent>
 					{providerStates.map((ps) => (
@@ -315,8 +315,8 @@ export const ModelForm: FC<ModelFormProps> = ({
 					{providerSelect}
 					<p className="text-sm text-content-secondary">
 						{!selectedProviderState.providerConfig
-							? "Create a managed provider config on the Providers tab before managing models."
-							: "Set an API key for this provider on the Providers tab before managing models."}
+							? "在管理模型之前，请在“提供商”选项卡上创建一个托管的提供商配置。"
+							: "在管理模型之前，请在“提供商”选项卡上为此提供商设置 API 密钥。"}
 					</p>
 				</div>
 			</div>
@@ -357,7 +357,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 							className="invisible col-start-1 row-start-1 whitespace-pre text-lg font-medium"
 							aria-hidden="true"
 						>
-							{form.values.displayName || initialModel?.model || "Model name"}
+							{form.values.displayName || initialModel?.model || "模型名称"}
 						</span>
 						<input
 							type="text"
@@ -365,7 +365,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 							disabled={isSaving}
 							spellCheck={false}
 							className="col-start-1 row-start-1 m-0 min-w-0 border-0 bg-transparent p-0 text-lg font-medium text-content-primary outline-none placeholder:text-content-secondary focus:ring-0"
-							placeholder={initialModel?.model ?? "Model name"}
+							placeholder={initialModel?.model ?? "模型名称"}
 						/>
 					</div>
 					<PencilIcon className="size-3.5 shrink-0 text-content-secondary" />
@@ -379,17 +379,17 @@ export const ModelForm: FC<ModelFormProps> = ({
 									onCheckedChange={(v) => {
 										form.setFieldValue("enabled", v);
 									}}
-									aria-label="Enabled"
+									aria-label="启用"
 									disabled={isSaving || defaultModelDisableGuard}
 								/>
 							</span>
 						</TooltipTrigger>
 						<TooltipContent side="bottom">
 							{defaultModelDisableGuard
-								? "Default model cannot be disabled. Remove default status first."
+								? "默认模型无法禁用。请先取消默认状态。"
 								: form.values.enabled
-									? "Disable this model. It will be hidden from users."
-									: "Enable this model. It will be visible to users."}
+									? "禁用此模型。用户将看不到它。"
+									: "启用此模型。用户将可以看到它。"}
 						</TooltipContent>
 					</Tooltip>
 				)}
@@ -419,7 +419,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 									htmlFor={contextLimitField.id}
 									className="inline-flex items-center gap-1 text-sm font-medium text-content-primary"
 								>
-									Context limit{" "}
+									上下文限制{" "}
 									<span className="text-xs font-bold text-content-destructive">
 										*
 									</span>
@@ -428,7 +428,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 											<InfoIcon className="size-3 text-content-secondary" />
 										</TooltipTrigger>
 										<TooltipContent side="top" className="max-w-[240px]">
-											Max tokens in the context window.
+											上下文窗口中的最大令牌数。
 										</TooltipContent>
 									</Tooltip>
 								</Label>
@@ -451,7 +451,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 									/>
 									<InputGroupAddon align="inline-end">
 										<span className="text-xs text-content-disabled">
-											tokens
+											令牌
 										</span>
 									</InputGroupAddon>
 								</InputGroup>{" "}
@@ -473,11 +473,10 @@ export const ModelForm: FC<ModelFormProps> = ({
 						>
 							<div>
 								<h3 className="m-0 text-sm font-medium text-content-primary">
-									Cost tracking
+									成本追踪
 								</h3>
 								<p className="m-0 text-xs text-content-secondary">
-									Set per-token pricing so Coder can track costs and enforce
-									spending limits.
+									设置每个令牌的定价，以便 Coder 追踪成本并强制执行消费限制。
 								</p>
 							</div>
 							{showPricing ? (
@@ -507,11 +506,10 @@ export const ModelForm: FC<ModelFormProps> = ({
 						>
 							<div>
 								<h3 className="m-0 text-sm font-medium text-content-primary">
-									Provider configuration
+									提供商配置
 								</h3>
 								<p className="m-0 text-xs text-content-secondary">
-									Tune provider-specific behavior like reasoning, tool calling,
-									and web search.
+									调整提供商特定的行为，例如推理、工具调用和网络搜索。
 								</p>
 							</div>
 							{showProviderConfig ? (
@@ -541,11 +539,10 @@ export const ModelForm: FC<ModelFormProps> = ({
 						>
 							<div>
 								<h3 className="m-0 text-sm font-medium text-content-primary">
-									Advanced
+									高级设置
 								</h3>
 								<p className="m-0 text-xs text-content-secondary">
-									Low-level parameters like temperature and penalties. Rarely
-									need changing.
+									低级参数，如温度和惩罚。很少需要更改。
 								</p>
 							</div>
 							{showAdvanced ? (
@@ -567,13 +564,13 @@ export const ModelForm: FC<ModelFormProps> = ({
 										htmlFor={compressionThresholdField.id}
 										className="inline-flex items-center gap-1 text-[13px] font-medium text-content-primary"
 									>
-										Compression threshold
+										压缩阈值
 										<Tooltip>
 											<TooltipTrigger asChild>
 												<InfoIcon className="size-3 text-content-secondary" />
 											</TooltipTrigger>
 											<TooltipContent side="top" className="max-w-[240px]">
-												Percentage at which context is compressed.
+												上下文被压缩的百分比。
 											</TooltipContent>
 										</Tooltip>
 									</Label>
@@ -621,7 +618,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 								disabled={isSaving}
 								onClick={() => setConfirmingDelete(true)}
 							>
-								Delete
+								删除
 							</Button>
 						) : (
 							<Button
@@ -630,7 +627,7 @@ export const ModelForm: FC<ModelFormProps> = ({
 								type="button"
 								onClick={onCancel}
 							>
-								Cancel
+								取消
 							</Button>
 						)}
 						<Button
@@ -640,17 +637,17 @@ export const ModelForm: FC<ModelFormProps> = ({
 						>
 							{isSaving && <Spinner className="h-4 w-4" loading />}{" "}
 							{isEditing
-								? "Save"
+								? "保存"
 								: isDuplicating
-									? "Create duplicate"
-									: "Add model"}
+									? "创建副本"
+									: "添加模型"}
 						</Button>
 					</div>
 				</div>
 			</form>
 			{editingModel && onDeleteModel && (
 				<ConfirmDeleteDialog
-					entity="model"
+					entity="模型"
 					onConfirm={() => void onDeleteModel(editingModel.id)}
 					isPending={isDeleting}
 					open={confirmingDelete}

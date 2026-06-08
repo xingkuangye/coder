@@ -76,7 +76,7 @@ const AgentWarningTooltip: FC<AgentWarningTooltipProps> = ({
 						<>
 							{" "}
 							<Link target="_blank" rel="noreferrer" href={troubleshootingURL}>
-								Troubleshoot
+								故障排除
 							</Link>
 						</>
 					)}
@@ -91,7 +91,7 @@ const ReadyLifecycle: FC = () => {
 		<div
 			role="status"
 			data-testid="agent-status-ready"
-			aria-label="Ready"
+			aria-label="就绪"
 			className={cn(statusDotBaseClassName, statusDotConnectedClassName)}
 		/>
 	);
@@ -103,11 +103,11 @@ const StartingLifecycle: FC = () => {
 			<TooltipTrigger asChild>
 				<div
 					role="status"
-					aria-label="Starting..."
+					aria-label="启动中..."
 					className={cn(statusDotBaseClassName, statusDotConnectingClassName)}
 				/>
 			</TooltipTrigger>
-			<TooltipContent side="bottom">Starting...</TooltipContent>
+			<TooltipContent side="bottom">启动中...</TooltipContent>
 		</Tooltip>
 	);
 };
@@ -128,7 +128,7 @@ interface DevcontainerStatusProps {
 
 const StartTimeoutLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Startup script timeout"
+		ariaLabel="启动脚本超时"
 		title={agentScriptMessages.start_timeout.title}
 		detail={agentScriptMessages.start_timeout.detail}
 		troubleshootingURL={agent.troubleshooting_url}
@@ -137,7 +137,7 @@ const StartTimeoutLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 
 const StartErrorLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Startup script failed"
+		ariaLabel="启动脚本失败"
 		title={agentScriptMessages.start_error.title}
 		detail={agentScriptMessages.start_error.detail}
 		troubleshootingURL={agent.troubleshooting_url}
@@ -151,18 +151,18 @@ const ShuttingDownLifecycle: FC = () => {
 			<TooltipTrigger asChild>
 				<div
 					role="status"
-					aria-label="Stopping..."
+					aria-label="停止中..."
 					className={cn(statusDotBaseClassName, statusDotConnectingClassName)}
 				/>
 			</TooltipTrigger>
-			<TooltipContent side="bottom">Stopping...</TooltipContent>
+			<TooltipContent side="bottom">停止中...</TooltipContent>
 		</Tooltip>
 	);
 };
 
 const ShutdownTimeoutLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Shutdown script timeout"
+		ariaLabel="关机脚本超时"
 		title={agentScriptMessages.shutdown_timeout.title}
 		detail={agentScriptMessages.shutdown_timeout.detail}
 		troubleshootingURL={agent.troubleshooting_url}
@@ -171,7 +171,7 @@ const ShutdownTimeoutLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 
 const ShutdownErrorLifecycle: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Shutdown script failed"
+		ariaLabel="关机脚本失败"
 		title={agentScriptMessages.shutdown_error.title}
 		detail={agentScriptMessages.shutdown_error.detail}
 		troubleshootingURL={agent.troubleshooting_url}
@@ -185,11 +185,11 @@ const OffLifecycle: FC = () => {
 			<TooltipTrigger asChild>
 				<div
 					role="status"
-					aria-label="Stopped"
+					aria-label="已停止"
 					className={cn(statusDotBaseClassName, statusDotDisconnectedClassName)}
 				/>
 			</TooltipTrigger>
-			<TooltipContent side="bottom">Stopped</TooltipContent>
+			<TooltipContent side="bottom">已停止</TooltipContent>
 		</Tooltip>
 	);
 };
@@ -230,11 +230,11 @@ const DisconnectedStatus: FC = () => {
 			<TooltipTrigger asChild>
 				<div
 					role="status"
-					aria-label="Disconnected"
+					aria-label="已断开连接"
 					className={cn(statusDotBaseClassName, statusDotDisconnectedClassName)}
 				/>
 			</TooltipTrigger>
-			<TooltipContent side="bottom">Disconnected</TooltipContent>
+			<TooltipContent side="bottom">已断开连接</TooltipContent>
 		</Tooltip>
 	);
 };
@@ -245,18 +245,18 @@ const ConnectingStatus: FC = () => {
 			<TooltipTrigger asChild>
 				<div
 					role="status"
-					aria-label="Connecting..."
+					aria-label="连接中..."
 					className={cn(statusDotBaseClassName, statusDotConnectingClassName)}
 				/>
 			</TooltipTrigger>
-			<TooltipContent side="bottom">Connecting...</TooltipContent>
+			<TooltipContent side="bottom">连接中...</TooltipContent>
 		</Tooltip>
 	);
 };
 
 const TimeoutStatus: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Timeout"
+		ariaLabel="超时"
 		title={agentConnectionMessages.timeout.title}
 		detail={agentConnectionMessages.timeout.detail}
 		troubleshootingURL={agent.troubleshooting_url}
@@ -294,9 +294,9 @@ const SubAgentStatus: FC<SubAgentStatusProps> = ({ agent }) => {
 
 const DevcontainerStartError: FC<AgentStatusProps> = ({ agent }) => (
 	<AgentWarningTooltip
-		ariaLabel="Start error"
-		title="Error starting the devcontainer agent"
-		detail="Something went wrong during the devcontainer agent startup."
+		ariaLabel="启动错误"
+		title="启动开发容器代理时出错"
+		detail="开发容器代理启动过程中出现问题。"
 		troubleshootingURL={agent.troubleshooting_url}
 		variant="error"
 	/>

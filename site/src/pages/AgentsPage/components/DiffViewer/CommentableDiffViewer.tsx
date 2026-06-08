@@ -125,7 +125,7 @@ export const InlinePromptInput: FC<{
 				<textarea
 					ref={textareaRef}
 					className="w-full resize-none border-none bg-transparent px-3 py-2 font-sans text-sm leading-5 text-content-primary placeholder:text-content-secondary outline-none ring-0 focus:outline-none focus:ring-0"
-					placeholder="Add a comment..."
+					placeholder="添加评论..."
 					rows={2}
 					value={text}
 					onChange={(e) => setText(e.target.value)}
@@ -145,7 +145,7 @@ export const InlinePromptInput: FC<{
 					}}
 				/>
 				<div className="flex items-end justify-between gap-2 pl-2.5 pr-1.5 pb-1.5">
-					<span className="text-xs text-content-secondary">Esc to cancel</span>
+					<span className="text-xs text-content-secondary">Esc 键取消</span>
 					<Button
 						size="icon"
 						variant="default"
@@ -162,7 +162,7 @@ export const InlinePromptInput: FC<{
 						}}
 					>
 						<ArrowUpIcon />
-						<span className="sr-only">Add to chat</span>
+						<span className="sr-only">添加到聊天</span>
 					</Button>
 				</div>
 			</div>

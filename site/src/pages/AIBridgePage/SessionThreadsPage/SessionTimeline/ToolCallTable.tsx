@@ -29,7 +29,7 @@ export const ToolCallTable: FC<ToolCallTableProps> = ({
 			)}
 		>
 			<div className="flex items-center justify-between whitespace-nowrap">
-				<span className="pr-4 whitespace-nowrap">In / out tokens</span>
+				<span className="pr-4 whitespace-nowrap">输入 / 输出 Token</span>
 				<TokenBadges
 					inputTokens={inputTokens}
 					outputTokens={outputTokens}
@@ -37,7 +37,7 @@ export const ToolCallTable: FC<ToolCallTableProps> = ({
 				/>
 			</div>
 			<div className="flex items-center justify-between">
-				<span className="pr-4 whitespace-nowrap">Started at</span>
+				<span className="pr-4 whitespace-nowrap">开始时间</span>
 				<span
 					className="font-mono text-xs whitespace-nowrap truncate"
 					title={formatDate(timestamp)}
@@ -47,9 +47,9 @@ export const ToolCallTable: FC<ToolCallTableProps> = ({
 			</div>
 			{serverURL && (
 				<div className="flex items-center justify-between">
-					<span className="pr-4 whitespace-nowrap">MCP server</span>
+					<span className="pr-4 whitespace-nowrap">MCP 服务器</span>
 					<span className="font-mono truncate">{serverURL}</span>
-					<CopyButton text={serverURL} label="Copy MCP server URL" />
+					<CopyButton text={serverURL} label="复制 MCP 服务器 URL" />
 				</div>
 			)}
 		</div>

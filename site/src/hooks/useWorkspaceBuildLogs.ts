@@ -32,7 +32,7 @@ export const useWorkspaceBuildLogs = (
 				});
 			},
 			onError: () => {
-				toast.error(`Error on getting "${buildId}" build logs.`);
+				toast.error(`获取构建日志“${buildId}”时出错。`);
 			},
 		});
 

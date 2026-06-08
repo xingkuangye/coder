@@ -47,10 +47,10 @@ const unsetSelectValue = "__unset__";
 
 /** Short display labels for pricing fields to avoid overly verbose names. */
 const shortLabelOverrides: Record<string, string> = {
-	"cost.input_price_per_million_tokens": "Input",
-	"cost.output_price_per_million_tokens": "Output",
-	"cost.cache_read_price_per_million_tokens": "Cache read",
-	"cost.cache_write_price_per_million_tokens": "Cache write",
+	"cost.input_price_per_million_tokens": "输入",
+	"cost.output_price_per_million_tokens": "输出",
+	"cost.cache_read_price_per_million_tokens": "缓存读取",
+	"cost.cache_write_price_per_million_tokens": "缓存写入",
 };
 
 /**
@@ -271,10 +271,10 @@ const SelectField: FC<
 					aria-invalid={Boolean(fieldError)}
 					aria-describedby={fieldError ? errorId : undefined}
 				>
-					<SelectValue placeholder="Default" />
+					<SelectValue placeholder="默认" />
 				</SelectTrigger>
 				<SelectContent>
-					<SelectItem value={unsetSelectValue}>Default</SelectItem>
+					<SelectItem value={unsetSelectValue}>默认</SelectItem>
 					{options.map((option) => (
 						<SelectItem key={option} value={option}>
 							{option}
@@ -452,8 +452,8 @@ const SchemaField: FC<SchemaFieldProps> = ({
 						label={label}
 						description={field.description}
 						options={[
-							{ label: "On", value: "true" },
-							{ label: "Off", value: "false" },
+							{ label: "开启", value: "true" },
+							{ label: "关闭", value: "false" },
 						]}
 					/>
 				);

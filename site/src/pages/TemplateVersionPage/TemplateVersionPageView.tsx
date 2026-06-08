@@ -51,20 +51,20 @@ export const TemplateVersionPageView: FC<TemplateVersionPageViewProps> = ({
 							<Button asChild>
 								<RouterLink to={createWorkspaceUrl}>
 									<PlusIcon />
-									Create workspace
+									创建工作区
 								</RouterLink>
 							</Button>
 						)}
 						<Button variant="outline" asChild>
 							<RouterLink to={`${templateLink}/versions/${versionName}/edit`}>
 								<EditIcon className="!size-icon-sm" />
-								Edit
+								编辑
 							</RouterLink>
 						</Button>
 					</>
 				}
 			>
-				<PageHeaderCaption>Version</PageHeaderCaption>
+				<PageHeaderCaption>版本</PageHeaderCaption>
 				<PageHeaderTitle>{versionName}</PageHeaderTitle>
 			</PageHeader>
 
@@ -82,17 +82,17 @@ export const TemplateVersionPageView: FC<TemplateVersionPageViewProps> = ({
 						<Stats className="justify-between">
 							<div className="flex flex-wrap items-center">
 								<StatsItem
-									label="Template"
+									label="模板"
 									value={
 										<RouterLink to={templateLink}>{templateName}</RouterLink>
 									}
 								/>
 								<StatsItem
-									label="Created by"
+									label="创建者"
 									value={currentVersion.created_by.username}
 								/>
 								<StatsItem
-									label="Created"
+									label="创建时间"
 									value={createDayString(currentVersion.created_at)}
 								/>
 							</div>
@@ -102,7 +102,7 @@ export const TemplateVersionPageView: FC<TemplateVersionPageViewProps> = ({
 								rel="noopener noreferrer"
 								className="flex items-center gap-1 p-2 text-xs text-content-secondary underline hover:text-content-primary md:py-3.5 md:px-4"
 							>
-								View raw logs
+								查看原始日志
 								<ExternalLinkIcon className="size-3" />
 							</a>
 						</Stats>

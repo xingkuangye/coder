@@ -82,7 +82,7 @@ const ActiveRoleSelectorDialog: React.FC<Required<RoleSelectorDialogProps>> = ({
 			<DialogContent>
 				<DialogHeader>
 					<div className="flex flex-row justify-between items-center">
-						<DialogTitle>Edit roles</DialogTitle>
+						<DialogTitle>编辑角色</DialogTitle>
 						<AvatarData
 							title={user.username}
 							subtitle={user.email}

@@ -1,5 +1,5 @@
 /**
- * @file Provides reusable vertical overflow behavior.
+ * @file 提供可重用的垂直溢出行为。
  */
 import type { FC, ReactNode } from "react";
 import { cn } from "#/utils/cn";

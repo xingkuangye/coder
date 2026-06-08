@@ -17,7 +17,7 @@ import { AGENT_LOG_LINE_HEIGHT, AgentLogLine } from "./AgentLogLine";
 // created and that haven't restarted their agents yet
 const fallbackLog: WorkspaceAgentLogSource = {
 	created_at: "",
-	display_name: "Logs",
+	display_name: "日志",
 	icon: "",
 	id: "00000000-0000-0000-0000-000000000000",
 	workspace_agent_id: "",
@@ -137,7 +137,7 @@ export const AgentLogs: React.FC<AgentLogsProps> = ({
 											{assignedIcon && (
 												<i>
 													<br />
-													No icon specified!
+													未指定图标！
 												</i>
 											)}
 										</TooltipContent>
@@ -156,7 +156,7 @@ export const AgentLogs: React.FC<AgentLogsProps> = ({
 							asChild
 							className="max-w-fit py-1.5 px-3 absolute bottom-3 left-1/2 -translate-x-1/2"
 						>
-							<span>Logs overflowed</span>
+							<span>日志溢出</span>
 						</Badge>
 					</TooltipTrigger>
 					<TooltipContent
@@ -164,14 +164,13 @@ export const AgentLogs: React.FC<AgentLogsProps> = ({
 						className="w-full text-sm text-content-secondary bg-surface-primary max-w-prose leading-relaxed m-0 p-4"
 					>
 						<p>
-							Startup logs exceeded the max size of{" "}
-							<span className="tracking-wide font-mono">1MB</span>, and will not
-							continue to be written to the database. Logs will continue to be
-							written to the{" "}
+							启动日志超过了{" "}
+							<span className="tracking-wide font-mono">1MB</span>{" "}
+							的最大大小限制，将不会继续写入数据库。日志将继续写入工作空间中的{" "}
 							<span className="font-mono bg-surface-tertiary rounded-md px-1.5 py-0.5">
 								/tmp/coder-startup-script.log
 							</span>{" "}
-							file in the workspace.
+							文件。
 						</p>
 					</TooltipContent>
 				</Tooltip>

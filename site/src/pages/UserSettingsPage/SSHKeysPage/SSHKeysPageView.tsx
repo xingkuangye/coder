@@ -35,13 +35,11 @@ export const SSHKeysPageView: FC<SSHKeysPageViewProps> = ({
 			{sshKey && (
 				<>
 					<p className="leading-relaxed font-normal text-sm text-content-secondary m-0">
-						The following public key is used to authenticate Git in workspaces.
-						You may add it to Git services (such as GitHub) that you need to
-						access from your workspace. Coder configures authentication via{" "}
+						下面的公钥用于在工作区中进行 Git 身份验证。您可以将其添加到需要从工作区访问的 Git 服务（如 GitHub）中。Coder 通过{" "}
 						<code className="bg-surface-quaternary text-xs py-0.5 px-1 text-content-primary rounded-sm">
 							$GIT_SSH_COMMAND
 						</code>
-						.
+						配置身份验证。
 					</p>
 					<CodeExample secret={false} code={sshKey.public_key.trim()} />
 					<div>
@@ -50,7 +48,7 @@ export const SSHKeysPageView: FC<SSHKeysPageViewProps> = ({
 							data-testid="regenerate"
 							variant="outline"
 						>
-							Regenerate&hellip;
+							重新生成&hellip;
 						</Button>
 					</div>
 				</>

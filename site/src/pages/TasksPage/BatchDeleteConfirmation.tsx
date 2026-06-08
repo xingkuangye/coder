@@ -37,18 +37,14 @@ export const BatchDeleteConfirmation: FC<BatchDeleteConfirmationProps> = ({
 		}
 	};
 
-	const taskCount = `${checkedTasks.length} ${
-		checkedTasks.length === 1 ? "task" : "tasks"
-	}`;
-	const workspaceCountText = `${workspaceCount} ${
-		workspaceCount === 1 ? "workspace" : "workspaces"
-	}`;
+	const taskCount = `${checkedTasks.length}个任务`;
+	const workspaceCountText = `${workspaceCount}个工作区`;
 
-	let confirmText: ReactNode = <>Review selected tasks&hellip;</>;
+	let confirmText: ReactNode = <>查看选定的任务&hellip;</>;
 	if (stage === "tasks") {
 		confirmText = (
 			<>
-				Delete {taskCount} and {workspaceCountText}
+				删除 {taskCount} 和 {workspaceCountText}
 			</>
 		);
 	}
@@ -61,7 +57,7 @@ export const BatchDeleteConfirmation: FC<BatchDeleteConfirmationProps> = ({
 				setStage("consequences");
 				onClose();
 			}}
-			title={`Delete ${taskCount}`}
+			title={`删除 ${taskCount}`}
 			confirmLoading={isLoading}
 			confirmText={confirmText}
 			onConfirm={onProceed}
@@ -82,12 +78,12 @@ interface TasksStageProps {
 const Consequences: FC = () => {
 	return (
 		<>
-			<p>Deleting tasks is irreversible!</p>
+			<p>删除任务是不可逆的！</p>
 			<ul className="flex flex-col gap-2 pl-4 mb-0">
 				<li>
-					Tasks with associated workspaces will have those workspaces deleted.
+					与工作区关联的任务会将对应的工作区一并删除。
 				</li>
-				<li>Any data stored in task workspaces will be permanently deleted.</li>
+				<li>任务工作区中存储的所有数据将被永久删除。</li>
 			</ul>
 		</>
 	);
@@ -109,7 +105,7 @@ const Tasks: FC<TasksStageProps> = ({ tasks }) => {
 	);
 
 	const ownersCount = new Set(tasks.map((it) => it.owner_name)).size;
-	const ownersCountDisplay = `${ownersCount} ${ownersCount === 1 ? "owner" : "owners"}`;
+	const ownersCountDisplay = `${ownersCount}个所有者`;
 
 	return (
 		<>
@@ -148,7 +144,7 @@ const Tasks: FC<TasksStageProps> = ({ tasks }) => {
 				{mostRecent && (
 					<div className="flex items-center gap-2">
 						<ClockIcon className="size-icon-xs" />
-						<span>Last updated {dayjs(mostRecent.updated_at).fromNow()}</span>
+						<span>最近更新 {dayjs(mostRecent.updated_at).fromNow()}</span>
 					</div>
 				)}
 			</div>

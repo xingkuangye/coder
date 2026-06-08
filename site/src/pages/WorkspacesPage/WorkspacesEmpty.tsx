@@ -21,9 +21,9 @@ export const WorkspacesEmpty: FC<WorkspacesEmptyProps> = ({
 
 	const totalFeaturedTemplates = 6;
 	const featuredTemplates = templates?.slice(0, totalFeaturedTemplates);
-	const defaultTitle = "Create a workspace";
+	const defaultTitle = "创建工作区";
 	const defaultMessage =
-		"A workspace is your personal, customizable development environment.";
+		"工作区是您个人的、可定制的开发环境。";
 	const defaultImage = (
 		<div className="max-w-[50%] h-[272px] overflow-hidden mt-12 opacity-85">
 			<img src="/featured/workspaces.webp" alt="" className="max-w-full" />
@@ -31,17 +31,17 @@ export const WorkspacesEmpty: FC<WorkspacesEmptyProps> = ({
 	);
 
 	if (isUsingFilter) {
-		return <EmptyState message="No results matched your search" />;
+		return <EmptyState message="没有匹配您搜索的结果" />;
 	}
 
 	if (templates && templates.length === 0 && canCreateTemplate) {
 		return (
 			<EmptyState
 				message={defaultTitle}
-				description={`${defaultMessage} To create a workspace, you first need to create a template.`}
+				description={`${defaultMessage} 要创建工作区，您首先需要创建一个模板。`}
 				cta={
 					<Button asChild>
-						<Link to="/templates">Go to templates</Link>
+						<Link to="/templates">前往模板</Link>
 					</Button>
 				}
 				className="pb-0"
@@ -54,7 +54,7 @@ export const WorkspacesEmpty: FC<WorkspacesEmptyProps> = ({
 		return (
 			<EmptyState
 				message={defaultTitle}
-				description={`${defaultMessage} There are no templates available, but you will see them here once your admin adds them.`}
+				description={`${defaultMessage} 当前没有可用模板，管理员添加后您将在此处看到它们。`}
 				className="pb-0"
 				image={defaultImage}
 			/>
@@ -64,7 +64,7 @@ export const WorkspacesEmpty: FC<WorkspacesEmptyProps> = ({
 	return (
 		<EmptyState
 			message={defaultTitle}
-			description={`${defaultMessage} Select one template below to start.`}
+			description={`${defaultMessage} 选择以下一个模板开始。`}
 			cta={
 				<div>
 					<div className="flex flex-wrap gap-4 mb-6 justify-center max-w-[800px]">
@@ -101,7 +101,7 @@ export const WorkspacesEmpty: FC<WorkspacesEmptyProps> = ({
 
 					{templates && templates.length > totalFeaturedTemplates && (
 						<Button asChild>
-							<Link to="/templates">See all templates</Link>
+							<Link to="/templates">查看所有模板</Link>
 						</Button>
 					)}
 				</div>

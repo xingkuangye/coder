@@ -83,36 +83,33 @@ const IconsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Icons")}</title>
+			<title>{pageTitle("图标")}</title>
 			<Margins>
 				<PageHeader
 					actions={
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<Link href="https://github.com/coder/coder/tree/main/site/static/icon">
-									Suggest an icon
+									建议一个图标
 								</Link>
 							</TooltipTrigger>
 							<TooltipContent side="bottom" align="end" className="max-w-xs">
-								You can suggest a new icon by submitting a Pull Request to our
-								public GitHub repository. Just keep in mind that it should be
-								relevant to many Coder users, and redistributable under a
-								permissive license.
+								您可以通过向我们公开的 GitHub 仓库提交 Pull Request 来建议新图标。请记住，该图标应与众多 Coder 用户相关，且可在宽松许可证下重新分发。
 							</TooltipContent>
 						</Tooltip>
 					}
 				>
-					<PageHeaderTitle>Icons</PageHeaderTitle>
+					<PageHeaderTitle>图标</PageHeaderTitle>
 					<PageHeaderSubtitle>
-						All of the icons included with Coder
+						Coder 附带的所有图标
 					</PageHeaderSubtitle>
 				</PageHeader>
 				<TextField
 					size="small"
 					InputProps={{
-						"aria-label": "Filter",
+						"aria-label": "筛选",
 						name: "query",
-						placeholder: "Search…",
+						placeholder: "搜索…",
 						value: searchInputText,
 						onChange: (event) => setSearchInputText(event.target.value),
 						sx: {
@@ -142,7 +139,7 @@ const IconsPage: FC = () => {
 											<XIcon className="size-icon-xs" />
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent side="bottom">Clear filter</TooltipContent>
+									<TooltipContent side="bottom">清除筛选</TooltipContent>
 								</Tooltip>
 							</InputAdornment>
 						),
@@ -151,7 +148,7 @@ const IconsPage: FC = () => {
 
 				<div className="flex flex-row gap-2 justify-center flex-wrap max-w-full mt-8">
 					{searchedIcons.length === 0 && (
-						<EmptyState message="No results matched your search" />
+						<EmptyState message="没有与您的搜索匹配的结果" />
 					)}
 					{searchedIcons.map((icon) => (
 						<CopyableValue key={icon.url} value={icon.url}>

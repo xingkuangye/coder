@@ -80,9 +80,8 @@ export const DuplicateTemplateView: FC<CreateTemplatePageViewProps> = ({
 		<>
 			{totalPrebuilds > 0 && (
 				<Alert severity="warning" className="mb-4">
-					This template has prebuilds configured. Duplicating this template will
-					automatically cause {totalPrebuilds}{" "}
-					{totalPrebuilds === 1 ? "prebuild" : "prebuilds"} to be created.
+					此模板已配置预构建。复制此模板将自动导致 {totalPrebuilds}{" "}
+					{totalPrebuilds === 1 ? "预构建" : "预构建"} 被创建。
 				</Alert>
 			)}
 			<CreateTemplateForm

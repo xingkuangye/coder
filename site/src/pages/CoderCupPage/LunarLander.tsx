@@ -554,10 +554,10 @@ function drawTerrain(ctx: CanvasRenderingContext2D, terrain: Terrain) {
 
 		if (pad.isStation) {
 			drawSpaceStation(ctx, midX, pad.y, pad.width);
-			drawVectorText(ctx, "CODER BASE", midX, pad.y + tick + 10, 7);
+			drawVectorText(ctx, "CODER 基地", midX, pad.y + tick + 10, 7);
 		} else {
 			const helpH = Math.min(10, pad.width / 4);
-			drawVectorText(ctx, "HELP", midX, pad.y + tick + 10, helpH);
+			drawVectorText(ctx, "求助", midX, pad.y + tick + 10, helpH);
 		}
 	}
 }
@@ -932,19 +932,19 @@ function drawDashboard(
 	const yawWarn = Math.abs(yawDeg) > (LANDING_ANGLE_TOL * 180) / Math.PI;
 
 	const smallPanels = [
-		{ label: "VELOCITY", value: `${state.velocity.toFixed(1)}`, warn: velWarn },
-		{ label: "YAW", value: `${yawDeg.toFixed(1)}\u00b0`, warn: yawWarn },
+		{ label: "速度", value: `${state.velocity.toFixed(1)}`, warn: velWarn },
+		{ label: "偏航", value: `${yawDeg.toFixed(1)}\u00b0`, warn: yawWarn },
 		{
-			label: "ALTITUDE",
+			label: "高度",
 			value: `${Math.max(0, state.altitude).toFixed(0)}`,
 			warn: false,
 		},
 		{
-			label: "FUEL",
+			label: "燃料",
 			value: `${state.fuel.toFixed(0)}%`,
 			warn: state.fuel < FUEL_WARN_THRESHOLD,
 		},
-		{ label: "SAVED", value: `${savedPct.toFixed(0)}%`, warn: false },
+		{ label: "已救出", value: `${savedPct.toFixed(0)}%`, warn: false },
 	];
 
 	let cx = padX;
@@ -956,14 +956,14 @@ function drawDashboard(
 			ctx.fillStyle = "#fff";
 			ctx.font = "bold 8px monospace";
 			ctx.textAlign = "center";
-			ctx.fillText("⚠ WARNING", cx + smallW / 2, panelY + panelH - 7);
+			ctx.fillText("⚠ 警告", cx + smallW / 2, panelY + panelH - 7);
 		}
 		cx += smallW + gap;
 	}
 
 	// --- cargo panel (wide) ---
 	drawBezel(cx, cargoW);
-	drawLabel(cx, cargoW, "CARGO");
+	drawLabel(cx, cargoW, "货物");
 
 	ctx.font = "9px monospace";
 	ctx.textAlign = "left";
@@ -975,7 +975,7 @@ function drawDashboard(
 			ctx.fillText(`${i + 1}: ${cargo[i].name} - ${cargo[i].role}`, sx, sy);
 		} else {
 			ctx.fillStyle = "#555";
-			ctx.fillText(`${i + 1}: ---- unoccupied ----`, sx, sy);
+			ctx.fillText(`${i + 1}: ---- 空位 ----`, sx, sy);
 		}
 	}
 }
@@ -1619,7 +1619,7 @@ function drawTada(
 	centerX: number,
 	centerY: number,
 ) {
-	drawVectorText(ctx, "TADA!", centerX, centerY, 52);
+	drawVectorText(ctx, "胜利！", centerX, centerY, 52);
 }
 
 function createCelebrationExplosions(
@@ -1687,7 +1687,7 @@ function drawSidebar(
 	ctx.fillStyle = "#666";
 	ctx.font = "bold 10px monospace";
 	ctx.textAlign = "left";
-	ctx.fillText("CODERNAUTS ROSTER", x + padX, headerH - 6);
+	ctx.fillText("宇航员花名册", x + padX, headerH - 6);
 
 	// Clip to sidebar area below header.
 	ctx.save();
@@ -1703,13 +1703,13 @@ function drawSidebar(
 			let status: string;
 			let color: string;
 			if (savedNames.has(entry.name)) {
-				status = "\u2713 saved";
+				status = "\u2713 已救出";
 				color = "#666";
 			} else if (currentNames.has(entry.name)) {
-				status = "\u26a0 requesting help";
+				status = "\u26a0 请求帮助";
 				color = "white";
 			} else {
-				status = "\u2026 another base";
+				status = "\u2026 其他基地";
 				color = "#444";
 			}
 
@@ -1995,23 +1995,23 @@ export const LunarLander: FC = () => {
 				cx.fillRect(0, 0, logicalW, logicalH);
 
 				const playH = logicalH - DASHBOARD_H;
-				drawVectorText(cx, "SAVE ALL", dashW / 2, playH * 0.25, 44);
-				drawVectorText(cx, "CODERNAUTS", dashW / 2, playH * 0.43, 44);
+				drawVectorText(cx, "拯救所有", dashW / 2, playH * 0.25, 44);
+				drawVectorText(cx, "编码宇航员", dashW / 2, playH * 0.43, 44);
 
 				cx.fillStyle = "white";
 				cx.font = "bold 14px monospace";
 				cx.textAlign = "center";
 				cx.fillText(
-					"press \u2190 to rotate left, press \u2192 to rotate right",
+					"按 ← 向左旋转，按 → 向右旋转",
 					dashW / 2,
 					playH * 0.59,
 				);
-				cx.fillText("press \u2193 for main thruster", dashW / 2, playH * 0.65);
+				cx.fillText("按 ↓ 主推进器", dashW / 2, playH * 0.65);
 				if (Math.floor(introTimer * 2.5) % 2 === 0) {
 					cx.fillStyle = "#888";
 					cx.font = "12px monospace";
 					cx.fillText(
-						`get ready... ${Math.ceil(introTimer)}`,
+						`准备... ${Math.ceil(introTimer)}`,
 						dashW / 2,
 						playH * 0.76,
 					);
@@ -2046,7 +2046,7 @@ export const LunarLander: FC = () => {
 				cx.fillStyle = "#aaa";
 				cx.font = "14px monospace";
 				cx.textAlign = "center";
-				cx.fillText("All Codernauts have been saved!", dashW / 2, playH * 0.6);
+				cx.fillText("所有宇航员已得救！", dashW / 2, playH * 0.6);
 
 				const savedPct = (savedNames.size / ROSTER.length) * 100;
 				drawDashboard(
@@ -2242,8 +2242,8 @@ export const LunarLander: FC = () => {
 					const scx = station.x + station.width / 2;
 					drawTooltip(
 						cx,
-						"Everyone saved here!",
-						"Onto the next base...",
+						"这里的每个人都得救了！",
+						"前往下一个基地...",
 						scx,
 						station.y - 40,
 					);
@@ -2271,7 +2271,7 @@ export const LunarLander: FC = () => {
 						const padY = terrain.pads[naut.padIdx].y;
 						const jy =
 							-Math.abs(Math.sin(naut.spotlightPhase * Math.PI * 3)) * 10;
-						drawTooltip(cx, "It's me!", naut.name, naut.x, padY + jy - 14);
+						drawTooltip(cx, "是我！", naut.name, naut.x, padY + jy - 14);
 					}
 				}
 			}
@@ -2303,11 +2303,11 @@ export const LunarLander: FC = () => {
 					if (entry) {
 						let statusLine: string;
 						if (savedNames.has(entry.name)) {
-							statusLine = "\u2713 saved";
+							statusLine = "\u2713 已救出";
 						} else if (currentNautNames.has(entry.name)) {
-							statusLine = "\u26a0 requesting help";
+							statusLine = "\u26a0 请求帮助";
 						} else {
-							statusLine = "\u2026 another base";
+							statusLine = "\u2026 其他基地";
 						}
 						drawTooltip(
 							cx,
@@ -2338,7 +2338,7 @@ export const LunarLander: FC = () => {
 						const scx = station.x + station.width / 2;
 						drawTooltip(
 							cx,
-							"I am already saved!",
+							"我已经得救了！",
 							savedBubbleName,
 							scx,
 							station.y - 40,
@@ -2371,15 +2371,15 @@ export const LunarLander: FC = () => {
 				cx.fillStyle = "white";
 				cx.font = "bold 11px monospace";
 				cx.textAlign = "center";
-				cx.fillText(`Travel to save ${dialogTarget}?`, dlgX, dlgY - 8);
+				cx.fillText(`前往拯救 ${dialogTarget} 吗？`, dlgX, dlgY - 8);
 
 				// Buttons.
 				const btnW = 60;
 				const btnH = 22;
 				const btnY = dlgY + 10;
 				for (const [label, bx] of [
-					["YES", dlgX - btnW - 10],
-					["NO", dlgX + 10],
+					["是", dlgX - btnW - 10],
+					["否", dlgX + 10],
 				] as const) {
 					cx.strokeStyle = "#666";
 					cx.lineWidth = 1;

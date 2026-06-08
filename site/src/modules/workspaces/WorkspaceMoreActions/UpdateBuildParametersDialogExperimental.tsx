@@ -43,26 +43,24 @@ export const UpdateBuildParametersDialogExperimental: FC<
 		<Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Update workspace parameters</DialogTitle>
+					<DialogTitle>更新工作区参数</DialogTitle>
 					<DialogDescription>
-						This template has{" "}
+						此模板有{" "}
 						<strong className="text-content-primary">
-							{validations.length} parameter
-							{validations.length === 1 ? "" : "s"}
+							{validations.length} 个参数{validations.length === 1 ? "" : ""}
 						</strong>{" "}
-						that must be configured to complete the update.
+						必须配置才能完成更新。
 					</DialogDescription>
 					<DialogDescription>
-						Would you like to go to the workspace parameters page to review and
-						update these parameters before continuing?
+						您是否要前往工作区参数页面，在继续之前查看并更新这些参数？
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
 					<Button onClick={onClose} variant="outline">
-						Cancel
+						取消
 					</Button>
 					<Button onClick={handleGoToParameters}>
-						Go to workspace parameters
+						前往工作区参数
 					</Button>
 				</DialogFooter>
 			</DialogContent>

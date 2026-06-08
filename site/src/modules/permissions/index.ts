@@ -8,8 +8,8 @@ export type Permissions = {
 type PermissionName = keyof typeof permissionChecks;
 
 /**
- * Site-wide permission checks, loaded from the shared
- * permissions.json that is also used by the Go backend.
+ * 站点范围的权限检查，从共享的 permissions.json 加载，
+ * 该文件也由 Go 后端使用。
  */
 export const permissionChecks =
 	permissionChecksData as typeof permissionChecksData &
@@ -31,8 +31,7 @@ export const canViewDeploymentSettings = (
 };
 
 /**
- * Checks if the user can view or edit members or groups for the organization
- * that produced the given OrganizationPermissions.
+ * 检查用户是否可以查看或编辑产生给定 OrganizationPermissions 的组织的成员或组。
  */
 export const canViewAnyOrganization = (
 	permissions: Permissions | undefined,

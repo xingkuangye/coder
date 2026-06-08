@@ -21,27 +21,27 @@ const renderSubagentLabel = (
 		switch (descriptor.action) {
 			case "spawn":
 				if (providedTitle) {
-					return `Spawning ${providedTitle}`;
+					return `正在生成${providedTitle}`;
 				}
 				if (descriptor.variant === "explore") {
-					return "Spawning Explore agent…";
+					return "正在生成探索代理…";
 				}
 				if (descriptor.variant === "computer_use") {
-					return "Spawning computer use sub-agent…";
+					return "正在生成计算机使用子代理…";
 				}
-				return `Spawning ${fallbackTitle}…`;
+				return `正在生成${fallbackTitle}…`;
 			case "wait":
 				return providedTitle
-					? `Waiting for ${providedTitle}`
-					: `Waiting for ${fallbackTitle}…`;
+					? `等待${providedTitle}`
+					: `等待${fallbackTitle}…`;
 			case "message":
 				return providedTitle
-					? `Messaging ${providedTitle}`
-					: `Messaging ${fallbackTitle}…`;
+					? `向${providedTitle}发送消息`
+					: `向${fallbackTitle}发送消息…`;
 			case "close":
 				return providedTitle
-					? `Terminating ${providedTitle}`
-					: `Terminating ${fallbackTitle}`;
+					? `正在终止${providedTitle}`
+					: `正在终止${fallbackTitle}`;
 		}
 	})();
 
@@ -75,11 +75,11 @@ export const ToolLabel: React.FC<{
 					</code>
 				);
 			}
-			return <span className="truncate text-[13px]">Running command</span>;
+			return <span className="truncate text-[13px]">正在运行命令</span>;
 		}
 		case "process_output":
 			return (
-				<span className="truncate text-[13px]">Reading process output</span>
+				<span className="truncate text-[13px]">正在读取进程输出</span>
 			);
 		case "process_signal": {
 			const signal = parsed ? asString(parsed.signal) : "";
@@ -88,10 +88,10 @@ export const ToolLabel: React.FC<{
 			const hasResult = result !== undefined && result !== null;
 			const success = parsedResult ? Boolean(parsedResult.success) : false;
 			if (hasResult && success) {
-				const verb = signal === "kill" ? "Killed" : "Terminated";
+				const verb = signal === "kill" ? "已终止" : "已终止";
 				return (
 					<span className="truncate text-[13px]">
-						{verb} process{shortId ? ` ${shortId}` : ""}
+						{verb} 进程{shortId ? ` ${shortId}` : ""}
 					</span>
 				);
 			}
@@ -104,24 +104,24 @@ export const ToolLabel: React.FC<{
 							: "signal";
 				return (
 					<span className="truncate text-[13px]">
-						Failed to {verb} process{shortId ? ` ${shortId}` : ""}
+						无法{verb}进程{shortId ? ` ${shortId}` : ""}
 					</span>
 				);
 			}
 			return (
 				<span className="truncate text-[13px]">
 					{signal === "kill"
-						? "Killing process…"
+						? "正在终止进程…"
 						: signal === "terminate"
-							? "Terminating process…"
-							: "Sending signal…"}
+							? "正在终止进程…"
+							: "正在发送信号…"}
 				</span>
 			);
 		}
 		case "process_list":
-			return <span className="truncate text-[13px]">Listing processes</span>;
+			return <span className="truncate text-[13px]">列出进程</span>;
 		case "read_file":
-			return <span className="truncate text-[13px]">Reading file…</span>;
+			return <span className="truncate text-[13px]">正在读取文件…</span>;
 		case "write_file": {
 			const path = parsed ? asString(parsed.path) : "";
 			if (path) {
@@ -131,7 +131,7 @@ export const ToolLabel: React.FC<{
 					</code>
 				);
 			}
-			return <span className="truncate text-[13px]">Writing file</span>;
+			return <span className="truncate text-[13px]">正在写入文件</span>;
 		}
 		case "edit_files": {
 			const files = parsed?.files;
@@ -145,14 +145,14 @@ export const ToolLabel: React.FC<{
 					);
 				}
 			}
-			return <span className="truncate text-[13px]">Editing files</span>;
+			return <span className="truncate text-[13px]">正在编辑文件</span>;
 		}
 		case "create_workspace": {
 			const wsName = parsedResult ? asString(parsedResult.workspace_name) : "";
 			if (wsName) {
-				return <span className="truncate text-[13px]">Created {wsName}</span>;
+				return <span className="truncate text-[13px]">已创建{wsName}</span>;
 			}
-			return <span className="truncate text-[13px]">Creating workspace</span>;
+			return <span className="truncate text-[13px]">正在创建工作区</span>;
 		}
 		case "list_templates": {
 			const count = parsedResult
@@ -161,10 +161,10 @@ export const ToolLabel: React.FC<{
 			return (
 				<span className="truncate text-[13px]">
 					{count === 0
-						? "Listing templates…"
+						? "列出模板…"
 						: count === 1
-							? "Listed 1 template"
-							: `Listed ${count} templates`}
+							? "已列出 1 个模板"
+							: `已列出 ${count} 个模板`}
 				</span>
 			);
 		}
@@ -177,12 +177,12 @@ export const ToolLabel: React.FC<{
 				: "";
 			return (
 				<span className="truncate text-[13px]">
-					{tmplName ? `Read template ${tmplName}` : "Reading template…"}
+					{tmplName ? `已读取模板 ${tmplName}` : "正在读取模板…"}
 				</span>
 			);
 		}
 		case "chat_summarized":
-			return <span className="truncate text-[13px]">Summarized</span>;
+			return <span className="truncate text-[13px]">已总结</span>;
 		case "attach_file": {
 			const attachedName =
 				(parsedResult ? asString(parsedResult.name) : "") ||
@@ -190,11 +190,11 @@ export const ToolLabel: React.FC<{
 				(parsed ? asString(parsed.path).split("/").pop() : "") ||
 				"file";
 			return (
-				<span className="truncate text-[13px]">{`Attached ${attachedName}`}</span>
+				<span className="truncate text-[13px]">{`已附加 ${attachedName}`}</span>
 			);
 		}
 		case "computer":
-			return <span className="truncate text-[13px]">Screenshot</span>;
+			return <span className="truncate text-[13px]">截图</span>;
 		case "propose_plan": {
 			const path = parsed ? asString(parsed.path) || "PLAN.md" : "PLAN.md";
 			const filename = path.split("/").pop() || "PLAN.md";
@@ -203,7 +203,7 @@ export const ToolLabel: React.FC<{
 		case "advisor":
 			return (
 				<span className="truncate text-[13px] leading-4 text-content-secondary">
-					Advisor
+					顾问
 				</span>
 			);
 		case "read_skill": {
@@ -212,9 +212,9 @@ export const ToolLabel: React.FC<{
 				<span className="truncate text-[13px]">
 					{skillName
 						? parsedResult
-							? `Read skill ${skillName}`
-							: `Reading skill ${skillName}…`
-						: "Reading skill…"}
+							? `已读取技能 ${skillName}`
+							: `正在读取技能 ${skillName}…`
+						: "正在读取技能…"}
 				</span>
 			);
 		}
@@ -224,10 +224,10 @@ export const ToolLabel: React.FC<{
 			const label =
 				skillName && filePath
 					? `${skillName}/${filePath}`
-					: skillName || filePath || "skill file";
+					: skillName || filePath || "技能文件";
 			return (
 				<span className="truncate text-[13px]">
-					{parsedResult ? `Read ${label}` : `Reading ${label}…`}
+					{parsedResult ? `已读取 ${label}` : `正在读取 ${label}…`}
 				</span>
 			);
 		}
@@ -235,7 +235,7 @@ export const ToolLabel: React.FC<{
 			const wsName = parsedResult ? asString(parsedResult.workspace_name) : "";
 			return (
 				<span className="truncate text-[13px]">
-					{wsName ? `Started ${wsName}` : "Starting workspace…"}
+					{wsName ? `已启动 ${wsName}` : "正在启动工作区…"}
 				</span>
 			);
 		}

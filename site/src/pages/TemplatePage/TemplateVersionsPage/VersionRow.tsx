@@ -43,11 +43,11 @@ export const VersionRow: FC<VersionRowProps> = ({
 						/>
 						<div className="flex flex-row items-center gap-2 font-inherit text-base font-normal leading-normal">
 							<span>
-								<strong>{version.created_by.username}</strong> created the
-								version <strong>{version.name}</strong>
+								<strong>{version.created_by.username}</strong> 创建了版本{" "}
+								<strong>{version.name}</strong>
 							</span>
 							{version.message && (
-								<InfoTooltip title="Message" message={version.message} />
+								<InfoTooltip title="消息" message={version.message} />
 							)}
 							<span className="text-xs text-content-secondary">
 								{new Date(version.created_at).toLocaleTimeString()}
@@ -57,32 +57,32 @@ export const VersionRow: FC<VersionRowProps> = ({
 					<div className="flex flex-row items-center gap-4">
 						{isActive && (
 							<Pill role="status" type="success">
-								Active
+								活跃
 							</Pill>
 						)}
 						{isLatest && (
 							<Pill role="status" type="info">
-								Newest
+								最新
 							</Pill>
 						)}
 						{jobStatus === "pending" && (
 							<Pill role="status" type="inactive">
-								Pending&hellip;
+								待处理&hellip;
 							</Pill>
 						)}
 						{jobStatus === "running" && (
 							<Pill role="status" type="active">
-								Building&hellip;
+								构建中&hellip;
 							</Pill>
 						)}
 						{(jobStatus === "canceling" || jobStatus === "canceled") && (
 							<Pill role="status" type="inactive">
-								Canceled
+								已取消
 							</Pill>
 						)}
 						{jobStatus === "failed" && (
 							<Pill role="status" type="error">
-								Failed
+								失败
 							</Pill>
 						)}
 
@@ -96,7 +96,7 @@ export const VersionRow: FC<VersionRowProps> = ({
 									onArchiveClick?.(version.id);
 								}}
 							>
-								Archive&hellip;
+								归档&hellip;
 							</Button>
 						)}
 
@@ -110,7 +110,7 @@ export const VersionRow: FC<VersionRowProps> = ({
 									onPromoteClick?.(version.id);
 								}}
 							>
-								Promote&hellip;
+								提升&hellip;
 							</Button>
 						)}
 					</div>

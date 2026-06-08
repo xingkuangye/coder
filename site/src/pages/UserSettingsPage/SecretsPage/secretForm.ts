@@ -32,10 +32,10 @@ export const getCreateSecretRequiredFieldErrors = (
 ): SecretFieldErrors => {
 	const errors: SecretFieldErrors = {};
 	if (values.name.trim() === "") {
-		errors.name = "Name is required.";
+		errors.name = "名称不能为空。";
 	}
 	if (values.value === "") {
-		errors.value = "Value is required.";
+		errors.value = "值不能为空。";
 	}
 	return errors;
 };
@@ -86,7 +86,7 @@ export const mapSecretApiErrorToFormErrors = (
 	if (!apiError) {
 		return {
 			fieldErrors: {},
-			formError: "Something went wrong.",
+			formError: "出了点问题。",
 		};
 	}
 

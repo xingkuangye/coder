@@ -30,11 +30,11 @@ export const ProxyRow: FC<ProxyRowProps> = ({ proxy, latency }) => {
 			case "http/1.0":
 			case "http/1.1":
 				extraWarnings.push(
-					`Requests to the proxy from current browser are using "${latency.nextHopProtocol}". ` +
-						"The proxy server might not support HTTP/2. " +
-						"For usability reasons, HTTP/2 or above is recommended. " +
-						"Pages may fail to load if the web browser's concurrent " +
-						"connection limit per host is reached.",
+					`来自当前浏览器的代理请求正在使用“${latency.nextHopProtocol}”。` +
+						"代理服务器可能不支持 HTTP/2。" +
+						"出于可用性考虑，建议使用 HTTP/2 或更高版本。" +
+						"如果达到网络浏览器每个主机的并发连接限制，" +
+						"页面可能无法加载。",
 				);
 		}
 	}
@@ -79,7 +79,7 @@ export const ProxyRow: FC<ProxyRowProps> = ({ proxy, latency }) => {
 							: "text-content-secondary",
 					)}
 				>
-					{latency ? `${latency.latencyMS.toFixed(0)} ms` : "Not available"}
+					{latency ? `${latency.latencyMS.toFixed(0)} ms` : "暂不可用"}
 				</TableCell>
 			</TableRow>
 			{shouldShowMessages && (
@@ -111,12 +111,12 @@ const ProxyMessagesRow: FC<ProxyMessagesRowProps> = ({
 	return (
 		<>
 			<ProxyMessagesList
-				title="Errors"
+				title="错误"
 				titleClassName="text-content-destructive"
 				messages={proxy.status?.report?.errors}
 			/>
 			<ProxyMessagesList
-				title="Warnings"
+				title="警告"
 				titleClassName="text-content-warning"
 				messages={[...(proxy.status?.report?.warnings ?? []), ...extraWarnings]}
 			/>

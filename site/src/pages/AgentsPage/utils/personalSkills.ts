@@ -99,7 +99,7 @@ const frontmatterStringField = (
 		return "";
 	}
 	if (typeof value !== "string") {
-		throw new PersonalSkillMarkdownError(`Skill ${key} must be a string.`);
+		throw new PersonalSkillMarkdownError(`技能 ${key} 必须是字符串。`);
 	}
 	return value.replace(/[\r\n]+$/, "");
 };
@@ -112,7 +112,7 @@ export const parsePersonalSkillMarkdown = (
 	const lines = normalizedContent.split("\n");
 	if (lines[0]?.trim() !== "---") {
 		throw new PersonalSkillMarkdownError(
-			"Missing opening frontmatter delimiter.",
+			"缺少开头前置内容分隔符。",
 		);
 	}
 
@@ -121,7 +121,7 @@ export const parsePersonalSkillMarkdown = (
 	);
 	if (closingIndex < 0) {
 		throw new PersonalSkillMarkdownError(
-			"Missing closing frontmatter delimiter.",
+			"缺少结尾前置内容分隔符。",
 		);
 	}
 
@@ -136,7 +136,7 @@ export const parsePersonalSkillMarkdown = (
 			return frontMatter<Record<string, unknown>>(parseableContent);
 		} catch (error) {
 			const message = error instanceof Error ? error.message : "unknown error";
-			throw new PersonalSkillMarkdownError(`Invalid frontmatter: ${message}`);
+			throw new PersonalSkillMarkdownError(`无效的前置内容：${message}`);
 		}
 	})();
 
@@ -145,10 +145,10 @@ export const parsePersonalSkillMarkdown = (
 	const body = parsed.body.trim();
 
 	if (!name) {
-		throw new PersonalSkillMarkdownError("Skill name is required.");
+		throw new PersonalSkillMarkdownError("技能名称是必需的。");
 	}
 	if (!body) {
-		throw new PersonalSkillMarkdownError("Skill body is required.");
+		throw new PersonalSkillMarkdownError("技能正文是必需的。");
 	}
 
 	return { name, description, body };
@@ -165,7 +165,7 @@ export const tryParsePersonalSkillMarkdown = (
 		return {
 			ok: false,
 			error:
-				error instanceof Error ? error.message : "Unable to parse SKILL.md.",
+				error instanceof Error ? error.message : "无法解析 SKILL.md。",
 		};
 	}
 };

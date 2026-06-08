@@ -35,9 +35,9 @@ export const OverviewPageView: FC<OverviewPageViewProps> = ({
 			<SettingsHeader
 				actions={<SettingsHeaderDocsLink href={docs("/admin/setup")} />}
 			>
-				<SettingsHeaderTitle>General</SettingsHeaderTitle>
+				<SettingsHeaderTitle>常规</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Information about your Coder deployment.
+					您的 Coder 部署的相关信息。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -50,7 +50,7 @@ export const OverviewPageView: FC<OverviewPageViewProps> = ({
 				/>
 				{invalidExperiments.length > 0 && (
 					<Alert severity="warning">
-						<AlertTitle>Invalid experiments in use:</AlertTitle>
+						<AlertTitle>正在使用的无效实验：</AlertTitle>
 						<ul>
 							{invalidExperiments.map((it) => (
 								<li key={it}>
@@ -58,16 +58,16 @@ export const OverviewPageView: FC<OverviewPageViewProps> = ({
 								</li>
 							))}
 						</ul>
-						It is recommended that you remove these experiments from your
-						configuration as they have no effect. See{" "}
+						建议您从配置中移除这些实验，
+						因为它们没有任何效果。请参阅{" "}
 						<Link
 							href={docs("/reference/cli/server#--experiments")}
 							target="_blank"
 							rel="noreferrer"
 						>
-							the documentation
+							文档
 						</Link>{" "}
-						for more details.
+						以获取更多详情。
 					</Alert>
 				)}
 				<OptionsTable

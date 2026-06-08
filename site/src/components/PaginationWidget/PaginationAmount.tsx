@@ -38,11 +38,11 @@ export const PaginationAmount: FC<PaginationHeaderProps> = ({
 					 * Have to put text content in divs so that flexbox doesn't scramble
 					 * the inner text nodes up
 					 */}
-					{totalRecords === 0 && <div>No records available</div>}
+					{totalRecords === 0 && <div>暂无记录</div>}
 
 					{totalRecords !== 0 && currentOffsetStart !== undefined && (
 						<div>
-							Showing <strong>{currentOffsetStart.toLocaleString()}</strong> to{" "}
+							显示 <strong>{currentOffsetStart.toLocaleString()}</strong> 至{" "}
 							<strong>
 								{(
 									currentOffsetStart +
@@ -51,7 +51,7 @@ export const PaginationAmount: FC<PaginationHeaderProps> = ({
 										: Math.min(limit - 1, totalRecords - currentOffsetStart))
 								).toLocaleString()}
 							</strong>{" "}
-							of{" "}
+							共{" "}
 							<strong>
 								{totalRecords.toLocaleString()}
 								{countIsCapped && "+"}

@@ -16,7 +16,7 @@ export function optionValue(
 				case "secret":
 					// For secret fields, show "Set" if configured, otherwise show empty
 					// (which will be rendered as "Not set" by OptionValue component)
-					return option.value_source ? "Set" : "";
+					return option.value_source ? "已设置" : "";
 				case "format_duration":
 					return humanDuration((option.value as number) / 1e6);
 				// Add additional cases here as needed.
@@ -28,9 +28,9 @@ export function optionValue(
 	switch (option.name) {
 		case "Strict-Transport-Security":
 			if (option.value === 0) {
-				return "Disabled";
+				return "已禁用";
 			}
-			return `${(option.value as number).toString()}s`;
+			return `${(option.value as number).toString()}秒`;
 		case "OIDC Group Mapping":
 			return Object.entries(option.value as Record<string, string>).map(
 				([key, value]) => `"${key}"->"${value}"`,

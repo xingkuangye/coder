@@ -36,11 +36,11 @@ import { DisableWorkspaceSharingDialog } from "./DisableWorkspaceSharingDialog";
 import { HorizontalContainer, HorizontalSection } from "./Horizontal";
 
 const MAX_DESCRIPTION_CHAR_LIMIT = 128;
-const MAX_DESCRIPTION_MESSAGE = `Please enter a description that is no longer than ${MAX_DESCRIPTION_CHAR_LIMIT} characters.`;
+const MAX_DESCRIPTION_MESSAGE = `请输入不超过 ${MAX_DESCRIPTION_CHAR_LIMIT} 个字符的描述。`;
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
-	display_name: displayNameValidator("Display name"),
+	name: nameValidator("名称"),
+	display_name: displayNameValidator("显示名称"),
 	description: Yup.string().max(
 		MAX_DESCRIPTION_CHAR_LIMIT,
 		MAX_DESCRIPTION_MESSAGE,
@@ -90,7 +90,7 @@ export const OrganizationSettingsPageView: FC<
 	return (
 		<div className="w-full max-w-screen-2xl pb-10">
 			<SettingsHeader>
-				<SettingsHeaderTitle>Settings</SettingsHeaderTitle>
+				<SettingsHeaderTitle>设置</SettingsHeaderTitle>
 			</SettingsHeader>
 
 			{Boolean(error) && !isApiValidationError(error) && (
@@ -101,11 +101,11 @@ export const OrganizationSettingsPageView: FC<
 
 			<HorizontalForm
 				onSubmit={form.handleSubmit}
-				aria-label="Organization settings form"
+				aria-label="组织设置表单"
 			>
 				<FormSection
-					title="Info"
-					description="The name and description of the organization."
+					title="信息"
+					description="组织的名称和描述。"
 				>
 					<fieldset
 						disabled={form.isSubmitting}
@@ -117,18 +117,18 @@ export const OrganizationSettingsPageView: FC<
 								onChange={onChangeTrimmed(form)}
 								autoFocus
 								fullWidth
-								label="Slug"
+								label="标识符"
 							/>
 							<TextField
 								{...getFieldHelpers("display_name")}
 								fullWidth
-								label="Display name"
+								label="显示名称"
 							/>
 							<TextField
 								{...getFieldHelpers("description")}
 								multiline
 								fullWidth
-								label="Description"
+								label="描述"
 								rows={2}
 							/>
 							<IconField
@@ -144,7 +144,7 @@ export const OrganizationSettingsPageView: FC<
 				<FormFooter>
 					<Button type="submit" disabled={form.isSubmitting}>
 						<Spinner loading={form.isSubmitting} />
-						Save
+						保存
 					</Button>
 				</FormFooter>
 			</HorizontalForm>
@@ -152,16 +152,14 @@ export const OrganizationSettingsPageView: FC<
 			{onChangeShareableOwners && (
 				<HorizontalContainer className="mt-12">
 					<HorizontalSection
-						title="Workspace Sharing"
-						description="Control whether workspace owners can share their workspaces."
+						title="工作区共享"
+						description="控制工作区所有者是否可以共享其工作区。"
 					>
 						<div className="flex flex-col gap-2">
 							{workspaceSharingGloballyDisabled && (
 								<Alert severity="warning" className="mb-4">
-									<AlertTitle>Disabled by deployment settings</AlertTitle>
-									Workspace sharing has been disallowed by an administrator.
-									Sharing must be allowed by an administrator before sharing can
-									be used in this organization.
+									<AlertTitle>已被部署设置禁用</AlertTitle>
+									工作区共享已被管理员禁止。在此组织中使用共享前，必须由管理员先允许共享。
 								</Alert>
 							)}
 							<div className="flex items-start gap-3">
@@ -190,11 +188,10 @@ export const OrganizationSettingsPageView: FC<
 											htmlFor="workspace-sharing"
 											className="text-sm cursor-pointer"
 										>
-											Allow workspace sharing
+											允许工作区共享
 										</label>
 										<div className="text-xs text-content-secondary">
-											When enabled, workspace owners can share their workspaces
-											with other users in this organization.
+											启用后，工作区所有者可以将其工作区共享给此组织中的其他用户。
 										</div>
 									</div>
 									{shareableWorkspaceOwners !== "none" &&
@@ -229,12 +226,10 @@ export const OrganizationSettingsPageView: FC<
 															htmlFor="sharing-service-accounts"
 															className="text-sm cursor-pointer"
 														>
-															Only service accounts can share workspaces
+															仅服务帐户可以共享工作区
 														</label>
 														<span className="text-xs text-content-secondary">
-															Service accounts are non-login accounts typically
-															used for automation, CI/CD pipelines, and
-															centrally-managed shared environments.
+															服务帐户是通常用于自动化、CI/CD 管道和集中管理的共享环境且无需登录的帐户。
 														</span>
 													</div>
 												</div>
@@ -247,7 +242,7 @@ export const OrganizationSettingsPageView: FC<
 														htmlFor="sharing-everyone"
 														className="text-sm cursor-pointer"
 													>
-														All members can share workspaces
+														所有成员都可以共享工作区
 													</label>
 												</div>
 											</RadioGroup>
@@ -262,18 +257,18 @@ export const OrganizationSettingsPageView: FC<
 			{!organization.is_default && (
 				<HorizontalContainer className="mt-12">
 					<HorizontalSection
-						title="Delete Organization"
-						description="Delete your organization permanently."
+						title="删除组织"
+						description="永久删除您的组织。"
 					>
 						<div className="flex flex-col gap-4 flex-grow">
 							<div className="flex bg-surface-orange items-center justify-between border border-solid border-orange-600 rounded-md p-3 pl-4 gap-2">
-								<span>Deleting an organization is irreversible.</span>
+								<span>删除组织是不可逆的。</span>
 								<Button
 									variant="destructive"
 									onClick={() => setIsDeleting(true)}
 									className="min-w-fit"
 								>
-									Delete this organization
+									删除此组织
 								</Button>
 							</div>
 						</div>
@@ -288,7 +283,7 @@ export const OrganizationSettingsPageView: FC<
 					setIsDeleting(false);
 				}}
 				onCancel={() => setIsDeleting(false)}
-				entity="organization"
+				entity="组织"
 				name={organization.name}
 			/>
 

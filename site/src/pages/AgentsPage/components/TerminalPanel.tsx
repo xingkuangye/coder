@@ -76,7 +76,7 @@ export const TerminalPanel: FC<TerminalPanelProps> = ({
 		return (
 			<div className="flex h-full min-h-0 flex-col">
 				<div className="flex min-h-0 flex-1 items-center justify-center px-6 text-center text-xs text-content-secondary">
-					Terminal will be available once the workspace agent is ready.
+					终端将在工作区代理就绪后可用。
 				</div>
 			</div>
 		);

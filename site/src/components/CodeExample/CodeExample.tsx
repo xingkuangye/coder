@@ -42,8 +42,8 @@ export const CodeExample: FC<CodeExampleProps> = ({
 			: code;
 
 	const showButtonLabel = showFullValue
-		? "Hide sensitive data"
-		: "Show sensitive data";
+		? "隐藏敏感数据"
+		: "显示敏感数据";
 	const icon = showFullValue ? (
 		<EyeOffIcon className="h-4 w-4" />
 	) : (
@@ -78,7 +78,7 @@ export const CodeExample: FC<CodeExampleProps> = ({
 						 */}
 						<span aria-hidden>{displayValue}</span>
 						<span className="sr-only">
-							Encrypted text. Please access via the copy button.
+							已加密文本。请通过复制按钮访问。
 						</span>
 					</>
 				) : (
@@ -102,7 +102,7 @@ export const CodeExample: FC<CodeExampleProps> = ({
 						<TooltipContent>{showButtonLabel}</TooltipContent>
 					</Tooltip>
 				)}
-				<CopyButton text={code} label="Copy code" />
+				<CopyButton text={code} label="复制代码" />
 			</div>
 		</div>
 	);

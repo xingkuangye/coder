@@ -76,28 +76,28 @@ export const UsersTable: React.FC<UsersTableProps> = (props) => {
 		<Table data-testid="users-table">
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-max">User</TableHead>
+					<TableHead className="w-max">用户</TableHead>
 					<TableHead className="w-1/6">
 						<div className="flex flex-row gap-2 items-center">
-							<span>Roles</span>
+							<span>角色</span>
 							<RolesHelpPopover />
 						</div>
 					</TableHead>
 					<TableHead className="w-1/6">
 						<div className="flex flex-row gap-2 items-center">
-							<span>Groups</span>
+							<span>用户组</span>
 							<GroupsHelpPopover />
 						</div>
 					</TableHead>
 					{showAISeatColumn && (
 						<TableHead className="w-1/6">
 							<div className="flex flex-row gap-2 items-center">
-								<span>AI add-on</span>
+								<span>AI 插件</span>
 								<AiAddonHelpPopover />
 							</div>
 						</TableHead>
 					)}
-					<TableHead className="w-1/6">Status</TableHead>
+					<TableHead className="w-1/6">状态</TableHead>
 				</TableRow>
 			</TableHeader>
 
@@ -140,7 +140,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 			<TableRow>
 				<TableCell colSpan={999}>
 					<div className="p-8">
-						<EmptyState message="No users found" />
+						<EmptyState message="未找到用户" />
 					</div>
 				</TableCell>
 			</TableRow>
@@ -155,7 +155,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 						<AvatarData
 							title={user.username}
 							subtitle={
-								user.is_service_account ? "Service Account" : user.email
+								user.is_service_account ? "服务帐户" : user.email
 							}
 							src={user.avatar_url}
 						/>
@@ -186,10 +186,10 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 									<Button
 										size="icon-lg"
 										variant="subtle"
-										aria-label="Open menu"
+										aria-label="打开菜单"
 									>
 										<EllipsisVerticalIcon aria-hidden="true" />
-										<span className="sr-only">Open menu</span>
+										<span className="sr-only">打开菜单</span>
 									</Button>
 								</DropdownMenuTrigger>
 
@@ -198,7 +198,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 										<Link
 											to={`/workspaces?filter=${encodeURIComponent(`owner:${user.username}`)}`}
 										>
-											View workspaces
+											查看工作区
 										</Link>
 									</DropdownMenuItem>
 
@@ -207,13 +207,13 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 											<Link
 												to={`/audit?filter=${encodeURIComponent(`username:${user.username}`)}`}
 											>
-												View activity {!canViewActivity && <PremiumBadge />}
+												查看活动 {!canViewActivity && <PremiumBadge />}
 											</Link>
 										</DropdownMenuItem>
 									)}
 
 									<DropdownMenuItem asChild>
-										<Link to={user.username}>Edit</Link>
+										<Link to={user.username}>编辑</Link>
 									</DropdownMenuItem>
 
 									<DropdownMenuItem
@@ -223,7 +223,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 										}
 										onClick={() => onEditUserRoles(user)}
 									>
-										Edit roles
+										编辑角色
 									</DropdownMenuItem>
 
 									{user.status !== "suspended" && (
@@ -231,7 +231,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 											disabled={user.login_type !== "password"}
 											onClick={() => onResetUserPassword(user)}
 										>
-											Reset password&hellip;
+											重置密码&hellip;
 										</DropdownMenuItem>
 									)}
 
@@ -240,11 +240,11 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 											data-testid="suspend-button"
 											onClick={() => onSuspendUser(user)}
 										>
-											Suspend&hellip;
+											暂停&hellip;
 										</DropdownMenuItem>
 									) : (
 										<DropdownMenuItem onClick={() => onActivateUser(user)}>
-											Activate&hellip;
+											激活&hellip;
 										</DropdownMenuItem>
 									)}
 
@@ -256,7 +256,7 @@ const UsersTableBody: React.FC<UsersTableProps> = ({
 										disabled={user.id === me}
 									>
 										<TrashIcon className="size-icon-xs" />
-										Delete&hellip;
+										删除&hellip;
 									</DropdownMenuItem>
 								</DropdownMenuContent>
 							</DropdownMenu>

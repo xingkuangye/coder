@@ -144,39 +144,32 @@ export const WorkspaceParametersPageViewExperimental: FC<
 		<>
 			{disabled && (
 				<Alert severity="warning" className="mb-8" prominent>
-					The template for this workspace requires automatic updates. Update the
-					workspace to edit parameters.
+					此工作区的模板需要自动更新。请更新工作区以编辑参数。
 				</Alert>
 			)}
 
 			{hasIncompatibleParameters && (
 				<Alert severity="error" prominent>
 					<p className="text-lg leading-normal font-bold m-0">
-						Workspace update blocked
+						工作区更新已被阻止
 					</p>
 					<p className="mb-0">
-						The new template version includes parameter changes that are
-						incompatible with this workspace's existing parameter values. This
-						may be caused by:
+						新模板版本包含的参数更改与此工作区现有的参数值不兼容。可能的原因有：
 					</p>
 					<ul className="mb-0 pl-4 space-y-1">
 						<li>
-							New <strong>required</strong> parameters that cannot be provided
-							after workspace creation
+							工作区创建后无法提供的新<strong>必需</strong>参数
 						</li>
 						<li>
-							Changes to <strong>valid options or validations</strong> for
-							existing parameters
+							对现有参数的<strong>有效选项或验证规则</strong>的更改
 						</li>
-						<li>Logic changes that conflict with previously selected values</li>
+						<li>与之前选定的值冲突的逻辑更改</li>
 					</ul>
 					<p className="mb-0">
-						Please contact the <strong>template administrator</strong> to review
-						the changes and ensure compatibility for existing workspaces.
+						请联系<strong>模板管理员</strong>查看这些更改，并确保与现有工作区的兼容性。
 					</p>
 					<p className="mb-0">
-						Consider supplying defaults for new parameters or validating
-						conditional logic against prior workspace states.
+						请考虑为新参数提供默认值，或根据先前的工作区状态验证条件逻辑。
 					</p>
 				</Alert>
 			)}
@@ -206,7 +199,7 @@ export const WorkspaceParametersPageViewExperimental: FC<
 
 			{(templateVersionId || workspace.latest_build.template_version_id) && (
 				<div className="flex flex-col gap-2">
-					<Label className="text-sm text-content-secondary">Version ID</Label>
+					<Label className="text-sm text-content-secondary">版本 ID</Label>
 					<p className="m-0 text-xs font-medium font-mono">
 						{templateVersionId ?? workspace.latest_build.template_version_id}
 					</p>
@@ -221,16 +214,15 @@ export const WorkspaceParametersPageViewExperimental: FC<
 				{parameters.length > 0 && (
 					<section className="flex flex-col gap-9">
 						<hgroup>
-							<h2 className="text-xl font-medium mb-0">Parameters</h2>
+							<h2 className="text-xl font-medium mb-0">参数</h2>
 							<p className="text-sm text-content-secondary m-0">
-								These are the settings used by your template. Immutable
-								parameters cannot be modified once the workspace is created.
+								这些是模板使用的设置。工作区创建后，不可变参数无法修改。
 								<Link
 									href={docs(
 										"/admin/templates/extending-templates/dynamic-parameters",
 									)}
 								>
-									View docs
+									查看文档
 								</Link>
 							</p>
 						</hgroup>
@@ -276,7 +268,7 @@ export const WorkspaceParametersPageViewExperimental: FC<
 
 				<div className="flex justify-end gap-2">
 					<Button onClick={onCancel} variant="outline" disabled={isSubmitting}>
-						Cancel
+						取消
 					</Button>
 					<Button
 						type="submit"

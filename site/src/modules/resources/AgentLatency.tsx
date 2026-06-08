@@ -45,17 +45,16 @@ export const AgentLatency: FC<AgentLatencyProps> = ({ agent }) => {
 			<HelpPopoverTrigger asChild>
 				<span
 					role="presentation"
-					aria-label="latency"
+					aria-label="延迟"
 					className={cn("cursor-pointer", latency.color)}
 				>
 					{Math.round(latency.latency_ms)}ms
 				</span>
 			</HelpPopoverTrigger>
 			<HelpPopoverContent>
-				<HelpPopoverTitle>Latency</HelpPopoverTitle>
+				<HelpPopoverTitle>延迟</HelpPopoverTitle>
 				<HelpPopoverText>
-					This is the latency overhead on non peer to peer connections. The
-					first row is the preferred relay.
+					这是非点对点连接上的延迟开销。第一行是首选的中继。
 				</HelpPopoverText>
 				<div className="flex-col gap-1 mt-4">
 					{Object.entries(agent.latency)

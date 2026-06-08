@@ -109,13 +109,13 @@ export const TasksTable: FC<TasksTableProps> = ({
 										onCheckChange(new Set(tasks.map((t) => t.id)));
 									}
 								}}
-								aria-label="Select all tasks"
+								aria-label="全选任务"
 							/>
-							Task
+							任务
 						</div>
 					</TableHead>
-					<TableHead>Status</TableHead>
-					<TableHead>Created by</TableHead>
+					<TableHead>状态</TableHead>
+					<TableHead>创建者</TableHead>
 					<TableHead />
 				</TableRow>
 			</TableHeader>
@@ -136,14 +136,14 @@ const TasksErrorBody: FC<TasksErrorBodyProps> = ({ error, onRetry }) => {
 				<div className="rounded-lg w-full min-h-80 flex items-center justify-center">
 					<div className="flex flex-col items-center">
 						<h3 className="m-0 font-medium text-content-primary text-base">
-							{getErrorMessage(error, "Error loading tasks")}
+							{getErrorMessage(error, "加载任务时出错")}
 						</h3>
 						<span className="text-content-secondary text-sm">
-							{getErrorDetail(error) ?? "Please try again"}
+							{getErrorDetail(error) ?? "请重试"}
 						</span>
 						<Button size="sm" onClick={onRetry} className="mt-4">
 							<RotateCcwIcon />
-							Try again
+							重试
 						</Button>
 					</div>
 				</div>
@@ -159,10 +159,10 @@ const TasksEmpty: FC = () => {
 				<div className="w-full min-h-80 p-4 flex items-center justify-center">
 					<div className="flex flex-col items-center">
 						<h3 className="m-0 font-medium text-content-primary text-base">
-							No tasks found
+							未找到任务
 						</h3>
 						<span className="text-content-secondary text-sm">
-							Use the form above to run a task
+							使用上方的表单来运行任务
 						</span>
 					</div>
 				</div>
@@ -190,7 +190,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 	const pauseMutation = useMutation({
 		...pauseTask(task, queryClient),
 		onError: (error: unknown) => {
-			toast.error(getErrorMessage(error, "Failed to pause task."), {
+			toast.error(getErrorMessage(error, "暂停任务失败。"), {
 				description: getErrorDetail(error),
 			});
 		},
@@ -198,7 +198,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 	const resumeMutation = useMutation({
 		...resumeTask(task, queryClient),
 		onError: (error: unknown) => {
-			toast.error(getErrorMessage(error, "Failed to resume task."), {
+			toast.error(getErrorMessage(error, "恢复任务失败。"), {
 				description: getErrorDetail(error),
 			});
 		},
@@ -230,7 +230,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 							onCheckedChange={(checked) => {
 								onCheckChange(task.id, Boolean(checked));
 							}}
-							aria-label={`Select task ${task.initial_prompt}`}
+							aria-label={`选择任务 ${task.initial_prompt}`}
 						/>
 						<AvatarData
 							title={
@@ -253,7 +253,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 				<TableCell>
 					<TaskStatus
 						status={task.status}
-						stateMessage={task.current_state?.message || "No message available"}
+						stateMessage={task.current_state?.message || "无可用消息"}
 					/>
 				</TableCell>
 
@@ -293,7 +293,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 									onClick={(e) => e.stopPropagation()}
 								>
 									<EllipsisVerticalIcon aria-hidden="true" />
-									<span className="sr-only">Show task actions</span>
+									<span className="sr-only">显示任务操作</span>
 								</Button>
 							</DropdownMenuTrigger>
 							<DropdownMenuContent align="end">
@@ -305,7 +305,7 @@ const TaskRow: FC<TaskRowProps> = ({ task, checked, onCheckChange }) => {
 									}}
 								>
 									<TrashIcon />
-									Delete&hellip;
+									删除&hellip;
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>

@@ -2,32 +2,25 @@ import type { CSSProperties } from "react";
 
 export interface ExternalImageModeStyles {
 	/**
-	 * monochrome icons will be flattened to a neutral, theme-appropriate color.
-	 * eg. white, light gray, dark gray, black
+	 * 单色图标将被扁平化为中性且适合主题的颜色。
+	 * 例如：白色、浅灰色、深灰色、黑色
 	 */
 	monochrome?: CSSProperties;
 	/**
 	 * @default
-	 * fullcolor icons should look their best of any background, with distinct colors
-	 * and good contrast. This is the default, and won't alter the image.
+	 * 全色图标在任何背景下都能呈现最佳效果，具有鲜明的色彩和良好的对比度。这是默认模式，不会改变图标。
 	 */
 	fullcolor?: CSSProperties;
 	/**
-	 * whiteWithColor is useful for icons that are primarily white, or contain white text,
-	 * which are hard to see or look incorrect on light backgrounds. This setting will apply
-	 * a color-respecting inversion filter to turn white into black when appropriate to
-	 * improve contrast.
-	 * You can also specify a `brightness` level if your icon still doesn't look quite right.
-	 * eg. /icon/aws.svg?blackWithColor&brightness=1.5
+	 * whiteWithColor 适用于主要颜色为白色或包含白色文字的图标，这些图标在浅色背景下难以看清或显示不正确。此设置将应用一种尊重颜色的反转滤镜，在适当的时候将白色变为黑色以改善对比度。
+	 * 如果图标仍不完全正确，你也可以指定 `brightness` 级别。
+	 * 例如：/icon/aws.svg?blackWithColor&brightness=1.5
 	 */
 	whiteWithColor?: CSSProperties;
 	/**
-	 * blackWithColor is useful for icons that are primarily black, or contain black text,
-	 * which are hard to see or look incorrect on dark backgrounds. This setting will apply
-	 * a color-respecting inversion filter to turn black into white when appropriate to
-	 * improve contrast.
-	 * You can also specify a `brightness` level if your icon still doesn't look quite right.
-	 * eg. /icon/aws.svg?blackWithColor&brightness=1.5
+	 * blackWithColor 适用于主要颜色为黑色或包含黑色文字的图标，这些图标在深色背景下难以看清或显示不正确。此设置将应用一种尊重颜色的反转滤镜，在适当的时候将黑色变为白色以改善对比度。
+	 * 如果图标仍不完全正确，你也可以指定 `brightness` 级别。
+	 * 例如：/icon/aws.svg?blackWithColor&brightness=1.5
 	 */
 	blackWithColor?: CSSProperties;
 }
@@ -60,7 +53,7 @@ export const forLightThemes: ExternalImageModeStyles = {
 const multiplier = /^\d+(\.\d+)?%?$/;
 
 /**
- * Used with `whiteWithColor` and `blackWithColor` to allow for finer tuning
+ * 与 `whiteWithColor` 和 `blackWithColor` 一起使用，以便进行更精细的调整
  */
 const parseInvertFilterParameters = (
 	params: URLSearchParams,
@@ -137,8 +130,7 @@ export function getExternalImageStylesFromUrl(
 }
 
 /**
- * defaultModeForBuiltinIcons contains modes for all of our built-in icons that
- * don't look their best in all of our themes with the default fullcolor mode.
+ * defaultParametersForBuiltinIcons 包含了所有内置图标的模式，这些图标在默认全色模式下并非在所有主题中都具有最佳外观。
  */
 export const defaultParametersForBuiltinIcons = new Map<string, string>([
 	["/icon/apple-black.svg", "monochrome"],

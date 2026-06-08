@@ -21,12 +21,12 @@ export const ConnectionLogDescription: FC<ConnectionLogDescriptionProps> = ({
 
 			const { user, slug_or_port, status_code } = web_info;
 			const isPortForward = type === "port_forwarding";
-			const presentAction = isPortForward ? "access" : "open";
-			const pastAction = isPortForward ? "accessed" : "opened";
+			const presentAction = isPortForward ? "访问" : "打开";
+			const pastAction = isPortForward ? "已访问" : "已打开";
 
 			const target: ReactNode = isPortForward ? (
 				<>
-					port <strong>{slug_or_port}</strong>
+					端口 <strong>{slug_or_port}</strong>
 				</>
 			) : (
 				<strong>{slug_or_port}</strong>
@@ -36,14 +36,14 @@ export const ConnectionLogDescription: FC<ConnectionLogDescriptionProps> = ({
 				if (status_code === 303) {
 					return (
 						<>
-							was redirected attempting to {presentAction} {target}
+							在尝试 {presentAction} {target} 时被重定向
 						</>
 					);
 				}
 				if ((status_code ?? 0) >= 400) {
 					return (
 						<>
-							unsuccessfully attempted to {presentAction} {target}
+							尝试 {presentAction} {target} 失败
 						</>
 					);
 				}
@@ -60,14 +60,14 @@ export const ConnectionLogDescription: FC<ConnectionLogDescriptionProps> = ({
 
 			return (
 				<span>
-					{user ? user.username : "Unauthenticated user"} {actionText} in{" "}
-					{isOwnWorkspace ? "their" : `${workspace_owner_username}'s`}{" "}
+					{user ? user.username : "未认证用户"} {actionText} 在{" "}
+					{isOwnWorkspace ? "自己的" : `${workspace_owner_username} 的`}{" "}
 					<Link asChild showExternalIcon={false} className="text-base">
 						<RouterLink to={`/@${workspace_owner_username}/${workspace_name}`}>
 							<strong>{workspace_name}</strong>
 						</RouterLink>
 					</Link>{" "}
-					workspace
+					工作区
 				</span>
 			);
 		}
@@ -79,13 +79,13 @@ export const ConnectionLogDescription: FC<ConnectionLogDescriptionProps> = ({
 			const friendlyType = connectionTypeToFriendlyName(type);
 			return (
 				<span>
-					{friendlyType} session to {workspace_owner_username}'s{" "}
+					{friendlyType} 会话到 {workspace_owner_username} 的{" "}
 					<Link asChild showExternalIcon={false} className="text-base">
 						<RouterLink to={`/@${workspace_owner_username}/${workspace_name}`}>
 							<strong>{workspace_name}</strong>
 						</RouterLink>
 					</Link>{" "}
-					workspace{" "}
+					工作区{" "}
 				</span>
 			);
 		}

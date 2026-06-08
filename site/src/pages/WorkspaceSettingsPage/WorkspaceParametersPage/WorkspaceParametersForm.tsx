@@ -85,8 +85,7 @@ export const WorkspaceParametersForm: FC<WorkspaceParameterFormProps> = ({
 		<>
 			{disabled && (
 				<Alert severity="warning" prominent>
-					The template for this workspace requires automatic updates. Update the
-					workspace to edit parameters.
+					此工作空间的模板需要自动更新。请更新工作空间以编辑参数。
 				</Alert>
 			)}
 			<ClassicParameterFlowDeprecationWarning
@@ -96,8 +95,8 @@ export const WorkspaceParametersForm: FC<WorkspaceParameterFormProps> = ({
 			<HorizontalForm onSubmit={form.handleSubmit} data-testid="form">
 				{hasNonEphemeralParameters && (
 					<FormSection
-						title="Parameters"
-						description="Settings used by your template"
+						title="参数"
+						description="模板使用的设置"
 					>
 						<FormFields>
 							{templateVersionRichParameters.map((parameter, index) =>
@@ -131,8 +130,8 @@ export const WorkspaceParametersForm: FC<WorkspaceParameterFormProps> = ({
 				)}
 				{hasEphemeralParameters && (
 					<FormSection
-						title="Ephemeral Parameters"
-						description="These parameters only apply for a single workspace start."
+						title="临时参数"
+						description="这些参数仅适用于单次工作空间启动。"
 					>
 						<FormFields>
 							{templateVersionRichParameters.map((parameter, index) =>
@@ -164,7 +163,7 @@ export const WorkspaceParametersForm: FC<WorkspaceParameterFormProps> = ({
 
 				<FormFooter>
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 
 					<Button
@@ -172,7 +171,7 @@ export const WorkspaceParametersForm: FC<WorkspaceParameterFormProps> = ({
 						disabled={isSubmitting || disabled || !form.dirty}
 					>
 						<Spinner loading={isSubmitting} />
-						Submit and restart
+						提交并重启
 					</Button>
 				</FormFooter>
 			</HorizontalForm>

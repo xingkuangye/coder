@@ -65,12 +65,11 @@ export const PlanModeInstructionsSettings: FC<
 		<form className="space-y-2" onSubmit={form.handleSubmit}>
 			<div className="flex items-center gap-2">
 				<h3 className="m-0 text-[13px] font-semibold text-content-primary">
-					Plan mode instructions
+					规划模式指令
 				</h3>
 			</div>
 			<p className="!mt-0.5 m-0 text-xs text-content-secondary">
-				Custom instructions applied when the agent enters planning mode. These
-				supplement the built-in planning behavior.
+				当代理进入规划模式时应用的自定义指令。这些指令补充内置的规划行为。
 			</p>
 			<TextareaAutosize
 				className={cn(
@@ -78,7 +77,7 @@ export const PlanModeInstructionsSettings: FC<
 					isPlanModeInstructionsOverflowing &&
 						"overflow-y-auto [scrollbar-width:thin]",
 				)}
-				placeholder="Additional instructions for planning mode"
+				placeholder="规划模式的额外指令"
 				name="plan_mode_instructions"
 				value={form.values.plan_mode_instructions}
 				onChange={form.handleChange}
@@ -92,9 +91,8 @@ export const PlanModeInstructionsSettings: FC<
 			{planModeInvisibleCharCount > 0 && (
 				<Alert severity="warning">
 					<AlertDescription>
-						This text contains {planModeInvisibleCharCount} invisible Unicode{" "}
-						{planModeInvisibleCharCount !== 1 ? "characters" : "character"} that
-						could hide content. These will be stripped on save.
+						此文本包含 {planModeInvisibleCharCount} 个不可见的 Unicode{" "}
+						{planModeInvisibleCharCount !== 1 ? "字符" : "字符"}，可能隐藏内容。这些将在保存时被移除。
 					</AlertDescription>
 				</Alert>
 			)}
@@ -109,7 +107,7 @@ export const PlanModeInstructionsSettings: FC<
 						!form.values.plan_mode_instructions
 					}
 				>
-					Clear
+					清除
 				</Button>
 				<Button
 					size="sm"
@@ -119,12 +117,12 @@ export const PlanModeInstructionsSettings: FC<
 						!(form.dirty && hasLoadedPlanModeInstructions)
 					}
 				>
-					Save
+					保存
 				</Button>
 			</div>
 			{isSavePlanModeInstructionsError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save plan mode instructions.
+					保存规划模式指令失败。
 				</p>
 			)}
 		</form>

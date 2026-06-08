@@ -29,33 +29,33 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
 				subtitle={user.email}
 			/>
 			<div className="flex flex-col gap-1">
-				<SettingsSidebarNavItem href="account">Account</SettingsSidebarNavItem>
+				<SettingsSidebarNavItem href="account">账户</SettingsSidebarNavItem>
 				<SettingsSidebarNavItem href="appearance">
-					Appearance
+					外观
 				</SettingsSidebarNavItem>
 				<SettingsSidebarNavItem href="external-auth">
-					External Authentication
+					外部认证
 				</SettingsSidebarNavItem>
 				{showOAuth2Page && (
 					<SettingsSidebarNavItem href="oauth2-provider">
-						OAuth2 Applications
+						OAuth2 应用
 					</SettingsSidebarNavItem>
 				)}
 				{showSchedulePage && (
 					<SettingsSidebarNavItem href="schedule">
-						Schedule
+						计划
 					</SettingsSidebarNavItem>
 				)}
 				<SettingsSidebarNavItem href="security">
-					Security
+					安全
 				</SettingsSidebarNavItem>
 				<SettingsSidebarNavItem href="ssh-keys">
-					SSH Keys
+					SSH 密钥
 				</SettingsSidebarNavItem>
-				<SettingsSidebarNavItem href="tokens">Tokens</SettingsSidebarNavItem>
+				<SettingsSidebarNavItem href="tokens">令牌</SettingsSidebarNavItem>
 				<SettingsSidebarNavItem href="secrets">
 					<span className="flex min-w-0 items-center gap-2">
-						<span>Secrets</span>
+						<span>密钥</span>
 						<FeatureStageBadge
 							aria-hidden="true"
 							contentType="beta"
@@ -64,7 +64,7 @@ export const Sidebar: FC<SidebarProps> = ({ user }) => {
 					</span>
 				</SettingsSidebarNavItem>
 				<SettingsSidebarNavItem href="notifications">
-					Notifications
+					通知
 				</SettingsSidebarNavItem>
 			</div>
 		</BaseSidebar>

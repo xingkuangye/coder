@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "lucide-react";
 import type { FC } from "react";
 import { cn } from "#/utils/cn";
 
-export const PINNED_SECTION_KEY = "Pinned";
+export const PINNED_SECTION_KEY = "已置顶";
 
 export const getSectionToggleTestId = (sectionKey: string) =>
 	`agents-section-toggle-${sectionKey.replaceAll(" ", "-")}`;
@@ -22,14 +22,14 @@ export const ChatSectionHeader: FC<ChatSectionHeaderProps> = ({
 	onToggle,
 	testId,
 }) => {
-	const actionLabel = expanded ? "Collapse" : "Expand";
+	const actionLabel = expanded ? "折叠" : "展开";
 	return (
 		<div className="group/header mb-1 ml-2.5 mr-2 flex h-7 items-center text-xs font-medium text-content-secondary">
 			<button
 				type="button"
 				className="flex h-7 min-w-0 flex-1 cursor-pointer appearance-none items-center rounded-md border-0 bg-transparent p-0 text-left font-sans text-xs font-medium text-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-content-link [@media(hover:hover)]:group-hover/header:text-content-primary"
 				aria-expanded={expanded}
-				aria-label={`${actionLabel} ${label} section`}
+				aria-label={`${actionLabel} ${label} 部分`}
 				data-testid={testId}
 				onClick={onToggle}
 			>

@@ -51,11 +51,11 @@ export const TokenBadges: FC<TokenBadgesProps> = ({
 							<div className="flex items-center gap-1">
 								<ArrowDownIcon className="size-icon-sm flex-shrink-0" />
 								<span className="text-content-primary text-sm">
-									Input tokens
+									输入 Token
 								</span>
 							</div>
 							<div className="flex items-center justify-between gap-4">
-								<div className="text-sm text-content-secondary">Input</div>
+								<div className="text-sm text-content-secondary">输入</div>
 								<div className="text-sm text-content-secondary">
 									{inputTokens.toLocaleString()}
 								</div>
@@ -66,11 +66,11 @@ export const TokenBadges: FC<TokenBadgesProps> = ({
 							<div className="flex items-center gap-1">
 								<ArrowUpIcon className="size-icon-sm flex-shrink-0" />
 								<span className="text-content-primary text-sm">
-									Output tokens
+									输出 Token
 								</span>
 							</div>
 							<div className="flex items-center justify-between gap-4">
-								<div className="text-sm text-content-secondary">Output</div>
+								<div className="text-sm text-content-secondary">输出</div>
 								<div className="text-sm text-content-secondary">
 									{outputTokens.toLocaleString()}
 								</div>
@@ -80,7 +80,7 @@ export const TokenBadges: FC<TokenBadgesProps> = ({
 					{tokenUsageMetadata && (
 						<>
 							<div className="text-content-primary text-sm mt-4">
-								Token usage metadata
+								Token 使用元数据
 							</div>
 							<pre className="mt-2 mb-1 p-4 bg-surface-secondary rounded overflow-x-auto">
 								<JsonPrettyPrinter input={JSON.stringify(tokenUsageMetadata)} />

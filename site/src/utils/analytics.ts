@@ -1,6 +1,6 @@
 /**
- * Format a token count to a compact human-readable string.
- * Examples: 0 → "0", 1234 → "1,234", 1_500_000 → "1.5M"
+ * 将令牌计数格式化为紧凑的人类可读字符串。
+ * 示例：0 → "0"，1234 → "1,234"，1_500_000 → "1.5M"
  */
 export function formatTokenCount(tokens: number): string {
 	if (tokens >= 1_000_000) {

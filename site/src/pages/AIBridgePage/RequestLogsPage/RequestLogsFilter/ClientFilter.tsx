@@ -61,15 +61,15 @@ interface ClientFilterProps {
 export const ClientFilter: React.FC<ClientFilterProps> = ({ menu }) => {
 	return (
 		<SelectFilter
-			label="Select client"
-			placeholder="All clients"
-			emptyText="No clients found"
+			label="选择客户端"
+			placeholder="所有客户端"
+			emptyText="未找到客户端"
 			options={menu.searchOptions}
 			onSelect={(option) => menu.selectOption(option)}
 			selectedOption={menu.selectedOption ?? undefined}
 			selectFilterSearch={
 				<ComboboxInput
-					placeholder="Search client..."
+					placeholder="搜索客户端..."
 					value={menu.query}
 					onValueChange={menu.setQuery}
 				/>

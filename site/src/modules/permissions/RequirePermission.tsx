@@ -15,7 +15,7 @@ interface RequirePermissionProps {
 }
 
 /**
- * Wraps routes that are available based on RBAC or licensing.
+ * 包装基于 RBAC 或许可证可用的路由。
  */
 export const RequirePermission: FC<RequirePermissionProps> = ({
 	children,
@@ -27,15 +27,14 @@ export const RequirePermission: FC<RequirePermissionProps> = ({
 				<DialogContent>
 					<DialogHeader>
 						<DialogTitle>
-							You don't have permission to view this page
+							您没有权限查看此页面
 						</DialogTitle>
 					</DialogHeader>
 					<DialogDescription>
-						If you believe this is a mistake, please contact your administrator
-						or try signing in with different credentials.
+						如果您认为这是错误，请联系您的管理员或尝试使用其他凭据登录。
 					</DialogDescription>
 					<DialogFooter>
-						<Link href="/">Go to workspaces</Link>
+						<Link href="/">前往工作区</Link>
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>

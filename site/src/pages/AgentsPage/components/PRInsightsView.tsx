@@ -77,10 +77,10 @@ const prStateBadgeStyles: Record<string, string> = {
 };
 
 const prStateLabels: Record<string, string> = {
-	merged: "Merged",
-	closed: "Closed",
-	open: "Open",
-	draft: "Draft",
+	merged: "已合并",
+	closed: "已关闭",
+	open: "开放",
+	draft: "草稿",
 };
 
 function prStateKey(state: string, draft: boolean): string {
@@ -102,7 +102,7 @@ const PRStateBadge: FC<{ state: string; draft: boolean }> = ({
 			)}
 		>
 			<PrStateIcon state={state} draft={draft} className="size-3" />
-			{prStateLabels[key] ?? "Open"}
+			{prStateLabels[key] ?? "开放"}
 		</span>
 	);
 };
@@ -127,11 +127,11 @@ const InlineMergeBar: FC<{ rate: number }> = ({ rate }) => (
 
 const activityChartConfig = {
 	prs_created: {
-		label: "Created",
+		label: "已创建",
 		color: "hsl(var(--content-disabled))",
 	},
 	prs_merged: {
-		label: "Merged",
+		label: "已合并",
 		color: "hsl(var(--git-merged-bright))",
 	},
 } satisfies ChartConfig;
@@ -237,10 +237,10 @@ const EmptyState: FC = () => (
 		</div>
 		<div>
 			<p className="m-0 text-sm font-medium text-content-primary">
-				No pull requests yet
+				暂无拉取请求
 			</p>
 			<p className="m-0 mt-1 text-sm text-content-secondary">
-				Pull request data will appear here once agents start shipping code.
+				代理开始提交代码后，拉取请求数据将显示在此处。
 			</p>
 		</div>
 	</div>
@@ -255,10 +255,10 @@ const SectionTitle: FC<{ children: string }> = ({ children }) => (
 );
 
 const timeRangeOptions: { value: PRInsightsTimeRange; label: string }[] = [
-	{ value: "7d", label: "7d" },
-	{ value: "14d", label: "14d" },
-	{ value: "30d", label: "30d" },
-	{ value: "90d", label: "90d" },
+	{ value: "7d", label: "7天" },
+	{ value: "14d", label: "14天" },
+	{ value: "30d", label: "30天" },
+	{ value: "90d", label: "90天" },
 ];
 
 const TimeRangeFilter: FC<{
@@ -316,10 +316,10 @@ export const PRInsightsView: FC<PRInsightsViewProps> = ({
 			<div className="flex items-end justify-between">
 				<div>
 					<h2 className="m-0 text-xl font-semibold tracking-tight text-content-primary">
-						Pull Request Insights
+						拉取请求洞察
 					</h2>
 					<p className="m-0 mt-1 text-[13px] text-content-secondary">
-						Code changes detected by Agents.
+						代理检测到的代码变更。
 					</p>
 				</div>
 				<TimeRangeFilter value={timeRange} onChange={onTimeRangeChange} />
@@ -332,25 +332,25 @@ export const PRInsightsView: FC<PRInsightsViewProps> = ({
 					{/* ── Stat cards — 3 headline metrics ── */}
 					<div className="grid grid-cols-3 gap-3">
 						<StatCard
-							label="Merged"
+							label="已合并"
 							value={summary.total_prs_merged.toLocaleString()}
-							detail={`${summary.total_prs_created.toLocaleString()} created`}
+							detail={`${summary.total_prs_created.toLocaleString()} 已创建`}
 						/>
 						<StatCard
-							label="Merge rate"
+							label="合并率"
 							value={formatMergeRate(summary.merge_rate)}
 						/>
 						<StatCard
-							label="Cost / merge"
+							label="每次合并成本"
 							value={formatCostMicros(summary.cost_per_merged_pr_micros)}
-							detail={`${formatCostMicros(summary.total_cost_micros)} total`}
+							detail={`${formatCostMicros(summary.total_cost_micros)} 总计`}
 						/>{" "}
 					</div>
 
 					{/* ── Activity chart ── */}
 					<section>
 						<div className="mb-4 flex items-center justify-between">
-							<SectionTitle>Activity</SectionTitle>
+							<SectionTitle>活动</SectionTitle>
 							<div className="flex items-center gap-5">
 								{Object.entries(activityChartConfig).map(([key, cfg]) => (
 									<div key={key} className="flex items-center gap-1.5">
@@ -376,19 +376,19 @@ export const PRInsightsView: FC<PRInsightsViewProps> = ({
 						{by_model.length > 0 && (
 							<section>
 								<div className="mb-4">
-									<SectionTitle>By model</SectionTitle>
+									<SectionTitle>按模型</SectionTitle>
 								</div>
 								<div className="overflow-hidden rounded-lg border border-border-default">
 									<Table className="text-sm">
 										<TableHeader>
 											<TableRow className="text-left text-xs text-content-secondary [&>th]:font-normal">
-												<TableHead className="px-4 py-3">Model</TableHead>
+												<TableHead className="px-4 py-3">模型</TableHead>
 												<TableHead className="px-4 py-3 text-right">
-													Merged
+													已合并
 												</TableHead>
-												<TableHead className="px-4 py-3">Merge rate</TableHead>
+												<TableHead className="px-4 py-3">合并率</TableHead>
 												<TableHead className="px-4 py-3 text-right">
-													Cost / merge
+													每次合并成本
 												</TableHead>
 											</TableRow>
 										</TableHeader>
@@ -429,7 +429,7 @@ export const PRInsightsView: FC<PRInsightsViewProps> = ({
 						{recent_prs.length > 0 && (
 							<section>
 								<div className="mb-4">
-									<SectionTitle>Pull requests</SectionTitle>
+									<SectionTitle>拉取请求</SectionTitle>
 								</div>
 								<div className="overflow-hidden rounded-lg border border-border-default">
 									<Table className="table-fixed text-sm">
@@ -441,13 +441,13 @@ export const PRInsightsView: FC<PRInsightsViewProps> = ({
 										</colgroup>
 										<TableHeader>
 											<TableRow className="text-left text-xs text-content-secondary [&>th]:font-normal">
-												<TableHead className="px-4 py-3">Title</TableHead>
-												<TableHead className="px-4 py-3">Status</TableHead>
+												<TableHead className="px-4 py-3">标题</TableHead>
+												<TableHead className="px-4 py-3">状态</TableHead>
 												<TableHead className="px-4 py-3 text-right">
-													Cost
+													成本
 												</TableHead>
 												<TableHead className="px-4 py-3 text-right">
-													Created
+													创建时间
 												</TableHead>
 											</TableRow>
 										</TableHeader>{" "}

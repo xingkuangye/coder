@@ -29,7 +29,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
 	value = "",
 	onChange,
 	onClear,
-	placeholder = "Search...",
+	placeholder = "搜索...",
 	className,
 	autoFocus = false,
 	onBlur,
@@ -83,11 +83,11 @@ export const SearchField: React.FC<SearchFieldProps> = ({
 						<TooltipTrigger asChild>
 							<InputGroupButton onClick={handleClear} size="icon">
 								<XIcon />
-								<span className="sr-only">Clear search</span>
+								<span className="sr-only">清除搜索</span>
 							</InputGroupButton>
 						</TooltipTrigger>
 						<TooltipContent align="end" sideOffset={8} alignOffset={-8}>
-							Clear search
+							清除搜索
 						</TooltipContent>
 					</Tooltip>
 				</InputGroupAddon>

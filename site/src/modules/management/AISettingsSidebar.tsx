@@ -3,7 +3,7 @@ import { useAuthenticated } from "#/hooks/useAuthenticated";
 import AISettingsSidebarView from "#/modules/management/AISettingsSidebarView";
 
 /**
- * A sidebar for AI settings.
+ * AI 设置侧边栏。
  */
 export const AISettingsSidebar: FC = () => {
 	const { permissions } = useAuthenticated();

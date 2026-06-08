@@ -65,7 +65,7 @@ export const validationSchema = Yup.object({
 	sunday: Yup.boolean(),
 	monday: Yup.boolean().test(
 		"at-least-one-day",
-		"Must set at least one day of week if autostart is enabled.",
+		"如果启用了自动启动，则必须设置一周中的至少一天。",
 		function (value) {
 			const parent = this.parent as WorkspaceScheduleFormValues;
 
@@ -95,7 +95,7 @@ export const validationSchema = Yup.object({
 		.ensure()
 		.test(
 			"required-if-autostart",
-			"Start time is required when autostart is enabled.",
+			"启用自动启动时需要设置开始时间。",
 			function (value) {
 				const parent = this.parent as WorkspaceScheduleFormValues;
 				if (parent.autostartEnabled) {
@@ -104,7 +104,7 @@ export const validationSchema = Yup.object({
 				return true;
 			},
 		)
-		.test("is-time-string", "Time must be in HH:mm format.", (value) => {
+		.test("is-time-string", "时间必须采用 HH:mm 格式。", (value) => {
 			if (value === "") {
 				return true;
 			}
@@ -118,7 +118,7 @@ export const validationSchema = Yup.object({
 		}),
 	timezone: Yup.string()
 		.ensure()
-		.test("is-timezone", "Invalid timezone.", function (value) {
+		.test("is-timezone", "无效时区。", function (value) {
 			const parent = this.parent as WorkspaceScheduleFormValues;
 
 			if (!parent.startTime) {
@@ -139,11 +139,11 @@ export const validationSchema = Yup.object({
 		.min(0)
 		.max(
 			24 * 30 /* 30 days */,
-			"Please enter a limit that is less than or equal to 30 days (720 hours).",
+			"请输入小于或等于30天（720小时）的限制。",
 		)
 		.test(
 			"positive-if-autostop",
-			"Time until shutdown must be greater than zero when autostop is enabled.",
+			"启用自动停止时，关闭前的时间必须大于零。",
 			function (value) {
 				const parent = this.parent as WorkspaceScheduleFormValues;
 				if (parent.autostopEnabled) {
@@ -177,37 +177,37 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 		{
 			value: form.values.monday,
 			name: "monday",
-			label: "Mon",
+			label: "周一",
 		},
 		{
 			value: form.values.tuesday,
 			name: "tuesday",
-			label: "Tue",
+			label: "周二",
 		},
 		{
 			value: form.values.wednesday,
 			name: "wednesday",
-			label: "Wed",
+			label: "周三",
 		},
 		{
 			value: form.values.thursday,
 			name: "thursday",
-			label: "Thu",
+			label: "周四",
 		},
 		{
 			value: form.values.friday,
 			name: "friday",
-			label: "Fri",
+			label: "周五",
 		},
 		{
 			value: form.values.saturday,
 			name: "saturday",
-			label: "Sat",
+			label: "周六",
 		},
 		{
 			value: form.values.sunday,
 			name: "sunday",
-			label: "Sun",
+			label: "周日",
 		},
 	];
 
@@ -229,8 +229,8 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 	return (
 		<HorizontalForm onSubmit={form.handleSubmit}>
 			<FormSection
-				title="Autostart"
-				description="Select the time and days of week on which you want the workspace starting automatically."
+				title="自动启动"
+				description="选择您希望工作区自动启动的时间和每周的哪几天。"
 			>
 				<FormFields>
 					<div className="flex items-center gap-3">
@@ -251,12 +251,11 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 								htmlFor="autostartEnabled"
 								className="font-medium cursor-pointer"
 							>
-								Enable Autostart
+								启用自动启动
 							</Label>
 							{!template.allow_user_autostart && (
 								<span className="text-xs text-content-secondary mt-0.5">
-									The template for this workspace does not allow modification of
-									autostart.
+									此工作区的模板不允许修改自动启动。
 								</span>
 							)}
 						</div>
@@ -264,7 +263,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 
 					<div className="flex gap-4">
 						<div className="flex flex-col gap-2 flex-1">
-							<Label htmlFor="startTime">Start time</Label>
+							<Label htmlFor="startTime">开始时间</Label>
 							<Input
 								id="startTime"
 								name="startTime"
@@ -282,7 +281,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 							)}
 						</div>
 						<div className="flex flex-col gap-2 flex-1">
-							<Label htmlFor="timezone">Timezone</Label>
+							<Label htmlFor="timezone">时区</Label>
 							<Select
 								value={form.values.timezone}
 								onValueChange={(value) => {
@@ -311,7 +310,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 
 					<fieldset className="border-0 p-0 m-0">
 						<legend className="text-xs text-content-secondary font-medium mb-1">
-							Days of Week
+							星期
 						</legend>
 
 						<div className="flex flex-row flex-wrap gap-x-4 gap-y-2 pt-1">
@@ -341,7 +340,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 
 						{form.errors.monday && (
 							<span className="text-xs text-content-destructive mt-1 block">
-								Must set at least one day of week if autostart is enabled.
+								如果启用了自动启动，则必须设置一周中的至少一天。
 							</span>
 						)}
 					</fieldset>
@@ -349,13 +348,11 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 			</FormSection>
 
 			<FormSection
-				title="Autostop"
+				title="自动停止"
 				description={
 					<>
-						Set how many hours should elapse after the workspace started before
-						the workspace automatically shuts down. This will be extended by{" "}
-						{humanDuration(template.activity_bump_ms)} after last activity in
-						the workspace was detected.
+						设置工作区启动后经过多少小时才会自动关闭。此时间将在检测到工作区中的最后活动后延长{" "}
+						{humanDuration(template.activity_bump_ms)}。
 					</>
 				}
 			>
@@ -378,19 +375,18 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 								htmlFor="autostopEnabled"
 								className="font-medium cursor-pointer"
 							>
-								Enable Autostop
+								启用自动停止
 							</Label>
 							{!template.allow_user_autostop && (
 								<span className="text-xs text-content-secondary mt-0.5">
-									The template for this workspace does not allow modification of
-									autostop.
+									此工作区的模板不允许修改自动停止。
 								</span>
 							)}
 						</div>
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="ttl">Time until shutdown (hours)</Label>
+						<Label htmlFor="ttl">关闭前时间（小时）</Label>
 						<Input
 							id="ttl"
 							name="ttl"
@@ -420,7 +416,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 
 			<FormFooter>
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 
 				<Button
@@ -431,7 +427,7 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 					}
 				>
 					<Spinner loading={isLoading} />
-					Save
+					保存
 				</Button>
 			</FormFooter>
 		</HorizontalForm>
@@ -441,14 +437,14 @@ export const WorkspaceScheduleForm: FC<WorkspaceScheduleFormProps> = ({
 export const ttlShutdownAt = (formTTL: number): string => {
 	if (formTTL === 0) {
 		// Passing an empty value for TTL in the form results in a number that is not zero but less than 1.
-		return "Your workspace will not automatically shut down.";
+		return "您的工作区将不会自动关闭。";
 	}
 
 	try {
-		return `Your workspace will shut down ${humanDuration(formTTL * 60 * 60 * 1000)} after its next start.`;
+		return `您的工作区将在下次启动后 ${humanDuration(formTTL * 60 * 60 * 1000)} 自动关闭。`;
 	} catch (e) {
 		if (e instanceof RangeError) {
-			return "Please enter a limit that is less than or equal to 30 days (720 hours).";
+			return "请输入小于或等于30天（720小时）的限制。";
 		}
 		throw e;
 	}

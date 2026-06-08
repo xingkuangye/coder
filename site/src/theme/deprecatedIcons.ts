@@ -1,8 +1,7 @@
 /**
- * Deprecated icons are icons that are no longer maintained.
- * They are kept here for backward compatibility, however they
- * are not displayed in the emoji picker and are not included in
- * the icon list.
+ * 废弃的图标是指不再维护的图标。
+ * 它们保存在这里是为了向后兼容，但不会
+ * 在表情选择器中显示，也不包含在图标列表中。
  */
 
 export const DEPRECATED_ICONS = [

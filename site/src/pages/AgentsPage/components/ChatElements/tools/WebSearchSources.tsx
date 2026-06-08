@@ -8,9 +8,8 @@ interface WebSearchSourcesProps {
 }
 
 /**
- * Renders web search sources as a collapsible tool card, consistent
- * with other tool call renderings. The collapsed header shows a globe
- * icon and "Searched N sources"; expanding reveals clickable pills.
+ * 将网络搜索来源渲染为可折叠的工具卡片，保持与其他工具调用渲染一致。
+ * 折叠状态下的标题显示地球图标与“已搜索 N 条结果”；展开后显示可点击的标签。
  */
 const WebSearchSources: FC<WebSearchSourcesProps> = ({ sources }) => {
 	// Deduplicate sources by URL, keeping the first occurrence.
@@ -29,7 +28,7 @@ const WebSearchSources: FC<WebSearchSourcesProps> = ({ sources }) => {
 		return null;
 	}
 
-	const detail = unique.length === 1 ? "1 result" : `${unique.length} results`;
+	const detail = unique.length === 1 ? "1 条结果" : `${unique.length} 条结果`;
 
 	return (
 		<ToolCollapsible
@@ -38,7 +37,7 @@ const WebSearchSources: FC<WebSearchSourcesProps> = ({ sources }) => {
 				<>
 					<GlobeIcon className="size-4 shrink-0 stroke-[1.5] text-current" />
 					<span className="text-[13px] leading-6">
-						Searched <span className="text-content-secondary/60">{detail}</span>
+						已搜索 <span className="text-content-secondary/60">{detail}</span>
 					</span>
 				</>
 			}
@@ -53,8 +52,8 @@ const WebSearchSources: FC<WebSearchSourcesProps> = ({ sources }) => {
 };
 
 /**
- * A single source citation pill. Shows a favicon from Google's S2
- * service, a truncated title, and an external-link icon on hover.
+ * 单个来源引用标签。显示来自 Google S2 服务的网站图标、截断的标题，
+ * 以及悬停时出现的外部链接图标。
  */
 const SourcePill: FC<{ source: { url: string; title: string } }> = ({
 	source,

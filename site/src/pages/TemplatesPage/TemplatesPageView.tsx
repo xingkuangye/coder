@@ -56,14 +56,13 @@ const TemplateHelpPopover: FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is a template?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是模板？</HelpPopoverTitle>
 				<HelpPopoverText>
-					With templates you can create a common configuration for your
-					workspaces using Terraform.
+					使用模板，您可以通过 Terraform 为工作区创建通用配置。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/templates")}>
-						Manage templates
+						管理模板
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>
@@ -102,14 +101,14 @@ const TemplateActions: FC<TemplateActionsProps> = ({
 			variant="outline"
 			size="sm"
 			className="transition-none group-hover:border-border-secondary"
-			title={`Create a workspace using the ${template.display_name} template`}
+			title={`创建使用 ${template.display_name} 模板的工作区`}
 			onClick={(e) => {
 				e.stopPropagation();
 			}}
 		>
 			<RouterLink to={`${templatePageLink}/workspace`}>
 				<ArrowRightIcon />
-				Create Workspace
+				创建工作区
 			</RouterLink>
 		</Button>
 	);
@@ -132,7 +131,7 @@ const TemplateRow: FC<TemplateRowProps> = ({
 	);
 	const navigate = useNavigate();
 
-	const developerCount = `${formatTemplateActiveDevelopers(template.active_user_count)} developer${template.active_user_count !== 1 ? "s" : ""}`;
+	const developerCount = `${formatTemplateActiveDevelopers(template.active_user_count)} 位开发者`;
 
 	const clickableRow = useClickableTableRow({
 		onClick: () => navigate(templatePageLink),
@@ -164,7 +163,7 @@ const TemplateRow: FC<TemplateRowProps> = ({
 				{showOrganizations ? (
 					<AvatarData
 						title={template.organization_display_name}
-						subtitle={`Used by ${developerCount}`}
+						subtitle={`由 ${developerCount} 使用`}
 						avatar={<Avatar variant="icon" src={template.organization_icon} />}
 					/>
 				) : (
@@ -221,7 +220,7 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 						<Button asChild size="lg">
 							<RouterLink to="/starter-templates">
 								<PlusIcon />
-								New template
+								新建模板
 							</RouterLink>
 						</Button>
 					)
@@ -229,12 +228,12 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 			>
 				<PageHeaderTitle>
 					<div className="flex flex-row gap-2 items-center">
-						Templates
+						模板
 						<TemplateHelpPopover />
 					</div>
 				</PageHeaderTitle>
 				<PageHeaderSubtitle>
-					Select a template to create a workspace.
+					选择一个模板来创建工作区。
 				</PageHeaderSubtitle>
 			</PageHeader>
 
@@ -251,12 +250,12 @@ export const TemplatesPageView: FC<TemplatesPageViewProps> = ({
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-[35%]">Name</TableHead>
+						<TableHead className="w-[35%]">名称</TableHead>
 						<TableHead className="w-[15%]">
-							{showOrganizations ? "Organization" : "Used by"}
+							{showOrganizations ? "组织" : "使用人数"}
 						</TableHead>
-						<TableHead className="w-[10%]">Build time</TableHead>
-						<TableHead className="w-[15%]">Last updated</TableHead>
+						<TableHead className="w-[10%]">构建时间</TableHead>
+						<TableHead className="w-[15%]">最后更新</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>

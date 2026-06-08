@@ -31,14 +31,14 @@ export const TaskDeleteDialog: FC<TaskDeleteDialogProps> = ({
 			{...props}
 			type="delete"
 			confirmLoading={deleteTaskMutation.isPending}
-			title="Delete task"
+			title="删除任务"
 			onConfirm={() => {
 				const mutation = deleteTaskMutation.mutateAsync();
 				toast.promise(mutation, {
-					loading: `Deleting "${task.name}"...`,
-					success: `"${task.name}" was deleted successfully.`,
+					loading: `正在删除 "${task.name}"...`,
+					success: `"${task.name}" 已成功删除。`,
 					error: (e) => ({
-						message: getErrorMessage(e, `Failed to delete ${task.name}.`),
+						message: getErrorMessage(e, `删除 ${task.name} 失败。`),
 						description: getErrorDetail(e),
 					}),
 				});
@@ -46,8 +46,7 @@ export const TaskDeleteDialog: FC<TaskDeleteDialogProps> = ({
 			}}
 			description={
 				<p>
-					This action is irreversible and removes all workspace resources and
-					data.
+					此操作不可逆，将删除所有工作空间资源和数据。
 				</p>
 			}
 		/>

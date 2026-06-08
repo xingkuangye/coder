@@ -27,10 +27,10 @@ export const useDeletionDialogState = (
 		const label = templateName ? ` "${templateName}"` : "";
 		const mutation = deleteMutation.mutateAsync();
 		toast.promise(mutation, {
-			loading: `Deleting template${label}...`,
-			success: `Template${label} deleted successfully.`,
+			loading: `正在删除模板${label}...`,
+			success: `模板${label}删除成功。`,
 			error: (error) =>
-				getErrorMessage(error, `Failed to delete template${label}.`),
+				getErrorMessage(error, `删除模板${label}失败。`),
 		});
 		mutation.then(() => onDelete());
 	};

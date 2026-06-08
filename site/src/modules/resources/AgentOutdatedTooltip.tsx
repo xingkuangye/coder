@@ -29,19 +29,19 @@ export const AgentOutdatedTooltip: FC<AgentOutdatedTooltipProps> = ({
 
 	const title =
 		status === agentVersionStatus.Outdated
-			? "Agent Outdated"
-			: "Agent Deprecated";
+			? "代理版本过旧"
+			: "代理已弃用";
 	const opener =
 		status === agentVersionStatus.Outdated
-			? "This agent is an older version than the Coder server."
-			: "This agent is using a deprecated version of the API.";
-	const text = `${opener} This can happen after you update Coder with running workspaces. To fix this, you can stop and start the workspace.`;
+			? "该代理的版本低于 Coder 服务器版本。"
+			: "该代理使用的 API 版本已弃用。";
+	const text = `${opener} 这种情况可能发生在您更新 Coder 但仍有正在运行的工作区之后。要解决此问题，您可以停止并启动该工作区。`;
 
 	return (
 		<HelpPopover open={isOpen} onOpenChange={setIsOpen}>
 			<HelpPopoverTrigger asChild>
 				<span role="status" className="cursor-pointer">
-					{status === agentVersionStatus.Outdated ? "Outdated" : "Deprecated"}
+					{status === agentVersionStatus.Outdated ? "版本过旧" : "已弃用"}
 				</span>
 			</HelpPopoverTrigger>
 			<HelpPopoverContent>
@@ -53,14 +53,14 @@ export const AgentOutdatedTooltip: FC<AgentOutdatedTooltipProps> = ({
 
 					<div className="flex flex-col gap-1">
 						<span className="font-semibold text-content-primary">
-							Agent version
+							代理版本
 						</span>
 						<span>{agent.version}</span>
 					</div>
 
 					<div className="flex flex-col gap-1">
 						<span className="font-semibold text-content-primary">
-							Server version
+							服务器版本
 						</span>
 						<span>{serverVersion}</span>
 					</div>
@@ -72,9 +72,9 @@ export const AgentOutdatedTooltip: FC<AgentOutdatedTooltipProps> = ({
 								onUpdate();
 								setIsOpen(false);
 							}}
-							ariaLabel="Update workspace"
+							ariaLabel="更新工作区"
 						>
-							Update workspace
+							更新工作区
 						</HelpPopoverAction>
 					</HelpPopoverLinksGroup>
 				</div>

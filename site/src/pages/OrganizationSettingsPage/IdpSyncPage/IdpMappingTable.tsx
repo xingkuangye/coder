@@ -40,7 +40,7 @@ export const IdpMappingTable: FC<IdpMappingTableProps> = ({
 						<TableRow>
 							<TableCell colSpan={999}>
 								<EmptyState
-									message={`No ${type.toLocaleLowerCase()} mappings`}
+									message={`没有 ${type.toLocaleLowerCase()} 映射`}
 									isCompact
 									cta={
 										<Link
@@ -48,7 +48,7 @@ export const IdpMappingTable: FC<IdpMappingTableProps> = ({
 												`/admin/users/idp-sync#${type.toLocaleLowerCase()}-sync`,
 											)}
 										>
-											How to setup IdP {type.toLocaleLowerCase()} sync
+											如何设置 IdP {type.toLocaleLowerCase()} 同步
 										</Link>
 									}
 								/>
@@ -61,7 +61,7 @@ export const IdpMappingTable: FC<IdpMappingTableProps> = ({
 			</Table>
 			<div className="flex justify-end">
 				<div className="text-content-secondary text-xs">
-					Showing <strong className="text-content-primary">{rowCount}</strong>{" "}
+					显示 <strong className="text-content-primary">{rowCount}</strong>{" "}
 					{type.toLocaleLowerCase()}
 					{(rowCount === 0 || rowCount > 1) && "s"}
 				</div>

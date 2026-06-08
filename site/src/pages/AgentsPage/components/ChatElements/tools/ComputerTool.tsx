@@ -12,11 +12,10 @@ import { ToolIcon } from "./ToolIcon";
 import type { ToolStatus } from "./utils";
 
 /**
- * Renders screenshots returned by Anthropic's computer use tool.
- * When the result contains base64 image data, the actual image is
- * displayed instead of raw JSON. Clicking the image opens it in an
- * in-app lightbox overlay rather than a new tab so that it works
- * correctly in PWA / standalone mode on iOS.
+ * 渲染 Anthropic 计算机使用工具返回的截图。
+ * 当结果包含 base64 图像数据时，会显示实际图像而非原始 JSON。
+ * 点击图像会在应用内灯箱叠加层中打开，而不是在新标签页中打开，
+ * 以确保在 PWA / iOS 独立模式下正常工作。
  */
 export const ComputerTool: React.FC<{
 	imageData: string;
@@ -42,7 +41,7 @@ export const ComputerTool: React.FC<{
 				<>
 					<ToolIcon name="computer" isError={isError} isRunning={isRunning} />
 					<span className="text-[13px] leading-6">
-						{isRunning ? "Taking screenshot…" : "Screenshot"}
+						{isRunning ? "正在截图…" : "截图"}
 					</span>
 				</>
 			}
@@ -54,7 +53,7 @@ export const ComputerTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to take screenshot"}
+								{errorMessage || "截图失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -74,7 +73,7 @@ export const ComputerTool: React.FC<{
 						>
 							<img
 								src={imageSrc}
-								alt="Screenshot from computer tool"
+								alt="来自电脑工具的截图"
 								className="max-h-96 w-auto object-contain"
 							/>
 						</button>

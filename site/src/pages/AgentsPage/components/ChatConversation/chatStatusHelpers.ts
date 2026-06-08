@@ -29,25 +29,25 @@ export const getErrorTitle = (
 ): string => {
 	switch (kind) {
 		case "overloaded":
-			return "Service overloaded";
+			return "服务过载";
 		case "rate_limit":
-			return "Rate limited";
+			return "请求频率限制";
 		case "timeout":
-			return "Request timed out";
+			return "请求超时";
 		case "stream_silence_timeout":
-			return "Response stalled";
+			return "响应停滞";
 		case "auth":
-			return "Authentication failed";
+			return "身份验证失败";
 		case "config":
-			return "Configuration error";
+			return "配置错误";
 		case "usage_limit":
-			return "Usage limit reached";
+			return "用量限额已达";
 		case "missing_key":
-			return "Chat interrupted";
+			return "对话中断";
 		case "provider_disabled":
-			return "Provider disabled";
+			return "提供商已禁用";
 		default:
-			return mode === "retry" ? "Retrying request" : "Request failed";
+			return mode === "retry" ? "正在重试请求" : "请求失败";
 	}
 };
 

@@ -58,11 +58,10 @@ const parseThresholdDraft = (value: string): number | null => {
 const ContextCompactionHeader: FC = () => (
 	<div className="flex flex-col gap-2">
 		<h3 className="m-0 text-sm font-semibold text-content-primary">
-			Context compaction
+			上下文压缩
 		</h3>
 		<p className="!mt-0.5 m-0 text-xs text-content-secondary">
-			Control when conversation context is automatically summarized for each
-			model. Setting 100% means the conversation will never auto-compact.
+			控制每个模型的对话上下文自动总结时机。设置为 100% 意味着对话永远不会自动压缩。
 		</p>
 	</div>
 );
@@ -138,7 +137,7 @@ export const UserCompactionThresholdSettings: FC<
 					...currentErrors,
 					[modelConfigId]: getErrorMessage(
 						error,
-						"Failed to reset compaction threshold.",
+						"重置压缩阈值失败。",
 					),
 				}));
 			})
@@ -175,7 +174,7 @@ export const UserCompactionThresholdSettings: FC<
 						...currentErrors,
 						[modelConfigId]: getErrorMessage(
 							error,
-							"Failed to save compaction threshold.",
+							"保存压缩阈值失败。",
 						),
 					}));
 					return false;
@@ -208,7 +207,7 @@ export const UserCompactionThresholdSettings: FC<
 				<ContextCompactionHeader />
 				<div className="flex items-center gap-2 text-sm text-content-secondary">
 					<Spinner loading className="h-4 w-4" />
-					Loading thresholds...
+					正在加载阈值...
 				</div>
 			</div>
 		);
@@ -221,7 +220,7 @@ export const UserCompactionThresholdSettings: FC<
 				<p className="m-0 text-xs text-content-destructive">
 					{getErrorMessage(
 						thresholdsError,
-						"Failed to load compaction thresholds.",
+						"无法加载压缩阈值。",
 					)}
 				</p>
 			</div>
@@ -234,27 +233,26 @@ export const UserCompactionThresholdSettings: FC<
 			{isLoadingModelConfigs ? (
 				<div className="flex items-center gap-2 text-sm text-content-secondary">
 					<Spinner loading className="h-4 w-4" />
-					Loading models...
+					正在加载模型...
 				</div>
 			) : modelConfigsError ? (
 				<p className="m-0 text-xs text-content-destructive">
 					{getErrorMessage(
 						modelConfigsError,
-						"Failed to load model configurations.",
+						"无法加载模型配置。",
 					)}
 				</p>
 			) : enabledModelConfigs.length === 0 ? (
 				<p className="m-0 text-xs text-content-secondary">
-					No enabled chat models available. An administrator must configure chat
-					models before compaction thresholds can be set.
+					没有可用的已启用聊天模型。管理员必须先配置聊天模型，才能设置压缩阈值。
 				</p>
 			) : (
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead className="text-content-secondary">Model</TableHead>
-							<TableHead className="w-0 whitespace-nowrap">Default</TableHead>
-							<TableHead className="w-0 whitespace-nowrap">Threshold</TableHead>
+							<TableHead className="text-content-secondary">模型</TableHead>
+							<TableHead className="w-0 whitespace-nowrap">默认</TableHead>
+							<TableHead className="w-0 whitespace-nowrap">阈值</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -305,7 +303,7 @@ export const UserCompactionThresholdSettings: FC<
 												<TooltipTrigger asChild>
 													<div className="relative">
 														<Input
-															aria-label={`${modelName} compaction threshold`}
+															aria-label={`${modelName} 压缩阈值`}
 															aria-invalid={isInvalid || undefined}
 															type="text"
 															min={0}
@@ -341,8 +339,8 @@ export const UserCompactionThresholdSettings: FC<
 												{(isInvalid || isDraftDisablingCompaction) && (
 													<TooltipContent>
 														{isInvalid
-															? "Enter a whole number between 0 and 100."
-															: "Setting 100% will disable auto-compaction for this model."}
+															? "请输入 0 到 100 之间的整数。"
+															: "设置为 100% 将禁用此模型的自动压缩。"}
 													</TooltipContent>
 												)}
 											</Tooltip>
@@ -357,7 +355,7 @@ export const UserCompactionThresholdSettings: FC<
 																? "opacity-100"
 																: "pointer-events-none opacity-0",
 														)}
-														aria-label={`Reset ${modelName} to default`}
+														aria-label={`将 ${modelName} 重置为默认值`}
 														aria-hidden={!hasOverride}
 														tabIndex={hasOverride ? 0 : -1}
 														disabled={isThisModelMutating || !hasOverride}
@@ -368,7 +366,7 @@ export const UserCompactionThresholdSettings: FC<
 												</TooltipTrigger>
 												{hasOverride && (
 													<TooltipContent>
-														Reset to default (
+														重置为默认值 (
 														{modelConfig.compression_threshold}%)
 													</TooltipContent>
 												)}
@@ -376,13 +374,12 @@ export const UserCompactionThresholdSettings: FC<
 										</div>
 										{isInvalid && (
 											<span className="sr-only" aria-live="polite">
-												Enter a whole number between 0 and 100.
+												请输入 0 到 100 之间的整数。
 											</span>
 										)}
 										{isDraftDisablingCompaction && (
 											<span className="sr-only" aria-live="polite">
-												Setting 100% will disable auto-compaction for this
-												model.
+												设置为 100% 将禁用此模型的自动压缩。
 											</span>
 										)}
 									</TableCell>
@@ -406,7 +403,7 @@ export const UserCompactionThresholdSettings: FC<
 													onClick={handleCancelAll}
 													disabled={hasAnyPending}
 												>
-													Cancel
+													取消
 												</Button>
 												{dirtyRows.length > 0 && (
 													<Button
@@ -419,8 +416,8 @@ export const UserCompactionThresholdSettings: FC<
 															<Spinner loading className="h-4 w-4" />
 														)}
 														{hasAnyPending
-															? "Saving..."
-															: `Save ${dirtyRows.length} ${dirtyRows.length === 1 ? "change" : "changes"}`}
+															? "保存中..."
+															: `保存 ${dirtyRows.length} ${dirtyRows.length === 1 ? "个更改" : "个更改"}`}
 													</Button>
 												)}
 											</>

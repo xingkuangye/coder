@@ -279,14 +279,14 @@ const MoreMenu: FC<MoreMenuProps> = ({ onRename, onDelete }) => {
 					onClick={(e) => e.stopPropagation()}
 				>
 					<EllipsisIcon className="size-4" />
-					<span className="sr-only">File actions</span>
+					<span className="sr-only">文件操作</span>
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
 				{onRename && (
 					<DropdownMenuItem onClick={onRename}>
 						<PencilIcon />
-						Rename
+						重命名
 					</DropdownMenuItem>
 				)}
 				{onDelete && (
@@ -295,7 +295,7 @@ const MoreMenu: FC<MoreMenuProps> = ({ onRename, onDelete }) => {
 						onClick={onDelete}
 					>
 						<Trash2Icon />
-						Delete&hellip;
+						删除&hellip;
 					</DropdownMenuItem>
 				)}
 			</DropdownMenuContent>

@@ -42,7 +42,7 @@ const WorkspaceScheduleContainer: FC<WorkspaceScheduleContainerProps> = ({
 }) => {
 	const icon = (
 		<TopbarIcon>
-			<ClockIcon aria-label="Schedule" className="size-icon-sm" />
+			<ClockIcon aria-label="计划" className="size-icon-sm" />
 		</TopbarIcon>
 	);
 
@@ -66,7 +66,7 @@ const WorkspaceScheduleContainer: FC<WorkspaceScheduleContainerProps> = ({
 						icon
 					)}
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Schedule</TooltipContent>
+				<TooltipContent side="bottom">计划</TooltipContent>
 			</Tooltip>
 			{children}
 		</TopbarData>
@@ -102,7 +102,7 @@ export const WorkspaceScheduleControls: FC<WorkspaceScheduleControlsProps> = ({
 			) : (
 				<WorkspaceScheduleContainer>
 					<ScheduleSettingsLink>
-						Starts at {autostartDisplay(workspace.autostart_schedule)}
+						开始于 {autostartDisplay(workspace.autostart_schedule)}
 					</ScheduleSettingsLink>
 				</WorkspaceScheduleContainer>
 			)}
@@ -150,7 +150,7 @@ const AutostopDisplay: FC<AutostopDisplayProps> = ({
 		...updateDeadline(workspace),
 		onSuccess: (_, updatedDeadline) => {
 			toast.success(
-				`Shutdown time for "${workspace.name}" updated successfully.`,
+				`工作区 "${workspace.name}" 的关机时间已成功更新。`,
 			);
 			lastStableDeadline.current = updatedDeadline;
 		},
@@ -158,7 +158,7 @@ const AutostopDisplay: FC<AutostopDisplayProps> = ({
 			toast.error(
 				getErrorMessage(
 					error,
-					`Failed to update shutdown time for "${workspace.name}". Please try again.`,
+					`更新工作区 "${workspace.name}" 的关机时间失败，请重试。`,
 				),
 				{
 					description: getErrorDetail(error),
@@ -223,11 +223,11 @@ const AutostopDisplay: FC<AutostopDisplayProps> = ({
 						}}
 					>
 						<MinusIcon />
-						<span className="sr-only">Subtract 1 hour from deadline</span>
+						<span className="sr-only">从截至时间减去 1 小时</span>
 					</Button>
 				</TooltipTrigger>
 				<TooltipContent side="bottom">
-					Subtract 1 hour from deadline
+					从截至时间减去 1 小时
 				</TooltipContent>
 			</Tooltip>
 			<Tooltip>
@@ -241,10 +241,10 @@ const AutostopDisplay: FC<AutostopDisplayProps> = ({
 						}}
 					>
 						<PlusIcon />
-						<span className="sr-only">Add 1 hour to deadline</span>
+						<span className="sr-only">将截至时间增加 1 小时</span>
 					</Button>
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Add 1 hour to deadline</TooltipContent>
+				<TooltipContent side="bottom">将截至时间增加 1 小时</TooltipContent>
 			</Tooltip>
 		</div>
 	);

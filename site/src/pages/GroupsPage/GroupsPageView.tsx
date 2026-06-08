@@ -39,8 +39,8 @@ export const GroupsPageView: FC<GroupsPageViewProps> = ({
 	if (!groupsEnabled) {
 		return (
 			<PaywallPremium
-				message="Groups"
-				description="Organize users into groups with restricted access to templates. You need a Premium license to use this feature."
+				message="用户组"
+				description="将用户组织为具有模板访问限制的群组。您需要 Premium 许可证才能使用此功能。"
 				documentationLink={docs("/admin/users/groups-roles")}
 			/>
 		);
@@ -50,8 +50,8 @@ export const GroupsPageView: FC<GroupsPageViewProps> = ({
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-2/5">Name</TableHead>
-					<TableHead className="w-3/5">Users</TableHead>
+					<TableHead className="w-2/5">名称</TableHead>
+					<TableHead className="w-3/5">用户</TableHead>
 					<TableHead className="w-auto" />
 				</TableRow>
 			</TableHeader>
@@ -79,18 +79,18 @@ const GroupsTableBody: FC<GroupsTableBodyProps> = ({
 			<TableRow>
 				<TableCell colSpan={999}>
 					<EmptyState
-						message="No groups yet"
+						message="暂无用户组"
 						description={
 							canCreateGroup
-								? "Create your first group"
-								: "You don't have permission to create a group"
+								? "创建您的第一个用户组"
+								: "您没有创建用户组的权限"
 						}
 						cta={
 							canCreateGroup && (
 								<Button asChild>
 									<RouterLink to="create">
 										<PlusIcon className="size-icon-sm" />
-										Create group
+										创建用户组
 									</RouterLink>
 								</Button>
 							)
@@ -134,7 +134,7 @@ const GroupRow: FC<GroupRowProps> = ({ group }) => {
 						/>
 					}
 					title={group.display_name || group.name}
-					subtitle={`${group.members.length} members`}
+					subtitle={`${group.members.length} 名成员`}
 				/>
 			</TableCell>
 

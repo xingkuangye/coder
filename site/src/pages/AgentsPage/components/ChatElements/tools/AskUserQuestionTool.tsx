@@ -46,10 +46,10 @@ const OTHER_OPTION_VALUE = "other";
 const getQuestionHeader = (
 	question: AskUserQuestion,
 	questionIndex: number,
-): string => question.header || `Question ${questionIndex + 1}`;
+): string => question.header || `问题 ${questionIndex + 1}`;
 
 const getQuestionText = (question: AskUserQuestion): string =>
-	question.question || "No question provided.";
+	question.question || "未提供问题。";
 
 const filterQuestionOptions = (question: AskUserQuestion): AskUserQuestion => ({
 	...question,
@@ -68,15 +68,15 @@ const getDefaultAnswer = (
 
 	return {
 		kind: "option",
-		label: firstOption.label || "Option 1",
+		label: firstOption.label || "选项 1",
 		optionIndex: 0,
 	};
 };
 
 const formatAnswer = (answer: QuestionAnswer): string =>
 	answer.kind === "other"
-		? `Other: ${answer.text.trim()}`
-		: answer.label || `Option ${answer.optionIndex + 1}`;
+		? `其他：${answer.text.trim()}`
+		: answer.label || `选项 ${answer.optionIndex + 1}`;
 
 const isAnswerValid = (
 	answer: QuestionAnswer | undefined,
@@ -116,7 +116,7 @@ const formatOutgoingMessage = (
 
 	return questions
 		.map((question, questionIndex) => {
-			return `${questionIndex + 1}. ${getQuestionHeader(question, questionIndex)}: ${formatAnswer(answers[questionIndex])}`;
+			return `${questionIndex + 1}. ${getQuestionHeader(question, questionIndex)}：${formatAnswer(answers[questionIndex])}`;
 		})
 		.join("\n");
 };
@@ -130,7 +130,7 @@ const getSubmissionErrorMessage = (error: unknown): string | undefined => {
 		return error.message;
 	}
 
-	return "Failed to submit your answer.";
+	return "提交答案失败。";
 };
 
 type SelectableAnswerOptionProps = {
@@ -196,8 +196,8 @@ const QuestionOption: FC<QuestionOptionProps> = ({
 		<SelectableAnswerOption
 			id={`${questionIdBase}-option-${optionIndex}`}
 			value={`option-${optionIndex}`}
-			label={option.label || `Option ${optionIndex + 1}`}
-			description={option.description || "No description provided."}
+			label={option.label || `选项 ${optionIndex + 1}`}
+			description={option.description || "未提供描述。"}
 			isInteractive={isInteractive}
 			isSubmitting={isSubmitting}
 		/>
@@ -230,8 +230,8 @@ const OtherQuestionOption: FC<OtherQuestionOptionProps> = ({
 			<SelectableAnswerOption
 				id={`${questionIdBase}-option-${optionIndex}`}
 				value={OTHER_OPTION_VALUE}
-				label="Other"
-				description="Share a different answer."
+				label="其他"
+				description="分享其他答案。"
 				isInteractive={isInteractive}
 				isSubmitting={isSubmitting}
 			/>
@@ -239,9 +239,9 @@ const OtherQuestionOption: FC<OtherQuestionOptionProps> = ({
 				<div className="pl-7">
 					<Input
 						autoFocus={isInteractive}
-						aria-label={`Other response for ${questionHeader}`}
+						aria-label={`${questionHeader}的其他回答`}
 						disabled={!isInteractive || isSubmitting}
-						placeholder="Describe another answer"
+						placeholder="描述其他答案"
 						value={answer.text}
 						onChange={(event) => {
 							onTextChange(event.currentTarget.value);
@@ -287,7 +287,7 @@ const QuestionStep: FC<QuestionStepProps> = ({
 		<div className="space-y-3">
 			{showProgress && (
 				<p className="text-xs font-medium text-content-secondary">
-					Question {questionIndex + 1} of {questionCount}
+					问题 {questionIndex + 1} / {questionCount}
 				</p>
 			)}
 			<div className="flex items-start gap-1.5 text-content-secondary">
@@ -302,7 +302,7 @@ const QuestionStep: FC<QuestionStepProps> = ({
 					<span className="sr-only" id={questionHeaderId}>
 						{questionHeader}
 					</span>
-					<span aria-hidden="true">Asking: </span>
+					<span aria-hidden="true">询问：</span>
 					<span>{questionText}</span>
 				</p>
 			</div>
@@ -362,7 +362,7 @@ const AnsweredQuestionText: FC<AnsweredQuestionTextProps> = ({
 				id={`${idPrefix}-question-${questionIndex}-text`}
 				className="m-0 min-w-0 flex-1 whitespace-pre-wrap text-[13px]"
 			>
-				<span aria-hidden="true">Asked: </span>
+				<span aria-hidden="true">已询问：</span>
 				<span>{getQuestionText(question)}</span>
 			</p>
 		</div>
@@ -478,7 +478,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 
 		setAnswerAtIndex(questionIndex, {
 			kind: "option",
-			label: option.label || `Option ${optionIndex + 1}`,
+			label: option.label || `选项 ${optionIndex + 1}`,
 			optionIndex,
 		});
 	};
@@ -544,10 +544,10 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 				>
 					<ToolIcon name="ask_user_question" isError={isError} />
 					<TriangleAlertIcon
-						aria-label="Error"
+						aria-label="错误"
 						className="size-3.5 shrink-0 text-content-secondary"
 					/>
-					<span>{errorMessage || "Failed to ask questions"}</span>
+					<span>{errorMessage || "提问失败"}</span>
 				</TranscriptRow>
 			</div>
 		);
@@ -568,7 +568,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 							isRunning={isRunning}
 						/>
 						<span className="text-[13px] text-content-secondary">
-							Asking for clarification...
+							正在请求澄清...
 						</span>
 						<LoaderIcon
 							data-testid="ask-user-question-loading-icon"
@@ -577,7 +577,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 					</TranscriptRow>
 				) : (
 					<p className="text-[13px] italic text-content-secondary">
-						No questions available.
+						没有可用问题。
 					</p>
 				)}
 			</div>
@@ -627,10 +627,10 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 			{showSubmittedResponse && (
 				<div className="mt-4 rounded-md border border-solid border-border-default bg-surface-secondary px-3 py-2">
 					<p className="text-xs font-medium text-content-secondary">
-						Submitted answer
+						已提交的回答
 					</p>
 					<p className="mt-1 whitespace-pre-wrap text-[13px] text-content-primary">
-						{displayedSubmittedResponseText || "No answer recorded."}
+						{displayedSubmittedResponseText || "没有记录的回答。"}
 					</p>
 				</div>
 			)}
@@ -655,7 +655,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 							onClick={handleBack}
 							disabled={activeQuestionIndex === 0 || isSubmitting}
 						>
-							Back
+							返回
 						</Button>
 					)}
 					{isWizard && !isFinalQuestion ? (
@@ -665,7 +665,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 							variant="outline"
 							disabled={!canAdvanceToNextQuestion || isSubmitting}
 						>
-							Next
+							下一步
 						</Button>
 					) : (
 						<Button
@@ -677,7 +677,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 							{isSubmitting && (
 								<LoaderIcon className="size-3.5 animate-spin motion-reduce:animate-none" />
 							)}
-							{isSubmitting ? "Submitting..." : "Submit"}
+							{isSubmitting ? "提交中..." : "提交"}
 						</Button>
 					)}
 				</div>
@@ -699,7 +699,7 @@ export const AskUserQuestionTool: FC<AskUserQuestionToolProps> = ({
 						isRunning={isRunning}
 					/>
 					<span className="text-[13px] text-content-secondary">
-						Asking for clarification...
+						正在请求澄清...
 					</span>
 					<LoaderIcon
 						data-testid="ask-user-question-loading-icon"

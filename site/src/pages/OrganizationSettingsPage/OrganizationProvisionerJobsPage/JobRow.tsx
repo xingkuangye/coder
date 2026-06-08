@@ -47,7 +47,7 @@ export const JobRow: FC<JobRowProps> = ({ job, defaultIsOpen = false }) => {
 						<ChevronRightIcon
 							className={cn("mr-4 transition-transform", isOpen && "rotate-90")}
 						/>
-						<span className="sr-only">({isOpen ? "Hide" : "Show more"})</span>
+						<span className="sr-only">({isOpen ? "隐藏" : "显示更多"})</span>
 						<span className="block first-letter:uppercase">
 							{relativeTime(new Date(job.created_at))}
 						</span>
@@ -104,10 +104,10 @@ export const JobRow: FC<JobRowProps> = ({ job, defaultIsOpen = false }) => {
 								"[&_dd]:text-content-primary [&_dd]:font-mono [&_dd]:leading-[22px] [&_dt]:font-medium",
 							])}
 						>
-							<dt>Job ID:</dt>
+							<dt>任务 ID：</dt>
 							<dd>{job.id}</dd>
 
-							<dt>Available provisioners:</dt>
+							<dt>可用配置程序：</dt>
 							<dd>
 								{job.available_workers
 									? JSON.stringify(job.available_workers)
@@ -116,15 +116,15 @@ export const JobRow: FC<JobRowProps> = ({ job, defaultIsOpen = false }) => {
 
 							{job.worker_id && (
 								<>
-									<dt>Completed by provisioner:</dt>
+									<dt>由配置程序完成：</dt>
 									<dd className="flex items-center gap-2">
-										<span>{job.worker_name || "[removed]"}</span>
+										<span>{job.worker_name || "[已删除]"}</span>
 										{job.worker_name && (
 											<Button size="xs" variant="outline" asChild>
 												<RouterLink
 													to={`../provisioners?${new URLSearchParams({ ids: job.worker_id })}`}
 												>
-													View provisioner
+													查看配置程序
 												</RouterLink>
 											</Button>
 										)}
@@ -132,22 +132,22 @@ export const JobRow: FC<JobRowProps> = ({ job, defaultIsOpen = false }) => {
 								</>
 							)}
 
-							<dt>Associated workspace:</dt>
+							<dt>关联工作区：</dt>
 							<dd>{job.metadata.workspace_name ?? "null"}</dd>
 
-							<dt>Creation time:</dt>
+							<dt>创建时间：</dt>
 							<dd data-chromatic="ignore">{job.created_at}</dd>
 
 							{job.queue_position > 0 && (
 								<>
-									<dt>Queue:</dt>
+									<dt>队列：</dt>
 									<dd>
 										{job.queue_position}/{job.queue_size}
 									</dd>
 								</>
 							)}
 
-							<dt>Tags:</dt>
+							<dt>标签：</dt>
 							<dd>
 								<ProvisionerTags>
 									{Object.entries(job.tags).map(([key, value]) => (

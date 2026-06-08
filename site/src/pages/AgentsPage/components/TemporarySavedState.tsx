@@ -39,6 +39,6 @@ export const TemporarySavedState: FC = () => (
 		className="inline-flex min-w-8 min-h-6 shrink-0 items-center justify-center gap-1 rounded-md border border-border-success bg-surface-success px-2 font-sans text-2xs font-medium whitespace-nowrap text-content-success"
 	>
 		<CheckIcon className="size-3.5" />
-		<span>Saved</span>
+		<span>已保存</span>
 	</div>
 );

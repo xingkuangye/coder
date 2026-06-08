@@ -14,7 +14,7 @@ const TemplateResourcesPage: FC = () => {
 
 	return (
 		<>
-			<title>{getTemplatePageTitle("Template", template)}</title>
+			<title>{getTemplatePageTitle("模板", template)}</title>
 
 			<TemplateResourcesPageView resources={resources} template={template} />
 		</>

@@ -83,14 +83,14 @@ const formatCompactNumber = (value: number): string => {
 
 export const formatContextBadge = (contextLimit: number): string => {
 	if (!Number.isInteger(contextLimit) || contextLimit <= 0) {
-		throw new Error("contextLimit must be a positive finite integer");
+		throw new Error("contextLimit 必须是正整数");
 	}
 
 	if (contextLimit < 1_000) {
-		return `${contextLimit} context`;
+		return `${contextLimit} 上下文`;
 	}
 	if (contextLimit < 1_000_000) {
-		return `${formatCompactNumber(contextLimit / 1_000)}K context`;
+		return `${formatCompactNumber(contextLimit / 1_000)}K 上下文`;
 	}
-	return `${formatCompactNumber(contextLimit / 1_000_000)}M context`;
+	return `${formatCompactNumber(contextLimit / 1_000_000)}M 上下文`;
 };

@@ -39,10 +39,9 @@ export const WorkspaceProxyView: FC<WorkspaceProxyViewProps> = ({
 	return (
 		<div className="flex flex-col gap-4">
 			<SettingsHeader>
-				<SettingsHeaderTitle>Workspace Proxies</SettingsHeaderTitle>
+				<SettingsHeaderTitle>工作区代理</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Workspace proxies improve terminal and web app connections to
-					workspaces.
+					工作区代理可以改善终端和 Web 应用到工作区的连接。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -54,9 +53,9 @@ export const WorkspaceProxyView: FC<WorkspaceProxyViewProps> = ({
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-[60%]">Proxy</TableHead>
-						<TableHead className="w-[20%]">Status</TableHead>
-						<TableHead className="w-[20%]">Latency</TableHead>
+						<TableHead className="w-[60%]">代理</TableHead>
+						<TableHead className="w-[20%]">状态</TableHead>
+						<TableHead className="w-[20%]">延迟</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -89,7 +88,7 @@ const ProxiesTableBody: FC<ProxiesTableBodyProps> = ({
 		return <TableLoader />;
 	}
 	if (hasLoaded && proxies?.length === 0) {
-		return <TableEmpty message="No workspace proxies found" />;
+		return <TableEmpty message="未找到工作区代理" />;
 	}
 	return (
 		<>

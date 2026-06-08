@@ -36,7 +36,7 @@ export const PromptTable: FC<PromptTableProps> = ({
 			)}
 		>
 			<div className="flex items-center justify-between">
-				<dt className="shrink-0 whitespace-nowrap">Timestamp</dt>
+				<dt className="shrink-0 whitespace-nowrap">时间戳</dt>
 				<dd
 					className="ml-4 min-w-0 truncate font-mono text-xs"
 					title={formatDate(timestamp)}
@@ -46,7 +46,7 @@ export const PromptTable: FC<PromptTableProps> = ({
 			</div>
 
 			<div className="flex items-center justify-between">
-				<dt className="shrink-0 whitespace-nowrap">Model</dt>
+				<dt className="shrink-0 whitespace-nowrap">模型</dt>
 				<dd className="ml-4 min-w-0 truncate flex justify-end">
 					<TooltipProvider>
 						<Tooltip>
@@ -63,7 +63,7 @@ export const PromptTable: FC<PromptTableProps> = ({
 			</div>
 
 			<div className="flex items-center justify-between">
-				<dt className="shrink-0 whitespace-nowrap">In / out tokens</dt>
+				<dt className="shrink-0 whitespace-nowrap">输入 / 输出 Token</dt>
 				<dd className="ml-4 min-w-0 truncate flex justify-end">
 					<TokenBadges
 						inputTokens={inputTokens}

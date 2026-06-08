@@ -74,10 +74,9 @@ const ActiveDefaultRolesDialog: FC<ActiveProps> = ({
 		>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Edit default roles</DialogTitle>
+					<DialogTitle>编辑默认角色</DialogTitle>
 					<DialogDescription>
-						These roles are attached to every member of this organization. Use
-						an empty selection to grant new members only the floor.
+						这些角色将分配给该组织的每个成员。不选择任何角色将仅授予新成员 floor 权限。
 					</DialogDescription>
 				</DialogHeader>
 				<RoleSelector

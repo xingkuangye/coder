@@ -142,11 +142,10 @@ const ParameterLabel: FC<ParameterLabelProps> = ({ parameter, isPreset }) => {
 			{!parameter.required && (
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<span css={styles.optionalLabel}>(optional)</span>
+						<span css={styles.optionalLabel}>（可选）</span>
 					</TooltipTrigger>
 					<TooltipContent side="bottom" className="max-w-xs">
-						If no value is specified, the system will default to the value set
-						by the administrator.
+						如未指定值，系统将默认使用管理员设置的值。
 					</TooltipContent>
 				</Tooltip>
 			)}
@@ -157,11 +156,11 @@ const ParameterLabel: FC<ParameterLabelProps> = ({ parameter, isPreset }) => {
 							type="warning"
 							icon={<CircleAlertIcon className="size-icon-xs" />}
 						>
-							Immutable
+							不可变
 						</Pill>
 					</TooltipTrigger>
 					<TooltipContent side="bottom" className="max-w-xs">
-						This value cannot be modified after the workspace has been created.
+						工作空间创建后，此值不可修改。
 					</TooltipContent>
 				</Tooltip>
 			)}
@@ -169,11 +168,11 @@ const ParameterLabel: FC<ParameterLabelProps> = ({ parameter, isPreset }) => {
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<Pill type="info" icon={<SettingsIcon className="size-icon-xs" />}>
-							Preset
+							预设
 						</Pill>
 					</TooltipTrigger>
 					<TooltipContent side="bottom">
-						This value was set by a preset
+						此值由预设设置。
 					</TooltipContent>
 				</Tooltip>
 			)}
@@ -187,7 +186,7 @@ const ParameterLabel: FC<ParameterLabelProps> = ({ parameter, isPreset }) => {
 					<span css={styles.labelIconWrapper}>
 						<ExternalImage
 							css={styles.labelIcon}
-							alt="Parameter icon"
+							alt="参数图标"
 							src={parameter.icon}
 						/>
 					</span>
@@ -219,7 +218,7 @@ type RichParameterInputProps = Omit<TextFieldProps, "size" | "onChange"> & {
 };
 
 const autofillDescription: Partial<Record<AutofillSource, ReactNode>> = {
-	url: " from the URL.",
+	url: "来自 URL。",
 };
 
 export const RichParameterInput: FC<RichParameterInputProps> = ({
@@ -269,12 +268,12 @@ export const RichParameterInput: FC<RichParameterInputProps> = ({
 							>
 								{autofillValue}
 							</Button>{" "}
-							was recently used for this parameter.
+							最近用于此参数。
 						</FormHelperText>
 					)}
 				{autofillSource && autofillDescription[autofillSource] && (
 					<div className="mt-1 text-xs">
-						🪄 Autofilled {autofillDescription[autofillSource]}
+						🪄 自动填充 {autofillDescription[autofillSource]}
 					</div>
 				)}
 			</div>
@@ -306,13 +305,13 @@ const RichParameterField: FC<RichParameterInputProps> = ({
 					disabled={disabled}
 					value="true"
 					control={<Radio size="small" />}
-					label="True"
+					label="是"
 				/>
 				<FormControlLabel
 					disabled={disabled}
 					value="false"
 					control={<Radio size="small" />}
-					label="False"
+					label="否"
 				/>
 			</RadioGroup>
 		);
@@ -339,7 +338,7 @@ const RichParameterField: FC<RichParameterInputProps> = ({
 									<ExternalImage
 										css={styles.optionIcon}
 										src={option.icon}
-										alt="Parameter icon"
+										alt="参数图标"
 									/>
 								)}
 								{option.description ? (

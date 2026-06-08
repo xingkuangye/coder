@@ -399,7 +399,7 @@ export const ChatPageInput: FC<ChatPageInputProps> = ({
 						isUploadInProgress(uploadStates.get(file)),
 					);
 					if (hasActiveUploads) {
-						toast.warning("Wait for file uploads to finish before sending.");
+						toast.warning("请等待文件上传完成后再发送。");
 						return;
 					}
 					// Collect uploaded attachment metadata for the optimistic
@@ -422,7 +422,7 @@ export const ChatPageInput: FC<ChatPageInputProps> = ({
 					}
 					if (skippedErrors > 0) {
 						toast.warning(
-							`${skippedErrors} attachment${skippedErrors > 1 ? "s" : ""} could not be sent (upload failed)`,
+							`${skippedErrors} 个附件${skippedErrors > 1 ? "" : ""} 无法发送（上传失败）`,
 						);
 					}
 					const attachmentArg =

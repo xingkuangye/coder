@@ -128,15 +128,15 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -177,7 +177,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -226,7 +226,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -257,19 +257,19 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "auditor",
-				display_name: "Auditor",
+				display_name: "审计员",
 			},
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -285,11 +285,11 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -305,7 +305,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -332,7 +332,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -348,7 +348,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -364,15 +364,15 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -388,15 +388,15 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -412,7 +412,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -428,7 +428,7 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -455,15 +455,15 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -482,19 +482,19 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 			{
 				name: "auditor",
-				display_name: "Auditor",
+				display_name: "审计员",
 			},
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},
@@ -510,15 +510,15 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 		],
 	},
@@ -534,19 +534,19 @@ export const MockUsers: User[] = [
 		roles: [
 			{
 				name: "user-admin",
-				display_name: "User Admin",
+				display_name: "用户管理员",
 			},
 			{
 				name: "template-admin",
-				display_name: "Template Admin",
+				display_name: "模板管理员",
 			},
 			{
 				name: "auditor",
-				display_name: "Auditor",
+				display_name: "审计员",
 			},
 			{
 				name: "owner",
-				display_name: "Owner",
+				display_name: "所有者",
 			},
 		],
 	},

@@ -16,14 +16,13 @@ export const AIBridgeHelpPopover: FC = () => {
 			<HelpPopoverIconTrigger />
 
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is AI Bridge?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是 AI 桥接？</HelpPopoverTitle>
 				<HelpPopoverText>
-					AI Bridge is a smart gateway for AI that provides centralized
-					management, auditing, and attribution for LLM usage.
+					AI 桥接是 AI 的智能网关，为大模型使用提供集中管理、审计和归因。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/ai-coder/ai-bridge")}>
-						Read the docs
+						阅读文档
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>

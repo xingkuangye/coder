@@ -116,7 +116,7 @@ export default function TemplateInsightsPage() {
 
 	return (
 		<RequirePermission isFeatureVisible={canViewInsights}>
-			<title>{getTemplatePageTitle("Insights", template)}</title>
+			<title>{getTemplatePageTitle("洞察", template)}</title>
 
 			<TemplateInsightsPageView
 				controls={
@@ -317,13 +317,13 @@ const UsersLatencyPanel: FC<UsersLatencyPanelProps> = ({
 		<Panel {...panelProps} className={cn("overflow-y-auto", className)}>
 			<PanelHeader>
 				<PanelTitle className="flex items-center gap-2">
-					Latency by user
+					用户延迟
 					<HelpPopover>
 						<HelpPopoverIconTrigger size="small" />
 						<HelpPopoverContent>
-							<HelpPopoverTitle>How is latency calculated?</HelpPopoverTitle>
+							<HelpPopoverTitle>如何计算延迟？</HelpPopoverTitle>
 							<HelpPopoverText>
-								The median round trip time of user connections to workspaces.
+								用户连接到工作空间的中位往返时间。
 							</HelpPopoverText>
 						</HelpPopoverContent>
 					</HelpPopover>
@@ -372,14 +372,13 @@ const UsersActivityPanel: FC<UsersActivityPanelProps> = ({
 		<Panel {...panelProps} className={cn("overflow-y-auto", className)}>
 			<PanelHeader>
 				<PanelTitle className="flex items-center gap-2">
-					Activity by user
+					用户活动
 					<HelpPopover>
 						<HelpPopoverIconTrigger size="small" />
 						<HelpPopoverContent>
-							<HelpPopoverTitle>How is activity calculated?</HelpPopoverTitle>
+							<HelpPopoverTitle>如何计算活动？</HelpPopoverTitle>
 							<HelpPopoverText>
-								When a connection is initiated to a user&apos;s workspace they
-								are considered an active user. e.g. apps, web terminal, SSH
+								当用户启动对其工作空间的连接时，他们被视为活跃用户。例如：应用程序、Web 终端、SSH
 							</HelpPopoverText>
 						</HelpPopoverContent>
 					</HelpPopover>
@@ -442,7 +441,7 @@ const TemplateUsagePanel: FC<TemplateUsagePanelProps> = ({
 	return (
 		<Panel {...panelProps} className={cn("overflow-y-auto", className)}>
 			<PanelHeader>
-				<PanelTitle>App & IDE Usage</PanelTitle>
+				<PanelTitle>应用与 IDE 使用情况</PanelTitle>
 			</PanelHeader>
 			<PanelContent error={error} data={validUsage}>
 				{
@@ -484,8 +483,8 @@ const TemplateUsagePanel: FC<TemplateUsagePanelProps> = ({
 										{formatTime(usage.seconds)}
 										{usage.times_used > 0 && (
 											<span className="text-[12px] text-content-disabled">
-												Opened {usage.times_used.toLocaleString()}{" "}
-												{usage.times_used === 1 ? "time" : "times"}
+												打开 {usage.times_used.toLocaleString()}{" "}
+												{usage.times_used === 1 ? "次" : "次"}
 											</span>
 										)}
 									</div>
@@ -512,7 +511,7 @@ const TemplateParametersUsagePanel: FC<TemplateParametersUsagePanelProps> = ({
 	return (
 		<Panel {...panelProps}>
 			<PanelHeader>
-				<PanelTitle>Parameters usage</PanelTitle>
+				<PanelTitle>参数使用情况</PanelTitle>
 			</PanelHeader>
 			<PanelContent error={error} data={data}>
 				{data?.map((parameter, parameterIndex) => {
@@ -533,16 +532,16 @@ const TemplateParametersUsagePanel: FC<TemplateParametersUsagePanelProps> = ({
 							</div>
 							<div className="flex-1 grow-2 text-sm grid grid-cols-[1fr_auto] gap-x-4 items-baseline">
 								<div className="font-medium text-[13px] text-content-secondary py-1">
-									Value
+									值
 								</div>
 								<Tooltip>
 									<TooltipTrigger asChild>
 										<div className="font-medium text-[13px] text-content-secondary text-right py-1 cursor-default">
-											Count
+											数量
 										</div>
 									</TooltipTrigger>
 									<TooltipContent>
-										The number of workspaces using this value
+										使用此值的工作空间数量
 									</TooltipContent>
 								</Tooltip>
 								{[...parameter.values]
@@ -657,12 +656,12 @@ const ParameterUsageLabel: FC<ParameterUsageLabelProps> = ({
 				{usage.value === "false" ? (
 					<>
 						<CircleXIcon className="size-icon-xs text-content-destructive" />
-						False
+						否
 					</>
 				) : (
 					<>
 						<CircleCheckIcon className="size-icon-xs text-content-success" />
-						True
+						是
 					</>
 				)}
 			</div>
@@ -743,8 +742,8 @@ const NoDataAvailable: FC<NoDataAvailableProps> = ({ error, ...props }) => {
 		>
 			{error
 				? getErrorDetail(error) ||
-					getErrorMessage(error, "Unable to fetch insights")
-				: "No data available"}
+					getErrorMessage(error, "无法获取洞察数据")
+				: "暂无数据"}
 		</div>
 	);
 };

@@ -49,7 +49,7 @@ export class TarReader {
 
 	get buffer() {
 		if (!this._buffer) {
-			throw new Error("Buffer is not set");
+			throw new Error("缓冲区未设置");
 		}
 
 		return this._buffer;
@@ -174,7 +174,7 @@ export class TarWriter {
 
 	get buffer() {
 		if (!this._buffer) {
-			throw new Error("Buffer is not set");
+			throw new Error("缓冲区未设置");
 		}
 		return this._buffer;
 	}

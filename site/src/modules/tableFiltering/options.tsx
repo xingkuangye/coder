@@ -1,11 +1,8 @@
 /**
- * @file Defines a centralized place for filter dropdown groups that are
- * relevant across multiple pages within the Coder UI.
+ * @file 定义 Coder UI 中跨多个页面相关的筛选下拉组的集中位置。
  *
- * @todo 2024-09-06 - Figure out how to move the user dropdown group into this
- * file (or whether there are enough subtle differences that it's not worth
- * centralizing the logic). We currently have two separate implementations for
- * the workspaces and audits page that have a risk of getting out of sync.
+ * @todo 2024-09-06 - 弄清楚如何将用户下拉组移入此文件
+ * （或者是否由于存在足够的细微差异，不值得集中化逻辑）。我们目前对工作区和审计页面有两个独立的实现，存在不同步的风险。
  */
 
 import type { FC } from "react";
@@ -101,18 +98,18 @@ export const OrganizationsMenu: FC<OrganizationsMenuProps> = ({
 }) => {
 	return (
 		<SelectFilter
-			label="Select an organization"
-			placeholder="All organizations"
-			emptyText="No organizations found"
+			label="选择一个组织"
+			placeholder="所有组织"
+			emptyText="未找到组织"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}
 			selectFilterSearch={
 				<ComboboxInput
-					placeholder="Search organization..."
+					placeholder="搜索组织..."
 					value={menu.query}
 					onValueChange={menu.setQuery}
-					aria-label="Search organization"
+					aria-label="搜索组织"
 				/>
 			}
 			width={width}

@@ -30,7 +30,7 @@ export const InsightsContent: FC<InsightsContentProps> = ({
 		return (
 			<div className="flex min-h-[400px] items-center justify-center">
 				<p className="text-sm text-content-secondary">
-					Failed to load analytics data.
+					加载分析数据失败。
 				</p>
 			</div>
 		);

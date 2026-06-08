@@ -24,7 +24,7 @@ interface ScheduleFormValues {
 const validationSchema = Yup.object({
 	time: Yup.string()
 		.ensure()
-		.test("is-time-string", "Time must be in HH:mm format.", (value) => {
+		.test("is-time-string", "时间必须为 HH:mm 格式。", (value) => {
 			if (!validTime(value)) {
 				return false;
 			}
@@ -88,16 +88,15 @@ export const ScheduleForm: FC<ScheduleFormProps> = ({
 
 				{!initialValues.user_set && (
 					<Alert severity="info">
-						You are currently using the default quiet hours schedule, which
-						starts every day at <code>{initialValues.time}</code> in{" "}
-						<code>{initialValues.timezone}</code>.
+						您当前正在使用默认的安静时间计划，该计划每天在{" "}
+						<code>{initialValues.timezone}</code> 的{" "}
+						<code>{initialValues.time}</code> 开始。
 					</Alert>
 				)}
 
 				{!initialValues.user_can_set && (
 					<Alert severity="error">
-						Your administrator has disabled the ability to set a custom quiet
-						hours schedule.
+						您的管理员已禁用设置自定义安静时间计划的功能。
 					</Alert>
 				)}
 
@@ -105,14 +104,14 @@ export const ScheduleForm: FC<ScheduleFormProps> = ({
 					<TextField
 						{...getFieldHelpers("time")}
 						disabled={isLoading || !initialValues.user_can_set}
-						label="Start time"
+						label="开始时间"
 						type="time"
 						fullWidth
 					/>
 					<TextField
 						{...getFieldHelpers("timezone")}
 						disabled={isLoading || !initialValues.user_can_set}
-						label="Timezone"
+						label="时区"
 						select
 						fullWidth
 					>
@@ -127,7 +126,7 @@ export const ScheduleForm: FC<ScheduleFormProps> = ({
 				<TextField
 					disabled
 					fullWidth
-					label="Next occurrence"
+					label="下次发生时间"
 					value={quietHoursDisplay(
 						browserLocale,
 						form.values.time,
@@ -142,7 +141,7 @@ export const ScheduleForm: FC<ScheduleFormProps> = ({
 						type="submit"
 					>
 						<Spinner loading={isLoading} />
-						Update schedule
+						更新计划
 					</Button>
 				</div>
 			</FormFields>

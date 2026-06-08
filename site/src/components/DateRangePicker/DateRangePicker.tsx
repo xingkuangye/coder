@@ -1,7 +1,6 @@
 /**
- * A date-range picker composed from the project's Calendar, Popover, and
- * Button primitives. Replaces the legacy react-date-range based DateRange
- * component with one that matches the native design language.
+ * 一个日期范围选择器，由项目的 Calendar、Popover 和 Button 基础组件组合而成。
+ * 它替代了旧的基于 react-date-range 的 DateRange 组件，以匹配原生设计语言。
  */
 
 import dayjs from "dayjs";
@@ -31,21 +30,21 @@ const buildDefaultPresets = (now?: Date): DateRangePreset[] => {
 	const getCurrentTime = () => dayjs(now ?? new Date());
 	return [
 		{
-			label: "Today",
+			label: "今天",
 			range: () => {
 				const currentTime = getCurrentTime();
 				return { from: currentTime.toDate(), to: currentTime.toDate() };
 			},
 		},
 		{
-			label: "Yesterday",
+			label: "昨天",
 			range: () => {
 				const d = getCurrentTime().subtract(1, "day").toDate();
 				return { from: d, to: d };
 			},
 		},
 		{
-			label: "Last 7 days",
+			label: "过去 7 天",
 			range: () => {
 				const currentTime = getCurrentTime();
 				return {
@@ -55,7 +54,7 @@ const buildDefaultPresets = (now?: Date): DateRangePreset[] => {
 			},
 		},
 		{
-			label: "Last 14 days",
+			label: "过去 14 天",
 			range: () => {
 				const currentTime = getCurrentTime();
 				return {
@@ -65,7 +64,7 @@ const buildDefaultPresets = (now?: Date): DateRangePreset[] => {
 			},
 		},
 		{
-			label: "Last 30 days",
+			label: "过去 30 天",
 			range: () => {
 				const currentTime = getCurrentTime();
 				return {
@@ -221,7 +220,7 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
 							>
 								{selection?.from
 									? dayjs(selection.from).format("MMM D, YYYY")
-									: "Start date"}
+									: "开始日期"}
 							</span>
 							<MoveRightIcon className="size-3.5 text-content-secondary" />
 							<span
@@ -234,7 +233,7 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
 							>
 								{selection?.to
 									? dayjs(selection.to).format("MMM D, YYYY")
-									: "End date"}
+									: "结束日期"}
 							</span>
 						</div>
 
@@ -253,10 +252,10 @@ export const DateRangePicker: FC<DateRangePickerProps> = ({
 						{/* Apply footer */}
 						<div className="flex items-center justify-end gap-2 border-t border-border-default px-4 py-2">
 							<Button variant="subtle" size="sm" onClick={() => setOpen(false)}>
-								Cancel
+								取消
 							</Button>
 							<Button size="sm" onClick={commit} disabled={!canApply}>
-								Apply
+								应用
 							</Button>
 						</div>
 					</div>

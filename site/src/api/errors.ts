@@ -58,7 +58,7 @@ export const mapApiErrorToFieldErrors = (
 
 	if (apiErrorResponse.validations) {
 		for (const error of apiErrorResponse.validations) {
-			result[error.field] = error.detail || "Invalid value";
+			result[error.field] = error.detail || "无效值";
 		}
 	}
 
@@ -130,7 +130,7 @@ export const getErrorDetail = (error: unknown): string | undefined => {
 	}
 
 	if (error instanceof Error) {
-		return "Please check the developer console for more details.";
+		return "请查看开发者控制台以获取更多详细信息。";
 	}
 
 	return undefined;

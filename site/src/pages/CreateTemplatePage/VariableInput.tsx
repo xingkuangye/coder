@@ -18,7 +18,7 @@ const VariableLabel: FC<VariableLabelProps> = ({ variable }) => {
 		<label htmlFor={variable.name}>
 			<span className="mb-1 block text-sm text-content-secondary">
 				var.{variable.name}
-				{!variable.required && " (optional)"}
+				{!variable.required && "（可选）"}
 			</span>
 			<span className="block text-base font-semibold text-content-primary">
 				{variable.description}
@@ -74,13 +74,13 @@ const VariableField: FC<VariableInputProps> = ({
 					disabled={disabled}
 					value="true"
 					control={<Radio size="small" />}
-					label="True"
+					label="是"
 				/>
 				<FormControlLabel
 					disabled={disabled}
 					value="false"
 					control={<Radio size="small" />}
-					label="False"
+					label="否"
 				/>
 			</RadioGroup>
 		);

@@ -25,7 +25,7 @@ export const AgentDevcontainerMoreActions: FC<
 			<DropdownMenuTrigger asChild>
 				<Button size="icon-lg" variant="subtle" aria-controls={menuContentId}>
 					<EllipsisVerticalIcon aria-hidden="true" />
-					<span className="sr-only">Dev Container actions</span>
+					<span className="sr-only">Dev Container 操作</span>
 				</Button>
 			</DropdownMenuTrigger>
 
@@ -36,7 +36,7 @@ export const AgentDevcontainerMoreActions: FC<
 						setIsConfirmingDelete(true);
 					}}
 				>
-					Delete&hellip;
+					删除&hellip;
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 
@@ -67,13 +67,12 @@ const DevcontainerDeleteDialog: FC<DevcontainerDeleteDialogProps> = ({
 		<ConfirmDialog
 			type="delete"
 			open={isOpen}
-			title="Delete Dev Container"
+			title="删除 Dev Container"
 			onConfirm={onConfirm}
 			onClose={onCancel}
 			description={
 				<p>
-					Are you sure you want to delete this Dev Container? Any unsaved work
-					will be lost.
+					确定要删除此 Dev Container 吗？所有未保存的工作都将丢失。
 				</p>
 			}
 		/>

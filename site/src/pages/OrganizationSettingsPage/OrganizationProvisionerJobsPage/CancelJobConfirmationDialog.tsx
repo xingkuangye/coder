@@ -41,10 +41,10 @@ export const CancelJobConfirmationDialog: FC<
 		<ConfirmDialog
 			{...dialogProps}
 			type="delete"
-			title="Cancel provisioner job"
-			description={`Are you sure you want to cancel the provisioner job "${job.id}"? This operation will result in the associated workspaces not getting created.`}
-			confirmText="Confirm"
-			cancelText="Cancel"
+			title="取消配置器任务"
+			description={`确定要取消配置器任务 "${job.id}" 吗？此操作将导致关联的工作区无法创建。`}
+			confirmText="确认"
+			cancelText="取消"
 			confirmLoading={cancelMutation.isPending}
 			onConfirm={async () => {
 				const mutation = cancelMutation.mutateAsync(job, {
@@ -53,10 +53,10 @@ export const CancelJobConfirmationDialog: FC<
 					},
 				});
 				toast.promise(mutation, {
-					loading: `Canceling provisioner job "${job.id}"...`,
-					success: `Provisioner job "${job.id}" canceled successfully.`,
+					loading: `正在取消配置器任务 "${job.id}"...`,
+					success: `配置器任务 "${job.id}" 已成功取消。`,
 					error: (error) => ({
-						message: `Failed to cancel provisioner job "${job.id}".`,
+						message: `无法取消配置器任务 "${job.id}"。`,
 						description: getErrorDetail(error),
 					}),
 				});

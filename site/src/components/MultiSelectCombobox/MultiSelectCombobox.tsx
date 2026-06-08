@@ -1,5 +1,5 @@
 /**
- * This component is based on multiple-selector
+ * 本组件基于 multiple-selector
  * @see {@link https://shadcnui-expansions.typeart.cc/docs/multiple-selector}
  */
 import { Command as CommandPrimitive, useCommandState } from "cmdk";
@@ -39,9 +39,9 @@ export interface Option {
 	icon?: string;
 	disable?: boolean;
 	description?: string;
-	/** fixed option that can't be removed. */
+	/** 固定的选项，不可移除。 */
 	fixed?: boolean;
-	/** Group the options by providing key. */
+	/** 通过提供的键对选项进行分组。 */
 	[key: string]: string | boolean | undefined;
 }
 interface GroupOption {
@@ -51,59 +51,58 @@ interface GroupOption {
 interface MultiSelectComboboxProps {
 	value?: Option[];
 	defaultOptions?: Option[];
-	/** manually controlled options */
+	/** 手动控制的选项 */
 	options?: Option[];
 	placeholder?: string;
-	/** Loading component. */
+	/** 加载中组件。 */
 	loadingIndicator?: ReactNode;
-	/** Empty component. */
+	/** 空状态组件。 */
 	emptyIndicator?: ReactNode;
-	/** Debounce time for async search. Only work with `onSearch`. */
+	/** 异步搜索的防抖时间。仅在提供 `onSearch` 时有效。 */
 	delay?: number;
 	/**
-	 * Only work with `onSearch` prop. Trigger search when `onFocus`.
-	 * For example, when user click on the input, it will trigger the search to get initial options.
+	 * 仅在提供 `onSearch` 属性时有效。当 `onFocus` 时触发搜索。
+	 * 例如，用户点击输入框时，会触发搜索以获取初始选项。
 	 **/
 	triggerSearchOnFocus?: boolean;
-	/** async search */
+	/** 异步搜索 */
 	onSearch?: (value: string) => Promise<Option[]>;
 	/**
-	 * sync search. This search will not showing loadingIndicator.
-	 * The rest props are the same as async search.
-	 * i.e.: creatable, groupBy, delay.
+	 * 同步搜索。此搜索不会显示 loadingIndicator。
+	 * 其他属性与异步搜索相同，例如：creatable、groupBy、delay。
 	 **/
 	onSearchSync?: (value: string) => Option[];
 	onChange?: (options: Option[]) => void;
-	/** Limit the maximum number of selected options. */
+	/** 限制最大可选选项数。 */
 	maxSelected?: number;
-	/** When the number of selected options exceeds the limit, the onMaxSelected will be called. */
+	/** 当选中的选项数量超出限制时，将调用 onMaxSelected。 */
 	onMaxSelected?: (maxLimit: number) => void;
-	/** Hide the placeholder when there are options selected. */
+	/** 当有选项被选中时隐藏占位文本。 */
 	hidePlaceholderWhenSelected?: boolean;
 	disabled?: boolean;
-	/** Group the options base on provided key. */
+	/** 根据提供的键对选项进行分组。 */
 	groupBy?: string;
 	className?: string;
 	badgeClassName?: string;
 	/**
-	 * First item selected is a default behavior by cmdk. That is why the default is true.
-	 * This is a workaround solution by add a dummy item.
+	 * 默认情况下，cmdk 会选中第一个项目，因此默认值为 true。
+	 * 这是一个通过添加一个虚拟项目来解决此问题的替代方案。
 	 *
 	 * @see {@link https://github.com/pacocoursey/cmdk/issues/171}
 	 */
 	selectFirstItem?: boolean;
-	/** Allow user to create option when there is no option matched. */
+	/** 允许在没有匹配选项时创建新选项。 */
 	creatable?: boolean;
-	/** Props of `Command` */
+	/** `Command` 的属性 */
 	commandProps?: ComponentPropsWithoutRef<typeof Command>;
-	/** Props of `CommandInput` */
+	/** `CommandInput` 的属性 */
 	inputProps?: Omit<
 		ComponentPropsWithoutRef<typeof CommandPrimitive.Input>,
 		"value" | "placeholder" | "disabled"
 	>;
-	/** hide or show the button that clears all the selected options. */
+	/** 隐藏或显示清除所有选中选项的按钮。 */
 	hideClearAllButton?: boolean;
-	/** Test ID for testing purposes */
+	/** 用于测试的 Test ID */
 	"data-testid"?: string;
 	ref?: Ref<MultiSelectComboboxRef>;
 }
@@ -154,8 +153,8 @@ function isOptionsExist(groupOption: GroupOption, targetOption: Option[]) {
 }
 
 /**
- * The `CommandEmpty` of shadcn/ui will cause the cmdk-empty to not render correctly.
- * Here a new CommandEmpty is created using the `Empty` implementation from `cmdk`.
+ * shadcn/ui 的 CommandEmpty 将导致 cmdk-empty 无法正确渲染。
+ * 这里使用 cmdk 中的 `Empty` 实现创建了一个新的 CommandEmpty。
  *
  * @reference: https://github.com/hsuanyi-chou/shadcn-ui-expansions/issues/34#issuecomment-1949561607
  **/
@@ -291,7 +290,7 @@ export const MultiSelectCombobox: React.FC<MultiSelectComboboxProps> = ({
 	}, [open]);
 
 	useEffect(() => {
-		/** If `onSearch` is provided, do not trigger options updated. */
+		/** 如果提供了 `onSearch`，则不触发选项更新。 */
 		if (!arrayOptions || onSearch) {
 			return;
 		}
@@ -302,7 +301,7 @@ export const MultiSelectCombobox: React.FC<MultiSelectComboboxProps> = ({
 	}, [arrayOptions, groupBy, onSearch, options]);
 
 	useEffect(() => {
-		/** sync search */
+		/** 同步搜索 */
 
 		const doSearchSync = () => {
 			const res = onSearchSync?.(debouncedSearchTerm);
@@ -325,7 +324,7 @@ export const MultiSelectCombobox: React.FC<MultiSelectComboboxProps> = ({
 	}, [debouncedSearchTerm, groupBy, open, triggerSearchOnFocus, onSearchSync]);
 
 	useEffect(() => {
-		/** async search */
+		/** 异步搜索 */
 
 		const doSearch = async () => {
 			setIsLoading(true);
@@ -388,7 +387,7 @@ export const MultiSelectCombobox: React.FC<MultiSelectComboboxProps> = ({
 					onChange?.(newOptions);
 				}}
 			>
-				Create "{inputValue}"
+				创建 "{inputValue}"
 			</CommandItem>
 		);
 
@@ -425,7 +424,7 @@ export const MultiSelectCombobox: React.FC<MultiSelectComboboxProps> = ({
 		[options, selected],
 	);
 
-	/** Avoid Creatable Selector freezing or lagging when paste a long string. */
+	/** 避免在粘贴长字符串时，可创建选择器出现冻结或延迟。 */
 	const commandFilter = () => {
 		if (commandProps?.filter) {
 			return commandProps.filter;

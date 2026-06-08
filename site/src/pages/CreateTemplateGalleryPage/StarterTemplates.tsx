@@ -7,7 +7,7 @@ import type { StarterTemplatesByTag } from "#/utils/starterTemplates";
 
 const getTagLabel = (tag: string) => {
 	const labelByTag: Record<string, string> = {
-		all: "All templates",
+		all: "全部模板",
 		digitalocean: "DigitalOcean",
 		aws: "AWS",
 		google: "Google Cloud",
@@ -67,10 +67,10 @@ export const StarterTemplates: FC<StarterTemplatesProps> = ({
 			{starterTemplatesByTag && tags && (
 				<div className="flex flex-col gap-4 w-[202px] shrink-0 sticky">
 					<h2 className="m-0 text-base font-normal text-content-primary">
-						Choose a starter template
+						选择入门模板
 					</h2>
 					<span className="text-xs font-semibold uppercase tracking-[0.1em] text-content-secondary">
-						Filter
+						筛选
 					</span>
 					{tags.map((tag) => (
 						<Link

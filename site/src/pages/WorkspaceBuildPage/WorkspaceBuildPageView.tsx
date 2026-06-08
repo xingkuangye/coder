@@ -107,31 +107,31 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 						jobStatus={build.job.status}
 					/>
 					<div>
-						<PageHeaderTitle>Build #{build.build_number}</PageHeaderTitle>
+						<PageHeaderTitle>构建 #{build.build_number}</PageHeaderTitle>
 						<PageHeaderSubtitle>{build.initiator_name}</PageHeaderSubtitle>
 					</div>
 				</div>
 				<Stats
-					aria-label="Build details"
+					aria-label="构建详情"
 					className="flex flex-col items-start gap-2 px-0 border-none grow basis-0 md:flex-row md:gap-x-12 md:gap-y-6"
 				>
-					<BuildStatsItem label="Workspace">
+					<BuildStatsItem label="工作空间">
 						<Link
 							to={`/@${build.workspace_owner_name}/${build.workspace_name}`}
 						>
 							{build.workspace_name}
 						</Link>
 					</BuildStatsItem>
-					<BuildStatsItem label="Template version">
+					<BuildStatsItem label="模板版本">
 						{build.template_version_name}
 					</BuildStatsItem>
-					<BuildStatsItem label="Duration">
+					<BuildStatsItem label="持续时间">
 						{displayWorkspaceBuildDuration(build)}
 					</BuildStatsItem>
-					<BuildStatsItem label="Started at">
+					<BuildStatsItem label="开始于">
 						{formatDate(new Date(build.created_at))}
 					</BuildStatsItem>
-					<BuildStatsItem label="Action">
+					<BuildStatsItem label="操作">
 						<span className="capitalize">{build.transition}</span>
 					</BuildStatsItem>
 				</Stats>
@@ -139,7 +139,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 
 			<div className="flex items-start overflow-hidden grow basis-0">
 				<Sidebar>
-					<SidebarCaption>Builds</SidebarCaption>
+					<SidebarCaption>构建</SidebarCaption>
 					{!builds &&
 						Array.from({ length: 15 }, (_, i) => (
 							<SidebarItem key={i}>
@@ -177,7 +177,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 							className="w-full -m-px"
 						>
 							<TabsList variant="insideBox">
-								<TabsTrigger value="build">Build</TabsTrigger>
+								<TabsTrigger value="build">构建</TabsTrigger>
 								{agents.map((agent) => (
 									<TabsTrigger value={agent.id} key={agent.id}>
 										coder_agent.{agent.name}
@@ -192,7 +192,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											View raw logs
+											查看原始日志
 											<ExternalLinkIcon className="size-3" />
 										</a>
 									</Button>
@@ -205,12 +205,11 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 											className="rounded-none border-0 border-b border-solid border-border"
 										>
 											<div>
-												The workspace may have failed to delete due to a
-												Terraform state mismatch. A template admin may run{" "}
+												工作空间可能由于 Terraform 状态不匹配而无法删除。模板管理员可以运行{" "}
 												<code className="font-semibold w-fit inline-block">
 													{`coder rm ${`${build.workspace_owner_name}/${build.workspace_name}`} --orphan`}
 												</code>{" "}
-												to delete the workspace skipping resource destruction.
+												以跳过资源销毁来删除工作空间。
 											</div>
 										</Alert>
 									)}
@@ -220,8 +219,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 										prominent
 										className="rounded-none border-0 border-b border-solid border-border"
 									>
-										Provisioner logs exceeded the max size of 1MB. Will not
-										continue to write provisioner logs for workspace build.
+										置备程序日志超过了最大大小 1MB。将不再继续为该工作空间构建写入置备程序日志。
 									</Alert>
 								)}
 								<BuildLogsContent logs={logs} build={build} />
@@ -235,7 +233,7 @@ export const WorkspaceBuildPageView: FC<WorkspaceBuildPageViewProps> = ({
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												View raw logs
+												查看原始日志
 												<ExternalLinkIcon className="size-3" />
 											</a>
 										</Button>

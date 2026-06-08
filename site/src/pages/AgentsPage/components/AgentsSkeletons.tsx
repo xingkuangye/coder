@@ -25,9 +25,8 @@ function getRightPanelState(): { open: boolean; width: number } {
 }
 
 /**
- * Skeleton shown while the AgentsPage chunk is loading. Mimics the
- * sidebar + empty main area layout so the user sees structure
- * immediately instead of a fullscreen spinner.
+ * 在 AgentsPage 代码块加载时显示的骨架屏。模拟侧边栏 + 空白主区域的布局，
+ * 让用户立即看到结构，而不是全屏加载动画。
  */
 export const AgentsPageSkeleton: FC = () => {
 	const [leftSidebarWidth] = useState(() => loadPersistedLeftSidebarWidth());
@@ -84,8 +83,7 @@ export const AgentsPageSkeleton: FC = () => {
 };
 
 /**
- * Skeleton placeholder for a chat conversation: two user message
- * bubbles interleaved with assistant response lines.
+ * 聊天对话的骨架屏占位符：两条用户消息气泡与助手的回复行交错排列。
  */
 export const ChatConversationSkeleton: FC = () => (
 	<div className="flex flex-col gap-3">
@@ -115,8 +113,7 @@ export const ChatConversationSkeleton: FC = () => (
 );
 
 /**
- * Skeleton placeholder for the right sidebar panel: a tab bar and
- * a few content lines.
+ * 右侧边栏面板的骨架屏占位符：一个标签栏和几行内容。
  */
 export const RightPanelSkeleton: FC = () => (
 	<div className="flex h-full min-w-0 flex-col overflow-hidden bg-surface-primary">
@@ -156,9 +153,8 @@ const ChatInputSkeleton: FC<{ fullWidth: boolean }> = ({ fullWidth }) => (
 );
 
 /**
- * Skeleton shown while the AgentChatPage chunk is loading. Mimics a
- * top bar + chat conversation layout so the user sees navigable
- * structure during the brief Suspense fallback.
+ * 在 AgentChatPage 代码块加载时显示的骨架屏。模拟顶部栏 + 聊天对话布局，
+ * 让用户在短暂的 Suspense 回退期间看到可导航的结构。
  */
 export const AgentChatPageSkeleton: FC = () => {
 	const rightPanel = getRightPanelState();

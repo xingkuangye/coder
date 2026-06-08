@@ -36,7 +36,7 @@ export const ChimeButton: FC<ChimeButtonProps> = ({ enabled, onToggle }) => {
 					size="icon"
 					onClick={handleClick}
 					aria-label={
-						isEnabled ? "Mute completion chime" : "Enable completion chime"
+						isEnabled ? "静音完成提示音" : "启用完成提示音"
 					}
 					className="size-7 text-content-secondary hover:text-content-primary"
 				>
@@ -48,7 +48,7 @@ export const ChimeButton: FC<ChimeButtonProps> = ({ enabled, onToggle }) => {
 				</Button>
 			</TooltipTrigger>
 			<TooltipContent>
-				{isEnabled ? "Disable completion sound" : "Enable completion sound"}
+				{isEnabled ? "关闭完成提示音" : "开启完成提示音"}
 			</TooltipContent>
 		</Tooltip>
 	);

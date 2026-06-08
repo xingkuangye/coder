@@ -56,7 +56,7 @@ type MemberRowMenuProps = {
 
 const ReadRoleBadge: FC = () => (
 	<span className="inline-block shrink-0 rounded-md bg-surface-secondary px-2 py-0.5 text-xs leading-5">
-		Read
+		只读
 	</span>
 );
 
@@ -66,7 +66,7 @@ const MemberRowMenu: FC<MemberRowMenuProps> = ({ disabled, onRemove }) => (
 			<Button
 				size="icon-lg"
 				variant="subtle"
-				aria-label="Open menu"
+				aria-label="打开菜单"
 				disabled={disabled}
 			>
 				<EllipsisVerticalIcon aria-hidden="true" />
@@ -77,7 +77,7 @@ const MemberRowMenu: FC<MemberRowMenuProps> = ({ disabled, onRemove }) => (
 				className="text-content-destructive focus:text-content-destructive"
 				onClick={onRemove}
 			>
-				Remove
+				移除
 			</DropdownMenuItem>
 		</DropdownMenuContent>
 	</DropdownMenu>
@@ -107,7 +107,7 @@ const AddChatMemberForm: FC<AddChatMemberFormProps> = ({
 				<Spinner loading={isLoading}>
 					<UserPlusIcon className="size-icon-sm" />
 				</Spinner>
-				Add member
+				添加成员
 			</Button>
 		</div>
 	</form>
@@ -228,7 +228,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 				{
 					onSuccess: () => {
 						setSelectedOption(null);
-						toast.success("Group added to chat.");
+						toast.success("已将组添加到聊天。");
 					},
 				},
 			);
@@ -244,7 +244,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 			{
 				onSuccess: () => {
 					setSelectedOption(null);
-					toast.success("Member added to chat.");
+					toast.success("已添加成员到聊天。");
 				},
 			},
 		);
@@ -258,7 +258,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 		resetMutationErrors();
 		mutateUserRole(
 			{ chatId, userId: user.id, role: "" },
-			{ onSuccess: () => toast.success("Member removed from chat.") },
+			{ onSuccess: () => toast.success("已从聊天移除成员。") },
 		);
 	};
 
@@ -270,7 +270,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 		resetMutationErrors();
 		mutateGroupRole(
 			{ chatId, groupId: group.id, role: "" },
-			{ onSuccess: () => toast.success("Group removed from chat.") },
+			{ onSuccess: () => toast.success("已从聊天移除组。") },
 		);
 	};
 
@@ -282,7 +282,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 			className="w-[calc(100vw-2rem)] p-3 sm:w-[580px] sm:p-4"
 		>
 			<div className="flex items-center gap-2 mb-4">
-				<h3 className="text-lg font-semibold m-0">Chat sharing</h3>
+				<h3 className="text-lg font-semibold m-0">聊天共享</h3>
 			</div>
 
 			<div className="flex flex-col gap-4">
@@ -292,7 +292,7 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 				{aclQuery.isLoading ? (
 					<div role="status" className="flex flex-col items-center gap-4 py-8">
 						<Spinner loading />
-						<span>Loading chat sharing</span>
+						<span>正在加载聊天共享</span>
 					</div>
 				) : acl ? (
 					<>
@@ -313,10 +313,10 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 						{isEmpty ? (
 							<div className="flex min-h-44 flex-col items-center justify-center px-6 py-6 text-center">
 								<h4 className="m-0 text-sm font-medium text-content-secondary">
-									No shared members or groups yet
+									尚无共享成员或组
 								</h4>
 								<p className="m-0 mt-2 text-sm text-content-secondary">
-									Add a member or group using the controls above.
+									使用上方控件添加成员或组。
 								</p>
 							</div>
 						) : (
@@ -345,16 +345,16 @@ export const ChatSharingPopoverContent: FC<ChatSharingPopoverContentProps> = ({
 						{!isEmpty && (
 							<div className="hidden sm:block">
 								<Table
-									aria-label="Shared chat members and groups"
+									aria-label="共享的聊天成员和组"
 									wrapperClassName="max-h-60 overflow-y-auto"
 								>
 									<TableHeader>
 										<TableRow>
 											<TableHead className="sticky top-0 z-10 w-[50%] bg-surface-primary py-2">
-												Member
+												成员
 											</TableHead>
 											<TableHead className="sticky top-0 z-10 w-[40%] bg-surface-primary py-2">
-												Role
+												角色
 											</TableHead>
 											<TableHead className="sticky top-0 z-10 w-[10%] bg-surface-primary py-2" />
 										</TableRow>
@@ -423,7 +423,7 @@ export const ChatShareButton: FC<ChatShareButtonProps> = ({
 			<PopoverTrigger asChild>
 				<TopbarButton data-testid="chat-share-button">
 					<Share2Icon />
-					Share
+					共享
 				</TopbarButton>
 			</PopoverTrigger>
 			<ChatSharingPopoverContent

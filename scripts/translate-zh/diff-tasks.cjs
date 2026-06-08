@@ -1,0 +1,11 @@
+const { execSync } = require("child_process");
+const { readFileSync } = require("fs");
+const f = "site/src/pages/TasksPage/TasksPage.tsx";
+const cur = readFileSync(f, "utf-8");
+const orig = execSync("git show HEAD:" + f, { encoding: "utf-8" });
+const curLines = cur.split("\n");
+const origLines = orig.split("\n");
+console.log("=== CURRENT (lines 270-285) ===");
+for (let i = 269; i < 285; i++) console.log(`${i + 1}: ${curLines[i]}`);
+console.log("=== ORIGINAL (lines 270-285) ===");
+for (let i = 269; i < 285; i++) console.log(`${i + 1}: ${origLines[i]}`);

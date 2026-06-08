@@ -219,7 +219,7 @@ const AgentsPage: FC = () => {
 		},
 		onError: (error, chatId, context) => {
 			archiveChatBase.onError(error, chatId, context);
-			toast.error(getErrorMessage(error, "Failed to archive agent."));
+			toast.error(getErrorMessage(error, "存档智能体失败。"));
 		},
 	});
 	const archiveAndDeleteMutation = useMutation({
@@ -254,7 +254,7 @@ const AgentsPage: FC = () => {
 		},
 		onError: (error) => {
 			toast.error(
-				getErrorMessage(error, "Failed to archive and delete workspace."),
+				getErrorMessage(error, "存档并删除工作区失败。"),
 			);
 		},
 	});
@@ -270,7 +270,7 @@ const AgentsPage: FC = () => {
 		...unarchiveChatBase,
 		onError: (error, chatId, context) => {
 			unarchiveChatBase.onError(error, chatId, context);
-			toast.error(getErrorMessage(error, "Failed to unarchive agent."));
+			toast.error(getErrorMessage(error, "取消存档智能体失败。"));
 		},
 	});
 	const pinChatBase = pinChat(queryClient);
@@ -278,7 +278,7 @@ const AgentsPage: FC = () => {
 		...pinChatBase,
 		onError: (error, chatId, context) => {
 			pinChatBase.onError(error, chatId, context);
-			toast.error(getErrorMessage(error, "Failed to pin agent."));
+			toast.error(getErrorMessage(error, "置顶智能体失败。"));
 		},
 	});
 	const unpinChatBase = unpinChat(queryClient);
@@ -286,26 +286,26 @@ const AgentsPage: FC = () => {
 		...unpinChatBase,
 		onError: (error, chatId, context) => {
 			unpinChatBase.onError(error, chatId, context);
-			toast.error(getErrorMessage(error, "Failed to unpin agent."));
+			toast.error(getErrorMessage(error, "取消置顶智能体失败。"));
 		},
 	});
 	const reorderPinnedChatMutation = useMutation({
 		...reorderPinnedChat(queryClient),
 		onError: (error) => {
-			toast.error(getErrorMessage(error, "Failed to reorder pinned agents."));
+			toast.error(getErrorMessage(error, "重新排序已置顶智能体失败。"));
 		},
 	});
 	const regenerateTitleMutation = useMutation({
 		...regenerateChatTitle(queryClient),
 		onError: (error: unknown) => {
-			toast.error(getErrorMessage(error, "Failed to generate new title."));
+			toast.error(getErrorMessage(error, "生成新标题失败。"));
 		},
 	});
 	const proposeTitleMutation = useMutation(proposeChatTitle(queryClient));
 	const renameTitleMutation = useMutation({
 		...updateChatTitle(queryClient),
 		onError: (error: unknown) => {
-			toast.error(getErrorMessage(error, "Failed to rename chat."));
+			toast.error(getErrorMessage(error, "重命名对话失败。"));
 		},
 	});
 	const regeneratingTitleChatIdsRef = useRef<ReadonlySet<string>>(new Set());
@@ -438,7 +438,7 @@ const AgentsPage: FC = () => {
 			}
 		} catch (error) {
 			toast.error(
-				getErrorMessage(error, "Failed to look up workspace for deletion."),
+				getErrorMessage(error, "查找要删除的工作区失败。"),
 			);
 		}
 	};
@@ -726,22 +726,22 @@ const AgentsPage: FC = () => {
 				onClose={() => setPendingArchiveChatId(null)}
 				onConfirm={handleConfirmArchiveAgent}
 				type="delete"
-				confirmText="Archive"
+				confirmText="存档"
 				confirmLoading={archiveAgentMutation.isPending}
-				title="Archive agent?"
-				description="This agent is currently running. Archiving it will interrupt the current run."
+				title="存档智能体？"
+				description="该智能体当前正在运行。存档将中断当前运行。"
 			/>
 			<DeleteDialog
 				key={pendingWorkspaceName}
 				isOpen={deleteDialogOpen}
 				onConfirm={handleConfirmArchiveAndDelete}
 				onCancel={() => setPendingArchiveAndDelete(null)}
-				entity="workspace"
+				entity="工作区"
 				name={pendingWorkspaceName}
 				confirmLoading={archiveAndDeleteMutation.isPending}
-				title="Archive agent & delete workspace"
-				verb="Archiving and deleting"
-				info="This will archive the agent and permanently delete the associated workspace and all its resources."
+				title="存档智能体并删除工作区"
+				verb="正在存档并删除"
+				info="这将存档该智能体并永久删除关联的工作区及其所有资源。"
 			/>
 		</>
 	);

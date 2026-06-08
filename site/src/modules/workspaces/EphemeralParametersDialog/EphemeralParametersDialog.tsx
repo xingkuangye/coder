@@ -43,13 +43,13 @@ export const EphemeralParametersDialog: FC<EphemeralParametersDialogProps> = ({
 		<Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Ephemeral Parameters Detected</DialogTitle>
+					<DialogTitle>检测到临时参数</DialogTitle>
 					<DialogDescription>
-						This workspace template has{" "}
+						此工作空间模板有{" "}
 						<strong className="text-content-primary">
 							{ephemeralParameters.length}
 						</strong>{" "}
-						ephemeral parameters that will be reset to their default values
+						个临时参数，它们将被重置为默认值
 					</DialogDescription>
 					<DialogDescription>
 						<ul className="list-none pl-6 space-y-2">
@@ -68,19 +68,18 @@ export const EphemeralParametersDialog: FC<EphemeralParametersDialogProps> = ({
 						</ul>
 					</DialogDescription>
 					<DialogDescription>
-						Would you like to go to the workspace parameters page to review and
-						update these parameters before continuing?
+						是否要转到工作空间参数页面，在继续之前查看和更新这些参数？
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
 					<Button onClick={onContinue} variant="outline">
-						Continue
+						继续
 					</Button>
 					<Button
 						data-testid="workspace-parameters"
 						onClick={handleGoToParameters}
 					>
-						Go to workspace parameters
+						转到工作空间参数
 					</Button>
 				</DialogFooter>
 			</DialogContent>

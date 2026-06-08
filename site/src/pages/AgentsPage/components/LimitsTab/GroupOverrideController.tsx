@@ -73,12 +73,12 @@ export const GroupOverrideController: FC<GroupOverrideControllerProps> = ({
 		groupOrganizationNames[g.id] = g.organization_name;
 	}
 	const groupAutocompleteNoOptionsText = isLoadingGroups
-		? "Loading groups..."
+		? "正在加载群组..."
 		: groups.length === 0
-			? "No groups configured"
+			? "未配置群组"
 			: availableGroups.length === 0
-				? "All groups already have overrides"
-				: "No groups available";
+				? "所有群组均已设置覆盖"
+				: "无可用群组";
 
 	// Handlers.
 	const handleShowGroupFormChange = (show: boolean) => {

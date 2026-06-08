@@ -47,7 +47,7 @@ export const TemplateVariablesPageView: FC<TemplateVariablesPageViewProps> = ({
 	return (
 		<>
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>Template variables</PageHeaderTitle>
+				<PageHeaderTitle>模板变量</PageHeaderTitle>
 			</PageHeader>
 			{hasError && (
 				<div className="flex flex-col gap-4 mb-16">
@@ -72,7 +72,7 @@ export const TemplateVariablesPageView: FC<TemplateVariablesPageViewProps> = ({
 			)}
 			{templateVariables && templateVariables.length === 0 && (
 				<Alert severity="info">
-					This template does not use managed variables.
+					此模板不使用托管变量。
 				</Alert>
 			)}
 		</>

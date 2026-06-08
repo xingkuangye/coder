@@ -29,14 +29,14 @@ const WorkspaceSettingsPage: FC = () => {
 			]);
 		},
 		onSuccess: (_, formValues) => {
-			toast.success(`Workspace "${formValues.name}" updated successfully.`);
+			toast.success(`工作区 "${formValues.name}" 更新成功。`);
 			navigate(`/@${username}/${formValues.name}/settings`);
 		},
 	});
 
 	return (
 		<>
-			<title>{pageTitle(workspaceName, "Settings")}</title>
+			<title>{pageTitle(workspaceName, "设置")}</title>
 
 			<WorkspaceSettingsPageView
 				error={mutation.error}

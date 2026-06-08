@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 const CLIPBOARD_TIMEOUT_MS = 1_000;
-export const COPY_FAILED_MESSAGE = "Failed to copy text to clipboard";
+export const COPY_FAILED_MESSAGE = "无法将文本复制到剪贴板";
 const DIALOG_SELECTOR = 'dialog[open], [role="dialog"], [role="alertdialog"]';
 export const HTTP_FALLBACK_DATA_ID = "http-fallback";
 

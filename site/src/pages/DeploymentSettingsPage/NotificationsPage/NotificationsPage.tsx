@@ -76,7 +76,7 @@ const NotificationsPage: FC = () => {
 	};
 	return (
 		<>
-			<title>{pageTitle("Notifications Settings")}</title>
+			<title>{pageTitle("通知设置")}</title>
 
 			<SettingsHeader
 				actions={
@@ -85,9 +85,9 @@ const NotificationsPage: FC = () => {
 					/>
 				}
 			>
-				<SettingsHeaderTitle>Notifications</SettingsHeaderTitle>
+				<SettingsHeaderTitle>通知</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Control delivery methods for notifications on this deployment.
+					控制此部署的通知发送方式。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -96,9 +96,9 @@ const NotificationsPage: FC = () => {
 			) : (
 				<Tabs value={activeTab} onValueChange={tabState.setValue}>
 					<TabsList>
-						<TabsTrigger value="events">Events</TabsTrigger>
-						<TabsTrigger value="settings">Settings</TabsTrigger>
-						<TabsTrigger value="troubleshooting">Troubleshooting</TabsTrigger>
+						<TabsTrigger value="events">事件</TabsTrigger>
+						<TabsTrigger value="settings">设置</TabsTrigger>
+						<TabsTrigger value="troubleshooting">故障排除</TabsTrigger>
 					</TabsList>
 					<TabsContent value="events" className="py-6">
 						<NotificationEvents

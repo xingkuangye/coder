@@ -30,7 +30,7 @@ const LicensesSettingsPage: FC = () => {
 			toast.error(
 				getErrorMessage(
 					entitlementsQuery.error,
-					"Failed to fetch entitlements.",
+					"获取授权信息失败。",
 				),
 				{
 					description: getErrorDetail(entitlementsQuery.error),
@@ -43,11 +43,11 @@ const LicensesSettingsPage: FC = () => {
 		useMutation({
 			mutationFn: API.removeLicense,
 			onSuccess: () => {
-				toast.success("Successfully removed license.");
+				toast.success("已成功移除许可证。");
 				void queryClient.invalidateQueries({ queryKey: ["licenses"] });
 			},
 			onError: (error) => {
-				toast.error("Failed to remove license.", {
+				toast.error("移除许可证失败。", {
 					description: getErrorDetail(error),
 				});
 			},
@@ -76,7 +76,7 @@ const LicensesSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("License Settings")}</title>
+			<title>{pageTitle("许可证设置")}</title>
 
 			<LicensesSettingsPageView
 				showConfetti={confettiOn}
@@ -100,9 +100,9 @@ const LicensesSettingsPage: FC = () => {
 				refreshEntitlements={async () => {
 					try {
 						await refreshEntitlementsMutation.mutateAsync();
-						toast.success("Successfully removed license.");
+						toast.success("已成功移除许可证。");
 					} catch (error) {
-						toast.error(getErrorMessage(error, "Failed to remove license."), {
+						toast.error(getErrorMessage(error, "移除许可证失败。"), {
 							description: getErrorDetail(error),
 						});
 					}

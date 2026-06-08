@@ -37,8 +37,8 @@ export function providerBudgetError(
 	actualBytes: number,
 	budgetBytes: number,
 ): string {
-	const label = provider ? formatProviderLabel(provider) : "this provider";
-	return `Image too large for ${label} (${formatMiB(actualBytes)} MiB). Inline images must be under ${formatMiB(budgetBytes)} MiB on this provider.`;
+	const label = provider ? formatProviderLabel(provider) : "此提供商";
+	return `图像对于${label}来说过大（${formatMiB(actualBytes)} MiB）。此提供商的内联图像必须小于${formatMiB(budgetBytes)} MiB。`;
 }
 
 export function imageNeedsResize(file: File, budget: number): boolean {

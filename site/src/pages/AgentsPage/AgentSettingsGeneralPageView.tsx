@@ -48,8 +48,8 @@ export const AgentSettingsGeneralPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="General"
-				description="Personal preferences for your chat experience."
+				label="通用"
+				description="聊天体验的个人偏好设置。"
 			/>
 			<PersonalInstructionsSettings
 				userPromptData={userPromptData}

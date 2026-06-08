@@ -63,7 +63,7 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 			type="delete"
 			hideCancel={false}
 			open={isOpen}
-			title="Delete Workspace"
+			title="删除工作区"
 			onConfirm={() => onConfirm(orphanWorkspace)}
 			onClose={onCancel}
 			disabled={!deletionConfirmed}
@@ -72,18 +72,17 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 					<div css={styles.workspaceInfo}>
 						<div>
 							<p className="name">{workspace.name}</p>
-							<p className="label">workspace</p>
+							<p className="label">工作区</p>
 						</div>
 						<div className="text-right">
 							<p className="info">{dayjs(workspace.created_at).fromNow()}</p>
-							<p className="label">created</p>
+							<p className="label">创建时间</p>
 						</div>
 					</div>
 
-					<p>Deleting this workspace is irreversible!</p>
+					<p>删除此工作区是不可逆的！</p>
 					<p>
-						Type &ldquo;<strong>{workspace.name}</strong>&rdquo; below to
-						confirm:
+						在下方键入&ldquo;<strong>{workspace.name}</strong>&rdquo;以确认：
 					</p>
 
 					<form onSubmit={onSubmit}>
@@ -99,12 +98,12 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 							onChange={(event) => setUserConfirmationText(event.target.value)}
 							onFocus={() => setIsFocused(true)}
 							onBlur={() => setIsFocused(false)}
-							label="Workspace name"
+							label="工作区名称"
 							color={inputColor}
 							error={displayErrorMessage}
 							helperText={
 								displayErrorMessage &&
-								`${userConfirmationText} does not match the name of this workspace`
+								`${userConfirmationText} 与此工作区名称不匹配`
 							}
 							InputProps={{ color: inputColor }}
 							inputProps={{
@@ -114,15 +113,15 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 						{hasTask && (
 							<div css={styles.warnContainer}>
 								<div className="flex-col">
-									<p className="info">This workspace is related to a task</p>
+									<p className="info">此工作区与一个任务关联</p>
 									<span className="text-xs mt-1 block">
-										Deleting this workspace will also delete{" "}
+										删除此工作区也将删除{" "}
 										<Link
 											href={`/tasks/${workspace.owner_name}/${workspace.task_id}`}
 										>
-											this task
+											此任务
 										</Link>
-										.
+										。
 									</span>
 								</div>
 							</div>
@@ -144,11 +143,9 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 									/>
 								</div>
 								<div className="flex-col">
-									<p className="info">Orphan Resources</p>
+									<p className="info">孤立资源</p>
 									<span className="text-xs mt-1 block">
-										As a Template Admin, you may skip resource cleanup to delete
-										a failed workspace. Resources such as volumes and virtual
-										machines will not be destroyed.&nbsp;
+										作为模板管理员，您可以跳过资源清理来删除失败的工作区。像卷和虚拟机这样的资源将不会被销毁。&nbsp;
 										<Link
 											href={docs(
 												"/user-guides/workspace-management#workspace-resources",
@@ -156,7 +153,7 @@ export const WorkspaceDeleteDialog: FC<WorkspaceDeleteDialogProps> = ({
 											target="_blank"
 											rel="noreferrer"
 										>
-											Learn more...
+											了解更多...
 										</Link>
 									</span>
 								</div>

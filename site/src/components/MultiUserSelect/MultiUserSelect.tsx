@@ -113,7 +113,7 @@ const InnerMultiSelect = <T extends SelectedUser>({
 			<SearchField
 				className="h-12 w-full rounded-lg"
 				value={inputValue}
-				aria-label="Search users"
+				aria-label="搜索用户"
 				onChange={(query) => {
 					setInputValue(query);
 					debounced(query);
@@ -123,7 +123,7 @@ const InnerMultiSelect = <T extends SelectedUser>({
 					setInputValue("");
 					setFilter("");
 				}}
-				placeholder="Search users..."
+				placeholder="搜索用户..."
 			/>
 			<div className="h-96 w-full rounded-lg border border-border border-solid">
 				<div className="h-full overflow-hidden p-px">
@@ -174,7 +174,7 @@ const UsersTable = <T extends SelectedUser>({
 	if (users.length === 0) {
 		return (
 			<div className="p-3">
-				<EmptyState message="No users found" isCompact />
+				<EmptyState message="未找到用户" isCompact />
 			</div>
 		);
 	}
@@ -202,7 +202,7 @@ const UsersTable = <T extends SelectedUser>({
 								onCheckedChange={(checked) => {
 									onChange(user, Boolean(checked));
 								}}
-								aria-label={`Select user ${user.username}`}
+								aria-label={`选择用户 ${user.username}`}
 							/>
 							<AvatarData
 								title={user.username}

@@ -60,15 +60,15 @@ interface ModelFilterProps {
 export const ModelFilter: FC<ModelFilterProps> = ({ menu }) => {
 	return (
 		<SelectFilter
-			label="Select model"
-			placeholder="All models"
-			emptyText="No models found"
+			label="选择模型"
+			placeholder="所有模型"
+			emptyText="未找到模型"
 			options={menu.searchOptions}
 			onSelect={(option) => menu.selectOption(option)}
 			selectedOption={menu.selectedOption ?? undefined}
 			selectFilterSearch={
 				<ComboboxInput
-					placeholder="Search model..."
+					placeholder="搜索模型..."
 					value={menu.query}
 					onValueChange={menu.setQuery}
 				/>

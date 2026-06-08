@@ -9,7 +9,7 @@ export default function TemplateDocsPage() {
 
 	return (
 		<>
-			<title>{pageTitle(template.name, "Documentation")}</title>
+			<title>{pageTitle(template.name, "文档")}</title>
 			<div
 				className="bg-surface-primary border border-solid border-border rounded-lg"
 				id="readme"

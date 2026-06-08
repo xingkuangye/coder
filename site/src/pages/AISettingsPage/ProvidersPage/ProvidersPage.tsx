@@ -13,7 +13,7 @@ const ProvidersPage: React.FC = () => {
 
 	return (
 		<RequirePermission isFeatureVisible={hasPermission}>
-			<title>{pageTitle("AI Providers")}</title>
+			<title>{pageTitle("AI 提供商")}</title>
 
 			<ProvidersPageView
 				isLoading={providersQuery.isLoading}

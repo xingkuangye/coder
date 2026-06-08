@@ -41,7 +41,7 @@ const SecurityPage: FC = () => {
 							userId: me.id,
 							...data,
 						});
-						toast.success("Updated password.");
+						toast.success("密码已更新。");
 						// Refresh the browser session. We need to improve the AuthProvider
 						// to include better API to handle these scenarios
 						location.href = location.origin;
@@ -76,7 +76,7 @@ export const SecurityPageView: FC<SecurityPageViewProps> = ({
 		<div className="flex flex-col gap-12">
 			<div>
 				<SettingsHeader>
-					<SettingsHeaderTitle>Security</SettingsHeaderTitle>
+					<SettingsHeaderTitle>安全</SettingsHeaderTitle>
 				</SettingsHeader>
 				<SecurityForm {...security.form} />
 			</div>

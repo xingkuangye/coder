@@ -32,8 +32,8 @@ export const AgentSettingsCompactionPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Compaction"
-				description="Customize when conversations with models are automatically compacted."
+				label="压缩"
+				description="自定义与模型的对话何时自动压缩。"
 			/>
 			<UserCompactionThresholdSettings
 				modelConfigs={modelConfigsData ?? []}

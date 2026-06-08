@@ -89,8 +89,8 @@ export const getTerminalHref = ({
 export const openAppInNewWindow = (href: string) => {
 	const popup = window.open("about:blank", "_blank", "width=900,height=600");
 	if (!popup) {
-		toast.error("Failed to open app in new window.", {
-			description: "Popup blocked. Allow popups to open this app.",
+		toast.error("无法在新窗口中打开应用。", {
+			description: "弹出窗口被阻止。请允许弹出窗口以打开此应用。",
 		});
 		return;
 	}

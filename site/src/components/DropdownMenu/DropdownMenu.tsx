@@ -1,8 +1,8 @@
 /**
- * Copied from shadc/ui on 12/19/2024
+ * 从 shadc/ui 复制于 2024年12月19日
  * @see {@link https://ui.shadcn.com/docs/components/dropdown-menu}
  *
- * This component was updated to match the styles from the Figma design:
+ * 该组件已更新以匹配 Figma 设计中的样式：
  * @see {@link https://www.figma.com/design/WfqIgsTFXN2BscBSSyXWF8/Coder-kit?node-id=656-2354&t=CiGt5le3yJEwMH4M-0}
  */
 import { CheckIcon, ChevronRightIcon } from "lucide-react";

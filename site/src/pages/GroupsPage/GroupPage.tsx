@@ -83,7 +83,7 @@ const GroupPage: FC = () => {
 
 	const title = (
 		<title>
-			{pageTitle((groupData?.display_name || groupData?.name) ?? "Loading...")}
+			{pageTitle((groupData?.display_name || groupData?.name) ?? "加载中...")}
 		</title>
 	);
 
@@ -113,10 +113,10 @@ const GroupPage: FC = () => {
 			<div className="flex align-baseline justify-between w-full">
 				<SettingsHeader>
 					<SettingsHeaderTitle>
-						{groupData.display_name || groupData.name || "Unknown Group"}
+						{groupData.display_name || groupData.name || "未知组"}
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Manage members for this group.
+						管理此组的成员。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -129,7 +129,7 @@ const GroupPage: FC = () => {
 						}}
 					>
 						<TrashIcon />
-						Delete&hellip;
+						删除&hellip;
 					</Button>
 				)}
 			</div>
@@ -138,10 +138,10 @@ const GroupPage: FC = () => {
 					<LinkTabs active={activeTab}>
 						<LinkTabsList className="w-full justify-start">
 							<TabLink to="." value="members">
-								Group members
+								组成员
 							</TabLink>
 							<TabLink to="settings" value="settings">
-								Group settings
+								组设置
 							</TabLink>
 						</LinkTabsList>
 					</LinkTabs>
@@ -169,7 +169,7 @@ const GroupPage: FC = () => {
 					isOpen={isDeletingGroup}
 					confirmLoading={deleteGroupMutation.isPending}
 					name={groupQuery.data.name}
-					entity="group"
+					entity="组"
 					onConfirm={async () => {
 						try {
 							await deleteGroupMutation.mutateAsync({
@@ -177,14 +177,14 @@ const GroupPage: FC = () => {
 								groupName: groupData.name,
 							});
 							toast.success(
-								`Group "${groupQuery.data.name}" deleted successfully.`,
+								`组“${groupQuery.data.name}”已成功删除。`,
 							);
 							navigate("..");
 						} catch (error) {
 							toast.error(
 								getErrorMessage(
 									error,
-									`Failed to delete group "${groupQuery.data.name}".`,
+									`删除组“${groupQuery.data.name}”失败。`,
 								),
 								{
 									description: getErrorDetail(error),

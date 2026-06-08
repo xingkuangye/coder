@@ -30,12 +30,12 @@ const WorkspaceProxyPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Workspace Proxy - Health")}</title>
+			<title>{pageTitle("工作区代理 - 健康")}</title>
 
 			<Header>
 				<HeaderTitle>
 					<HealthyDot severity={workspace_proxy.severity} />
-					Workspace Proxy
+					工作区代理
 				</HeaderTitle>
 				<DismissWarningButton healthcheck="WorkspaceProxy" />
 			</Header>
@@ -97,7 +97,7 @@ const WorkspaceProxyPage: FC = () => {
 												</Pill>
 											</TooltipTrigger>
 											<TooltipContent side="bottom">
-												Wildcard Hostname
+												通配符主机名
 											</TooltipContent>
 										</Tooltip>
 									)}
@@ -108,30 +108,30 @@ const WorkspaceProxyPage: FC = () => {
 													{region.version}
 												</Pill>
 											</TooltipTrigger>
-											<TooltipContent side="bottom">Version</TooltipContent>
+											<TooltipContent side="bottom">版本</TooltipContent>
 										</Tooltip>
 									)}
 									{region.derp_enabled && (
 										<BooleanPill value={region.derp_enabled}>
-											DERP Enabled
+											DERP 已启用
 										</BooleanPill>
 									)}
 									{region.derp_only && (
 										<BooleanPill value={region.derp_only}>
-											DERP Only
+											仅 DERP
 										</BooleanPill>
 									)}
 									{region.deleted && (
-										<BooleanPill value={region.deleted}>Deleted</BooleanPill>
+										<BooleanPill value={region.deleted}>已删除</BooleanPill>
 									)}
 								</div>
 							</header>
 
 							<div className="border-0 border-t border-solid border-border flex items-center justify-between py-3 px-6 text-xs text-content-secondary">
 								{region.status?.status === "unregistered" ? (
-									<span>Has not connected yet</span>
+									<span>尚未连接</span>
 								) : warnings.length === 0 && errors.length === 0 ? (
-									<span>OK</span>
+									<span>正常</span>
 								) : (
 									<div className="flex flex-col">
 										{[...errors, ...warnings].map((msg) => (

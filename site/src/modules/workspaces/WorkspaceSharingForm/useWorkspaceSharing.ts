@@ -15,9 +15,8 @@ import type {
 } from "#/api/typesGenerated";
 
 /**
- * Encapsulates all data fetching and mutations for workspace sharing.
- * This hook manages the workspace ACL query and provides methods to
- * add, update, and remove users and groups from the workspace.
+ * 封装了工作区共享的所有数据获取和修改操作。
+ * 此钩子管理工作区 ACL 查询，并提供添加、更新和移除工作区用户和群组的方法。
  */
 export function useWorkspaceSharing(workspace: Workspace) {
 	const queryClient = useQueryClient();
@@ -44,8 +43,8 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			role,
 		});
 		toast.promise(mutation, {
-			loading: `Adding ${user.username} to workspace...`,
-			success: `"${user.username}" added to workspace successfully.`,
+			loading: `正在将 ${user.username} 添加到工作区...`,
+			success: `已将“${user.username}”添加到工作区。`,
 		});
 		reset();
 	};
@@ -56,7 +55,7 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			userId: user.id,
 			role,
 		});
-		toast.success(`"${user.username}" role updated successfully.`);
+		toast.success(`“${user.username}”的角色已更新。`);
 	};
 
 	const removeUser = async (user: WorkspaceUser) => {
@@ -66,7 +65,7 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			role: "",
 		});
 		setHasRemovedMember(true);
-		toast.success(`"${user.username}" removed successfully.`);
+		toast.success(`“${user.username}”已移除。`);
 	};
 
 	const addGroup = async (
@@ -80,7 +79,7 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			role,
 		});
 		setHasRemovedMember(false);
-		toast.success(`Group "${group.name}" added to workspace successfully.`);
+		toast.success(`已将群组“${group.name}”添加到工作区。`);
 		reset();
 	};
 
@@ -90,7 +89,7 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			groupId: group.id,
 			role,
 		});
-		toast.success(`Group role "${role}" updated successfully.`);
+		toast.success(`群组角色“${role}”已更新。`);
 	};
 
 	const removeGroup = async (group: Group) => {
@@ -100,7 +99,7 @@ export function useWorkspaceSharing(workspace: Workspace) {
 			role: "",
 		});
 		setHasRemovedMember(true);
-		toast.success(`Group "${group.name}" removed successfully.`);
+		toast.success(`群组“${group.name}”已移除。`);
 	};
 
 	const mutationError =

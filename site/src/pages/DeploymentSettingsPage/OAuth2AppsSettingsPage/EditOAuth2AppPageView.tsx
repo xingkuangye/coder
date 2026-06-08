@@ -82,16 +82,16 @@ export const EditOAuth2AppPageView: FC<EditOAuth2AppProps> = ({
 		<>
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<SettingsHeader>
-					<SettingsHeaderTitle>Edit OAuth2 application</SettingsHeaderTitle>
+					<SettingsHeaderTitle>编辑 OAuth2 应用</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Configure an application to use Coder as an OAuth2 provider.
+						配置一个应用，将 Coder 用作 OAuth2 提供者。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
 				<Button variant="outline" asChild>
 					<RouterLink to="/deployment/oauth2-provider/apps">
 						<ChevronLeftIcon />
-						All OAuth2 Applications
+						所有 OAuth2 应用
 					</RouterLink>
 				</Button>
 			</div>
@@ -102,13 +102,12 @@ export const EditOAuth2AppPageView: FC<EditOAuth2AppProps> = ({
 					open={Boolean(fullNewSecret)}
 					onConfirm={ackFullNewSecret}
 					onClose={ackFullNewSecret}
-					title="OAuth2 client secret"
-					confirmText="OK"
+					title="OAuth2 客户端密钥"
+					confirmText="确定"
 					description={
 						<>
 							<p>
-								Your new client secret is displayed below. Make sure to copy it
-								now; you will not be able to see it again.
+								您的新客户端密钥如下所示。请立即复制；之后将无法再次查看。
 							</p>
 							<CodeExample
 								code={fullNewSecret.client_secret_full}
@@ -122,8 +121,7 @@ export const EditOAuth2AppPageView: FC<EditOAuth2AppProps> = ({
 			<div className="flex flex-col gap-4">
 				{searchParams.has("created") && (
 					<Alert severity="info" dismissible>
-						Your OAuth2 application has been created. Generate a client secret
-						below to start using your application.
+						您的 OAuth2 应用已创建。在下方生成一个客户端密钥，即可开始使用您的应用。
 					</Alert>
 				)}
 
@@ -137,27 +135,27 @@ export const EditOAuth2AppPageView: FC<EditOAuth2AppProps> = ({
 							isOpen={showDelete}
 							confirmLoading={mutatingResource.deleteApp}
 							name={app.name}
-							entity="OAuth2 application"
-							info="Deleting this OAuth2 application will immediately invalidate all active sessions and API keys associated with it. Users currently authenticated through this application will be logged out and need to re-authenticate."
+							entity="OAuth2 应用"
+							info="删除此 OAuth2 应用将立即使与之相关的所有活动会话和 API 密钥失效。当前通过此应用认证的用户将被登出，并需要重新认证。"
 							onConfirm={() => deleteApp(app.name)}
 							onCancel={() => setShowDelete(false)}
 						/>
 
 						<dl className="grid [grid-template-columns:max-content_auto] [&>dd]:ml-2.5 [&>dt]:font-bold">
-							<dt>Client ID</dt>
+							<dt>客户端 ID</dt>
 							<dd>
 								<CopyableValue value={app.id} side="right">
 									{app.id} <CopyIcon className="size-icon-xs" />
 								</CopyableValue>
 							</dd>
-							<dt>Authorization URL</dt>
+							<dt>授权 URL</dt>
 							<dd>
 								<CopyableValue value={app.endpoints.authorization} side="right">
 									{app.endpoints.authorization}{" "}
 									<CopyIcon className="size-icon-xs" />
 								</CopyableValue>
 							</dd>
-							<dt>Token URL</dt>
+							<dt>令牌 URL</dt>
 							<dd>
 								<CopyableValue value={app.endpoints.token} side="right">
 									{app.endpoints.token} <CopyIcon className="size-icon-xs" />
@@ -178,7 +176,7 @@ export const EditOAuth2AppPageView: FC<EditOAuth2AppProps> = ({
 									onClick={() => setShowDelete(true)}
 									disabled={!canDeleteApp}
 								>
-									Delete&hellip;
+									删除&hellip;
 								</Button>
 							}
 							disabled={!canEditApp}
@@ -222,22 +220,22 @@ const OAuth2AppSecretsTable: FC<OAuth2AppSecretsTableProps> = ({
 	return (
 		<>
 			<div className="flex flex-row gap-4 items-baseline justify-between">
-				<h2>Client secrets</h2>
+				<h2>客户端密钥</h2>
 				<Button
 					disabled={mutatingResource.createSecret}
 					type="submit"
 					onClick={generateAppSecret}
 				>
 					<Spinner loading={mutatingResource.createSecret} />
-					Generate secret
+					生成密钥
 				</Button>
 			</div>
 
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-[80%]">Secret</TableHead>
-						<TableHead className="w-[20%]">Last Used</TableHead>
+						<TableHead className="w-[80%]">密钥</TableHead>
+						<TableHead className="w-[20%]">上次使用</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>
@@ -247,7 +245,7 @@ const OAuth2AppSecretsTable: FC<OAuth2AppSecretsTableProps> = ({
 						<TableRow>
 							<TableCell colSpan={999}>
 								<div className="text-center">
-									No client secrets have been generated.
+									尚未生成任何客户端密钥。
 								</div>
 							</TableCell>
 						</TableRow>
@@ -284,7 +282,7 @@ const OAuth2SecretRow: FC<OAuth2SecretRowProps> = ({
 		<TableRow key={secret.id} data-testid={`secret-${secret.id}`}>
 			<TableCell>*****{secret.client_secret_truncated}</TableCell>
 			<TableCell data-chromatic="ignore">
-				{secret.last_used_at ? createDayString(secret.last_used_at) : "never"}
+				{secret.last_used_at ? createDayString(secret.last_used_at) : "从未"}
 			</TableCell>
 			<TableCell>
 				<ConfirmDialog
@@ -293,19 +291,17 @@ const OAuth2SecretRow: FC<OAuth2SecretRowProps> = ({
 					open={showDelete}
 					onConfirm={() => deleteAppSecret(secret.id)}
 					onClose={() => setShowDelete(false)}
-					title="Delete OAuth2 client secret"
+					title="删除 OAuth2 客户端密钥"
 					confirmLoading={mutatingResource.deleteSecret}
-					confirmText="Delete"
+					confirmText="删除"
 					description={
 						<>
-							Deleting <strong>*****{secret.client_secret_truncated}</strong> is
-							irreversible and will revoke all the tokens generated by it. Are
-							you sure you want to proceed?
+							删除 <strong>*****{secret.client_secret_truncated}</strong> 是不可逆的，并将撤销由其生成的所有令牌。您确定要继续吗？
 						</>
 					}
 				/>
 				<Button variant="destructive" onClick={() => setShowDelete(true)}>
-					Delete&hellip;
+					删除&hellip;
 				</Button>
 			</TableCell>
 		</TableRow>

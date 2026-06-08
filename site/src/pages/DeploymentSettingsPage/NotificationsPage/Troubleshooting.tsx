@@ -15,9 +15,9 @@ export const Troubleshooting: FC<TroubleshootingProps> = ({
 }) => {
 	const { mutate: sendTestNotificationApi, isPending } = useMutation({
 		mutationFn: API.postTestNotification,
-		onSuccess: () => toast.success("Test notification sent."),
+		onSuccess: () => toast.success("测试通知已发送。"),
 		onError: (error) =>
-			toast.error("Failed to send test notification.", {
+			toast.error("测试通知发送失败。", {
 				description: getErrorDetail(error),
 			}),
 	});
@@ -25,7 +25,7 @@ export const Troubleshooting: FC<TroubleshootingProps> = ({
 	return (
 		<>
 			<div className="text-sm text-content-secondary leading-relaxed mb-4">
-				Send a test notification to troubleshoot your notification settings.
+				发送测试通知以排查通知设置问题。
 			</div>
 			<div>
 				<span>
@@ -38,7 +38,7 @@ export const Troubleshooting: FC<TroubleshootingProps> = ({
 						}}
 					>
 						<Spinner loading={isPending} />
-						Send notification
+						发送通知
 					</Button>
 				</span>
 			</div>

@@ -36,7 +36,7 @@ export const formatAuditDiffValue = (value: unknown): string => {
 
 	if (isTimeObject(value)) {
 		if (!value.Valid) {
-			return "null";
+			return "空";
 		}
 
 		return new Date(value.Time).toLocaleString();
@@ -48,7 +48,7 @@ export const formatAuditDiffValue = (value: unknown): string => {
 	}
 
 	if (value === null || value === undefined) {
-		return "null";
+		return "空";
 	}
 
 	if (isPlainObject(value)) {

@@ -49,7 +49,7 @@ export const ProvisionerTag: FC<ProvisionerTagProps> = ({
 				className="size-6"
 			>
 				<XIcon className="size-icon-xs" />
-				<span className="sr-only">Delete {tagName}</span>
+				<span className="sr-only">删除 {tagName}</span>
 			</Button>
 		</>
 	) : (

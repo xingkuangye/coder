@@ -36,15 +36,15 @@ export const ObservabilitySettingsPageView: FC<
 				<SettingsHeader
 					actions={<SettingsHeaderDocsLink href={docs("/admin/monitoring")} />}
 				>
-					<SettingsHeaderTitle>Observability</SettingsHeaderTitle>
+					<SettingsHeaderTitle>可观测性</SettingsHeaderTitle>
 				</SettingsHeader>
 
 				<SettingsHeader>
 					<SettingsHeaderTitle hierarchy="secondary" level="h2">
-						Audit Logging
+						审计日志
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Allow auditors to monitor user operations in your deployment.
+						允许审计员监控您部署中的用户操作。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -66,8 +66,8 @@ export const ObservabilitySettingsPageView: FC<
 							className="p-0"
 						>
 							<PopoverPaywall
-								message="Observability"
-								description="With a Premium license, you can monitor your application with logs and metrics."
+								message="可观测性"
+								description="拥有 Premium 许可证，您可以使用日志和指标监控您的应用程序。"
 								documentationLink={docs("/admin/monitoring")}
 							/>
 						</TooltipContent>
@@ -78,10 +78,10 @@ export const ObservabilitySettingsPageView: FC<
 			<div>
 				<SettingsHeader>
 					<SettingsHeaderTitle hierarchy="secondary" level="h2">
-						Monitoring
+						监控
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Monitoring your Coder application with logs and metrics.
+						使用日志和指标监控您的 Coder 应用程序。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 

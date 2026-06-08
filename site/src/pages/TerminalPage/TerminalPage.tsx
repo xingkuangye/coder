@@ -126,9 +126,9 @@ const TerminalPage: FC = () => {
 	);
 	const terminalErrorMessage =
 		workspace.error instanceof Error
-			? `Unable to fetch workspace: ${workspace.error.message}`
+			? `无法获取工作区：${workspace.error.message}`
 			: !workspace.isLoading && !workspaceAgent
-				? "Unable to fetch workspace agent: no agent found with ID, is the workspace started?"
+				? "无法获取工作区代理：未找到具有ID的代理，工作区是否已启动？"
 				: undefined;
 
 	// Updates the reconnection token into the URL if necessary.
@@ -152,7 +152,7 @@ const TerminalPage: FC = () => {
 			{workspace.data && (
 				<title>
 					{pageTitle(
-						"Terminal",
+						"终端",
 						`${workspace.data.owner_name}/${workspace.data.name}`,
 					)}
 				</title>
@@ -193,7 +193,7 @@ const TerminalPage: FC = () => {
 
 			{latency && isDebugging && (
 				<span className="absolute bottom-6 right-6 text-content-disabled text-sm">
-					Latency: {latency.latencyMS.toFixed(0)}ms{" "}
+					延迟：{latency.latencyMS.toFixed(0)}ms{" "}
 				</span>
 			)}
 

@@ -53,7 +53,7 @@ export const HelpPopoverIconTrigger: React.FC<HelpPopoverIconTriggerProps> = ({
 			<button
 				{...buttonProps}
 				type="button"
-				aria-label="More info"
+				aria-label="更多信息"
 				className={cn(
 					"flex items-center justify-center px-0 py-1",
 					"border-0 border-none bg-transparent cursor-pointer text-inherit",

@@ -251,12 +251,12 @@ const TaskPage = () => {
 							<Button size="sm" variant="outline" asChild>
 								<RouterLink to="/tasks">
 									<ArrowLeftIcon />
-									Back to tasks
+									返回任务列表
 								</RouterLink>
 							</Button>
 							<Button size="sm" onClick={() => refetch()}>
 								<RotateCcwIcon />
-								Try again
+								重试
 							</Button>
 						</div>
 					</div>
@@ -289,8 +289,8 @@ const TaskPage = () => {
 	} else if (workspace.latest_build.status === "stopping") {
 		content = (
 			<TaskTransitioning
-				title="Pausing task"
-				subtitle="Your task is being paused..."
+				title="正在暂停任务"
+				subtitle="您的任务正在暂停..."
 			/>
 		);
 	} else if (
@@ -311,15 +311,15 @@ const TaskPage = () => {
 	} else if (workspace.latest_build.status === "canceling") {
 		content = (
 			<TaskTransitioning
-				title="Canceling task"
-				subtitle="Your task is being canceled..."
+				title="正在取消任务"
+				subtitle="您的任务正在取消..."
 			/>
 		);
 	} else if (workspace.latest_build.status === "deleting") {
 		content = (
 			<TaskTransitioning
-				title="Deleting task"
-				subtitle="Your task workspace is being deleted..."
+				title="正在删除任务"
+				subtitle="您的工作区正在删除..."
 			/>
 		);
 	} else if (workspace.latest_build.status === "deleted") {
@@ -339,11 +339,10 @@ const TaskPage = () => {
 						<div className="h-full flex items-center justify-center p-6 text-center">
 							<div className="flex flex-col items-center">
 								<h3 className="m-0 font-medium text-content-primary text-base">
-									Chat app not found
+									未找到聊天应用
 								</h3>
 								<span className="text-content-secondary text-sm">
-									Please, make sure your template has a chat sidebar app
-									configured.
+									请确保您的模板配置了聊天侧边栏应用。
 								</span>
 							</div>
 						</div>
@@ -449,12 +448,12 @@ const TaskTransitioning: FC<TaskTransitioningProps> = ({ title, subtitle }) => {
 const TaskDeleted: FC = () => {
 	return (
 		<TaskStateMessage
-			title="Task was deleted"
-			description="This task cannot be resumed. Create a new task to continue."
+			title="任务已删除"
+			description="此任务无法恢复。请新建一个任务以继续。"
 			actions={
 				<Button size="sm" variant="outline" asChild>
 					<RouterLink to="/tasks" data-testid="task-create-new">
-						Create a new task
+						新建任务
 					</RouterLink>
 				</Button>
 			}
@@ -471,12 +470,12 @@ type TaskLogPreviewProps = {
 
 function logPreviewLabel(count: number): string {
 	if (count === 0) {
-		return "AI chat logs";
+		return "AI 聊天日志";
 	}
 	if (count === 1) {
-		return "Last message of AI chat logs";
+		return "最后一条 AI 聊天日志消息";
 	}
-	return `Last ${count} messages of AI chat logs`;
+	return `最后 ${count} 条 AI 聊天日志消息`;
 }
 
 const TaskLogPreview: FC<TaskLogPreviewProps> = ({
@@ -500,7 +499,7 @@ const TaskLogPreview: FC<TaskLogPreviewProps> = ({
 						{snapshotAt && (
 							<InfoTooltip
 								type="info"
-								message={`This log snapshot was taken ${relativeTime(snapshotAt)}.`}
+								message={`此日志快照拍摄于 ${relativeTime(snapshotAt)}。`}
 							/>
 						)}
 					</span>
@@ -529,7 +528,7 @@ const TaskLogPreview: FC<TaskLogPreviewProps> = ({
 										>
 											{isNewGroup && (
 												<div className="text-content-primary font-semibold mb-1">
-													{entry.type === "input" ? "[user]" : "[agent]"}
+													{entry.type === "input" ? "[用户]" : "[代理]"}
 												</div>
 											)}
 											{entry.content || "\u00A0"}
@@ -540,12 +539,12 @@ const TaskLogPreview: FC<TaskLogPreviewProps> = ({
 						</ScrollArea>
 					) : (
 						<p className="px-4 py-3 text-sm text-content-secondary m-0">
-							No log messages in this snapshot.
+							此快照中没有日志消息。
 						</p>
 					)
 				) : (
 					<p className="px-4 py-3 text-sm text-content-secondary m-0">
-						No log snapshot available. Resume your task to view logs.
+						没有可用的日志快照。请恢复任务以查看日志。
 					</p>
 				)}
 			</div>
@@ -569,12 +568,12 @@ const TaskBuildFailed: FC<TaskBuildFailedProps> = ({ task, workspace }) => {
 	return (
 		<>
 			<TaskStateMessage
-				title="Task build failed"
-				description="Please check the logs for more details."
+				title="任务构建失败"
+				description="请检查日志以获取更多详细信息。"
 				icon={<TriangleAlertIcon className="size-4 text-content-destructive" />}
 				actions={
 					<Button size="sm" variant="outline" asChild>
-						<RouterLink to={buildLogsLink}>View full logs</RouterLink>
+						<RouterLink to={buildLogsLink}>查看完整日志</RouterLink>
 					</Button>
 				}
 			/>
@@ -584,7 +583,7 @@ const TaskBuildFailed: FC<TaskBuildFailedProps> = ({ task, workspace }) => {
 					snapshotAt={logsData.snapshot_at}
 					headerAction={
 						<Button size="sm" variant="subtle" asChild>
-							<RouterLink to={buildLogsLink}>View full logs</RouterLink>
+							<RouterLink to={buildLogsLink}>查看完整日志</RouterLink>
 						</Button>
 					}
 				/>
@@ -648,20 +647,20 @@ const TaskPaused: FC<TaskPausedProps> = ({
 		followUpStage === "waitingForActive" ||
 		followUpStage === "sending";
 	const followUpStatusLabels: Record<string, string> = {
-		resuming: "Resuming task...",
-		waitingForActive: "Waiting for the task to become active...",
-		sending: "Sending follow-up message...",
+		resuming: "正在恢复任务...",
+		waitingForActive: "等待任务变为活动状态...",
+		sending: "正在发送跟进消息...",
 	};
 	const followUpStatusLabel = followUpStatusLabels[followUpStage];
 
 	return (
 		<>
 			<TaskStateMessage
-				title="Task paused"
+				title="任务已暂停"
 				description={
 					isTimeout
-						? "Your task timed out. Resume it to continue."
-						: "Resume the task to continue."
+						? "您的任务已超时。请恢复以继续。"
+						: "恢复任务以继续。"
 				}
 				icon={<PauseIcon className="size-4" />}
 				detail={
@@ -671,7 +670,7 @@ const TaskPaused: FC<TaskPausedProps> = ({
 							className="flex items-center gap-1.5 mt-1 text-content-secondary text-sm"
 						>
 							<WorkspaceOutdatedTooltip workspace={workspace}>
-								A newer template version is available
+								有更新的模板版本可用
 							</WorkspaceOutdatedTooltip>
 						</div>
 					)
@@ -685,20 +684,20 @@ const TaskPaused: FC<TaskPausedProps> = ({
 								onClick={() => resumeMutation.mutate()}
 							>
 								<Spinner loading={isWaitingForStart} />
-								Resume
+								恢复
 							</Button>
 							<Button size="sm" variant="outline" onClick={onEditPrompt}>
-								Edit prompt
+								编辑提示
 							</Button>
 							<Button size="sm" variant="outline" onClick={onAddFollowUp}>
-								Follow-up
+								跟进
 							</Button>
 						</div>
 
 						{hasPendingFollowUp && (
 							<div className="w-full max-w-xl rounded-md border border-border p-3 text-left text-sm">
 								<p className="m-0 text-content-primary">
-									<strong>Pending follow-up:</strong> {followUpDraft}
+									<strong>待处理跟进：</strong> {followUpDraft}
 								</p>
 								{followUpStatusLabel && (
 									<p className="m-0 mt-2 text-content-secondary flex items-center gap-2">
@@ -712,14 +711,13 @@ const TaskPaused: FC<TaskPausedProps> = ({
 									</p>
 								)}
 								<p className="m-0 mt-2 text-content-secondary">
-									Refreshing or leaving this page clears the pending follow-up
-									message.
+									刷新或离开此页面将清除待处理的跟进消息。
 								</p>
 							</div>
 						)}
 						{!hasPendingFollowUp && isFollowUpSending && (
 							<p className="m-0 text-content-secondary text-sm">
-								<Spinner loading /> Processing follow-up message...
+								<Spinner loading /> 正在处理跟进消息...
 							</p>
 						)}
 					</div>
@@ -737,7 +735,7 @@ const TaskPaused: FC<TaskPausedProps> = ({
 							onClick={() => resumeMutation.mutate()}
 						>
 							<Spinner loading={isWaitingForStart} />
-							Resume to view full logs
+							恢复以查看完整日志
 						</Button>
 					}
 				/>
@@ -785,10 +783,10 @@ const BuildingWorkspace: FC<BuildingWorkspaceProps> = ({
 				<div className="flex flex-col gap-6 items-center w-full">
 					<header className="flex flex-col items-center text-center">
 						<h3 className="m-0 font-medium text-content-primary text-xl">
-							Starting your workspace
+							正在启动您的工作区
 						</h3>
 						<p className="text-content-secondary m-0">
-							Your task will be running in a few moments
+							您的任务将在片刻后运行
 						</p>
 					</header>
 
@@ -809,10 +807,10 @@ const BuildingWorkspace: FC<BuildingWorkspaceProps> = ({
 
 						<div className="flex flex-col items-center gap-3 mt-4">
 							<p className="text-content-secondary text-sm m-0 max-w-md text-center">
-								You can edit the prompt while we prepare the environment
+								在环境准备期间，您可以编辑提示
 							</p>
 							<Button size="sm" onClick={onEditPrompt}>
-								Edit Prompt
+								编辑提示
 							</Button>
 						</div>
 					</div>
@@ -854,10 +852,10 @@ const TaskStartingAgent: FC<TaskStartingAgentProps> = ({ task, agent }) => {
 					<header className="flex flex-col items-center text-center gap-3">
 						<div>
 							<h3 className="m-0 font-medium text-content-primary text-xl">
-								Running startup scripts
+								正在运行启动脚本
 							</h3>
 							<p className="text-content-secondary m-0">
-								Your task will be running in a few moments
+								您的任务将在片刻后运行
 							</p>
 						</div>
 						<Button
@@ -869,7 +867,7 @@ const TaskStartingAgent: FC<TaskStartingAgentProps> = ({ task, agent }) => {
 							<Spinner loading={pauseMutation.isPending}>
 								<PauseIcon className="size-4" />
 							</Spinner>
-							Pause
+							暂停
 						</Button>
 					</header>
 

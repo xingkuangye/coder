@@ -19,12 +19,12 @@ const ProvisionerDaemonsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Provisioner Daemons - Health")}</title>
+			<title>{pageTitle("预配器守护进程 - 健康")}</title>
 
 			<Header>
 				<HeaderTitle>
 					<HealthyDot severity={daemons.severity} />
-					Provisioner Daemons
+					预配器守护进程
 				</HeaderTitle>
 				<DismissWarningButton healthcheck="ProvisionerDaemons" />
 			</Header>

@@ -33,7 +33,7 @@ export const WorkspaceSettingsLayout: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(workspaceName, "Settings")}</title>
+			<title>{pageTitle(workspaceName, "设置")}</title>
 
 			<Margins>
 				<div className="flex flex-row gap-20 py-12">

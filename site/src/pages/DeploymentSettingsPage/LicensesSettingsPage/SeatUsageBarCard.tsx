@@ -21,7 +21,7 @@ export const SeatUsageBarCard: FC<SeatUsageBarCardProps> = ({
 		return (
 			<section className="border border-solid rounded">
 				<div className="p-4">
-					<ErrorAlert error="Invalid license usage limits" />
+					<ErrorAlert error="无效的许可证使用限制" />
 				</div>
 			</section>
 		);
@@ -40,7 +40,7 @@ export const SeatUsageBarCard: FC<SeatUsageBarCardProps> = ({
 	const activeLabel =
 		actual === undefined ? "—" : activeNum.toLocaleString("en-US");
 	const limitLabel = isUnlimited
-		? "Unlimited"
+		? "无限制"
 		: meteredLimit.toLocaleString("en-US");
 
 	return (
@@ -64,7 +64,7 @@ export const SeatUsageBarCard: FC<SeatUsageBarCardProps> = ({
 
 					<div className="flex items-start justify-between text-sm font-medium whitespace-nowrap">
 						<p className="m-0 text-content-primary">
-							<span className="text-content-secondary">Active: </span>
+							<span className="text-content-secondary">已使用：</span>
 							<span
 								className={cn({
 									"text-content-destructive": isExceeded,
@@ -74,7 +74,7 @@ export const SeatUsageBarCard: FC<SeatUsageBarCardProps> = ({
 							</span>
 						</p>
 						<p className="m-0 text-content-secondary">
-							Limit: <span className="text-content-primary">{limitLabel}</span>
+							上限： <span className="text-content-primary">{limitLabel}</span>
 						</p>
 					</div>
 				</div>

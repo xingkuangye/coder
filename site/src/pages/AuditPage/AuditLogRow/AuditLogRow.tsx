@@ -104,7 +104,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 										<AuditLogDescription auditLog={auditLog} />
 										{auditLog.is_deleted && (
 											<span className="text-xs text-content-secondary">
-												(deleted)
+												(已删除)
 											</span>
 										)}
 										<span className="text-content-secondary text-xs">
@@ -127,7 +127,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 														{auditLog.ip && (
 															<div>
 																<h4 className="m-0 text-content-primary leading-[150%] font-semibold">
-																	IP:
+																	IP 地址：
 																</h4>
 																<div>{auditLog.ip}</div>
 															</div>
@@ -135,7 +135,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 														{userAgent?.os.name && (
 															<div>
 																<h4 className="m-0 text-content-primary leading-[150%] font-semibold">
-																	OS:
+																	操作系统：
 																</h4>
 																<div>{userAgent.os.name}</div>
 															</div>
@@ -143,7 +143,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 														{userAgent?.browser.name && (
 															<div>
 																<h4 className="m-0 text-content-primary leading-[150%] font-semibold">
-																	Browser:
+																	浏览器：
 																</h4>
 																<div>
 																	{userAgent.browser.name}{" "}
@@ -154,7 +154,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 														{auditLog.organization && (
 															<div>
 																<h4 className="m-0 text-content-primary leading-[150%] font-semibold">
-																	Organization:
+																	组织：
 																</h4>
 																<Link
 																	asChild
@@ -174,7 +174,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 															auditLog.action === "start" && (
 																<div>
 																	<h4 className="m-0 text-content-primary leading-normal font-semibold">
-																		Reason:
+																		原因：
 																	</h4>
 																	<div>
 																		{
@@ -193,19 +193,19 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 											<div className="flex flex-row items-baseline gap-2">
 												{auditLog.ip && (
 													<span className="text-xs text-content-secondary block">
-														<span>IP: </span>
+														<span>IP 地址： </span>
 														<strong>{auditLog.ip}</strong>
 													</span>
 												)}
 												{userAgent?.os.name && (
 													<span className="text-xs text-content-secondary block">
-														<span>OS: </span>
+														<span>操作系统： </span>
 														<strong>{userAgent.os.name}</strong>
 													</span>
 												)}
 												{userAgent?.browser.name && (
 													<span className="text-xs text-content-secondary block">
-														<span>Browser: </span>
+														<span>浏览器： </span>
 														<strong>
 															{userAgent.browser.name}{" "}
 															{userAgent.browser.version}
@@ -215,7 +215,7 @@ export const AuditLogRow: FC<AuditLogRowProps> = ({
 												{auditLog.additional_fields?.build_reason &&
 													auditLog.action === "start" && (
 														<span className="text-xs text-content-secondary block">
-															<span>Reason: </span>
+															<span>原因： </span>
 															<strong>
 																{
 																	buildReasonLabels[

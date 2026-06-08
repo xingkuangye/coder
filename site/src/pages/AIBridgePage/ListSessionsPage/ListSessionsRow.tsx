@@ -40,7 +40,7 @@ export const ListSessionsRow: FC<ListSessionsRowProps> = ({
 							<p className="truncate">{session.last_prompt}</p>
 						</TooltipTrigger>
 						<TooltipContent className="max-w-64" side="top" align="start">
-							<div className="font-bold">Last prompt</div>
+							<div className="font-bold">上次提示</div>
 							<div>{session.last_prompt}</div>
 						</TooltipContent>
 					</Tooltip>
@@ -65,7 +65,7 @@ export const ListSessionsRow: FC<ListSessionsRowProps> = ({
 				<div className="min-w-0 overflow-hidden">
 					{session.providers.length > 1 ? (
 						<Badge className="max-w-full">
-							{session.providers.length} providers
+							{session.providers.length} 个提供者
 						</Badge>
 					) : session.providers.length === 1 ? (
 						<Badge className="gap-1.5 max-w-full">
@@ -92,7 +92,7 @@ export const ListSessionsRow: FC<ListSessionsRowProps> = ({
 							/>
 						</div>
 						<span className="truncate min-w-0">
-							{session.client ?? "Unknown"}
+							{session.client ?? "未知"}
 						</span>
 					</Badge>
 				</div>

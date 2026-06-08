@@ -87,7 +87,7 @@ const ScrollToBottomButton: FC<{
 						: "translate-y-2 opacity-0",
 				)}
 				onClick={handleScrollToBottom}
-				aria-label="Scroll to bottom"
+				aria-label="滚动到底部"
 				aria-hidden={!showScrollToBottomButton || undefined}
 				tabIndex={showScrollToBottomButton ? undefined : -1}
 			>

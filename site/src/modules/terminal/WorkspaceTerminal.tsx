@@ -314,7 +314,7 @@ export const WorkspaceTerminal = ({
 		}
 
 		if (!agentId) {
-			const error = new Error("Terminal requires agentId to connect");
+			const error = new Error("终端需要 agentId 才能连接");
 			reportTerminalError(error);
 			terminal.writeln(error.message);
 			handleStatusChange("disconnected");

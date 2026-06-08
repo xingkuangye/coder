@@ -33,10 +33,10 @@ interface DebugRetentionSettingsProps {
 // Keep in sync with chatDebugRetentionDaysMaximum in coderd/exp_chats.go.
 const validationSchema = Yup.object({
 	debug_retention_days: Yup.number()
-		.integer("Debug retention days must be a whole number.")
-		.min(1, "Debug retention period must be at least 1 day.")
-		.max(3650, "Must not exceed 3650 days (~10 years).")
-		.required("Debug retention days is required."),
+		.integer("调试数据保留天数必须为整数。")
+		.min(1, "调试数据保留期至少需要 1 天。")
+		.max(3650, "不得超过 3650 天（约 10 年）。")
+		.required("调试数据保留天数为必填项。"),
 });
 
 export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
@@ -114,19 +114,18 @@ export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
 			<div className="flex items-center justify-between gap-4">
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Chat debug data retention
+						聊天调试数据保留
 					</h3>
 				</div>
 				<Switch
 					checked={isDebugRetentionEnabled}
 					onCheckedChange={handleToggleDebugRetention}
-					aria-label="Enable chat debug data retention"
+					aria-label="启用聊天调试数据保留"
 					disabled={isSavingDebugRetentionDays || isDebugRetentionDaysLoading}
 				/>
 			</div>
 			<p className="!mt-0.5 m-0 flex-1 text-xs text-content-secondary">
-				Chat debug runs and debug steps older than this are automatically
-				deleted. This does not control chat message retention.
+				超过此期限的聊天调试运行和调试步骤将自动删除。这不控制聊天消息的保留。
 			</p>
 			{isDebugRetentionEnabled && (
 				<>
@@ -137,7 +136,7 @@ export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
 							min={1}
 							max={3650}
 							step={1}
-							aria-label="Chat debug data retention period in days"
+							aria-label="聊天调试数据保留期限（天）"
 							value={form.values.debug_retention_days}
 							onChange={form.handleChange}
 							onBlur={form.handleBlur}
@@ -148,7 +147,7 @@ export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
 							className="flex-1"
 						/>
 						<span className="flex h-10 w-[120px] items-center px-3 text-sm text-content-secondary">
-							Days
+							天
 						</span>
 					</div>
 					{form.errors.debug_retention_days &&
@@ -174,7 +173,7 @@ export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
 									{isSavingDebugRetentionDays && (
 										<Spinner loading className="h-4 w-4" />
 									)}
-									Save
+									保存
 								</Button>
 							))}
 					</div>
@@ -182,12 +181,12 @@ export const DebugRetentionSettings: FC<DebugRetentionSettingsProps> = ({
 			)}
 			{isSaveDebugRetentionDaysError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save chat debug retention setting.
+					聊天调试保留设置保存失败。
 				</p>
 			)}
 			{isDebugRetentionDaysLoadError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load chat debug retention setting.
+					聊天调试保留设置加载失败。
 				</p>
 			)}
 		</form>

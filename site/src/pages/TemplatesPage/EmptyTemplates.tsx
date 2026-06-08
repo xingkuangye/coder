@@ -45,7 +45,7 @@ export const EmptyTemplates: FC<EmptyTemplatesProps> = ({
 	isUsingFilter,
 }) => {
 	if (isUsingFilter) {
-		return <TableEmpty message="No results matched your search" />;
+		return <TableEmpty message="没有符合您搜索条件的结果" />;
 	}
 
 	const featuredExamples = findFeaturedExamples(examples);
@@ -53,19 +53,18 @@ export const EmptyTemplates: FC<EmptyTemplatesProps> = ({
 	if (canCreateTemplates) {
 		return (
 			<TableEmpty
-				message="Create your first template"
+				message="创建您的第一个模板"
 				description={
 					<>
-						Templates are written in Terraform and describe the infrastructure
-						for workspaces. You can start using a starter template below or{" "}
+						模板使用 Terraform 编写，描述了工作区的基础设施。您可以从下面的起始模板开始使用，或者{" "}
 						<Link
 							href={docs("/admin/templates/creating-templates")}
 							target="_blank"
 							rel="noreferrer"
 						>
-							create your own
+							创建自己的模板
 						</Link>
-						.
+						。
 					</>
 				}
 				cta={
@@ -77,7 +76,7 @@ export const EmptyTemplates: FC<EmptyTemplatesProps> = ({
 						</div>
 						<Button size="sm" asChild className="rounded-full">
 							<RouterLink to="/starter-templates">
-								View all starter templates
+								查看所有起始模板
 							</RouterLink>
 						</Button>
 					</div>
@@ -88,8 +87,8 @@ export const EmptyTemplates: FC<EmptyTemplatesProps> = ({
 
 	return (
 		<TableEmpty
-			message="Create a Template"
-			description="Contact your Coder administrator to create a template. You can share the code below."
+			message="创建模板"
+			description="联系您的 Coder 管理员创建模板。您可以分享下面的代码。"
 			cta={<CodeExample secret={false} code="coder templates init" />}
 		/>
 	);

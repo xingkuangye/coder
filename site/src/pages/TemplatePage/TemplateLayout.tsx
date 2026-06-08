@@ -139,31 +139,31 @@ export const TemplateLayout: FC<PropsWithChildren> = ({
 				<Margins>
 					<LinkTabsList>
 						<TabLink to="docs" value="docs">
-							Docs
+							文档
 						</TabLink>
 						{data.permissions.canUpdateTemplate && (
 							<TabLink to="files" value="files">
-								Source Code
+								源代码
 							</TabLink>
 						)}
 						<TabLink to="resources" value="resources">
-							Resources
+							资源
 						</TabLink>
 						<TabLink to="versions" value="versions">
-							Versions
+							版本
 						</TabLink>
 						<TabLink to="embed" value="embed">
-							Embed
+							嵌入
 						</TabLink>
 						{shouldShowInsights && (
 							<TabLink to="insights" value="insights">
-								Insights
+								洞察
 							</TabLink>
 						)}
 						{isWorkspacePrebuildsEnabled &&
 							data.permissions.canUpdateTemplate && (
 								<TabLink to="prebuilds" value="prebuilds">
-									Prebuilds
+									预构建
 								</TabLink>
 							)}
 					</LinkTabsList>

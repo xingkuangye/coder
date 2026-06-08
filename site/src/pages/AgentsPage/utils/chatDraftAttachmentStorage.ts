@@ -264,13 +264,13 @@ export const fileToDataURL = (file: File): Promise<string> =>
 	new Promise((resolve, reject) => {
 		const reader = new FileReader();
 		reader.onerror = () =>
-			reject(reader.error ?? new Error("Failed to read file."));
+			reject(reader.error ?? new Error("文件读取失败。"));
 		reader.onload = () => {
 			if (typeof reader.result === "string") {
 				resolve(reader.result);
 				return;
 			}
-			reject(new Error("Failed to read file."));
+			reject(new Error("文件读取失败。"));
 		};
 		reader.readAsDataURL(file);
 	});

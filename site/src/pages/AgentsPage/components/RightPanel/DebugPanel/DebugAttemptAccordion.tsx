@@ -52,7 +52,7 @@ const getAttemptTimingLabel = (attempt: NormalizedAttempt): string => {
 		: "-";
 	const finishedLabel = attempt.finished_at
 		? formatDateTime(attempt.finished_at, DATE_FORMAT.TIME_24H)
-		: "in progress";
+		: "进行中";
 
 	const durationMs =
 		attempt.duration_ms ??
@@ -60,7 +60,7 @@ const getAttemptTimingLabel = (attempt: NormalizedAttempt): string => {
 			? computeDurationMs(attempt.started_at, attempt.finished_at)
 			: null);
 	const durationLabel =
-		durationMs !== null ? humanDuration(durationMs) : "Duration unavailable";
+		durationMs !== null ? humanDuration(durationMs) : "持续时间不可用";
 
 	return `${startedLabel} → ${finishedLabel} • ${durationLabel}`;
 };
@@ -75,17 +75,16 @@ export const DebugAttemptAccordion: FC<DebugAttemptAccordionProps> = ({
 		return (
 			<div className="flex flex-col gap-1.5">
 				<p className="text-xs text-content-secondary">
-					Unable to parse raw attempts. Showing the original payload exactly as
-					it was captured.
+					无法解析原始尝试数据。正在展示捕获的原始有效负载。
 				</p>
-				<CopyableCodeBlock code={rawFallback} label="Copy raw attempts" />
+				<CopyableCodeBlock code={rawFallback} label="复制原始尝试数据" />
 			</div>
 		);
 	}
 
 	if (attempts.length === 0) {
 		return (
-			<p className="text-sm text-content-secondary">No attempts captured.</p>
+			<p className="text-sm text-content-secondary">未捕获到尝试。</p>
 		);
 	}
 
@@ -105,7 +104,7 @@ export const DebugAttemptAccordion: FC<DebugAttemptAccordionProps> = ({
 								<div className="min-w-0 flex-1 space-y-2">
 									<div className="flex flex-wrap items-center gap-2">
 										<span className="text-sm font-semibold text-content-primary">
-											Attempt {attempt.attempt_number}
+											尝试 {attempt.attempt_number}
 										</span>
 										{attempt.method || attempt.path ? (
 											<span className="truncate font-mono text-xs font-medium text-content-secondary">
@@ -131,7 +130,7 @@ export const DebugAttemptAccordion: FC<DebugAttemptAccordionProps> = ({
 											variant={getStatusBadgeVariant(attempt.status)}
 											className="shrink-0 sm:hidden"
 										>
-											{attempt.status || "unknown"}
+											{attempt.status || "未知"}
 										</Badge>
 									</div>
 									<p className="flex flex-wrap gap-x-3 gap-y-1 text-xs leading-5 text-content-secondary">
@@ -144,7 +143,7 @@ export const DebugAttemptAccordion: FC<DebugAttemptAccordionProps> = ({
 										variant={getStatusBadgeVariant(attempt.status)}
 										className="hidden shrink-0 sm:inline-flex"
 									>
-										{attempt.status || "unknown"}
+										{attempt.status || "未知"}
 									</Badge>
 									<ChevronDownIcon
 										className={cn(
@@ -157,25 +156,25 @@ export const DebugAttemptAccordion: FC<DebugAttemptAccordionProps> = ({
 						</CollapsibleTrigger>
 						<CollapsibleContent className="px-4 pb-4 pt-2">
 							<div className="space-y-3">
-								<DebugDataSection title="Raw request">
+								<DebugDataSection title="原始请求">
 									<JsonBlock
 										value={attempt.raw_request}
-										emptyMessage="No raw request captured."
-										copyLabel="Copy raw request JSON"
+										emptyMessage="未捕获到原始请求。"
+										copyLabel="复制原始请求 JSON"
 									/>
 								</DebugDataSection>
-								<DebugDataSection title="Raw response">
+								<DebugDataSection title="原始响应">
 									<JsonBlock
 										value={attempt.raw_response}
-										emptyMessage="No raw response captured."
-										copyLabel="Copy raw response JSON"
+										emptyMessage="未捕获到原始响应。"
+										copyLabel="复制原始响应 JSON"
 									/>
 								</DebugDataSection>
-								<DebugDataSection title="Error">
+								<DebugDataSection title="错误">
 									<JsonBlock
 										value={attempt.error}
-										emptyMessage="No error captured."
-										copyLabel="Copy raw attempt error"
+										emptyMessage="未捕获到错误。"
+										copyLabel="复制尝试原始错误"
 									/>
 								</DebugDataSection>
 							</div>

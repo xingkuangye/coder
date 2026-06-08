@@ -46,13 +46,13 @@ const CreateTokenPage: FC<CreateTokenPageProps> = ({ now }) => {
 	const [formError, setFormError] = useState<unknown>(undefined);
 
 	const onCreateSuccess = () => {
-		toast.success("Token has been created.");
+		toast.success("令牌已创建。");
 		navigate("/settings/tokens");
 	};
 
 	const onCreateError = (error: unknown) => {
 		setFormError(error);
-		toast.error("Failed to create token.", {
+		toast.error("创建令牌失败。", {
 			description: getErrorDetail(error),
 		});
 	};
@@ -75,7 +75,7 @@ const CreateTokenPage: FC<CreateTokenPageProps> = ({ now }) => {
 
 	const tokenDescription = (
 		<>
-			<p>Make sure you copy the below token before proceeding:</p>
+			<p>请务必复制下方的令牌之后继续：</p>
 			<CodeExample
 				secret={false}
 				code={newToken?.key ?? ""}
@@ -90,12 +90,12 @@ const CreateTokenPage: FC<CreateTokenPageProps> = ({ now }) => {
 
 	return (
 		<>
-			<title>{pageTitle("Create Token")}</title>
+			<title>{pageTitle("创建令牌")}</title>
 
 			{tokenFetchFailed && <ErrorAlert error={tokenFetchError} />}
 			<FullPageHorizontalForm
-				title="Create Token"
-				detail="All tokens are unscoped and therefore have full resource access."
+				title="创建令牌"
+				detail="所有令牌均不受作用域限制，因此拥有完全的资源访问权限。"
 			>
 				<CreateTokenForm
 					form={form}
@@ -110,7 +110,7 @@ const CreateTokenPage: FC<CreateTokenPageProps> = ({ now }) => {
 				<ConfirmDialog
 					type="info"
 					hideCancel
-					title="Creation successful"
+					title="创建成功"
 					description={tokenDescription}
 					open={creationSuccessful && Boolean(newToken.key)}
 					confirmLoading={isCreating}

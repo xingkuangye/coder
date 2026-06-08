@@ -148,10 +148,10 @@ export const WorkspaceActions: FC<WorkspaceActionsProps> = ({
 				tooltipText={tooltipText}
 			/>
 		),
-		deleting: <DisabledButton label="Deleting" />,
-		canceling: <DisabledButton label="Canceling..." />,
-		deleted: <DisabledButton label="Deleted" />,
-		pending: <DisabledButton label="Pending..." />,
+		deleting: <DisabledButton label="正在删除" />,
+		canceling: <DisabledButton label="正在取消..." />,
+		deleted: <DisabledButton label="已删除" />,
+		pending: <DisabledButton label="等待中..." />,
 		activate: <ActivateButton handleAction={handleDormantActivate} />,
 		activating: <ActivateButton loading handleAction={handleDormantActivate} />,
 		retry: (
@@ -215,11 +215,11 @@ function getTooltipText(
 		canChangeVersions &&
 		workspace.template_require_active_version
 	) {
-		return "This template requires automatic updates on workspace startup, but template administrators can ignore this policy.";
+		return "此模板要求在工作区启动时自动更新，但模板管理员可以忽略此策略。";
 	}
 
 	if (workspace.automatic_updates === "always") {
-		return "Automatic updates are enabled for this workspace. Modify the update policy in workspace settings if you want to preserve the template version.";
+		return "此工作区已启用自动更新。如果想保留模板版本，请在工作区设置中修改更新策略。";
 	}
 
 	return "";

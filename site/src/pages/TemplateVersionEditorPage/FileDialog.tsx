@@ -25,11 +25,11 @@ export const CreateFileDialog: FC<CreateFileDialogProps> = ({
 	};
 	const handleConfirm = () => {
 		if (pathValue === "") {
-			setError("You must enter a path!");
+			setError("你必须输入路径！");
 			return;
 		}
 		if (checkExists(pathValue)) {
-			setError("File already exists");
+			setError("文件已存在");
 			return;
 		}
 
@@ -54,14 +54,13 @@ export const CreateFileDialog: FC<CreateFileDialogProps> = ({
 			onConfirm={handleConfirm}
 			hideCancel={false}
 			type="success"
-			cancelText="Cancel"
-			confirmText="Create"
-			title="Create File"
+			cancelText="取消"
+			confirmText="创建"
+			title="创建文件"
 			description={
 				<div className="flex flex-col gap-8">
 					<p>
-						Specify the path to a file to be created. This path can contain
-						slashes too.
+						指定要创建的文件路径。此路径也可以包含斜杠。
 					</p>
 					<TextField
 						autoFocus
@@ -75,10 +74,10 @@ export const CreateFileDialog: FC<CreateFileDialogProps> = ({
 						name="file-path"
 						autoComplete="off"
 						id="file-path"
-						placeholder="example.tf"
+						placeholder="示例.tf"
 						value={pathValue}
 						onChange={handleChange}
-						label="File Path"
+						label="文件路径"
 					/>
 				</div>
 			}
@@ -105,11 +104,10 @@ export const DeleteFileDialog: FC<DeleteFileDialogProps> = ({
 			onClose={onClose}
 			open={open}
 			onConfirm={onConfirm}
-			title="Delete File"
+			title="删除文件"
 			description={
 				<>
-					Are you sure you want to delete <strong>{filename}</strong>? It will
-					be deleted permanently.
+					确定要删除 <strong>{filename}</strong> 吗？该文件将被永久删除。
 				</>
 			}
 		/>
@@ -140,18 +138,18 @@ export const RenameFileDialog: FC<RenameFileDialogProps> = ({
 	};
 	const handleConfirm = () => {
 		if (pathValue === "") {
-			setError("You must enter a path!");
+			setError("你必须输入路径！");
 			return;
 		}
 		if (checkExists(pathValue)) {
-			setError("File already exists");
+			setError("文件已存在");
 			return;
 		}
 
 		//Check if a folder is renamed to a file
 		const [_, extension] = pathValue.split(".");
 		if (isFolder(filename, fileTree) && extension) {
-			setError(`A folder can't be renamed to a file.`);
+			setError(`文件夹不能重命名为文件。`);
 			return;
 		}
 		const pathError = validatePath(pathValue, fileTree);
@@ -175,14 +173,13 @@ export const RenameFileDialog: FC<RenameFileDialogProps> = ({
 			onConfirm={handleConfirm}
 			hideCancel={false}
 			type="success"
-			cancelText="Cancel"
-			confirmText="Rename"
-			title="Rename File"
+			cancelText="取消"
+			confirmText="重命名"
+			title="重命名文件"
 			description={
 				<div className="flex flex-col gap-4">
 					<p>
-						Rename <strong>{filename}</strong> to something else. This path can
-						contain slashes too!
+						将 <strong>{filename}</strong> 重命名为其他名称。此路径也可以包含斜杠！
 					</p>
 					<TextField
 						autoFocus
@@ -199,7 +196,7 @@ export const RenameFileDialog: FC<RenameFileDialogProps> = ({
 						placeholder={filename}
 						value={pathValue}
 						onChange={handleChange}
-						label="File Path"
+						label="文件路径"
 					/>
 				</div>
 			}

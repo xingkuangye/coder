@@ -17,8 +17,8 @@ import {
 } from "#/utils/formUtils";
 
 const validationSchema = Yup.object({
-	username: nameValidator("Username"),
-	name: displayNameValidator("Full name"),
+	username: nameValidator("用户名"),
+	name: displayNameValidator("全名"),
 });
 
 interface EditUserFormProps {
@@ -46,7 +46,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({
 	const getFieldHelpers = getFormHelpers(form, error);
 
 	return (
-		<FullPageForm title="Edit user">
+		<FullPageForm title="编辑用户">
 			{isApiError(error) && !hasApiFieldErrors(error) && (
 				<ErrorAlert error={error} className="mb-8" />
 			)}
@@ -54,7 +54,7 @@ export const EditUserForm: FC<EditUserFormProps> = ({
 				<div className="flex flex-col gap-6">
 					<FormField
 						field={getFieldHelpers("username")}
-						label="Username"
+						label="用户名"
 						id="username"
 						name="username"
 						value={form.values.username}
@@ -68,9 +68,9 @@ export const EditUserForm: FC<EditUserFormProps> = ({
 						field={getFieldHelpers("name")}
 						label={
 							<>
-								Full name{" "}
+								全名{" "}
 								<span className="font-normal text-content-secondary">
-									(optional)
+									（可选）
 								</span>
 							</>
 						}
@@ -85,11 +85,11 @@ export const EditUserForm: FC<EditUserFormProps> = ({
 
 				<FormFooter className="mt-8">
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 					<Button type="submit" disabled={isLoading}>
 						<Spinner loading={isLoading} />
-						Save
+						保存
 					</Button>
 				</FormFooter>
 			</form>

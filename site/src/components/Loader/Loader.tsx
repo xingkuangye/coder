@@ -18,7 +18,7 @@ export const Loader: FC<LoaderProps> = ({
 	className,
 	...attrs
 }) => {
-	const resolvedLabel = label ?? "Loading";
+	const resolvedLabel = label ?? "加载中";
 
 	return (
 		<div

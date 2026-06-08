@@ -37,7 +37,7 @@ const WorkspaceBuildPage: FC = () => {
 		<>
 			{build && (
 				<title>
-					{pageTitle(`Build #${build.build_number} · ${build.workspace_name}`)}
+					{pageTitle(`构建 #${build.build_number} · ${build.workspace_name}`)}
 				</title>
 			)}
 

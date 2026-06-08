@@ -59,7 +59,7 @@ export const SignInForm: FC<SignInFormProps> = ({
 				<div className="py-6 flex items-center gap-4">
 					<div className="w-full h-px bg-border" />
 					<div className="shrink-0 text-content-secondary uppercase text-xs tracking-widest">
-						or
+						或
 					</div>
 					<div className="w-full h-px bg-border" />
 				</div>
@@ -75,7 +75,7 @@ export const SignInForm: FC<SignInFormProps> = ({
 
 			{!passwordEnabled && !oAuthEnabled && (
 				<Alert severity="error" prominent>
-					No authentication methods configured!
+					未配置任何认证方法！
 				</Alert>
 			)}
 		</div>

@@ -43,7 +43,7 @@ export const ProviderRow: React.FC<ProviderRowProps> = ({
 				</span>
 			</TableCell>
 			<TableCell>
-				{provider.enabled && <Badge variant="default">Enabled</Badge>}
+				{provider.enabled && <Badge variant="default">已启用</Badge>}
 			</TableCell>
 			<TableCell className="w-10 text-center">
 				<div className="flex justify-end items-center gap-8 pr-4">

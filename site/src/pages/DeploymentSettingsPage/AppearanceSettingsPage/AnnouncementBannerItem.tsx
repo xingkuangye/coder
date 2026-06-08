@@ -39,7 +39,7 @@ export const AnnouncementBannerItem: FC<AnnouncementBannerItemProps> = ({
 			</TableCell>
 
 			<TableCell className={!enabled ? "text-content-disabled" : ""}>
-				{message || <em>No message</em>}
+				{message || <em>暂无消息</em>}
 			</TableCell>
 
 			<TableCell>
@@ -49,20 +49,20 @@ export const AnnouncementBannerItem: FC<AnnouncementBannerItemProps> = ({
 			<TableCell>
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button size="icon-lg" variant="subtle" aria-label="Open menu">
+						<Button size="icon-lg" variant="subtle" aria-label="打开菜单">
 							<EllipsisVerticalIcon aria-hidden="true" />
-							<span className="sr-only">Open menu</span>
+							<span className="sr-only">打开菜单</span>
 						</Button>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent align="end">
 						<DropdownMenuItem onClick={() => onEdit()}>
-							Edit&hellip;
+							编辑&hellip;
 						</DropdownMenuItem>
 						<DropdownMenuItem
 							className="text-content-destructive focus:text-content-destructive"
 							onClick={() => onDelete()}
 						>
-							Delete&hellip;
+							删除&hellip;
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>

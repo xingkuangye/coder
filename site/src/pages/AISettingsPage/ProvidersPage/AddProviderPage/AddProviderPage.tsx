@@ -21,14 +21,13 @@ const AddProviderPage: React.FC = () => {
 				<Link to="/ai/settings">
 					<Button variant="subtle">
 						<ArrowLeftIcon />
-						<span>Back to providers</span>
+						<span>返回提供者</span>
 					</Button>
 				</Link>
 				<Alert severity="warning">
-					<AlertTitle>Provider type not found</AlertTitle>
+					<AlertTitle>未找到提供者类型</AlertTitle>
 					<AlertDescription>
-						The provider type you are trying to add is not valid. Please try
-						again.
+						您尝试添加的提供者类型无效。请重试。
 					</AlertDescription>
 				</Alert>
 			</div>
@@ -38,7 +37,7 @@ const AddProviderPage: React.FC = () => {
 	return (
 		<RequirePermission isFeatureVisible={hasPermission}>
 			<title>
-				{pageTitle(`New ${provider.label} Provider`, "AI Providers")}
+				{pageTitle(`新建 ${provider.label} 提供者`, "AI 提供者")}
 			</title>
 
 			<AddProviderPageView provider={provider} />

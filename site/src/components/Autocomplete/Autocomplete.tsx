@@ -64,8 +64,8 @@ export function Autocomplete<TOption>({
 	isOptionEqualToValue,
 	renderOption,
 	loading = false,
-	placeholder = "Select an option",
-	noOptionsText = "No results found",
+	placeholder = "选择一个选项",
+	noOptionsText = "未找到结果",
 	open: controlledOpen,
 	onOpenChange,
 	inputValue: controlledInputValue,
@@ -422,7 +422,7 @@ export function Autocomplete<TOption>({
 									}
 								}}
 								className="flex items-center justify-center size-5 rounded hover:bg-surface-secondary transition-colors cursor-pointer"
-								aria-label="Clear selection"
+								aria-label="清除选择"
 							>
 								<XIcon className="size-4 text-content-secondary hover:text-content-primary" />
 							</span>

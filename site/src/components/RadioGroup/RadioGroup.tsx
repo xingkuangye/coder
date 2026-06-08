@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 04/04/2025
+ * 于 2025/04/04 从 shadc/ui 复制
  * @see {@link https://ui.shadcn.com/docs/components/radio-group}
  */
 import { CircleIcon } from "lucide-react";

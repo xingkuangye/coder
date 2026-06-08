@@ -31,7 +31,7 @@ const AddProviderPageView: React.FC<AddProviderPageViewProps> = ({
 			<Link to="/ai/settings" className="-ml-3">
 				<Button variant="subtle">
 					<ArrowLeftIcon />
-					<span>Back to providers</span>
+					<span>返回提供商列表</span>
 				</Button>
 			</Link>
 			<div className="flex flex-col gap-6 pt-6">
@@ -41,12 +41,10 @@ const AddProviderPageView: React.FC<AddProviderPageViewProps> = ({
 						size="lg"
 						src={getProviderIcon(provider.value)}
 					/>
-					<SettingsHeaderTitle>{`Add ${indefiniteArticle(
-						provider.label,
-					)} ${provider.label} provider`}</SettingsHeaderTitle>
+					<SettingsHeaderTitle>{`添加 ${provider.label} 提供商`}</SettingsHeaderTitle>
 				</div>
 				<p className="text-sm text-content-secondary m-0">
-					Configure connection details and credentials.
+					配置连接详情和凭证。
 				</p>
 				<div className="border border-solid p-6 rounded-lg">
 					<ProviderForm
@@ -59,7 +57,7 @@ const AddProviderPageView: React.FC<AddProviderPageViewProps> = ({
 							try {
 								const res = await createMutation.mutateAsync(request);
 								toast.success(
-									`Provider "${res.display_name || res.name}" added.`,
+									`提供商 "${res.display_name || res.name}" 已添加。`,
 								);
 								// Awaited so the form's submitting state stays true through
 								// navigation, keeping the unsaved-changes prompt suppressed.
@@ -70,8 +68,8 @@ const AddProviderPageView: React.FC<AddProviderPageViewProps> = ({
 									getErrorMessage(
 										error,
 										name
-											? `Failed to add provider "${name}".`
-											: "Failed to add provider.",
+											? `添加提供商 "${name}" 失败。`
+											: "添加提供商失败。",
 									),
 								);
 							}

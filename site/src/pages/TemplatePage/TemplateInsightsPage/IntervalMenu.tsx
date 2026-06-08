@@ -11,10 +11,10 @@ import {
 
 const insightsIntervals = {
 	day: {
-		label: "Daily",
+		label: "每日",
 	},
 	week: {
-		label: "Weekly",
+		label: "每周",
 	},
 } as const;
 

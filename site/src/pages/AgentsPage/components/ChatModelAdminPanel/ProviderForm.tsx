@@ -100,16 +100,14 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 	const hasPendingAPIKeyChange = hasTypedAPIKey || isClearingAPIKey;
 	const shouldCreateAPIKey = hasTypedAPIKey;
 	const apiKeyDescription = isBedrockProvider
-		? "Bearer token for Bedrock authentication. Leave empty to use ambient AWS credentials."
-		: "Secret key used to authenticate requests to this provider.";
+		? "用于 Bedrock 身份验证的 Bearer 令牌。留空则使用环境 AWS 凭据。"
+		: "用于向此提供商认证请求的密钥。";
 	const baseURLDescription = isBedrockProvider
-		? "Bedrock runtime endpoint. Use the AWS region for the models this provider should call."
-		: "Endpoint used to call this provider.";
-	const apiKeyPlaceholder = isBedrockProvider ? "Enter bearer token" : "sk-...";
+		? "Bedrock 运行时端点。使用该提供商应调用的模型所在 AWS 区域。"
+		: "用于调用此提供商的端点。";
+	const apiKeyPlaceholder = isBedrockProvider ? "输入 Bearer 令牌" : "sk-...";
 	const deleteProviderDescription =
-		"Are you sure you want to delete this provider? The provider will be " +
-		"disabled and hidden from new model configuration. Existing model " +
-		"configs that reference it remain saved but cannot run until updated.";
+		"确定要删除此提供商吗？提供商将被禁用并从新模型配置中隐藏。引用它的现有模型配置将保留，但在更新之前无法运行。";
 	const hasNewProviderConfiguration = !providerConfig;
 
 	const isDirty =
@@ -234,17 +232,16 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 						<InfoIcon className="size-4 shrink-0 cursor-help text-content-secondary" />
 					</TooltipTrigger>
 					<TooltipContent>
-						Uses the {formatProviderLabel(provider)} API specification
+						使用 {formatProviderLabel(provider)} API 规范
 					</TooltipContent>
 				</Tooltip>
 			</div>
 			<hr className="my-4 border-0 border-t border-solid border-border" />
 			{isAPIKeyEnvManaged ? (
 				<Alert severity="info">
-					<AlertTitle>API key managed by environment variable</AlertTitle>
+					<AlertTitle>API 密钥由环境变量管理</AlertTitle>
 					<AlertDescription>
-						This provider key is configured from deployment environment settings
-						and cannot be edited in this UI.
+						此提供商密钥由部署环境设置配置，无法在此界面中编辑。
 					</AlertDescription>
 				</Alert>
 			) : (
@@ -256,7 +253,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 				>
 					<div className="space-y-5">
 						<ProviderField
-							label="API Key"
+							label="API 密钥"
 							htmlFor={apiKeyInputId}
 							required={requiresAPIKey}
 							description={apiKeyDescription}
@@ -286,7 +283,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 								/>
 								{hasAPIKeyWhitespace && (
 									<p className="m-0 text-xs text-content-destructive">
-										API key must not contain leading or trailing whitespace.
+										API 密钥不能包含前导或尾部空格。
 									</p>
 								)}
 								{isBedrockProvider &&
@@ -303,7 +300,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 													setApiKeyModified(true);
 												}}
 											>
-												Clear stored token
+												清除已存储的令牌
 											</button>
 										</div>
 									)}
@@ -311,7 +308,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 						</ProviderField>
 
 						<ProviderField
-							label="Base URL"
+							label="基础 URL"
 							htmlFor={baseURLInputId}
 							description={baseURLDescription}
 						>
@@ -340,7 +337,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 									disabled={isDisabled}
 									onClick={() => setConfirmingDelete(true)}
 								>
-									Delete
+									删除
 								</Button>
 							) : (
 								<div />
@@ -348,7 +345,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							<div className="flex items-center gap-2">
 								{canAddModel && (
 									<Button size="lg" type="button" onClick={handleAddModel}>
-										Add model
+										添加模型
 									</Button>
 								)}
 								<Button
@@ -360,7 +357,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 									{isProviderMutationPending && (
 										<Spinner className="h-4 w-4" loading />
 									)}
-									{providerConfig ? "Save changes" : "Create provider config"}
+									{providerConfig ? "保存更改" : "创建提供商配置"}
 								</Button>
 							</div>
 						</div>
@@ -369,7 +366,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 			)}
 			{providerConfig && (
 				<ConfirmDeleteDialog
-					entity="provider"
+					entity="提供商"
 					description={deleteProviderDescription}
 					onConfirm={() => void onDeleteProvider(providerConfig.id)}
 					isPending={isProviderMutationPending}

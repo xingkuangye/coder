@@ -44,7 +44,7 @@ export const TaskFeedbackDialog: FC<TaskFeedbackDialogProps> = ({
 		mutationFn: (req: CreateTaskFeedbackRequest) =>
 			API.createTaskFeedback(taskId, req),
 		onSuccess: () => {
-			toast.success("Feedback submitted successfully.");
+			toast.success("反馈提交成功。");
 		},
 	});
 
@@ -69,10 +69,9 @@ export const TaskFeedbackDialog: FC<TaskFeedbackDialogProps> = ({
 		<Dialog {...dialogProps}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Task feedback</DialogTitle>
+					<DialogTitle>任务反馈</DialogTitle>
 					<DialogDescription>
-						Your feedback is important to us. Please rate your experience with
-						this task.
+						您的反馈对我们很重要。请评价您对此任务的体验。
 					</DialogDescription>
 				</DialogHeader>
 
@@ -84,26 +83,26 @@ export const TaskFeedbackDialog: FC<TaskFeedbackDialogProps> = ({
 					{error && <ErrorAlert error={error} />}
 
 					<fieldset className="flex flex-col gap-1">
-						<legend className="sr-only">Rate your experience</legend>
+						<legend className="sr-only">评价您的体验</legend>
 						<RateOption {...formik.getFieldProps("rate")} value="good">
-							<SmileIcon />I achieved my goal
+							<SmileIcon />我达到了目标
 						</RateOption>
 						<RateOption {...formik.getFieldProps("rate")} value="okay">
 							<MehIcon />
-							It sort of worked, but struggled a lot
+							它基本完成了，但遇到了很多困难
 						</RateOption>
 						<RateOption {...formik.getFieldProps("rate")} value="bad">
 							<FrownIcon />
-							It was a flop
+							完全失败
 						</RateOption>
 					</fieldset>
 
 					<label className="sr-only" htmlFor="comment">
-						Additional comments
+						补充说明
 					</label>
 					<Textarea
 						id="comment"
-						placeholder="Wanna say something else?..."
+						placeholder="还有什么想说的吗？..."
 						className="h-32 resize-none"
 						{...formik.getFieldProps("comment")}
 					/>
@@ -111,7 +110,7 @@ export const TaskFeedbackDialog: FC<TaskFeedbackDialogProps> = ({
 
 				<DialogFooter>
 					<DialogClose asChild>
-						<Button variant="outline">Close</Button>
+						<Button variant="outline">关闭</Button>
 					</DialogClose>
 					<Button
 						type="submit"
@@ -119,7 +118,7 @@ export const TaskFeedbackDialog: FC<TaskFeedbackDialogProps> = ({
 						disabled={!isRateSelected || isPending}
 					>
 						<Spinner loading={isPending} />
-						Submit Feedback
+						提交反馈
 					</Button>
 				</DialogFooter>
 			</DialogContent>

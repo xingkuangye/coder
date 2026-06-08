@@ -45,13 +45,13 @@ const AddProviderDropdown: React.FC<{ align?: "start" | "end" }> = ({
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline">
 					<PlusIcon />
-					<span>Add provider</span>
+					<span>添加提供商</span>
 					<ChevronDownIcon className="ml-1 size-icon-xs" />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align={align} className="min-w-56">
 				<div className="px-2 py-1.5 text-xs font-medium text-content-secondary">
-					Select a provider
+					选择一个提供商
 				</div>
 				{addableProviders.map((entry) => (
 					<DropdownMenuItem
@@ -82,14 +82,11 @@ const ProvidersPageView: React.FC<ProvidersPageViewProps> = ({
 	return (
 		<div>
 			<SettingsHeader actions={<AddProviderDropdown />}>
-				<SettingsHeaderTitle>Providers</SettingsHeaderTitle>
+				<SettingsHeaderTitle>提供商</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Connect third-party services like OpenAI, Anthropic, or Amazon
-					Bedrock. Providers configured here power Coder Agents, AI Gateway, and
-					other capabilities such as APIs, CLI or IDEs that use LLMs. By
-					default, users can supply their own keys for any provider.{" "}
+					连接第三方服务，如 OpenAI、Anthropic 或 Amazon Bedrock。在此配置的提供商将为 Coder Agents、AI 网关以及其他使用 LLM 的功能（如 API、CLI 或 IDE）提供支持。默认情况下，用户可以为任何提供商提供自己的密钥。{" "}
 					<Link href={docs("/ai-coder/ai-gateway/auth#enable-or-disable-byok")}>
-						View docs
+						查看文档
 					</Link>
 				</SettingsHeaderDescription>
 			</SettingsHeader>
@@ -98,12 +95,12 @@ const ProvidersPageView: React.FC<ProvidersPageViewProps> = ({
 					<ErrorAlert error={error} />
 				</div>
 			)}
-			<Table className="table-fixed" aria-label="AI providers">
+			<Table className="table-fixed" aria-label="AI 提供商">
 				<TableHeader>
 					<TableRow>
-						<TableHead className="w-1/3">Name</TableHead>
-						<TableHead className="w-1/3">Base URL</TableHead>
-						<TableHead className="w-22">Status</TableHead>
+						<TableHead className="w-1/3">名称</TableHead>
+						<TableHead className="w-1/3">基础 URL</TableHead>
+						<TableHead className="w-22">状态</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -111,7 +108,7 @@ const ProvidersPageView: React.FC<ProvidersPageViewProps> = ({
 						<TableLoader />
 					) : providers.length === 0 ? (
 						<TableEmpty
-							message="No providers configured"
+							message="未配置提供商"
 							cta={<AddProviderDropdown align="start" />}
 						/>
 					) : (

@@ -94,7 +94,7 @@ export const SecretsPageView: FC<SecretsPageViewProps> = ({
 							<Spinner loading={isLoading || isRefreshing}>
 								<RefreshCwIcon />
 							</Spinner>
-							Refresh
+							刷新
 						</Button>
 					</div>
 				}
@@ -102,19 +102,17 @@ export const SecretsPageView: FC<SecretsPageViewProps> = ({
 				<SettingsHeaderTitle
 					tooltip={<FeatureStageBadge contentType="beta" size="md" />}
 				>
-					Secrets
+					密钥
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Secrets with an environment variable or file path are injected into
-					workspaces you own when they start. Each environment variable and file
-					path must be unique.{" "}
+					设置环境变量或文件路径的密钥会在您拥有的工作区启动时注入其中。每个环境变量和文件路径必须唯一。{" "}
 					<Link
 						href={docs("/user-guides/user-secrets")}
 						target="_blank"
 						rel="noreferrer"
 						showExternalIcon={false}
 					>
-						View docs
+						查看文档
 					</Link>
 				</SettingsHeaderDescription>
 			</SettingsHeader>
@@ -133,10 +131,10 @@ export const SecretsPageView: FC<SecretsPageViewProps> = ({
 
 			<section className="flex flex-col gap-4">
 				<div className="flex items-center justify-between gap-4">
-					<h2 className="m-0 text-xl font-semibold">Your secrets</h2>
+					<h2 className="m-0 text-xl font-semibold">您的密钥</h2>
 					<Button onClick={(event) => openAddSecret(event.currentTarget)}>
 						<PlusIcon />
-						Add secret
+						添加密钥
 					</Button>
 				</div>
 

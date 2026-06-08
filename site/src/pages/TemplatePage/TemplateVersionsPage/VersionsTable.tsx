@@ -68,7 +68,7 @@ export const VersionsTable: FC<VersionsTableProps> = ({
 					<TableRow>
 						<TableCell colSpan={999}>
 							<div className="p-8">
-								<EmptyState message="No versions found" />
+								<EmptyState message="未找到版本" />
 							</div>
 						</TableCell>
 					</TableRow>

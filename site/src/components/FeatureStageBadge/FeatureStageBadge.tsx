@@ -13,8 +13,8 @@ import { docs } from "#/utils/docs";
  * ensure that we can't accidentally make typos when writing the badge text.
  */
 const featureStageBadgeTypes = {
-	early_access: "Early Access",
-	beta: "Beta",
+	early_access: "抢先体验",
+	beta: "测试版",
 } as const satisfies Record<string, ReactNode>;
 
 type FeatureStageBadgeProps = Readonly<
@@ -66,26 +66,26 @@ export const FeatureStageBadge: FC<FeatureStageBadgeProps> = ({
 					{...delegatedProps}
 				>
 					<span className="sr-only">
-						{` (This is ${contentType === "early_access" ? "an" : "a"} `}
+						（这是一个
 					</span>
 					<span className="first-letter:uppercase">
 						{labelText && `${labelText} `}
 						{featureStageBadgeTypes[contentType]}
 					</span>
-					<span className="sr-only"> feature)</span>
+					<span className="sr-only">功能）</span>
 				</span>
 			</TooltipTrigger>
 			<TooltipContent align="start" className="max-w-xs text-sm">
 				<p className="m-0">
-					This feature has not yet reached general availability (GA).
+					此功能尚未达到正式发布（GA）。
 				</p>
 
 				<Link
 					href={docs("/install/releases/feature-stages")}
 					className="font-semibold"
 				>
-					Learn about feature stages
-					<span className="sr-only"> (link opens in new tab)</span>
+					了解功能阶段
+					<span className="sr-only"> （链接将在新标签页中打开）</span>
 				</Link>
 			</TooltipContent>
 		</Tooltip>

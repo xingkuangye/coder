@@ -269,7 +269,7 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 		case "integer":
 			return Yup.string().test(
 				"optional-integer",
-				`${label} must be a valid integer.`,
+				`${label} 必须是有效的整数。`,
 				(value) => {
 					const trimmed = value?.trim();
 					if (!trimmed) return true;
@@ -281,8 +281,8 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 			const minimum = isNonNegativePricingField(field) ? 0 : undefined;
 			const errorMessage =
 				minimum === 0
-					? `${label} must be zero or greater.`
-					: `${label} must be a valid number.`;
+					? `${label} 必须大于等于零。`
+					: `${label} 必须是有效的数字。`;
 			return Yup.string().test("optional-number", errorMessage, (value) =>
 				isValidOptionalNumber(value, minimum),
 			);
@@ -291,7 +291,7 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 		case "boolean":
 			return Yup.string().test(
 				"optional-boolean",
-				`${label} must be true or false.`,
+				`${label} 必须是 true 或 false。`,
 				(value) => {
 					const trimmed = value?.trim();
 					if (!trimmed) return true;
@@ -304,7 +304,7 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 				const allowed = field.enum;
 				return Yup.string().test(
 					"optional-select",
-					`${label} has an invalid value.`,
+					`${label} 的值无效。`,
 					(value) => {
 						const trimmed = value?.trim();
 						if (!trimmed) return true;
@@ -327,12 +327,12 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 						parsed = JSON.parse(trimmed);
 					} catch {
 						return this.createError({
-							message: `${label} must be valid JSON.`,
+							message: `${label} 必须是有效的 JSON。`,
 						});
 					}
 					if (!Array.isArray(parsed)) {
 						return this.createError({
-							message: `${label} must be a JSON array.`,
+							message: `${label} 必须是 JSON 数组。`,
 						});
 					}
 					return true;
@@ -351,7 +351,7 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 						parsed = JSON.parse(trimmed);
 					} catch {
 						return this.createError({
-							message: `${label} must be valid JSON.`,
+							message: `${label} 必须是有效的 JSON。`,
 						});
 					}
 					if (
@@ -360,7 +360,7 @@ function yupTestForField(field: FieldSchema): Yup.StringSchema {
 						Array.isArray(parsed)
 					) {
 						return this.createError({
-							message: `${label} must be a JSON object.`,
+							message: `${label} 必须是 JSON 对象。`,
 						});
 					}
 					return true;

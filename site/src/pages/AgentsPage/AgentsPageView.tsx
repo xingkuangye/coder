@@ -166,7 +166,7 @@ export const AgentsPageView: FC<AgentsPageViewProps> = ({
 			data-testid="agents-page-layout"
 			className="flex h-full min-h-0 flex-col overflow-hidden bg-surface-primary sm:flex-row"
 		>
-			<title>{pageTitle("Agents")}</title>
+			<title>{pageTitle("智能体")}</title>
 			<ResizableChatsSidebarFrame
 				className={cn(
 					"sm:h-full sm:min-h-0 sm:border-b-0",

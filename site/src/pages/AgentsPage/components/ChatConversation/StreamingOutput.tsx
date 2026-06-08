@@ -39,7 +39,7 @@ const StreamingThinkingPlaceholder: FC = () => (
 		<TranscriptRow className="w-full gap-2">
 			<ToolIcon name="thinking" isError={false} />
 			<Shimmer as="span" className="text-[13px] leading-6">
-				Thinking
+				思考中
 			</Shimmer>
 		</TranscriptRow>
 	</div>

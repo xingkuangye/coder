@@ -79,8 +79,8 @@ export const NotificationsInbox: FC<NotificationsInboxProps> = ({
 		});
 
 		socket.addEventListener("error", () => {
-			toast.error("Unable to retrieve latest inbox notifications.", {
-				description: "Please try refreshing the browser.",
+			toast.error("无法获取最新的收件箱通知。", {
+				description: "请尝试刷新浏览器。",
 			});
 			socket.close();
 		});
@@ -107,7 +107,7 @@ export const NotificationsInbox: FC<NotificationsInboxProps> = ({
 			});
 		},
 		onError: (error) => {
-			toast.error(getErrorMessage(error, "Error loading more notifications."), {
+			toast.error(getErrorMessage(error, "加载更多通知时出错。"), {
 				description: getErrorDetail(error),
 			});
 		},
@@ -128,7 +128,7 @@ export const NotificationsInbox: FC<NotificationsInboxProps> = ({
 		},
 		onError: (error) => {
 			toast.error(
-				getErrorMessage(error, "Error on marking all notifications as read."),
+				getErrorMessage(error, "将所有通知标记为已读时出错。"),
 				{ description: getErrorDetail(error) },
 			);
 		},
@@ -151,7 +151,7 @@ export const NotificationsInbox: FC<NotificationsInboxProps> = ({
 		},
 		onError: (error) => {
 			toast.error(
-				getErrorMessage(error, "Error on marking notification as read."),
+				getErrorMessage(error, "将通知标记为已读时出错。"),
 				{ description: getErrorDetail(error) },
 			);
 		},

@@ -73,11 +73,11 @@ export interface CreateTemplateFormData {
 }
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
-	display_name: displayNameValidator("Display name"),
+	name: nameValidator("名称"),
+	display_name: displayNameValidator("显示名称"),
 	description: Yup.string().max(
 		MAX_DESCRIPTION_CHAR_LIMIT,
-		"Please enter a description that is less than or equal to 128 characters.",
+		"请输入不超过128个字符的描述。",
 	),
 	icon: Yup.string().optional(),
 });
@@ -152,7 +152,7 @@ const getInitialValues = ({
 			...fromCopy,
 			name: `${fromCopy.name}-copy`,
 			display_name: fromCopy.display_name
-				? `Copy of ${fromCopy.display_name}`
+				? `${fromCopy.display_name}的副本`
 				: "",
 		};
 	}
@@ -274,8 +274,8 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 		<HorizontalForm onSubmit={form.handleSubmit} className="pb-12">
 			{/* General info */}
 			<FormSection
-				title="General"
-				description="The name is used to identify the template in URLs and the API."
+				title="常规"
+				description="该名称用于在 URL 和 API 中标识模板。"
 			>
 				<FormFields>
 					{"starterTemplate" in props && (
@@ -296,7 +296,7 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 							{showProvisionerWarning && <ProvisionerWarning />}
 
 							<div className="flex flex-col gap-2">
-								<Label htmlFor="organization">Organization</Label>
+								<Label htmlFor="organization">组织</Label>
 								<OrganizationAutocomplete
 									id="organization"
 									required
@@ -324,22 +324,22 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 						onChange={onChangeTrimmed(form)}
 						fullWidth
 						required
-						label="Name"
+						label="名称"
 					/>
 				</FormFields>
 			</FormSection>
 
 			{/* Display info  */}
 			<FormSection
-				title="Display"
-				description="A friendly name, description, and icon to help developers identify your template."
+				title="显示"
+				description="一个友好的名称、描述和图标，帮助开发者识别您的模板。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("display_name")}
 						disabled={isSubmitting}
 						fullWidth
-						label="Display name"
+						label="显示名称"
 					/>
 
 					<TextField
@@ -350,7 +350,7 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 						rows={5}
 						multiline
 						fullWidth
-						label="Description"
+						label="描述"
 					/>
 
 					<IconField
@@ -365,17 +365,16 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 
 			{provisioners && provisioners.length > 0 && (
 				<FormSection
-					title="Provisioner tags"
+					title="配置器标签"
 					description={
 						<>
-							Tags are a way to control which provisioner daemons complete which
-							build jobs.&nbsp;
+							标签是一种控制哪些配置器守护进程完成哪些构建作业的方式。&nbsp;
 							<Link
 								href={docs("/admin/provisioners")}
 								target="_blank"
 								rel="noreferrer"
 							>
-								Learn more...
+								了解更多...
 							</Link>
 						</>
 					}
@@ -393,8 +392,8 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 			{variables && variables.length > 0 && (
 				<FormSection
 					ref={variablesSectionRef}
-					title="Variables"
-					description="Input variables allow you to customize templates without altering their source code."
+					title="变量"
+					description="输入变量允许您在不修改源代码的情况下自定义模板。"
 				>
 					<FormFields>
 						{variables.map((variable, index) => (
@@ -417,11 +416,11 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 
 			<FormFooter>
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 				<Button type="submit" disabled={isSubmitting}>
 					<Spinner loading={isSubmitting} />
-					{jobError ? "Retry" : "Save"}
+					{jobError ? "重试" : "保存"}
 				</Button>
 				{logs && (
 					<button
@@ -442,7 +441,7 @@ export const CreateTemplateForm: FC<CreateTemplateFormProps> = (props) => {
 							},
 						})}
 					>
-						Show build logs
+						显示构建日志
 					</button>
 				)}
 			</FormFooter>
@@ -468,10 +467,9 @@ const fillNameAndDisplayWithFilename = async (
 const ProvisionerWarning: FC = () => {
 	return (
 		<Alert severity="warning" className="mb-4" prominent>
-			This organization does not have any provisioners. Before you create a
-			template, you&apos;ll need to configure a provisioner.{" "}
+			此组织没有任何配置器。在创建模板之前，您需要配置一个配置器。{" "}
 			<Link href={docs("/admin/provisioners#organization-scoped-provisioners")}>
-				See our documentation.
+				查看我们的文档。
 			</Link>
 		</Alert>
 	);

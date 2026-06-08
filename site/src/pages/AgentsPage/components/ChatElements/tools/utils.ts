@@ -116,7 +116,7 @@ export const toProviderLabel = (
 	if (providerType) {
 		return providerType;
 	}
-	return "Git provider";
+	return "Git 提供者";
 };
 
 /**
@@ -815,7 +815,7 @@ export { asNumber, asRecord, asString } from "../runtimeTypeUtils";
  * Returns the tooltip label for a killed/terminated process signal.
  */
 export const signalTooltipLabel = (signal: "kill" | "terminate"): string =>
-	signal === "kill" ? "Killed (SIGKILL)" : "Terminated (SIGTERM)";
+	signal === "kill" ? "强制终止 (SIGKILL)" : "终止 (SIGTERM)";
 
 // Programs whose first positional argument is conventionally a subcommand verb.
 const multiVerbTools = new Set([

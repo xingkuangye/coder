@@ -1,12 +1,11 @@
 /**
- * Copied from shadc/ui on 12/16/2024
+ * 从 shadc/ui 复制于 2024年12月16日
  * @see {@link https://ui.shadcn.com/docs/components/avatar}
  *
- * This component was updated to support the variants and match the styles from
- * the Figma design:
+ * 此组件已更新以支持变体并匹配 Figma 设计中的样式：
  * @see {@link https://www.figma.com/design/WfqIgsTFXN2BscBSSyXWF8/Coder-kit?node-id=711-383&t=xqxOSUk48GvDsjGK-0}
  *
- * It was also simplified to make usage easier and reduce boilerplate.
+ * 也进行了简化，以便于使用并减少样板代码。
  * @see {@link https://github.com/coder/coder/pull/15930#issuecomment-2552292440}
  */
 import { useTheme } from "@emotion/react";

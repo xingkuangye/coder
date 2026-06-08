@@ -47,9 +47,9 @@ const makeNameSchema = (editing: boolean) =>
 		: Yup.string()
 				.matches(
 					PROVIDER_NAME_REGEX,
-					"Name must be lowercase, hyphen-separated (e.g. 'my-anthropic').",
+					"名称必须为小写，使用连字符分隔（例如 'my-anthropic'）。",
 				)
-				.required("Name is required");
+				.required("名称为必填项");
 
 // Display name is always optional. The form copy says blank falls back
 // to the provider name, and the update API supports clearing the value.
@@ -110,12 +110,12 @@ const makeOpenAiAnthropicSchema = (editing: boolean) =>
 		name: makeNameSchema(editing),
 		displayName: makeDisplayNameSchema(editing),
 		baseUrl: Yup.string()
-			.url("Endpoint must be a valid URL")
-			.matches(HTTP_SCHEME_REGEX, "Endpoint must use http or https.")
-			.required("Endpoint is required"),
+			.url("端点必须是一个有效的 URL")
+			.matches(HTTP_SCHEME_REGEX, "端点必须使用 http 或 https。")
+			.required("端点为必填项"),
 		apiKey: editing
 			? Yup.string()
-			: Yup.string().required("API key is required"),
+			: Yup.string().required("API 密钥为必填项"),
 		enabled: Yup.boolean(),
 	});
 
@@ -133,21 +133,21 @@ const makeBedrockSchema = (editing: boolean) =>
 		name: makeNameSchema(editing),
 		displayName: makeDisplayNameSchema(editing),
 		baseUrl: Yup.string()
-			.url("Endpoint must be a valid URL")
+			.url("端点必须是一个有效的 URL")
 			.matches(
 				BEDROCK_CANONICAL_URL_REGEX,
-				"Endpoint must be a standard AWS Bedrock URL.",
+				"端点必须是一个标准的 AWS Bedrock URL。",
 			)
-			.required("Endpoint is required"),
+			.required("端点为必填项"),
 		apiKey: Yup.string(),
-		model: Yup.string().required("Model is required"),
-		smallFastModel: Yup.string().required("Small-fast model is required"),
+		model: Yup.string().required("模型为必填项"),
+		smallFastModel: Yup.string().required("轻量快速模型为必填项"),
 		accessKey: (editing
 			? Yup.string()
-			: Yup.string().required("Access key is required")
+			: Yup.string().required("访问密钥为必填项")
 		).test(
 			"access-key-paired",
-			"Enter both access key and secret to rotate credentials.",
+			"同时输入访问密钥和访问密钥密文以轮换凭证。",
 			function (value) {
 				const secret = (this.parent as { accessKeySecret?: string })
 					.accessKeySecret;
@@ -156,10 +156,10 @@ const makeBedrockSchema = (editing: boolean) =>
 		),
 		accessKeySecret: (editing
 			? Yup.string()
-			: Yup.string().required("Access key secret is required")
+			: Yup.string().required("访问密钥密文为必填项")
 		).test(
 			"access-key-secret-paired",
-			"Enter both access key and secret to rotate credentials.",
+			"同时输入访问密钥和访问密钥密文以轮换凭证。",
 			function (value) {
 				const accessKey = (this.parent as { accessKey?: string }).accessKey;
 				return !(credentialFilled(accessKey) && !credentialFilled(value));
@@ -176,9 +176,9 @@ const makeCopilotSchema = (editing: boolean) =>
 		name: makeNameSchema(editing),
 		displayName: makeDisplayNameSchema(editing),
 		baseUrl: Yup.string()
-			.url("Endpoint must be a valid URL")
-			.matches(HTTP_SCHEME_REGEX, "Endpoint must use http or https.")
-			.required("Endpoint is required"),
+			.url("端点必须是一个有效的 URL")
+			.matches(HTTP_SCHEME_REGEX, "端点必须使用 http 或 https。")
+			.required("端点为必填项"),
 		enabled: Yup.boolean(),
 	});
 
@@ -362,33 +362,33 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							<FormField
 								required
 								field={getFieldHelpers("name")}
-								label="Name"
-								description="Unique identifier (used in urls, can't be changed)"
+								label="名称"
+								description="唯一标识符（用于 URL 中，不可更改）"
 								className="w-full"
 								placeholder={namePlaceholder(form.values.type)}
 								disabled={editing}
 							/>
 							<FormField
 								field={getFieldHelpers("displayName")}
-								label="Display name"
-								description="Friendly name. Defaults to name if blank."
+								label="显示名称"
+								description="友好名称。如果留空则默认使用名称。"
 								className="w-full"
 							/>
 						</div>
 						<FormField
 							required
 							field={getFieldHelpers("baseUrl")}
-							label="Endpoint"
+							label="端点"
 							description={
 								typeSelectValue === "copilot" ? (
 									<>
-										The base URL for your Copilot tier:{" "}
-										<code>https://api.individual.githubcopilot.com</code>,{" "}
-										<code>https://api.business.githubcopilot.com</code>, or{" "}
-										<code>https://api.enterprise.githubcopilot.com</code>.
+										您的 Copilot 层级的基 URL：
+										<code>https://api.individual.githubcopilot.com</code>、
+										<code>https://api.business.githubcopilot.com</code> 或
+										<code>https://api.enterprise.githubcopilot.com</code>。
 									</>
 								) : (
-									"The base URL where the provider's API is hosted."
+									"提供程序 API 所在的基础 URL。"
 								)
 							}
 							className="w-full"
@@ -396,15 +396,12 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 						/>
 						{typeSelectValue === "copilot" ? (
 							<p className="text-sm text-content-secondary m-0">
-								Copilot authenticates with each user's GitHub OAuth token at
-								request time, so there is no API key to configure here. This
-								requires a GitHub external authentication provider to be
-								configured.
+								Copilot 在请求时使用每个用户的 GitHub OAuth 令牌进行身份验证，因此此处无需配置 API 密钥。这需要配置一个 GitHub 外部身份验证提供程序。
 							</p>
 						) : (
 							<CredentialField
 								required
-								label="API key"
+								label="API 密钥"
 								helpers={getFieldHelpers("apiKey")}
 								onBlur={() => handleCredentialBlur("apiKey")}
 								onFocus={() => handleCredentialFocus("apiKey")}
@@ -421,26 +418,26 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							<FormField
 								required
 								field={getFieldHelpers("name")}
-								label="Name"
-								description="Unique identifier (used in urls, can't be changed)"
+								label="名称"
+								description="唯一标识符（用于 URL 中，不可更改）"
 								className="w-full"
 								placeholder={namePlaceholder(form.values.type)}
 								disabled={editing}
 							/>
 							<FormField
 								field={getFieldHelpers("displayName")}
-								label="Display name"
-								description="Friendly name. Defaults to name if blank."
+								label="显示名称"
+								description="友好名称。如果留空则默认使用名称。"
 								className="w-full"
 							/>
 						</div>
 						<FormField
 							required
 							field={getFieldHelpers("baseUrl")}
-							label="Endpoint"
+							label="端点"
 							description={
 								<>
-									In the format of{" "}
+									格式为{" "}
 									<code>
 										{"https://bedrock-runtime.{region}.amazonaws.com"}
 									</code>
@@ -453,14 +450,14 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							<FormField
 								required
 								field={getFieldHelpers("model")}
-								label="Model"
+								label="模型"
 								className="w-full"
 								placeholder="anthropic.claude-3-5-sonnet-20241022-v2:0"
 							/>
 							<FormField
 								required
 								field={getFieldHelpers("smallFastModel")}
-								label="Small-fast model"
+								label="轻量快速模型"
 								className="w-full"
 								placeholder="anthropic.claude-3-haiku-20240307-v1:0"
 							/>
@@ -468,7 +465,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 						<div className="grid grid-cols-2 items-start gap-4">
 							<CredentialField
 								required
-								label="Access key"
+								label="访问密钥"
 								helpers={getFieldHelpers("accessKey")}
 								onBlur={() => handleCredentialBlur("accessKey")}
 								onFocus={() => handleCredentialFocus("accessKey")}
@@ -476,7 +473,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 							/>
 							<CredentialField
 								required
-								label="Access key secret"
+								label="访问密钥密文"
 								helpers={getFieldHelpers("accessKeySecret")}
 								onBlur={() => handleCredentialBlur("accessKeySecret")}
 								onFocus={() => handleCredentialFocus("accessKeySecret")}
@@ -489,7 +486,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 				<div className="flex justify-end gap-4">
 					<Link to="/ai/settings">
 						<Button variant="outline" type="button">
-							Cancel
+							取消
 						</Button>
 					</Link>
 					<Button
@@ -497,7 +494,7 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 						type="submit"
 					>
 						<Spinner loading={isLoading} />
-						{editing ? "Update provider" : "Add provider"}
+						{editing ? "更新提供程序" : "添加提供程序"}
 					</Button>
 				</div>
 			</FormFields>
@@ -507,13 +504,13 @@ export const ProviderForm: FC<ProviderFormProps> = ({
 				open={unsavedChanges.isOpen}
 				onClose={unsavedChanges.onCancel}
 				onConfirm={unsavedChanges.onConfirm}
-				title="Unsaved changes"
-				confirmText="Confirm"
+				title="未保存的更改"
+				confirmText="确认"
 				description={
 					<div className="flex items-start gap-3">
 						<TriangleAlertIcon className="size-icon-sm mt-1 shrink-0" />
 						<p className="m-0">
-							Your updates haven't been saved. Leave anyway?
+							您的更新尚未保存。是否仍要离开？
 						</p>
 					</div>
 				}

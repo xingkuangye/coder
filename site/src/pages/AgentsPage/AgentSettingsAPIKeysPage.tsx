@@ -36,10 +36,10 @@ const AgentSettingsAPIKeysPage: FC = () => {
 			setProviderPanelResetTokens((current) =>
 				incrementResetToken(current, variables.providerConfigId),
 			);
-			toast.success("API key saved.");
+			toast.success("API 密钥已保存。");
 		},
 		onError: (mutationError) => {
-			toast.error(getErrorMessage(mutationError, "Error saving API key."), {
+			toast.error(getErrorMessage(mutationError, "保存 API 密钥时出错。"), {
 				description: getErrorDetail(mutationError),
 			});
 		},
@@ -53,10 +53,10 @@ const AgentSettingsAPIKeysPage: FC = () => {
 			setProviderPanelResetTokens((current) =>
 				incrementResetToken(current, variables),
 			);
-			toast.success("API key removed.");
+			toast.success("API 密钥已移除。");
 		},
 		onError: (mutationError) => {
-			toast.error(getErrorMessage(mutationError, "Error removing API key."), {
+			toast.error(getErrorMessage(mutationError, "删除 API 密钥时出错。"), {
 				description: getErrorDetail(mutationError),
 			});
 		},

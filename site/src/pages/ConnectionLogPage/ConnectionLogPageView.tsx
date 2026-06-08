@@ -54,12 +54,12 @@ export const ConnectionLogPageView: FC<ConnectionLogPageViewProps> = ({
 			<PageHeader>
 				<PageHeaderTitle>
 					<div className="flex flex-row gap-2 items-center">
-						<span>Connection Log</span>
+						<span>连接日志</span>
 						<ConnectionLogHelpPopover />
 					</div>
 				</PageHeaderTitle>
 				<PageHeaderSubtitle>
-					View workspace connection events.
+					查看工作区连接事件。
 				</PageHeaderSubtitle>
 			</PageHeader>
 
@@ -69,7 +69,7 @@ export const ConnectionLogPageView: FC<ConnectionLogPageViewProps> = ({
 
 					<PaginationContainer
 						query={paginationResult}
-						paginationUnitLabel="logs"
+						paginationUnitLabel="条日志"
 					>
 						<Table>
 							<TableBody>
@@ -86,8 +86,8 @@ export const ConnectionLogPageView: FC<ConnectionLogPageViewProps> = ({
 				</>
 			) : (
 				<PaywallPremium
-					message="Connection logs"
-					description="Connection logs allow you to see how and when users connect to workspaces. You need a Premium license to use this feature."
+					message="连接日志"
+					description="连接日志可让您查看用户连接工作区的方式和时间。您需要 Premium 许可证才能使用此功能。"
 					documentationLink={docs("/admin/monitoring/connection-logs")}
 				/>
 			)}
@@ -115,7 +115,7 @@ const ConnectionLogTableBody: FC<ConnectionLogTableBodyProps> = ({
 		return (
 			<TableRow>
 				<TableCell colSpan={999}>
-					<EmptyState message="An error occurred while loading connection logs" />
+					<EmptyState message="加载连接日志时发生错误" />
 				</TableCell>
 			</TableRow>
 		);
@@ -125,8 +125,8 @@ const ConnectionLogTableBody: FC<ConnectionLogTableBodyProps> = ({
 	}
 	if (isEmpty) {
 		const emptyMessage = isNonInitialPage
-			? "No connection logs available on this page"
-			: "No connection logs available";
+			? "此页上没有可用的连接日志"
+			: "没有可用的连接日志";
 		return (
 			<TableRow>
 				<TableCell colSpan={999}>

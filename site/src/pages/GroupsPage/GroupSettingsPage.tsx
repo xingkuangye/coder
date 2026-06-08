@@ -36,7 +36,7 @@ const GroupSettingsPage: FC = () => {
 							toast.error(
 								getErrorMessage(
 									error,
-									`Failed to update group "${groupName}".`,
+									`更新群组“${groupName}” 失败。`,
 								),
 								{
 									description: getErrorDetail(error),

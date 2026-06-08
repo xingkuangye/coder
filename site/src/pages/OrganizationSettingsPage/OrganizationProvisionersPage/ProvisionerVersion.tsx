@@ -18,7 +18,7 @@ export const ProvisionerVersion: FC<ProvisionerVersionProps> = ({
 }) => {
 	return provisionerVersion === buildVersion ? (
 		<span className="text-xs font-medium text-content-secondary">
-			Up to date
+			已是最新
 		</span>
 	) : (
 		<Tooltip>
@@ -30,14 +30,12 @@ export const ProvisionerVersion: FC<ProvisionerVersionProps> = ({
 					tabIndex={0}
 				>
 					<TriangleAlertIcon className="size-icon-xs" />
-					Outdated
+					版本过旧
 				</StatusIndicator>
 			</TooltipTrigger>
 			<TooltipContent className="max-w-xs">
 				<p className="m-0">
-					This provisioner is out of date. You may experience issues when using
-					a provisioner version that doesn't match your Coder deployment. Please
-					upgrade to a newer version.
+					此配置程序版本过旧。使用与 Coder 部署不匹配的配置程序版本可能导致问题。请升级到更新版本。
 				</p>
 			</TooltipContent>
 		</Tooltip>

@@ -990,7 +990,7 @@ const AgentChatPage: FC = () => {
 		...updateChatWorkspaceBase,
 		onError: (error, variables, context) => {
 			updateChatWorkspaceBase.onError(error, variables, context);
-			toast.error(getErrorMessage(error, "Failed to update workspace."));
+			toast.error(getErrorMessage(error, "更新工作区失败。"));
 		},
 	});
 
@@ -1002,7 +1002,7 @@ const AgentChatPage: FC = () => {
 		...updateChatPlanModeBase,
 		onError: (error, variables, context) => {
 			updateChatPlanModeBase.onError(error, variables, context);
-			toast.error(getErrorMessage(error, "Failed to update plan mode."));
+			toast.error(getErrorMessage(error, "更新计划模式失败。"));
 		},
 	});
 	const setCachedChatPlanMode = (
@@ -1070,7 +1070,7 @@ const AgentChatPage: FC = () => {
 	});
 
 	const handleCommit = (repoRoot: string) => {
-		const commitPrompt = `Commit and push the working changes in ${repoRoot}. If there are unstaged files, commit them too.`;
+		const commitPrompt = `提交并推送 ${repoRoot} 中的工作更改。如果有未暂存的文件，也一并提交。`;
 		const current = inputValueRef.current;
 		if (current.includes(commitPrompt)) {
 			return;
@@ -1198,7 +1198,7 @@ const AgentChatPage: FC = () => {
 			const detail = error.response?.data?.detail?.trim() || undefined;
 			const reason: ChatDetailError = {
 				kind: "generic",
-				message: getErrorMessage(error, "An unexpected error occurred."),
+				message: getErrorMessage(error, "发生了意外错误。"),
 				...(detail ? { detail } : {}),
 			};
 			store.setStreamError(reason);
@@ -1261,7 +1261,7 @@ const AgentChatPage: FC = () => {
 
 	const titleElement = (
 		<title>
-			{chatTitle ? pageTitle(chatTitle, "Agents") : pageTitle("Agents")}
+			{chatTitle ? pageTitle(chatTitle, "智能体") : pageTitle("智能体")}
 		</title>
 	);
 
@@ -1560,7 +1560,7 @@ const AgentChatPage: FC = () => {
 
 	const handleImplementPlan = async () => {
 		await submitChatTurn({
-			message: "Implement the plan.",
+			message: "实施计划。",
 			planModeSwitch: "clear",
 			useComposerContent: false,
 		});

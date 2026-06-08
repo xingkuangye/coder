@@ -31,20 +31,20 @@ const PullRequestStateBadge: FC<{
 	draft?: boolean;
 }> = ({ state, draft }) => {
 	let Icon = GitPullRequestIcon;
-	let label = "Open";
+	let label = "开放";
 	let colorClasses = "bg-surface-git-added text-git-added-bright";
 
 	if (state === "merged") {
 		Icon = GitMergeIcon;
-		label = "Merged";
+		label = "已合并";
 		colorClasses = "bg-surface-git-merged text-git-merged-bright";
 	} else if (state === "closed") {
 		Icon = GitPullRequestClosedIcon;
-		label = "Closed";
+		label = "已关闭";
 		colorClasses = "bg-surface-git-deleted text-git-deleted-bright";
 	} else if (draft) {
 		Icon = GitPullRequestDraftIcon;
-		label = "Draft";
+		label = "草稿";
 		colorClasses = "text-content-secondary";
 	}
 
@@ -170,7 +170,7 @@ export const RemoteDiffPanel: FC<RemoteDiffPanelProps> = ({
 							rel="noreferrer"
 							className="inline-flex items-center gap-1 rounded-sm border border-solid border-border-default px-2 text-[13px] font-medium leading-5 text-content-secondary no-underline transition-colors hover:bg-surface-secondary hover:text-content-primary"
 						>
-							View PR
+							查看 PR
 							<ExternalLinkIcon className="size-3" />
 						</a>
 					</div>

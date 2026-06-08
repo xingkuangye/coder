@@ -146,7 +146,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 								isOpen && "rotate-90",
 							)}
 						/>
-						<span className="sr-only">({isOpen ? "Hide" : "Show more"})</span>
+						<span className="sr-only">({isOpen ? "隐藏" : "显示更多"})</span>
 						{formatDate(new Date(interception.started_at))}
 					</div>
 				</TableCell>
@@ -186,7 +186,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 											/>
 										</div>
 										<span className="truncate min-w-0">
-											{interception.client ?? "Unknown"}
+											{interception.client ?? "未知"}
 										</span>
 									</Badge>
 								</TooltipTrigger>
@@ -232,17 +232,17 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 									"[&_dd]:text-content-primary [&_dd]:font-mono [&_dd]:leading-[22px] [&_dt]:font-medium",
 								])}
 							>
-								<dt>Request ID:</dt>
+								<dt>请求 ID：</dt>
 								<dd data-chromatic="ignore">{interception.id}</dd>
 
-								<dt>Start Time:</dt>
+								<dt>开始时间：</dt>
 								<dd data-chromatic="ignore">
 									{formatDate(new Date(interception.started_at))}
 								</dd>
 
 								{interception.ended_at && (
 									<>
-										<dt>End Time:</dt>
+										<dt>结束时间：</dt>
 										<dd data-chromatic="ignore">
 											{formatDate(new Date(interception.ended_at))}
 										</dd>
@@ -251,14 +251,14 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 
 								{(duration || duration === 0) && (
 									<>
-										<dt>Duration:</dt>
+										<dt>耗时：</dt>
 										<dd title={duration.toString()} data-chromatic="ignore">
 											{humanDuration(duration)}
 										</dd>
 									</>
 								)}
 
-								<dt>Initiator:</dt>
+								<dt>发起人：</dt>
 								<dd
 									data-chromatic="ignore"
 									className="flex items-center gap-1.5"
@@ -275,7 +275,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 									</span>
 								</dd>
 
-								<dt>Client:</dt>
+								<dt>客户端：</dt>
 								<dd data-chromatic="ignore">
 									<Badge className="gap-2">
 										<div className="flex-shrink-0 flex items-center">
@@ -285,12 +285,12 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 											/>
 										</div>
 										<span className="truncate min-w-0 w-full text-2xs">
-											{interception.client ?? "Unknown"}
+											{interception.client ?? "未知"}
 										</span>
 									</Badge>
 								</dd>
 
-								<dt>Model:</dt>
+								<dt>模型：</dt>
 								<dd data-chromatic="ignore">
 									<Badge className="gap-2">
 										<div className="flex-shrink-0 flex items-center">
@@ -305,12 +305,12 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 									</Badge>
 								</dd>
 
-								<dt>Tool Calls:</dt>
+								<dt>工具调用：</dt>
 								<dd data-chromatic="ignore">
 									<Badge>{interception.tool_usages.length}</Badge>
 								</dd>
 
-								<dt>Input/Output Tokens:</dt>
+								<dt>输入/输出令牌：</dt>
 								<dd data-chromatic="ignore">
 									<div className="flex items-center">
 										<TokenBadges
@@ -323,7 +323,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 
 							{interception.user_prompts.length > 0 && (
 								<div className="flex flex-col gap-2">
-									<div>Prompts</div>
+									<div>提示词</div>
 									<div
 										className="bg-surface-secondary rounded-md p-4 text-xs leading-4"
 										data-chromatic="ignore"
@@ -337,7 +337,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 
 							{interception.tool_usages.length > 0 && (
 								<div className="flex flex-col gap-2">
-									<div>Tool Usages</div>
+									<div>工具使用</div>
 									<div
 										className="bg-surface-secondary rounded-md p-4"
 										data-chromatic="ignore"
@@ -372,7 +372,7 @@ export const RequestLogsRow: FC<RequestLogsRowProps> = ({ interception }) => {
 
 							{tokenUsagesMetadata !== null && (
 								<div className="flex flex-col gap-2">
-									<div>Token Usage Metadata</div>
+									<div>令牌使用元数据</div>
 									<div className="bg-surface-secondary rounded-md p-4">
 										<pre>{JSON.stringify(tokenUsagesMetadata, null, 2)}</pre>
 									</div>

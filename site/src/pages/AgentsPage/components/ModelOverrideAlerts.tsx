@@ -33,7 +33,7 @@ export const ModelOverrideAlerts: FC<ModelOverrideAlertsProps> = ({
 			{children}
 			{Boolean(modelConfigsError) && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load model configs.
+					加载模型配置失败。
 				</p>
 			)}
 		</>

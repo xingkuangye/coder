@@ -44,11 +44,11 @@ export const HealthLayout: FC = () => {
 	);
 	const sections = {
 		derp: "DERP",
-		access_url: "Access URL",
+		access_url: "访问 URL",
 		websocket: "Websocket",
-		database: "Database",
-		workspace_proxy: "Workspace Proxy",
-		provisioner_daemons: "Provisioner Daemons",
+		database: "数据库",
+		workspace_proxy: "工作区代理",
+		provisioner_daemons: "Provisioner 守护进程",
 	} as const;
 	const visibleSections = filterVisibleSections(sections);
 
@@ -70,7 +70,7 @@ export const HealthLayout: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Health")}</title>
+			<title>{pageTitle("健康检查")}</title>
 
 			<DashboardFullPage>
 				<div className="flex basis-0 flex-1 overflow-hidden">
@@ -99,12 +99,12 @@ export const HealthLayout: FC = () => {
 											</Button>
 										</TooltipTrigger>
 										<TooltipContent side="bottom">
-											Refresh health checks
+											刷新健康检查
 										</TooltipContent>
 									</Tooltip>
 								</div>
 								<div className="font-medium mt-4">
-									{healthStatus.healthy ? "Healthy" : "Unhealthy"}
+									{healthStatus.healthy ? "健康" : "不健康"}
 								</div>
 								<div className="text-content-secondary line-height-[150%]">
 									{healthStatus.healthy
@@ -113,14 +113,14 @@ export const HealthLayout: FC = () => {
 													healthStatus[key as keyof typeof visibleSections];
 												return section.warnings && section.warnings.length > 0;
 											})
-											? "All systems operational, but performance might be degraded"
-											: "All systems operational"
-										: "Some issues have been detected"}
+											? "所有系统正常运行，但性能可能降低"
+											: "所有系统正常运行"
+										: "检测到一些问题"}
 								</div>
 							</div>
 
 							<div className="flex flex-col">
-								<span className="font-medium">Last check</span>
+								<span className="font-medium">上次检查</span>
 								<span
 									data-chromatic="ignore"
 									className="text-content-secondary line-height-[150%]"
@@ -130,7 +130,7 @@ export const HealthLayout: FC = () => {
 							</div>
 
 							<div className="flex flex-col">
-								<span className="font-medium">Version</span>
+								<span className="font-medium">版本</span>
 								<span
 									data-chromatic="ignore"
 									className="text-content-secondary line-height-[150%]"

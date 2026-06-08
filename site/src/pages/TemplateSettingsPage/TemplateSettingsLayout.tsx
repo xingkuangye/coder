@@ -17,7 +17,7 @@ const TemplateSettings = createContext<
 export function useTemplateSettings() {
 	const value = useContext(TemplateSettings);
 	if (!value) {
-		throw new Error("This hook can only be used from a template settings page");
+		throw new Error("此 Hook 只能在模板设置页面中使用。");
 	}
 
 	return value;
@@ -50,7 +50,7 @@ export const TemplateSettingsLayout: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(templateName, "Settings")}</title>
+			<title>{pageTitle(templateName, "设置")}</title>
 
 			<Margins>
 				<div className="flex flex-row gap-20 py-12">

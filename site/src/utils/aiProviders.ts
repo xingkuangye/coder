@@ -21,7 +21,7 @@ export const formatProviderLabel = (provider: string): string => {
 			return "Vercel AI Gateway";
 		default:
 			if (!normalized) {
-				return "Unknown";
+				return "未知";
 			}
 			return `${normalized[0].toUpperCase()}${normalized.slice(1)}`;
 	}

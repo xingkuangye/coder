@@ -71,7 +71,7 @@ const ConnectionLogPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Connection Log")}</title>
+			<title>{pageTitle("连接日志")}</title>
 
 			<ConnectionLogPageView
 				connectionLogs={connectionlogsQuery.data?.connection_logs}

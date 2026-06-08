@@ -28,7 +28,7 @@ const OverviewPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Overview", "Deployment")}</title>
+			<title>{pageTitle("概览", "部署")}</title>
 
 			<OverviewPageView
 				deploymentOptions={deploymentConfig.options}

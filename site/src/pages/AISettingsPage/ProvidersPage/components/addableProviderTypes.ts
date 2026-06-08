@@ -12,7 +12,7 @@ export const addableProviders: readonly AddableProvider[] = [
 	{ value: "copilot", label: "GitHub Copilot" },
 	{ value: "google", label: "Google" },
 	{ value: "openai", label: "OpenAI" },
-	{ value: "openai-compat", label: "OpenAI-compatible" },
+	{ value: "openai-compat", label: "OpenAI 兼容" },
 	{ value: "openrouter", label: "OpenRouter" },
 	{ value: "vercel", label: "Vercel" },
 ];

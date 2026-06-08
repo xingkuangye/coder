@@ -60,7 +60,7 @@ export const TemplateExampleCard: FC<TemplateExampleCardProps> = ({
 						to={`/starter-templates/${example.id}`}
 						className="inline-block text-[13px] mt-1"
 					>
-						Read more
+						了解更多
 					</Link>
 				</span>
 			</div>
@@ -68,7 +68,7 @@ export const TemplateExampleCard: FC<TemplateExampleCardProps> = ({
 			<div className="mt-auto flex flex-col items-center gap-3 pt-6">
 				<Button asChild className="w-full">
 					<RouterLink to={`/templates/new?exampleId=${example.id}`}>
-						Use template
+						使用模板
 					</RouterLink>
 				</Button>
 			</div>

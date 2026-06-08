@@ -43,10 +43,10 @@ export const BuildLogsDrawer: FC<BuildLogsDrawerProps> = ({
 					className="flex items-center justify-between border-b border-border px-6"
 					style={{ height: navHeight }}
 				>
-					<h3 className="m-0 text-base font-medium">Creating template...</h3>
+					<h3 className="m-0 text-base font-medium">正在创建模板…</h3>
 					<Button size="icon-lg" variant="subtle" onClick={drawerProps.onClose}>
 						<XIcon />
-						<span className="sr-only">Close build logs</span>
+						<span className="sr-only">关闭构建日志</span>
 					</Button>
 				</header>
 
@@ -96,10 +96,9 @@ const MissingVariablesBanner: FC<MissingVariablesBannerProps> = ({
 		<div className="flex items-center justify-center p-10">
 			<div className="flex max-w-[360px] flex-col items-center text-center">
 				<TriangleAlertIcon className="size-icon-lg text-content-warning" />
-				<h4 className="m-0 mt-4 font-medium leading-none">Missing variables</h4>
+				<h4 className="m-0 mt-4 font-medium leading-none">缺少变量</h4>
 				<p className="m-0 mt-2 text-sm leading-6 text-content-secondary">
-					During the build process, we identified some missing variables. Rest
-					assured, we have automatically added them to the form for you.
+					在构建过程中，我们发现了一些缺失的变量。请放心，我们已经自动将它们添加到了表单中。
 				</p>
 				<Button
 					className="mt-4"
@@ -107,7 +106,7 @@ const MissingVariablesBanner: FC<MissingVariablesBannerProps> = ({
 					variant="outline"
 					onClick={onFillVariables}
 				>
-					Fill variables
+					填写变量
 				</Button>
 			</div>
 		</div>

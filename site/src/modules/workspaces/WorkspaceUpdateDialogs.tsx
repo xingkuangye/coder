@@ -122,14 +122,13 @@ const UpdateConfirmationDialog: FC<UpdateConfirmationDialogProps> = ({
 		<ConfirmDialog
 			{...dialogProps}
 			hideCancel={false}
-			title="Update workspace?"
-			confirmText="Update"
+			title="更新工作空间？"
+			confirmText="更新"
 			description={
 				<div className="flex flex-col gap-2">
 					<p>
-						Updating your workspace will start the workspace on the latest
-						template version. This can{" "}
-						<strong>delete non-persistent data</strong>.
+						更新工作空间将使用最新模板版本启动工作空间。这可能会
+						<strong>删除非持久性数据</strong>。
 					</p>
 					<div>
 						{latestVersion?.message && (

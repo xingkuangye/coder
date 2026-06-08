@@ -145,20 +145,20 @@ export const PersonalSkillsTriggerMenu = ({
 					<CommandList className="max-h-72 border-t-0 mobile-full-width-dropdown-scroll-area">
 						{menuState?.isLoading ? (
 							<CommandItem value="loading" disabled>
-								Loading personal skills...
+								正在加载个人技能...
 							</CommandItem>
 						) : menuState?.isError ? (
 							<CommandItem value="error" disabled>
-								Could not load personal skills. Close and type / again to retry.
+								无法加载个人技能。关闭并重新输入 / 以重试。
 							</CommandItem>
 						) : menuSkills.length === 0 ? (
 							<CommandEmpty>
 								{menuState?.query
-									? "No personal skills match that query."
-									: "No personal skills found."}
+									? "没有匹配该查询的个人技能。"
+									: "未找到个人技能。"}
 							</CommandEmpty>
 						) : (
-							<CommandGroup heading="Personal skills">
+							<CommandGroup heading="个人技能">
 								{menuSkills.map((skill) => (
 									<CommandItem
 										key={skill.id}

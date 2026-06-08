@@ -29,6 +29,11 @@ export type WorkspaceSettingsFormValues = {
 	automatic_updates: AutomaticUpdates;
 };
 
+const AUTOMATIC_UPDATE_DISPLAY_NAMES: Record<AutomaticUpdates, string> = {
+	always: "始终",
+	never: "从不",
+};
+
 interface WorkspaceSettingsFormProps {
 	workspace: Workspace;
 	error: unknown;
@@ -52,7 +57,7 @@ export const WorkspaceSettingsForm: FC<WorkspaceSettingsFormProps> = ({
 			automatic_updates: workspace.automatic_updates,
 		},
 		validationSchema: Yup.object({
-			name: nameValidator("Name"),
+			name: nameValidator("名称"),
 			automatic_updates: Yup.string().oneOf(AutomaticUpdateses),
 		}),
 	});
@@ -64,8 +69,8 @@ export const WorkspaceSettingsForm: FC<WorkspaceSettingsFormProps> = ({
 	return (
 		<HorizontalForm onSubmit={form.handleSubmit} data-testid="form">
 			<FormSection
-				title="Workspace Name"
-				description="Update the name of your workspace."
+				title="工作区名称"
+				description="更新您的工作区名称。"
 			>
 				<FormFields>
 					<TextField
@@ -74,26 +79,26 @@ export const WorkspaceSettingsForm: FC<WorkspaceSettingsFormProps> = ({
 						onChange={onChangeTrimmed(form)}
 						autoFocus
 						fullWidth
-						label="Name"
+						label="名称"
 						css={workspace.allow_renames && styles.nameWarning}
 						helperText={
 							workspace.allow_renames
 								? form.values.name !== form.initialValues.name &&
-									"Depending on the template, renaming your workspace may be destructive"
-								: "Renaming your workspace can be destructive and is disabled by the template."
+									"根据模板，重命名您的工作区可能具有破坏性"
+								: "重命名工作区可能具有破坏性，且已被模板禁用。"
 						}
 					/>
 				</FormFields>
 			</FormSection>
 			<FormSection
-				title="Automatic Updates"
-				description="Configure your workspace to automatically update when started."
+				title="自动更新"
+				description="配置您的工作区在启动时自动更新。"
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("automatic_updates")}
 						id="automatic_updates"
-						label="Update Policy"
+						label="更新策略"
 						value={
 							workspace.template_require_active_version
 								? "always"
@@ -105,12 +110,12 @@ export const WorkspaceSettingsForm: FC<WorkspaceSettingsFormProps> = ({
 						}
 						helperText={
 							workspace.template_require_active_version &&
-							"The template for this workspace requires automatic updates."
+							"此工作区的模板要求自动更新。"
 						}
 					>
 						{AutomaticUpdateses.map((value) => (
 							<MenuItem value={value} key={value}>
-								{upperFirst(value)}
+								{AUTOMATIC_UPDATE_DISPLAY_NAMES[value] ?? upperFirst(value)}
 							</MenuItem>
 						))}
 					</TextField>
@@ -119,12 +124,12 @@ export const WorkspaceSettingsForm: FC<WorkspaceSettingsFormProps> = ({
 			{formEnabled && (
 				<FormFooter>
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 
 					<Button type="submit" disabled={form.isSubmitting}>
 						<Spinner loading={form.isSubmitting} />
-						Save
+						保存
 					</Button>
 				</FormFooter>
 			)}

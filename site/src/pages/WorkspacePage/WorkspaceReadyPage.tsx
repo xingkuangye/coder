@@ -76,7 +76,7 @@ export const WorkspaceReadyPage: FC<WorkspaceReadyPageProps> = ({
 			toast.error(
 				getErrorMessage(
 					error,
-					`Failed to build workspace "${workspace.name}".`,
+					`构建工作区 "${workspace.name}" 失败。`,
 				),
 				{
 					description: getErrorDetail(error),
@@ -360,7 +360,7 @@ export const WorkspaceReadyPage: FC<WorkspaceReadyPageProps> = ({
 						toast.error(
 							getErrorMessage(
 								e,
-								`Error activating workspace "${workspace.name}".`,
+								`激活工作区 "${workspace.name}" 时出错。`,
 							),
 							{
 								description: getErrorDetail(e),
@@ -383,12 +383,12 @@ export const WorkspaceReadyPage: FC<WorkspaceReadyPageProps> = ({
 					setConfirmingRestart({ open: false });
 				}}
 				onClose={() => setConfirmingRestart({ open: false })}
-				title="Restart your workspace?"
-				confirmText="Restart"
+				title="重启工作区？"
+				confirmText="重启"
 				description={
 					<>
-						Restarting your workspace will stop all running processes and{" "}
-						<strong>delete non-persistent data</strong>.
+						重启工作区将停止所有正在运行的进程，并{" "}
+						<strong>删除非持久化数据</strong>。
 					</>
 				}
 			/>

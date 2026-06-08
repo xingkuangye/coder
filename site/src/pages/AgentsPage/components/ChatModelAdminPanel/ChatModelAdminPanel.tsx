@@ -309,7 +309,7 @@ export const ChatModelAdminPanel: FC<ChatModelAdminPanelProps> = ({
 			{isLoading && (
 				<div className="flex items-center gap-1.5 text-xs text-content-secondary">
 					<Spinner className="h-4 w-4" loading />
-					Loading
+					加载中...
 				</div>
 			)}
 
@@ -350,10 +350,10 @@ export const ChatModelAdminPanel: FC<ChatModelAdminPanelProps> = ({
 			{providerConfigsUnavailable && (
 				<Alert severity="info">
 					<AlertTitle>
-						Chat provider admin API is unavailable on this deployment.
+						此部署上无法使用聊天提供商管理 API。
 					</AlertTitle>
 					<AlertDescription>
-						/api/v2/chats/providers is missing.
+						缺少 /api/v2/chats/providers。
 					</AlertDescription>
 				</Alert>
 			)}
@@ -361,10 +361,10 @@ export const ChatModelAdminPanel: FC<ChatModelAdminPanelProps> = ({
 			{modelConfigsUnavailable && (
 				<Alert severity="info">
 					<AlertTitle>
-						Chat model admin API is unavailable on this deployment.
+						此部署上无法使用聊天模型管理 API。
 					</AlertTitle>
 					<AlertDescription>
-						/api/v2/chats/model-configs is missing.
+						缺少 /api/v2/chats/model-configs。
 					</AlertDescription>
 				</Alert>
 			)}

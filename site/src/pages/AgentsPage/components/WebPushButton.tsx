@@ -40,8 +40,8 @@ export const WebPushButton: FC<WebPushButtonProps> = ({
 				await webPushState.subscribe();
 			}
 		} catch (error) {
-			const action = webPushState.subscribed ? "disable" : "enable";
-			toast.error(getErrorMessage(error, `Failed to ${action} notifications.`));
+			const action = webPushState.subscribed ? "禁用" : "启用";
+			toast.error(getErrorMessage(error, `无法${action}通知。`));
 		}
 	};
 
@@ -55,8 +55,8 @@ export const WebPushButton: FC<WebPushButtonProps> = ({
 					onClick={handleClick}
 					aria-label={
 						webPushState.subscribed
-							? "Disable notifications"
-							: "Enable notifications"
+							? "禁用通知"
+							: "启用通知"
 					}
 					className="size-7 text-content-secondary hover:text-content-primary"
 				>
@@ -71,8 +71,8 @@ export const WebPushButton: FC<WebPushButtonProps> = ({
 			</TooltipTrigger>
 			<TooltipContent>
 				{webPushState.subscribed
-					? "Disable notifications"
-					: "Enable notifications"}
+					? "禁用通知"
+					: "启用通知"}
 			</TooltipContent>
 		</Tooltip>
 	);

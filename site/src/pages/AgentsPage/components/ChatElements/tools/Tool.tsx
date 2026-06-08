@@ -184,7 +184,7 @@ const getWorkspaceQuotaTitle = (
 	if (!rec || asString(rec.error_code) !== insufficientQuotaErrorCode) {
 		return undefined;
 	}
-	return asString(rec.title).trim() || "Workspace quota reached";
+	return asString(rec.title).trim() || "工作区配额已满";
 };
 
 const parseAskUserQuestionResult = (
@@ -338,7 +338,7 @@ const ReadSkillRenderer: FC<ToolRendererProps> = ({
 
 	return (
 		<ReadSkillTool
-			label={skillName ? `skill ${skillName}` : "skill"}
+			label={skillName ? `技能 ${skillName}` : "技能"}
 			body={body}
 			status={status}
 			isError={isError}
@@ -359,7 +359,7 @@ const ReadSkillFileRenderer: FC<ToolRendererProps> = ({
 	const label =
 		skillName && filePath
 			? `${skillName}/${filePath}`
-			: skillName || filePath || "skill file";
+			: skillName || filePath || "技能文件";
 	const rec = asRecord(result);
 	const content = rec ? asString(rec.content) : "";
 
@@ -388,7 +388,7 @@ const WriteFileRenderer: FC<ToolRendererProps> = ({
 
 	return (
 		<WriteFileTool
-			path={path || "file"}
+			path={path || "文件"}
 			diff={writeFileDiff}
 			status={status}
 			isError={isError}
@@ -800,8 +800,8 @@ const ComputerRenderer: FC<ToolRendererProps> = ({
 		imageData = "";
 		if (!text) {
 			text = attachmentName
-				? `Attached ${attachmentName}`
-				: "Attached screenshot";
+				? `已附加 ${attachmentName}`
+				: "已附加截图";
 		}
 	}
 
@@ -870,14 +870,14 @@ const GenericToolContent: FC<GenericToolContentProps> = ({
 		<>
 			{toolInput && (
 				<ToolFileViewer
-					label="Input"
+					label="输入"
 					file={{ name: "input.json", contents: toolInput }}
 					options={getFileViewerOptionsNoHeader(isDark)}
 				/>
 			)}
 			{output && (
 				<ToolFileViewer
-					label={toolInput ? "Output" : undefined}
+					label={toolInput ? "输出" : undefined}
 					file={output.file}
 					options={output.options}
 				/>
@@ -950,7 +950,7 @@ const GenericToolRenderer: FC<ToolRendererProps> = ({
 					<TooltipTrigger asChild>
 						<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 					</TooltipTrigger>
-					<TooltipContent>{errorMessage || "Tool call failed"}</TooltipContent>
+					<TooltipContent>{errorMessage || "工具调用失败"}</TooltipContent>
 				</Tooltip>
 			)}
 			{isRunning && (

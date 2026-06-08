@@ -50,18 +50,18 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 			<DropdownMenuItem asChild>
 				<Link to="/install">
 					<MonitorDownIcon />
-					<span>Install CLI</span>
+					<span>安装 CLI</span>
 				</Link>
 			</DropdownMenuItem>
 			<DropdownMenuItem asChild>
 				<Link to="/settings/account">
 					<CircleUserIcon />
-					<span>Account</span>
+					<span>账户</span>
 				</Link>
 			</DropdownMenuItem>
 			<DropdownMenuItem onClick={onSignOut}>
 				<LogOutIcon />
-				<span>Sign Out</span>
+				<span>退出登录</span>
 			</DropdownMenuItem>
 			{supportLinks && supportLinks.length > 0 && (
 				<>
@@ -113,7 +113,7 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 						</a>
 					</DropdownMenuItem>
 				</TooltipTrigger>
-				<TooltipContent side="bottom">Browse the source code</TooltipContent>
+				<TooltipContent side="bottom">浏览源代码</TooltipContent>
 			</Tooltip>
 			{buildInfo?.deployment_id && (
 				<Tooltip disableHoverableContent>
@@ -134,7 +134,7 @@ export const UserDropdownContent: FC<UserDropdownContentProps> = ({
 						</DropdownMenuItem>
 					</TooltipTrigger>
 					<TooltipContent side="bottom">
-						{showCopiedSuccess ? "Copied!" : "Copy deployment ID"}
+						{showCopiedSuccess ? "已复制！" : "复制部署 ID"}
 					</TooltipContent>
 				</Tooltip>
 			)}

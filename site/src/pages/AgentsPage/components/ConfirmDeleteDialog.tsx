@@ -37,10 +37,10 @@ export const ConfirmDeleteDialog: FC<ConfirmDeleteDialogProps> = ({
 	<Dialog open={open} onOpenChange={onOpenChange}>
 		<DialogContent variant="destructive">
 			<DialogHeader>
-				<DialogTitle>Delete {entity}</DialogTitle>
+				<DialogTitle>删除 {entity}</DialogTitle>
 				<DialogDescription>
 					{description ??
-						`Are you sure you want to delete this ${entity}? This action is irreversible.`}
+						`确定要删除此 ${entity} 吗？此操作不可撤销。`}
 				</DialogDescription>
 			</DialogHeader>
 			{children}
@@ -50,11 +50,11 @@ export const ConfirmDeleteDialog: FC<ConfirmDeleteDialogProps> = ({
 					onClick={() => onOpenChange(false)}
 					disabled={isPending}
 				>
-					Cancel
+					取消
 				</Button>
 				<Button variant="destructive" onClick={onConfirm} disabled={isPending}>
 					{isPending && <Spinner className="h-4 w-4" loading />}
-					Delete {entity}
+					删除 {entity}
 				</Button>
 			</DialogFooter>
 		</DialogContent>

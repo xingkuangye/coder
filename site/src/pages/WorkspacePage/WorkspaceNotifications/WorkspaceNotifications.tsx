@@ -60,21 +60,21 @@ export const WorkspaceNotifications: FC<WorkspaceNotificationsProps> = ({
 	if (workspace.outdated && latestVersion) {
 		const actions = (
 			<NotificationActionButton onClick={onUpdateWorkspace}>
-				Update
+				更新
 			</NotificationActionButton>
 		);
 		if (requiresManualUpdate) {
 			notifications.push({
-				title: "Autostart has been disabled for your workspace.",
+				title: "工作空间的自动启动已被禁用。",
 				severity: "warning",
 				detail:
-					"Autostart is unable to automatically update your workspace. Manually update your workspace to reenable Autostart.",
+					"自动启动无法自动更新你的工作空间。请手动更新工作空间以重新启用自动启动。",
 
 				actions,
 			});
 		} else {
 			notifications.push({
-				title: "An update is available for your workspace",
+				title: "你的工作空间有可用更新",
 				severity: "info",
 				detail: (
 					<TemplateUpdateMessage>{latestVersion.message}</TemplateUpdateMessage>
@@ -95,36 +95,36 @@ export const WorkspaceNotifications: FC<WorkspaceNotificationsProps> = ({
 			// Restarting won't fix a broken startup script, so omit the Restart
 			// button and guide the user to their template admin instead.
 			notifications.push({
-				title: "A startup script has failed",
+				title: "启动脚本失败",
 				severity: "warning",
 				detail:
-					"The workspace agent is running but a startup script exited with an error.",
+					"工作空间代理正在运行，但启动脚本以错误退出。",
 				actions: troubleshootingURL ? (
 					<NotificationActionButton
 						onClick={() => window.open(troubleshootingURL, "_blank")}
 					>
-						Troubleshooting
+						故障排除
 					</NotificationActionButton>
 				) : undefined,
 			});
 		} else {
 			const hasActions = permissions.updateWorkspace || troubleshootingURL;
 			notifications.push({
-				title: "One or more workspace agents need attention",
+				title: "一个或多个工作空间代理需要注意",
 				severity: "warning",
-				detail: "Expand an agent's logs to view per-agent health details.",
+				detail: "展开代理的日志以查看每个代理的健康详细信息。",
 				actions: hasActions ? (
 					<>
 						{permissions.updateWorkspace && (
 							<NotificationActionButton onClick={onRestartWorkspace}>
-								Restart
+								重启
 							</NotificationActionButton>
 						)}
 						{troubleshootingURL && (
 							<NotificationActionButton
 								onClick={() => window.open(troubleshootingURL, "_blank")}
 							>
-								Troubleshooting
+								故障排除
 							</NotificationActionButton>
 						)}
 					</>
@@ -149,28 +149,26 @@ export const WorkspaceNotifications: FC<WorkspaceNotificationsProps> = ({
 		};
 		const actions = (
 			<NotificationActionButton onClick={onActivateWorkspace}>
-				Activate
+				激活
 			</NotificationActionButton>
 		);
 		notifications.push({
 			actions,
-			title: "Workspace is dormant",
+			title: "工作空间处于休眠状态",
 			severity: "warning",
 			detail: workspace.deleting_at ? (
 				<>
-					This workspace has not been used for{" "}
-					{dayjs(workspace.last_used_at).fromNow(true)} and was marked dormant
-					on {formatDateTime(workspace.dormant_at, false)}. It is scheduled to
-					be deleted on {formatDateTime(workspace.deleting_at, true)}. To keep
-					it you must activate the workspace.
+					该工作空间已 {dayjs(workspace.last_used_at).fromNow(true)} 未使用，
+					于 {formatDateTime(workspace.dormant_at, false)} 被标记为休眠。
+					它计划于 {formatDateTime(workspace.deleting_at, true)} 被删除。
+					要保留它，您需要激活工作空间。
 				</>
 			) : (
 				<>
-					This workspace has not been used for{" "}
-					{dayjs(workspace.last_used_at).fromNow(true)} and was marked dormant
-					on {formatDateTime(workspace.dormant_at, false)}. It is not scheduled
-					for auto-deletion but will become a candidate if auto-deletion is
-					enabled on this template. To keep it you must activate the workspace.
+					该工作空间已 {dayjs(workspace.last_used_at).fromNow(true)} 未使用，
+					于 {formatDateTime(workspace.dormant_at, false)} 被标记为休眠。
+					它未被安排自动删除，但如果在此模板上启用了自动删除，它将成为候选对象。
+					要保留它，您需要激活工作空间。
 				</>
 			),
 		});
@@ -216,15 +214,14 @@ export const WorkspaceNotifications: FC<WorkspaceNotificationsProps> = ({
 
 	if (showAlertPendingInQueue) {
 		notifications.push({
-			title: "Workspace build is pending",
+			title: "工作空间构建正在排队等待",
 			severity: "info",
 			detail: (
 				<>
-					This workspace build job is waiting for a provisioner to become
-					available. If you have been waiting for an extended period of time,
-					please contact your administrator for assistance.
+					此工作空间构建作业正在等待可用的配置程序。
+					如果您已等待较长时间，请联系管理员寻求帮助。
 					<span className="block mt-3">
-						Position in queue:{" "}
+						队列中的位置:{" "}
 						<strong>{workspace.latest_build.job.queue_position}</strong>
 					</span>
 				</>
@@ -235,7 +232,7 @@ export const WorkspaceNotifications: FC<WorkspaceNotificationsProps> = ({
 	// Deprecated
 	if (template.deprecated) {
 		notifications.push({
-			title: "This workspace uses a deprecated template",
+			title: "此工作空间使用了已弃用的模板",
 			severity: "warning",
 			detail: (
 				<MemoizedInlineMarkdown>

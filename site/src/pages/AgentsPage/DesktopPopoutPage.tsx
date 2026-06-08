@@ -98,8 +98,8 @@ export const DesktopPopoutPageView: FC<DesktopPopoutPageViewProps> = ({
 					<Spinner loading className="h-6 w-6" />
 					<span className="text-sm">
 						{status === "idle"
-							? "Initializing desktop..."
-							: "Connecting to desktop..."}
+							? "正在初始化桌面..."
+							: "正在连接桌面..."}
 					</span>
 				</div>
 			</div>
@@ -111,11 +111,10 @@ export const DesktopPopoutPageView: FC<DesktopPopoutPageViewProps> = ({
 			<div className="flex h-screen w-screen items-center justify-center bg-surface-primary">
 				<div className="flex flex-col items-center gap-3 text-content-secondary">
 					<span className="text-center text-sm">
-						Failed to connect to the desktop session. The agent may not be
-						connected or the desktop environment may not be available.
+						连接桌面会话失败。可能代理未连接或桌面环境不可用。
 					</span>
 					<Button variant="outline" size="sm" onClick={reconnect}>
-						Reconnect
+						重新连接
 					</Button>
 				</div>
 			</div>
@@ -127,7 +126,7 @@ export const DesktopPopoutPageView: FC<DesktopPopoutPageViewProps> = ({
 			<div className="flex h-screen w-screen items-center justify-center bg-surface-primary">
 				<div className="flex flex-col items-center gap-2 text-content-secondary">
 					<Spinner loading className="h-6 w-6" />
-					<span className="text-sm">Desktop disconnected. Reconnecting...</span>
+					<span className="text-sm">桌面已断开连接，正在重连...</span>
 				</div>
 			</div>
 		);
@@ -152,8 +151,8 @@ export const DesktopPopoutPageView: FC<DesktopPopoutPageViewProps> = ({
 				role="application"
 				aria-label={
 					isControlling
-						? "Remote desktop (interactive)"
-						: "Remote desktop (view only, take control to interact)"
+						? "远程桌面（可交互）"
+						: "远程桌面（仅查看，获取控制权以交互）"
 				}
 			/>
 		</div>

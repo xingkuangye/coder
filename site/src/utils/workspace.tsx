@@ -18,7 +18,7 @@ dayjs.extend(utc);
 dayjs.extend(minMax);
 
 const DisplayAgentVersionLanguage = {
-	unknown: "Unknown",
+	unknown: "未知",
 };
 
 export const getDisplayWorkspaceBuildInitiatedBy = (
@@ -55,19 +55,19 @@ export const systemBuildReasons = [
 export const buildReasonLabels: Record<TypesGen.BuildReason, string> = {
 	// User build reasons
 	initiator: "API",
-	dashboard: "Dashboard",
+	dashboard: "仪表板",
 	cli: "CLI",
-	ssh_connection: "SSH Connection",
-	vscode_connection: "VSCode Connection",
-	jetbrains_connection: "JetBrains Connection",
+	ssh_connection: "SSH 连接",
+	vscode_connection: "VSCode 连接",
+	jetbrains_connection: "JetBrains 连接",
 
 	// System build reasons
-	autostart: "Autostart",
-	autostop: "Autostop",
-	dormancy: "Dormancy",
-	task_auto_pause: "Task Auto-Pause",
-	task_manual_pause: "Task Manual Pause",
-	task_resume: "Task Resume",
+	autostart: "自动启动",
+	autostop: "自动停止",
+	dormancy: "休眠",
+	task_auto_pause: "任务自动暂停",
+	task_manual_pause: "任务手动暂停",
+	task_resume: "任务恢复",
 };
 
 const getWorkspaceBuildDurationInSeconds = (
@@ -86,10 +86,10 @@ const getWorkspaceBuildDurationInSeconds = (
 
 export const displayWorkspaceBuildDuration = (
 	build: TypesGen.WorkspaceBuild,
-	inProgressLabel = "In progress",
+	inProgressLabel = "进行中",
 ): string => {
 	const duration = getWorkspaceBuildDurationInSeconds(build);
-	return duration ? `${duration} seconds` : inProgressLabel;
+	return duration ? `${duration} 秒` : inProgressLabel;
 };
 
 export enum agentVersionStatus {
@@ -172,62 +172,62 @@ export const getDisplayWorkspaceStatus = (
 	switch (workspaceStatus) {
 		case undefined:
 			return {
-				text: "Loading",
+				text: "加载中",
 				type: "active",
 				icon: <PillSpinner />,
 			} as const;
 		case "running":
 			return {
 				type: "success",
-				text: "Running",
+				text: "运行中",
 				icon: <PlayIcon />,
 			} as const;
 		case "starting":
 			return {
 				type: "active",
-				text: "Starting",
+				text: "启动中",
 				icon: <PillSpinner />,
 			} as const;
 		case "stopping":
 			return {
 				type: "inactive",
-				text: "Stopping",
+				text: "停止中",
 				icon: <PillSpinner />,
 			} as const;
 		case "stopped":
 			return {
 				type: "inactive",
-				text: "Stopped",
+				text: "已停止",
 				icon: <SquareIcon />,
 			} as const;
 		case "deleting":
 			return {
 				type: "danger",
-				text: "Deleting",
+				text: "删除中",
 				icon: <PillSpinner />,
 			} as const;
 		case "deleted":
 			return {
 				type: "danger",
-				text: "Deleted",
+				text: "已删除",
 				icon: <CircleAlertIcon aria-hidden="true" className="size-icon-sm" />,
 			} as const;
 		case "canceling":
 			return {
 				type: "inactive",
-				text: "Canceling",
+				text: "取消中",
 				icon: <PillSpinner />,
 			} as const;
 		case "canceled":
 			return {
 				type: "inactive",
-				text: "Canceled",
+				text: "已取消",
 				icon: <CircleAlertIcon aria-hidden="true" className="size-icon-sm" />,
 			} as const;
 		case "failed":
 			return {
 				type: "error",
-				text: "Failed",
+				text: "失败",
 				icon: <CircleAlertIcon aria-hidden="true" className="size-icon-sm" />,
 			} as const;
 		case "pending":
@@ -304,7 +304,7 @@ export const lastUsedMessage = (lastUsedAt: string | Date): string => {
 	let message = t.fromNow();
 
 	if (t.isAfter(now.subtract(1, "hour"))) {
-		message = "Now";
+		message = "刚刚";
 	} else if (t.isAfter(now.subtract(3, "day"))) {
 		message = t.fromNow();
 	} else if (t.isAfter(now.subtract(1, "month"))) {
@@ -312,7 +312,7 @@ export const lastUsedMessage = (lastUsedAt: string | Date): string => {
 	} else if (t.isAfter(now.subtract(100, "year"))) {
 		message = t.fromNow();
 	} else {
-		message = "Never";
+		message = "从不";
 	}
 
 	return message;

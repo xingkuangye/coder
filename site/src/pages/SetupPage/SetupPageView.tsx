@@ -47,23 +47,23 @@ const usernameFromEmail = (email: string): string => {
 const validationSchema = Yup.object({
 	email: Yup.string()
 		.trim()
-		.email("Please enter a valid email address.")
-		.required("Please enter an email address."),
-	password: Yup.string().required("Please enter a password."),
+		.email("请输入有效的电子邮件地址。")
+		.required("请输入电子邮件地址。"),
+	password: Yup.string().required("请输入密码。"),
 	username: usernameValidator,
 	trial: Yup.bool(),
 	trial_info: Yup.object().when("trial", {
 		is: true,
 		then: (schema) =>
 			schema.shape({
-				first_name: Yup.string().required("Please enter your first name."),
-				last_name: Yup.string().required("Please enter your last name."),
-				phone_number: Yup.string().required("Please enter your phone number."),
-				job_title: Yup.string().required("Please enter your job title."),
-				company_name: Yup.string().required("Please enter your company name."),
-				country: Yup.string().required("Please select your country."),
+				first_name: Yup.string().required("请输入您的名。"),
+				last_name: Yup.string().required("请输入您的姓。"),
+				phone_number: Yup.string().required("请输入您的电话号码。"),
+				job_title: Yup.string().required("请输入您的职位。"),
+				company_name: Yup.string().required("请输入您的公司名称。"),
+				country: Yup.string().required("请选择您的国家。"),
 				developers: Yup.string().required(
-					"Please select the number of developers in your company.",
+					"请选择贵公司的开发者数量。",
 				),
 			}),
 	}),
@@ -194,11 +194,10 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 				<header className="mb-8">
 					<ProductLogo />
 					<h1 className="text-2xl font-normal mt-4 mb-0">
-						Welcome to <strong>Coder</strong>
+						欢迎使用 <strong>Coder</strong>
 					</h1>
 					<p className="mt-3 mb-0 text-sm text-content-secondary font-normal">
-						Set up your admin account and start building secure, reproducible
-						dev environments.
+						设置您的管理员账户，并开始构建安全、可重现的开发环境。
 					</p>
 				</header>
 
@@ -214,7 +213,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 							<div className="flex items-center gap-4">
 								<div className="h-[1px] w-full bg-border" />
 								<div className="shrink-0 text-xs uppercase text-content-secondary tracking-wider">
-									or
+									或
 								</div>
 								<div className="h-[1px] w-full bg-border" />
 							</div>
@@ -223,7 +222,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 
 					{/* Email */}
 					<FormField
-						label="Email"
+						label="电子邮件"
 						field={getFieldHelpers("email")}
 						autoComplete="email"
 						onChange={onChangeTrimmed(form, (email) => {
@@ -234,7 +233,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 					{/* Password */}
 					<PasswordField
 						field={getFieldHelpers("password")}
-						label="Password"
+						label="密码"
 						autoComplete="new-password"
 					/>
 
@@ -255,11 +254,10 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 						/>
 						<div className="flex flex-col items-start gap-0.5">
 							<span className="text-sm font-semibold">
-								Start a 30-day trial of Premium
+								开始 30 天的高级版试用
 							</span>
 							<span className="text-xs text-content-secondary leading-relaxed">
-								Get access to high availability, template RBAC, audit logging,
-								quotas, and more.
+								获取高可用性、模板 RBAC、审计日志、配额等功能。
 							</span>
 							<a
 								href="https://coder.com/pricing"
@@ -267,7 +265,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								rel="noreferrer"
 								className="text-xs text-content-link hover:underline mt-0.5"
 							>
-								Learn more
+								了解更多
 							</a>
 						</div>
 					</label>
@@ -277,27 +275,27 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 						<div className="flex flex-col gap-4">
 							<div className="grid grid-cols-2 gap-3">
 								<FormField
-									label="First name"
+									label="名"
 									field={getFieldHelpers("trial_info.first_name")}
 								/>
 								<FormField
-									label="Last name"
+									label="姓"
 									field={getFieldHelpers("trial_info.last_name")}
 								/>
 							</div>
 
 							<div className="grid grid-cols-2 gap-3">
 								<FormField
-									label="Company"
+									label="公司"
 									field={getFieldHelpers("trial_info.company_name")}
 								/>
 								<SelectField
-									label="Number of developers"
+									label="开发者数量"
 									{...getFieldHelpers("trial_info.developers")}
 									onValueChange={(value: string) =>
 										form.setFieldValue("trial_info.developers", value)
 									}
-									placeholder="Select..."
+									placeholder="请选择..."
 								>
 									{numberOfDevelopersOptions.map((opt) => (
 										<SelectItem key={opt} value={opt}>
@@ -307,22 +305,22 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								</SelectField>
 							</div>
 							<FormField
-								label="Job title"
+								label="职位"
 								field={getFieldHelpers("trial_info.job_title")}
 							/>
 
 							<div className="grid grid-cols-2 gap-3">
 								<FormField
-									label="Phone number"
+									label="电话号码"
 									field={getFieldHelpers("trial_info.phone_number")}
 								/>
 								<SelectField
-									label="Country"
+									label="国家"
 									{...getFieldHelpers("trial_info.country")}
 									onValueChange={(value: string) =>
 										form.setFieldValue("trial_info.country", value)
 									}
-									placeholder="Select..."
+									placeholder="请选择..."
 								>
 									{countries.map((c) => (
 										<SelectItem key={c.name} value={c.name}>
@@ -336,7 +334,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 
 					{/* Sign up for updates */}
 					<div className="flex flex-col gap-3">
-						<span className="text-sm font-semibold">Sign up for updates</span>
+						<span className="text-sm font-semibold">订阅更新</span>
 
 						<label
 							htmlFor="onboarding_info.newsletter_releases"
@@ -356,9 +354,9 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								data-testid="onboarding_info.newsletter_releases"
 							/>
 							<div className="flex flex-col text-sm">
-								<span className="font-medium">Release notes & updates</span>
+								<span className="font-medium">发布说明与更新</span>
 								<span className="text-content-secondary">
-									Monthly changelog and security notices
+									每月更新日志和安全通知
 								</span>
 							</div>
 						</label>
@@ -381,26 +379,25 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 								data-testid="onboarding_info.newsletter_marketing"
 							/>
 							<div className="flex flex-col text-sm">
-								<span className="font-medium">Monthly Coder newsletter</span>
+								<span className="font-medium">Coder 月度简报</span>
 								<span className="text-content-secondary">
-									Latest articles, workshops, events, and announcements
+									最新文章、工作坊、活动及公告
 								</span>
 							</div>
 						</label>
 
 						{/* Privacy policy notice */}
 						<p className="text-xs text-content-secondary leading-relaxed">
-							Subscribe for the latest product and news updates from Coder. The
-							information you provide will be treated in accordance with the{" "}
+							订阅以获取 Coder 的最新产品和新闻更新。您提供的信息将按照{" "}
 							<a
 								href="https://coder.com/legal/privacy-policy"
 								target="_blank"
 								rel="noreferrer"
 								className="text-content-link hover:underline"
 							>
-								Coder Privacy Policy
+								Coder 隐私政策
 							</a>
-							.
+							{" "}处理。
 						</p>
 					</div>
 
@@ -418,7 +415,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 										href="https://coder.com/contact/sales"
 										className="text-content-link hover:underline"
 									>
-										Contact Sales
+										联系销售
 									</a>
 								</AlertDescription>
 							)}
@@ -428,7 +425,7 @@ export const SetupPageView: FC<SetupPageViewProps> = ({
 					<div className="flex justify-end">
 						<Button disabled={isLoading} type="submit" data-testid="create">
 							<Spinner loading={isLoading} />
-							Continue
+							继续
 						</Button>
 					</div>
 				</form>

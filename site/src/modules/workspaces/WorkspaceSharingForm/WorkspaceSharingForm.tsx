@@ -52,8 +52,8 @@ const RoleSelect: FC<RoleSelectProps> = ({
 	onValueChange,
 }) => {
 	const roleLabels: Record<WorkspaceRole, string> = {
-		use: "Use",
-		admin: "Admin",
+		use: "使用",
+		admin: "管理员",
 		"": "",
 	};
 
@@ -68,15 +68,15 @@ const RoleSelect: FC<RoleSelectProps> = ({
 			</SelectTrigger>
 			<SelectContent>
 				<SelectItem value="use" className="flex-col items-start py-2 w-64">
-					<div className="font-medium text-content-primary">Use</div>
+					<div className="font-medium text-content-primary">使用</div>
 					<div className="text-xs text-content-secondary leading-snug mt-0.5">
-						Can read, access, start, and stop this workspace.
+						可以读取、访问、启动和停止此工作区。
 					</div>
 				</SelectItem>
 				<SelectItem value="admin" className="flex-col items-start py-2 w-64">
-					<div className="font-medium text-content-primary">Admin</div>
+					<div className="font-medium text-content-primary">管理员</div>
 					<div className="text-xs text-content-secondary leading-snug mt-0.5">
-						Can manage workspace metadata, permissions, and settings.
+						可以管理工作区元数据、权限和设置。
 					</div>
 				</SelectItem>
 			</SelectContent>
@@ -105,7 +105,7 @@ export const AddWorkspaceMemberForm: FC<AddWorkspaceMemberFormProps> = ({
 					<Spinner loading={isLoading}>
 						<UserPlusIcon className="size-icon-sm" />
 					</Spinner>
-					Add member
+					添加成员
 				</Button>
 			</div>
 		</form>
@@ -133,11 +133,17 @@ export const RoleSelectField: FC<RoleSelectFieldProps> = ({
 				<SelectValue />
 			</SelectTrigger>
 			<SelectContent>
-				<SelectItem value="use">Use</SelectItem>
-				<SelectItem value="admin">Admin</SelectItem>
+				<SelectItem value="use">使用</SelectItem>
+				<SelectItem value="admin">管理员</SelectItem>
 			</SelectContent>
 		</Select>
 	);
+};
+
+const roleDisplayNames: Record<WorkspaceRole, string> = {
+	use: "使用",
+	admin: "管理员",
+	"": "",
 };
 
 interface WorkspaceSharingFormProps {
@@ -201,8 +207,8 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 				<TableRow>
 					<TableCell colSpan={999}>
 						<EmptyState
-							message="This workspace cannot be shared"
-							description="Workspace sharing has been disabled for this organization."
+							message="此工作区无法共享"
+							description="此组织已禁用工作区共享。"
 							isCompact={isCompact}
 						/>
 					</TableCell>
@@ -220,8 +226,8 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 	const tableHeader = (
 		<TableHeader>
 			<TableRow>
-				<TableHead className="w-[50%] py-2">Member</TableHead>
-				<TableHead className="w-[40%] py-2">Role</TableHead>
+				<TableHead className="w-[50%] py-2">成员</TableHead>
+				<TableHead className="w-[40%] py-2">角色</TableHead>
 				<TableHead className="w-[10%] py-2" />
 			</TableRow>
 		</TableHeader>
@@ -235,8 +241,8 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 				<TableRow>
 					<TableCell colSpan={999}>
 						<EmptyState
-							message="No shared members or groups yet"
-							description="Add a member or group using the controls above."
+							message="尚无共享成员或组"
+							description="使用上方的控件添加成员或组。"
 							isCompact={isCompact}
 						/>
 					</TableCell>
@@ -266,7 +272,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 										onValueChange={(value) => onUpdateGroup(group, value)}
 									/>
 								) : (
-									<div className="capitalize">{group.role}</div>
+									<div className="capitalize">{roleDisplayNames[group.role]}</div>
 								)}
 							</TableCell>
 
@@ -277,10 +283,10 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 											<Button
 												size="icon-lg"
 												variant="subtle"
-												aria-label="Open menu"
+												aria-label="打开菜单"
 											>
 												<EllipsisVerticalIcon aria-hidden="true" />
-												<span className="sr-only">Open menu</span>
+												<span className="sr-only">打开菜单</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end">
@@ -288,7 +294,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 												className="text-content-destructive focus:text-content-destructive"
 												onClick={() => onRemoveGroup(group)}
 											>
-												Remove
+												移除
 											</DropdownMenuItem>
 										</DropdownMenuContent>
 									</DropdownMenu>
@@ -314,7 +320,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 										onValueChange={(value) => onUpdateUser(user, value)}
 									/>
 								) : (
-									<div className="capitalize">{user.role}</div>
+									<div className="capitalize">{roleDisplayNames[user.role]}</div>
 								)}
 							</TableCell>
 
@@ -325,10 +331,10 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 											<Button
 												size="icon-lg"
 												variant="subtle"
-												aria-label="Open menu"
+												aria-label="打开菜单"
 											>
 												<EllipsisVerticalIcon aria-hidden="true" />
-												<span className="sr-only">Open menu</span>
+												<span className="sr-only">打开菜单</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end">
@@ -336,7 +342,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 												className="text-content-destructive focus:text-content-destructive"
 												onClick={() => onRemoveUser(user)}
 											>
-												Remove
+												移除
 											</DropdownMenuItem>
 										</DropdownMenuContent>
 									</DropdownMenu>
@@ -356,7 +362,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 				{canUpdatePermissions && addMemberForm}
 				{showRestartWarning && (
 					<Alert severity="warning">
-						Workspace restart required for the removal to take effect.
+						需要重启工作区才能使移除生效。
 					</Alert>
 				)}
 				<div>
@@ -375,7 +381,7 @@ export const WorkspaceSharingForm: FC<WorkspaceSharingFormProps> = ({
 			{canUpdatePermissions && addMemberForm}
 			{showRestartWarning && (
 				<Alert severity="warning">
-					Workspace restart required for the removal to take effect.
+					需要重启工作区才能使移除生效。
 				</Alert>
 			)}
 			<Table>

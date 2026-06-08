@@ -25,7 +25,7 @@ export const CancelJobButton: FC<CancelJobButtonProps> = ({ job }) => {
 				<TooltipTrigger asChild>
 					<Button
 						disabled={!isCancellable}
-						aria-label="Cancel job"
+						aria-label="取消作业"
 						size="icon"
 						variant="outline"
 						onClick={() => {
@@ -35,7 +35,7 @@ export const CancelJobButton: FC<CancelJobButtonProps> = ({ job }) => {
 						<BanIcon />
 					</Button>
 				</TooltipTrigger>
-				<TooltipContent>Cancel job</TooltipContent>
+				<TooltipContent>取消作业</TooltipContent>
 			</Tooltip>
 
 			<CancelJobConfirmationDialog

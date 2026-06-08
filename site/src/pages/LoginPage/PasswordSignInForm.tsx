@@ -23,8 +23,8 @@ export const PasswordSignInForm: FC<PasswordSignInFormProps> = ({
 	const validationSchema = Yup.object({
 		email: Yup.string()
 			.trim()
-			.email("Please enter a valid email address.")
-			.required("Please enter an email address."),
+			.email("请输入有效的电子邮件地址。")
+			.required("请输入电子邮件地址。"),
 		password: Yup.string(),
 	});
 
@@ -47,7 +47,7 @@ export const PasswordSignInForm: FC<PasswordSignInFormProps> = ({
 		<form onSubmit={form.handleSubmit} className="flex flex-col gap-5">
 			<div className="flex flex-col items-start gap-2">
 				<Label htmlFor={emailField.id}>
-					Email{" "}
+					邮箱{" "}
 					<span className="text-xs text-content-destructive font-bold">*</span>
 				</Label>
 				<Input
@@ -74,7 +74,7 @@ export const PasswordSignInForm: FC<PasswordSignInFormProps> = ({
 
 			<div className="flex flex-col items-start gap-2">
 				<Label htmlFor={passwordField.id}>
-					Password{" "}
+					密码{" "}
 					<span className="text-xs text-content-destructive font-bold">*</span>
 				</Label>
 				<Input
@@ -100,7 +100,7 @@ export const PasswordSignInForm: FC<PasswordSignInFormProps> = ({
 
 			<Button size="lg" disabled={isSigningIn} className="w-full" type="submit">
 				<Spinner loading={isSigningIn} />
-				Sign In
+				登录
 			</Button>
 
 			<Link
@@ -117,7 +117,7 @@ export const PasswordSignInForm: FC<PasswordSignInFormProps> = ({
 					}
 					className="mx-auto"
 				>
-					Forgot password?
+					忘记密码？
 				</RouterLink>
 			</Link>
 		</form>

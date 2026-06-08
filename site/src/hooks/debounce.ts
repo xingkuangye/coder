@@ -1,12 +1,8 @@
 /**
- * @file Defines hooks for created debounced versions of functions and arbitrary
- * values.
+ * @file 定义了用于创建函数和任意值的防抖版本的钩子。
  *
- * It is not safe to call most general-purpose debounce utility functions inside
- * a React render. This is because the state for handling the debounce logic
- * lives in the utility instead of React. If you call a general-purpose debounce
- * function inline, that will create a new stateful function on every render,
- * which has a lot of risks around conflicting/contradictory state.
+ * 在 React 渲染过程中调用大多数通用防抖工具函数是不安全的。这是因为处理防抖逻辑的状态存在于工具函数中，而非 React 中。
+ * 如果在行内调用通用防抖函数，每次渲染都会创建一个新的有状态函数，这会带来许多有关状态冲突/矛盾的风险。
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -18,19 +14,13 @@ type UseDebouncedFunctionReturn<Args extends unknown[]> = Readonly<{
 }>;
 
 /**
- * Creates a debounce function that is resilient to React re-renders, as well as
- * a function for canceling a pending debounce.
+ * 创建一个能够应对 React 重新渲染的防抖函数，以及一个用于取消待处理防抖的函数。
  *
- * The returned-out functions will maintain the same memory references, but the
- * debounce function will always "see" the most recent versions of the arguments
- * passed into the hook, and use them accordingly.
+ * 返回的函数将保持相同的内存引用，但防抖函数始终能“看到”传入钩子的最新参数，并相应地使用它们。
  *
- * If the debounce time changes while a callback has been queued to fire, the
- * callback will not be canceled.
+ * 如果在回调已排队等待执行时防抖时间发生变化，该回调不会被取消。
  *
- * Instead of a static debounce time, a function can be passed to enable dynamic
- * debounce values (for example to make a checkbox fire immediately but to
- * debounce a text input).
+ * 除了静态的防抖时间外，还可以传入一个函数以启用动态防抖值（例如使复选框立即触发，但对文本输入进行防抖处理）。
  */
 export function useDebouncedFunction<
 	// Parameterizing on the args instead of the whole callback function type to
@@ -82,12 +72,12 @@ export function useDebouncedFunction<
 }
 
 /**
- * Takes any value, and returns out a debounced version of it.
+ * 接受任意值，并返回其防抖版本。
  */
 export function useDebouncedValue<T>(value: T, debounceTimeoutMs: number): T {
 	if (!Number.isInteger(debounceTimeoutMs) || debounceTimeoutMs < 0) {
 		throw new Error(
-			`Invalid value ${debounceTimeoutMs} for debounceTimeoutMs. Value must be an integer greater than or equal to zero.`,
+			`debounceTimeoutMs 的值 ${debounceTimeoutMs} 无效。该值必须是大于或等于零的整数。`,
 		);
 	}
 

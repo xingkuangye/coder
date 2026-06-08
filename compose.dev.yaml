@@ -56,7 +56,10 @@ services:
     environment:
       GOMODCACHE: /go-cache/mod
       GOCACHE: /go-cache/build
+      GOPROXY: "${GOPROXY-https://goproxy.cn,https://proxy.golang.org,direct}"
       DOCKER_HOST: "${CODER_DEV_DOCKER_HOST:-unix:///var/run/docker.sock}"
+      CI: "true"
+      GIT_CONFIG_GLOBAL: /etc/gitconfig
     volumes:
       - .:/app
       - go_cache:/go-cache
@@ -64,6 +67,12 @@ services:
       - "${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock"
     command: >
       sh -c '
+        mkdir -p /tmp/gitcfg &&
+        git config --file /tmp/gitcfg/gitconfig --add safe.directory /app &&
+        git config --file /tmp/gitcfg/gitconfig --add safe.directory /app/site &&
+        git config --file /tmp/gitcfg/gitconfig url."https://ghproxy.com/https://github.com/".insteadOf "https://github.com/" &&
+        export GIT_CONFIG_GLOBAL=/tmp/gitcfg/gitconfig &&
+        export npm_config_registry=https://registry.npmmirror.com &&
         if [ "${CODER_BUILD_AGPL:-0}" = "1" ]; then
           make -j build-slim CODER_BUILD_AGPL=1
         else
@@ -99,6 +108,7 @@ services:
       DOCKER_HOST: "${CODER_DEV_DOCKER_HOST-unix:///var/run/docker.sock}"
       GOCACHE: /go-cache/build
       GOMODCACHE: /go-cache/mod
+      GOPROXY: "${GOPROXY-https://goproxy.cn,https://proxy.golang.org,direct}"
     # Add the Docker group so coderd can access the Docker socket.
     # Override DOCKER_GROUP if your host's docker group is not 999.
     group_add:

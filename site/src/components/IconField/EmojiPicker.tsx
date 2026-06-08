@@ -7,7 +7,7 @@ import icons from "#/theme/icons.json";
 const custom = [
 	{
 		id: "icons",
-		name: "Icons",
+		name: "图标",
 		emojis: icons
 			.filter((icon) => !DEPRECATED_ICONS.includes(icon))
 			.map((icon) => {

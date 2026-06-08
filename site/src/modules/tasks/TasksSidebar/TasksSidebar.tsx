@@ -64,7 +64,7 @@ export const TasksSidebar: FC = () => {
 					{!isCollapsed && (
 						<Link to="/tasks">
 							<ProductLogo className="block size-6 m-1" />
-							<span className="sr-only">Navigate to tasks</span>
+							<span className="sr-only">跳转到任务</span>
 						</Link>
 					)}
 
@@ -79,12 +79,12 @@ export const TasksSidebar: FC = () => {
 								>
 									<PanelLeftIcon />
 									<span className="sr-only">
-										{isCollapsed ? "Open" : "Close"} Sidebar
+										{isCollapsed ? "打开" : "关闭"} 侧边栏
 									</span>
 								</Button>
 							</TooltipTrigger>
 							<TooltipContent side="right" align="center">
-								{isCollapsed ? "Open" : "Close"} Sidebar
+								{isCollapsed ? "打开" : "关闭"} 侧边栏
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
@@ -100,13 +100,13 @@ export const TasksSidebar: FC = () => {
 								className={cn({ "[&_svg]:p-0": isCollapsed })}
 							>
 								<Link to="/tasks">
-									<span className={isCollapsed ? "hidden" : ""}>New Task</span>{" "}
+									<span className={isCollapsed ? "hidden" : ""}>新建任务</span>{" "}
 									<EditIcon />
 								</Link>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent side="right" align="center">
-							New task
+							新建任务
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
@@ -145,7 +145,7 @@ const TasksSidebarGroup: FC<TasksSidebarGroupProps> = ({ owner }) => {
 	return (
 		<ScrollArea className="flex-1">
 			<div className="flex flex-col gap-2 p-3">
-				<div className="text-content-secondary text-xs">Tasks</div>
+				<div className="text-content-secondary text-xs">任务</div>
 				<div className="flex flex-col flex-1 gap-1">
 					{tasksQuery.data ? (
 						tasksQuery.data.length > 0 ? (
@@ -154,12 +154,12 @@ const TasksSidebarGroup: FC<TasksSidebarGroupProps> = ({ owner }) => {
 							))
 						) : (
 							<div className="text-content-secondary text-xs p-4 border-border border-solid rounded text-center">
-								No tasks found
+								未找到任务
 							</div>
 						)
 					) : tasksQuery.error ? (
 						<div className="text-content-secondary text-xs p-4 border-border border-solid rounded text-center">
-							{getErrorMessage(tasksQuery.error, "Failed to load tasks")}
+							{getErrorMessage(tasksQuery.error, "加载任务失败")}
 						</div>
 					) : (
 						<div className="flex flex-col gap-1">
@@ -188,7 +188,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 		...pauseTask(task, queryClient),
 		onError: (error: unknown) => {
 			toast.error(
-				getErrorMessage(error, `Failed to pause task "${task.name}".`),
+				getErrorMessage(error, `暂停任务 "${task.name}" 失败。`),
 				{
 					description: getErrorDetail(error),
 				},
@@ -199,7 +199,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 		...resumeTask(task, queryClient),
 		onError: (error: unknown) => {
 			toast.error(
-				getErrorMessage(error, `Failed to resume task "${task.name}".`),
+				getErrorMessage(error, `恢复任务 "${task.name}" 失败。`),
 				{
 					description: getErrorDetail(error),
 				},
@@ -251,7 +251,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 								}}
 							>
 								<EllipsisIcon />
-								<span className="sr-only">Task options</span>
+								<span className="sr-only">任务选项</span>
 							</Button>
 						</DropdownMenuTrigger>
 
@@ -268,7 +268,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 										<Spinner loading={pauseMutation.isPending}>
 											<PauseIcon />
 										</Spinner>
-										Pause
+										暂停
 									</DropdownMenuItem>
 								)}
 								{showResume && (
@@ -282,7 +282,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 										<Spinner loading={resumeMutation.isPending}>
 											<PlayIcon />
 										</Spinner>
-										Resume
+										恢复
 									</DropdownMenuItem>
 								)}
 								{(showPause || showResume) && <DropdownMenuSeparator />}
@@ -294,7 +294,7 @@ const TaskSidebarMenuItem: FC<TaskSidebarMenuItemProps> = ({ task }) => {
 									}}
 								>
 									<TrashIcon />
-									Delete&hellip;
+									删除&hellip;
 								</DropdownMenuItem>
 							</DropdownMenuGroup>
 						</DropdownMenuContent>

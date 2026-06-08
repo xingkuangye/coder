@@ -44,7 +44,7 @@ export const RoleSelector: FC<RoleSelectorProps> = ({
 			<RoleSelectorLayout>
 				<Alert severity="error">
 					<AlertTitle>
-						{getErrorMessage(error, "Failed to load roles.")}
+						{getErrorMessage(error, "无法加载角色。")}
 					</AlertTitle>
 				</Alert>
 			</RoleSelectorLayout>
@@ -114,7 +114,7 @@ const RoleSelectorList: React.FC<RoleSelectorListProps> = ({
 				/>
 			))}
 			{advancedRoles.length > 0 && (
-				<CollapsibleSummary label="Advanced roles" scrollIntoViewOnOpen>
+				<CollapsibleSummary label="高级角色" scrollIntoViewOnOpen>
 					{advancedRoles.map((role) => (
 						<RoleCheckbox
 							key={role.name}
@@ -181,7 +181,7 @@ const RoleSelectorLayout: React.FC<RoleSelectorLayoutProps> = ({
 }) => {
 	return (
 		<div className="flex flex-col gap-2">
-			{!hideLabel && <span className="text-sm font-medium">Roles</span>}
+			{!hideLabel && <span className="text-sm font-medium">角色</span>}
 			{children}
 		</div>
 	);
@@ -196,13 +196,13 @@ const ImpliedRolesList: React.FC<ImpliedRolesListProps> = ({
 }) => {
 	return (
 		<>
-			<ImpliedRoleRow title="Member" description={roleDescriptions.member} />
+			<ImpliedRoleRow title="成员" description={roleDescriptions.member} />
 			{additionalImpliedRoles.map((role) => (
 				<ImpliedRoleRow
 					key={role.name}
 					title={role.display_name || role.name}
 					description={roleDescriptions[role.name] ?? ""}
-					caption="Sourced from organization default roles"
+					caption="源自组织默认角色"
 				/>
 			))}
 		</>

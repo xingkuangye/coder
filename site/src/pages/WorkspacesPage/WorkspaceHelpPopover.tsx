@@ -15,17 +15,16 @@ export const WorkspaceHelpPopover: FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is a workspace?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是工作空间？</HelpPopoverTitle>
 				<HelpPopoverText>
-					A workspace is your development environment in the cloud. It includes
-					the infrastructure and tools you need to work on your project.
+					工作空间是您在云端的开发环境。它包含了您进行项目工作所需的基础设施和工具。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/user-guides")}>
-						Create Workspaces
+						创建工作空间
 					</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/workspace-access")}>
-						Connect with SSH
+						通过 SSH 连接
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>

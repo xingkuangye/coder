@@ -1,0 +1,11 @@
+const { execSync } = require("child_process");
+const { readFileSync } = require("fs");
+const f = "site/src/components/Search/Search.tsx";
+const cur = readFileSync(f, "utf-8");
+const orig = execSync("git show HEAD:" + f, { encoding: "utf-8" });
+const curFence = (cur.match(/```/g) || []).length;
+const origFence = (orig.match(/```/g) || []).length;
+console.log(`orig: ${orig.length}B ${orig.split("\n").length} lines, backticks: ${origFence}`);
+console.log(`cur:  ${cur.length}B ${cur.split("\n").length} lines, backticks: ${curFence}`);
+console.log("cur last 200 chars:");
+console.log(cur.slice(-200));

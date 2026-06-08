@@ -30,7 +30,7 @@ export const HistorySidebar: FC<HistorySidebarProps> = ({ workspace }) => {
 
 	return (
 		<Sidebar>
-			<SidebarCaption>History</SidebarCaption>
+			<SidebarCaption>历史记录</SidebarCaption>
 			<ScrollArea>
 				<div className="flex flex-col gap-px">
 					{builds
@@ -59,7 +59,7 @@ export const HistorySidebar: FC<HistorySidebarProps> = ({ workspace }) => {
 								<Spinner loading={buildsQuery.isFetchingNextPage}>
 									<ArrowDownIcon />
 								</Spinner>
-								Show more builds
+								显示更多构建
 							</Button>
 						</div>
 					)}

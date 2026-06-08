@@ -75,7 +75,7 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline" size="lg">
 					<span className="sr-only">
-						Latency for {selectedProxy?.display_name ?? "your region"}
+						延迟：{selectedProxy?.display_name ?? "您所在的区域"}
 					</span>
 
 					{selectedProxy ? (
@@ -93,7 +93,7 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 							/>
 						</>
 					) : (
-						"Select Proxy"
+						"选择代理"
 					)}
 
 					<ChevronDownIcon className="text-content-primary" />
@@ -106,15 +106,14 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 						className="flex flex-col gap-1 items-start data-[disabled]:opacity-100"
 					>
 						<div className="text-content-primary font-semibold text-left">
-							Select a region nearest to you
+							选择离您最近的区域
 						</div>
 						<div className="text-xs text-content-secondary leading-relaxed">
-							Workspace proxies improve terminal and web app connections.{" "}
-							<Abbr title="Command-Line Interface" pronunciation="initialism">
+							工作区代理可改善终端和 Web 应用程序的连接。{" "}
+							<Abbr title="命令行界面" pronunciation="initialism">
 								CLI
 							</Abbr>{" "}
-							connections are unaffected. If no region is selected, the primary
-							region will be used.
+							连接不受影响。如果未选择区域，将使用主要区域。
 						</div>
 					</DropdownMenuItem>
 				)}
@@ -135,10 +134,10 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 											e.preventDefault();
 											if (!proxy.healthy) {
 												toast.error(
-													`Failed to select proxy "${proxy.display_name}".`,
+													`选择代理 "${proxy.display_name}" 失败。`,
 													{
 														description:
-															"Please select a healthy workspace proxy.",
+															"请选择一个健康的工作区代理。",
 													},
 												);
 												closeMenu();
@@ -178,7 +177,7 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 				{Boolean(permissions.editWorkspaceProxies) && (
 					<DropdownMenuItem asChild>
 						<Link to="/deployment/workspace-proxies">
-							<span>Proxy settings</span>
+							<span>代理设置</span>
 						</Link>
 					</DropdownMenuItem>
 				)}
@@ -190,7 +189,7 @@ export const ProxyMenu: FC<ProxyMenuProps> = ({ proxyContextValue }) => {
 						setRefetchDate(refetchDate);
 					}}
 				>
-					Refresh latencies
+					刷新延迟
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

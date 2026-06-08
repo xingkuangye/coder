@@ -261,9 +261,9 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 	const addButton = addableProviders.length > 0 && (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button size="sm" className="gap-1.5" aria-label="Add model">
+				<Button size="sm" className="gap-1.5" aria-label="添加模型">
 					<PlusIcon className="size-4" />
-					Add
+					添加
 					<ChevronDownIcon className="size-3.5 text-content-secondary" />
 				</Button>
 			</DropdownMenuTrigger>
@@ -295,7 +295,7 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 				<SectionHeader
 					label={sectionLabel}
 					description={
-						sectionDescription ?? "Manage models available to Agents."
+						sectionDescription ?? "管理 Agents 可用的模型。"
 					}
 					action={addButton || undefined}
 				/>
@@ -304,19 +304,19 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 			{modelConfigs.length === 0 ? (
 				<div className="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center">
 					<p className="m-0 text-sm text-content-secondary">
-						No models configured yet.
+						尚未配置任何模型。
 					</p>
 					{addableProviders.length > 0 && addButton}
 					{addableProviders.length === 0 && (
 						<p className="m-0 text-xs text-content-secondary">
-							Connect a{" "}
+							请先连接{" "}
 							<Link
 								to="/ai/settings"
 								className="underline transition-colors hover:text-content-primary"
 							>
-								provider
+								提供者
 							</Link>{" "}
-							first to add models.
+							才能添加模型。
 						</p>
 					)}
 				</div>
@@ -328,8 +328,8 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 						);
 						const modelName = modelConfig.display_name || modelConfig.model;
 						const starLabel = modelConfig.is_default
-							? `Default model: ${modelName}`
-							: `Set as default model: ${modelName}`;
+							? `默认模型：${modelName}`
+							: `设为默认模型：${modelName}`;
 						const starUnavailable =
 							isUpdating || modelConfig.is_default || !modelConfig.enabled;
 						const providerState = providerStates.find(
@@ -351,7 +351,7 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 								<button
 									type="button"
 									onClick={() => setModelViewParam("model", modelConfig.id)}
-									aria-label={`Open model: ${modelName}`}
+									aria-label={`打开模型：${modelName}`}
 									className="flex min-w-0 flex-1 cursor-pointer items-center gap-3.5 border-0 bg-transparent p-0 text-left"
 								>
 									<ProviderIcon
@@ -372,13 +372,13 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 										{showPricingWarning && (
 											<span className="mt-1 flex items-center gap-1 text-xs text-content-warning">
 												<TriangleAlertIcon className="size-3.5 shrink-0" />
-												Model pricing is not defined
+												模型定价未定义
 											</span>
 										)}
 									</div>
 									{modelConfig.enabled === false && (
 										<Badge size="xs" variant="warning">
-											disabled
+											已禁用
 										</Badge>
 									)}
 								</button>
@@ -410,10 +410,10 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 										</TooltipTrigger>
 										<TooltipContent side="top">
 											{!modelConfig.enabled
-												? "Cannot set a disabled model as default"
+												? "无法将已禁用的模型设为默认"
 												: modelConfig.is_default
-													? "Default for new conversations"
-													: "Set as default for new conversations"}
+													? "新对话的默认模型"
+													: "设为新对话的默认模型"}
 										</TooltipContent>
 									</Tooltip>
 									<Tooltip>
@@ -425,13 +425,13 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 													event.stopPropagation();
 													setModelViewParam("model", modelConfig.id);
 												}}
-												aria-label={`Edit model: ${modelName}`}
+												aria-label={`编辑模型：${modelName}`}
 												className="hover:bg-surface-secondary"
 											>
 												<PencilIcon />
 											</Button>
 										</TooltipTrigger>
-										<TooltipContent side="top">Edit model</TooltipContent>
+										<TooltipContent side="top">编辑模型</TooltipContent>
 									</Tooltip>
 									<Tooltip>
 										<TooltipTrigger asChild>
@@ -444,7 +444,7 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 													setModelViewParam("duplicate", modelConfig.id);
 												}}
 												aria-disabled={duplicateUnavailable}
-												aria-label={`Duplicate model: ${modelName}`}
+												aria-label={`复制模型：${modelName}`}
 												className={cn(
 													"hover:bg-surface-secondary",
 													duplicateUnavailable &&
@@ -456,8 +456,8 @@ export const ModelsSection: FC<ModelsSectionProps> = ({
 										</TooltipTrigger>
 										<TooltipContent side="top">
 											{duplicateUnavailable
-												? "Set an API key for this provider before duplicating models"
-												: "Duplicate model"}
+												? "请在复制模型前为此提供者设置 API 密钥"
+												: "复制模型"}
 										</TooltipContent>
 									</Tooltip>
 								</div>

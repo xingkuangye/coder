@@ -1,7 +1,7 @@
 import { isApiErrorResponse } from "#/api/errors";
 import { ChatAttachmentMediaTypes } from "#/api/typesGenerated";
 
-const undisplayableAttachmentDetail = "File exists but could not be displayed.";
+const undisplayableAttachmentDetail = "文件存在，但无法显示。";
 
 export type AttachmentFailure =
 	| { kind: "expired" }
@@ -125,7 +125,7 @@ export const sanitizeChatFileName = (name: string): string => {
 	// collapsed; acceptable tradeoff for tidier names.
 	const collapsed = replaced.replace(/_+/g, "_");
 	const trimmed = collapsed.replace(/^[_.\s]+|[_.\s]+$/g, "");
-	return trimmed === "" ? "file" : trimmed;
+	return trimmed === "" ? "文件" : trimmed;
 };
 
 /**

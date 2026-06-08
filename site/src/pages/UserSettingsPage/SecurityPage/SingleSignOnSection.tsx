@@ -64,7 +64,7 @@ export const useSingleSignOnSection = () => {
 				// The redirect on success should be back to the login page with a nice message.
 				// The user should be logged out if this worked.
 				encodeURIComponent(
-					`/login?message=Login type has been changed to ${loginTypeMsg}. Log in again using the new method.`,
+					`/login?message=登录方式已更改为${loginTypeMsg}。请使用新方式重新登录。`,
 				),
 			);
 		},
@@ -105,15 +105,15 @@ const SSOEmptyState: FC = () => {
 	return (
 		<EmptyState
 			className="rounded-lg border border-solid border-border min-h-0"
-			message="No SSO Providers"
-			description="No SSO providers are configured with this Coder deployment."
+			message="没有SSO提供商"
+			description="此Coder部署未配置任何SSO提供商。"
 			cta={
 				<Link
 					href={docs("/admin/users/oidc-auth")}
 					target="_blank"
 					rel="noreferrer"
 				>
-					Learn how to add a provider
+					了解如何添加提供商
 				</Link>
 			}
 		/>
@@ -141,10 +141,10 @@ export const SingleSignOnSection: FC<SingleSignOnSectionProps> = ({
 		<div id="sso-section" data-testid="sso-section">
 			<SettingsHeader>
 				<SettingsHeaderTitle hierarchy="secondary">
-					Single Sign On
+					单点登录
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Authenticate in Coder using one-click.
+					在Coder中使用一键认证。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -183,7 +183,7 @@ export const SingleSignOnSection: FC<SingleSignOnSectionProps> = ({
 					<div className="bg-surface-secondary rounded-md border border-border border-solid p-4 flex gap-4 items-center text-sm">
 						<CircleCheckIcon className="text-content-success size-icon-xs" />
 						<span>
-							Authenticated with{" "}
+							已通过{" "}
 							<strong>
 								{userLoginType.login_type === "github"
 									? "GitHub"
@@ -223,7 +223,7 @@ const OIDCIcon: FC<OIDCIconProps> = ({ oidcAuth }) => {
 
 	return (
 		<ExternalImage
-			alt="Open ID Connect icon"
+			alt="OpenID Connect 图标"
 			src={oidcAuth.iconUrl}
 			className="size-4"
 		/>
@@ -263,15 +263,14 @@ const ConfirmLoginTypeChangeModal: FC<ConfirmLoginTypeChangeModalProps> = ({
 			}}
 			onConfirm={handleConfirm}
 			hideCancel={false}
-			cancelText="Cancel"
-			confirmText="Update"
-			title="Change login type"
+			cancelText="取消"
+			confirmText="更新"
+			title="更改登录方式"
 			confirmLoading={loading}
 			description={
 				<div className="flex flex-col gap-8">
 					<p>
-						After changing your login type, you will not be able to change it
-						again. Are you sure you want to proceed and change your login type?
+						更改登录方式后，您将无法再次更改。是否确定要继续并更改登录方式？
 					</p>
 					<TextField
 						autoFocus
@@ -283,14 +282,14 @@ const ConfirmLoginTypeChangeModal: FC<ConfirmLoginTypeChangeModalProps> = ({
 						error={Boolean(error)}
 						helperText={
 							error
-								? getErrorMessage(error, "Your password is incorrect")
+								? getErrorMessage(error, "您的密码不正确")
 								: undefined
 						}
 						name="confirm-password"
 						id="confirm-password"
 						value={password}
 						onChange={(e) => setPassword(e.currentTarget.value)}
-						label="Confirm your password"
+						label="确认密码"
 						type="password"
 					/>
 				</div>

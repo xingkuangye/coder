@@ -68,7 +68,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
 			)}
 			<DropdownMenuTrigger asChild>
 				<Button
-					aria-label={open ? "Close menu" : "Open menu"}
+					aria-label={open ? "关闭菜单" : "打开菜单"}
 					size="icon-lg"
 					variant="subtle"
 				>
@@ -80,13 +80,13 @@ export const MobileMenu: FC<MobileMenuProps> = ({
 				sideOffset={17}
 			>
 				<DropdownMenuItem asChild className={itemStyles.default}>
-					<Link to="/workspaces">Workspaces</Link>
+					<Link to="/workspaces">工作区</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild className={itemStyles.default}>
-					<Link to="/templates">Templates</Link>
+					<Link to="/templates">模板</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem asChild className={itemStyles.default}>
-					<Link to="/agents">Agents</Link>
+					<Link to="/agents">代理</Link>
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
 				<ProxySettingsSub proxyContextValue={proxyContextValue} />
@@ -133,7 +133,7 @@ const ProxySettingsSub: FC<ProxySettingsSubProps> = ({ proxyContextValue }) => {
 						setOpen((prev) => !prev);
 					}}
 				>
-					Workspace proxy settings:
+					工作区代理设置：
 					<span className="leading-none flex items-center gap-1">
 						<ExternalImage
 							className="w-4 h-4"
@@ -162,8 +162,8 @@ const ProxySettingsSub: FC<ProxySettingsSubProps> = ({ proxyContextValue }) => {
 									e.preventDefault();
 
 									if (!p.healthy) {
-										toast.error("Failed to select proxy.", {
-											description: "Please select a healthy workspace proxy.",
+										toast.error("无法选择代理。", {
+											description: "请选择一个正常的工作区代理。",
 										});
 										return;
 									}
@@ -191,7 +191,7 @@ const ProxySettingsSub: FC<ProxySettingsSubProps> = ({ proxyContextValue }) => {
 					asChild
 					className={cn(itemStyles.default, itemStyles.sub)}
 				>
-					<Link to="/deployment/workspace-proxies">Proxy settings</Link>
+					<Link to="/deployment/workspace-proxies">代理设置</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					className={cn(itemStyles.default, itemStyles.sub)}
@@ -199,7 +199,7 @@ const ProxySettingsSub: FC<ProxySettingsSubProps> = ({ proxyContextValue }) => {
 						proxyContextValue.refetchProxyLatencies();
 					}}
 				>
-					Refresh latencies
+					刷新延迟
 				</DropdownMenuItem>
 			</CollapsibleContent>
 		</Collapsible>
@@ -224,7 +224,7 @@ const AdminSettingsSub: FC<MobileMenuPermissions> = ({
 						setOpen((prev) => !prev);
 					}}
 				>
-					Admin settings
+					管理设置
 					<ChevronRightIcon
 						className={cn("ml-auto", open ? "rotate-90" : "")}
 					/>
@@ -236,21 +236,21 @@ const AdminSettingsSub: FC<MobileMenuPermissions> = ({
 						asChild
 						className={cn(itemStyles.default, itemStyles.sub)}
 					>
-						<Link to="/deployment">Deployment</Link>
+						<Link to="/deployment">部署</Link>
 					</DropdownMenuItem>
 				)}
 				<DropdownMenuItem
 					asChild
 					className={cn(itemStyles.default, itemStyles.sub)}
 				>
-					<Link to="/organizations">Organizations</Link>
+					<Link to="/organizations">组织</Link>
 				</DropdownMenuItem>
 				{canViewAuditLog && (
 					<DropdownMenuItem
 						asChild
 						className={cn(itemStyles.default, itemStyles.sub)}
 					>
-						<Link to="/audit">Audit logs</Link>
+						<Link to="/audit">审计日志</Link>
 					</DropdownMenuItem>
 				)}
 				{canViewConnectionLog && (
@@ -258,7 +258,7 @@ const AdminSettingsSub: FC<MobileMenuPermissions> = ({
 						asChild
 						className={cn(itemStyles.default, itemStyles.sub)}
 					>
-						<Link to="/connectionlog">Connection logs</Link>
+						<Link to="/connectionlog">连接日志</Link>
 					</DropdownMenuItem>
 				)}
 				{canViewHealth && (
@@ -266,7 +266,7 @@ const AdminSettingsSub: FC<MobileMenuPermissions> = ({
 						asChild
 						className={cn(itemStyles.default, itemStyles.sub)}
 					>
-						<Link to="/health">Healthcheck</Link>
+						<Link to="/health">健康检查</Link>
 					</DropdownMenuItem>
 				)}
 			</CollapsibleContent>
@@ -301,7 +301,7 @@ const UserSettingsSub: FC<UserSettingsSubProps> = ({
 						src={user?.avatar_url}
 						fallback={user?.name || user?.username}
 					/>
-					User settings
+					用户设置
 					<ChevronRightIcon
 						className={cn("ml-auto", open ? "rotate-90" : "")}
 					/>
@@ -312,13 +312,13 @@ const UserSettingsSub: FC<UserSettingsSubProps> = ({
 					asChild
 					className={cn(itemStyles.default, itemStyles.sub)}
 				>
-					<Link to="/settings/account">Account</Link>
+					<Link to="/settings/account">账户</Link>
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					className={cn(itemStyles.default, itemStyles.sub)}
 					onClick={onSignOut}
 				>
-					Sign out
+					登出
 				</DropdownMenuItem>
 				{supportLinks && (
 					<>

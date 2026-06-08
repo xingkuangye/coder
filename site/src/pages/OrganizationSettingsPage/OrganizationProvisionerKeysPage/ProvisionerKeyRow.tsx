@@ -42,7 +42,7 @@ export const ProvisionerKeyRow: FC<ProvisionerKeyRowProps> = ({
 						<ChevronRightIcon
 							className={cn("mr-4 transition-transform", isOpen && "rotate-90")}
 						/>
-						<span className="sr-only">({isOpen ? "Hide" : "Show more"})</span>
+						<span className="sr-only">({isOpen ? "隐藏" : "显示更多"})</span>
 						{provisionerKey.name}
 					</Button>
 				</TableCell>
@@ -50,14 +50,14 @@ export const ProvisionerKeyRow: FC<ProvisionerKeyRowProps> = ({
 					{Object.entries(provisionerKey.tags).length > 0 ? (
 						<ProvisionerTruncateTags tags={provisionerKey.tags} />
 					) : (
-						<span className="text-content-disabled">No tags</span>
+						<span className="text-content-disabled">没有标签</span>
 					)}
 				</TableCell>
 				<TableCell>
 					{provisioners.length > 0 ? (
 						<TruncateProvisioners provisioners={provisioners} />
 					) : (
-						<span className="text-content-disabled">No provisioners</span>
+						<span className="text-content-disabled">没有提供者</span>
 					)}
 				</TableCell>
 				<TableCell>
@@ -77,14 +77,14 @@ export const ProvisionerKeyRow: FC<ProvisionerKeyRowProps> = ({
 								"[&_dd]:text-content-primary [&_dd]:font-mono [&_dd]:leading-[22px] [&_dt]:font-medium",
 							])}
 						>
-							<dt>Creation time:</dt>
+							<dt>创建时间：</dt>
 							<dd data-chromatic="ignore">{provisionerKey.created_at}</dd>
 
-							<dt>Tags:</dt>
+							<dt>标签：</dt>
 							<dd>
 								<ProvisionerTags>
 									{Object.entries(provisionerKey.tags).length === 0 && (
-										<span className="text-content-disabled">No tags</span>
+										<span className="text-content-disabled">没有标签</span>
 									)}
 									{Object.entries(provisionerKey.tags).map(([key, value]) => (
 										<ProvisionerTag key={key} label={key} value={value} />
@@ -92,12 +92,12 @@ export const ProvisionerKeyRow: FC<ProvisionerKeyRowProps> = ({
 								</ProvisionerTags>
 							</dd>
 
-							<dt>Provisioners:</dt>
+							<dt>提供者：</dt>
 							<dd>
 								<ProvisionerTags>
 									{provisioners.length === 0 && (
 										<span className="text-content-disabled">
-											No provisioners
+											没有提供者
 										</span>
 									)}
 									{provisioners.map((provisioner) => (

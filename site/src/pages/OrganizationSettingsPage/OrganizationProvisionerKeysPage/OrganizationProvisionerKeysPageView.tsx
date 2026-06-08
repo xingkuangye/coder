@@ -51,27 +51,27 @@ export const OrganizationProvisionerKeysPageView: FC<
 	return (
 		<section className="w-full max-w-screen-2xl pb-10">
 			<SettingsHeader>
-				<SettingsHeaderTitle>Provisioner Keys</SettingsHeaderTitle>
+				<SettingsHeaderTitle>配置器密钥</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Manage provisioner keys used to authenticate provisioner instances.{" "}
-					<Link href={docs("/admin/provisioners")}>View docs</Link>
+					管理用于验证配置器实例的配置器密钥。{" "}
+					<Link href={docs("/admin/provisioners")}>查看文档</Link>
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
 			{showPaywall ? (
 				<PaywallPremium
-					message="Provisioners"
-					description="Provisioners run your Terraform to create templates and workspaces. You need a Premium license to use this feature for multiple organizations."
+					message="配置器"
+					description="配置器运行您的 Terraform 以创建模板和工作区。您需要 Premium 许可证才能在多个组织中使用此功能。"
 					documentationLink={docs("/admin/provisioners")}
 				/>
 			) : (
 				<Table className="mt-6">
 					<TableHeader>
 						<TableRow>
-							<TableHead>Name</TableHead>
-							<TableHead>Tags</TableHead>
-							<TableHead>Active Provisioners</TableHead>
-							<TableHead>Created</TableHead>
+							<TableHead>名称</TableHead>
+							<TableHead>标签</TableHead>
+							<TableHead>活跃配置器</TableHead>
+							<TableHead>创建时间</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -80,8 +80,8 @@ export const OrganizationProvisionerKeysPageView: FC<
 								<TableRow>
 									<TableCell colSpan={5}>
 										<EmptyState
-											message="No provisioner keys"
-											description="Create your first provisioner key to authenticate external provisioner daemons."
+											message="无配置器密钥"
+											description="创建您的第一个配置器密钥以验证外部配置器守护程序。"
 										/>
 									</TableCell>
 								</TableRow>
@@ -99,10 +99,10 @@ export const OrganizationProvisionerKeysPageView: FC<
 							<TableRow>
 								<TableCell colSpan={5}>
 									<EmptyState
-										message="Error loading provisioner keys"
+										message="加载配置器密钥时出错"
 										cta={
 											<Button onClick={onRetry} size="sm">
-												Retry
+												重试
 											</Button>
 										}
 									/>

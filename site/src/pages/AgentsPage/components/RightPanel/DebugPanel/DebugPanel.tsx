@@ -37,8 +37,7 @@ interface DebugPanelProps {
 const DEBUG_RUN_EXPORT_FETCH_CONCURRENCY = 5;
 
 const getMissingRunsDescription = (failedRunCount: number): string => {
-	const noun = failedRunCount === 1 ? "run" : "runs";
-	return `${failedRunCount} ${noun} could not be fetched. The downloaded JSON lists them in failed_runs.`;
+	return `${failedRunCount} 个运行无法获取。下载的JSON文件中将其列在failed_runs中。`;
 };
 
 const isTerminalDebugRun = (run: ChatDebugRunSummary): boolean => {
@@ -122,7 +121,7 @@ export const DebugPanel: FC<DebugPanelProps> = ({
 					<p className="text-sm text-content-primary">
 						{getErrorMessage(
 							runsQuery.error,
-							"Unable to refresh debug runs. Showing cached data.",
+							"无法刷新调试运行，正在显示缓存数据。",
 						)}
 					</p>
 				</Alert>
@@ -137,7 +136,7 @@ export const DebugPanel: FC<DebugPanelProps> = ({
 					<p className="text-sm text-content-primary">
 						{getErrorMessage(
 							runsQuery.error,
-							"Unable to load debug panel data.",
+							"无法加载调试面板数据。",
 						)}
 					</p>
 				</Alert>
@@ -147,7 +146,7 @@ export const DebugPanel: FC<DebugPanelProps> = ({
 		content = (
 			<div className="flex items-center gap-2 p-4 text-sm text-content-secondary">
 				<Spinner size="sm" loading />
-				Loading debug runs...
+				正在加载调试运行...
 			</div>
 		);
 	} else if (sortedRuns.length === 0) {
@@ -156,13 +155,12 @@ export const DebugPanel: FC<DebugPanelProps> = ({
 				{refreshWarning}
 				<div className="flex flex-col gap-2 p-4 text-sm text-content-secondary">
 					<p className="font-medium text-content-primary">
-						No debug runs recorded yet
+						尚未记录调试运行
 					</p>
 					<p>
-						Debug logging captures LLM request/response data for each chat turn,
-						title generation, and compaction operation.
+						调试日志记录每次聊天回合的LLM请求/响应数据、标题生成和压缩操作。
 					</p>
-					<p>Send a message in this chat to start capturing debug data.</p>
+					<p>在此聊天中发送消息以开始捕获调试数据。</p>
 				</div>
 			</>
 		);
@@ -225,8 +223,8 @@ const ExportAllDebugRunsButton: FC<ExportAllDebugRunsButtonProps> = ({
 					return;
 				}
 				if (runDetails.length === 0) {
-					toast.error("Failed to export debug logs.", {
-						description: "No debug run details could be fetched.",
+					toast.error("导出调试日志失败。", {
+						description: "无法获取任何调试运行详细信息。",
 					});
 					return;
 				}
@@ -248,13 +246,13 @@ const ExportAllDebugRunsButton: FC<ExportAllDebugRunsButtonProps> = ({
 				}
 
 				if (failedRuns.length > 0) {
-					toast.warning("Exported debug logs with missing runs.", {
+					toast.warning("已导出调试日志，但缺少部分运行记录。", {
 						description: getMissingRunsDescription(failedRuns.length),
 					});
 				}
 			} catch (error) {
 				console.error(error);
-				toast.error("Failed to export debug logs.", {
+				toast.error("导出调试日志失败。", {
 					description: getErrorDetail(error),
 				});
 			}
@@ -292,7 +290,7 @@ const ExportAllDebugRunsButton: FC<ExportAllDebugRunsButtonProps> = ({
 				) : (
 					<DownloadIcon className="size-4" />
 				)}
-				Export debug logs
+				导出调试日志
 			</Button>
 		</div>
 	);

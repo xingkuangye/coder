@@ -110,7 +110,7 @@ export const StatusHealthyIndicator: FC<StatusHealthyIndicatorProps> = ({
 	return (
 		<StatusIndicator variant="success">
 			<StatusIndicatorDot />
-			{derpOnly ? "Healthy (DERP only)" : "Healthy"}
+			{derpOnly ? "健康 (仅 DERP)" : "健康"}
 		</StatusIndicator>
 	);
 };
@@ -119,7 +119,7 @@ export const StatusNotHealthyIndicator: FC = () => {
 	return (
 		<StatusIndicator variant="failed">
 			<StatusIndicatorDot />
-			Unhealthy
+			异常
 		</StatusIndicator>
 	);
 };
@@ -130,11 +130,11 @@ export const StatusNotRegisteredIndicator: FC = () => {
 			<TooltipTrigger asChild>
 				<StatusIndicator variant="warning">
 					<StatusIndicatorDot />
-					Never seen
+					从未出现
 				</StatusIndicator>
 			</TooltipTrigger>
 			<TooltipContent>
-				Workspace Proxy has never come online and needs to be started.
+				工作区代理从未上线，需要启动。
 			</TooltipContent>
 		</Tooltip>
 	);
@@ -146,11 +146,11 @@ export const StatusNotReachableIndicator: FC = () => {
 			<TooltipTrigger asChild>
 				<StatusIndicator variant="warning">
 					<StatusIndicatorDot />
-					Not reachable
+					无法访问
 				</StatusIndicator>
 			</TooltipTrigger>
 			<TooltipContent>
-				Workspace Proxy not responding to http(s) requests.
+				工作区代理未响应 http(s) 请求。
 			</TooltipContent>
 		</Tooltip>
 	);

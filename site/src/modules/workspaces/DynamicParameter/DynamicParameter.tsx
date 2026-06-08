@@ -119,7 +119,7 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 			{parameter.icon && (
 				<ExternalImage
 					className="w-5 h-5 mt-0.5 object-contain"
-					alt="Parameter icon"
+					alt="参数图标"
 					src={parameter.icon}
 				/>
 			)}
@@ -142,13 +142,12 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 									<span className="flex items-center">
 										<Badge size="sm" variant="warning">
 											<TriangleAlertIcon />
-											Immutable
+											不可变
 										</Badge>
 									</span>
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs">
-									This value cannot be modified after the workspace has been
-									created.
+									工作区创建后，此值不可修改。
 								</TooltipContent>
 							</Tooltip>
 						</TooltipProvider>
@@ -160,13 +159,12 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 									<span className="flex items-center">
 										<Badge size="sm" variant="green">
 											<HourglassIcon />
-											Ephemeral
+											临时
 										</Badge>
 									</span>
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs">
-									This parameter is ephemeral and will reset to the template
-									default on workspace restart.
+									此参数为临时参数，将在工作区重启时重置为模板默认值。
 								</TooltipContent>
 							</Tooltip>
 						</TooltipProvider>
@@ -178,12 +176,12 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 									<span className="flex items-center">
 										<Badge size="sm">
 											<SettingsIcon />
-											Preset
+											预设
 										</Badge>
 									</span>
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs">
-									Preset parameters cannot be modified.
+									预设参数不可修改。
 								</TooltipContent>
 							</Tooltip>
 						</TooltipProvider>
@@ -195,12 +193,12 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 									<span className="flex items-center">
 										<Badge size="sm">
 											<LinkIcon />
-											URL Autofill
+											URL 自动填充
 										</Badge>
 									</span>
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs">
-									Autofilled from the URL.
+									从 URL 自动填充。
 								</TooltipContent>
 							</Tooltip>
 						</TooltipProvider>
@@ -211,12 +209,12 @@ const ParameterLabel: FC<ParameterLabelProps> = ({
 								<TooltipTrigger asChild>
 									<span className="flex items-center">
 										<Badge size="sm" variant="destructive">
-											Required
+											必填
 										</Badge>
 									</span>
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs">
-									{hasRequiredDiagnostic.summary || "Required parameter"}
+									{hasRequiredDiagnostic.summary || "必填参数"}
 								</TooltipContent>
 							</Tooltip>
 						</TooltipProvider>
@@ -341,7 +339,7 @@ const ParameterField: FC<ParameterFieldProps> = ({
 				>
 					<SelectTrigger>
 						<SelectValue
-							placeholder={parameter.styling?.placeholder || "Select option"}
+							placeholder={parameter.styling?.placeholder || "选择选项"}
 						/>
 					</SelectTrigger>
 					<SelectContent>
@@ -398,10 +396,10 @@ const ParameterField: FC<ParameterFieldProps> = ({
 						onChange(JSON.stringify(values));
 					}}
 					hidePlaceholderWhenSelected
-					placeholder={parameter.styling?.placeholder || "Select option"}
+					placeholder={parameter.styling?.placeholder || "选择选项"}
 					emptyIndicator={
 						<p className="text-center text-md text-content-primary">
-							No results found
+							未找到结果
 						</p>
 					}
 					disabled={disabled}
@@ -522,7 +520,7 @@ const MaskableInput: FC<MaskableInputProps> = ({
 					type="button"
 					variant="subtle"
 					size="icon"
-					aria-label={showMaskedInput ? "Hide value" : "Show value"}
+					aria-label={showMaskedInput ? "隐藏值" : "显示值"}
 					aria-pressed={showMaskedInput}
 					onClick={() => setShowMaskedInput((value) => !value)}
 					disabled={disabled}
@@ -576,7 +574,7 @@ const MaskableTextArea: FC<MaskableInputProps> = ({
 					type="button"
 					variant="subtle"
 					size="icon"
-					aria-label={showMaskedInput ? "Hide value" : "Show value"}
+					aria-label={showMaskedInput ? "隐藏值" : "显示值"}
 					aria-pressed={showMaskedInput}
 					onClick={() => setShowMaskedInput((value) => !value)}
 					disabled={disabled}
@@ -610,7 +608,7 @@ const parseStringArrayValue = (value: string): ParsedValues => {
 				parsedValues.values = parsed;
 			}
 		} catch (e) {
-			parsedValues.error = `Error parsing parameter of type list(string), ${e}`;
+			parsedValues.error = `解析列表(string)类型参数时出错，${e}`;
 		}
 	}
 
@@ -786,7 +784,7 @@ export const useValidationSchemaForDynamicParameters = (
 											path: ctx.path,
 											message:
 												parameterError(parameter, val) ??
-												`Value must be greater than ${minValidation.validation_min}.`,
+												`值必须大于 ${minValidation.validation_min}。`,
 										});
 									}
 
@@ -800,7 +798,7 @@ export const useValidationSchemaForDynamicParameters = (
 											path: ctx.path,
 											message:
 												parameterError(parameter, val) ??
-												`Value must be less than ${maxValidation.validation_max}.`,
+												`值必须小于 ${maxValidation.validation_max}。`,
 										});
 									}
 
@@ -816,7 +814,7 @@ export const useValidationSchemaForDynamicParameters = (
 											path: ctx.path,
 											message:
 												parameterError(parameter, val) ??
-												`Value must be between ${minValidation.validation_min} and ${maxValidation.validation_max}.`,
+												`值必须在 ${minValidation.validation_min} 和 ${maxValidation.validation_max} 之间。`,
 										});
 									}
 
@@ -836,7 +834,7 @@ export const useValidationSchemaForDynamicParameters = (
 													if (Number(lastBuildParameter.value) > Number(val)) {
 														return ctx.createError({
 															path: ctx.path,
-															message: `Value must only ever increase (last value was ${lastBuildParameter.value})`,
+															message: `值只能增加（上次值为 ${lastBuildParameter.value}）`,
 														});
 													}
 													break;
@@ -844,7 +842,7 @@ export const useValidationSchemaForDynamicParameters = (
 													if (Number(lastBuildParameter.value) < Number(val)) {
 														return ctx.createError({
 															path: ctx.path,
-															message: `Value must only ever decrease (last value was ${lastBuildParameter.value})`,
+															message: `值只能减少（上次值为 ${lastBuildParameter.value}）`,
 														});
 													}
 													break;

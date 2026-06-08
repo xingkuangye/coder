@@ -323,7 +323,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 		error: boolean;
 	}[] = [
 		{
-			title: "All Logs",
+			title: "所有日志",
 			value: "all",
 			startIcon: <PackageIcon className="size-icon-xs shrink-0" />,
 			error: false,
@@ -418,7 +418,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 							size="sm"
 							onClick={() => setShowParentApps((show) => !show)}
 						>
-							Show parent apps
+							显示父应用
 							<ChevronDownIcon open={showParentApps} />
 						</Button>
 					)}
@@ -445,7 +445,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 			<div className="flex flex-col gap-8 p-8">
 				{workspace.latest_app_status?.agent_id === agent.id && (
 					<section>
-						<h3 className="sr-only">App statuses</h3>
+						<h3 className="sr-only">应用状态</h3>
 						<AppStatuses workspace={workspace} agent={agent} />
 					</section>
 				)}
@@ -456,7 +456,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 							to={`/tasks/${workspace.owner_name}/${workspace.task_id}`}
 						>
 							<SquareCheckBigIcon />
-							View task
+							查看任务
 						</RouterLink>
 					</Button>
 				)}
@@ -539,7 +539,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 						className="after:content-[''] after:absolute after:inset-0"
 					>
 						<ChevronDownIcon open={showLogs} />
-						<span>Logs</span>
+						<span>日志</span>
 						{agent.lifecycle_state === "starting" &&
 							runningScriptsCount > 0 &&
 							healthIssues.length === 0 && (
@@ -641,7 +641,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 																		? "active"
 																		: "inactive"
 																}
-																aria-label="More log tabs"
+																aria-label="更多日志选项卡"
 																className={cn(
 																	"cursor-pointer -mb-px",
 																	"inline-flex items-center justify-center",
@@ -650,7 +650,7 @@ export const AgentRow: FC<AgentRowProps> = ({
 																)}
 															>
 																<EllipsisIcon className="size-icon-sm" />
-																<span className="sr-only">More log tabs</span>
+																<span className="sr-only">更多日志选项卡</span>
 															</button>
 														</DropdownMenuTrigger>
 														<DropdownMenuContent align="end">
@@ -706,8 +706,8 @@ export const AgentRow: FC<AgentRowProps> = ({
 													</TooltipTrigger>
 													<TooltipContent>
 														{showCopiedSuccess
-															? "Copied!"
-															: "Copy selected logs"}
+															? "已复制！"
+															: "复制所选日志"}
 													</TooltipContent>
 												</Tooltip>
 											</TooltipProvider>

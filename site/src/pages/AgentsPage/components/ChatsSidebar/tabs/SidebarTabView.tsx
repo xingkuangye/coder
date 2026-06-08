@@ -154,7 +154,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 							variant="subtle"
 							size="icon"
 							onClick={onClose}
-							aria-label="Close panel"
+							aria-label="关闭面板"
 							className="size-7 shrink-0 lg:hidden"
 						>
 							<ArrowLeftIcon />
@@ -171,14 +171,14 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 						variant="subtle"
 						size="icon"
 						onClick={onToggleExpanded}
-						aria-label={isExpanded ? "Collapse panel" : "Expand panel"}
+						aria-label={isExpanded ? "折叠面板" : "展开面板"}
 						className="hidden size-7 shrink-0 text-content-secondary hover:text-content-primary lg:inline-flex"
 					>
 						{isExpanded ? <MinimizeIcon /> : <MaximizeIcon />}
 					</Button>
 				</div>
 				<div className="flex flex-1 items-center justify-center p-6 text-center text-xs text-content-secondary">
-					No panels available.
+					没有可用面板。
 				</div>
 			</div>
 		);
@@ -195,7 +195,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 						variant="subtle"
 						size="icon"
 						onClick={onClose}
-						aria-label="Close panel"
+						aria-label="关闭面板"
 						className="size-7 shrink-0 lg:hidden"
 					>
 						<ArrowLeftIcon />
@@ -206,7 +206,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 						variant="subtle"
 						size="icon"
 						onClick={onToggleSidebarCollapsed}
-						aria-label="Expand sidebar"
+						aria-label="展开侧边栏"
 						className="mr-1 size-7 shrink-0"
 					>
 						<PanelLeftIcon />
@@ -217,7 +217,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 						<button
 							type="button"
 							onClick={scrollTabsLeft}
-							aria-label="Scroll tabs left"
+							aria-label="向左滚动选项卡"
 							className="absolute left-0 top-0 z-10 flex h-full w-8 cursor-pointer items-center justify-start border-none p-0 pl-1 text-content-primary [background:linear-gradient(to_right,hsl(var(--surface-primary))_50%,transparent)]"
 						>
 							<ChevronLeftIcon className="size-3.5" />
@@ -274,7 +274,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 										"bg-surface-quaternary/25 text-content-primary hover:bg-surface-quaternary/50",
 								)}
 							>
-								Desktop
+								桌面
 							</Button>
 						)}
 					</div>
@@ -282,7 +282,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 						<button
 							type="button"
 							onClick={scrollTabsRight}
-							aria-label="Scroll tabs right"
+							aria-label="向右滚动选项卡"
 							className="absolute right-0 top-0 z-10 flex h-full w-8 cursor-pointer items-center justify-end border-none p-0 pr-1 text-content-primary [background:linear-gradient(to_left,hsl(var(--surface-primary))_50%,transparent)]"
 						>
 							<ChevronRightIcon className="size-3.5" />
@@ -300,7 +300,7 @@ export const SidebarTabView: FC<SidebarTabViewProps> = ({
 					variant="subtle"
 					size="icon"
 					onClick={onToggleExpanded}
-					aria-label={isExpanded ? "Collapse panel" : "Expand panel"}
+					aria-label={isExpanded ? "折叠面板" : "展开面板"}
 					className="hidden size-7 shrink-0 text-content-secondary hover:text-content-primary lg:inline-flex"
 				>
 					{isExpanded ? <MinimizeIcon /> : <MaximizeIcon />}

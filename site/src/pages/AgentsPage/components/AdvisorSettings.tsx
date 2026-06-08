@@ -115,12 +115,12 @@ const validateAdvisorConfig = (values: AdvisorSettingsFormValues) => {
 
 	if (!isNonNegativeIntegerString(values.max_uses_per_run)) {
 		errors.max_uses_per_run =
-			"Max uses per run must be a non-negative integer.";
+			"每次运行最大使用次数必须为非负整数。";
 	}
 
 	if (!isNonNegativeIntegerString(values.max_output_tokens)) {
 		errors.max_output_tokens =
-			"Max output tokens must be a non-negative integer.";
+			"最大输出令牌数必须为非负整数。";
 	}
 
 	return errors;
@@ -229,45 +229,43 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 		(config) => config.id === form.values.model_config_id,
 	);
 	const selectedModelLabel = isUnsetModelConfigId(form.values.model_config_id)
-		? "Use chat model"
+		? "使用聊天模型"
 		: isLoadingModelConfigs
-			? "Loading..."
+			? "加载中..."
 			: selectedModelConfig
 				? getModelDisplayName(selectedModelConfig)
-				: `Unavailable model (${form.values.model_config_id})`;
+				: `不可用模型 (${form.values.model_config_id})`;
 	const selectedModelValue = isUnsetModelConfigId(form.values.model_config_id)
 		? chatModelFallbackValue
 		: hasUnavailableSelectedModel
 			? unavailableModelValue
 			: form.values.model_config_id;
 	const modelHelperText = isLoadingModelConfigs
-		? "Loading chat model overrides."
+		? "正在加载聊天模型覆盖配置。"
 		: modelConfigsError
 			? isUnsetModelConfigId(form.values.model_config_id)
-				? "Model overrides are unavailable. Saving will keep using the chat model."
-				: "Model overrides are unavailable. The current selection will be sent unchanged."
-			: "Choose a dedicated advisor model, or leave this unset to reuse the chat model.";
+				? "模型覆盖配置不可用。保存时将保持使用聊天模型。"
+				: "模型覆盖配置不可用。当前选择将不会更改发送。"
+			: "选择一个专用的顾问模型，或留空以复用聊天模型。";
 
 	return (
 		<form className="space-y-3" onSubmit={form.handleSubmit}>
 			<div className="flex items-center gap-2">
 				<h3 className="m-0 text-sm font-semibold text-content-primary">
-					Advisor
+					顾问
 				</h3>
 				<Badge size="sm" variant="warning" className="cursor-default">
 					<TriangleAlertIcon className="size-3" />
-					Experimental feature
+					实验性功能
 				</Badge>
 			</div>
 			<div className="flex items-center justify-between gap-4">
 				<div className="!mt-0.5 m-0 flex-1 space-y-2 text-xs text-content-secondary">
 					<p className="m-0">
-						Allow root agent chats to call the advisor tool for strategic
-						guidance.
+						允许根代理聊天调用顾问工具以获取战略指导。
 					</p>
 					<p className="m-0">
-						When enabled, you can cap advisor usage per run and optionally use
-						an override model.
+						启用后，您可以限制每次运行的顾问使用次数，并可选择使用覆盖模型。
 					</p>
 				</div>
 				<Switch
@@ -275,7 +273,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 					onCheckedChange={(checked) =>
 						void form.setFieldValue("enabled", checked)
 					}
-					aria-label="Enable advisor"
+					aria-label="启用顾问"
 					disabled={isFormDisabled}
 				/>
 			</div>
@@ -284,7 +282,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 				<div className="grid gap-4 rounded-lg border border-border bg-surface-secondary p-4 md:grid-cols-2">
 					<div className="space-y-1.5">
 						<Label htmlFor={maxUsesId} className="text-xs text-content-primary">
-							Max uses per run
+							每次运行最大使用次数
 						</Label>
 						<Input
 							id={maxUsesId}
@@ -293,7 +291,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 							min={0}
 							step={1}
 							inputMode="numeric"
-							aria-label="Max uses per run"
+							aria-label="每次运行最大使用次数"
 							value={form.values.max_uses_per_run}
 							// Bypass Formik's `handleChange` on purpose: for `type="number"`
 							// it parses the raw input with `parseFloat` and replaces the
@@ -311,7 +309,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 							className="h-9 bg-surface-primary text-[13px]"
 						/>
 						<p className="m-0 text-xs text-content-secondary">
-							Set to 0 to leave the per-run call count unlimited.
+							设置为 0 以不限制每次运行调用次数。
 						</p>
 					</div>
 
@@ -320,7 +318,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 							htmlFor={maxOutputTokensId}
 							className="text-xs text-content-primary"
 						>
-							Max output tokens
+							最大输出令牌数
 						</Label>
 						<Input
 							id={maxOutputTokensId}
@@ -329,7 +327,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 							min={0}
 							step={1}
 							inputMode="numeric"
-							aria-label="Max output tokens"
+							aria-label="最大输出令牌数"
 							value={form.values.max_output_tokens}
 							// See `max_uses_per_run` above for why `handleChange` is
 							// bypassed: Formik's `type="number"` coercion would replace
@@ -346,13 +344,13 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 							className="h-9 bg-surface-primary text-[13px]"
 						/>
 						<p className="m-0 text-xs text-content-secondary">
-							Set to 0 to use the server default output limit.
+							设置为 0 以使用服务器默认输出限制。
 						</p>
 					</div>
 
 					<div className="space-y-1.5">
 						<Label className="text-xs text-content-primary">
-							Advisor model
+							顾问模型
 						</Label>
 						<Select
 							value={selectedModelValue}
@@ -370,9 +368,9 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 						>
 							<SelectTrigger
 								className="h-9 bg-surface-primary text-[13px]"
-								aria-label="Advisor model"
+								aria-label="顾问模型"
 							>
-								<SelectValue placeholder="Use chat model">
+								<SelectValue placeholder="使用聊天模型">
 									{selectedModelLabel}
 								</SelectValue>
 							</SelectTrigger>
@@ -383,7 +381,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 									</SelectItem>
 								)}
 								<SelectItem value={chatModelFallbackValue}>
-									Use chat model
+									使用聊天模型
 								</SelectItem>
 								{enabledModelConfigs.map((config) => (
 									<SelectItem key={config.id} value={config.id}>
@@ -405,7 +403,7 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 					type="submit"
 					disabled={isFormDisabled || !form.dirty || !form.isValid}
 				>
-					Save
+					保存
 				</Button>
 			</div>
 
@@ -413,13 +411,13 @@ export const AdvisorSettings: FC<AdvisorSettingsProps> = ({
 				<p className="m-0 text-xs text-content-destructive">
 					{getErrorMessage(
 						saveAdvisorConfigError,
-						"Failed to save advisor settings.",
+						"保存顾问设置失败。",
 					)}
 				</p>
 			)}
 			{isAdvisorConfigLoadError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load advisor settings.
+					加载顾问设置失败。
 				</p>
 			)}
 		</form>

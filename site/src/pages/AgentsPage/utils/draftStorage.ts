@@ -1,10 +1,7 @@
 /**
- * Utilities for persisting and restoring chat input drafts.
+ * 用于持久化和恢复聊天输入草稿的工具。
  *
- * Drafts are stored in localStorage. The current format stores the
- * serialized Lexical editor state JSON so that file-reference chips
- * survive navigation. Legacy drafts (plain-text strings) are detected
- * and handled transparently on read.
+ * 草稿存储在 localStorage 中。当前格式存储序列化的 Lexical 编辑器状态 JSON，以便文件引用标记在导航后仍能保留。旧版草稿（纯文本字符串）在读取时会被检测并透明处理。
  */
 
 export interface ParsedDraft {

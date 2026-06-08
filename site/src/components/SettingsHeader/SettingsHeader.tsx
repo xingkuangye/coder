@@ -30,14 +30,14 @@ type SettingsHeaderDocsLinkProps = Readonly<
 >;
 export const SettingsHeaderDocsLink: FC<SettingsHeaderDocsLinkProps> = ({
 	href,
-	children = "Read the docs",
+	children = "阅读文档",
 }) => {
 	return (
 		<Button asChild variant="outline">
 			<a href={href} target="_blank" rel="noreferrer">
 				<SquareArrowOutUpRightIcon />
 				{children}
-				<span className="sr-only"> (link opens in new tab)</span>
+				<span className="sr-only">（链接在新标签页中打开）</span>
 			</a>
 		</Button>
 	);

@@ -41,18 +41,18 @@ export const ListSessionsFilter: FC<ListSessionsFilterProps> = ({
 			isLoading={menus.user.isInitializing}
 			presets={[
 				{
-					name: "All sessions",
+					name: "所有会话",
 					query: "",
 				},
 				{
-					name: "My sessions",
+					name: "我的会话",
 					query: "initiator:me",
 				},
 			]}
 			error={error}
 			options={
 				<>
-					<UserMenu menu={menus.user} placeholder="All users" />
+					<UserMenu menu={menus.user} placeholder="所有用户" />
 					<ProviderFilter menu={menus.provider} />
 					<ClientFilter menu={menus.client} />
 					<ModelFilter menu={menus.model} />

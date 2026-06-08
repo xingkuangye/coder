@@ -7,34 +7,34 @@ type ThemeCopy = {
 
 export const THEME_COPY: Record<ConcreteThemeName, ThemeCopy> = {
 	light: {
-		title: "Light default",
+		title: "浅色默认",
 		description:
-			"Coder's standard light theme with full color contrast and brightness.",
+			"Coder 的标准浅色主题，具有完整的色彩对比度和亮度。",
 	},
 	"light-protan-deuter": {
-		title: "Light protanopia and deuteranopia",
+		title: "浅色红色盲/绿色盲",
 		description:
-			"For people who may find it difficult to distinguish between reds and greens.",
+			"适用于难以区分红色和绿色的人群。",
 	},
 	"light-tritan": {
-		title: "Light tritanopia",
+		title: "浅色蓝黄色盲",
 		description:
-			"For people who find it difficult to distinguish between blues and greens, as well as yellows and purples.",
+			"适用于难以区分蓝色和绿色，以及黄色和紫色的人群。",
 	},
 	dark: {
-		title: "Dark default",
+		title: "深色默认",
 		description:
-			"Coder's standard dark theme with full color contrast and brightness on a dark background.",
+			"Coder 的标准深色主题，在深色背景上具有完整的色彩对比度和亮度。",
 	},
 	"dark-protan-deuter": {
-		title: "Dark protanopia and deuteranopia",
+		title: "深色红色盲/绿色盲",
 		description:
-			"For people who may find it difficult to distinguish between reds and greens, with a dark background.",
+			"适用于难以区分红色和绿色的人群，采用深色背景。",
 	},
 	"dark-tritan": {
-		title: "Dark tritanopia",
+		title: "深色蓝黄色盲",
 		description:
-			"For people who find it difficult to distinguish between blues and greens, as well as yellows and purples, with a dark background.",
+			"适用于难以区分蓝色和绿色，以及黄色和紫色的人群，采用深色背景。",
 	},
 };
 
@@ -63,6 +63,6 @@ if (
 	!CONCRETE_THEMES.every((theme) => syncModeThemes.includes(theme))
 ) {
 	throw new Error(
-		"Theme copy registries are out of sync with CONCRETE_THEMES.",
+		"主题副本注册表与 CONCRETE_THEMES 不同步。",
 	);
 }

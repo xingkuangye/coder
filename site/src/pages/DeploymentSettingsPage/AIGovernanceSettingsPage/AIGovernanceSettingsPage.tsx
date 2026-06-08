@@ -14,7 +14,7 @@ const AIGovernanceSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("AI Governance Settings")}</title>
+			<title>{pageTitle("AI 治理设置")}</title>
 
 			<AIGovernanceSettingsPageView
 				options={deploymentConfig.options}

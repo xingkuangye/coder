@@ -117,12 +117,12 @@ const ReviewPanel: FC<ReviewPanelProps> = ({
 						<span className="leading-tight">{workspaceName}</span>
 						{running && (
 							<Badge size="xs" variant="warning">
-								Running
+								运行中
 							</Badge>
 						)}
 						{transitioning && (
 							<Badge size="xs" variant="warning">
-								Getting latest status
+								获取最新状态
 							</Badge>
 						)}
 					</span>
@@ -158,8 +158,7 @@ const TemplateNameChange: FC<TemplateNameChangeProps> = ({
 				{oldTemplateName} &rarr; {newTemplateName}
 			</span>
 			<span className="sr-only">
-				Workspace will go from version {oldTemplateName} to version{" "}
-				{newTemplateName}
+				工作区将从版本 {oldTemplateName} 更新到版本 {newTemplateName}
 			</span>
 		</>
 	);
@@ -185,19 +184,17 @@ const RunningWorkspacesWarning: FC<RunningWorkspacesWarningProps> = ({
 		>
 			<h4 className="m-0 font-semibold flex flex-row items-center gap-2 text-content-primary">
 				<TriangleAlertIcon className="text-content-warning" size={16} />
-				Running workspaces detected
+				检测到运行中的工作区
 			</h4>
 
 			<ul className="flex flex-col gap-1 m-0 px-5 pt-1.5 [&>li]:leading-snug text-content-secondary">
 				<li>
-					Updating a workspace will start it on its latest template version.
-					This can delete non-persistent data.
+					更新工作区将使其在最新模板版本上启动，这可能会删除非持久性数据。
 				</li>
 				<li>
-					Anyone connected to a running workspace will be disconnected until the
-					update is complete.
+					连接到运行中工作区的任何人将被断开连接，直到更新完成。
 				</li>
-				<li>Any unsaved data will be lost.</li>
+				<li>任何未保存的数据将丢失。</li>
 			</ul>
 
 			<Label.Root className="flex flex-row gap-3 items-center leading-tight pt-6">
@@ -206,7 +203,7 @@ const RunningWorkspacesWarning: FC<RunningWorkspacesWarningProps> = ({
 					checked={acceptedRisks}
 					onCheckedChange={onAcceptedRisksChange}
 				/>
-				I acknowledge these risks.
+				我已了解这些风险。
 			</Label.Root>
 		</div>
 	);
@@ -363,21 +360,21 @@ const ReviewForm: FC<ReviewFormProps> = ({
 				<ContainerBody
 					headerText={
 						hasWorkspaces
-							? "All workspaces up to date"
-							: "No workspaces selected"
+							? "所有工作区已是最新"
+							: "未选择任何工作区"
 					}
 					showDescription
 					description={
 						hasWorkspaces ? (
 							<>
-								None of the{" "}
+								所选的{" "}
 								<span className="text-content-primary font-semibold">
 									{workspacesToUpdate.length}
 								</span>{" "}
-								selected workspaces need updates.
+								个工作区均无需更新。
 							</>
 						) : (
-							"Nothing to update."
+							"无需更新。"
 						)
 					}
 				>
@@ -386,7 +383,7 @@ const ReviewForm: FC<ReviewFormProps> = ({
 
 				<ContainerFooter className="flex flex-row justify-end">
 					<Button variant="outline" onClick={onCancel}>
-						Close
+						关闭
 					</Button>
 				</ContainerFooter>
 			</Container>
@@ -462,8 +459,8 @@ const ReviewForm: FC<ReviewFormProps> = ({
 				}}
 			>
 				<ContainerBody
-					headerText="Review updates"
-					description="The following workspaces will be updated:"
+					headerText="审核更新"
+					description="以下工作区将被更新："
 				>
 					<div className="flex flex-col gap-4">
 						{error !== undefined && <ErrorAlert error={error} />}
@@ -485,8 +482,8 @@ const ReviewForm: FC<ReviewFormProps> = ({
 
 						{readyToUpdate.length > 0 && (
 							<WorkspacesListSection
-								headerText="Ready to update"
-								description="These workspaces will be updated to the latest template version."
+								headerText="可更新"
+								description="这些工作区将更新到最新模板版本。"
 							>
 								{readyToUpdate.map((ws) => {
 									const matchedQuery = templateVersionQueries.find(
@@ -521,8 +518,8 @@ const ReviewForm: FC<ReviewFormProps> = ({
 
 						{noUpdateNeeded.length > 0 && (
 							<WorkspacesListSection
-								headerText="Already updated"
-								description="These workspaces are already updated and will be skipped."
+								headerText="已更新"
+								description="这些工作区已更新，将被跳过。"
 							>
 								{noUpdateNeeded.map((ws) => (
 									<PanelListItem key={ws.id}>
@@ -540,12 +537,10 @@ const ReviewForm: FC<ReviewFormProps> = ({
 
 						{dormant.length > 0 && (
 							<WorkspacesListSection
-								headerText="Dormant workspaces"
+								headerText="休眠工作区"
 								description={
 									<>
-										Dormant workspaces cannot be updated without first
-										activating the workspace. They will always be skipped during
-										batch updates.
+										休眠工作区需要先激活才能更新。批量更新时将始终跳过这些工作区。
 									</>
 								}
 							>
@@ -571,7 +566,7 @@ const ReviewForm: FC<ReviewFormProps> = ({
 				<ContainerFooter>
 					<div className="flex flex-row flex-wrap justify-end gap-4">
 						<Button variant="outline" onClick={onCancel}>
-							Cancel
+							取消
 						</Button>
 						<Button
 							variant="default"
@@ -583,21 +578,21 @@ const ReviewForm: FC<ReviewFormProps> = ({
 								<>
 									<Spinner loading />
 									<span className="sr-only">
-										Waiting for workspaces to finish processing
+										等待工作区处理完成
 									</span>
 								</>
 							)}
 
 							{!safeToSubmit && !isProcessing && (
 								<span className="sr-only">
-									Unable to complete batch update because of workspace error
+									由于工作区错误，无法完成批量更新
 								</span>
 							)}
 
 							{someWorkspacesCanBeUpdated ? (
-								<span aria-hidden={buttonIsDisabled}>Update</span>
+								<span aria-hidden={buttonIsDisabled}>更新</span>
 							) : (
-								"Close"
+								"关闭"
 							)}
 						</Button>
 					</div>
@@ -607,7 +602,7 @@ const ReviewForm: FC<ReviewFormProps> = ({
 							id={failedValidationId}
 							className="m-0 text-highlight-red text-right text-sm pt-2"
 						>
-							Please acknowledge risks to continue.
+							请确认风险以继续。
 						</p>
 					)}
 				</ContainerFooter>

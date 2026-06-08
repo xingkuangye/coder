@@ -1,18 +1,14 @@
 /**
- * @file A wrapper over WebSockets that (1) enforces one-way communication, and
- * (2) supports automatically parsing JSON messages as they come in.
+ * @file 一个封装 WebSocket 的包装器，用于 (1) 强制单向通信，(2) 支持在对端收到 JSON 消息时自动解析。
  *
- * This should ALWAYS be favored in favor of using Server-Sent Events and the
- * built-in EventSource class for doing one-way communication. SSEs have a hard
- * limitation on HTTP/1.1 and below where there is a maximum number of 6 ports
- * that can ever be used for a domain (sometimes less depending on the browser).
- * Not only is this limit shared with short-lived REST requests, but it also
- * applies across tabs and windows. So if a user opens Coder in multiple tabs,
- * there is a very real possibility that parts of the app will start to lock up
- * without it being clear why.
+ * 在需要做单向通信时，应始终优先使用这个包装器，而不是服务端发送事件（Server-Sent Events）和内置的
+ * EventSource 类。SSE 在 HTTP/1.1 及以下版本中有一个硬限制：每个域名最多只能同时使用 6 个端口
+ * （有时根据浏览器不同会更少）。这个限制不仅与短生命周期的 REST 请求共享，而且还会跨标签页和
+ * 窗口生效。因此如果用户同时在多个标签页中打开 Coder，应用程序的某些部分极有可能开始卡死，
+ * 而完全看不出原因。
  *
- * WebSockets do not have this limitation, even on HTTP/1.1 – all modern
- * browsers implement at least some degree of multiplexing for them.
+ * WebSocket 没有这个限制，即使在 HTTP/1.1 下也是如此——所有现代浏览器都会对 WebSocket 实现
+ * 一定程度的多路复用。
  */
 
 // Not bothering with trying to borrow methods from the base WebSocket type

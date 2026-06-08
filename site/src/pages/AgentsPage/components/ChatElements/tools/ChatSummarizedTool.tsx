@@ -12,8 +12,8 @@ import { ToolIcon } from "./ToolIcon";
 import type { ToolStatus } from "./utils";
 
 /**
- * Collapsed-by-default rendering for `chat_summarized` tool calls.
- * Shows "Summarized" and reveals the summary only when expanded.
+ * 默认折叠渲染 `chat_summarized` 工具调用。
+ * 显示“已总结”，并在展开时显示摘要。
  */
 export const ChatSummarizedTool: React.FC<{
 	summary: string;
@@ -36,7 +36,7 @@ export const ChatSummarizedTool: React.FC<{
 						isRunning={isRunning}
 					/>
 					<span className="text-[13px] leading-6">
-						{isRunning ? "Summarizing…" : "Summarized"}
+						{isRunning ? "正在总结…" : "已总结"}
 					</span>
 				</>
 			}
@@ -48,7 +48,7 @@ export const ChatSummarizedTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to summarize conversation"}
+								{errorMessage || "对话总结失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}

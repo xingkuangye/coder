@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 13/01/2025
+ * 从 shadc/ui 复制于 2025年1月13日
  * @see {@link https://ui.shadcn.com/docs/components/select}
  */
 import {

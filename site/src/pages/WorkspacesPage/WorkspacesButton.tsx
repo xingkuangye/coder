@@ -43,14 +43,14 @@ export const WorkspacesButton: FC<WorkspacesButtonProps> = ({
 	if (templates?.length === 0) {
 		emptyState = (
 			<SearchEmpty>
-				No templates yet.{" "}
+				还没有模板。{" "}
 				<Link to="/templates" component={RouterLink}>
-					Create one now.
+					立即创建一个。
 				</Link>
 			</SearchEmpty>
 		);
 	} else if (processed.length === 0) {
-		emptyState = <SearchEmpty>No templates found</SearchEmpty>;
+		emptyState = <SearchEmpty>未找到模板</SearchEmpty>;
 	}
 
 	return (
@@ -69,8 +69,8 @@ export const WorkspacesButton: FC<WorkspacesButtonProps> = ({
 					value={searchTerm}
 					autoFocus
 					onChange={setSearchTerm}
-					placeholder="Type/select a workspace template"
-					aria-label="Template select for workspace"
+					placeholder="输入/选择工作空间模板"
+					aria-label="选择工作空间模板"
 				/>
 
 				<OverflowY maxHeight={380} className="flex flex-col py-2 min-h-0">
@@ -103,7 +103,7 @@ export const WorkspacesButton: FC<WorkspacesButtonProps> = ({
 						})}
 					>
 						<ExternalLinkIcon className="size-icon-xs" />
-						<span>See all templates</span>
+						<span>查看所有模板</span>
 					</PopoverLink>
 				</div>
 			</PopoverContent>
@@ -143,7 +143,7 @@ const WorkspaceResultsRow: FC<WorkspaceResultsRowProps> = ({ template }) => {
 				})}
 			>
 				<span className="whitespace-nowrap text-ellipsis">
-					{template.display_name || template.name || "[Unnamed]"}
+					{template.display_name || template.name || "[未命名]"}
 				</span>
 				<span
 					css={(theme) => ({
@@ -156,9 +156,9 @@ const WorkspaceResultsRow: FC<WorkspaceResultsRowProps> = ({ template }) => {
 					 * basically functioning like a null value in JS. Can safely just
 					 * treat them as if they were 0.
 					 */}
-					{template.active_user_count <= 0 ? "No" : template.active_user_count}{" "}
-					developer
-					{template.active_user_count === 1 ? "" : "s"}
+					{template.active_user_count <= 0 ? "没有" : template.active_user_count}{" "}
+					开发者
+					{template.active_user_count === 1 ? "" : ""}
 				</span>
 			</div>
 		</PopoverLink>

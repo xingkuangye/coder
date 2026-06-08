@@ -12,11 +12,11 @@ import { asRecord, asString, type ToolStatus } from "./utils";
 import { WorkspaceBuildLogSection } from "./WorkspaceBuildLogSection";
 
 /**
- * Rendering for `create_workspace` tool calls.
+ * 用于 `create_workspace` 工具调用的渲染。
  *
- * Shows "Creating workspace…" while running with streaming build logs,
- * and "Created <name>" when complete with a link to view the workspace.
- * Build logs are available in a collapsible section.
+ * 运行中显示“正在创建工作区…”并带流式构建日志，
+ * 完成后显示“已创建 <名称>”并提供查看工作区的链接。
+ * 构建日志可在可折叠区域中查看。
  */
 export const CreateWorkspaceTool: React.FC<{
 	workspaceName: string;
@@ -53,16 +53,16 @@ export const CreateWorkspaceTool: React.FC<{
 	const workspaceLink = ownerName && wsName ? `/@${ownerName}/${wsName}` : null;
 
 	const label = isRunning
-		? "Creating workspace…"
+		? "正在创建工作区…"
 		: labelOverride
 			? labelOverride
 			: isError
-				? `Failed to create ${wsName || "workspace"}`
+				? `创建 ${wsName || "工作区"} 失败`
 				: created === false
-					? `Workspace ${wsName} already exists`
+					? `工作区 ${wsName} 已存在`
 					: wsName
-						? `Created ${wsName}`
-						: "Created workspace";
+						? `已创建 ${wsName}`
+						: "已创建工作区";
 
 	const hasBuildLogs = isRunning || Boolean(buildId);
 
@@ -79,7 +79,7 @@ export const CreateWorkspaceTool: React.FC<{
 					to={workspaceLink}
 					onClick={(e) => e.stopPropagation()}
 					className="ml-1 inline-flex align-middle text-content-secondary opacity-50 transition-opacity hover:opacity-100"
-					aria-label="View workspace"
+					aria-label="查看工作区"
 				>
 					<ExternalLinkIcon className="size-3" />
 				</Link>
@@ -94,7 +94,7 @@ export const CreateWorkspaceTool: React.FC<{
 						<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 					</TooltipTrigger>
 					<TooltipContent>
-						{errorMessage || "Failed to create workspace"}
+						{errorMessage || "创建工作区失败"}
 					</TooltipContent>
 				</Tooltip>
 			)}

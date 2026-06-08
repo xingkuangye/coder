@@ -45,7 +45,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 	onCollapse,
 }) => {
 	const subNavTitle =
-		settingsPanel === "settings-admin" ? "Manage agents" : "Settings";
+		settingsPanel === "settings-admin" ? "管理智能体" : "设置";
 
 	return (
 		<div
@@ -67,8 +67,8 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 						size="icon"
 						aria-label={
 							settingsPanel === "settings-admin"
-								? "Back to settings"
-								: "Back to agents"
+								? "返回设置"
+								: "返回智能体"
 						}
 						className="relative z-10 size-7 min-w-0 text-content-secondary hover:text-content-primary"
 					>
@@ -76,7 +76,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 							<Link
 								to="/agents/settings/general"
 								state={location.state}
-								aria-label="Back to settings"
+								aria-label="返回设置"
 							>
 								<ArrowLeftIcon />
 							</Link>
@@ -94,7 +94,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 							variant="subtle"
 							size="icon"
 							onClick={onCollapse}
-							aria-label="Collapse sidebar"
+							aria-label="收起侧边栏"
 							className="relative z-10 hidden size-7 min-w-0 text-content-secondary hover:text-content-primary sm:inline-flex"
 						>
 							<PanelLeftCloseIcon />
@@ -106,7 +106,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 				<nav className="flex flex-col gap-0.5 px-2 py-2">
 					<SettingsNavItem
 						icon={UserIcon}
-						label="General"
+						label="常规"
 						active={!settingsSection || settingsSection === "general"}
 						to="/agents/settings/general"
 						state={location.state}
@@ -114,7 +114,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 					{isPersonalModelOverridesEnabled && (
 						<SettingsNavItem
 							icon={BotIcon}
-							label="Agents"
+							label="智能体"
 							active={settingsSection === "user-agents"}
 							to="/agents/settings/user-agents"
 							state={location.state}
@@ -122,14 +122,14 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 					)}
 					<SettingsNavItem
 						icon={ReceiptTextIcon}
-						label="Personal skills"
+						label="个人技能"
 						active={settingsSection === "personal-skills"}
 						to="/agents/settings/personal-skills"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={ShrinkIcon}
-						label="Compaction"
+						label="压缩"
 						active={settingsSection === "compaction"}
 						to="/agents/settings/compaction"
 						state={location.state}
@@ -137,7 +137,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 					{showApiKeysItem && (
 						<SettingsNavItem
 							icon={KeyIcon}
-							label="Secrets (API keys)"
+							label="密钥 (API 密钥)"
 							active={settingsSection === "api-keys"}
 							to="/agents/settings/api-keys"
 							state={location.state}
@@ -146,7 +146,7 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 					{isAdmin && (
 						<SettingsNavItem
 							icon={Settings2Icon}
-							label="Manage agents"
+							label="管理智能体"
 							active={false}
 							to="/agents/settings/admin"
 							state={location.state}
@@ -158,63 +158,63 @@ export const SettingsPanel: FC<SettingsPanelProps> = ({
 				<nav className="flex flex-col gap-0.5 px-2 py-2">
 					<SettingsNavItem
 						icon={BotIcon}
-						label="Agents"
+						label="智能体"
 						active={!settingsSection || settingsSection === "agents"}
 						to="/agents/settings/agents"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={PlugIcon}
-						label="Providers"
+						label="提供商"
 						active={false}
 						to="/ai/settings"
 						trailingIcon={ArrowUpRightIcon}
 					/>
 					<SettingsNavItem
 						icon={BoxesIcon}
-						label="Models"
+						label="模型"
 						active={settingsSection === "models"}
 						to="/agents/settings/models"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={ServerIcon}
-						label="MCP servers"
+						label="MCP 服务器"
 						active={settingsSection === "mcp-servers"}
 						to="/agents/settings/mcp-servers"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={LayoutTemplateIcon}
-						label="Templates"
+						label="模板"
 						active={settingsSection === "templates"}
 						to="/agents/settings/templates"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={CoinsIcon}
-						label="Spend"
+						label="费用"
 						active={settingsSection === "spend"}
 						to="/agents/settings/spend"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={ReceiptTextIcon}
-						label="Instructions"
+						label="指令"
 						active={settingsSection === "instructions"}
 						to="/agents/settings/instructions"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={FlaskConicalIcon}
-						label="Experiments"
+						label="实验"
 						active={settingsSection === "experiments"}
 						to="/agents/settings/experiments"
 						state={location.state}
 					/>
 					<SettingsNavItem
 						icon={RefreshCwIcon}
-						label="Lifecycle"
+						label="生命周期"
 						active={settingsSection === "lifecycle"}
 						to="/agents/settings/lifecycle"
 						state={location.state}

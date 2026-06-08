@@ -25,14 +25,14 @@ export const getModelSelectorHelp = ({
 
 	return (
 		<>
-			Configure your API keys in{" "}
+			在{" "}
 			<Link
 				to="/agents/settings/api-keys"
 				className="underline transition-colors hover:text-content-primary"
 			>
-				Settings
+				设置
 			</Link>{" "}
-			to enable models.
+			中配置您的 API 密钥以启用模型。
 		</>
 	);
 };

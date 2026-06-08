@@ -48,7 +48,7 @@ export const LoginPageView: FC<LoginPageViewProps> = ({
 							className="w-full"
 							onClick={() => setTosAccepted(true)}
 						>
-							I agree
+							我同意
 						</Button>
 					</>
 				) : (
@@ -63,7 +63,7 @@ export const LoginPageView: FC<LoginPageViewProps> = ({
 				)}
 				<footer className="text-xs text-content-secondary mt-6">
 					<div>
-						Copyright &copy; {new Date().getFullYear()} Coder Technologies, Inc.
+						版权所有 &copy; {new Date().getFullYear()} Coder Technologies, Inc.
 					</div>
 					<div>{buildInfo?.version}</div>
 					{tosAccepted && (

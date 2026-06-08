@@ -22,15 +22,14 @@ export const ChatSendShortcutSettings: FC = () => {
 	return (
 		<div className="flex flex-col gap-2">
 			<h3 className="m-0 text-sm font-semibold text-content-primary">
-				Keyboard shortcuts
+				键盘快捷键
 			</h3>
 			<div className="flex items-center justify-between gap-4">
 				<p
 					id={descriptionId}
 					className="m-0 flex-1 text-xs text-content-secondary"
 				>
-					Require Cmd/Ctrl+Enter to send agent messages. When enabled, Enter
-					inserts a newline instead.
+					要求使用 Cmd/Ctrl+Enter 发送智能体消息。启用后，Enter 键将插入换行符。
 				</p>
 				<Switch
 					checked={requiresModifierEnter}
@@ -41,16 +40,17 @@ export const ChatSendShortcutSettings: FC = () => {
 								: DEFAULT_AGENT_CHAT_SEND_SHORTCUT,
 						})
 					}
-					aria-label="Require Cmd/Ctrl+Enter to send messages"
+					aria-label="要求使用 Cmd/Ctrl+Enter 发送消息"
 					aria-describedby={descriptionId}
 					disabled={query.isLoading || !query.data || mutation.isPending}
 				/>
 			</div>
 			{mutation.isError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save your keyboard shortcut preference.
+					无法保存您的键盘快捷键偏好设置。
 				</p>
 			)}
 		</div>
 	);
 };
+

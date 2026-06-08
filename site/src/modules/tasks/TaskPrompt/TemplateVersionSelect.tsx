@@ -41,8 +41,8 @@ export const TemplateVersionSelect: FC<TemplateVersionSelectProps> = ({
 
 	return (
 		<Select name="versionId" {...props}>
-			<PromptSelectTrigger id="versionId" tooltip="Template version">
-				<SelectValue placeholder="Select a version" />
+			<PromptSelectTrigger id="versionId" tooltip="模板版本">
+				<SelectValue placeholder="选择版本" />
 			</PromptSelectTrigger>
 			<SelectContent>
 				{versions.map((version) => {
@@ -52,7 +52,7 @@ export const TemplateVersionSelect: FC<TemplateVersionSelectProps> = ({
 								<span className="truncate">{version.name}</span>
 								{activeVersionId === version.id && (
 									<Badge size="xs" variant="green" className="shrink-0">
-										Active
+										活跃
 									</Badge>
 								)}
 							</span>

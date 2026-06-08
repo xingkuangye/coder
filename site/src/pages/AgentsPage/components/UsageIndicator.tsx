@@ -78,25 +78,24 @@ export const UsageIndicator: FC = () => {
 
 		sections.push({
 			id: "ai-usage",
-			title: `${periodLabel} usage`,
-			progressLabel: `${periodLabel} spend usage`,
+			title: `${periodLabel} 用量`,
+			progressLabel: `${periodLabel} 费用用量`,
 			percent: getPercent(currentSpend, spendLimit),
 			severity: getSeverity(currentSpend, spendLimit),
 			icon: <CoinsIcon className="size-3.5" />,
-			hoverLabel: `Spend ${formatCostMicros(currentSpend)}`,
+			hoverLabel: `费用 ${formatCostMicros(currentSpend)}`,
 			detail: (
 				<>
-					{formatCostMicros(currentSpend)} of {formatCostMicros(spendLimit)}{" "}
-					used
+					已使用 {formatCostMicros(currentSpend)} / {formatCostMicros(spendLimit)}{" "}
 					{exceeded && (
 						<span className="ml-1 text-content-destructive">
-							(limit exceeded)
+							(已达上限)
 						</span>
 					)}
 				</>
 			),
 			secondaryDetail: chatUsage.period_end
-				? `Resets ${dayjs(chatUsage.period_end).format("MMM D, YYYY")}`
+				? `将于 ${dayjs(chatUsage.period_end).format("MMM D, YYYY")} 重置`
 				: undefined,
 		});
 	}
@@ -108,25 +107,25 @@ export const UsageIndicator: FC = () => {
 			: getWorkspaceCount(workspacesQuery.data?.count);
 		const quotaDetail =
 			workspaceCount === undefined
-				? `${formatNumber(creditsConsumed)} of ${formatNumber(quota.budget)} credits used`
-				: `${formatNumber(workspaceCount)} ${workspaceCount === 1 ? "workspace" : "workspaces"} using ${formatNumber(creditsConsumed)} of ${formatNumber(quota.budget)} credits`;
+				? `已使用 ${formatNumber(creditsConsumed)} / ${formatNumber(quota.budget)} 信用点数`
+				: `${formatNumber(workspaceCount)} 个工作区已使用 ${formatNumber(creditsConsumed)} / ${formatNumber(quota.budget)} 信用点数`;
 
 		const workspaceHoverLabel =
 			quota.budget > 0
-				? `Workspaces ${formatNumber(creditsConsumed)}/${formatNumber(quota.budget)}`
-				: `Workspaces ${formatNumber(creditsConsumed)}`;
+				? `工作区 ${formatNumber(creditsConsumed)} / ${formatNumber(quota.budget)}`
+				: `工作区 ${formatNumber(creditsConsumed)}`;
 
 		sections.push({
 			id: "workspace-quota",
-			title: "Workspace quota",
-			progressLabel: "Workspace quota usage",
+			title: "工作区配额",
+			progressLabel: "工作区配额用量",
 			percent: getPercent(creditsConsumed, quota.budget),
 			severity: getSeverity(creditsConsumed, quota.budget),
 			icon: <ServerIcon className="size-3.5" />,
 			hoverLabel: workspaceHoverLabel,
 			detail: quotaDetail,
 			tooltip:
-				"Workspaces, stopped or running, may consume credits. Stop or delete unused ones to free quota.",
+				"工作区，无论停止或运行中，都可能会消耗信用点数。请停止或删除未使用的工作区以释放配额。",
 		});
 	}
 
@@ -141,7 +140,7 @@ const UsageMenu: FC<{ sections: readonly UsageSectionData[] }> = ({
 	sections,
 }) => {
 	const triggerAriaLabel =
-		sections.length > 1 ? "Usage" : (sections[0]?.title ?? "Usage");
+		sections.length > 1 ? "用量" : (sections[0]?.title ?? "用量");
 
 	return (
 		<DropdownMenu>
@@ -166,7 +165,7 @@ const UsageMenu: FC<{ sections: readonly UsageSectionData[] }> = ({
 				<DropdownMenuSeparator />
 
 				<DropdownMenuItem asChild>
-					<Link to="/agents/analytics">View usage</Link>
+					<Link to="/agents/analytics">查看用量</Link>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
@@ -280,7 +279,7 @@ const UsageSection: FC<{ section: UsageSectionData }> = ({ section }) => {
 									<button
 										type="button"
 										className="mt-0.5 inline-flex size-3.5 shrink-0 cursor-help items-center justify-center rounded-sm border-none bg-transparent p-0 text-content-secondary/70 outline-none transition-colors hover:text-content-primary focus-visible:ring-2 focus-visible:ring-content-link"
-										aria-label={`${section.title} help`}
+										aria-label={`${section.title} 帮助`}
 									>
 										<InfoIcon className="size-3.5" />
 									</button>

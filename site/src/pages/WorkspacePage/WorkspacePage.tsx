@@ -79,9 +79,9 @@ const WorkspacePage: FC = () => {
 		socket.addEventListener("message", (event) => {
 			if (event.parseError) {
 				toast.error(
-					`Unable to process latest data for workspace "${workspaceName}".`,
+					`无法处理工作区“${workspaceName}”的最新数据。`,
 					{
-						description: "Please try refreshing the page.",
+						description: "请尝试刷新页面。",
 					},
 				);
 				return;
@@ -92,8 +92,8 @@ const WorkspacePage: FC = () => {
 			}
 		});
 		socket.addEventListener("error", () => {
-			toast.error(`Unable to get changes for workspace "${workspaceName}".`, {
-				description: "Connection has been closed.",
+			toast.error(`无法获取工作区“${workspaceName}”的更改。`, {
+				description: "连接已关闭。",
 			});
 		});
 

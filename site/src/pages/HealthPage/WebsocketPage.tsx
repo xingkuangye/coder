@@ -24,7 +24,7 @@ const WebsocketPage = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Websocket - Health")}</title>
+			<title>{pageTitle("Websocket - 健康检查")}</title>
 
 			<Header>
 				<HeaderTitle>
@@ -56,17 +56,17 @@ const WebsocketPage = () => {
 								{websocket.code}
 							</Pill>
 						</TooltipTrigger>
-						<TooltipContent side="bottom">Code</TooltipContent>
+						<TooltipContent side="bottom">代码</TooltipContent>
 					</Tooltip>
 				</section>
 
 				<section>
-					<SectionLabel>Body</SectionLabel>
+					<SectionLabel>内容</SectionLabel>
 					<div className="bg-surface-secondary border border-solid border-border rounded-lg text-sm p-6 font-mono">
 						{websocket.body !== "" ? (
 							websocket.body
 						) : (
-							<span className="text-content-secondary">No body message</span>
+							<span className="text-content-secondary">无消息内容</span>
 						)}
 					</div>
 				</section>

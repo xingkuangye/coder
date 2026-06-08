@@ -78,12 +78,12 @@ export const NotificationEvents: FC<NotificationEventsProps> = ({
 								rel="noreferrer"
 								href={docs("/admin/monitoring/notifications#webhook")}
 							>
-								Read the docs
+								阅读文档
 							</a>
 						</Button>
 					}
 				>
-					Webhook notifications are enabled, but not properly configured.
+					Webhook 通知已启用，但未正确配置。
 				</Alert>
 			)}
 
@@ -98,12 +98,12 @@ export const NotificationEvents: FC<NotificationEventsProps> = ({
 								rel="noreferrer"
 								href={docs("/admin/monitoring/notifications#smtp-email")}
 							>
-								Read the docs
+								阅读文档
 							</a>
 						</Button>
 					}
 				>
-					SMTP notifications are enabled but not properly configured.
+					SMTP 通知已启用，但未正确配置。
 				</Alert>
 			)}
 
@@ -174,7 +174,7 @@ const MethodToggleGroup: FC<MethodToggleGroupProps> = ({
 			value={value}
 			size="small"
 			disabled={!canEdit}
-			aria-label="Notification method"
+			aria-label="通知方式"
 			css={styles.toggleGroup}
 			onChange={async (_, method) => {
 				if (!method) {
@@ -184,10 +184,10 @@ const MethodToggleGroup: FC<MethodToggleGroupProps> = ({
 					await updateMethodMutation.mutateAsync({
 						method,
 					});
-					toast.success("Notification method updated.");
+					toast.success("通知方式已更新。");
 				} catch (error) {
 					toast.error(
-						getErrorMessage(error, "Failed to update notification method."),
+						getErrorMessage(error, "更新通知方式失败。"),
 						{
 							description: getErrorDetail(error),
 						},

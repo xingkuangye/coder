@@ -249,7 +249,7 @@ export const RenameChatDialog: FC<RenameChatDialogProps> = ({
 				aria-describedby={undefined}
 			>
 				<DialogHeader className="flex-row items-center justify-between space-y-0 sm:flex-row">
-					<DialogTitle className="text-lg">Rename chat</DialogTitle>
+					<DialogTitle className="text-lg">重命名聊天</DialogTitle>
 					{onPropose && (
 						<Button
 							type="button"
@@ -268,7 +268,7 @@ export const RenameChatDialog: FC<RenameChatDialogProps> = ({
 							) : (
 								<SparklesIcon className="size-[18px]" />
 							)}
-							Generate
+							生成
 						</Button>
 					)}
 				</DialogHeader>
@@ -295,7 +295,7 @@ export const RenameChatDialog: FC<RenameChatDialogProps> = ({
 							}}
 							disabled={isRenamingChat || isGeneratingTitle}
 							maxLength={200}
-							aria-label="Chat title"
+							aria-label="聊天标题"
 							aria-invalid={generateTitleError ? true : undefined}
 							aria-describedby={generateTitleError ? errorId : undefined}
 						/>
@@ -316,7 +316,7 @@ export const RenameChatDialog: FC<RenameChatDialogProps> = ({
 							onClick={closeDialog}
 							disabled={isRenamingChat}
 						>
-							Cancel
+							取消
 						</Button>
 						<Button
 							type="submit"
@@ -330,7 +330,7 @@ export const RenameChatDialog: FC<RenameChatDialogProps> = ({
 							}
 						>
 							{isRenamingChat && <Spinner className="h-4 w-4" loading />}
-							Save
+							保存
 						</Button>
 					</DialogFooter>
 				</form>

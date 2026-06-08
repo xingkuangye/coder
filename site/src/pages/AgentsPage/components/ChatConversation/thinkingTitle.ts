@@ -1,4 +1,4 @@
-const DEFAULT_THINKING_TITLE = "Thinking";
+const DEFAULT_THINKING_TITLE = "思考中";
 
 type LineRange = {
 	line: string;
@@ -232,7 +232,7 @@ export const getThinkingDisclosureDisplay = (
 	}
 
 	return {
-		title: `${DEFAULT_THINKING_TITLE} about ${lowercaseSentenceStart(heading.text)}`,
+		title: `关于${lowercaseSentenceStart(heading.text)}的${DEFAULT_THINKING_TITLE}`,
 		body: removeHeading(text, heading),
 	};
 };

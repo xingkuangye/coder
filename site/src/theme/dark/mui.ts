@@ -1,9 +1,9 @@
 /**
- * @deprecated MUI dark theme is deprecated. Migrate to Tailwind CSS theme system.
- * This file provides MUI theme configuration for legacy compatibility only.
+ * @deprecated MUI 暗色主题已弃用。迁移至 Tailwind CSS 主题系统。
+ * 此文件仅提供 MUI 主题配置以实现旧版兼容性。
  */
 
-/** @deprecated MUI createTheme is deprecated. Migrate to Tailwind CSS theme system. */
+/** @deprecated MUI createTheme 已弃用。迁移至 Tailwind CSS 主题系统。 */
 import { createTheme } from "@mui/material/styles";
 import { BODY_FONT_FAMILY, borderRadius } from "../constants";
 import { components } from "../mui";

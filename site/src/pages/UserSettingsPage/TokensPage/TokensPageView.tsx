@@ -22,7 +22,7 @@ dayjs.extend(relativeTime);
 const lastUsedOrNever = (lastUsed: string) => {
 	const t = dayjs(lastUsed);
 	const now = dayjs();
-	return now.isBefore(t.add(100, "year")) ? t.fromNow() : "Never";
+	return now.isBefore(t.add(100, "year")) ? t.fromNow() : "从未使用";
 };
 
 interface TokensPageViewProps {
@@ -52,10 +52,10 @@ export const TokensPageView: FC<TokensPageViewProps> = ({
 				<TableHeader>
 					<TableRow>
 						<TableHead className="w-1/5">ID</TableHead>
-						<TableHead className="w-1/5">Name</TableHead>
-						<TableHead className="w-1/5">Last Used</TableHead>
-						<TableHead className="w-1/5">Expires At</TableHead>
-						<TableHead className="w-1/5">Created At</TableHead>
+						<TableHead className="w-1/5">名称</TableHead>
+						<TableHead className="w-1/5">最后使用</TableHead>
+						<TableHead className="w-1/5">过期时间</TableHead>
+						<TableHead className="w-1/5">创建时间</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>
@@ -91,7 +91,7 @@ const TokensTableBody: FC<TokensTableBodyProps> = ({
 		return <TableLoader />;
 	}
 	if (hasLoaded && (!tokens || tokens.length === 0)) {
-		return <TableEmpty message="No tokens found" />;
+		return <TableEmpty message="未找到令牌" />;
 	}
 	return (
 		<>
@@ -134,7 +134,7 @@ const TokensTableBody: FC<TokensTableBodyProps> = ({
 								}}
 								size="icon"
 								variant="destructive"
-								aria-label="Delete token"
+								aria-label="删除令牌"
 							>
 								<TrashIcon className="size-icon-sm" />
 							</Button>

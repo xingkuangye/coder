@@ -74,8 +74,8 @@ const IdpSyncPageView: FC<IdpSyncPageViewProps> = ({
 				}}
 			>
 				<TabsList>
-					<TabsTrigger value="groups">Group sync settings</TabsTrigger>
-					<TabsTrigger value="roles">Role sync settings</TabsTrigger>
+					<TabsTrigger value="groups">组同步设置</TabsTrigger>
+					<TabsTrigger value="roles">角色同步设置</TabsTrigger>
 				</TabsList>
 				<TabsContent value="groups">
 					<IdpGroupSyncForm

@@ -11,9 +11,9 @@ export const createDisplayDate = (
 	const lastWeek = dayjs(base).subtract(7, "day").toDate();
 	if (date >= lastWeek) {
 		return dayjs(date).calendar(dayjs(base), {
-			sameDay: "[Today]",
-			lastDay: "[Yesterday]",
-			lastWeek: "[last] dddd",
+			sameDay: "[今天]",
+			lastDay: "[昨天]",
+			lastWeek: "[上周] dddd",
 			sameElse: "MM/DD/YYYY",
 		});
 	}

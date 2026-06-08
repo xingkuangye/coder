@@ -6,23 +6,22 @@ import { VideoLightbox } from "../../VideoLightbox";
 import { DEFAULT_ASPECT, PREVIEW_HEIGHT } from "./previewConstants";
 
 interface RecordingPreviewProps {
-	/** The chat file ID for the MP4 recording. */
+	/** MP4 录制的聊天文件 ID。 */
 	recordingFileId: string;
-	/** File ID for the JPEG thumbnail of a completed recording. */
+	/** 已完成录制的 JPEG 缩略图文件 ID。 */
 	thumbnailFileId?: string;
-	/** Optional video URL override. When provided, this is used
-	 * directly instead of deriving the URL from recordingFileId. */
+	/** 可选的视频 URL 覆盖。提供后，将直接使用该 URL，
+	 * 而不是根据 recordingFileId 推导 URL。 */
 	src?: string;
-	/** Optional thumbnail URL override. When provided, this is used
-	 * directly instead of deriving the URL from thumbnailFileId. */
+	/** 可选的缩略图 URL 覆盖。提供后，将直接使用该 URL，
+	 * 而不是根据 thumbnailFileId 推导 URL。 */
 	thumbnailSrc?: string;
 }
 
 /**
- * Inline recording thumbnail with a play icon overlay. Clicking the
- * preview opens a full-screen VideoLightbox with native playback
- * controls. If the thumbnail fails to load, a "Thumbnail unavailable"
- * message is shown but the video remains playable.
+ * 内联录制缩略图，带有播放图标叠加层。点击预览将打开全屏
+ * VideoLightbox，提供原生播放控件。如果缩略图加载失败，
+ * 会显示“缩略图不可用”消息，但视频仍然可以播放。
  */
 export const RecordingPreview: React.FC<RecordingPreviewProps> = ({
 	recordingFileId,
@@ -46,12 +45,12 @@ export const RecordingPreview: React.FC<RecordingPreviewProps> = ({
 			{thumbnailError ? (
 				<div className="flex size-full items-center justify-center gap-1.5 bg-surface-secondary text-xs text-content-secondary">
 					<ImageOffIcon className="size-3" />
-					Thumbnail unavailable
+					缩略图不可用
 				</div>
 			) : thumbnailFileId ? (
 				<img
 					src={thumbnailSrcOverride ?? getChatFileURL(thumbnailFileId)}
-					alt="Recording thumbnail"
+					alt="录制缩略图"
 					className="size-full pointer-events-none object-cover"
 					onError={() => setThumbnailError(true)}
 				/>
@@ -61,7 +60,7 @@ export const RecordingPreview: React.FC<RecordingPreviewProps> = ({
 			)}
 			<button
 				type="button"
-				aria-label="View recording"
+				aria-label="查看录制"
 				onClick={() => {
 					setShowLightbox(true);
 					setLightboxKey((k) => k + 1);

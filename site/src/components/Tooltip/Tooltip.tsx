@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 02/05/2025
+ * 从 shadc/ui 复制于 02/05/2025
  * @see {@link https://ui.shadcn.com/docs/components/tooltip}
  */
 import { Tooltip as TooltipPrimitive } from "radix-ui";

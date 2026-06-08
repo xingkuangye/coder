@@ -81,14 +81,14 @@ export const AgentSettingsTemplatesPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Templates"
-				description="Restrict which templates agents can use to create workspaces. When no templates are selected, all templates are available."
+				label="模板"
+				description="限制智能体可用于创建工作空间的模板。未选择任何模板时，所有模板均可用。"
 			/>
 
 			{isLoading && (
 				<div
 					role="status"
-					aria-label="Loading templates"
+					aria-label="正在加载模板"
 					className="flex min-h-[120px] items-center justify-center"
 				>
 					<Spinner size="lg" loading className="text-content-secondary" />
@@ -98,10 +98,10 @@ export const AgentSettingsTemplatesPageView: FC<
 			{!isLoading && hasError && (
 				<div className="flex min-h-[120px] flex-col items-center justify-center gap-4 text-center">
 					<p className="m-0 text-sm text-content-secondary">
-						Failed to load template data.
+						加载模板数据失败。
 					</p>
 					<Button variant="outline" size="sm" type="button" onClick={onRetry}>
-						Retry
+						重试
 					</Button>
 				</div>
 			)}
@@ -113,15 +113,15 @@ export const AgentSettingsTemplatesPageView: FC<
 				>
 					<MultiSelectCombobox
 						key={serverSelectionKey}
-						inputProps={{ "aria-label": "Select allowed templates" }}
+						inputProps={{ "aria-label": "选择允许的模板" }}
 						options={allOptions}
 						defaultOptions={currentSelection}
 						value={currentSelection}
 						onChange={setLocalSelection}
-						placeholder="Select templates..."
+						placeholder="选择模板..."
 						emptyIndicator={
 							<p className="text-center text-sm text-content-secondary">
-								No templates found.
+								未找到模板。
 							</p>
 						}
 						disabled={isSaving}
@@ -134,19 +134,19 @@ export const AgentSettingsTemplatesPageView: FC<
 						className="m-0 text-xs text-content-secondary"
 					>
 						{currentSelection.length > 0
-							? `${currentSelection.length} template${currentSelection.length !== 1 ? "s" : ""} selected`
-							: "No templates selected \u2014 all templates are available"}
+							? `${currentSelection.length} 个模板已选择`
+							: "未选择模板 —— 所有模板均可使用"}
 					</p>
 
 					<div className="flex justify-end">
 						<Button size="sm" type="submit" disabled={isSaving || !isDirty}>
-							Save
+							保存
 						</Button>
 					</div>
 
 					{isSaveError && (
 						<p role="alert" className="m-0 text-xs text-content-destructive">
-							Failed to save template allowlist.
+							保存模板白名单失败。
 						</p>
 					)}
 				</form>

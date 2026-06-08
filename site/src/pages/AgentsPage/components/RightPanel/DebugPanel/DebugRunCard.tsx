@@ -88,7 +88,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 	const metadataItems = [
 		modelLabel || undefined,
 		stepCount !== undefined && stepCount > 0
-			? `${stepCount} ${stepCount === 1 ? "step" : "steps"}`
+			? `${stepCount} ${stepCount === 1 ? "步" : "步"}`
 			: undefined,
 		durationLabel,
 		tokenLabel || undefined,
@@ -126,7 +126,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 			);
 		} catch (error) {
 			console.error(error);
-			toast.error("Failed to export debug run.", {
+			toast.error("导出调试运行失败。", {
 				description: getErrorDetail(error),
 			});
 		}
@@ -162,7 +162,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 								variant={getStatusBadgeVariant(effectiveStatus)}
 								className="shrink-0"
 							>
-								{effectiveStatus || "unknown"}
+								{effectiveStatus || "未知"}
 							</Badge>
 							<ChevronDownIcon
 								className={cn(
@@ -177,14 +177,14 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 					{runDetailQuery.isLoading ? (
 						<div className="flex items-center gap-2 text-sm text-content-secondary">
 							<Spinner size="sm" loading />
-							Loading run details...
+							正在加载运行详情...
 						</div>
 					) : runDetailQuery.isError && !runDetailQuery.data ? (
 						<Alert severity="error" prominent>
 							<p className="text-sm text-content-primary">
 								{getErrorMessage(
 									runDetailQuery.error,
-									"Unable to load debug run details.",
+									"无法加载调试运行详情。",
 								)}
 							</p>
 						</Alert>
@@ -195,7 +195,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 									<p className="text-sm text-content-primary">
 										{getErrorMessage(
 											runDetailQuery.error,
-											"Unable to refresh debug run details. Showing cached data.",
+											"无法刷新调试运行详情，正在显示缓存数据。",
 										)}
 									</p>
 								</Alert>
@@ -205,7 +205,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 							))}
 							{steps.length === 0 ? (
 								<p className="text-sm text-content-secondary">
-									No steps recorded.
+									未记录任何步骤。
 								</p>
 							) : null}
 							{runDetailQuery.data ? (
@@ -226,7 +226,7 @@ export const DebugRunCard: FC<DebugRunCardProps> = ({
 										) : (
 											<DownloadIcon className="size-4" />
 										)}
-										Export this run
+										导出此运行
 									</Button>
 								</div>
 							) : null}

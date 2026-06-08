@@ -22,10 +22,10 @@ export const ReadTemplateTool: React.FC<{
 	const isRunning = status === "running";
 
 	const label = isRunning
-		? "Reading template…"
+		? "正在读取模板…"
 		: templateName
-			? `Read template ${templateName}`
-			: "Read template";
+			? `读取模板 ${templateName}`
+			: "读取模板";
 
 	return (
 		<TranscriptRow className="gap-2 text-content-secondary">
@@ -37,7 +37,7 @@ export const ReadTemplateTool: React.FC<{
 						<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 					</TooltipTrigger>
 					<TooltipContent>
-						{errorMessage || "Failed to read template"}
+						{errorMessage || "读取模板失败"}
 					</TooltipContent>
 				</Tooltip>
 			)}

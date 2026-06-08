@@ -1,23 +1,16 @@
 /**
- * @file Coder is starting to import the Coder API file into more and more
- * external projects, as a "pseudo-SDK". We are not at a stage where we are
- * ready to commit to maintaining a public SDK, but we need equivalent
- * functionality in other places.
+ * @file Coder 正开始将 Coder API 文件导入越来越多的外部项目，作为“伪SDK”。我们尚未做好维护公共 SDK 的准备，但其他地方需要同等的功能。
  *
- * Message somebody from Team Blueberry if you need more context, but so far,
- * these projects are importing the file:
+ * 如果需要更多上下文，请联系 Team Blueberry 的成员，不过截至目前，以下项目正在导入该文件：
  *
- * - The Coder VS Code extension
+ * - Coder VS Code 扩展
  *   @see {@link https://github.com/coder/vscode-coder}
- * - The Coder Backstage plugin
+ * - Coder Backstage 插件
  *   @see {@link https://github.com/coder/backstage-plugins}
  *
- * It is important that this file not do any aliased imports, or else the other
- * consumers could break (particularly for platforms that limit how much you can
- * touch their configuration files, like Backstage). Relative imports are still
- * safe, though.
+ * 重要的是，此文件不能使用任何别名导入，否则其他消费者可能会崩溃（特别是对于限制修改其配置文件的平台，例如 Backstage）。不过，相对导入仍然是安全的。
  *
- * For example, `utils/delay` must be imported using `../utils/delay` instead.
+ * 例如，`utils/delay` 必须使用 `../utils/delay` 来导入。
  */
 import globalAxios, { type AxiosInstance, isAxiosError } from "axios";
 import type dayjs from "dayjs";
@@ -279,7 +272,7 @@ export const watchBuildLogsByTemplateVersionId = (
 	);
 
 	socket.addEventListener("error", () => {
-		onError(new Error("Connection for logs failed."));
+		onError(new Error("日志连接失败。"));
 		socket.close();
 	});
 
@@ -347,7 +340,7 @@ export const watchBuildLogsByBuildId = (
 		if (socket.readyState === socket.CLOSED) {
 			return;
 		}
-		onError?.(new Error("Connection for logs failed."));
+		onError?.(new Error("日志连接失败。"));
 		socket.close();
 	});
 
@@ -467,7 +460,7 @@ export class MissingBuildParameters extends Error {
 		parameters: TypesGen.TemplateVersionParameter[],
 		versionId: string,
 	) {
-		super("Missing build parameters.");
+		super("缺少构建参数。");
 		this.parameters = parameters;
 		this.versionId = versionId;
 	}
@@ -478,7 +471,7 @@ export class ParameterValidationError extends Error {
 		public readonly versionId: string,
 		public readonly validations: FieldError[],
 	) {
-		super("Parameters are not valid for new template version");
+		super("参数对新模板版本无效");
 	}
 }
 
@@ -1184,7 +1177,7 @@ class ApiMethods {
 		);
 
 		socket.addEventListener("error", () => {
-			onError(new Error("Connection for dynamic parameters failed."));
+			onError(new Error("动态参数连接失败。"));
 			socket.close();
 		});
 
@@ -1515,7 +1508,7 @@ class ApiMethods {
 			const stopBuild = await this.stopWorkspace(workspace.id, logLevel);
 			const awaitedStop = await this.waitForBuild(stopBuild);
 			if (awaitedStop?.status === "canceled") {
-				throw new Error("Cleanup stop was canceled");
+				throw new Error("清理停止被取消");
 			}
 		}
 		return this.startWorkspace(
@@ -1964,8 +1957,8 @@ class ApiMethods {
 			typeof resp.data !== "object" ||
 			typeof resp.data.redirect_url !== "string"
 		) {
-			console.error("Invalid response from OAuth2 GitHub callback", resp);
-			throw new Error("Invalid response from OAuth2 GitHub callback");
+			console.error("来自 OAuth2 GitHub 回调的响应无效", resp);
+			throw new Error("来自 OAuth2 GitHub 回调的响应无效");
 		}
 		return resp.data;
 	};
@@ -2512,7 +2505,7 @@ class ApiMethods {
 		const awaitedStopBuild = await this.waitForBuild(stopBuild);
 
 		if (awaitedStopBuild?.status === "canceled") {
-			throw new Error("Workspace stop was canceled.");
+			throw new Error("工作区停止被取消。");
 		}
 	};
 
@@ -2857,19 +2850,19 @@ class ApiMethods {
 		switch (job.type) {
 			case "workspace_build":
 				if (!job.input.workspace_build_id) {
-					throw new Error("Workspace build ID is required to cancel this job");
+					throw new Error("需要工作区构建 ID 才能取消此作业");
 				}
 				return this.cancelWorkspaceBuild(job.input.workspace_build_id);
 
 			case "template_version_import":
 				if (!job.input.template_version_id) {
-					throw new Error("Template version ID is required to cancel this job");
+					throw new Error("需要模板版本 ID 才能取消此作业");
 				}
 				return this.cancelTemplateVersionBuild(job.input.template_version_id);
 
 			case "template_version_dry_run":
 				if (!job.input.template_version_id) {
-					throw new Error("Template version ID is required to cancel this job");
+					throw new Error("需要模板版本 ID 才能取消此作业");
 				}
 				return this.cancelTemplateVersionDryRun(
 					job.input.template_version_id,

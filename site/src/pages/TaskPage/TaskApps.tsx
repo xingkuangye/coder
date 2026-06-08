@@ -76,7 +76,7 @@ export const TaskApps: FC<TaskAppsProps> = ({ task, workspace }) => {
 								}}
 							>
 								<TerminalIcon />
-								Terminal
+								终端
 							</TaskTab>
 						</div>
 						<ScrollBar orientation="horizontal" className="h-2" />
@@ -113,7 +113,7 @@ export const TaskApps: FC<TaskAppsProps> = ({ task, workspace }) => {
 			) : (
 				<div className="mx-auto my-auto flex flex-col items-center">
 					<h3 className="font-medium text-content-primary text-base">
-						No embedded apps found.
+						未找到嵌入式应用。
 					</h3>
 
 					<span className="text-content-secondary text-sm">
@@ -122,7 +122,7 @@ export const TaskApps: FC<TaskAppsProps> = ({ task, workspace }) => {
 							target="_blank"
 							rel="noreferrer"
 						>
-							Learn how to configure apps
+							了解如何配置应用
 						</Link>{" "}
 						for your tasks.
 					</span>
@@ -146,7 +146,7 @@ const ExternalAppsDropdown: FC<ExternalAppsDropdownProps> = ({
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button size="sm" variant="subtle">
-						Open locally
+						在本地打开
 						<ChevronDownIcon />
 					</Button>
 				</DropdownMenuTrigger>
@@ -203,8 +203,8 @@ const TaskAppTab: FC<TaskAppTabProps> = ({
 			{link.label}
 			{app.health === "unhealthy" && (
 				<InfoTooltip
-					title="This app is unhealthy."
-					message="The health check failed."
+					title="此应用运行异常。"
+					message="健康检查失败。"
 					type="warning"
 				/>
 			)}

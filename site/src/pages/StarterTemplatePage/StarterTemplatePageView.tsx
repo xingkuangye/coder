@@ -43,13 +43,13 @@ export const StarterTemplatePageView: FC<StarterTemplatePageViewProps> = ({
 						<Button asChild variant="outline" size="sm">
 							<a target="_blank" href={starterTemplate.url} rel="noreferrer">
 								<ExternalLinkIcon />
-								View source code
+								查看源代码
 							</a>
 						</Button>
 						<Button asChild size="sm">
 							<Link to={`/templates/new?exampleId=${starterTemplate.id}`}>
 								<PlusIcon />
-								Use template
+								使用模板
 							</Link>
 						</Button>
 					</>

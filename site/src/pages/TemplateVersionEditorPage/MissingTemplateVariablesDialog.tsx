@@ -47,11 +47,11 @@ export const MissingTemplateVariablesDialog: FC<
 				id="update-build-parameters-title"
 				className="px-10 py-6 text-xl font-normal"
 			>
-				Template variables
+				模板变量
 			</DialogTitle>
 			<DialogContent className="px-10">
 				<DialogContentText className="m-0">
-					There are a few missing template variable values. Please fill them in.
+					缺少一些模板变量值，请填写。
 				</DialogContentText>
 				<VerticalForm
 					className="pt-8"
@@ -89,7 +89,7 @@ export const MissingTemplateVariablesDialog: FC<
 			</DialogContent>
 			<DialogActions disableSpacing className="flex flex-col gap-2 p-10">
 				<Button className="w-full" type="submit" form="updateVariables">
-					Submit
+					提交
 				</Button>
 				<Button
 					variant="outline"
@@ -97,7 +97,7 @@ export const MissingTemplateVariablesDialog: FC<
 					type="button"
 					onClick={dialogProps.onClose}
 				>
-					Cancel
+					取消
 				</Button>
 			</DialogActions>
 		</Dialog>

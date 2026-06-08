@@ -57,7 +57,7 @@ const DERPRegionPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(region.RegionName, "Health")}</title>
+			<title>{pageTitle(region.RegionName, "健康")}</title>
 
 			<Header>
 				<hgroup>
@@ -66,7 +66,7 @@ const DERPRegionPage: FC = () => {
 						to="/health/derp"
 					>
 						<ChevronLeftIcon className="size-icon-xs align-middle mr-2" />
-						Back to DERP
+						返回 DERP
 					</Link>
 					<HeaderTitle>
 						<HealthyDot severity={severity as HealthSeverity} />
@@ -97,7 +97,7 @@ const DERPRegionPage: FC = () => {
 									{region.RegionID}
 								</Pill>
 							</TooltipTrigger>
-							<TooltipContent side="bottom">Region ID</TooltipContent>
+							<TooltipContent side="bottom">区域 ID</TooltipContent>
 						</Tooltip>
 						<Tooltip>
 							<TooltipTrigger asChild>
@@ -105,17 +105,16 @@ const DERPRegionPage: FC = () => {
 									{region.RegionCode}
 								</Pill>
 							</TooltipTrigger>
-							<TooltipContent side="bottom">Region Code</TooltipContent>
+							<TooltipContent side="bottom">区域代码</TooltipContent>
 						</Tooltip>
 						<Tooltip>
 							<TooltipTrigger asChild>
 								<BooleanPill value={region.EmbeddedRelay}>
-									Embedded Relay
+									内嵌中继
 								</BooleanPill>
 							</TooltipTrigger>
 							<TooltipContent side="bottom">
-								Whether this region uses a relay server embedded in the Coder
-								deployment.
+								该区域是否使用嵌入在 Coder 部署中的中继服务器。
 							</TooltipContent>
 						</Tooltip>
 					</div>
@@ -138,26 +137,26 @@ const DERPRegionPage: FC = () => {
 					);
 					const checks: NodeCheckRow[] = [
 						{
-							label: "Exchange Messages",
+							label: "消息交换",
 							description:
-								"Whether DERP clients can relay messages through this node.",
+								"DERP 客户端是否能通过此节点中继消息。",
 							value: report.can_exchange_messages,
 						},
 						{
-							label: "Direct HTTP Upgrade",
+							label: "直接 HTTP 升级",
 							description:
-								"Whether the connection used a direct HTTP upgrade instead of falling back to WebSocket. Fallback may indicate the DERP upgrade header is being blocked.",
+								"连接是否使用了直接 HTTP 升级而非回退到 WebSocket。回退可能表明 DERP 升级头被阻止。",
 							value: !report.uses_websocket,
 						},
 						{
-							label: "STUN Enabled",
-							description: "Whether STUN is enabled on this node.",
+							label: "STUN 已启用",
+							description: "此节点是否启用了 STUN。",
 							value: report.stun.Enabled,
 						},
 						{
-							label: "STUN Reachable",
+							label: "STUN 可访问",
 							description:
-								"Whether this node responded to a STUN request successfully.",
+								"此节点是否成功响应了 STUN 请求。",
 							value: report.stun.CanSTUN,
 						},
 					];
@@ -172,8 +171,8 @@ const DERPRegionPage: FC = () => {
 										{node.HostName}
 									</h4>
 									<div className="flex items-center gap-2 text-content-secondary text-xs leading-tight mt-2">
-										<span>DERP Port: {node.DERPPort ?? "None"}</span>
-										<span>STUN Port: {node.STUNPort ?? "None"}</span>
+										<span>DERP 端口： {node.DERPPort ?? "无"}</span>
+										<span>STUN 端口： {node.STUNPort ?? "无"}</span>
 									</div>
 								</div>
 
@@ -186,7 +185,7 @@ const DERPRegionPage: FC = () => {
 											{report.round_trip_ping_ms}ms
 										</Pill>
 									</TooltipTrigger>
-									<TooltipContent side="bottom">Round trip ping</TooltipContent>
+									<TooltipContent side="bottom">往返 ping</TooltipContent>
 								</Tooltip>
 							</header>
 

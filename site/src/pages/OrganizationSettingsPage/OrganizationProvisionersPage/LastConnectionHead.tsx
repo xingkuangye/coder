@@ -8,11 +8,11 @@ import {
 export const LastConnectionHead: FC = () => {
 	return (
 		<span className="flex items-center gap-1 whitespace-nowrap text-xs font-medium text-content-secondary">
-			Last connection
+			上次连接
 			<Tooltip>
 				<TooltipTrigger asChild>
 					<span className="flex items-center">
-						<span className="sr-only">More info</span>
+						<span className="sr-only">更多信息</span>
 						<InfoIcon
 							tabIndex={0}
 							className="cursor-pointer size-icon-xs p-0.5"
@@ -20,7 +20,7 @@ export const LastConnectionHead: FC = () => {
 					</span>
 				</TooltipTrigger>
 				<TooltipContent className="max-w-xs">
-					Last time the provisioner connected to the control plane
+					上次 provisioner 连接到控制平面的时间
 				</TooltipContent>
 			</Tooltip>
 		</span>

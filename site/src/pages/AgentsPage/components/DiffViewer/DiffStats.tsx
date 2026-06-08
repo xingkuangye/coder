@@ -1,8 +1,7 @@
 import type { FC } from "react";
 
 /**
- * Pill-styled diff stats badge with coloured backgrounds,
- * used inside the Git tab header.
+ * 采用彩色背景的药丸形差异统计徽章，用于 Git 选项卡标题中。
  */
 export const DiffStatBadge: FC<{ additions: number; deletions: number }> = ({
 	additions,

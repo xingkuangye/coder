@@ -154,8 +154,8 @@ const AgentCreatePage: FC = () => {
 				await webPush.subscribe();
 			}
 		} catch (error) {
-			const action = webPush.subscribed ? "disable" : "enable";
-			toast.error(getErrorMessage(error, `Failed to ${action} notifications.`));
+			const action = webPush.subscribed ? "禁用" : "启用";
+			toast.error(getErrorMessage(error, `无法${action}通知。`));
 		}
 	};
 

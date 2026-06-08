@@ -7,7 +7,7 @@ interface SearchProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * A container component meant for `SearchInput`
+ * 用作 `SearchInput` 的容器组件
  *
  * ```
  * <Search>
@@ -57,7 +57,7 @@ export const SearchInput: FC<SearchInputProps> = ({
 				id={id}
 				tabIndex={0}
 				type="text"
-				placeholder="Search..."
+				placeholder="搜索..."
 				className="text-inherit h-full border-0 bg-transparent grow basis-0 outline-none pl-4 placeholder:text-content-secondary"
 				{...inputProps}
 			/>
@@ -66,7 +66,7 @@ export const SearchInput: FC<SearchInputProps> = ({
 };
 
 export const SearchEmpty: FC<HTMLAttributes<HTMLDivElement>> = ({
-	children = "Not found",
+	children = "未找到",
 	...props
 }) => {
 	return (

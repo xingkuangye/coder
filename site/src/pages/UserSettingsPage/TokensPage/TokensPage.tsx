@@ -39,19 +39,18 @@ const TokensPage: FC = () => {
 					<Button asChild variant="outline">
 						<RouterLink to="new">
 							<PlusIcon />
-							Add token
+							添加令牌
 						</RouterLink>
 					</Button>
 				}
 			>
-				<SettingsHeaderTitle>Tokens</SettingsHeaderTitle>
+				<SettingsHeaderTitle>令牌</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Tokens are used to authenticate with the Coder API. You can create a
-					token with the Coder CLI using the{" "}
+					令牌用于与 Coder API 进行身份验证。您可以使用 Coder CLI 的{" "}
 					<code className="bg-surface-secondary text-content-primary text-xs px-1 py-0.5 rounded-sm">
 						{cliCreateCommand}
 					</code>{" "}
-					command.
+					命令创建令牌。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 			<TokensPageView

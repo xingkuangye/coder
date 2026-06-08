@@ -15,7 +15,7 @@ interface SensitiveValueProps {
 export const SensitiveValue: FC<SensitiveValueProps> = ({ value }) => {
 	const [shouldDisplay, setShouldDisplay] = useState(false);
 	const displayValue = shouldDisplay ? value : "••••••••";
-	const buttonLabel = shouldDisplay ? "Hide value" : "Show value";
+	const buttonLabel = shouldDisplay ? "隐藏值" : "显示值";
 	const icon = shouldDisplay ? (
 		<EyeOffIcon className="size-icon-xs" />
 	) : (

@@ -60,8 +60,8 @@ export const AgentSettingsUserAgentsPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Agents"
-				description="Choose personal model defaults for root agents and delegated agents."
+				label="代理"
+				description="为根代理和委派代理选择个人模型默认设置。"
 			/>
 			{overridesError ? (
 				<div className="flex flex-col gap-2">
@@ -74,7 +74,7 @@ export const AgentSettingsUserAgentsPageView: FC<
 							type="button"
 							variant="outline"
 						>
-							Retry
+							重试
 						</Button>
 					)}
 				</div>
@@ -82,15 +82,14 @@ export const AgentSettingsUserAgentsPageView: FC<
 			{!personalOverridesEnabled && (
 				<Alert severity="info">
 					<AlertDescription>
-						Personal model overrides are disabled by an administrator. Saved
-						values are shown for reference, but changes cannot be saved.
+						个人模型覆盖已被管理员禁用。保存的值仅供参考，无法保存更改。
 					</AlertDescription>
 				</Alert>
 			)}
 			<PersonalModelOverrideRow
 				context="root"
-				title="Root agent model"
-				description="Choose the model behavior for new root agents."
+				title="根代理模型"
+				description="为新根代理选择模型行为。"
 				overrideData={overridesData?.root}
 				modelOptions={modelOptions}
 				modelConfigs={modelConfigs}
@@ -99,13 +98,13 @@ export const AgentSettingsUserAgentsPageView: FC<
 				onSave={onSaveRootModelOverride}
 				isSaving={isSavingRootModelOverride}
 				isSaveError={isSaveRootModelOverrideError}
-				saveErrorMessage="Failed to save root agent model override."
+				saveErrorMessage="保存根代理模型覆盖失败。"
 				disabled={isDisabled}
 			/>
 			<PersonalModelOverrideRow
 				context="general"
-				title="General subagent model"
-				description="Choose the model behavior for delegated agents with write capabilities."
+				title="通用子代理模型"
+				description="为具有写入能力的委派代理选择模型行为。"
 				overrideData={overridesData?.general}
 				deploymentDefault={overridesData?.deployment_defaults.general}
 				modelOptions={modelOptions}
@@ -115,13 +114,13 @@ export const AgentSettingsUserAgentsPageView: FC<
 				onSave={onSaveGeneralModelOverride}
 				isSaving={isSavingGeneralModelOverride}
 				isSaveError={isSaveGeneralModelOverrideError}
-				saveErrorMessage="Failed to save general subagent model override."
+				saveErrorMessage="保存通用子代理模型覆盖失败。"
 				disabled={isDisabled}
 			/>
 			<PersonalModelOverrideRow
 				context="explore"
-				title="Explore subagent model"
-				description="Choose the model behavior for read-only Explore subagents."
+				title="探索子代理模型"
+				description="为只读探索子代理选择模型行为。"
 				overrideData={overridesData?.explore}
 				deploymentDefault={overridesData?.deployment_defaults.explore}
 				modelOptions={modelOptions}
@@ -131,7 +130,7 @@ export const AgentSettingsUserAgentsPageView: FC<
 				onSave={onSaveExploreModelOverride}
 				isSaving={isSavingExploreModelOverride}
 				isSaveError={isSaveExploreModelOverrideError}
-				saveErrorMessage="Failed to save Explore subagent model override."
+				saveErrorMessage="保存探索子代理模型覆盖失败。"
 				disabled={isDisabled}
 			/>
 		</div>

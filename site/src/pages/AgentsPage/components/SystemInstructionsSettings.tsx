@@ -76,12 +76,12 @@ export const SystemInstructionsSettings: FC<
 			<form className="flex flex-col gap-2" onSubmit={form.handleSubmit}>
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						System instructions
+						系统指令
 					</h3>
 				</div>
 				<div className="flex items-center justify-between gap-4">
 					<div className="flex min-w-0 items-center gap-2 text-xs font-medium text-content-primary">
-						<span>Include Coder Agents default system prompt</span>
+						<span>包含 Coder Agents 默认系统提示</span>
 						<Button
 							size="xs"
 							variant="subtle"
@@ -90,7 +90,7 @@ export const SystemInstructionsSettings: FC<
 							disabled={!hasLoadedSystemPrompt}
 							className="min-w-0 px-0 text-content-link hover:text-content-link"
 						>
-							Preview
+							预览
 						</Button>
 					</div>
 					<Switch
@@ -98,14 +98,14 @@ export const SystemInstructionsSettings: FC<
 						onCheckedChange={(checked) =>
 							form.setFieldValue("include_default_system_prompt", checked)
 						}
-						aria-label="Include Coder Agents default system prompt"
+						aria-label="包含 Coder Agents 默认系统提示"
 						disabled={isSystemPromptDisabled}
 					/>
 				</div>
 				<p className="!mt-0.5 m-0 text-xs text-content-secondary">
 					{form.values.include_default_system_prompt
-						? "The built-in Coder Agents prompt is prepended. Additional instructions below are appended."
-						: "Only the additional instructions below are used. When empty, no deployment-wide system prompt is sent."}
+						? "内置的 Coder Agents 提示将前置。下面的附加说明将追加。"
+						: "仅使用下面的附加说明。如果为空，则不会发送部署范围的系统提示。"}
 				</p>
 				<TextareaAutosize
 					className={cn(
@@ -113,7 +113,7 @@ export const SystemInstructionsSettings: FC<
 						isSystemPromptOverflowing &&
 							"overflow-y-auto [scrollbar-width:thin]",
 					)}
-					placeholder="Additional instructions for all users"
+					placeholder="所有用户的附加说明"
 					name="system_prompt"
 					value={form.values.system_prompt}
 					onChange={form.handleChange}
@@ -126,9 +126,8 @@ export const SystemInstructionsSettings: FC<
 				{systemInvisibleCharCount > 0 && (
 					<Alert severity="warning">
 						<AlertDescription>
-							This text contains {systemInvisibleCharCount} invisible Unicode{" "}
-							{systemInvisibleCharCount !== 1 ? "characters" : "character"} that
-							could hide content. These will be stripped on save.
+							此文本包含 {systemInvisibleCharCount} 个不可见 Unicode{" "}
+							{systemInvisibleCharCount !== 1 ? "字符" : "字符"}，可能会隐藏内容。保存时将会去除。
 						</AlertDescription>
 					</Alert>
 				)}
@@ -147,7 +146,7 @@ export const SystemInstructionsSettings: FC<
 										isSystemPromptDisabled || !form.values.system_prompt
 									}
 								>
-									Clear
+									清除
 								</Button>
 								<Button
 									size="xs"
@@ -160,14 +159,14 @@ export const SystemInstructionsSettings: FC<
 									{isSavingSystemPrompt && (
 										<Spinner loading className="h-4 w-4" />
 									)}
-									Save
+									保存
 								</Button>
 							</>
 						))}
 				</div>
 				{isSaveSystemPromptError && (
 					<p className="m-0 text-xs text-content-destructive">
-						Failed to save system prompt.
+						保存系统提示失败。
 					</p>
 				)}
 			</form>
@@ -175,7 +174,7 @@ export const SystemInstructionsSettings: FC<
 			{showDefaultPromptPreview && (
 				<TextPreviewDialog
 					content={defaultSystemPrompt}
-					fileName="Default System Prompt"
+					fileName="默认系统提示"
 					onClose={() => setShowDefaultPromptPreview(false)}
 				/>
 			)}

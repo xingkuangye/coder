@@ -50,15 +50,15 @@ export function getWorkspaceStatus(
 			agent?.lifecycle_state === "start_timeout");
 	if (agentPreparing) {
 		type = "active";
-		text = "Preparing";
+		text = "准备中";
 	} else if (agentStartupFailed) {
 		type = "warning";
-		text = "Startup failed";
+		text = "启动失败";
 	}
 
 	const effectiveType = workspace.health.healthy ? type : "warning";
 	const statusLabel = workspace.health.healthy
-		? `Workspace ${text.toLowerCase()}`
-		: `Workspace ${text.toLowerCase()} (unhealthy)`;
+		? `工作区 ${text.toLowerCase()}`
+		: `工作区 ${text.toLowerCase()}（不健康）`;
 	return { effectiveType, statusLabel };
 }

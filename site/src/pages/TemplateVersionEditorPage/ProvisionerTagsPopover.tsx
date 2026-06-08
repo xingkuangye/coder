@@ -29,7 +29,7 @@ export const ProvisionerTagsPopover: FC<ProvisionerTagsPopoverProps> = ({
 			<PopoverTrigger asChild>
 				<TopbarButton color="neutral" size="icon">
 					<ChevronDownIcon className="size-icon-xs" />
-					<span className="sr-only">Expand provisioner tags</span>
+					<span className="sr-only">展开配置器标签</span>
 				</TopbarButton>
 			</PopoverTrigger>
 			<PopoverContent
@@ -50,17 +50,16 @@ export const ProvisionerTagsPopover: FC<ProvisionerTagsPopoverProps> = ({
 							// direction ("horizontal") which adds lg:flex-row.
 							root: "flex-col lg:flex-col gap-4 lg:gap-4",
 						}}
-						title="Provisioner Tags"
+						title="配置器标签"
 						description={
 							<>
-								Tags are a way to control which provisioner daemons complete
-								which build jobs.&nbsp;
+								标签是一种控制哪个配置器守护进程完成哪个构建作业的方式。&nbsp;
 								<Link
 									href={docs("/admin/provisioners")}
 									target="_blank"
 									rel="noreferrer"
 								>
-									Learn more...
+									了解更多...
 								</Link>
 							</>
 						}

@@ -17,7 +17,7 @@ import { formatDate } from "#/utils/time";
 
 const chartConfig = {
 	amount: {
-		label: "Active Users",
+		label: "活跃用户",
 		color: "hsl(var(--highlight-purple))",
 	},
 } satisfies ChartConfig;
@@ -71,7 +71,7 @@ export const ActiveUserChart: FC<ActiveUserChartProps> = ({ data }) => {
 							labelClassName="text-content-primary"
 							labelFormatter={(_, p) => {
 								const item = p[0];
-								return `${item.value} active users`;
+								return `${item.value} 活跃用户`;
 							}}
 							formatter={(_v, _n, item) => {
 								const date = new Date(item.payload.date);
@@ -119,16 +119,13 @@ type ActiveUsersTitleProps = {
 export const ActiveUsersTitle: FC<ActiveUsersTitleProps> = ({ interval }) => {
 	return (
 		<div className="flex items-center gap-2">
-			{interval === "day" ? "Daily" : "Weekly"} Active Users
+			{interval === "day" ? "每日" : "每周"} 活跃用户
 			<HelpPopover>
 				<HelpPopoverIconTrigger size="small" />
 				<HelpPopoverContent>
-					<HelpPopoverTitle>How do we calculate active users?</HelpPopoverTitle>
+					<HelpPopoverTitle>我们如何计算活跃用户？</HelpPopoverTitle>
 					<HelpPopoverText>
-						When a connection is initiated to a user&apos;s workspace they are
-						considered an active user. e.g. apps, web terminal, SSH. This is for
-						measuring user activity and has no connection to license
-						consumption.
+						当有连接发起至用户的工作区时，该用户即被视为活跃用户。例如：应用、Web 终端、SSH。这仅用于衡量用户活动，与许可证消耗无关。
 					</HelpPopoverText>
 				</HelpPopoverContent>
 			</HelpPopover>

@@ -212,7 +212,7 @@ export const ProvidersSection: FC<ProvidersSectionProps> = ({
 					disabled={providerConfigsUnavailable || isProviderMutationPending}
 				>
 					<PlusIcon className="size-4" />
-					Add provider
+					添加提供商
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" className="w-56">
@@ -234,7 +234,7 @@ export const ProvidersSection: FC<ProvidersSectionProps> = ({
 		<SectionHeader
 			label={sectionLabel}
 			description={
-				sectionDescription ?? "Configure AI providers to use with Agents."
+				sectionDescription ?? "配置 AI 提供商以用于智能代理。"
 			}
 			action={addProviderAction}
 		/>
@@ -245,7 +245,7 @@ export const ProvidersSection: FC<ProvidersSectionProps> = ({
 			{header}
 			{providerStates.length === 0 ? (
 				<div className="rounded-lg border border-dashed border-border bg-surface-primary p-6 text-center text-[13px] text-content-secondary">
-					No providers have been added yet.
+					尚未添加任何提供商。
 				</div>
 			) : (
 				<div>
@@ -276,7 +276,7 @@ export const ProvidersSection: FC<ProvidersSectionProps> = ({
 									</span>
 									{providerState.providerConfig?.allow_user_api_key && (
 										<Badge size="xs" className="text-content-secondary">
-											User keys enabled
+											已启用用户密钥
 										</Badge>
 									)}
 								</div>

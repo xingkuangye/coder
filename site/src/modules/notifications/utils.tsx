@@ -25,7 +25,7 @@ export const castNotificationMethod = (value: string) => {
 	}
 
 	throw new Error(
-		`Invalid notification method: ${value}. Accepted values: ${notificationMethods.join(
+		`无效的通知方式: ${value}. 可接受的值: ${notificationMethods.join(
 			", ",
 		)}`,
 	);

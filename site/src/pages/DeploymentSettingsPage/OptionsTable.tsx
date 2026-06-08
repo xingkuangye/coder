@@ -24,15 +24,15 @@ interface OptionsTableProps {
 
 const OptionsTable: FC<OptionsTableProps> = ({ options, additionalValues }) => {
 	if (options.length === 0) {
-		return <p>No options to configure</p>;
+		return <p>没有可配置的选项</p>;
 	}
 
 	return (
 		<Table className="options-table">
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-1/2">Option</TableHead>
-					<TableHead className="w-1/2">Value</TableHead>
+					<TableHead className="w-1/2">选项</TableHead>
+					<TableHead className="w-1/2">值</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>

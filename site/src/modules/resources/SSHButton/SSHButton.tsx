@@ -34,7 +34,7 @@ export const AgentSSHButton: FC<AgentSSHButtonProps> = ({
 		<Popover>
 			<PopoverTrigger asChild>
 				<Button size="sm" variant="subtle">
-					Connect via SSH
+					通过 SSH 连接
 					<ChevronDownIcon />
 				</Button>
 			</PopoverTrigger>
@@ -44,37 +44,37 @@ export const AgentSSHButton: FC<AgentSSHButtonProps> = ({
 				className="py-4 px-6 w-80 text-content-secondary mt-[2px] bg-surface-secondary"
 			>
 				<HelpPopoverText>
-					Run the following commands to connect with SSH:
+					运行以下命令以通过 SSH 连接：
 				</HelpPopoverText>
 
 				<ol style={{ margin: 0, padding: 0 }}>
 					<div className="flex flex-col gap-1 mt-3">
 						<SSHStep
-							helpText="Configure SSH hosts on machine:"
+							helpText="在机器上配置 SSH 主机："
 							codeExample="coder config-ssh"
 						/>
 						<SSHStep
-							helpText="Connect to the agent:"
+							helpText="连接到代理："
 							codeExample={`ssh ${agentName}.${workspaceName}.${workspaceOwnerUsername}.${sshSuffix}`}
 						/>
 					</div>
 				</ol>
 
 				<HelpPopoverLinksGroup>
-					<HelpPopoverLink href="/install">Install Coder CLI</HelpPopoverLink>
+					<HelpPopoverLink href="/install">安装 Coder CLI</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/workspace-access/vscode")}>
-						Connect via VS Code Remote SSH
+						通过 VS Code Remote SSH 连接
 					</HelpPopoverLink>
 					<HelpPopoverLink
 						href={docs("/user-guides/workspace-access/jetbrains")}
 					>
-						Connect via JetBrains IDEs
+						通过 JetBrains IDE 连接
 					</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/desktop")}>
-						Connect via Coder Desktop
+						通过 Coder Desktop 连接
 					</HelpPopoverLink>
 					<HelpPopoverLink href={docs("/user-guides/workspace-access#ssh")}>
-						SSH configuration
+						SSH 配置
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</PopoverContent>

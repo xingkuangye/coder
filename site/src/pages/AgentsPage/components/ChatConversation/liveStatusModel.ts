@@ -7,8 +7,8 @@ type LiveStatusBase = {
 	hasAccumulatedOutput: boolean;
 };
 
-const RECONNECTING_TITLE = "Reconnecting";
-const RECONNECTING_MESSAGE = "Chat stream disconnected. Reconnecting…";
+const RECONNECTING_TITLE = "重新连接中";
+const RECONNECTING_MESSAGE = "聊天流已断开，正在重新连接…";
 
 export type LiveStatusModel =
 	| ({ phase: "idle" } & LiveStatusBase)

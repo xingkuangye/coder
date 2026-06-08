@@ -137,7 +137,7 @@ export const WorkspacePill: FC<WorkspacePillProps> = ({
 						<DropdownMenuTrigger asChild>
 							<button
 								type="button"
-								aria-label={`${workspace.name} workspace menu`}
+								aria-label={`${workspace.name} 工作区菜单`}
 								className={cn(
 									"inline-flex min-w-0 cursor-pointer items-center justify-center gap-1 rounded-full border-0 bg-transparent p-0 text-xs font-medium text-content-secondary transition-colors hover:bg-surface-tertiary hover:text-content-primary",
 									"size-7 md:size-auto md:max-w-[200px] md:justify-start md:px-2 md:py-0.5",
@@ -249,7 +249,7 @@ export const WorkspacePill: FC<WorkspacePillProps> = ({
 						<DropdownMenuItem asChild>
 							<Link to={route} target="_blank" rel="noreferrer">
 								<MonitorIcon className="size-3.5" />
-								View Workspace
+								查看工作区
 							</Link>
 						</DropdownMenuItem>
 						{onRemoveWorkspace && (
@@ -260,7 +260,7 @@ export const WorkspacePill: FC<WorkspacePillProps> = ({
 									onClick={onRemoveWorkspace}
 								>
 									<UnlinkIcon className="size-3.5" />
-									Detach workspace
+									分离工作区
 								</DropdownMenuItem>
 							</>
 						)}
@@ -311,7 +311,7 @@ const VSCodeMenuItem: FC<{
 				});
 			},
 			onError: (error: unknown) => {
-				toast.error(getErrorMessage(error, `Failed to open ${label}.`));
+				toast.error(getErrorMessage(error, `打开 ${label} 失败。`));
 			},
 		});
 	};
@@ -384,7 +384,7 @@ const TerminalMenuItem: FC<{
 			disabled={!isRunning}
 		>
 			<SquareTerminalIcon className="size-3.5" />
-			Terminal
+			终端
 		</DropdownMenuItem>
 	);
 };
@@ -401,7 +401,7 @@ const CopySSHMenuItem: FC<{
 			}}
 		>
 			<CopyIcon className="size-3.5" />
-			Copy SSH Command
+			复制 SSH 命令
 		</DropdownMenuItem>
 	);
 };

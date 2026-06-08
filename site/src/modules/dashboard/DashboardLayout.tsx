@@ -35,7 +35,7 @@ export const DashboardLayout: FC = () => {
 					}}
 					className="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:z-50 focus-visible:p-4 focus-visible:bg-surface-primary focus-visible:text-content-primary"
 				>
-					Skip to main content
+					跳到主内容
 				</a>
 				<Navbar />
 
@@ -89,18 +89,18 @@ export const DashboardLayout: FC = () => {
 								})}
 							/>
 							<p>
-								Coder {updateCheck.data?.version} is now available. View the{" "}
-								<Link href={updateCheck.data?.url}>release notes</Link> and{" "}
+								Coder {updateCheck.data?.version} 现已可用。查看{" "}
+								<Link href={updateCheck.data?.url}>发布说明</Link> 和{" "}
 								<Link href={docs("/install/upgrade")}>
-									upgrade instructions
+									升级说明
 								</Link>{" "}
-								for more information.
+								以获取更多信息。
 							</p>
 						</div>
 					}
 					action={
 						<Button variant="subtle" size="sm" onClick={updateCheck.dismiss}>
-							Dismiss
+							忽略
 						</Button>
 					}
 				/>

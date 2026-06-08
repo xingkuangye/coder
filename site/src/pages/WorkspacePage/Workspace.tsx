@@ -43,7 +43,7 @@ interface WorkspaceProps {
 }
 
 /**
- * Workspace is the top-level component for viewing an individual workspace
+ * 工作区是用于查看单个工作区的顶级组件
  */
 export const Workspace: FC<WorkspaceProps> = ({
 	workspace,
@@ -132,7 +132,7 @@ export const Workspace: FC<WorkspaceProps> = ({
 							}}
 						>
 							<BlocksIcon className="size-icon-sm" />
-							<span className="sr-only">Resources</span>
+							<span className="sr-only">资源</span>
 						</SidebarIconButton>
 						<SidebarIconButton
 							isActive={sidebarOption.value === "history"}
@@ -141,7 +141,7 @@ export const Workspace: FC<WorkspaceProps> = ({
 							}}
 						>
 							<HistoryIcon className="size-icon-sm" />
-							<span className="sr-only">History</span>
+							<span className="sr-only">历史</span>
 						</SidebarIconButton>
 					</div>
 
@@ -190,7 +190,7 @@ export const Workspace: FC<WorkspaceProps> = ({
 
 							{workspace.latest_build.job.error && (
 								<Alert severity="error" prominent>
-									<AlertTitle>Workspace build failed</AlertTitle>
+									<AlertTitle>工作区构建失败</AlertTitle>
 									<AlertDescription>
 										{workspace.latest_build.job.error}
 									</AlertDescription>
@@ -234,7 +234,7 @@ export const Workspace: FC<WorkspaceProps> = ({
 										<div className="flex justify-center items-center w-full h-full">
 											<div>
 												<h4 className="text-base font-medium">
-													No agents are currently assigned to this resource.
+													当前没有代理分配给此资源。
 												</h4>
 											</div>
 										</div>

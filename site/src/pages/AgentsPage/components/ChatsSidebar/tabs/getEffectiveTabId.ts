@@ -1,7 +1,5 @@
 /**
- * Resolves which sidebar tab should be active given the set of
- * available tab IDs, the currently stored selection, and whether
- * the desktop chat tab is available.
+ * 根据可用的选项卡 ID 集合、当前存储的选择以及桌面聊天选项卡是否可用，确定哪个侧边栏选项卡应该处于活动状态。
  */
 export function getEffectiveTabId(
 	tabIds: readonly string[],

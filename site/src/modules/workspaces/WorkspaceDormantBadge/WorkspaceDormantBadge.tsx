@@ -23,28 +23,25 @@ export const WorkspaceDormantBadge: FC<WorkspaceDormantBadgeProps> = ({
 		<Tooltip>
 			<TooltipTrigger asChild>
 				<Badge role="status" variant="destructive" size="xs">
-					Deletion Pending
+					等待删除
 				</Badge>
 			</TooltipTrigger>
 			<TooltipContent side="bottom" className="max-w-xs">
-				This workspace has not been used for{" "}
-				{relativeTimeWithoutSuffix(workspace.last_used_at)} and has been marked
-				dormant. It is scheduled to be deleted on{" "}
-				{formatDateTime(workspace.deleting_at, DATE_FORMAT.FULL_DATETIME)}.
+				此工作空间已{" "}
+				{relativeTimeWithoutSuffix(workspace.last_used_at)} 未使用，并被标记为休眠。它计划于{" "}
+				{formatDateTime(workspace.deleting_at, DATE_FORMAT.FULL_DATETIME)} 删除。
 			</TooltipContent>
 		</Tooltip>
 	) : (
 		<Tooltip>
 			<TooltipTrigger asChild>
 				<Badge role="status" variant="warning" size="xs">
-					Dormant
+					休眠
 				</Badge>
 			</TooltipTrigger>
 			<TooltipContent side="bottom" className="max-w-xs">
-				This workspace has not been used for{" "}
-				{relativeTimeWithoutSuffix(workspace.last_used_at)} and has been marked
-				dormant. It is not scheduled for auto-deletion but will become a
-				candidate if auto-deletion is enabled on this template.
+				此工作空间已{" "}
+				{relativeTimeWithoutSuffix(workspace.last_used_at)} 未使用，并被标记为休眠。它目前未计划自动删除，但如果在此模板上启用了自动删除，它将成为候选。
 			</TooltipContent>
 		</Tooltip>
 	);

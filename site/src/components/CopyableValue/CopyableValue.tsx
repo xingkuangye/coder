@@ -81,7 +81,7 @@ export const CopyableValue: FC<CopyableValueProps> = ({
 				</span>
 			</TooltipTrigger>
 			<TooltipContent side={side}>
-				{showCopiedSuccess ? "Copied!" : "Click to copy"}
+				{showCopiedSuccess ? "已复制！" : "点击复制"}
 			</TooltipContent>
 		</Tooltip>
 	);

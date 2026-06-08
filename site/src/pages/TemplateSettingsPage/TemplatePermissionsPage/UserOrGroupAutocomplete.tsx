@@ -86,8 +86,8 @@ export const UserOrGroupAutocomplete: FC<UserOrGroupAutocompleteProps> = ({
 			inputValue={inputValue}
 			onInputChange={setInputValue}
 			loading={aclAvailableQuery.isFetching}
-			placeholder="Search for user or group"
-			noOptionsText="No users or groups found"
+			placeholder="搜索用户或组"
+			noOptionsText="未找到用户或组"
 			className="w-[300px]"
 			id="user-or-group-autocomplete"
 		/>

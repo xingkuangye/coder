@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 01/13/2025
+ * 从 shadc/ui 复制于 01/13/2025
  * @see {@link https://ui.shadcn.com/docs/components/chart}
  */
 import {
@@ -36,7 +36,7 @@ function useChart() {
 	const context = useContext(ChartContext);
 
 	if (!context) {
-		throw new Error("useChart must be used within a <ChartContainer />");
+		throw new Error("useChart 必须在 <ChartContainer /> 内部使用");
 	}
 
 	return context;

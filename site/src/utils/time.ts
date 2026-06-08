@@ -70,7 +70,7 @@ export function formatDate(
 // Duration functions
 export function humanDuration(durationInMs: number) {
 	return humanizeDuration(durationInMs, {
-		conjunction: " and ",
+		conjunction: " 和 ",
 		serialComma: false,
 		round: true,
 		units: ["y", "mo", "w", "d", "h", "m", "s", "ms"],
@@ -110,30 +110,30 @@ export function shortRelativeTime(date: DateTimeInput): string {
 	const diffSeconds = now.diff(then, "second");
 
 	if (diffSeconds < 60) {
-		return "now";
+		return "刚刚";
 	}
 	const diffMinutes = now.diff(then, "minute");
 	if (diffMinutes < 60) {
-		return `${diffMinutes}m`;
+		return `${diffMinutes}分`;
 	}
 	const diffHours = now.diff(then, "hour");
 	if (diffHours < 24) {
-		return `${diffHours}h`;
+		return `${diffHours}时`;
 	}
 	const diffDays = now.diff(then, "day");
 	if (diffDays < 7) {
-		return `${diffDays}d`;
+		return `${diffDays}天`;
 	}
 	const diffWeeks = now.diff(then, "week");
 	if (diffWeeks < 5) {
-		return `${diffWeeks}w`;
+		return `${diffWeeks}周`;
 	}
 	const diffMonths = now.diff(then, "month");
 	if (diffMonths < 12) {
-		return `${diffMonths}mo`;
+		return `${diffMonths}月`;
 	}
 	const diffYears = now.diff(then, "year");
-	return `${diffYears}y`;
+	return `${diffYears}年`;
 }
 
 export function relativeTimeWithoutSuffix(date: DateTimeInput) {

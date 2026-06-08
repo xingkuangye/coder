@@ -60,19 +60,17 @@ export const AdminPersonalModelOverridesSettings: FC<
 
 	return (
 		<form
-			aria-label="Personal model overrides"
+			aria-label="个人模型覆盖设置"
 			className="space-y-2"
 			onSubmit={form.handleSubmit}
 		>
 			<div className="flex items-center justify-between gap-4">
 				<div className="space-y-1">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Enable users to define their personal overrides
+						允许用户定义个人覆盖设置
 					</h3>
 					<p className="m-0 text-xs text-content-secondary">
-						Lets users choose personal models for root chats, General subagents,
-						and Explore subagents. When disabled, saved user settings remain
-						stored but are ignored at runtime.
+						允许用户为根聊天、通用子代理和探索子代理选择个人模型。禁用后，已保存的用户设置仍会存储，但在运行时会忽略。
 					</p>
 				</div>
 				<Switch
@@ -80,7 +78,7 @@ export const AdminPersonalModelOverridesSettings: FC<
 					onCheckedChange={(checked) => {
 						void form.setFieldValue("allow_users", checked);
 					}}
-					aria-label="Enable users to define their personal overrides"
+					aria-label="允许用户定义个人覆盖设置"
 					type="button"
 					disabled={isDisabled}
 				/>
@@ -96,25 +94,25 @@ export const AdminPersonalModelOverridesSettings: FC<
 							type="button"
 							variant="outline"
 						>
-							Retry
+							重试
 						</Button>
 					)}
 				</div>
 			) : (
 				!hasLoadedAdminSettings && (
 					<p className="m-0 text-xs text-content-secondary">
-						Loading personal model override settings...
+						正在加载个人模型覆盖设置...
 					</p>
 				)
 			)}
 			<div className="flex justify-end gap-2">
 				<Button size="sm" type="submit" disabled={isDisabled || !form.dirty}>
-					Save
+					保存
 				</Button>
 			</div>
 			{isSaveAdminSettingError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save personal model override settings.
+					保存个人模型覆盖设置失败。
 				</p>
 			)}
 		</form>

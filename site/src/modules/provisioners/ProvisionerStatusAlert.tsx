@@ -20,21 +20,21 @@ export const ProvisionerStatusAlert: FC<ProvisionerStatusAlertProps> = ({
 	let severity: AlertColor;
 	switch (true) {
 		case matchingProvisioners === 0:
-			title = "Build pending provisioner deployment";
+			title = "构建等待配置程序部署";
 			detail =
-				"Your build has been enqueued, but there are no provisioners that accept the required tags. Once a compatible provisioner becomes available, your build will continue. Please contact your administrator.";
+				"您的构建已排队，但没有接受所需标签的配置程序。一旦有兼容的配置程序可用，您的构建将继续。请与您的管理员联系。";
 			severity = "warning";
 			break;
 		case availableProvisioners === 0:
-			title = "Build delayed";
+			title = "构建延迟";
 			detail =
-				"Provisioners that accept the required tags have not responded for longer than expected. This may delay your build. Please contact your administrator if your build does not complete.";
+				"接受所需标签的配置程序的响应时间比预期要长。这可能会导致您的构建延迟。如果您的构建未完成，请联系管理员。";
 			severity = "warning";
 			break;
 		default:
-			title = "Build enqueued";
+			title = "构建已排队";
 			detail =
-				"Your build has been enqueued and will begin once a provisioner becomes available to process it.";
+				"您的构建已排队，一旦有配置程序可用，将开始处理。";
 			severity = "info";
 	}
 

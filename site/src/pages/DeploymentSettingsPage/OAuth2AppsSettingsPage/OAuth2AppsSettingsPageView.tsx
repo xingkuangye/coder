@@ -41,9 +41,9 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<div>
 					<SettingsHeader>
-						<SettingsHeaderTitle>OAuth2 Applications</SettingsHeaderTitle>
+						<SettingsHeaderTitle>OAuth2 应用程序</SettingsHeaderTitle>
 						<SettingsHeaderDescription>
-							Configure applications to use Coder as an OAuth2 provider.
+							将应用程序配置为使用 Coder 作为 OAuth2 提供程序。
 						</SettingsHeaderDescription>
 					</SettingsHeader>
 				</div>
@@ -52,7 +52,7 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 					<Button variant="outline" asChild>
 						<Link to="/deployment/oauth2-provider/apps/add">
 							<PlusIcon />
-							Add application
+							添加应用程序
 						</Link>
 					</Button>
 				)}
@@ -63,7 +63,7 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 			<Table className="mt-8">
 				<TableHeader>
 					<TableRow>
-						<TableHead>Name</TableHead>
+						<TableHead>名称</TableHead>
 						<TableHead className="w-[1%]" />
 					</TableRow>
 				</TableHeader>
@@ -76,7 +76,7 @@ const OAuth2AppsSettingsPageView: FC<OAuth2AppsSettingsProps> = ({
 						<TableRow>
 							<TableCell colSpan={999}>
 								<div className="text-center">
-									No OAuth2 applications have been configured.
+									尚未配置任何 OAuth2 应用程序。
 								</div>
 							</TableCell>
 						</TableRow>

@@ -87,16 +87,16 @@ export const AgentMetadata: FC<AgentMetadataProps> = ({
 				retries++;
 				if (retries >= maxSocketErrorRetryCount) {
 					toast.error(
-						"Unexpected disconnect while watching Metadata changes.",
+						"监视元数据更改时意外断开连接。",
 						{
-							description: "Please try refreshing the page.",
+							description: "请尝试刷新页面。",
 						},
 					);
 					return;
 				}
 
-				toast.error("Unexpected disconnect while watching Metadata changes.", {
-					description: "Creating new connection...",
+				toast.error("监视元数据更改时意外断开连接。", {
+					description: "正在创建新连接...",
 				});
 				timeoutId = window.setTimeout(() => {
 					createNewConnection();
@@ -105,8 +105,8 @@ export const AgentMetadata: FC<AgentMetadataProps> = ({
 
 			socket.addEventListener("message", (e) => {
 				if (e.parseError) {
-					toast.error("Unable to process newest response from server.", {
-						description: "Please try refreshing the page.",
+					toast.error("无法处理来自服务器的最新响应。", {
+						description: "请尝试刷新页面。",
 					});
 					return;
 				}
@@ -196,7 +196,7 @@ const MetadataItem: FC<MetadataItemProps> = ({ item }) => {
 					</StaticWidth>
 				</TooltipTrigger>
 				<TooltipContent side="bottom">
-					This data is stale and no longer up to date
+					此数据已过时，不再是最新的
 				</TooltipContent>
 			</Tooltip>
 		) : (

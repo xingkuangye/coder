@@ -20,12 +20,12 @@ const AccessURLPage = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Access URL - Health")}</title>
+			<title>{pageTitle("访问 URL - 健康")}</title>
 
 			<Header>
 				<HeaderTitle>
 					<HealthyDot severity={accessUrl.severity} />
-					Access URL
+					访问 URL
 				</HeaderTitle>
 				<DismissWarningButton healthcheck="AccessURL" />
 			</Header>
@@ -47,16 +47,16 @@ const AccessURLPage = () => {
 				})}
 
 				<GridData>
-					<GridDataLabel>Severity</GridDataLabel>
+					<GridDataLabel>严重程度</GridDataLabel>
 					<GridDataValue>{accessUrl.severity}</GridDataValue>
 
-					<GridDataLabel>Access URL</GridDataLabel>
+					<GridDataLabel>访问 URL</GridDataLabel>
 					<GridDataValue>{accessUrl.access_url}</GridDataValue>
 
-					<GridDataLabel>Reachable</GridDataLabel>
-					<GridDataValue>{accessUrl.reachable ? "Yes" : "No"}</GridDataValue>
+					<GridDataLabel>可访问</GridDataLabel>
+					<GridDataValue>{accessUrl.reachable ? "是" : "否"}</GridDataValue>
 
-					<GridDataLabel>Status Code</GridDataLabel>
+					<GridDataLabel>状态码</GridDataLabel>
 					<GridDataValue>{accessUrl.status_code}</GridDataValue>
 				</GridData>
 			</Main>

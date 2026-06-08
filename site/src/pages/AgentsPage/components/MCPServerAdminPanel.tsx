@@ -60,33 +60,33 @@ import { SectionHeader } from "./SectionHeader";
 const SECRET_PLACEHOLDER = "••••••••••••••••";
 
 const TRANSPORT_OPTIONS = [
-	{ value: "streamable_http", label: "Streamable HTTP" },
+	{ value: "streamable_http", label: "流式 HTTP" },
 	{ value: "sse", label: "SSE" },
 ] as const;
 
 const AUTH_TYPE_OPTIONS = [
-	{ value: "none", label: "None" },
+	{ value: "none", label: "无" },
 	{ value: "oauth2", label: "OAuth2" },
-	{ value: "api_key", label: "API Key" },
-	{ value: "custom_headers", label: "Custom Headers" },
-	{ value: "user_oidc", label: "User OIDC Identity" },
+	{ value: "api_key", label: "API 密钥" },
+	{ value: "custom_headers", label: "自定义标头" },
+	{ value: "user_oidc", label: "用户 OIDC 身份" },
 ] as const;
 
 const AVAILABILITY_OPTIONS = [
 	{
 		value: "force_on",
-		label: "Force On",
-		description: "Always injected into every conversation.",
+		label: "强制启用",
+		description: "始终注入到每次对话中。",
 	},
 	{
 		value: "default_on",
-		label: "Default On",
-		description: "Pre-selected but users can opt out.",
+		label: "默认启用",
+		description: "预先选中，但用户可以选择退出。",
 	},
 	{
 		value: "default_off",
-		label: "Default Off",
-		description: "Available but users must opt in.",
+		label: "默认关闭",
+		description: "可用，但用户需主动开启。",
 	},
 ] as const;
 
@@ -128,7 +128,7 @@ const MCPServerIcon: FC<{
 			>
 				<ExternalImage
 					src={iconUrl}
-					alt={`${name} icon`}
+					alt={`${name} 图标`}
 					className="size-3/5"
 				/>
 			</div>
@@ -205,9 +205,9 @@ const IconPickerField: FC<IconPickerFieldProps> = ({
 							size="sm"
 							className="group h-7 gap-1"
 							disabled={disabled}
-							aria-label="Pick an emoji or icon"
+							aria-label="选择表情符号或图标"
 						>
-							Emoji
+							表情
 							<AnimatedChevronDownIcon />
 						</Button>
 					</PopoverTrigger>
@@ -248,15 +248,15 @@ const ServerList: FC<ServerListProps> = ({
 	return (
 		<>
 			<SectionHeader
-				label={sectionLabel ?? "MCP servers"}
+				label={sectionLabel ?? "MCP 服务器"}
 				description={
 					sectionDescription ??
-					"Configure external MCP servers that provide additional tools for Coder Agents."
+					"配置外部 MCP 服务器，为 Coder 智能体提供额外的工具。"
 				}
 				action={
 					<Button size="sm" onClick={onAdd}>
 						<PlusIcon className="size-4" />
-						Add server
+						添加服务器
 					</Button>
 				}
 			/>
@@ -264,11 +264,11 @@ const ServerList: FC<ServerListProps> = ({
 			{servers.length === 0 ? (
 				<div className="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center">
 					<p className="m-0 text-sm text-content-secondary">
-						No MCP servers configured yet.
+						尚未配置 MCP 服务器。
 					</p>
-					<Button size="sm" onClick={onAdd} aria-label="Add your first server">
+					<Button size="sm" onClick={onAdd} aria-label="添加您的第一台服务器">
 						<PlusIcon className="size-4" />
-						Add your first server
+						添加您的第一台服务器
 					</Button>
 				</div>
 			) : (
@@ -278,7 +278,7 @@ const ServerList: FC<ServerListProps> = ({
 							key={server.id}
 							type="button"
 							onClick={() => onSelect(server)}
-							aria-label={`${server.display_name} (${server.enabled ? "enabled" : "disabled"})`}
+							aria-label={`${server.display_name} (${server.enabled ? "已启用" : "已禁用"})`}
 							className={cn(
 								"flex w-full cursor-pointer items-center gap-3.5 bg-transparent border-0 p-0 px-3 py-3 text-left transition-colors hover:bg-surface-secondary/30",
 								i > 0 && "border-0 border-t border-solid border-border/50",
@@ -306,7 +306,7 @@ const ServerList: FC<ServerListProps> = ({
 							</div>
 							{!server.enabled && (
 								<Badge size="xs" variant="warning">
-									disabled
+									已禁用
 								</Badge>
 							)}
 							{server.enabled ? (
@@ -481,7 +481,7 @@ const ServerForm: FC<ServerFormProps> = ({
 					title={form.values.displayName || undefined}
 				>
 					{form.values.displayName ||
-						(isEditing ? "Server display name" : "New MCP server")}
+						(isEditing ? "服务器显示名称" : "新建 MCP 服务器")}
 				</span>
 				{isEditing && (
 					<Tooltip>
@@ -492,15 +492,15 @@ const ServerForm: FC<ServerFormProps> = ({
 									onCheckedChange={(v) => {
 										form.setFieldValue("enabled", v);
 									}}
-									aria-label="Enabled"
+									aria-label="启用状态"
 									disabled={isDisabled}
 								/>
 							</span>
 						</TooltipTrigger>
 						<TooltipContent side="bottom">
 							{form.values.enabled
-								? "Disable this server. It will be hidden from agents."
-								: "Enable this server. It will be visible to agents."}
+								? "禁用此服务器。智能体将无法看到它。"
+								: "启用此服务器。智能体将可以看到它。"}
 						</TooltipContent>
 					</Tooltip>
 				)}
@@ -516,7 +516,7 @@ const ServerForm: FC<ServerFormProps> = ({
 				<div className="space-y-6">
 					<div className="space-y-4">
 						<Field
-							label="Display name"
+							label="显示名称"
 							htmlFor={`${formId}-display-name`}
 							required
 						>
@@ -530,12 +530,12 @@ const ServerForm: FC<ServerFormProps> = ({
 										form.setFieldValue("slug", slugify(e.target.value));
 									}
 								}}
-								placeholder="e.g. Sentry"
+								placeholder="例如 Sentry"
 								disabled={isDisabled}
-								aria-label="Display name"
+								aria-label="显示名称"
 							/>
 						</Field>
-						<Field label="Slug" htmlFor={`${formId}-slug`} required>
+						<Field label="标识符" htmlFor={`${formId}-slug`} required>
 							<Input
 								id={`${formId}-slug`}
 								className="h-9 text-[13px]"
@@ -544,12 +544,12 @@ const ServerForm: FC<ServerFormProps> = ({
 									form.setFieldValue("slugTouched", true);
 									form.setFieldValue("slug", e.target.value);
 								}}
-								placeholder="e.g. sentry"
+								placeholder="例如 sentry"
 								disabled={isDisabled}
 							/>
 						</Field>
 						<div className="grid items-start gap-4 sm:grid-cols-[1fr_auto]">
-							<Field label="Server URL" htmlFor={`${formId}-url`} required>
+							<Field label="服务器 URL" htmlFor={`${formId}-url`} required>
 								<Input
 									id={`${formId}-url`}
 									className="h-9 text-[13px]"
@@ -559,7 +559,7 @@ const ServerForm: FC<ServerFormProps> = ({
 								/>
 							</Field>
 
-							<Field label="Transport" htmlFor={`${formId}-transport`}>
+							<Field label="传输协议" htmlFor={`${formId}-transport`}>
 								<Select
 									value={form.values.transport}
 									onValueChange={(v) => {
@@ -595,10 +595,10 @@ const ServerForm: FC<ServerFormProps> = ({
 								>
 									<div>
 										<h3 className="m-0 text-sm font-medium text-content-primary">
-											Details
+											详细信息
 										</h3>
 										<p className="m-0 text-xs text-content-secondary">
-											Optional description and icon shown to users.
+											向用户展示的可选描述和图标。
 										</p>
 									</div>
 									{showDetails ? (
@@ -609,16 +609,16 @@ const ServerForm: FC<ServerFormProps> = ({
 								</button>
 							</CollapsibleTrigger>
 							<CollapsibleContent className="space-y-4 pt-3">
-								<Field label="Description" htmlFor={`${formId}-desc`}>
+								<Field label="描述" htmlFor={`${formId}-desc`}>
 									<Input
 										id={`${formId}-desc`}
 										className="h-9 text-[13px]"
 										{...form.getFieldProps("description")}
-										placeholder="Optional description"
+										placeholder="可选描述"
 										disabled={isDisabled}
 									/>
 								</Field>
-								<Field label="Icon">
+								<Field label="图标">
 									<IconPickerField
 										value={form.values.iconURL}
 										onChange={(v) => {
@@ -644,10 +644,10 @@ const ServerForm: FC<ServerFormProps> = ({
 								>
 									<div>
 										<h3 className="m-0 text-sm font-medium text-content-primary">
-											Authentication
+											认证
 										</h3>
 										<p className="m-0 text-xs text-content-secondary">
-											How users authenticate with this MCP server.
+											用户如何与此 MCP 服务器进行认证。
 										</p>
 									</div>
 									{showAuth ? (
@@ -658,7 +658,7 @@ const ServerForm: FC<ServerFormProps> = ({
 								</button>
 							</CollapsibleTrigger>
 							<CollapsibleContent className="space-y-4 pt-3">
-								<Field label="Authentication method" htmlFor={`${formId}-auth`}>
+								<Field label="认证方法" htmlFor={`${formId}-auth`}>
 									<Select
 										value={form.values.authType}
 										onValueChange={(v) => {
@@ -684,12 +684,10 @@ const ServerForm: FC<ServerFormProps> = ({
 								{form.values.authType === "oauth2" && (
 									<div className="space-y-4 rounded-lg border border-solid border-border/70 bg-surface-secondary/30 p-4">
 										<p className="m-0 text-xs text-content-secondary">
-											Register a client with the external MCP server's OAuth2
-											provider and enter the credentials below. Coder will
-											handle the per-user authorization flow.
+											向外部 MCP 服务器的 OAuth2 提供商注册客户端，并在下方输入凭据。Coder 将处理每个用户的授权流程。
 										</p>
 										<div className="grid items-start gap-4 sm:grid-cols-2">
-											<Field label="Client ID" htmlFor={`${formId}-oauth-id`}>
+											<Field label="客户端 ID" htmlFor={`${formId}-oauth-id`}>
 												<Input
 													id={`${formId}-oauth-id`}
 													className="h-9 text-[13px]"
@@ -698,7 +696,7 @@ const ServerForm: FC<ServerFormProps> = ({
 												/>
 											</Field>
 											<Field
-												label="Client secret"
+												label="客户端密钥"
 												htmlFor={`${formId}-oauth-secret`}
 											>
 												<Input
@@ -734,7 +732,7 @@ const ServerForm: FC<ServerFormProps> = ({
 										</div>
 										<div className="grid items-start gap-4 sm:grid-cols-2">
 											<Field
-												label="Authorization URL"
+												label="授权 URL"
 												htmlFor={`${formId}-oauth-auth-url`}
 											>
 												<Input
@@ -746,7 +744,7 @@ const ServerForm: FC<ServerFormProps> = ({
 												/>
 											</Field>
 											<Field
-												label="Token URL"
+												label="令牌 URL"
 												htmlFor={`${formId}-oauth-token-url`}
 											>
 												<Input
@@ -758,7 +756,7 @@ const ServerForm: FC<ServerFormProps> = ({
 												/>
 											</Field>
 										</div>
-										<Field label="Scopes" htmlFor={`${formId}-oauth-scopes`}>
+										<Field label="作用域" htmlFor={`${formId}-oauth-scopes`}>
 											<Input
 												id={`${formId}-oauth-scopes`}
 												className="h-9 text-[13px]"
@@ -773,7 +771,7 @@ const ServerForm: FC<ServerFormProps> = ({
 								{form.values.authType === "api_key" && (
 									<div className="grid items-start gap-4 rounded-lg border border-solid border-border/70 bg-surface-secondary/30 p-4 sm:grid-cols-2">
 										<Field
-											label="Header name"
+											label="标头名称"
 											htmlFor={`${formId}-apikey-header`}
 										>
 											<Input
@@ -784,7 +782,7 @@ const ServerForm: FC<ServerFormProps> = ({
 												disabled={isDisabled}
 											/>
 										</Field>
-										<Field label="API Key" htmlFor={`${formId}-apikey-value`}>
+										<Field label="API 密钥" htmlFor={`${formId}-apikey-value`}>
 											<Input
 												id={`${formId}-apikey-value`}
 												className="h-9 font-mono text-[13px] [-webkit-text-security:disc]"
@@ -819,8 +817,7 @@ const ServerForm: FC<ServerFormProps> = ({
 										{server?.has_custom_headers &&
 											!form.values.customHeadersTouched && (
 												<p className="m-0 text-xs text-content-secondary">
-													This server has custom headers configured. Add headers
-													below to replace them.
+													此服务器已配置自定义标头。在下方添加标头以替换它们。
 												</p>
 											)}
 										{form.values.customHeaders.map((header, index) => (
@@ -838,9 +835,9 @@ const ServerForm: FC<ServerFormProps> = ({
 															};
 															form.setFieldValue("customHeaders", updated);
 														}}
-														placeholder="Header name"
+														placeholder="标头名称"
 														disabled={isDisabled}
-														aria-label={`Header ${index + 1} name`}
+														aria-label={`标头 ${index + 1} 名称`}
 													/>
 													<Input
 														className="h-9 font-mono text-[13px] [-webkit-text-security:disc]"
@@ -860,9 +857,9 @@ const ServerForm: FC<ServerFormProps> = ({
 															};
 															form.setFieldValue("customHeaders", updated);
 														}}
-														placeholder="Header value"
+														placeholder="标头值"
 														disabled={isDisabled}
-														aria-label={`Header ${index + 1} value`}
+														aria-label={`标头 ${index + 1} 值`}
 													/>
 												</div>
 												<Button
@@ -880,7 +877,7 @@ const ServerForm: FC<ServerFormProps> = ({
 														);
 													}}
 													disabled={isDisabled}
-													aria-label={`Remove header ${index + 1}`}
+													aria-label={`移除标头 ${index + 1}`}
 												>
 													<XIcon className="size-4" />
 												</Button>
@@ -900,7 +897,7 @@ const ServerForm: FC<ServerFormProps> = ({
 											disabled={isDisabled}
 										>
 											<PlusIcon className="size-4" />
-											Add header
+											添加标头
 										</Button>
 									</div>
 								)}
@@ -908,15 +905,10 @@ const ServerForm: FC<ServerFormProps> = ({
 								{form.values.authType === "user_oidc" && (
 									<div className="space-y-2 rounded-lg border border-solid border-border/70 bg-surface-secondary/30 p-4 text-xs text-content-secondary">
 										<p className="m-0">
-											The calling user's OIDC access token is forwarded to this
-											MCP server in the <code>Authorization</code> header.
-											Tokens are refreshed transparently before each request.
+											调用用户的 OIDC 访问令牌将通过 <code>Authorization</code> 标头发送到此 MCP 服务器。令牌会在每次请求前透明刷新。
 										</p>
 										<p className="m-0">
-											Users who did not log in via OIDC (for example, password
-											or GitHub login) will see requests sent without an
-											authorization header. Configure no other fields for this
-											auth type.
+											未通过 OIDC 登录的用户（例如，密码或 GitHub 登录）将看到请求在发送时不带授权标头。对于此认证类型，无需配置其他字段。
 										</p>
 									</div>
 								)}
@@ -933,11 +925,10 @@ const ServerForm: FC<ServerFormProps> = ({
 								>
 									<div>
 										<h3 className="m-0 text-sm font-medium text-content-primary">
-											Behavior
+											行为
 										</h3>
 										<p className="m-0 text-xs text-content-secondary">
-											Availability, model intent, identity headers, and tool
-											governance.
+											可用性、模型意图、身份标头和工具管控。
 										</p>
 									</div>
 									{showBehavior ? (
@@ -948,7 +939,7 @@ const ServerForm: FC<ServerFormProps> = ({
 								</button>
 							</CollapsibleTrigger>
 							<CollapsibleContent className="space-y-4 pt-3">
-								<Field label="Availability" htmlFor={`${formId}-availability`}>
+								<Field label="可用性" htmlFor={`${formId}-availability`}>
 									<Select
 										value={form.values.availability}
 										onValueChange={(v) => {
@@ -980,16 +971,15 @@ const ServerForm: FC<ServerFormProps> = ({
 								<div className="flex items-start justify-between gap-4">
 									<div className="min-w-0 space-y-1">
 										<p className="m-0 text-sm font-medium text-content-primary">
-											Model intent
+											模型意图
 										</p>
 										<p className="m-0 text-xs text-content-secondary">
-											Require the model to describe each tool call's purpose in
-											natural language, shown as a status label in the UI.
+											要求模型用自然语言描述每次工具调用的目的，并以状态标签的形式显示在用户界面上。
 										</p>
 									</div>
 									<Switch
 										checked={form.values.modelIntent}
-										aria-label="Model intent"
+										aria-label="模型意图"
 										onCheckedChange={(v) => {
 											form.setFieldValue("modelIntent", v);
 										}}
@@ -1003,12 +993,10 @@ const ServerForm: FC<ServerFormProps> = ({
 											htmlFor={`${formId}-allow-in-plan-mode`}
 											className="text-sm font-medium text-content-primary"
 										>
-											Allow all tools from this MCP server in root plan mode
+											在根计划模式下允许此 MCP 服务器的所有工具
 										</Label>
 										<p className="m-0 text-xs text-content-secondary">
-											When enabled, the root plan-mode agent can call these
-											tools during planning. Workspace MCP and plan-mode
-											subagents remain restricted.
+											启用后，根计划模式的智能体可以在规划期间调用这些工具。工作区 MCP 和计划模式子智能体仍然受限。
 										</p>
 									</div>
 									<Switch
@@ -1027,13 +1015,10 @@ const ServerForm: FC<ServerFormProps> = ({
 											htmlFor={`${formId}-forward-coder-headers`}
 											className="text-sm font-medium text-content-primary"
 										>
-											Forward Coder identity headers
+											转发 Coder 身份标头
 										</Label>
 										<p className="m-0 text-xs text-content-secondary">
-											When enabled, every outgoing MCP request includes the
-											Coder owner, chat, subchat, and workspace IDs as
-											<code>X-Coder-*</code> headers. Off by default. Only
-											enable for first-party or trusted MCP servers.
+											启用后，每个发出的 MCP 请求都会包含 Coder 所有者、聊天、子聊天和工作区 ID，作为 <code>X-Coder-*</code> 标头。默认关闭。仅为第一方或受信任的 MCP 服务器启用。
 										</p>
 									</div>
 									<Switch
@@ -1048,28 +1033,28 @@ const ServerForm: FC<ServerFormProps> = ({
 
 								<div className="grid items-start gap-4 sm:grid-cols-2">
 									<Field
-										label="Tool allow list"
+										label="工具允许列表"
 										htmlFor={`${formId}-allow-list`}
-										description="Comma-separated. Empty = all allowed."
+										description="用逗号分隔。留空表示全部允许。"
 									>
 										<Input
 											id={`${formId}-allow-list`}
 											className="h-9 text-[13px]"
 											{...form.getFieldProps("toolAllowList")}
-											placeholder="tool1, tool2"
+											placeholder="工具1, 工具2"
 											disabled={isDisabled}
 										/>
 									</Field>
 									<Field
-										label="Tool deny list"
+										label="工具拒绝列表"
 										htmlFor={`${formId}-deny-list`}
-										description="Comma-separated names to block."
+										description="用逗号分隔的要阻止的名称。"
 									>
 										<Input
 											id={`${formId}-deny-list`}
 											className="h-9 text-[13px]"
 											{...form.getFieldProps("toolDenyList")}
-											placeholder="tool3, tool4"
+											placeholder="工具3, 工具4"
 											disabled={isDisabled}
 										/>
 									</Field>
@@ -1091,7 +1076,7 @@ const ServerForm: FC<ServerFormProps> = ({
 								disabled={isDisabled}
 								onClick={() => setConfirmingDelete(true)}
 							>
-								Delete
+								删除
 							</Button>
 						) : (
 							<Button
@@ -1100,19 +1085,19 @@ const ServerForm: FC<ServerFormProps> = ({
 								type="button"
 								onClick={onBack}
 							>
-								Cancel
+								取消
 							</Button>
 						)}
 						<Button size="lg" type="submit" disabled={!canSubmit}>
 							{isSaving && <Spinner className="h-4 w-4" loading />}
-							{isEditing ? "Save changes" : "Create server"}
+							{isEditing ? "保存更改" : "创建服务器"}
 						</Button>
 					</div>
 				</div>
 			</form>
 			{server && (
 				<ConfirmDeleteDialog
-					entity="MCP server"
+					entity="MCP 服务器"
 					onConfirm={() => void onDelete(server.id)}
 					isPending={isDeleting}
 					open={confirmingDelete}
@@ -1243,7 +1228,7 @@ export const MCPServerAdminPanel: FC<MCPServerAdminPanelProps> = ({
 			{isLoadingServers && (
 				<div className="flex items-center gap-1.5 text-xs text-content-secondary">
 					<Spinner className="h-4 w-4" loading />
-					Loading
+					加载中
 				</div>
 			)}
 			{/* Content */}

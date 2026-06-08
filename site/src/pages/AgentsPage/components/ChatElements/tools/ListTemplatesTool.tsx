@@ -11,8 +11,7 @@ import { ToolIcon } from "./ToolIcon";
 import { asRecord, asString, type ToolStatus } from "./utils";
 
 /**
- * Collapsed-by-default rendering for `list_templates` tool calls. Shows
- * "Listed N templates" with a chevron; expanding reveals the template list.
+ * 为 `list_templates` 工具提供默认折叠的渲染。显示“已列出 N 个模板”，并带有一个展开图标；展开后会显示模板列表。
  */
 export const ListTemplatesTool: React.FC<{
 	templates: unknown[];
@@ -26,10 +25,10 @@ export const ListTemplatesTool: React.FC<{
 
 	const label =
 		isRunning || count === 0
-			? "Listing templates…"
+			? "正在列出模板…"
 			: count === 1
-				? "Listed 1 template"
-				: `Listed ${count} templates`;
+				? "已列出 1 个模板"
+				: `已列出 ${count} 个模板`;
 
 	return (
 		<ToolCollapsible
@@ -53,7 +52,7 @@ export const ListTemplatesTool: React.FC<{
 								<TriangleAlertIcon className="size-3.5 shrink-0 text-current" />
 							</TooltipTrigger>
 							<TooltipContent>
-								{errorMessage || "Failed to list templates"}
+								{errorMessage || "列出模板失败"}
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -71,7 +70,7 @@ export const ListTemplatesTool: React.FC<{
 					}
 					const name = asString(rec.name);
 					const displayName = asString(rec.display_name);
-					const templateName = displayName || name || `Template ${index + 1}`;
+					const templateName = displayName || name || `模板 ${index + 1}`;
 
 					if (!name) {
 						return (

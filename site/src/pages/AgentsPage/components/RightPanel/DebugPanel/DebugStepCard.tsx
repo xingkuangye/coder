@@ -123,7 +123,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 					>
 						<div className="min-w-0 flex flex-1 items-center gap-2 overflow-hidden">
 							<span className="shrink-0 text-xs font-medium text-content-tertiary">
-								Step {step.step_number}
+								步骤 {step.step_number}
 							</span>
 							{model ? (
 								<span className="min-w-0 truncate text-xs text-content-secondary">
@@ -145,7 +145,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 								variant={getStatusBadgeVariant(step.status)}
 								className="shrink-0"
 							>
-								{step.status || "unknown"}
+								{step.status || "未知"}
 							</Badge>
 							<ChevronDownIcon
 								className={cn(
@@ -160,16 +160,16 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 				<CollapsibleContent className="space-y-3 border-0 border-t border-solid border-border-default/30 bg-surface-primary/10 px-3 pb-3 pt-3">
 					{/* ── Metadata bar ────────────────────────────── */}
 					<div className="flex flex-wrap gap-x-3 gap-y-1 text-xs leading-5 text-content-secondary">
-						{model ? <MetadataItem label="Model" value={model} /> : null}
+						{model ? <MetadataItem label="模型" value={model} /> : null}
 						{request.options.max_output_tokens !== undefined ? (
 							<MetadataItem
-								label="Max tokens"
+								label="最大令牌数"
 								value={String(request.options.max_output_tokens)}
 							/>
 						) : null}
 						{request.policy.tool_choice !== undefined ? (
 							<MetadataItem
-								label="Tool choice"
+								label="工具选择"
 								value={(() => {
 									const tc = request.policy.tool_choice;
 									if (tc == null) return "";
@@ -184,7 +184,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 						) : null}
 						{attemptCount > 0 ? (
 							<span className="text-xs text-content-tertiary">
-								{attemptCount} {attemptCount === 1 ? "attempt" : "attempts"}
+								{attemptCount} 次尝试
 							</span>
 						) : null}
 					</div>
@@ -194,7 +194,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 						<div className="flex flex-wrap gap-1">
 							{toolCount > 0 ? (
 								<PillToggle
-									label="Tools"
+									label="工具"
 									count={toolCount}
 									isActive={activeSection === "tools"}
 									onToggle={() => toggleSection("tools")}
@@ -203,7 +203,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 							) : null}
 							{optionCount > 0 ? (
 								<PillToggle
-									label="Options"
+									label="选项"
 									count={optionCount}
 									isActive={activeSection === "options"}
 									onToggle={() => toggleSection("options")}
@@ -211,7 +211,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 							) : null}
 							{usageEntryCount > 0 ? (
 								<PillToggle
-									label="Usage"
+									label="用量"
 									count={usageEntryCount}
 									isActive={activeSection === "usage"}
 									onToggle={() => toggleSection("usage")}
@@ -219,7 +219,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 							) : null}
 							{policyCount > 0 ? (
 								<PillToggle
-									label="Policy"
+									label="策略"
 									count={policyCount}
 									isActive={activeSection === "policy"}
 									onToggle={() => toggleSection("policy")}
@@ -243,9 +243,9 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 										</p>
 									) : null}
 									<ToolPayloadDisclosure
-										label="JSON schema"
+										label="JSON 模式"
 										code={tool.inputSchema}
-										copyLabel={`Copy ${tool.name} JSON schema`}
+										copyLabel={`复制 ${tool.name} JSON 模式`}
 									/>
 								</div>
 							))}
@@ -253,13 +253,13 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 					) : null}
 
 					{activeSection === "options" && optionCount > 0 ? (
-						<DebugDataSection title="Options">
+						<DebugDataSection title="选项">
 							<KeyValueGrid entries={request.options} />
 						</DebugDataSection>
 					) : null}
 
 					{activeSection === "usage" && usageEntryCount > 0 ? (
-						<DebugDataSection title="Usage">
+						<DebugDataSection title="用量">
 							<KeyValueGrid
 								entries={mergedUsage}
 								formatValue={(v) =>
@@ -270,7 +270,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 					) : null}
 
 					{activeSection === "policy" && policyCount > 0 ? (
-						<DebugDataSection title="Policy">
+						<DebugDataSection title="策略">
 							<KeyValueGrid entries={request.policy} />
 						</DebugDataSection>
 					) : null}
@@ -278,7 +278,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 					{/* ── Input / Output sections ──────────────────── */}
 					<div className="grid gap-4">
 						{/* ── Input column ────────────────────────── */}
-						<DebugDataSection title="Input">
+						<DebugDataSection title="输入">
 							{totalMessages > 0 ? (
 								<div className="space-y-2">
 									{hiddenCount > 0 ? (
@@ -287,7 +287,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 											onClick={() => setShowAllMessages(true)}
 											className="border-0 bg-transparent p-0 text-2xs font-medium text-content-link transition-colors hover:underline"
 										>
-											Show all {totalMessages} messages
+											显示全部 {totalMessages} 条消息
 										</button>
 									) : null}
 
@@ -298,7 +298,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 											onClick={() => setShowAllMessages(false)}
 											className="border-0 bg-transparent p-0 text-2xs font-medium text-content-link transition-colors hover:underline"
 										>
-											Show last {TRANSCRIPT_PREVIEW_COUNT} only
+											仅显示最后 {TRANSCRIPT_PREVIEW_COUNT} 条
 										</button>
 									) : null}
 
@@ -311,12 +311,12 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 									))}
 								</div>
 							) : (
-								<EmptyHelper message="No input messages captured." />
+								<EmptyHelper message="未捕获输入消息。" />
 							)}
 						</DebugDataSection>
 
 						{/* ── Output column ───────────────────────── */}
-						<DebugDataSection title="Output">
+						<DebugDataSection title="输出">
 							{hasOutput ? (
 								<div className="space-y-2">
 									{/* Primary response content: visually prominent. */}
@@ -334,9 +334,9 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 													key={tc.id ?? `${tc.name}-${idx}`}
 													badgeLabel={tc.name}
 													toolCallId={tc.id}
-													payloadLabel="Arguments"
+													payloadLabel="参数"
 													payload={tc.arguments}
-													copyLabel={`Copy ${tc.name} arguments`}
+													copyLabel={`复制 ${tc.name} 参数`}
 												/>
 											))}
 										</div>
@@ -345,7 +345,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 									{/* Secondary metadata: finish reason + warnings. */}
 									{response.finishReason ? (
 										<span className="block text-2xs text-content-tertiary">
-											Finish: {response.finishReason}
+											完成：{response.finishReason}
 										</span>
 									) : null}
 									{response.warnings.length > 0 ? (
@@ -353,7 +353,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 											{response.warnings.map((w, idx) => (
 												<p key={idx} className="text-xs text-content-warning">
 													<span aria-hidden="true">⚠</span>{" "}
-													<span className="sr-only">Warning: </span>
+													<span className="sr-only">警告：</span>
 													{w}
 												</p>
 											))}
@@ -361,17 +361,17 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 									) : null}
 								</div>
 							) : (
-								<EmptyHelper message="No output captured." />
+								<EmptyHelper message="未捕获输出。" />
 							)}
 						</DebugDataSection>
 					</div>
 
 					{/* ── Error ───────────────────────────────────── */}
 					{hasError ? (
-						<DebugDataSection title="Error">
+						<DebugDataSection title="错误">
 							<CopyableCodeBlock
 								code={errorText}
-								label={isStringError ? "Copy error text" : "Copy error JSON"}
+								label={isStringError ? "复制错误文本" : "复制错误 JSON"}
 							/>
 						</DebugDataSection>
 					) : null}
@@ -384,13 +384,13 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 								className="group/raw flex items-center gap-1.5 border-0 bg-transparent p-0 text-xs font-medium text-content-secondary transition-colors hover:text-content-primary"
 							>
 								<ChevronDownIcon className="size-3 transition-transform group-data-[state=open]/raw:rotate-180" />
-								Request body
+								请求正文
 							</button>
 						</CollapsibleTrigger>
 						<CollapsibleContent className="mt-1.5">
 							<CopyableCodeBlock
 								code={safeJsonStringify(step.normalized_request)}
-								label="Copy request body JSON"
+								label="复制请求正文 JSON"
 							/>
 						</CollapsibleContent>
 					</Collapsible>
@@ -404,13 +404,13 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 									className="group/raw flex items-center gap-1.5 border-0 bg-transparent p-0 text-xs font-medium text-content-secondary transition-colors hover:text-content-primary"
 								>
 									<ChevronDownIcon className="size-3 transition-transform group-data-[state=open]/raw:rotate-180" />
-									Response body
+									响应正文
 								</button>
 							</CollapsibleTrigger>
 							<CollapsibleContent className="mt-1.5">
 								<CopyableCodeBlock
 									code={safeJsonStringify(step.normalized_response)}
-									label="Copy response body JSON"
+									label="复制响应正文 JSON"
 								/>
 							</CollapsibleContent>
 						</Collapsible>
@@ -421,7 +421,7 @@ export const DebugStepCard: FC<DebugStepCardProps> = ({
 					(normalizedAttempts.rawFallback &&
 						normalizedAttempts.rawFallback !== "{}" &&
 						normalizedAttempts.rawFallback !== "[]") ? (
-						<DebugDataSection title="Raw attempts">
+						<DebugDataSection title="原始尝试">
 							<DebugAttemptAccordion
 								attempts={normalizedAttempts.parsed}
 								rawFallback={normalizedAttempts.rawFallback}

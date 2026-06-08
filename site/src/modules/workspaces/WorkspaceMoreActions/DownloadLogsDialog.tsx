@@ -104,9 +104,9 @@ export const DownloadLogsDialog: FC<DownloadLogsDialogProps> = ({
 			open={open}
 			onClose={onClose}
 			hideCancel={false}
-			title="Download logs"
+			title="下载日志"
 			confirmLoading={isDownloading}
-			confirmText="Download"
+			confirmText="下载"
 			disabled={
 				isDownloading ||
 				// If a workspace isn't healthy, let the user download as many logs as
@@ -132,7 +132,7 @@ export const DownloadLogsDialog: FC<DownloadLogsDialogProps> = ({
 					}, 200);
 				} catch (error) {
 					setIsDownloading(false);
-					toast.error(`Error downloading workspace "${workspace.name}" logs.`, {
+					toast.error(`下载工作区“${workspace.name}”日志时出错。`, {
 						description: getErrorDetail(error),
 					});
 					console.error(error);
@@ -141,14 +141,13 @@ export const DownloadLogsDialog: FC<DownloadLogsDialogProps> = ({
 			description={
 				<div className="flex flex-col gap-4 pb-4">
 					<p>
-						Downloading logs will create a zip file containing all logs from all
-						jobs in this workspace. This may take a while.
+						下载日志将创建一个包含此工作区所有任务日志的 ZIP
+						文件。这可能需要一些时间。
 					</p>
 
 					{!isWorkspaceHealthy && isLoadingFiles && (
 						<Alert severity="warning" prominent>
-							Your workspace is unhealthy. Some logs may be unavailable for
-							download.
+							您的工作区运行不正常。部分日志可能无法下载。
 						</Alert>
 					)}
 
@@ -219,7 +218,7 @@ const DownloadingItem: FC<DownloadingItemProps> = ({ file, giveUpTimeMs }) => {
 							"text-content-disabled",
 						)}
 					>
-						Not available
+						不可用
 					</p>
 				)}
 			</span>

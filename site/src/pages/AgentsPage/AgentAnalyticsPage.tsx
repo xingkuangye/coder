@@ -42,7 +42,7 @@ const AgentAnalyticsPage: FC<AgentAnalyticsPageProps> = ({ now }) => {
 			<AgentPageHeader
 				mobileBack={{
 					to: { pathname: "/agents", search: location.search },
-					label: "Agents",
+					label: "智能体",
 				}}
 			/>
 			<AgentAnalyticsPageView

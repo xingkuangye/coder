@@ -109,9 +109,7 @@ const BuildParametersPopoverContent: FC<BuildParametersPopoverContentProps> = ({
 		return (
 			<div className="flex flex-col gap-4 p-5">
 				<p className="m-0 text-sm text-content-secondary">
-					This workspace has ephemeral parameters which may use a temporary
-					value on workspace start. Configure the following parameters in
-					workspace settings.
+					此工作空间具有临时参数，启动工作空间时可能会使用临时值。请在工作空间设置中配置以下参数。
 				</p>
 
 				<div>
@@ -135,7 +133,7 @@ const BuildParametersPopoverContent: FC<BuildParametersPopoverContentProps> = ({
 					href={`/@${workspace.owner_name}/${workspace.name}/settings/parameters`}
 					className="self-start"
 				>
-					Go to workspace parameters
+					转到工作空间参数
 				</Link>
 			</div>
 		);
@@ -147,9 +145,9 @@ const BuildParametersPopoverContent: FC<BuildParametersPopoverContentProps> = ({
 				ephemeralParameters.length > 0 ? (
 					<div className="divide-y">
 						<div className="p-5 text-content-secondary">
-							<HelpPopoverTitle>Build Options</HelpPopoverTitle>
+							<HelpPopoverTitle>构建选项</HelpPopoverTitle>
 							<HelpPopoverText>
-								These parameters only apply for a single workspace start.
+								这些参数仅适用于单次工作空间启动。
 							</HelpPopoverText>
 						</div>
 						<div className="border-0 border-solid p-5">
@@ -170,9 +168,9 @@ const BuildParametersPopoverContent: FC<BuildParametersPopoverContentProps> = ({
 					</div>
 				) : (
 					<div className="p-5 text-content-secondary">
-						<HelpPopoverTitle>Build Options</HelpPopoverTitle>
+						<HelpPopoverTitle>构建选项</HelpPopoverTitle>
 						<HelpPopoverText>
-							This template has no ephemeral build options.
+							此模板没有临时构建选项。
 						</HelpPopoverText>
 						<HelpPopoverLinksGroup>
 							<HelpPopoverLink
@@ -180,7 +178,7 @@ const BuildParametersPopoverContent: FC<BuildParametersPopoverContentProps> = ({
 									"/admin/templates/extending-templates/parameters#ephemeral-parameters",
 								)}
 							>
-								Read the docs
+								阅读文档
 							</HelpPopoverLink>
 						</HelpPopoverLinksGroup>
 					</div>
@@ -242,7 +240,7 @@ const Form: FC<FormProps> = ({
 					type="submit"
 					className="w-full"
 				>
-					Build workspace
+					构建工作空间
 				</Button>
 			</div>
 		</form>

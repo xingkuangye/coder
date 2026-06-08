@@ -17,7 +17,7 @@ import {
 } from "#/utils/formUtils";
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
+	name: nameValidator("名称"),
 });
 
 type CreateGroupPageViewProps = {
@@ -46,14 +46,14 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 	const onCancel = () => navigate(-1);
 	const nameField = getFieldHelpers("name");
 	const displayNameField = getFieldHelpers("display_name", {
-		helperText: "Keep empty to default to the name.",
+		helperText: "留空则默认使用名称。",
 	});
 
 	return (
 		<div className="flex flex-col items-start w-full max-w-xl">
 			<div className="flex flex-row items-start pb-6">
 				<h1 className="m-0 flex items-center gap-2 text-3xl font-semibold leading-tight">
-					New Group
+					新建组
 				</h1>
 			</div>
 
@@ -64,10 +64,10 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 				<section className="flex flex-col gap-4">
 					<div className="flex flex-col gap-2">
 						<h2 className="text-xl font-medium text-content-primary m-0">
-							Group settings
+							组设置
 						</h2>
 						<p className="text-sm leading-relaxed text-content-secondary m-0">
-							Set a name and avatar for this group.
+							为此组设置名称和头像。
 						</p>
 					</div>
 					<div className="flex flex-col gap-6">
@@ -76,7 +76,7 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 						)}
 
 						<div className="flex flex-col items-start gap-2">
-							<Label htmlFor={nameField.id}>Name</Label>
+							<Label htmlFor={nameField.id}>名称</Label>
 							<Input
 								id={nameField.id}
 								name={nameField.name}
@@ -100,7 +100,7 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 							)}
 						</div>
 						<div className="flex flex-col items-start gap-2">
-							<Label htmlFor={displayNameField.id}>Display Name</Label>
+							<Label htmlFor={displayNameField.id}>显示名称</Label>
 							<Input
 								id={displayNameField.id}
 								name={displayNameField.name}
@@ -126,7 +126,7 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 							{...getFieldHelpers("avatar_url")}
 							onChange={onChangeTrimmed(form)}
 							fullWidth
-							label="Avatar URL"
+							label="头像 URL"
 							onPickEmoji={(value) => form.setFieldValue("avatar_url", value)}
 						/>
 					</div>
@@ -134,11 +134,11 @@ export const CreateGroupPageView: FC<CreateGroupPageViewProps> = ({
 
 				<footer className="flex items-center justify-end space-x-2">
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 					<Button type="submit" disabled={isLoading}>
 						<Spinner loading={isLoading} />
-						Create group
+						创建组
 					</Button>
 				</footer>
 			</form>

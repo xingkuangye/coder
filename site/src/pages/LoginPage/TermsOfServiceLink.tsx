@@ -8,14 +8,14 @@ interface TermsOfServiceLinkProps {
 export const TermsOfServiceLink: FC<TermsOfServiceLinkProps> = ({ url }) => {
 	return (
 		<div className="pt-3 text-base">
-			By continuing, you agree to the{" "}
+			继续操作即表示您同意
 			<Link
 				className="font-medium whitespace-nowrap"
 				href={url}
 				target="_blank"
 				rel="noreferrer"
 			>
-				Terms of Service
+				服务条款
 			</Link>
 		</div>
 	);

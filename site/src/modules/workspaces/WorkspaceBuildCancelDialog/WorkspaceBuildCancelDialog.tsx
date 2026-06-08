@@ -14,16 +14,16 @@ export const WorkspaceBuildCancelDialog: FC<
 > = ({ open, onClose, onConfirm, workspace }) => {
 	const action =
 		workspace.latest_build.status === "pending"
-			? "remove the current build from the build queue"
-			: "stop the current build process";
+			? "从构建队列中移除当前构建"
+			: "停止当前构建过程";
 
 	return (
 		<ConfirmDialog
 			open={open}
-			title="Cancel workspace build"
-			description={`Are you sure you want to cancel the build for workspace "${workspace.name}"? This will ${action}.`}
-			confirmText="Confirm"
-			cancelText="Cancel"
+			title="取消工作空间构建"
+			description={`您确定要取消工作空间 "${workspace.name}" 的构建吗？这将${action}。`}
+			confirmText="确认"
+			cancelText="取消"
 			onClose={onClose}
 			onConfirm={onConfirm}
 			type="delete"

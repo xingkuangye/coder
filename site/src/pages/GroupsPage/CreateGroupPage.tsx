@@ -15,7 +15,7 @@ const CreateGroupPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Create Group")}</title>
+			<title>{pageTitle("创建分组")}</title>
 
 			<CreateGroupPageView
 				onSubmit={async (data) => {

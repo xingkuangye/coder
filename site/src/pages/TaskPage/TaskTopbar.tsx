@@ -44,11 +44,11 @@ export const TaskTopbar: FC<TaskTopbarProps> = ({
 						<Button size="icon" variant="subtle" asChild>
 							<RouterLink to="/tasks">
 								<ArrowLeftIcon />
-								<span className="sr-only">Back to tasks</span>
+								<span className="sr-only">返回任务列表</span>
 							</RouterLink>
 						</Button>
 					</TooltipTrigger>
-					<TooltipContent>Back to tasks</TooltipContent>
+					<TooltipContent>返回任务列表</TooltipContent>
 				</Tooltip>
 			</TooltipProvider>
 
@@ -71,7 +71,7 @@ export const TaskTopbar: FC<TaskTopbarProps> = ({
 					<PopoverTrigger asChild>
 						<Button variant="outline" size="sm">
 							<SquareTerminalIcon />
-							View Prompt
+							查看提示词
 						</Button>
 					</PopoverTrigger>
 					<PopoverContent
@@ -79,7 +79,7 @@ export const TaskTopbar: FC<TaskTopbarProps> = ({
 						align="end"
 					>
 						<div className="text-sm font-semibold text-content-primary">
-							Prompt
+							提示词
 						</div>
 						<div className="m-0 mb-2 select-all leading-snug p-4 border border-solid rounded-lg font-mono">
 							<pre className="m-0 whitespace-pre-wrap break-words">
@@ -98,7 +98,7 @@ export const TaskTopbar: FC<TaskTopbarProps> = ({
 				<Button asChild variant="outline" size="sm">
 					<RouterLink to={`/@${workspace.owner_name}/${workspace.name}`}>
 						<LayoutPanelTopIcon />
-						Go to workspace
+						前往工作区
 					</RouterLink>
 				</Button>
 			</div>
@@ -120,11 +120,11 @@ const CopyPromptButton: FC<CopyPromptButtonProps> = ({ prompt }) => {
 		>
 			{showCopiedSuccess ? (
 				<>
-					<CheckIcon /> Copied!
+					<CheckIcon /> 已复制！
 				</>
 			) : (
 				<>
-					<CopyIcon /> Copy
+					<CopyIcon /> 复制
 				</>
 			)}
 		</Button>

@@ -25,11 +25,11 @@ import { AgentButton } from "../AgentButton";
 import { BaseIcon } from "./BaseIcon";
 
 export const DisplayAppNameMap: Record<TypesGen.DisplayApp, string> = {
-	port_forwarding_helper: "Ports",
+	port_forwarding_helper: "端口",
 	ssh_helper: "SSH",
 	vscode: "VS Code Desktop",
 	vscode_insiders: "VS Code Insiders",
-	web_terminal: "Terminal",
+	web_terminal: "终端",
 };
 
 interface AppLinkProps {
@@ -63,7 +63,7 @@ export const AppLink: FC<AppLinkProps> = ({
 
 	if (app.health === "initializing") {
 		icon = <Spinner loading />;
-		primaryTooltip = "Initializing...";
+		primaryTooltip = "初始化中...";
 	}
 
 	if (app.health === "unhealthy") {
@@ -73,7 +73,7 @@ export const AppLink: FC<AppLinkProps> = ({
 				className="size-icon-sm text-content-warning"
 			/>
 		);
-		primaryTooltip = "Unhealthy";
+		primaryTooltip = "异常";
 	}
 
 	if (!host && app.subdomain) {
@@ -85,7 +85,7 @@ export const AppLink: FC<AppLinkProps> = ({
 			/>
 		);
 		primaryTooltip =
-			"Your admin has not configured subdomain application access";
+			"管理员尚未配置子域应用访问";
 	}
 
 	if (app.subdomain_name && app.subdomain_name.length > 63) {
@@ -97,15 +97,15 @@ export const AppLink: FC<AppLinkProps> = ({
 		);
 		primaryTooltip = (
 			<>
-				Port forwarding will not work because hostname is too long, see the{" "}
+				由于主机名过长，端口转发将无法工作，请参阅{" "}
 				<Link
 					href={docs("/user-guides/workspace-access/port-forwarding#dashboard")}
 					target="_blank"
 					size="sm"
 				>
-					documentation
+					文档
 				</Link>{" "}
-				for more details
+				了解更多详情
 			</>
 		);
 	}
@@ -125,7 +125,7 @@ export const AppLink: FC<AppLinkProps> = ({
 	const { shareTooltip, shareIcon: ShareIcon } = canShare
 		? app.external
 			? {
-					shareTooltip: "Open external URL",
+					shareTooltip: "打开外部链接",
 					shareIcon: SquareArrowOutUpRightIcon,
 				}
 			: shareDetails[app.sharing_level]
@@ -190,15 +190,15 @@ const shareDetails: {
 	>]: { shareTooltip: string; shareIcon: LucideIcon };
 } = {
 	authenticated: {
-		shareTooltip: "Shared with all authenticated users",
+		shareTooltip: "对所有已认证用户共享",
 		shareIcon: UsersIcon,
 	},
 	organization: {
-		shareTooltip: "Shared with organization members",
+		shareTooltip: "对组织成员共享",
 		shareIcon: Building2Icon,
 	},
 	public: {
-		shareTooltip: "Shared publicly",
+		shareTooltip: "公开共享",
 		shareIcon: GlobeIcon,
 	},
 };

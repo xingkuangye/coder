@@ -77,16 +77,16 @@ export const TemplateMenu: FC<TemplateMenuProps> = ({ width, menu }) => {
 	return (
 		<SelectFilter
 			width={width}
-			label="Select a template"
-			emptyText="No templates found"
-			placeholder="All templates"
+			label="选择模板"
+			emptyText="未找到模板"
+			placeholder="所有模板"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}
 			selectFilterSearch={
 				<ComboboxInput
-					aria-label="Search template"
-					placeholder="Search template..."
+					aria-label="搜索模板"
+					placeholder="搜索模板..."
 					value={menu.query}
 					onValueChange={menu.setQuery}
 				/>
@@ -138,8 +138,8 @@ export const StatusMenu: FC<StatusMenuProps> = ({ width, menu }) => {
 	return (
 		<SelectFilter
 			width={width}
-			placeholder="All statuses"
-			label="Select a status"
+			placeholder="所有状态"
+			label="选择状态"
 			options={menu.searchOptions}
 			selectedOption={menu.selectedOption ?? undefined}
 			onSelect={menu.selectOption}

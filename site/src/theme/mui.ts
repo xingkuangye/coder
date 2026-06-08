@@ -1,6 +1,6 @@
 /**
- * @deprecated MUI theme configuration is deprecated. Migrate to Tailwind CSS theme system.
- * This file provides MUI theme overrides for legacy compatibility only.
+ * @deprecated MUI 主题配置已弃用。请迁移到 Tailwind CSS 主题系统。
+ * 此文件仅为向后兼容提供 MUI 主题覆盖。
  */
 
 /** @deprecated MUI ThemeOptions is deprecated. Migrate to Tailwind CSS theme system. */

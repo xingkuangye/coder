@@ -26,11 +26,11 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 			<div className="min-h-60 flex items-center justify-center rounded-lg border border-solid p-12">
 				<div className="flex flex-col gap-4 items-center justify-center">
 					<div className="flex flex-col gap-2 items-center justify-center">
-						<span className="text-base">Agent Workspace Builds Disabled</span>
+						<span className="text-base">代理工作区构建已禁用</span>
 						<span className="text-content-secondary text-center max-w-[464px] mt-2">
-							Agent Workspace Builds are not included in your current license.
-							Contact <Link href="mailto:sales@coder.com">sales</Link> to
-							upgrade your license and unlock this feature.
+							您的当前许可计划不包含代理工作区构建功能。请联系{" "}
+							<Link href="mailto:sales@coder.com">销售团队</Link>{" "}
+							升级许可并解锁此功能。
 						</span>
 					</div>
 				</div>
@@ -68,7 +68,7 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 			<div className="p-4">
 				<Collapsible>
 					<header className="flex flex-col gap-2 items-start">
-						<h3 className="text-md m-0 font-medium">Agent Workspace Builds</h3>
+						<h3 className="text-md m-0 font-medium">代理工作区构建</h3>
 
 						<CollapsibleTrigger asChild>
 							<Button
@@ -79,7 +79,7 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
                 `}
 							>
 								<ChevronRightIcon />
-								Learn more
+								了解更多
 							</Button>
 						</CollapsibleTrigger>
 					</header>
@@ -92,46 +92,39 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
             `}
 					>
 						<p>
-							Agent Workspace Builds are measured when you start an ephemeral
-							workspace, purely for running an agentic workload. These are not
-							to be confused with workspaces used for day-to-day development,
-							even if AI tooling is involved.
+							代理工作区构建会在启动临时工作区纯粹用于运行代理工作负载时计量。请注意，这与即使涉及 AI 工具的日常开发工作区不同。
 						</p>
 						<p>
-							Today,{" "}
+							目前，{" "}
 							<Link
 								href={docs("/ai-coder/tasks")}
 								target="_blank"
 								rel="noreferrer"
 							>
-								Coder Tasks (via UI, CLI, or API)
+								Coder Tasks（通过 UI、CLI 或 API）
 							</Link>{" "}
-							is the only way to create agentic workspaces, but additional
-							protocols and APIs may be supported as standards emerge. Learn
-							more in{" "}
+							是创建代理工作区的唯一方式，但随着标准的发展，可能会支持其他协议和 API。在{" "}
 							<Link
 								href={docs("/ai-coder/ai-governance")}
 								target="_blank"
 								rel="noreferrer"
 							>
-								the Coder documentation
-							</Link>
+								Coder 文档
+							</Link>{" "}
+							中了解更多。
 						</p>
 						<ul>
 							<li className="flex items-center gap-2">
 								<div className="rounded-[2px] bg-highlight-green size-3 inline-block">
-									<span className="sr-only">Legend for started workspaces</span>
+									<span className="sr-only">已启动工作区图例</span>
 								</div>
-								Amount of started workspaces with an AI agent.
+								使用 AI 代理启动的工作区数量。
 							</li>
 							<li className="flex items-center gap-2">
 								<div className="rounded-[2px] bg-highlight-orange size-3 inline-block">
-									<span className="sr-only">
-										Legend for usage exceeding included allowance
-									</span>
+									<span className="sr-only">超出许可配额的使用量图例</span>
 								</div>
-								Usage has exceeded included allowance from your current license
-								plan.
+								使用量已超出当前许可计划中的配额。
 							</li>
 						</ul>
 					</CollapsibleContent>
@@ -141,9 +134,9 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 			<div className="p-6 border-0 border-t border-solid">
 				<div className="flex justify-between text-sm text-content-secondary mb-4">
 					<span>
-						{startDate ? dayjs(startDate).format("MMMM D, YYYY") : ""}
+						{startDate ? dayjs(startDate).format("YYYY年M月D日") : ""}
 					</span>
-					<span>{endDate ? dayjs(endDate).format("MMMM D, YYYY") : ""}</span>
+					<span>{endDate ? dayjs(endDate).format("YYYY年M月D日") : ""}</span>
 				</div>
 
 				<div className="relative h-6 bg-surface-secondary rounded overflow-hidden">
@@ -160,12 +153,12 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 
 				<div className="relative hidden lg:flex justify-between mt-4 text-sm">
 					<div className="flex flex-col items-start">
-						<span className="text-content-secondary">Actual:</span>
+						<span className="text-content-secondary">实际:</span>
 						<span className="font-medium">{usage.toLocaleString()}</span>
 					</div>
 
 					<div className="flex flex-col items-end">
-						<span className="text-content-secondary">Included:</span>
+						<span className="text-content-secondary">已包含:</span>
 						<span className="font-medium">{included.toLocaleString()}</span>
 					</div>
 				</div>
@@ -173,11 +166,11 @@ export const ManagedAgentsConsumption: FC<ManagedAgentsConsumptionProps> = ({
 				<div className="flex lg:hidden flex-col gap-3 mt-4 text-sm">
 					<div className="flex justify-between">
 						<div className="flex flex-col items-start">
-							<span className="text-content-secondary">Actual:</span>
+							<span className="text-content-secondary">实际:</span>
 							<span className="font-medium">{usage.toLocaleString()}</span>
 						</div>
 						<div className="flex flex-col items-end">
-							<span className="text-content-secondary">Included:</span>
+							<span className="text-content-secondary">已包含:</span>
 							<span className="font-medium">{included.toLocaleString()}</span>
 						</div>
 					</div>

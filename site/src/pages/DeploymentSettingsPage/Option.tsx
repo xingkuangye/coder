@@ -42,7 +42,7 @@ export const OptionValue: FC<OptionValueProps> = (props) => {
 
 	if (!value || value.length === 0) {
 		return (
-			<span className={cn("option-value-empty", optionClassName)}>Not set</span>
+			<span className={cn("option-value-empty", optionClassName)}>未设置</span>
 		);
 	}
 

@@ -80,7 +80,7 @@ const WorkspaceParametersPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(workspace.name, "Parameters")}</title>
+			<title>{pageTitle(workspace.name, "参数")}</title>
 
 			<WorkspaceParametersPageView
 				workspace={workspace}
@@ -146,7 +146,7 @@ export const WorkspaceParametersPageView: FC<
 		<div className="flex flex-col gap-10">
 			<header className="flex flex-col items-start gap-2">
 				<span className="flex flex-row justify-between w-full items-center gap-2">
-					<h1 className="text-3xl m-0">Workspace parameters</h1>
+					<h1 className="text-3xl m-0">工作空间参数</h1>
 				</span>
 			</header>
 
@@ -172,7 +172,7 @@ export const WorkspaceParametersPageView: FC<
 					/>
 				) : (
 					<EmptyState
-						message="This workspace has no parameters"
+						message="此工作空间无参数"
 						cta={
 							<Button asChild>
 								<a
@@ -181,7 +181,7 @@ export const WorkspaceParametersPageView: FC<
 									rel="noreferrer"
 								>
 									<ExternalLinkIcon className="size-icon-xs" />
-									Learn more about parameters
+									了解更多参数信息
 								</a>
 							</Button>
 						}

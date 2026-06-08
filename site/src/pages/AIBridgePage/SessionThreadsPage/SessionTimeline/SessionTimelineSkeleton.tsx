@@ -15,7 +15,7 @@ export const SessionTimelineSkeleton: FC = () => {
 				</div>
 				<div className="row-start-1 col-start-4 col-span-2 flex items-center h-10">
 					<span className="text-content-secondary font-normal ml-4 py-1 text-sm">
-						Session started
+						会话已启动
 					</span>
 				</div>
 

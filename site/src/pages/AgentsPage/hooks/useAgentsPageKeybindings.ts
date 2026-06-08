@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { isMac } from "#/utils/platform";
 
 /**
- * Global keyboard shortcuts for the Agents page.
+ * Agents 页面的全局键盘快捷键。
  *
- * - Ctrl+N / Cmd+N: Create a new agent.
- * - Ctrl+K / Cmd+K: Toggle agent search.
+ * - Ctrl+N / Cmd+N：创建新的代理。
+ * - Ctrl+K / Cmd+K：切换代理搜索。
  */
 export function useAgentsPageKeybindings({
 	onNewAgent,

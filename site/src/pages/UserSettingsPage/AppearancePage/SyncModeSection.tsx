@@ -63,12 +63,12 @@ const SyncCard: FC<SyncCardProps> = ({
 		ConcreteThemeName | undefined
 	>(undefined);
 	const Icon = scheme === "light" ? SunIcon : MoonIcon;
-	const title = scheme === "light" ? "Light theme" : "Dark theme";
+	const title = scheme === "light" ? "浅色主题" : "深色主题";
 	const displayedTheme = previewTheme ?? selected;
 	const description =
 		scheme === "light"
-			? 'This theme will be active when your system is set to "light mode".'
-			: 'This theme will be active when your system is set to "dark mode".';
+			? '当系统设置为“浅色模式”时，将使用此主题。'
+			: '当系统设置为“深色模式”时，将使用此主题。';
 
 	return (
 		<div
@@ -84,7 +84,7 @@ const SyncCard: FC<SyncCardProps> = ({
 				</div>
 				{active && (
 					<Badge variant="info" size="sm">
-						Active
+						当前
 					</Badge>
 				)}
 			</div>
@@ -95,7 +95,7 @@ const SyncCard: FC<SyncCardProps> = ({
 				label={THEME_COPY[displayedTheme].title}
 			/>
 			<fieldset className="m-0 min-w-0 border-0 p-0">
-				<legend className="sr-only">{`${title} options`}</legend>
+				<legend className="sr-only">{`${title}选项`}</legend>
 				<div className="flex flex-wrap items-center gap-3">
 					{SYNC_MODE_THEMES.map((theme) => (
 						<ThemeSwatch

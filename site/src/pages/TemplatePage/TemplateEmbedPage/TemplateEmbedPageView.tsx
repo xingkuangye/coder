@@ -99,10 +99,9 @@ export const TemplateEmbedPageView: React.FC<TemplateEmbedPageViewProps> = ({
 				<div className="flex flex-col gap-9">
 					<section className="flex flex-col gap-2">
 						<div>
-							<h2 className="text-lg font-bold m-0">Creation mode</h2>
+							<h2 className="text-lg font-bold m-0">创建模式</h2>
 							<p className="text-sm text-content-secondary m-0">
-								When set to automatic mode, clicking the button will create the
-								workspace automatically without displaying a form to the user.
+								当设置为自动模式时，点击按钮将自动创建工作区，而不会向用户显示表单。
 							</p>
 						</div>
 						<RadioGroup
@@ -117,13 +116,13 @@ export const TemplateEmbedPageView: React.FC<TemplateEmbedPageViewProps> = ({
 							<div className="flex items-center gap-3">
 								<RadioGroupItem value="manual" id="manual" />
 								<Label htmlFor="manual" className="cursor-pointer">
-									Manual
+									手动
 								</Label>
 							</div>
 							<div className="flex items-center gap-3">
 								<RadioGroupItem value="auto" id="automatic" />
 								<Label htmlFor="automatic" className="cursor-pointer">
-									Automatic
+									自动
 								</Label>
 							</div>
 						</RadioGroup>
@@ -154,7 +153,7 @@ export const TemplateEmbedPageView: React.FC<TemplateEmbedPageViewProps> = ({
 
 					<div className="flex flex-row items-center gap-4">
 						{isLoading ? (
-							<Button disabled={isLoading}>Test</Button>
+							<Button disabled={isLoading}>测试</Button>
 						) : (
 							<Button asChild>
 								<a
@@ -165,7 +164,7 @@ export const TemplateEmbedPageView: React.FC<TemplateEmbedPageViewProps> = ({
 										mode: "manual",
 									})}
 								>
-									Test
+									测试
 								</a>
 							</Button>
 						)}
@@ -204,20 +203,17 @@ const TestHelpPopover: React.FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger size="small" />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>Testing your Open in Coder settings</HelpPopoverTitle>
+				<HelpPopoverTitle>测试您的 Open in Coder 设置</HelpPopoverTitle>
 				<HelpPopoverText>
-					This button will open the workspace creation page in a new tab with
-					the parameters that you have supplied. Use this to debug your{" "}
-					<strong>Open in Coder</strong> button before using it.
+					此按钮将在新标签页中打开包含您提供的参数的工作区创建页面。在使用之前，用此来调试您的{" "}
+					<strong>Open in Coder</strong> 按钮。
 				</HelpPopoverText>
 				<HelpPopoverText>
-					Note: Even if you have set creation mode to auto, this button will not
-					automatically create a workspace so that you have the opportunity to
-					inspect the parameters and check for errors.
+					注意：即使您已将创建模式设置为自动，此按钮也不会自动创建工作区，以便您有机会检查参数并排查错误。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/templates/open-in-coder")}>
-						Templates &ndash; Open in Coder
+						模板 &ndash; Open in Coder
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>
@@ -261,7 +257,7 @@ const ButtonPreview: React.FC<ButtonPreviewProps> = ({
 				flex flex-col items-center justify-center p-6
 			 	rounded-lg border border-border border-solid bg-surface-secondary"
 			>
-				<img src="/open-in-coder.svg" alt="Open in Coder button" />
+				<img src="/open-in-coder.svg" alt="Open in Coder 按钮" />
 			</div>
 			<Button
 				variant="default"
@@ -271,8 +267,7 @@ const ButtonPreview: React.FC<ButtonPreviewProps> = ({
 					clipboard.copyToClipboard(textToCopy);
 				}}
 			>
-				{clipboard.showCopiedSuccess ? <CheckIcon /> : <CopyIcon />} Copy button
-				Markdown
+				{clipboard.showCopiedSuccess ? <CheckIcon /> : <CopyIcon />} 复制按钮 Markdown
 			</Button>
 		</div>
 	);

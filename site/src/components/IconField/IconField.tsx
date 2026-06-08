@@ -37,7 +37,7 @@ export const IconField: FC<IconFieldProps> = ({
 		<div className="flex items-center gap-2">
 			<TextField
 				fullWidth
-				label="Icon"
+				label="图标"
 				{...textFieldProps}
 				InputProps={{
 					endAdornment: hasIcon ? (
@@ -74,7 +74,7 @@ export const IconField: FC<IconFieldProps> = ({
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
 					<Button variant="outline" size="lg" className="group flex-shrink-0">
-						Emoji
+						表情
 						<ChevronDownIcon />
 					</Button>
 				</PopoverTrigger>

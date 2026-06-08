@@ -46,26 +46,25 @@ export const WildcardHostnameWarning: FC<WildcardHostnameWarningProps> = ({
 					: undefined
 			}
 		>
-			<AlertTitle>Some workspace applications will not work</AlertTitle>
+			<AlertTitle>部分工作空间应用将无法正常工作</AlertTitle>
 			<AlertDescription>
 				<div>
 					{hasResources
-						? "This template contains coder_app resources with"
-						: "One or more apps in this workspace have"}{" "}
+						? "此模板包含配置了"
+						: "此工作空间中的一个或多个应用具有"}{" "}
 					<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary">
 						subdomain = true
 					</code>
 					{canEditDeploymentConfig ? (
 						<>
-							, but subdomain applications are not configured. Users won't be
-							able to access these applications until you configure the{" "}
+							，但子域应用尚未配置。在启动 Coder 服务器时配置{" "}
 							<code className="py-px px-1 bg-surface-tertiary rounded-sm text-content-primary">
 								--wildcard-access-url
 							</code>{" "}
-							flag when starting the Coder server.
+							标志之前，用户将无法访问这些应用。
 						</>
 					) : (
-						", which requires a Coder deployment with a Wildcard Access URL configured. Please contact your administrator."
+						"，这需要 Coder 部署配置了通配符访问 URL。请联系您的管理员。"
 					)}
 				</div>
 				<div className="pt-2">
@@ -74,7 +73,7 @@ export const WildcardHostnameWarning: FC<WildcardHostnameWarningProps> = ({
 						target="_blank"
 					>
 						<span className="font-semibold">
-							Learn more about wildcard access URL
+							了解通配符访问 URL 更多信息
 						</span>
 					</Link>
 				</div>

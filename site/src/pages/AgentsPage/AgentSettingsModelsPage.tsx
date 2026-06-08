@@ -46,8 +46,8 @@ const AgentSettingsModelsPage: FC = () => {
 		<RequirePermission isFeatureVisible={permissions.editDeploymentConfig}>
 			<ChatModelAdminPanel
 				section="models"
-				sectionLabel="Models"
-				sectionDescription="Choose which models from your configured providers are available for Coder Agents. Set a default and adjust context limits."
+				sectionLabel="模型"
+				sectionDescription="选择已配置提供商中哪些模型可用于 Coder Agents。设置默认模型并调整上下文限制。"
 				providerConfigsData={providerConfigsQuery.data}
 				modelConfigsData={modelConfigsQuery.data}
 				modelCatalogData={modelCatalogQuery.data}

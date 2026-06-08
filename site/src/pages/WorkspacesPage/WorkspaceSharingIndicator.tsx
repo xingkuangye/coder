@@ -36,7 +36,7 @@ export const WorkspaceSharingIndicator: FC<WorkspaceSharingIndicatorProps> = ({
 			<TooltipContent className="w-56 p-0">
 				<div className="px-3 py-2">
 					<p className="m-0 text-sm font-semibold text-content-primary">
-						Workspace permissions
+						工作区权限
 					</p>
 				</div>
 				<ul className="flex flex-col gap-1 m-0 p-0 list-none max-h-48 overflow-y-auto">
@@ -50,7 +50,7 @@ export const WorkspaceSharingIndicator: FC<WorkspaceSharingIndicatorProps> = ({
 								<span className="text-sm truncate">{actor.name}</span>
 								{isAdmin && (
 									<Badge size="sm" variant="default">
-										Admin
+										管理员
 									</Badge>
 								)}
 							</li>
@@ -64,7 +64,7 @@ export const WorkspaceSharingIndicator: FC<WorkspaceSharingIndicatorProps> = ({
 						onClick={(e) => e.stopPropagation()}
 						showExternalIcon={false}
 					>
-						Change permissions
+						更改权限
 					</Link>
 				</div>
 			</TooltipContent>

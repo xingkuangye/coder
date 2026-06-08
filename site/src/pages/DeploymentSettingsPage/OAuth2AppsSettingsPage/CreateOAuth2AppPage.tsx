@@ -24,7 +24,7 @@ const CreateOAuth2AppPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("New OAuth2 Application")}</title>
+			<title>{pageTitle("新建 OAuth2 应用")}</title>
 
 			<CreateOAuth2AppPageView
 				isUpdating={postAppMutation.isPending}
@@ -39,11 +39,11 @@ const CreateOAuth2AppPage: FC = () => {
 						},
 					});
 					toast.promise(mutation, {
-						loading: `Creating OAuth2 application "${req.name}"...`,
+						loading: `正在创建 OAuth2 应用 "${req.name}"...`,
 						success: (app) =>
-							`OAuth2 application "${app.name}" created successfully.`,
+							`OAuth2 应用 "${app.name}" 创建成功。`,
 						error: (error) => ({
-							message: `Failed to create "${req.name}" OAuth2 application.`,
+							message: `创建 OAuth2 应用 "${req.name}" 失败。`,
 							description: getErrorDetail(error),
 						}),
 					});

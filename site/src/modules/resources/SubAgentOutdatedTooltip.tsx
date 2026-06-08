@@ -36,17 +36,16 @@ export const SubAgentOutdatedTooltip: FC<SubAgentOutdatedTooltipProps> = ({
 		<HelpPopover>
 			<HelpPopoverTrigger className="px-0 py-1 bg-transparent text-inherit border-none opacity-50 hover:opacity-100">
 				<span role="status" className="cursor-pointer">
-					Outdated
+					已过时
 				</span>
 			</HelpPopoverTrigger>
 			<HelpPopoverContent>
 				<div className="flex flex-col gap-2">
 					<div>
-						<HelpPopoverTitle>Dev Container Outdated</HelpPopoverTitle>
+						<HelpPopoverTitle>开发容器已过时</HelpPopoverTitle>
 						<HelpPopoverText>
-							This Dev Container is outdated. This can happen if you modify your
-							devcontainer.json file after the Dev Container has been created.
-							To fix this, you can rebuild the Dev Container.
+							此开发容器已过时。如果您在创建开发容器后修改了 devcontainer.json 文件，可能会出现这种情况。
+							要解决此问题，您可以重建开发容器。
 						</HelpPopoverText>
 					</div>
 
@@ -54,9 +53,9 @@ export const SubAgentOutdatedTooltip: FC<SubAgentOutdatedTooltipProps> = ({
 						<HelpPopoverAction
 							icon={RotateCcwIcon}
 							onClick={onUpdate}
-							ariaLabel="Rebuild Dev Container"
+							ariaLabel="重建开发容器"
 						>
-							Rebuild Dev Container
+							重建开发容器
 						</HelpPopoverAction>
 					</HelpPopoverLinksGroup>
 				</div>

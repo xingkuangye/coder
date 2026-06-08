@@ -28,17 +28,17 @@ import { docs } from "#/utils/docs";
 const PRESET_FILTERS = [
 	{
 		query: "resource_type:workspace action:create",
-		name: "Created workspaces",
+		name: "创建工作空间",
 	},
-	{ query: "resource_type:template action:create", name: "Added templates" },
-	{ query: "resource_type:user action:delete", name: "Deleted users" },
+	{ query: "resource_type:template action:create", name: "添加模板" },
+	{ query: "resource_type:user action:delete", name: "删除用户" },
 	{
 		query: "resource_type:workspace_build action:start build_reason:initiator",
-		name: "Builds started by a user",
+		name: "用户启动的构建",
 	},
 	{
 		query: "resource_type:api_key action:login",
-		name: "User logins",
+		name: "用户登录",
 	},
 ];
 
@@ -120,8 +120,8 @@ interface ActionMenuProps {
 const ActionMenu: FC<ActionMenuProps> = ({ menu, width }) => {
 	return (
 		<SelectFilter
-			label="Select an action"
-			placeholder="All actions"
+			label="选择操作"
+			placeholder="所有操作"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}
@@ -138,19 +138,19 @@ export const useResourceTypeFilterMenu = ({
 		let label: string = capitalize(type);
 
 		if (type === "api_key") {
-			label = "API Key";
+			label = "API 密钥";
 		}
 
 		if (type === "git_ssh_key") {
-			label = "Git SSH Key";
+			label = "Git SSH 密钥";
 		}
 
 		if (type === "template_version") {
-			label = "Template Version";
+			label = "模板版本";
 		}
 
 		if (type === "workspace_build") {
-			label = "Workspace Build";
+			label = "工作空间构建";
 		}
 
 		return {
@@ -178,8 +178,8 @@ interface ResourceTypeMenuProps {
 const ResourceTypeMenu: FC<ResourceTypeMenuProps> = ({ menu, width }) => {
 	return (
 		<SelectFilter
-			label="Select a resource type"
-			placeholder="All resource types"
+			label="选择资源类型"
+			placeholder="所有资源类型"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}

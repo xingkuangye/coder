@@ -1,7 +1,7 @@
 /**
- * This component was inspired by
- * https://www.radix-ui.com/themes/docs/components/spinner and developed using
- * https://v0.dev/ help.
+ * 此组件灵感来源于
+ * https://www.radix-ui.com/themes/docs/components/spinner，并借助
+ * https://v0.dev/ 开发。
  */
 
 import isChromatic from "chromatic/isChromatic";
@@ -48,7 +48,7 @@ export function Spinner({
 			className={cn(spinnerVariants({ size, className }))}
 			{...props}
 		>
-			<title>Loading spinner</title>
+			<title>加载中旋转图标</title>
 			{leaves.map((leaf) => (
 				<rect
 					key={leaf}

@@ -84,9 +84,9 @@ export const DesktopPanel: FC<DesktopPanelProps> = ({ chatId, isVisible }) => {
 				role="status"
 			>
 				<ExternalLinkIcon className="h-8 w-8" />
-				<span className="text-sm">Desktop is open in a separate window.</span>
+				<span className="text-sm">桌面在独立窗口中打开。</span>
 				<Button variant="outline" size="sm" onClick={handleBringBack}>
-					Bring back
+					收回
 				</Button>
 			</div>
 		);
@@ -134,7 +134,7 @@ export const DesktopPanelView: FC<DesktopPanelViewProps> = ({
 		return (
 			<div className="flex h-full flex-col items-center justify-center gap-2 text-content-secondary">
 				<Spinner loading className="h-6 w-6" />
-				<span className="text-sm">Connecting to desktop...</span>
+				<span className="text-sm">正在连接桌面...</span>
 			</div>
 		);
 	}
@@ -143,7 +143,7 @@ export const DesktopPanelView: FC<DesktopPanelViewProps> = ({
 		return (
 			<div className="flex h-full flex-col items-center justify-center gap-2 text-content-secondary">
 				<Spinner loading className="h-6 w-6" />
-				<span className="text-sm">Desktop disconnected. Reconnecting...</span>
+				<span className="text-sm">桌面已断开，正在重连...</span>
 			</div>
 		);
 	}
@@ -152,11 +152,10 @@ export const DesktopPanelView: FC<DesktopPanelViewProps> = ({
 		return (
 			<div className="flex h-full flex-col items-center justify-center gap-3 text-content-secondary">
 				<span className="text-center text-sm">
-					Failed to connect to the desktop session. The agent may not be
-					connected or the desktop environment may not be available.
+					无法连接到桌面会话。代理可能未连接或桌面环境不可用。
 				</span>
 				<Button variant="outline" size="sm" onClick={reconnect}>
-					Reconnect
+					重新连接
 				</Button>
 			</div>
 		);
@@ -166,7 +165,7 @@ export const DesktopPanelView: FC<DesktopPanelViewProps> = ({
 		return (
 			<div className="flex h-full flex-col items-center justify-center gap-2 text-content-secondary">
 				<Spinner loading className="h-6 w-6" />
-				<span className="text-sm">Initializing desktop...</span>
+				<span className="text-sm">正在初始化桌面...</span>
 			</div>
 		);
 	}
@@ -193,8 +192,8 @@ export const DesktopPanelView: FC<DesktopPanelViewProps> = ({
 					role="application"
 					aria-label={
 						isControlling
-							? "Remote desktop (interactive)"
-							: "Remote desktop (view only, take control to interact)"
+							? "远程桌面（可交互）"
+							: "远程桌面（仅查看，接管控制以交互）"
 					}
 				/>
 			</div>

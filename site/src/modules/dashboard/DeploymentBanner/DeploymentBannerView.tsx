@@ -92,7 +92,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 		}
 		if (!fetchStats) {
 			// Storybook!
-			return "just now";
+			return "刚刚";
 		}
 		return dayjs().to(dayjs(stats.collected_at));
 	}, [timeUntilRefresh, stats, fetchStats]);
@@ -138,7 +138,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 						{healthErrors.length > 0 ? (
 							<>
 								<HelpPopoverTitle>
-									We have detected problems with your Coder deployment.
+									我们检测到您的 Coder 部署存在问题。
 								</HelpPopoverTitle>
 								<div className="flex flex-col gap-1">
 									{healthErrors.map((error) => (
@@ -147,14 +147,14 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 								</div>
 							</>
 						) : (
-							"Status of your Coder deployment. Only visible for admins!"
+							"您的 Coder 部署状态。仅管理员可见！"
 						)}
 					</TooltipContent>
 				</Tooltip>
 			</TooltipProvider>
 
 			<div className="flex items-center">
-				<div className="mr-4 text-content-primary">Workspaces</div>
+				<div className="mr-4 text-content-primary">工作区</div>
 				<div className="flex gap-2 text-content-secondary">
 					<WorkspaceBuildValue
 						status="pending"
@@ -187,10 +187,10 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 				<TooltipProvider delayDuration={100}>
 					<Tooltip>
 						<TooltipTrigger asChild>
-							<div className="mr-4 text-content-primary">Transmission</div>
+							<div className="mr-4 text-content-primary">传输</div>
 						</TooltipTrigger>
 						<TooltipContent>
-							{`Activity in the last ~${aggregatedMinutes} minutes`}
+							{`最近大约 ${aggregatedMinutes} 分钟的活动`}
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
@@ -203,7 +203,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 									{stats ? prettyBytes(stats.workspaces.rx_bytes) : "-"}
 								</div>
 							</TooltipTrigger>
-							<TooltipContent>Data sent to workspaces</TooltipContent>
+							<TooltipContent>发送到工作区的数据</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 					<ValueSeparator />
@@ -215,7 +215,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 									{stats ? prettyBytes(stats.workspaces.tx_bytes) : "-"}
 								</div>
 							</TooltipTrigger>
-							<TooltipContent>Data sent from workspaces</TooltipContent>
+							<TooltipContent>从工作区发送的数据</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 					<ValueSeparator />
@@ -231,8 +231,8 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 							</TooltipTrigger>
 							<TooltipContent>
 								{displayLatency < 0
-									? "No recent workspace connections have been made"
-									: "The average latency of user connections to workspaces"}
+									? "最近没有建立工作区连接"
+									: "用户连接工作区的平均延迟"}
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
@@ -240,7 +240,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 			</div>
 
 			<div className="flex items-center">
-				<div className="mr-4 text-content-primary">Active Connections</div>
+				<div className="mr-4 text-content-primary">活动连接</div>
 
 				<div className="flex gap-2 text-content-secondary">
 					<TooltipProvider delayDuration={100}>
@@ -254,7 +254,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 								</div>
 							</TooltipTrigger>
 							<TooltipContent>
-								VS Code Editors with the Coder Remote Extension
+								带有 Coder 远程扩展的 VS Code 编辑器
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
@@ -269,7 +269,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 										: stats?.session_count.jetbrains}
 								</div>
 							</TooltipTrigger>
-							<TooltipContent>JetBrains Editors</TooltipContent>
+							<TooltipContent>JetBrains 编辑器</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 					<ValueSeparator />
@@ -283,7 +283,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 										: stats?.session_count.ssh}
 								</div>
 							</TooltipTrigger>
-							<TooltipContent>SSH Sessions</TooltipContent>
+							<TooltipContent>SSH 会话</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 					<ValueSeparator />
@@ -297,7 +297,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 										: stats?.session_count.reconnecting_pty}
 								</div>
 							</TooltipTrigger>
-							<TooltipContent>Web Terminal Sessions</TooltipContent>
+							<TooltipContent>Web 终端会话</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 				</div>
@@ -316,8 +316,7 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 							className="max-w-xs"
 							collisionPadding={{ right: 20 }}
 						>
-							The last time stats were aggregated. Workspaces report statistics
-							periodically, so it may take a bit for these to update!
+							上次聚合统计数据的时间。工作区会定期报告统计信息，因此更新可能需要一些时间！
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
@@ -336,14 +335,14 @@ export const DeploymentBannerView: FC<DeploymentBannerViewProps> = ({
 								size="icon"
 							>
 								<RotateCwIcon />
-								{timeUntilRefresh}s
+								{timeUntilRefresh}秒
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent
 							className="max-w-xs"
 							collisionPadding={{ right: 20 }}
 						>
-							A countdown until stats are fetched again. Click to refresh!
+							距离再次获取统计数据的倒计时。点击刷新！
 						</TooltipContent>
 					</Tooltip>
 				</TooltipProvider>
@@ -362,12 +361,27 @@ const WorkspaceBuildValue: FC<WorkspaceBuildValueProps> = ({
 	count,
 }) => {
 	const displayStatus = getDisplayWorkspaceStatus(status);
-	let statusText = displayStatus.text;
-	let icon = displayStatus.icon;
-	if (status === "starting") {
-		icon = <WrenchIcon className="size-icon-xs" />;
-		statusText = "Building";
+	let statusText: string;
+	switch (status) {
+		case "pending":
+			statusText = "待处理";
+			break;
+		case "starting":
+			statusText = "构建中";
+			break;
+		case "running":
+			statusText = "运行中";
+			break;
+		case "stopped":
+			statusText = "已停止";
+			break;
+		case "failed":
+			statusText = "失败";
+			break;
+		default:
+			statusText = displayStatus.text;
 	}
+	let icon = displayStatus.icon;
 
 	return (
 		<TooltipProvider delayDuration={100}>
@@ -384,7 +398,7 @@ const WorkspaceBuildValue: FC<WorkspaceBuildValueProps> = ({
 						</RouterLink>
 					</Link>
 				</TooltipTrigger>
-				<TooltipContent>{`${statusText} Workspaces`}</TooltipContent>
+				<TooltipContent>{`${statusText} 工作区`}</TooltipContent>
 			</Tooltip>
 		</TooltipProvider>
 	);
@@ -413,11 +427,11 @@ const getHealthErrors = (health: HealthcheckReport) => {
 		"workspace_proxy",
 	] as const;
 	const messages: Record<(typeof sections)[number], string> = {
-		access_url: "Your access URL may be configured incorrectly.",
-		database: "Your database is unhealthy.",
-		derp: "We're noticing DERP proxy issues.",
-		websocket: "We're noticing websocket issues.",
-		workspace_proxy: "We're noticing workspace proxy issues.",
+		access_url: "您的访问 URL 可能配置不正确。",
+		database: "您的数据库不健康。",
+		derp: "我们检测到 DERP 代理问题。",
+		websocket: "我们检测到 websocket 问题。",
+		workspace_proxy: "我们检测到工作区代理问题。",
 	} as const;
 
 	for (const section of sections) {

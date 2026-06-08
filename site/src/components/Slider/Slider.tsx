@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 04/16/2025
+ * 复制自 shadc/ui，2025年4月16日
  * @see {@link https://ui.shadcn.com/docs/components/slider}
  */
 import { Slider as SliderPrimitive } from "radix-ui";

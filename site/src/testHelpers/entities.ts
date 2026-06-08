@@ -15,8 +15,8 @@ import type { TemplateVersionFiles } from "#/utils/templateVersion";
 export const MockOrganization: TypesGen.Organization = {
 	id: "my-organization-id",
 	name: "my-organization",
-	display_name: "My Organization",
-	description: "An organization that gets used for stuff.",
+	display_name: "我的组织",
+	description: "一个用于各种事务的组织。",
 	icon: "/emojis/1f957.png",
 	created_at: "",
 	updated_at: "",
@@ -32,8 +32,8 @@ export const MockDefaultOrganization: TypesGen.Organization = {
 export const MockOrganization2: TypesGen.Organization = {
 	id: "my-organization-2-id",
 	name: "my-organization-2",
-	display_name: "My Organization 2",
-	description: "Another organization that gets used for stuff.",
+	display_name: "我的组织 2",
+	description: "另一个用于各种事务的组织。",
 	icon: "/emojis/1f957.png",
 	created_at: "",
 	updated_at: "",
@@ -44,9 +44,9 @@ export const MockOrganization2: TypesGen.Organization = {
 export const MockOrganization3: TypesGen.Organization = {
 	id: "my-organization-3-id",
 	name: "my-organization-3",
-	display_name: "My Organization 3",
+	display_name: "我的组织 3",
 	description:
-		"Yet another organization that will show up in OrganizationPills.",
+		"又一个将在 OrganizationPills 中出现的组织。",
 	icon: "/emojis/1f957.png",
 	created_at: "",
 	updated_at: "",
@@ -116,7 +116,7 @@ export const MockTokens: TypesGen.APIKeyWithOwner[] = [
 export const MockPrimaryWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	id: "4aa23000-526a-481f-a007-0f20b98b1e12",
 	name: "primary",
-	display_name: "Default",
+	display_name: "默认",
 	icon_url: "/emojis/1f60e.png",
 	healthy: true,
 	path_app_url: "https://coder.com",
@@ -136,7 +136,7 @@ export const MockPrimaryWorkspaceProxy: TypesGen.WorkspaceProxy = {
 export const MockHealthyWildWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	id: "5e2c1ab7-479b-41a9-92ce-aa85625de52c",
 	name: "haswildcard",
-	display_name: "Subdomain Supported",
+	display_name: "支持子域名",
 	icon_url: "/emojis/1f319.png",
 	healthy: true,
 	path_app_url: "https://external.com",
@@ -156,7 +156,7 @@ export const MockHealthyWildWorkspaceProxy: TypesGen.WorkspaceProxy = {
 export const MockUnhealthyWildWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	id: "8444931c-0247-4171-842a-569d9f9cbadb",
 	name: "unhealthy",
-	display_name: "Unhealthy",
+	display_name: "不健康",
 	icon_url: "/emojis/1f92e.png",
 	healthy: false,
 	path_app_url: "https://unhealthy.coder.com",
@@ -170,8 +170,8 @@ export const MockUnhealthyWildWorkspaceProxy: TypesGen.WorkspaceProxy = {
 	status: {
 		status: "unhealthy",
 		report: {
-			errors: ["This workspace proxy is manually marked as unhealthy."],
-			warnings: ["This is a manual warning for this workspace proxy."],
+			errors: ["此工作区代理已被手动标记为不健康。"],
+			warnings: ["这是针对此工作区代理的手动警告。"],
 		},
 		checked_at: new Date().toISOString(),
 	},
@@ -184,7 +184,7 @@ export const MockWorkspaceProxies: TypesGen.WorkspaceProxy[] = [
 	{
 		id: "26e84c16-db24-4636-a62d-aa1a4232b858",
 		name: "nowildcard",
-		display_name: "No wildcard",
+		display_name: "无通配符",
 		icon_url: "/emojis/1f920.png",
 		healthy: true,
 		path_app_url: "https://cowboy.coder.com",
@@ -244,7 +244,7 @@ export const MockBuildInfo: TypesGen.BuildInfoResponse = {
 	version: "v2.99.99",
 	dashboard_url: "https:///mock-url",
 	workspace_proxy: false,
-	upgrade_message: "My custom upgrade message",
+	upgrade_message: "我的自定义升级消息",
 	deployment_id: "510d407f-e521-4180-b559-eab4a6d802b8",
 	webpush_public_key: "fake-public-key",
 	telemetry: true,
@@ -252,23 +252,23 @@ export const MockBuildInfo: TypesGen.BuildInfoResponse = {
 
 export const MockSupportLinks: TypesGen.LinkConfig[] = [
 	{
-		name: "First link",
+		name: "第一个链接",
 		target: "http://first-link",
 		icon: "chat",
 	},
 	{
-		name: "Second link",
+		name: "第二个链接",
 		target: "http://second-link",
 		icon: "docs",
 	},
 	{
-		name: "Third link",
+		name: "第三个链接",
 		target:
 			"https://github.com/coder/coder/issues/new?labels=needs+grooming&body={CODER_BUILD_INFO}",
 		icon: "",
 	},
 	{
-		name: "Fourth link",
+		name: "第四个链接",
 		target: "/icons",
 		icon: "",
 	},
@@ -282,7 +282,7 @@ export const MockUpdateCheck: TypesGen.UpdateCheckResponse = {
 
 export const MockOwnerRole: TypesGen.Role = {
 	name: "owner",
-	display_name: "Owner",
+	display_name: "所有者",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: "",
@@ -292,7 +292,7 @@ export const MockOwnerRole: TypesGen.Role = {
 
 export const MockUserAdminRole: TypesGen.Role = {
 	name: "user-admin",
-	display_name: "User Admin",
+	display_name: "用户管理员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: "",
@@ -302,7 +302,7 @@ export const MockUserAdminRole: TypesGen.Role = {
 
 export const MockTemplateAdminRole: TypesGen.Role = {
 	name: "template-admin",
-	display_name: "Template Admin",
+	display_name: "模板管理员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: "",
@@ -312,7 +312,7 @@ export const MockTemplateAdminRole: TypesGen.Role = {
 
 export const MockAuditorRole: TypesGen.Role = {
 	name: "auditor",
-	display_name: "Auditor",
+	display_name: "审计员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: "",
@@ -322,7 +322,7 @@ export const MockAuditorRole: TypesGen.Role = {
 
 export const MockWorkspaceCreationBanRole: TypesGen.Role = {
 	name: "organization-workspace-creation-ban",
-	display_name: "Organization Workspace Creation Ban",
+	display_name: "组织工作区创建禁令",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: "",
@@ -332,12 +332,12 @@ export const MockWorkspaceCreationBanRole: TypesGen.Role = {
 
 export const MockMemberRole: TypesGen.SlimRole = {
 	name: "member",
-	display_name: "Member",
+	display_name: "成员",
 };
 
 export const MockOrganizationAdminRole: TypesGen.Role = {
 	name: "organization-admin",
-	display_name: "Organization Admin",
+	display_name: "组织管理员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -347,7 +347,7 @@ export const MockOrganizationAdminRole: TypesGen.Role = {
 
 export const MockOrganizationUserAdminRole: TypesGen.Role = {
 	name: "organization-user-admin",
-	display_name: "Organization User Admin",
+	display_name: "组织用户管理员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -357,7 +357,7 @@ export const MockOrganizationUserAdminRole: TypesGen.Role = {
 
 export const MockOrganizationTemplateAdminRole: TypesGen.Role = {
 	name: "organization-template-admin",
-	display_name: "Organization Template Admin",
+	display_name: "组织模板管理员",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -367,7 +367,7 @@ export const MockOrganizationTemplateAdminRole: TypesGen.Role = {
 
 export const MockOrganizationAuditorRole: TypesGen.AssignableRoles = {
 	name: "organization-auditor",
-	display_name: "Organization Auditor",
+	display_name: "组织审计员",
 	assignable: true,
 	built_in: false,
 	site_permissions: [],
@@ -379,7 +379,7 @@ export const MockOrganizationAuditorRole: TypesGen.AssignableRoles = {
 
 export const MockAgentsAccessRole: TypesGen.Role = {
 	name: "agents-access",
-	display_name: "Coder Agents User",
+	display_name: "Coder 代理用户",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -389,7 +389,7 @@ export const MockAgentsAccessRole: TypesGen.Role = {
 
 export const MockRoleWithOrgPermissions: TypesGen.AssignableRoles = {
 	name: "my-role-1",
-	display_name: "My Role 1",
+	display_name: "我的角色 1",
 	assignable: true,
 	built_in: false,
 	site_permissions: [],
@@ -482,7 +482,7 @@ export const MockRoleWithOrgPermissions: TypesGen.AssignableRoles = {
 
 export const MockRole2WithOrgPermissions: TypesGen.Role = {
 	name: "my-role-1",
-	display_name: "My Role 1",
+	display_name: "我的角色 1",
 	site_permissions: [],
 	user_permissions: [],
 	organization_id: MockOrganization.id,
@@ -544,7 +544,7 @@ export const MockUserMember: TypesGen.User = {
 	last_seen_at: "2022-09-14T19:12:21Z",
 	login_type: "oidc",
 	has_ai_seat: false,
-	name: "Mock User The Second",
+	name: "Mock 用户第二个",
 };
 
 export const SuspendedMockUser: TypesGen.User = {
@@ -575,7 +575,7 @@ export const MockUserSecrets: TypesGen.UserSecret[] = [
 	{
 		id: "secret-env-only",
 		name: "EXAMPLE_TOKEN",
-		description: "Used by example templates.",
+		description: "用于示例模板。",
 		env_name: "EXAMPLE_TOKEN",
 		file_path: "",
 		created_at: "2026-04-28T16:30:00Z",
@@ -584,7 +584,7 @@ export const MockUserSecrets: TypesGen.UserSecret[] = [
 	{
 		id: "secret-file-only",
 		name: "config-json",
-		description: "Mounted as a workspace file.",
+		description: "作为工作区文件挂载。",
 		env_name: "",
 		file_path: "~/.config/example/config.json",
 		created_at: "2026-04-29T16:30:00Z",
@@ -593,7 +593,7 @@ export const MockUserSecrets: TypesGen.UserSecret[] = [
 	{
 		id: "secret-env-and-file",
 		name: "SERVICE_API_KEY",
-		description: "Available as an environment variable and file.",
+		description: "可作为环境变量和文件使用。",
 		env_name: "SERVICE_API_KEY",
 		file_path: "/var/run/secrets/service-api-key",
 		created_at: "2026-04-30T16:30:00Z",
@@ -611,7 +611,7 @@ export const MockUserSecrets: TypesGen.UserSecret[] = [
 	{
 		id: "secret-duplicate",
 		name: "DUPLICATE_API_KEY",
-		description: "Used to exercise duplicate validation.",
+		description: "用于测试重复值验证。",
 		env_name: "DUPLICATE_API_KEY",
 		file_path: "",
 		created_at: "2026-05-01T18:30:00Z",
@@ -691,7 +691,7 @@ export const MockProvisioner: TypesGen.ProvisionerDaemon = {
 	id: "test-provisioner",
 	key_id: MockProvisionerBuiltinKey.id,
 	organization_id: MockOrganization.id,
-	name: "Test Provisioner",
+	name: "测试供应者",
 	provisioners: ["echo"],
 	tags: { scope: "organization" },
 	version: MockBuildInfo.version,
@@ -707,7 +707,7 @@ const MockUserAuthProvisioner: TypesGen.ProvisionerDaemon = {
 	...MockProvisioner,
 	id: "test-user-auth-provisioner",
 	key_id: MockProvisionerUserAuthKey.id,
-	name: `${MockUserOwner.name}'s provisioner`,
+	name: `${MockUserOwner.name}的供应者`,
 	tags: { scope: "user" },
 };
 
@@ -716,7 +716,7 @@ const _MockPskProvisioner: TypesGen.ProvisionerDaemon = {
 	id: "test-psk-provisioner",
 	key_id: MockProvisionerPskKey.id,
 	key_name: MockProvisionerPskKey.name,
-	name: "Test psk provisioner",
+	name: "测试 psk 供应者",
 };
 
 const _MockKeyProvisioner: TypesGen.ProvisionerDaemon = {
@@ -725,14 +725,14 @@ const _MockKeyProvisioner: TypesGen.ProvisionerDaemon = {
 	key_id: MockProvisionerKey.id,
 	key_name: MockProvisionerKey.name,
 	organization_id: MockProvisionerKey.organization,
-	name: "Test key provisioner",
+	name: "测试密钥供应者",
 	tags: MockProvisionerKey.tags,
 };
 
 const _MockProvisioner2: TypesGen.ProvisionerDaemon = {
 	...MockProvisioner,
 	id: "test-provisioner-2",
-	name: "Test Provisioner 2",
+	name: "测试供应者 2",
 	key_id: MockProvisionerKey.id,
 	key_name: MockProvisionerKey.name,
 };
@@ -740,14 +740,14 @@ const _MockProvisioner2: TypesGen.ProvisionerDaemon = {
 export const MockUserProvisioner: TypesGen.ProvisionerDaemon = {
 	...MockUserAuthProvisioner,
 	id: "test-user-provisioner",
-	name: "Test User Provisioner",
+	name: "测试用户供应者",
 	tags: { scope: "user", owner: "12345678-abcd-1234-abcd-1234567890abcd" },
 };
 
 export const MockProvisionerWithTags: TypesGen.ProvisionerDaemon = {
 	...MockProvisioner,
 	id: "test-provisioner-tags",
-	name: "Test Provisioner with tags",
+	name: "带标签的测试供应者",
 	tags: {
 		...MockProvisioner.tags,
 		都市: "ユタ",
@@ -780,7 +780,7 @@ export const MockProvisionerJob: TypesGen.ProvisionerJob = {
 	type: "template_version_dry_run",
 	metadata: {
 		workspace_id: "test-workspace",
-		template_display_name: "Test Template",
+		template_display_name: "测试模板",
 		template_icon: "/icon/code.svg",
 		template_id: "test-template",
 		template_name: "test-template",
@@ -820,14 +820,14 @@ export const MockTemplateVersion: TypesGen.TemplateVersion = {
 	template_id: "test-template",
 	job: MockProvisionerJob,
 	name: "test-version",
-	message: "first version",
+	message: "第一个版本",
 	readme: `---
 name:Template test
 ---
-## Instructions
-You can add instructions here
+## 指令
+你可以在这里添加指令
 
-[Some link info](https://coder.com)`,
+[一些链接信息](https://coder.com)`,
 	created_by: MockUserOwner,
 	archived: false,
 	has_external_agent: false,
@@ -840,14 +840,14 @@ export const MockTemplateVersion2: TypesGen.TemplateVersion = {
 	template_id: "test-template",
 	job: MockProvisionerJob,
 	name: "test-version-2",
-	message: "first version",
+	message: "第一个版本",
 	readme: `---
 name:Template test 2
 ---
-## Instructions
-You can add instructions here
+## 指令
+你可以在这里添加指令
 
-[Some link info](https://coder.com)`,
+[一些链接信息](https://coder.com)`,
 	created_by: MockUserOwner,
 	archived: false,
 	has_external_agent: false,
@@ -878,7 +878,7 @@ export const MockTemplate: TypesGen.Template = {
 	organization_display_name: MockOrganization.display_name,
 	organization_icon: "/emojis/1f5fa.png",
 	name: "test-template",
-	display_name: "Test Template",
+	display_name: "测试模板",
 	provisioner: MockProvisioner.provisioners[0],
 	active_version_id: MockTemplateVersion.id,
 	active_user_count: 1,
@@ -896,7 +896,7 @@ export const MockTemplate: TypesGen.Template = {
 			P95: 1500,
 		},
 	},
-	description: "This is a test description.",
+	description: "这是一个测试描述。",
 	default_ttl_ms: 24 * 60 * 60 * 1000,
 	activity_bump_ms: 1 * 60 * 60 * 1000,
 	autostop_requirement: {
@@ -934,7 +934,7 @@ export const MockTemplate: TypesGen.Template = {
 };
 
 const _MockTemplateVersionFiles: TemplateVersionFiles = {
-	"README.md": "# Example\n\nThis is an example template.",
+	"README.md": "# 示例\n\n这是一个示例模板。",
 	"main.tf": `// Provides info about the workspace.
 data "coder_workspace" "me" {}
 
@@ -966,7 +966,7 @@ spec {
 };
 
 export const MockTemplateVersionFileTree: FileTree = {
-	"README.md": "# Example\n\nThis is an example template.",
+	"README.md": "# 示例\n\n这是一个示例模板。",
 	"main.tf": `// Provides info about the workspace.
 data "coder_workspace" "me" {}
 
@@ -1004,7 +1004,7 @@ spec {
 export const MockWorkspaceApp: TypesGen.WorkspaceApp = {
 	id: "test-app",
 	slug: "test-app",
-	display_name: "Test App",
+	display_name: "测试应用",
 	subdomain: false,
 	health: "disabled",
 	external: false,
@@ -1012,13 +1012,13 @@ export const MockWorkspaceApp: TypesGen.WorkspaceApp = {
 	hidden: false,
 	open_in: "slim-window",
 	statuses: [],
-	tooltip: "Test **Tooltip**",
+	tooltip: "测试**工具提示**",
 };
 
 export const MockWorkspaceAgentLogSource: TypesGen.WorkspaceAgentLogSource = {
 	created_at: "2023-05-04T11:30:41.402072Z",
 	id: "dc790496-eaec-4f88-a53f-8ce1f61a1fff",
-	display_name: "Startup Script",
+	display_name: "启动脚本",
 	icon: "",
 	workspace_agent_id: "",
 };
@@ -1033,7 +1033,7 @@ const MockWorkspaceAgentScript: TypesGen.WorkspaceAgentScript = {
 	script: "echo 'hello world'",
 	start_blocks_login: false,
 	timeout: 0,
-	display_name: "Startup Script",
+	display_name: "启动脚本",
 };
 
 export const MockWorkspaceAgent: TypesGen.WorkspaceAgent = {
@@ -1111,7 +1111,7 @@ export const MockWorkspaceAppStatus: TypesGen.WorkspaceAppStatus = {
 	workspace_id: "test-workspace",
 	app_id: MockWorkspaceApp.id,
 	uri: "https://github.com/coder/coder/pull/1234",
-	message: "Your competitors page is completed!",
+	message: "您的竞争对手页面已完成！",
 	state: "complete",
 	// Deprecated fields
 	needs_user_attention: false,
@@ -1128,7 +1128,7 @@ export const MockWorkspaceAgentDisconnected: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "ready",
 	health: {
 		healthy: false,
-		reason: "agent is not connected",
+		reason: "代理未连接",
 	},
 };
 
@@ -1201,7 +1201,7 @@ export const MockWorkspaceAgentTimeout: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "created",
 	health: {
 		healthy: false,
-		reason: "agent is taking too long to connect",
+		reason: "代理连接时间过长",
 	},
 };
 
@@ -1241,7 +1241,7 @@ export const MockWorkspaceAgentStartError: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "start_error",
 	health: {
 		healthy: false,
-		reason: "agent startup script failed",
+		reason: "代理启动脚本失败",
 	},
 	scripts: [
 		{
@@ -1313,7 +1313,7 @@ export const MockWorkspaceAgentShuttingDown: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "shutting_down",
 	health: {
 		healthy: false,
-		reason: "agent is shutting down",
+		reason: "代理正在关闭",
 	},
 };
 
@@ -1324,7 +1324,7 @@ export const MockWorkspaceAgentShutdownTimeout: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "shutdown_timeout",
 	health: {
 		healthy: false,
-		reason: "agent is shutting down",
+		reason: "代理正在关闭",
 	},
 };
 
@@ -1335,7 +1335,7 @@ export const MockWorkspaceAgentShutdownError: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "shutdown_error",
 	health: {
 		healthy: false,
-		reason: "agent is shutting down",
+		reason: "代理正在关闭",
 	},
 };
 
@@ -1346,7 +1346,7 @@ export const MockWorkspaceAgentOff: TypesGen.WorkspaceAgent = {
 	lifecycle_state: "off",
 	health: {
 		healthy: false,
-		reason: "agent is shutting down",
+		reason: "代理正在关闭",
 	},
 };
 
@@ -1855,8 +1855,8 @@ export const MockTemplateVersionParameter1: TypesGen.TemplateVersionParameter =
 		name: "first_parameter",
 		type: "string",
 		form_type: "input",
-		description: "This is first parameter",
-		description_plaintext: "Markdown: This is first parameter",
+		description: "这是第一个参数",
+		description_plaintext: "Markdown: 这是第一个参数",
 		default_value: "abc",
 		mutable: true,
 		icon: "/icon/folder.svg",
@@ -1870,8 +1870,8 @@ export const MockTemplateVersionParameter2: TypesGen.TemplateVersionParameter =
 		name: "second_parameter",
 		type: "number",
 		form_type: "input",
-		description: "This is second parameter",
-		description_plaintext: "Markdown: This is second parameter",
+		description: "这是第二个参数",
+		description_plaintext: "Markdown: 这是第二个参数",
 		default_value: "2",
 		mutable: true,
 		icon: "/icon/folder.svg",
@@ -1888,13 +1888,13 @@ export const MockTemplateVersionParameter3: TypesGen.TemplateVersionParameter =
 		name: "third_parameter",
 		type: "string",
 		form_type: "input",
-		description: "This is third parameter",
-		description_plaintext: "Markdown: This is third parameter",
+		description: "这是第三个参数",
+		description_plaintext: "Markdown: 这是第三个参数",
 		default_value: "aaa",
 		mutable: true,
 		icon: "/icon/database.svg",
 		options: [],
-		validation_error: "No way!",
+		validation_error: "不行！",
 		validation_regex: "^[a-z]{3}$",
 		required: true,
 		ephemeral: false,
@@ -1905,8 +1905,8 @@ export const MockTemplateVersionParameter4: TypesGen.TemplateVersionParameter =
 		name: "fourth_parameter",
 		type: "string",
 		form_type: "input",
-		description: "This is fourth parameter",
-		description_plaintext: "Markdown: This is fourth parameter",
+		description: "这是第四个参数",
+		description_plaintext: "Markdown: 这是第四个参数",
 		default_value: "def",
 		mutable: false,
 		icon: "/icon/database.svg",
@@ -1919,8 +1919,8 @@ const MockTemplateVersionParameter5: TypesGen.TemplateVersionParameter = {
 	name: "fifth_parameter",
 	type: "number",
 	form_type: "input",
-	description: "This is fifth parameter",
-	description_plaintext: "Markdown: This is fifth parameter",
+	description: "这是第五个参数",
+	description_plaintext: "Markdown: 这是第五个参数",
 	default_value: "5",
 	mutable: true,
 	icon: "/icon/folder.svg",
@@ -1937,8 +1937,8 @@ export const MockTemplateVersionParameter6: TypesGen.TemplateVersionParameter =
 		name: "ephemeral_parameter",
 		type: "string",
 		form_type: "input",
-		description: "This is ephemeral parameter",
-		description_plaintext: "Markdown: This is ephemeral parameter",
+		description: "这是一个短暂参数",
+		description_plaintext: "Markdown: 这是一个短暂参数",
 		default_value: "abc",
 		mutable: true,
 		icon: "/icon/folder.svg",
@@ -1949,7 +1949,7 @@ export const MockTemplateVersionParameter6: TypesGen.TemplateVersionParameter =
 
 export const MockTemplateVersionVariable1: TypesGen.TemplateVersionVariable = {
 	name: "first_variable",
-	description: "This is first variable.",
+	description: "这是第一个变量。",
 	type: "string",
 	value: "",
 	default_value: "abc",
@@ -1959,7 +1959,7 @@ export const MockTemplateVersionVariable1: TypesGen.TemplateVersionVariable = {
 
 export const MockTemplateVersionVariable2: TypesGen.TemplateVersionVariable = {
 	name: "second_variable",
-	description: "This is second variable.",
+	description: "这是第二个变量。",
 	type: "number",
 	value: "5",
 	default_value: "3",
@@ -1969,7 +1969,7 @@ export const MockTemplateVersionVariable2: TypesGen.TemplateVersionVariable = {
 
 export const MockTemplateVersionVariable3: TypesGen.TemplateVersionVariable = {
 	name: "third_variable",
-	description: "This is third variable.",
+	description: "这是第三个变量。",
 	type: "bool",
 	value: "",
 	default_value: "false",
@@ -1979,7 +1979,7 @@ export const MockTemplateVersionVariable3: TypesGen.TemplateVersionVariable = {
 
 export const MockTemplateVersionVariable4: TypesGen.TemplateVersionVariable = {
 	name: "fourth_variable",
-	description: "This is fourth variable.",
+	description: "这是第四个变量。",
 	type: "string",
 	value: "defghijk",
 	default_value: "",
@@ -1989,7 +1989,7 @@ export const MockTemplateVersionVariable4: TypesGen.TemplateVersionVariable = {
 
 export const MockTemplateVersionVariable5: TypesGen.TemplateVersionVariable = {
 	name: "fifth_variable",
-	description: "This is fifth variable.",
+	description: "这是第五个变量。",
 	type: "string",
 	value: "",
 	default_value: "",
@@ -2044,7 +2044,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.005Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Setting up",
+		stage: "正在设置",
 		output: "",
 	},
 	{
@@ -2052,7 +2052,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.006Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "",
 	},
 	{
@@ -2060,7 +2060,7 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.072Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "",
 	},
 	{
@@ -2068,15 +2068,15 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.073Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: "Initializing the backend...",
+		stage: "正在启动工作区",
+		output: "初始化后端...",
 	},
 	{
 		id: 5,
 		created_at: "2022-05-19T16:45:31.077Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "",
 	},
 	{
@@ -2084,47 +2084,47 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.078Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: "Initializing provider plugins...",
+		stage: "正在启动工作区",
+		output: "初始化提供程序插件...",
 	},
 	{
 		id: 7,
 		created_at: "2022-05-19T16:45:31.078Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: '- Finding hashicorp/google versions matching "~\u003e 4.15"...',
+		stage: "正在启动工作区",
+		output: '- 正在查找 hashicorp/google 版本 "~\u003e 4.15"...',
 	},
 	{
 		id: 8,
 		created_at: "2022-05-19T16:45:31.123Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: '- Finding coder/coder versions matching "0.3.4"...',
+		stage: "正在启动工作区",
+		output: '- 正在查找 coder/coder 版本 "0.3.4"...',
 	},
 	{
 		id: 9,
 		created_at: "2022-05-19T16:45:31.137Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: "- Using hashicorp/google v4.21.0 from the shared cache directory",
+		stage: "正在启动工作区",
+		output: "- 从共享缓存目录使用 hashicorp/google v4.21.0",
 	},
 	{
 		id: 10,
 		created_at: "2022-05-19T16:45:31.344Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: "- Using coder/coder v0.3.4 from the shared cache directory",
+		stage: "正在启动工作区",
+		output: "- 从共享缓存目录使用 coder/coder v0.3.4",
 	},
 	{
 		id: 11,
 		created_at: "2022-05-19T16:45:31.388Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "",
 	},
 	{
@@ -2132,42 +2132,42 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.388Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"Terraform has created a lock file .terraform.lock.hcl to record the provider",
+			"Terraform 已创建锁文件 .terraform.lock.hcl 以记录提供程序",
 	},
 	{
 		id: 13,
 		created_at: "2022-05-19T16:45:31.389Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"selections it made above. Include this file in your version control repository",
+			"所做的选择。请将此文件包含在你的版本控制仓库中",
 	},
 	{
 		id: 14,
 		created_at: "2022-05-19T16:45:31.389Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"so that Terraform can guarantee to make the same selections by default when",
+			"以便 Terraform 可以在将来默认做出相同的选择，当你",
 	},
 	{
 		id: 15,
 		created_at: "2022-05-19T16:45:31.39Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: 'you run "terraform init" in the future.',
+		stage: "正在启动工作区",
+		output: '运行 "terraform init" 时。',
 	},
 	{
 		id: 16,
 		created_at: "2022-05-19T16:45:31.39Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "",
 	},
 	{
@@ -2175,15 +2175,15 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:31.391Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Starting workspace",
-		output: "Terraform has been successfully initialized!",
+		stage: "正在启动工作区",
+		output: "Terraform 已成功初始化！",
 	},
 	{
 		id: 18,
 		created_at: "2022-05-19T16:45:31.42Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output: "Terraform 1.1.9",
 	},
 	{
@@ -2191,122 +2191,122 @@ export const MockWorkspaceBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2022-05-19T16:45:33.537Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "coder_agent.dev: Plan to create",
+		stage: "正在启动工作区",
+		output: "coder_agent.dev: 计划创建",
 	},
 	{
 		id: 20,
 		created_at: "2022-05-19T16:45:33.537Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_disk.root: Plan to create",
+		stage: "正在启动工作区",
+		output: "google_compute_disk.root: 计划创建",
 	},
 	{
 		id: 21,
 		created_at: "2022-05-19T16:45:33.538Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_instance.dev[0]: Plan to create",
+		stage: "正在启动工作区",
+		output: "google_compute_instance.dev[0]: 计划创建",
 	},
 	{
 		id: 22,
 		created_at: "2022-05-19T16:45:33.539Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "Plan: 3 to add, 0 to change, 0 to destroy.",
+		stage: "正在启动工作区",
+		output: "计划: 3 个添加, 0 个更改, 0 个销毁。",
 	},
 	{
 		id: 23,
 		created_at: "2022-05-19T16:45:33.712Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "coder_agent.dev: Creating...",
+		stage: "正在启动工作区",
+		output: "coder_agent.dev: 正在创建...",
 	},
 	{
 		id: 24,
 		created_at: "2022-05-19T16:45:33.719Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"coder_agent.dev: Creation complete after 0s [id=d07f5bdc-4a8d-4919-9cdb-0ac6ba9e64d6]",
+			"coder_agent.dev: 0 秒后创建完成 [id=d07f5bdc-4a8d-4919-9cdb-0ac6ba9e64d6]",
 	},
 	{
 		id: 25,
 		created_at: "2022-05-19T16:45:34.139Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_disk.root: Creating...",
+		stage: "正在启动工作区",
+		output: "google_compute_disk.root: 正在创建...",
 	},
 	{
 		id: 26,
 		created_at: "2022-05-19T16:45:44.14Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_disk.root: Still creating... [10s elapsed]",
+		stage: "正在启动工作区",
+		output: "google_compute_disk.root: 仍在创建... [10 秒已过去]",
 	},
 	{
 		id: 27,
 		created_at: "2022-05-19T16:45:47.106Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"google_compute_disk.root: Creation complete after 13s [id=projects/bruno-coder-v2/zones/europe-west4-b/disks/coder-developer-bruno-dev-123-root]",
+			"google_compute_disk.root: 13 秒后创建完成 [id=projects/bruno-coder-v2/zones/europe-west4-b/disks/coder-developer-bruno-dev-123-root]",
 	},
 	{
 		id: 28,
 		created_at: "2022-05-19T16:45:47.118Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_instance.dev[0]: Creating...",
+		stage: "正在启动工作区",
+		output: "google_compute_instance.dev[0]: 正在创建...",
 	},
 	{
 		id: 29,
 		created_at: "2022-05-19T16:45:57.122Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "google_compute_instance.dev[0]: Still creating... [10s elapsed]",
+		stage: "正在启动工作区",
+		output: "google_compute_instance.dev[0]: 仍在创建... [10 秒已过去]",
 	},
 	{
 		id: 30,
 		created_at: "2022-05-19T16:46:00.837Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
+		stage: "正在启动工作区",
 		output:
-			"google_compute_instance.dev[0]: Creation complete after 14s [id=projects/bruno-coder-v2/zones/europe-west4-b/instances/coder-developer-bruno-dev-123]",
+			"google_compute_instance.dev[0]: 14 秒后创建完成 [id=projects/bruno-coder-v2/zones/europe-west4-b/instances/coder-developer-bruno-dev-123]",
 	},
 	{
 		id: 31,
 		created_at: "2022-05-19T16:46:00.846Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "Apply complete! Resources: 3 added, 0 changed, 0 destroyed.",
+		stage: "正在启动工作区",
+		output: "应用完成！资源：已创建 3 个，已更改 0 个，已销毁 0 个。",
 	},
 	{
 		id: 32,
 		created_at: "2022-05-19T16:46:00.847Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Starting workspace",
-		output: "Outputs: 0",
+		stage: "正在启动工作区",
+		output: "输出: 0",
 	},
 	{
 		id: 33,
 		created_at: "2022-05-19T16:46:02.283Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Cleaning Up",
+		stage: "正在清理",
 		output: "",
 	},
 ];
@@ -2317,7 +2317,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:43.331Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Setting up",
+		stage: "正在设置",
 		output: "",
 	},
 	{
@@ -2325,7 +2325,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:43.331Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Parsing template parameters",
+		stage: "正在解析模板参数",
 		output: "",
 	},
 	{
@@ -2333,7 +2333,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:43.339Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "",
 	},
 	{
@@ -2341,150 +2341,150 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:44.15Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "Initializing the backend...",
+		stage: "正在检测持久资源",
+		output: "初始化后端...",
 	},
 	{
 		id: 938498,
 		created_at: "2023-08-25T19:07:44.215Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "Initializing provider plugins...",
+		stage: "正在检测持久资源",
+		output: "初始化提供程序插件...",
 	},
 	{
 		id: 938499,
 		created_at: "2023-08-25T19:07:44.216Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: '- Finding coder/coder versions matching "~> 0.11.0"...',
+		stage: "正在检测持久资源",
+		output: '- 正在查找 coder/coder 版本 "~> 0.11.0"...',
 	},
 	{
 		id: 938500,
 		created_at: "2023-08-25T19:07:44.668Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: '- Finding kreuzwerker/docker versions matching "~> 3.0.1"...',
+		stage: "正在检测持久资源",
+		output: '- 正在查找 kreuzwerker/docker 版本 "~> 3.0.1"...',
 	},
 	{
 		id: 938501,
 		created_at: "2023-08-25T19:07:44.722Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "- Using coder/coder v0.11.1 from the shared cache directory",
+		stage: "正在检测持久资源",
+		output: "- 从共享缓存目录使用 coder/coder v0.11.1",
 	},
 	{
 		id: 938502,
 		created_at: "2023-08-25T19:07:44.857Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "- Using kreuzwerker/docker v3.0.2 from the shared cache directory",
+		stage: "正在检测持久资源",
+		output: "- 从共享缓存目录使用 kreuzwerker/docker v3.0.2",
 	},
 	{
 		id: 938503,
 		created_at: "2023-08-25T19:07:45.081Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"Terraform has created a lock file .terraform.lock.hcl to record the provider",
+			"Terraform 已创建锁文件 .terraform.lock.hcl 以记录提供程序",
 	},
 	{
 		id: 938504,
 		created_at: "2023-08-25T19:07:45.081Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"selections it made above. Include this file in your version control repository",
+			"所做的选择。请将此文件包含在你的版本控制仓库中",
 	},
 	{
 		id: 938505,
 		created_at: "2023-08-25T19:07:45.081Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"so that Terraform can guarantee to make the same selections by default when",
+			"以便 Terraform 可以在将来默认做出相同的选择，当你",
 	},
 	{
 		id: 938506,
 		created_at: "2023-08-25T19:07:45.082Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: 'you run "terraform init" in the future.',
+		stage: "正在检测持久资源",
+		output: '运行 "terraform init" 时。',
 	},
 	{
 		id: 938507,
 		created_at: "2023-08-25T19:07:45.083Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "Terraform has been successfully initialized!",
+		stage: "正在检测持久资源",
+		output: "Terraform 已成功初始化！",
 	},
 	{
 		id: 938508,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			'You may now begin working with Terraform. Try running "terraform plan" to see',
+			'你现在可以开始使用 Terraform。尝试运行 "terraform plan" 来查看',
 	},
 	{
 		id: 938509,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"any changes that are required for your infrastructure. All Terraform commands",
+			"你的基础设施需要的任何更改。所有 Terraform 命令",
 	},
 	{
 		id: 938510,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "should now work.",
+		stage: "正在检测持久资源",
+		output: "应该现在就能正常工作。",
 	},
 	{
 		id: 938511,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"If you ever set or change modules or backend configuration for Terraform,",
+			"如果你以后设置或更改了 Terraform 的模块或后端配置，",
 	},
 	{
 		id: 938512,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"rerun this command to reinitialize your working directory. If you forget, other",
+			"请重新运行此命令以重新初始化你的工作目录。如果忘记，其他",
 	},
 	{
 		id: 938513,
 		created_at: "2023-08-25T19:07:45.084Z",
 		log_source: "provisioner",
 		log_level: "debug",
-		stage: "Detecting persistent resources",
-		output: "commands will detect it and remind you to do so if necessary.",
+		stage: "正在检测持久资源",
+		output: "命令会检测到并提醒你这样做。",
 	},
 	{
 		id: 938514,
 		created_at: "2023-08-25T19:07:45.143Z",
 		log_source: "provisioner",
 		log_level: "info",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "Terraform 1.1.9",
 	},
 	{
@@ -2492,23 +2492,23 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.297Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
-		output: "Warning: Argument is deprecated",
+		stage: "正在检测持久资源",
+		output: "警告: 参数已弃用",
 	},
 	{
 		id: 938516,
 		created_at: "2023-08-25T19:07:46.297Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
-		output: 'on devcontainer-on-docker.tf line 15, in provider "coder":',
+		stage: "正在检测持久资源",
+		output: '在 devcontainer-on-docker.tf 的第 15 行, 位于 provider "coder":',
 	},
 	{
 		id: 938517,
 		created_at: "2023-08-25T19:07:46.297Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "  15:   feature_use_managed_variables = true",
 	},
 	{
@@ -2516,7 +2516,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.297Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "",
 	},
 	{
@@ -2524,33 +2524,33 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.297Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"Terraform variables are now exclusively utilized for template-wide variables after the removal of support for legacy parameters.",
+			"在移除对旧版参数的支持后，Terraform 变量现在专门用于模板范围的变量。",
 	},
 	{
 		id: 938520,
 		created_at: "2023-08-25T19:07:46.3Z",
 		log_source: "provisioner",
 		log_level: "error",
-		stage: "Detecting persistent resources",
-		output: "Error: ephemeral parameter requires the default property",
+		stage: "正在检测持久资源",
+		output: "错误: 短暂参数需要默认属性",
 	},
 	{
 		id: 938521,
 		created_at: "2023-08-25T19:07:46.3Z",
 		log_source: "provisioner",
 		log_level: "error",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			'on devcontainer-on-docker.tf line 27, in data "coder_parameter" "another_one":',
+			'在 devcontainer-on-docker.tf 的第 27 行, 位于 data "coder_parameter" "another_one":',
 	},
 	{
 		id: 938522,
 		created_at: "2023-08-25T19:07:46.3Z",
 		log_source: "provisioner",
 		log_level: "error",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: '  27: data "coder_parameter" "another_one" {',
 	},
 	{
@@ -2558,7 +2558,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.301Z",
 		log_source: "provisioner",
 		log_level: "error",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "",
 	},
 	{
@@ -2566,7 +2566,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.301Z",
 		log_source: "provisioner",
 		log_level: "error",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "",
 	},
 	{
@@ -2574,23 +2574,23 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.303Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
-		output: "Warning: Argument is deprecated",
+		stage: "正在检测持久资源",
+		output: "警告: 参数已弃用",
 	},
 	{
 		id: 938526,
 		created_at: "2023-08-25T19:07:46.303Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
-		output: 'on devcontainer-on-docker.tf line 15, in provider "coder":',
+		stage: "正在检测持久资源",
+		output: '在 devcontainer-on-docker.tf 的第 15 行, 位于 provider "coder":',
 	},
 	{
 		id: 938527,
 		created_at: "2023-08-25T19:07:46.303Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "  15:   feature_use_managed_variables = true",
 	},
 	{
@@ -2598,7 +2598,7 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.303Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output: "",
 	},
 	{
@@ -2606,22 +2606,22 @@ export const MockWorkspaceExtendedBuildLogs: TypesGen.ProvisionerJobLog[] = [
 		created_at: "2023-08-25T19:07:46.303Z",
 		log_source: "provisioner",
 		log_level: "warn",
-		stage: "Detecting persistent resources",
+		stage: "正在检测持久资源",
 		output:
-			"Terraform variables are now exclusively utilized for template-wide variables after the removal of support for legacy parameters.",
+			"在移除对旧版参数的支持后，Terraform 变量现在专门用于模板范围的变量。",
 	},
 	{
 		id: 938530,
 		created_at: "2023-08-25T19:07:46.311Z",
 		log_source: "provisioner_daemon",
 		log_level: "info",
-		stage: "Cleaning Up",
+		stage: "正在清理",
 		output: "",
 	},
 ];
 
 export const MockCancellationMessage = {
-	message: "Job successfully canceled",
+	message: "任务已成功取消",
 };
 
 type MockAPIInput = {
@@ -2642,7 +2642,7 @@ type MockAPIOutput = {
 };
 
 export const mockApiError = ({
-	message = "Something went wrong.",
+	message = "出了点问题。",
 	detail,
 	validations,
 }: MockAPIInput): MockAPIOutput => ({
@@ -2678,7 +2678,7 @@ export const MockEntitlements: TypesGen.Entitlements = {
 
 const _MockEntitlementsWithWarnings: TypesGen.Entitlements = {
 	errors: [],
-	warnings: ["You are over your active user limit.", "And another thing."],
+	warnings: ["您已超出活动用户限制。", "还有另一件事。"],
 	has_license: true,
 	trial: false,
 	require_telemetry: false,
@@ -2776,7 +2776,7 @@ export const MockEntitlementsWithMultiOrg: TypesGen.Entitlements = {
 export const MockExperiments: TypesGen.Experiment[] = [];
 
 /**
- * An audit log for MockOrganization.
+ * MockOrganization 的审计日志。
  */
 export const MockAuditLog: TypesGen.AuditLog = {
 	id: "fbd2116a-8961-4954-87ae-e4575bd29ce0",
@@ -2806,21 +2806,21 @@ export const MockAuditLog: TypesGen.AuditLog = {
 	},
 	status_code: 200,
 	additional_fields: {},
-	description: "{user} created workspace {target}",
+	description: "{user} 创建工作区 {target}",
 	user: MockUserOwner,
 	resource_link: "/@admin/bruno-dev",
 	is_deleted: false,
 };
 
 /**
- * An audit log for MockOrganization2.
+ * MockOrganization2 的审计日志。
  */
 export const MockAuditLog2: TypesGen.AuditLog = {
 	...MockAuditLog,
 	id: "53bded77-7b9d-4e82-8771-991a34d759f9",
 	action: "write",
 	time: "2022-05-20T16:45:57.122Z",
-	description: "{user} updated workspace {target}",
+	description: "{user} 更新工作区 {target}",
 	organization_id: MockOrganization2.id,
 	organization: {
 		id: MockOrganization2.id,
@@ -2853,7 +2853,7 @@ export const MockAuditLog2: TypesGen.AuditLog = {
 };
 
 /**
- * An audit log without an organization.
+ * 一条没有组织的审计日志。
  */
 export const MockAuditLog3: TypesGen.AuditLog = {
 	id: "8efa9208-656a-422d-842d-b9dec0cf1bf3",
@@ -2870,14 +2870,14 @@ export const MockAuditLog3: TypesGen.AuditLog = {
 	action: "write",
 	diff: {
 		display_name: {
-			old: "old display",
-			new: "new display",
+			old: "旧的显示名称",
+			new: "新的显示名称",
 			secret: false,
 		},
 	},
 	status_code: 200,
 	additional_fields: {},
-	description: "{user} updated template {target}",
+	description: "{user} 更新模板 {target}",
 	user: MockUserOwner,
 	resource_link: "/templates/docker",
 	is_deleted: false,
@@ -2886,7 +2886,7 @@ export const MockAuditLog3: TypesGen.AuditLog = {
 export const MockWorkspaceCreateAuditLogForDifferentOwner = {
 	...MockAuditLog,
 	additional_fields: {
-		workspace_owner: "Member",
+		workspace_owner: "成员",
 	},
 };
 
@@ -2896,7 +2896,7 @@ export const MockAuditLogWithWorkspaceBuild: TypesGen.AuditLog = {
 	request_id: "61555889-2875-475c-8494-f7693dd5d75b",
 	action: "stop",
 	resource_type: "workspace_build",
-	description: "{user} stopped build for workspace {target}",
+	description: "{user} 停止了工作区 {target} 的构建",
 	additional_fields: {
 		workspace_name: "test2",
 	},
@@ -2929,7 +2929,7 @@ const _MockAuditOauthConvert: TypesGen.AuditLog = {
 	resource_target: "oidc",
 	action: "create",
 	status_code: 201,
-	description: "{user} created login type conversion to {target}}",
+	description: "{user} 创建了登录类型转换为 {target}",
 	diff: {
 		created_at: {
 			old: "0001-01-01T00:00:00Z",
@@ -2965,7 +2965,7 @@ export const MockAuditLogSuccessfulLogin: TypesGen.AuditLog = {
 	resource_target: "",
 	action: "login",
 	status_code: 201,
-	description: "{user} logged in",
+	description: "{user} 登录",
 };
 
 export const MockAuditLogUnsuccessfulLoginKnownUser: TypesGen.AuditLog = {
@@ -2978,7 +2978,7 @@ export const MockAuditLogRequestPasswordReset: TypesGen.AuditLog = {
 	resource_type: "user",
 	resource_target: "member",
 	action: "request_password_reset",
-	description: "password reset requested for {target}",
+	description: "请求重置 {target} 的密码",
 	diff: {
 		hashed_password: {
 			old: "",
@@ -3066,7 +3066,7 @@ export const MockDisconnectedSSHConnectionLog: TypesGen.ConnectionLog = {
 	type: "ssh",
 	ssh_info: {
 		connection_id: "026c8c11-fc5c-4df8-a286-5fe6d7f54f98",
-		disconnect_reason: "server shut down",
+		disconnect_reason: "服务器关闭",
 		disconnect_time: "2022-05-19T16:49:57.122Z",
 		exit_code: 0,
 	},
@@ -3169,8 +3169,8 @@ export const MockOrganizationSyncSettingsEmpty: TypesGen.OrganizationSyncSetting
 
 export const MockGroup: TypesGen.Group = {
 	id: "fbd2116a-8961-4954-87ae-e4575bd29ce0",
-	name: "Front-End",
-	display_name: "Front-End",
+	name: "前端",
+	display_name: "前端",
 	avatar_url: "https://example.com",
 	organization_id: MockOrganization.id,
 	organization_name: MockOrganization.name,
@@ -3183,8 +3183,8 @@ export const MockGroup: TypesGen.Group = {
 
 export const MockGroupWithoutMembers: TypesGen.Group = {
 	id: "fbd2116a-8961-4954-87ae-e4575bd29ce0",
-	name: "Front-End",
-	display_name: "Front-End",
+	name: "前端",
+	display_name: "前端",
 	avatar_url: "https://example.com",
 	organization_id: MockOrganization.id,
 	organization_name: MockOrganization.name,
@@ -3211,7 +3211,7 @@ export const MockGroup2: TypesGen.Group = {
 
 export const MockGroup3: TypesGen.Group = {
 	id: "d3562dc1-c120-43a9-ba02-88e43bbca192",
-	name: "Back-End",
+	name: "后端",
 	display_name: "",
 	avatar_url: "https://example.com",
 	organization_id: MockOrganization.id,
@@ -3227,7 +3227,7 @@ const MockEveryoneGroup: TypesGen.Group = {
 	// The "Everyone" group must have the same ID as a the organization it belongs
 	// to.
 	id: MockOrganization.id,
-	name: "Everyone",
+	name: "所有人",
 	display_name: "",
 	organization_id: MockOrganization.id,
 	organization_name: MockOrganization.name,
@@ -3255,10 +3255,10 @@ export const MockTemplateACLEmpty: TypesGen.TemplateACL = {
 export const MockTemplateExample: TypesGen.TemplateExample = {
 	id: "aws-windows",
 	url: "https://github.com/coder/coder/tree/main/examples/templates/aws-windows",
-	name: "Develop in an ECS-hosted container",
-	description: "Get started with Linux development on AWS ECS.",
+	name: "在 ECS 托管的容器中开发",
+	description: "在 AWS ECS 上开始 Linux 开发。",
 	markdown:
-		"\n# aws-ecs\n\nThis is a sample template for running a Coder workspace on ECS. It assumes there\nis a pre-existing ECS cluster with EC2-based compute to host the workspace.\n\n## Architecture\n\nThis workspace is built using the following AWS resources:\n\n- Task definition - the container definition, includes the image, command, volume(s)\n- ECS service - manages the task definition\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `coder_agent`\nresource block. The `coder_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n",
+		"\n# aws-ecs\n\n这是一个用于在 ECS 上运行 Coder 工作区的示例模板。它假设已经存在一个基于 EC2 计算的 ECS 集群来托管工作区。\n\n## 架构\n\n此工作区使用以下 AWS 资源构建：\n\n- 任务定义 - 容器定义，包括镜像、命令、卷\n- ECS 服务 - 管理任务定义\n\n## code-server\n\n`code-server` 通过 `coder_agent` 资源块中的 `startup_script` 参数安装。`coder_app` 资源被定义用于通过控制面板 UI 在 `localhost:13337` 上访问 `code-server`。\n",
 	icon: "/icon/aws.svg",
 	tags: ["aws", "cloud"],
 };
@@ -3266,10 +3266,10 @@ export const MockTemplateExample: TypesGen.TemplateExample = {
 export const MockTemplateExample2: TypesGen.TemplateExample = {
 	id: "aws-linux",
 	url: "https://github.com/coder/coder/tree/main/examples/templates/aws-linux",
-	name: "Develop in Linux on AWS EC2",
-	description: "Get started with Linux development on AWS EC2.",
+	name: "在 AWS EC2 上的 Linux 中开发",
+	description: "在 AWS EC2 上开始 Linux 开发。",
 	markdown:
-		'\n# aws-linux\n\nTo get started, run `coder templates init`. When prompted, select this template.\nFollow the on-screen instructions to proceed.\n\n## Authentication\n\nThis template assumes that coderd is run in an environment that is authenticated\nwith AWS. For example, run `aws configure import` to import credentials on the\nsystem and user running coderd.  For other ways to authenticate [consult the\nTerraform docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration).\n\n## Required permissions / policy\n\nThe following sample policy allows Coder to create EC2 instances and modify\ninstances provisioned by Coder:\n\n```json\n{\n    "Version": "2012-10-17",\n    "Statement": [\n        {\n            "Sid": "VisualEditor0",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:GetDefaultCreditSpecification",\n                "ec2:DescribeIamInstanceProfileAssociations",\n                "ec2:DescribeTags",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:DescribeInstanceCreditSpecifications",\n                "ec2:DescribeImages",\n                "ec2:ModifyDefaultCreditSpecification",\n                "ec2:DescribeVolumes"\n            ],\n            "Resource": "*"\n        },\n        {\n            "Sid": "CoderResources",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:DescribeInstances",\n                "ec2:DescribeInstanceAttribute",\n                "ec2:UnmonitorInstances",\n                "ec2:TerminateInstances",\n                "ec2:StartInstances",\n                "ec2:StopInstances",\n                "ec2:DeleteTags",\n                "ec2:MonitorInstances",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:ModifyInstanceAttribute",\n                "ec2:ModifyInstanceCreditSpecification"\n            ],\n            "Resource": "arn:aws:ec2:*:*:instance/*",\n            "Condition": {\n                "StringEquals": {\n                    "aws:ResourceTag/Coder_Provisioned": "true"\n                }\n            }\n        }\n    ]\n}\n```\n\n## code-server\n\n`code-server` is installed via the `startup_script` argument in the `coder_agent`\nresource block. The `coder_app` resource is defined to access `code-server` through\nthe dashboard UI over `localhost:13337`.\n',
+		'\n# aws-linux\n\n开始使用，运行 `coder templates init`。出现提示时，选择此模板。按照屏幕上的说明继续。\n\n## 身份验证\n\n此模板假设 coderd 运行在一个已通过 AWS 身份验证的环境中。例如，运行 `aws configure import` 以在系统和运行 coderd 的用户上导入凭据。关于其他身份验证方式，请查阅 [Terraform 文档](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)。\n\n## 所需权限/策略\n\n以下示例策略允许 Coder 创建 EC2 实例并修改由 Coder 预置的实例：\n\n```json\n{\n    "Version": "2012-10-17",\n    "Statement": [\n        {\n            "Sid": "VisualEditor0",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:GetDefaultCreditSpecification",\n                "ec2:DescribeIamInstanceProfileAssociations",\n                "ec2:DescribeTags",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:DescribeInstanceCreditSpecifications",\n                "ec2:DescribeImages",\n                "ec2:ModifyDefaultCreditSpecification",\n                "ec2:DescribeVolumes"\n            ],\n            "Resource": "*"\n        },\n        {\n            "Sid": "CoderResources",\n            "Effect": "Allow",\n            "Action": [\n                "ec2:DescribeInstances",\n                "ec2:DescribeInstanceAttribute",\n                "ec2:UnmonitorInstances",\n                "ec2:TerminateInstances",\n                "ec2:StartInstances",\n                "ec2:StopInstances",\n                "ec2:DeleteTags",\n                "ec2:MonitorInstances",\n                "ec2:CreateTags",\n                "ec2:RunInstances",\n                "ec2:ModifyInstanceAttribute",\n                "ec2:ModifyInstanceCreditSpecification"\n            ],\n            "Resource": "arn:aws:ec2:*:*:instance/*",\n            "Condition": {\n                "StringEquals": {\n                    "aws:ResourceTag/Coder_Provisioned": "true"\n                }\n            }\n        }\n    ]\n}\n```\n\n## code-server\n\n`code-server` 通过 `coder_agent` 资源块中的 `startup_script` 参数安装。`coder_app` 资源被定义用于通过控制面板 UI 在 `localhost:13337` 上访问 `code-server`。\n',
 	icon: "/icon/aws.svg",
 	tags: ["aws", "cloud"],
 };
@@ -3424,8 +3424,8 @@ export const MockWorkspaceBuildParameter5: TypesGen.WorkspaceBuildParameter = {
 
 export const MockPreviewParameter: TypesGen.PreviewParameter = {
 	name: "parameter1",
-	display_name: "Parameter 1",
-	description: "This is a parameter",
+	display_name: "参数 1",
+	description: "这是一个参数",
 	type: "string",
 	form_type: "input",
 	mutable: true,
@@ -3444,26 +3444,26 @@ export const MockPreviewParameter: TypesGen.PreviewParameter = {
 export const MockDropdownParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "instance_type",
-	display_name: "Instance Type",
-	description: "The type of instance to create",
+	display_name: "实例类型",
+	description: "要创建的实例类型",
 	form_type: "dropdown",
 	default_value: { value: "t3.micro", valid: true },
 	options: [
 		{
 			name: "t3.micro",
-			description: "Micro instance",
+			description: "微型实例",
 			value: { value: "t3.micro", valid: true },
 			icon: "",
 		},
 		{
 			name: "t3.small",
-			description: "Small instance",
+			description: "小型实例",
 			value: { value: "t3.small", valid: true },
 			icon: "",
 		},
 		{
 			name: "t3.medium",
-			description: "Medium instance",
+			description: "中型实例",
 			value: { value: "t3.medium", valid: true },
 			icon: "",
 		},
@@ -3479,8 +3479,8 @@ export const MockDropdownParameter: TypesGen.PreviewParameter = {
 const MockTagSelectParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "tags",
-	display_name: "Tags",
-	description: "Resource tags",
+	display_name: "标签",
+	description: "资源标签",
 	type: "list(string)",
 	form_type: "tag-select",
 	required: false,
@@ -3497,8 +3497,8 @@ const MockTagSelectParameter: TypesGen.PreviewParameter = {
 const MockSwitchParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "enable_monitoring",
-	display_name: "Enable Monitoring",
-	description: "Enable system monitoring",
+	display_name: "启用监控",
+	description: "启用系统监控",
 	type: "bool",
 	form_type: "switch",
 	required: false,
@@ -3515,8 +3515,8 @@ const MockSwitchParameter: TypesGen.PreviewParameter = {
 export const MockSliderParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "cpu_count",
-	display_name: "CPU Count",
-	description: "Number of CPU cores",
+	display_name: "CPU 数量",
+	description: "CPU 核心数",
 	type: "number",
 	form_type: "slider",
 	value: { value: "2", valid: true },
@@ -3532,8 +3532,8 @@ export const MockSliderParameter: TypesGen.PreviewParameter = {
 const MockMultiSelectParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "ides",
-	display_name: "IDEs",
-	description: "Enabled IDEs",
+	display_name: "IDE",
+	description: "已启用的 IDE",
 	type: "list(string)",
 	form_type: "multi-select",
 	required: false,
@@ -3571,15 +3571,15 @@ const MockMultiSelectParameter: TypesGen.PreviewParameter = {
 export const MockValidationParameter: TypesGen.PreviewParameter = {
 	...MockPreviewParameter,
 	name: "invalid_number",
-	display_name: "Invalid Parameter",
-	description: "Number parameter with validation error",
+	display_name: "无效参数",
+	description: "带有验证错误的数字参数",
 	type: "number",
 	form_type: "input",
 	value: { value: "50", valid: true },
 	default_value: { value: "50", valid: true },
 	validations: [
 		{
-			validation_error: "Number must be between 0 and 100",
+			validation_error: "数字必须在 0 到 100 之间",
 			validation_regex: null,
 			validation_min: 0,
 			validation_max: 100,
@@ -3609,8 +3609,8 @@ export const MockDynamicParametersResponseWithError: TypesGen.DynamicParametersR
 		diagnostics: [
 			{
 				severity: "error",
-				summary: "Validation failed",
-				detail: "The selected instance type is not available in this region",
+				summary: "验证失败",
+				detail: "所选的实例类型在此区域中不可用",
 				extra: {
 					code: "",
 				},
@@ -3695,7 +3695,7 @@ export const MockWorkspaceAgentLogs: TypesGen.WorkspaceAgentLog[] = [
 	{
 		id: 166666,
 		created_at: "2023-05-04T11:30:42.593686Z",
-		output: "Installing v4.8.3 of the amd64 release from GitHub.",
+		output: "正在从 GitHub 安装 amd64 版本的 v4.8.3。",
 		level: "info",
 		source_id: MockWorkspaceAgentLogSource.id,
 	},
@@ -3705,7 +3705,7 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 	{
 		id: 1,
 		uploaded_at: "1660104000",
-		expires_at: "3420244800", // expires on 5/20/2078
+		expires_at: "3420244800", // 到期于 2078年5月20日
 		uuid: "1",
 		claims: {
 			trial: false,
@@ -3714,13 +3714,13 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 			version: 1,
 			features: {},
 			license_expires: 3420244800,
-			nbf: 1660104000, // valid from 8/10/2022
+			nbf: 1660104000, // 自 2022年8月10日 起有效
 		},
 	},
 	{
 		id: 1,
 		uploaded_at: "1660104000",
-		expires_at: "3420244800", // expires on 5/20/2078
+		expires_at: "3420244800", // 到期于 2078年5月20日
 		uuid: "1",
 		claims: {
 			trial: false,
@@ -3729,13 +3729,13 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 			version: 1,
 			features: {},
 			license_expires: 3420244800,
-			nbf: 1660104000, // valid from 8/10/2022
+			nbf: 1660104000, // 自 2022年8月10日 起有效
 		},
 	},
 	{
 		id: 1,
 		uploaded_at: "1660104000",
-		expires_at: "3420244800", // expires on 5/20/2078
+		expires_at: "3420244800", // 到期于 2078年5月20日
 		uuid: "1",
 		claims: {
 			trial: false,
@@ -3743,13 +3743,13 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 			version: 1,
 			features: {},
 			license_expires: 3420244800,
-			nbf: 1660104000, // valid from 8/10/2022
+			nbf: 1660104000, // 自 2022年8月10日 起有效
 		},
 	},
 	{
 		id: 1,
 		uploaded_at: "1660104000",
-		expires_at: "1660104000", // expired on 8/10/2022
+		expires_at: "1660104000", // 于 2022年8月10日 过期
 		uuid: "1",
 		claims: {
 			trial: false,
@@ -3757,13 +3757,13 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 			version: 1,
 			features: {},
 			license_expires: 1660104000,
-			nbf: 1628568000, // valid from 8/10/2021
+			nbf: 1628568000, // 自 2021年8月10日 起有效
 		},
 	},
 	{
 		id: 1,
 		uploaded_at: "1682346425",
-		expires_at: "1682346425", // expired on 4/24/2023
+		expires_at: "1682346425", // 于 2023年4月24日 过期
 		uuid: "1",
 		claims: {
 			trial: false,
@@ -3771,7 +3771,7 @@ export const MockLicenseResponse: GetLicensesResponse[] = [
 			version: 1,
 			features: {},
 			license_expires: 1682346425,
-			nbf: 1650810425, // valid from 4/24/2022
+			nbf: 1650810425, // 自 2022年4月24日 起有效
 		},
 	},
 ];
@@ -3861,21 +3861,21 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://dev.coder.com/derp",
 							],
 						],
 						client_errs: [
-							["recv derp message: derphttp.Client closed"],
+							["收到 derp 消息: derphttp.Client 关闭"],
 							[
-								"connect to derp: derphttp.Client.Connect connect to <https://sao-paulo.fly.dev.coder.com/derp>: context deadline exceeded: read tcp 10.44.1.150:59546-&gt;149.248.214.149:443: use of closed network connection",
-								"connect to derp: derphttp.Client closed",
-								"connect to derp: derphttp.Client closed",
-								"connect to derp: derphttp.Client closed",
-								"connect to derp: derphttp.Client closed",
-								"couldn't connect after 5 tries, last error: couldn't connect after 5 tries, last error: derphttp.Client closed",
+								"连接至 derp: derphttp.Client.Connect 连接至 <https://sao-paulo.fly.dev.coder.com/derp> 超时: context deadline exceeded: read tcp 10.44.1.150:59546-&gt;149.248.214.149:443: use of closed network connection",
+								"连接至 derp: derphttp.Client 关闭",
+								"连接至 derp: derphttp.Client 关闭",
+								"连接至 derp: derphttp.Client 关闭",
+								"连接至 derp: derphttp.Client 关闭",
+								"连接 5 次后均失败，最后一次错误: 连接 5 次后均失败，最后一次错误: derphttp.Client 关闭",
 							],
 						],
 						stun: {
@@ -3961,10 +3961,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://sydney.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://sydney.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://sydney.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://sydney.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4051,10 +4051,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://europe.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://europe.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://europe.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://europe.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4141,10 +4141,10 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						uses_websocket: false,
 						client_logs: [
 							[
-								"derphttp.Client.Connect: connecting to https://brazil.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://brazil.dev.coder.com/derp",
 							],
 							[
-								"derphttp.Client.Connect: connecting to https://brazil.dev.coder.com/derp",
+								"derphttp.Client.Connect: 正在连接到 https://brazil.dev.coder.com/derp",
 							],
 						],
 						client_errs: [[], []],
@@ -4236,7 +4236,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 			{
 				code: "EWP04",
 				message:
-					'unhealthy: request to proxy failed: Get "http://127.0.0.1:3001/healthz-report": dial tcp 127.0.0.1:3001: connect: connection refused',
+					'不健康: 代理请求失败: Get "http://127.0.0.1:3001/healthz-report": dial tcp 127.0.0.1:3001: connect: connection refused',
 			},
 		],
 		dismissed: false,
@@ -4338,7 +4338,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				{
 					id: "c272e80c-0cce-49d6-9782-1b5cf90398e8",
 					name: "unregistered",
-					display_name: "UnregisteredProxy",
+					display_name: "未注册代理",
 					icon_url: "/emojis/274c.png",
 					healthy: false,
 					path_app_url: "",
@@ -4361,7 +4361,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				{
 					id: "a3efbff1-587b-4677-80a4-dc4f892fed3e",
 					name: "unhealthy",
-					display_name: "Unhealthy",
+					display_name: "不健康",
 					icon_url: "/emojis/1f92e.png",
 					healthy: false,
 					path_app_url: "http://127.0.0.1:3001",
@@ -4372,7 +4372,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 						status: "unreachable",
 						report: {
 							errors: [
-								'request to proxy failed: Get "http://127.0.0.1:3001/healthz-report": dial tcp 127.0.0.1:3001: connect: connection refused',
+								'代理请求失败: Get "http://127.0.0.1:3001/healthz-report": dial tcp 127.0.0.1:3001: connect: connection refused',
 							],
 							warnings: [],
 						},
@@ -4386,7 +4386,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				{
 					id: "b6cefb69-cb6f-46e2-9c9c-39c089fb7e42",
 					name: "paris-coder",
-					display_name: "Europe (Paris)",
+					display_name: "欧洲 (巴黎)",
 					icon_url: "/emojis/1f1eb-1f1f7.png",
 					healthy: true,
 					path_app_url: "https://paris-coder.fly.dev",
@@ -4409,7 +4409,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				{
 					id: "72649dc9-03c7-46a8-bc95-96775e93ddc1",
 					name: "sydney-coder",
-					display_name: "Australia (Sydney)",
+					display_name: "澳大利亚 (悉尼)",
 					icon_url: "/emojis/1f1e6-1f1fa.png",
 					healthy: true,
 					path_app_url: "https://sydney-coder.fly.dev",
@@ -4432,7 +4432,7 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				{
 					id: "1f78398f-e5ae-4c38-aa89-30222181d443",
 					name: "sao-paulo-coder",
-					display_name: "Brazil (Sau Paulo)",
+					display_name: "巴西 (圣保罗)",
 					icon_url: "/emojis/1f1e7-1f1f7.png",
 					healthy: true,
 					path_app_url: "https://sao-paulo-coder.fly.dev",
@@ -4459,11 +4459,11 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 		severity: "ok",
 		warnings: [
 			{
-				message: "Something is wrong!",
+				message: "出错了！",
 				code: "EUNKNOWN",
 			},
 			{
-				message: "This is also bad.",
+				message: "这也挺糟糕的。",
 				code: "EPD01",
 			},
 		],
@@ -4547,11 +4547,11 @@ export const MockHealth: TypesGen.HealthcheckReport = {
 				},
 				warnings: [
 					{
-						message: "Something specific is wrong with this daemon.",
+						message: "这个守护进程出了一些特定的问题。",
 						code: "EUNKNOWN",
 					},
 					{
-						message: "And now for something completely different.",
+						message: "接下来是完全不同的事情。",
 						code: "EUNKNOWN",
 					},
 				],
@@ -4646,7 +4646,7 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 	},
 	workspace_proxy: {
 		healthy: false,
-		error: "some error",
+		error: "出了一些错误",
 		severity: "error",
 		warnings: [],
 		dismissed: false,
@@ -4655,7 +4655,7 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 				{
 					id: "df7e4b2b-2d40-47e5-a021-e5d08b219c77",
 					name: "unhealthy",
-					display_name: "unhealthy",
+					display_name: "不健康",
 					icon_url: "/emojis/1f5fa.png",
 					healthy: false,
 					path_app_url: "http://127.0.0.1:3001",
@@ -4665,7 +4665,7 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 					status: {
 						status: "unreachable",
 						report: {
-							errors: ["some error"],
+							errors: ["出了一些错误"],
 							warnings: [],
 						},
 						checked_at: "2023-11-24T12:14:05.743303497Z",
@@ -4680,10 +4680,10 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 	},
 	provisioner_daemons: {
 		severity: "error",
-		error: "something went wrong",
+		error: "出了点问题",
 		warnings: [
 			{
-				message: "this is a message",
+				message: "这是一条消息",
 				code: "EUNKNOWN",
 			},
 		],
@@ -4711,7 +4711,7 @@ export const DeploymentHealthUnhealthy: TypesGen.HealthcheckReport = {
 				},
 				warnings: [
 					{
-						message: "this is a specific message for this thing",
+						message: "这是针对这个东西的具体消息",
 						code: "EUNKNOWN",
 					},
 				],
@@ -4817,181 +4817,180 @@ export const MockSystemNotificationTemplates: TypesGen.NotificationTemplate[] =
 	[
 		{
 			id: "381df2a9-c0c0-4749-420f-80a9280c66f9",
-			name: "Workspace Autobuild Failed",
-			title_template: 'Workspace "{{.Labels.name}}" autobuild failed',
+			name: "工作区自动构建失败",
+			title_template: '工作区 "{{.Labels.name}}" 自动构建失败',
 			body_template:
-				'Hi {{.UserName}}\nAutomatic build of your workspace **{{.Labels.name}}** failed.\nThe specified reason was "**{{.Labels.reason}}**".',
+				'你好 {{.UserName}}\n你的工作区 **{{.Labels.name}}** 的自动构建失败。\n指定的原因是 "**{{.Labels.reason}}**"。',
 			actions:
-				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
-			group: "Workspace Events",
+				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "查看工作区"}]',
+			group: "工作区事件",
 			method: "webhook",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "f517da0b-cdc9-410f-ab89-a86107c420ed",
-			name: "Workspace Deleted",
-			title_template: 'Workspace "{{.Labels.name}}" deleted',
+			name: "工作区已删除",
+			title_template: '工作区 "{{.Labels.name}}" 已删除',
 			body_template:
-				'Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** was deleted.\nThe specified reason was "**{{.Labels.reason}}{{ if .Labels.initiator }} ({{ .Labels.initiator }}){{end}}**".',
+				'你好 {{.UserName}}\n\n你的工作区 **{{.Labels.name}}** 已被删除。\n指定的原因是 "**{{.Labels.reason}}{{ if .Labels.initiator }} ({{ .Labels.initiator }}){{end}}**"。',
 			actions:
-				'[{"url": "{{ base_url }}/workspaces", "label": "View workspaces"}, {"url": "{{ base_url }}/templates", "label": "View templates"}]',
-			group: "Workspace Events",
+				'[{"url": "{{ base_url }}/workspaces", "label": "查看工作区"}, {"url": "{{ base_url }}/templates", "label": "查看模板"}]',
+			group: "工作区事件",
 			method: "smtp",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "f44d9314-ad03-4bc8-95d0-5cad491da6b6",
-			name: "User account deleted",
-			title_template: 'User account "{{.Labels.deleted_account_name}}" deleted',
+			name: "用户账户已删除",
+			title_template: '用户账户 "{{.Labels.deleted_account_name}}" 已删除',
 			body_template:
-				"Hi {{.UserName}},\n\nUser account **{{.Labels.deleted_account_name}}** has been deleted.",
+				"你好 {{.UserName}},\n\n用户账户 **{{.Labels.deleted_account_name}}** 已被删除。",
 			actions:
-				'[{"url": "{{ base_url }}/deployment/users?filter=status%3Aactive", "label": "View accounts"}]',
-			group: "User Events",
+				'[{"url": "{{ base_url }}/deployment/users?filter=status%3Aactive", "label": "查看账户"}]',
+			group: "用户事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "4e19c0ac-94e1-4532-9515-d1801aa283b2",
-			name: "User account created",
-			title_template: 'User account "{{.Labels.created_account_name}}" created',
+			name: "用户账户已创建",
+			title_template: '用户账户 "{{.Labels.created_account_name}}" 已创建',
 			body_template:
-				"Hi {{.UserName}},\n\nNew user account **{{.Labels.created_account_name}}** has been created.",
+				"你好 {{.UserName}},\n\n新用户账户 **{{.Labels.created_account_name}}** 已创建。",
 			actions:
-				'[{"url": "{{ base_url }}/deployment/users?filter=status%3Aactive", "label": "View accounts"}]',
-			group: "User Events",
+				'[{"url": "{{ base_url }}/deployment/users?filter=status%3Aactive", "label": "查看账户"}]',
+			group: "用户事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "0ea69165-ec14-4314-91f1-69566ac3c5a0",
-			name: "Workspace Marked as Dormant",
-			title_template: 'Workspace "{{.Labels.name}}" marked as dormant',
+			name: "工作区已标记为休眠",
+			title_template: '工作区 "{{.Labels.name}}" 已标记为休眠',
 			body_template:
-				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked as [**dormant**](https://coder.com/docs/templates/schedule#dormancy-threshold-enterprise) because of {{.Labels.reason}}.\nDormant workspaces are [automatically deleted](https://coder.com/docs/templates/schedule#dormancy-auto-deletion-enterprise) after {{.Labels.timeTilDormant}} of inactivity.\nTo prevent deletion, use your workspace with the link below.",
+				"你好 {{.UserName}}\n\n你的工作区 **{{.Labels.name}}** 因 {{.Labels.reason}} 已被标记为 [**休眠**](https://coder.com/docs/templates/schedule#dormancy-threshold-enterprise)。\n休眠工作区将在闲置 {{.Labels.timeTilDormant}} 后被 [自动删除](https://coder.com/docs/templates/schedule#dormancy-auto-deletion-enterprise)。\n要防止删除，请使用下方的链接访问你的工作区。",
 			actions:
-				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
-			group: "Workspace Events",
+				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "查看工作区"}]',
+			group: "工作区事件",
 			method: "smtp",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "c34a0c09-0704-4cac-bd1c-0c0146811c2b",
-			name: "Workspace updated automatically",
-			title_template: 'Workspace "{{.Labels.name}}" updated automatically',
+			name: "工作区已自动更新",
+			title_template: '工作区 "{{.Labels.name}}" 已自动更新',
 			body_template:
-				"Hi {{.UserName}}\nYour workspace **{{.Labels.name}}** has been updated automatically to the latest template version ({{.Labels.template_version_name}}).",
+				"你好 {{.UserName}}\n你的工作区 **{{.Labels.name}}** 已自动更新到最新模板版本 ({{.Labels.template_version_name}})。",
 			actions:
-				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
-			group: "Workspace Events",
+				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "查看工作区"}]',
+			group: "工作区事件",
 			method: "smtp",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "51ce2fdf-c9ca-4be1-8d70-628674f9bc42",
-			name: "Workspace Marked for Deletion",
-			title_template: 'Workspace "{{.Labels.name}}" marked for deletion',
+			name: "工作区已标记为删除",
+			title_template: '工作区 "{{.Labels.name}}" 已标记为删除',
 			body_template:
-				"Hi {{.UserName}}\n\nYour workspace **{{.Labels.name}}** has been marked for **deletion** after {{.Labels.timeTilDormant}} of [dormancy](https://coder.com/docs/templates/schedule#dormancy-auto-deletion-enterprise) because of {{.Labels.reason}}.\nTo prevent deletion, use your workspace with the link below.",
+				"你好 {{.UserName}}\n\n你的工作区 **{{.Labels.name}}** 在 [休眠](https://coder.com/docs/templates/schedule#dormancy-auto-deletion-enterprise) {{.Labels.timeTilDormant}} 后，因 {{.Labels.reason}} 已被标记为 **删除**。\n要防止删除，请使用下方的链接访问你的工作区。",
 			actions:
-				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "View workspace"}]',
-			group: "Workspace Events",
+				'[{"url": "{{ base_url }}/@{{.UserUsername}}/{{.Labels.name}}", "label": "查看工作区"}]',
+			group: "工作区事件",
 			method: "webhook",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "template-event-1",
-			name: "Template Version Created",
-			title_template: 'Template version "{{.Labels.version_name}}" created',
+			name: "模板版本已创建",
+			title_template: '模板版本 "{{.Labels.version_name}}" 已创建',
 			body_template:
-				'Hi {{.UserName}}\nA new version of template "{{.Labels.template_name}}" has been created.',
+				'你好 {{.UserName}}\n模板 "{{.Labels.template_name}}" 的一个新版本已创建。',
 			actions:
-				'[{"url": "{{ base_url }}/templates/{{.Labels.template_name}}", "label": "View template"}]',
-			group: "Template Events",
+				'[{"url": "{{ base_url }}/templates/{{.Labels.template_name}}", "label": "查看模板"}]',
+			group: "模板事件",
 			method: "smtp",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "template-event-2",
-			name: "Template Updated",
-			title_template: 'Template "{{.Labels.template_name}}" updated',
+			name: "模板已更新",
+			title_template: '模板 "{{.Labels.template_name}}" 已更新',
 			body_template:
-				'Hi {{.UserName}}\nTemplate "{{.Labels.template_name}}" has been updated.',
+				'你好 {{.UserName}}\n模板 "{{.Labels.template_name}}" 已更新。',
 			actions:
-				'[{"url": "{{ base_url }}/templates/{{.Labels.template_name}}", "label": "View template"}]',
-			group: "Template Events",
+				'[{"url": "{{ base_url }}/templates/{{.Labels.template_name}}", "label": "查看模板"}]',
+			group: "模板事件",
 			method: "webhook",
 			kind: "system",
 			enabled_by_default: true,
 		},
 		{
 			id: "8c5a4d12-9f7e-4b3a-a1c8-6e4f2d9b5a7c",
-			name: "Task Completed",
-			title_template: "Task '{{.Labels.workspace}}' completed",
-			body_template: "The task '{{.Labels.task}}' has completed successfully.",
+			name: "任务已完成",
+			title_template: "任务 '{{.Labels.workspace}}' 已完成",
+			body_template: "任务 '{{.Labels.task}}' 已成功完成。",
 			actions:
-				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "View task"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "View workspace"}]',
-			group: "Task Events",
+				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看任务"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看工作区"}]',
+			group: "任务事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: false,
 		},
 		{
 			id: "3b7e8f1a-4c2d-49a6-b5e9-7f3a1c8d6b4e",
-			name: "Task Failed",
-			title_template: "Task '{{.Labels.workspace}}' failed",
+			name: "任务失败",
+			title_template: "任务 '{{.Labels.workspace}}' 失败",
 			body_template:
-				"The task '{{.Labels.task}}' has failed. Check the logs for more details.",
+				"任务 '{{.Labels.task}}' 失败。请检查日志以获取更多详细信息。",
 			actions:
-				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "View task"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "View workspace"}]',
-			group: "Task Events",
+				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看任务"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看工作区"}]',
+			group: "任务事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: false,
 		},
 		{
 			id: "d4a6271c-cced-4ed0-84ad-afd02a9c7799",
-			name: "Task Idle",
-			title_template: "Task '{{.Labels.workspace}}' is idle",
-			body_template: "The task '{{.Labels.task}}' is idle and ready for input.",
+			name: "任务空闲",
+			title_template: "任务 '{{.Labels.workspace}}' 空闲",
+			body_template: "任务 '{{.Labels.task}}' 空闲，等待输入。",
 			actions:
-				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "View task"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "View workspace"}]',
-			group: "Task Events",
+				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看任务"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看工作区"}]',
+			group: "任务事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: false,
 		},
 		{
 			id: "bd4b7168-d05e-4e19-ad0f-3593b77aa90f",
-			name: "Task Working",
-			title_template: "Task '{{.Labels.workspace}}' is working",
-			body_template:
-				"The task '{{.Labels.task}}' transitioned to a working state.",
+			name: "任务工作中",
+			title_template: "任务 '{{.Labels.workspace}}' 工作中",
+			body_template: "任务 '{{.Labels.task}}' 已转为工作状态。",
 			actions:
-				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "View task"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "View workspace"}]',
-			group: "Task Events",
+				'[{"url": "{{base_url}}/tasks/{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看任务"}, {"url": "{{base_url}}/@{{.UserUsername}}/{{.Labels.workspace}}", "label": "查看工作区"}]',
+			group: "任务事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: false,
 		},
 		{
 			id: "764031be-4863-4220-867b-6ce1a1b7a5f5",
-			name: "Chats Auto-Archived",
+			name: "聊天自动归档",
 			title_template:
-				"Chats auto-archived after {{.Data.auto_archive_days}} days of inactivity",
+				"聊天在 {{.Data.auto_archive_days}} 天不活跃后自动归档",
 			body_template:
-				'The following chats were automatically archived:\n\n{{range .Data.archived_chats}}* "{{.title}}" (last active {{.last_activity_humanized}})\n{{end}}',
+				'以下聊天已被自动归档:\n\n{{range .Data.archived_chats}}* "{{.title}}" (最后活跃于 {{.last_activity_humanized}})\n{{end}}',
 			actions:
-				'[{"label": "View chats", "url": "{{base_url}}/agents?archived=archived"}]',
-			group: "Chat Events",
+				'[{"label": "查看聊天", "url": "{{base_url}}/agents?archived=archived"}]',
+			group: "聊天事件",
 			method: "",
 			kind: "system",
 			enabled_by_default: true,
@@ -5002,11 +5001,11 @@ export const MockCustomNotificationTemplates: TypesGen.NotificationTemplate[] =
 	[
 		{
 			id: "39b1e189-c857-4b0c-877a-511144c18516",
-			name: "Custom Notification",
+			name: "自定义通知",
 			title_template: "{{.Labels.custom_title}}",
 			body_template: "{{.Labels.custom_message}}",
 			actions: "[]",
-			group: "Custom Events",
+			group: "自定义事件",
 			method: "",
 			kind: "custom",
 			enabled_by_default: true,
@@ -5020,18 +5019,18 @@ export const MockNotification: TypesGen.InboxNotification = {
 	id: "1",
 	read_at: null,
 	content:
-		"New user account testuser has been created. This new user account was created for Test User by Kira Pilot.",
+		"新用户账户 testuser 已创建。这个新用户账户是由 Kira Pilot 为测试用户创建的。",
 	created_at: mockTwoDaysAgo(),
 	actions: [
 		{
-			label: "View template",
+			label: "查看模板",
 			url: "https://dev.coder.com/templates/coder/coder",
 		},
 	],
 	user_id: MockUserOwner.id,
 	template_id: MockTemplate.id,
 	targets: [],
-	title: "User account created",
+	title: "用户账户已创建",
 	icon: "DEFAULT_ICON_ACCOUNT",
 };
 
@@ -5103,11 +5102,11 @@ export const MockWorkspaceAgentDevcontainer: TypesGen.WorkspaceAgentDevcontainer
 
 export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 	{
-		// This is the latest status chronologically (15:04:38)
+		// 这是时间顺序上最新的状态 (15:04:38)
 		...MockWorkspaceAppStatus,
 		id: "status-7",
 		icon: "/emojis/1f4dd.png", // 📝
-		message: "Creating PR with gh CLI",
+		message: "正在使用 gh CLI 创建 PR",
 		created_at: createTimestamp(4, 38), // 15:04:38
 		uri: "https://github.com/coder/coder/pull/5678",
 		state: "complete" as const,
@@ -5117,7 +5116,7 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		...MockWorkspaceAppStatus,
 		id: "status-6",
 		icon: "/emojis/1f680.png", // 🚀
-		message: "Pushing branch to remote",
+		message: "正在推送分支到远程仓库",
 		created_at: createTimestamp(3, 56), // 15:03:56
 		uri: "",
 		state: "complete" as const,
@@ -5127,7 +5126,7 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		...MockWorkspaceAppStatus,
 		id: "status-5",
 		icon: "/emojis/1f527.png", // 🔧
-		message: "Configuring git identity",
+		message: "正在配置 git 身份",
 		created_at: createTimestamp(2, 29), // 15:02:29
 		uri: "",
 		state: "complete" as const,
@@ -5137,7 +5136,7 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		...MockWorkspaceAppStatus,
 		id: "status-4",
 		icon: "/emojis/1f4be.png", // 💾
-		message: "Committing changes",
+		message: "正在提交更改",
 		created_at: createTimestamp(2, 4), // 15:02:04
 		uri: "",
 		state: "complete" as const,
@@ -5147,7 +5146,7 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		...MockWorkspaceAppStatus,
 		id: "status-3",
 		icon: "/emojis/2795.png", // +
-		message: "Adding files to staging",
+		message: "正在将文件添加到暂存区",
 		created_at: createTimestamp(1, 44), // 15:01:44
 		uri: "",
 		state: "complete" as const,
@@ -5157,17 +5156,17 @@ export const MockWorkspaceAppStatuses: TypesGen.WorkspaceAppStatus[] = [
 		...MockWorkspaceAppStatus,
 		id: "status-2",
 		icon: "/emojis/1f33f.png", // 🌿
-		message: "Creating a new branch for PR",
+		message: "正在为 PR 创建新分支",
 		created_at: createTimestamp(1, 32), // 15:01:32
 		uri: "",
 		state: "complete" as const,
 	},
 	{
-		// (15:01:00) - Oldest
+		// (15:01:00) - 最早
 		...MockWorkspaceAppStatus,
 		id: "status-1",
 		icon: "/emojis/1f680.png", // 🚀
-		message: "Starting to create a PR",
+		message: "正在开始创建 PR",
 		created_at: createTimestamp(1, 0), // 15:01:00
 		uri: "",
 		state: "complete" as const,
@@ -5181,11 +5180,11 @@ export function createTimestamp(minuteOffset: number, secondOffset: number) {
 	return baseDate.toISOString();
 }
 
-// Mock Presets for AI Tasks
+// AI 任务的模拟预设
 export const MockPresets: TypesGen.Preset[] = [
 	{
 		ID: "preset-1",
-		Name: "Development",
+		Name: "开发",
 		Description: "",
 		Icon: "",
 		Parameters: [
@@ -5197,7 +5196,7 @@ export const MockPresets: TypesGen.Preset[] = [
 	},
 	{
 		ID: "preset-2",
-		Name: "Testing",
+		Name: "测试",
 		Description: "",
 		Icon: "",
 		Parameters: [
@@ -5209,7 +5208,7 @@ export const MockPresets: TypesGen.Preset[] = [
 	},
 	{
 		ID: "preset-3",
-		Name: "Production",
+		Name: "生产",
 		Description: "",
 		Icon: "",
 		Parameters: [
@@ -5224,7 +5223,7 @@ export const MockPresets: TypesGen.Preset[] = [
 export const MockTaskPresets: TypesGen.Preset[] = [
 	{
 		ID: "ai-preset-1",
-		Name: "Code Review",
+		Name: "代码审查",
 		Description: "",
 		Icon: "",
 		Parameters: [
@@ -5236,7 +5235,7 @@ export const MockTaskPresets: TypesGen.Preset[] = [
 	},
 	{
 		ID: "ai-preset-2",
-		Name: "Custom Prompt",
+		Name: "自定义提示",
 		Description: "",
 		Icon: "",
 		Parameters: [
@@ -5251,7 +5250,7 @@ export const MockTaskPresets: TypesGen.Preset[] = [
 export const MockTask = {
 	id: "test-task",
 	name: "perform-some-task-123",
-	display_name: "Perform some task",
+	display_name: "执行某个任务",
 	organization_id: MockOrganization.id,
 	owner_id: MockUserOwner.id,
 	owner_name: MockUserOwner.username,
@@ -5269,12 +5268,12 @@ export const MockTask = {
 	workspace_agent_lifecycle: MockWorkspaceAgent.lifecycle_state,
 	workspace_agent_health: MockWorkspaceAgent.health,
 	workspace_app_id: MockWorkspaceApp.id,
-	initial_prompt: "Perform some task",
+	initial_prompt: "执行某个任务",
 	status: "active",
 	current_state: {
 		timestamp: "2022-05-17T17:39:01.382927298Z",
 		state: "idle",
-		message: "Should I continue?",
+		message: "我应该继续吗？",
 		uri: "https://dev.coder.com",
 	},
 	created_at: "2022-05-17T17:39:01.382927298Z",
@@ -5292,10 +5291,10 @@ export const MockTasks = [
 		...MockTask,
 		id: "task-2",
 		name: "fix-avatar-size",
-		display_name: "Fix avatar size",
+		display_name: "修复头像大小",
 		current_state: {
 			...MockTask.current_state,
-			message: "Avatar size fixed!",
+			message: "头像大小已修复！",
 			state: "complete",
 		},
 	},
@@ -5303,10 +5302,10 @@ export const MockTasks = [
 		...MockTask,
 		id: "task-3",
 		name: "fix-accessibility-issues",
-		display_name: "Fix accessibility issues",
+		display_name: "修复无障碍问题",
 		current_state: {
 			...MockTask.current_state,
-			message: "Accessibility issues fixed!",
+			message: "无障碍问题已修复！",
 			state: "complete",
 		},
 	},
@@ -5317,13 +5316,13 @@ export const MockInitializingTasks = [
 		...MockTask,
 		id: "task-1",
 		name: "workspace-pending",
-		display_name: "Workspace pending",
-		initial_prompt: "Task Workspace Pending",
+		display_name: "工作区等待中",
+		initial_prompt: "任务工作区等待中",
 		status: "initializing",
 		current_state: {
 			timestamp: new Date().toISOString(),
 			state: "working",
-			message: "Workspace is pending",
+			message: "工作区正在等待",
 			uri: "",
 		},
 	},
@@ -5331,13 +5330,13 @@ export const MockInitializingTasks = [
 		...MockTask,
 		id: "task-2",
 		name: "workspace-starting",
-		display_name: "Workspace starting",
-		initial_prompt: "Task Workspace Starting",
+		display_name: "工作区启动中",
+		initial_prompt: "任务工作区启动中",
 		status: "initializing",
 		current_state: {
 			timestamp: new Date().toISOString(),
 			state: "working",
-			message: "Workspace is starting",
+			message: "工作区正在启动",
 			uri: "",
 		},
 	},
@@ -5345,13 +5344,13 @@ export const MockInitializingTasks = [
 		...MockTask,
 		id: "task-3",
 		name: "agent-connecting",
-		display_name: "Agent connecting",
-		initial_prompt: "Task Agent Connecting",
+		display_name: "代理连接中",
+		initial_prompt: "任务代理连接中",
 		status: "initializing",
 		current_state: {
 			timestamp: new Date().toISOString(),
 			state: "working",
-			message: "Agent is connecting",
+			message: "代理正在连接",
 			uri: "",
 		},
 	},
@@ -5359,13 +5358,13 @@ export const MockInitializingTasks = [
 		...MockTask,
 		id: "task-4",
 		name: "agent-starting",
-		display_name: "Agent Starting",
-		initial_prompt: "Task Agent Starting",
+		display_name: "代理启动中",
+		initial_prompt: "任务代理启动中",
 		status: "initializing",
 		current_state: {
 			timestamp: new Date().toISOString(),
 			state: "working",
-			message: "Agent is starting",
+			message: "代理正在启动",
 			uri: "",
 		},
 	},
@@ -5373,13 +5372,13 @@ export const MockInitializingTasks = [
 		...MockTask,
 		id: "task-5",
 		name: "app-initializing",
-		display_name: "App Initializing",
-		initial_prompt: "Task App Initializing",
+		display_name: "应用初始化中",
+		initial_prompt: "任务应用初始化中",
 		status: "initializing",
 		current_state: {
 			timestamp: new Date().toISOString(),
 			state: "working",
-			message: "App is initializing",
+			message: "应用正在初始化",
 			uri: "",
 		},
 	},
@@ -5393,12 +5392,12 @@ export const MockDisplayNameTasks = [
 		...MockTask,
 		id: "task-4",
 		name: "validate-email-regex",
-		// Display name with 64 characters with ellipsis
+		// 带有省略号的 64 个字符的显示名称
 		display_name:
-			"Write a function to validate email addresses using regular expr…",
+			"编写一个函数，使用正则表达式验证电子邮件地址…",
 		current_state: {
 			...MockTask.current_state,
-			message: "Email validation complete!",
+			message: "电子邮件验证完成！",
 			state: "complete",
 		},
 	},
@@ -5406,12 +5405,12 @@ export const MockDisplayNameTasks = [
 		...MockTask,
 		id: "payment-api-tests",
 		name: "payment-api-tests",
-		// Display name with 81 characters
+		// 81 个字符的显示名称
 		display_name:
-			"Create a comprehensive test suite for the new payment processing microservice API",
+			"为新的支付处理微服务 API 创建全面的测试套件",
 		current_state: {
 			...MockTask.current_state,
-			message: "Test suite created!",
+			message: "测试套件已创建！",
 			state: "complete",
 		},
 	},
@@ -5497,7 +5496,7 @@ export const MockSession: TypesGen.AIBridgeSession = {
 	initiator: {
 		id: "59da0bfe-9c99-47fa-a563-f9fdb18449d0",
 		username: "bob",
-		name: "The Builder, Bob",
+		name: "建造者 Bob",
 		avatar_url:
 			"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeDqc5b7Ny5bJOKxDeFvy17kBQ2_ZmBE8vKw&s",
 	},
@@ -5517,7 +5516,7 @@ export const MockSession: TypesGen.AIBridgeSession = {
 		cache_read_input_tokens: 980,
 		cache_write_input_tokens: 120,
 	},
-	last_prompt: "But *can* I really fix it?",
+	last_prompt: "但我真的能修好它吗？",
 	last_active_at: "2026-03-09T10:28:15.03152Z",
 };
 
@@ -5554,9 +5553,8 @@ export const MockAIProviderAnthropic: TypesGen.AIProvider = {
 };
 
 /**
- * Bedrock providers come over the wire with `type: "anthropic"` and a
- * `settings._type: "bedrock"` discriminator. `isBedrockProvider` and the
- * backend (see `coderd/ai_providers.go`) enforce this convention.
+ * Bedrock 提供程序通过 `type: "anthropic"` 和 `settings._type: "bedrock"` 鉴别器进行传递。
+ * `isBedrockProvider` 和后端（参见 `coderd/ai_providers.go`）强制执行此约定。
  */
 export const MockAIProviderBedrock: TypesGen.AIProvider = {
 	id: "9c2e3b41-2e9f-4c97-9a4f-2e1a3d8f9f21",

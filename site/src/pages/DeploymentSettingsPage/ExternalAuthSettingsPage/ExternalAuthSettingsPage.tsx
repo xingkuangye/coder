@@ -8,7 +8,7 @@ const ExternalAuthSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("External Authentication Settings")}</title>
+			<title>{pageTitle("外部认证设置")}</title>
 
 			<ExternalAuthSettingsPageView config={deploymentConfig.config} />
 		</>

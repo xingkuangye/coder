@@ -160,7 +160,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 			},
 			initialTouched,
 			validationSchema: Yup.object({
-				name: nameValidator("Workspace Name"),
+				name: nameValidator("工作区名称"),
 				rich_parameter_values:
 					useValidationSchemaForDynamicParameters(parameters),
 			}),
@@ -193,15 +193,15 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 	}, [form.submitCount, form.errors]);
 
 	const [presetOptions, setPresetOptions] = useState([
-		{ label: "None", value: "undefined", icon: "", description: "" },
+		{ label: "无", value: "undefined", icon: "", description: "" },
 	]);
 	const [selectedPresetIndex, setSelectedPresetIndex] = useState(0);
 	// Build options and keep default label/value in sync
 	useEffect(() => {
 		const options = [
-			{ label: "None", value: "undefined", icon: "", description: "" },
+			{ label: "无", value: "undefined", icon: "", description: "" },
 			...presets.map((preset) => ({
-				label: preset.Default ? `${preset.Name} (Default)` : preset.Name,
+				label: preset.Default ? `${preset.Name}（默认）` : preset.Name,
 				value: preset.ID,
 				icon: preset.Icon,
 				description: preset.Description,
@@ -401,7 +401,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 					className="flex items-center gap-2 bg-transparent border-none text-content-secondary hover:text-content-primary translate-y-12"
 				>
 					<ArrowLeftIcon size={20} />
-					Go back
+					返回
 				</button>
 			</div>
 			<div className="flex flex-col gap-6 max-w-screen-md mx-auto">
@@ -421,7 +421,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 							</p>
 							{template.deprecated && (
 								<Badge variant="warning" size="sm">
-									Deprecated
+									已弃用
 								</Badge>
 							)}
 						</span>
@@ -431,27 +431,25 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 									to={`/templates/${template.organization_name}/${template.name}/versions/${versionName}/edit`}
 								>
 									<ExternalLinkIcon />
-									View source
+									查看源码
 								</RouterLink>
 							</Button>
 						)}
 					</div>
 					<span className="flex flex-row items-center gap-2">
-						<h1 className="text-3xl font-semibold m-0">New workspace</h1>
+						<h1 className="text-3xl font-semibold m-0">新建工作区</h1>
 
 						<HelpPopover>
 							<HelpPopoverIconTrigger />
 							<HelpPopoverContent className="max-w-xs text-sm">
-								Dynamic Parameters enhances Coder's existing parameter system
-								with real-time validation, conditional parameter behavior, and
-								richer input types.
+								动态参数通过实时验证、条件参数行为和更丰富的输入类型增强了 Coder 现有的参数系统。
 								<br />
 								<Link
 									href={docs(
 										"/admin/templates/extending-templates/dynamic-parameters",
 									)}
 								>
-									View docs
+									查看文档
 								</Link>
 							</HelpPopoverContent>
 						</HelpPopover>
@@ -460,7 +458,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 
 				<form
 					onSubmit={form.handleSubmit}
-					aria-label="Create workspace form"
+					aria-label="创建工作区表单"
 					className="flex flex-col gap-10 w-full border border-border-default border-solid rounded-lg p-6"
 					data-testid="form"
 				>
@@ -474,9 +472,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 
 					{hasIgnoredUrlParams && urlPreset && (
 						<Alert severity="info" dismissible>
-							Preset selected. <code>param.*</code> URL parameters have been
-							ignored. Use either <code>preset</code> or <code>param.*</code>,
-							not both.
+							已选择预设。 <code>param.*</code> URL 参数已被忽略。请使用 <code>preset</code> 或 <code>param.*</code>，不要同时使用。
 						</Alert>
 					)}
 
@@ -486,36 +482,35 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 							dismissible
 							data-testid="duplication-warning"
 						>
-							Duplicating a workspace only copies its parameters. No state from
-							the old workspace is copied over.
+							复制工作区仅复制其参数。不会复制旧工作区的任何状态。
 						</Alert>
 					)}
 
 					<section className="flex flex-col gap-4">
 						<hgroup>
-							<h2 className="text-xl font-semibold m-0">General</h2>
+							<h2 className="text-xl font-semibold m-0">常规</h2>
 							<p className="text-sm text-content-secondary mt-0">
 								{permissions.createWorkspaceForAny
-									? "Only admins can create workspaces for other users."
-									: "The name of your new workspace."}
+									? "仅管理员可为其他用户创建工作区。"
+									: "您的新工作区名称。"}
 							</p>
 						</hgroup>
 						<div>
 							{versionId && versionId !== template.active_version_id && (
 								<div className="flex flex-col gap-2 pb-4">
 									<Label className="text-sm" htmlFor={`${id}-version-id`}>
-										Version ID
+										版本 ID
 									</Label>
 									<Input id={`${id}-version-id`} value={versionId} disabled />
 									<span className="text-xs text-content-secondary">
-										This parameter has been preset, and cannot be modified.
+										此参数已预设，不可修改。
 									</span>
 								</div>
 							)}
 							<div className="flex gap-4 flex-wrap">
 								<div className="flex flex-col gap-2 flex-1">
 									<Label className="text-sm" htmlFor={`${id}-workspace-name`}>
-										Workspace name
+										工作区名称
 									</Label>
 									<div className="flex flex-col">
 										<Input
@@ -534,7 +529,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 											</div>
 										)}
 										<div className="flex gap-2 text-xs text-content-secondary items-center">
-											Need a suggestion?
+											需要建议？
 											<Button
 												variant="subtle"
 												size="sm"
@@ -551,7 +546,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 								{permissions.createWorkspaceForAny && (
 									<div className="flex flex-col gap-2 flex-1">
 										<Label className="text-sm" htmlFor={`${id}-workspace-name`}>
-											Owner
+											所有者
 										</Label>
 										<WorkspaceUserAutocomplete
 											organizationId={template.organization_id}
@@ -570,17 +565,16 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 						<section>
 							<hgroup>
 								<h2 className="text-xl font-semibold m-0">
-									External Authentication
+									外部认证
 								</h2>
 								<p className="text-sm text-content-secondary mt-0">
-									This template uses external services for authentication.
+									此模板使用外部服务进行认证。
 								</p>
 							</hgroup>
 							<div className="flex flex-col gap-4">
 								{Boolean(error) && !hasAllRequiredExternalAuth && (
 									<Alert severity="error" prominent>
-										To create a workspace using this template, please connect to
-										all required external authentication providers listed below.
+										要使用此模板创建工作区，请连接下面列出的所有必需的外部认证提供程序。
 									</Alert>
 								)}
 								{externalAuth.map((auth) => (
@@ -604,16 +598,15 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 					{parameters.length > 0 && (
 						<section className="flex flex-col gap-9">
 							<hgroup>
-								<h2 className="text-xl font-semibold m-0">Parameters</h2>
+								<h2 className="text-xl font-semibold m-0">参数</h2>
 								<p className="text-sm text-content-secondary m-0">
-									These are the settings used by your template. Immutable
-									parameters cannot be modified once the workspace is created.
+									这些是您的模板使用的设置。不可变参数在工作区创建后无法修改。
 									<Link
 										href={docs(
 											"/admin/templates/extending-templates/dynamic-parameters",
 										)}
 									>
-										View docs
+										查看文档
 									</Link>
 								</p>
 							</hgroup>
@@ -623,7 +616,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 							{presets.length > 0 && (
 								<div className="flex flex-col gap-2">
 									<div className="flex gap-2 items-center">
-										<Label className="text-sm">Preset</Label>
+										<Label className="text-sm">预设</Label>
 									</div>
 									<div className="flex flex-col gap-4">
 										<div className="max-w-lg">
@@ -656,7 +649,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 															value:
 																presetOptions[selectedPresetIndex]?.value || "",
 														}}
-														placeholder="Select a preset"
+														placeholder="选择一个预设"
 													/>
 												</ComboboxTrigger>
 												<ComboboxContent align="start">
@@ -687,7 +680,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 													onCheckedChange={setShowPresetParameters}
 												/>
 												<Label htmlFor="show-preset-parameters">
-													Show preset parameters
+													显示预设参数
 												</Label>
 											</span>
 										)}
@@ -757,7 +750,7 @@ export const CreateWorkspacePageView: FC<CreateWorkspacePageViewProps> = ({
 					<div className="flex flex-row justify-end">
 						<Button type="submit" disabled={disabled}>
 							<Spinner loading={creatingWorkspace} />
-							Create workspace
+							创建工作区
 						</Button>
 					</div>
 				</form>

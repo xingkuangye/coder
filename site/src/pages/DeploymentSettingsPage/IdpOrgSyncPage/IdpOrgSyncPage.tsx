@@ -47,7 +47,7 @@ const IdpOrgSyncPage: FC = () => {
 			toast.error(
 				getErrorMessage(
 					patchOrganizationSyncSettingsMutation.error,
-					"Error updating organization IdP sync settings.",
+					"更新组织 IdP 同步设置时出错。",
 				),
 			);
 		}
@@ -59,17 +59,16 @@ const IdpOrgSyncPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Organization IdP Sync")}</title>
+			<title>{pageTitle("组织 IdP 同步")}</title>
 
 			<div className="flex flex-col gap-12">
 				<header className="flex flex-row items-baseline justify-between">
 					<div className="flex flex-col gap-2">
-						<h1 className="text-3xl m-0">Organization IdP Sync</h1>
+						<h1 className="text-3xl m-0">组织 IdP 同步</h1>
 						<p className="flex flex-row gap-1 text-sm text-content-secondary font-medium m-0">
-							Automatically assign users to an organization based on their IdP
-							claims.
+							根据用户的 IdP 声明自动将用户分配到组织。
 							<Link href={docs("/admin/users/idp-sync#organization-sync")}>
-								View docs
+								查看文档
 							</Link>
 						</p>
 					</div>
@@ -77,8 +76,8 @@ const IdpOrgSyncPage: FC = () => {
 				</header>
 				{!isIdpSyncEnabled ? (
 					<PaywallPremium
-						message="IdP Organization Sync"
-						description="Configure organization mappings to synchronize claims in your auth provider to organizations within Coder. You need a Premium license to use this feature."
+						message="IdP 组织同步"
+						description="配置组织映射，将您的身份验证提供商中的声明同步到 Coder 内的组织。您需要 Premium 许可证才能使用此功能。"
 						documentationLink={docs("/admin/users/idp-sync")}
 					/>
 				) : (
@@ -90,12 +89,12 @@ const IdpOrgSyncPage: FC = () => {
 						onSubmit={async (data) => {
 							try {
 								await patchOrganizationSyncSettingsMutation.mutateAsync(data);
-								toast.success("Organization sync settings updated.");
+								toast.success("组织同步设置已更新。");
 							} catch (error) {
 								toast.error(
 									getErrorMessage(
 										error,
-										"Failed to update organization IdP sync settings.",
+										"无法更新组织 IdP 同步设置。",
 									),
 									{
 										description: getErrorDetail(error),

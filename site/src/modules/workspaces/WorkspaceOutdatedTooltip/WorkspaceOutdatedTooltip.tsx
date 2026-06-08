@@ -56,7 +56,7 @@ export const WorkspaceOutdatedTooltip: FC<WorkspaceOutdatedTooltipProps> = ({
 							color: theme.roles.notice.outline,
 						})}
 					/>
-					<span className="sr-only">Outdated info</span>
+					<span className="sr-only">过时信息</span>
 				</HelpPopoverIconTrigger>
 			)}
 			<WorkspaceOutdatedTooltipContent isOpen={isOpen} workspace={workspace} />
@@ -81,7 +81,7 @@ const WorkspaceOutdatedTooltipContent: FC<TooltipContentProps> = ({
 		latestVersion: activeVersion,
 		onError: (error) => {
 			toast.error(
-				getErrorMessage(error, `Error updating workspace "${workspace.name}".`),
+				getErrorMessage(error, `更新工作空间 "${workspace.name}" 时出错。`),
 				{
 					description: getErrorDetail(error),
 				},
@@ -96,15 +96,15 @@ const WorkspaceOutdatedTooltipContent: FC<TooltipContentProps> = ({
 	return (
 		<>
 			<HelpPopoverContent disablePortal={false}>
-				<HelpPopoverTitle>Outdated</HelpPopoverTitle>
+				<HelpPopoverTitle>已过时</HelpPopoverTitle>
 				<HelpPopoverText>
-					This workspace version is outdated and a newer version is available.
+					此工作空间版本已过时，有更新版本可用。
 				</HelpPopoverText>
 
 				<div className="flex flex-col gap-2 py-2 text-[13px]">
 					<div className="leading-[1.6]">
 						<div className="text-content-primary font-semibold">
-							New version
+							新版本
 						</div>
 						<div>
 							{activeVersion ? (
@@ -122,10 +122,10 @@ const WorkspaceOutdatedTooltipContent: FC<TooltipContentProps> = ({
 					</div>
 
 					<div className="leading-[1.6]">
-						<div className="text-content-primary font-semibold">Message</div>
+						<div className="text-content-primary font-semibold">消息</div>
 						<div>
 							{activeVersion ? (
-								activeVersion.message || "No message"
+								activeVersion.message || "无消息"
 							) : (
 								<Skeleton variant="text" height={20} width={150} />
 							)}
@@ -138,7 +138,7 @@ const WorkspaceOutdatedTooltipContent: FC<TooltipContentProps> = ({
 						icon={RotateCcwIcon}
 						onClick={updateWorkspace.update}
 					>
-						Update
+						更新
 					</HelpPopoverAction>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>

@@ -20,12 +20,12 @@ const DatabasePage = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Database - Health")}</title>
+			<title>{pageTitle("数据库 - 健康")}</title>
 
 			<Header>
 				<HeaderTitle>
 					<HealthyDot severity={database.severity} />
-					Database
+					数据库
 				</HeaderTitle>
 				<DismissWarningButton healthcheck="Database" />
 			</Header>
@@ -45,13 +45,13 @@ const DatabasePage = () => {
 				})}
 
 				<GridData>
-					<GridDataLabel>Reachable</GridDataLabel>
-					<GridDataValue>{database.reachable ? "Yes" : "No"}</GridDataValue>
+					<GridDataLabel>可访问</GridDataLabel>
+					<GridDataValue>{database.reachable ? "是" : "否"}</GridDataValue>
 
-					<GridDataLabel>Latency</GridDataLabel>
+					<GridDataLabel>延迟</GridDataLabel>
 					<GridDataValue>{database.latency_ms}ms</GridDataValue>
 
-					<GridDataLabel>Threshold</GridDataLabel>
+					<GridDataLabel>阈值</GridDataLabel>
 					<GridDataValue>{database.threshold_ms}ms</GridDataValue>
 				</GridData>
 			</Main>

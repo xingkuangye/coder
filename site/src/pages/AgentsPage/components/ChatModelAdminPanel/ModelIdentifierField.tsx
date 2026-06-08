@@ -226,7 +226,7 @@ export const ModelIdentifierField = ({
 		};
 		setFeedback(
 			result.appliedFields.length > 0
-				? `Defaults applied from ${knownModel.displayName}. Review and adjust before saving.`
+				? `已从 ${knownModel.displayName} 应用默认设置。请在保存前检查并调整。`
 				: null,
 		);
 	};
@@ -386,7 +386,7 @@ export const ModelIdentifierField = ({
 						"h-9 text-[13px] placeholder:text-content-disabled",
 						hasError && "border-content-destructive",
 					)}
-					placeholder="e.g. gpt-5, claude-sonnet-4-5"
+					placeholder="例如 gpt-5、claude-sonnet-4-5"
 					value={modelField.value}
 					onChange={modelField.onChange}
 					onBlur={modelField.onBlur}
@@ -435,7 +435,7 @@ export const ModelIdentifierField = ({
 				}}
 				inlineSearch
 				onEnterEmpty={() => handleOpenChange(false)}
-				placeholder="e.g. gpt-5, claude-sonnet-4-5"
+				placeholder="例如 gpt-5、claude-sonnet-4-5"
 				className={cn(
 					"h-9 text-[13px] placeholder:text-content-disabled",
 					hasError && "border-content-destructive",
@@ -459,14 +459,14 @@ export const ModelIdentifierField = ({
 				htmlFor={modelField.id}
 				className="inline-flex items-center gap-1 text-sm font-medium text-content-primary"
 			>
-				Model identifier{" "}
+				模型标识符{" "}
 				<span className="text-xs font-bold text-content-destructive">*</span>
 				<Tooltip>
 					<TooltipTrigger asChild>
 						<InfoIcon className="size-3 text-content-secondary" />
 					</TooltipTrigger>
 					<TooltipContent side="top" className="max-w-[240px]">
-						The model identifier sent to the provider API.
+						发送给提供商 API 的模型标识符。
 					</TooltipContent>
 				</Tooltip>
 			</Label>

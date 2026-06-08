@@ -55,11 +55,11 @@ export const AuditPageView: FC<AuditPageViewProps> = ({
 			<PageHeader>
 				<PageHeaderTitle>
 					<div className="flex flex-row gap-2 items-center">
-						<span>Audit</span>
+						<span>审计</span>
 						<AuditHelpPopover />
 					</div>
 				</PageHeaderTitle>
-				<PageHeaderSubtitle>View events in your audit log.</PageHeaderSubtitle>
+				<PageHeaderSubtitle>查看审计日志中的事件。</PageHeaderSubtitle>
 			</PageHeader>
 
 			{isAuditLogVisible ? (
@@ -68,7 +68,7 @@ export const AuditPageView: FC<AuditPageViewProps> = ({
 
 					<PaginationContainer
 						query={paginationResult}
-						paginationUnitLabel="logs"
+						paginationUnitLabel="审计日志"
 					>
 						<Table>
 							<TableBody>
@@ -86,8 +86,8 @@ export const AuditPageView: FC<AuditPageViewProps> = ({
 				</>
 			) : (
 				<PaywallPremium
-					message="Audit logs"
-					description="Audit logs allow you to monitor user operations on your deployment. You need a Premium license to use this feature."
+					message="审计日志"
+					description="审计日志允许您监控部署上的用户操作。您需要高级许可证才能使用此功能。"
 					documentationLink={docs("/admin/security/audit-logs")}
 				/>
 			)}
@@ -117,7 +117,7 @@ const AuditTableBody: FC<AuditTableBodyProps> = ({
 		return (
 			<TableRow>
 				<TableCell colSpan={999}>
-					<EmptyState message="An error occurred while loading audit logs" />
+					<EmptyState message="加载审计日志时发生错误" />
 				</TableCell>
 			</TableRow>
 		);
@@ -127,8 +127,8 @@ const AuditTableBody: FC<AuditTableBodyProps> = ({
 	}
 	if (isEmpty) {
 		const emptyMessage = isNonInitialPage
-			? "No audit logs available on this page"
-			: "No audit logs available";
+			? "当前页面没有审计日志"
+			: "没有审计日志";
 		return (
 			<TableRow>
 				<TableCell colSpan={999}>

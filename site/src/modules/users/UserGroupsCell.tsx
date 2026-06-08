@@ -18,7 +18,7 @@ export const UserGroupsCell: FC<GroupsCellProps> = ({ userGroups }) => {
 	return (
 		<TableCell>
 			{userGroups === undefined ? (
-				<span>No groups</span>
+				<span>无用户组</span>
 			) : (
 				<Popover>
 					<PopoverTrigger asChild>
@@ -27,8 +27,8 @@ export const UserGroupsCell: FC<GroupsCellProps> = ({ userGroups }) => {
 							className="cursor-pointer bg-transparent border-0 p-0 text-inherit leading-none"
 							aria-label={
 								userGroups.length === 0
-									? "No groups"
-									: `View ${userGroups.length} group${userGroups.length !== 1 ? "s" : ""}`
+									? "无用户组"
+									: `查看 ${userGroups.length} 个用户组`
 							}
 						>
 							<div className="flex flex-row gap-2 items-center">
@@ -40,7 +40,7 @@ export const UserGroupsCell: FC<GroupsCellProps> = ({ userGroups }) => {
 								/>
 
 								<span>
-									{userGroups.length} Group{userGroups.length !== 1 && "s"}
+									{userGroups.length} 个用户组
 								</span>
 							</div>
 						</button>
@@ -67,7 +67,7 @@ export const UserGroupsCell: FC<GroupsCellProps> = ({ userGroups }) => {
 										/>
 
 										<span className="m-0 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap leading-none">
-											{groupName || <em>N/A</em>}
+											{groupName || <em>无</em>}
 										</span>
 									</li>
 								);

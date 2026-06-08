@@ -29,9 +29,9 @@ import { resizeImageToMaxBytes } from "../utils/resizeImage";
 const maxTextPreviewSize = 1024 * 1024;
 
 const pendingDraftWarning =
-	"This file is attached for now, but it could not be saved as a draft. If you leave this chat before it uploads or sends, it may be lost.";
+	"该文件目前已附加，但无法保存为草稿。如果您在上传或发送前离开此对话，它可能会丢失。";
 const uploadedDraftWarning =
-	"This file is usable in this session, but it could not be saved as a draft.";
+	"该文件可在本次会话中使用，但无法保存为草稿。";
 
 type DraftUploadStatus = UploadState["status"];
 
@@ -755,7 +755,7 @@ export function useChatDraftAttachments(
 				nextViews.push({
 					...baseView,
 					status: "error",
-					error: "Unable to upload: no chat context.",
+					error: "无法上传：没有对话上下文。",
 				});
 				continue;
 			}

@@ -36,7 +36,7 @@ export const Fieldset: FC<FieldsetProps> = ({
 				<div className="text-content-secondary">{validation}</div>
 				{button || (
 					<Button type="submit" disabled={isSubmitting}>
-						Submit
+						提交
 					</Button>
 				)}
 			</footer>

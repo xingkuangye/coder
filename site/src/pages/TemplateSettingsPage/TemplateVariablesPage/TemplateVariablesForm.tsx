@@ -69,7 +69,7 @@ export const TemplateVariablesForm: FC<TemplateVariablesForm> = ({
 	return (
 		<HorizontalForm
 			onSubmit={form.handleSubmit}
-			aria-label="Template variables"
+			aria-label="模板变量"
 		>
 			{templateVariables.map((templateVariable, index) => {
 				let fieldHelpers: FormHelpers;
@@ -110,12 +110,12 @@ export const TemplateVariablesForm: FC<TemplateVariablesForm> = ({
 
 			<FormFooter>
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 
 				<Button type="submit" disabled={isSubmitting}>
 					<Spinner loading={isSubmitting} />
-					Save
+					保存
 				</Button>
 			</FormFooter>
 		</HorizontalForm>
@@ -183,7 +183,7 @@ const ValidationSchemaForTemplateVariables = (
 							if (!val || val.length === 0) {
 								return ctx.createError({
 									path: ctx.path,
-									message: "Variable is required.",
+									message: "变量为必填项。",
 								});
 							}
 						}

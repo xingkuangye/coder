@@ -57,12 +57,11 @@ export const UpdateBuildParametersDialog: FC<
 				id="update-build-parameters-title"
 				classes={{ root: classNames.root }}
 			>
-				Workspace parameters
+				工作区参数
 			</DialogTitle>
 			<DialogContent className="px-10">
 				<DialogContentText className="m-0">
-					This template has new parameters that must be configured to complete
-					the update
+					此模板有新参数需要配置以完成更新
 				</DialogContentText>
 				<VerticalForm
 					className="pt-8"
@@ -102,10 +101,10 @@ export const UpdateBuildParametersDialog: FC<
 					type="button"
 					onClick={dialogProps.onClose}
 				>
-					Cancel
+					取消
 				</Button>
 				<Button className="w-full" type="submit" form="updateParameters">
-					Update parameters
+					更新参数
 				</Button>
 			</DialogActions>
 		</Dialog>

@@ -8,7 +8,7 @@ import {
 
 export const generateWorkspaceName = () => {
 	if (isChromatic()) {
-		return "yellow-bird-23";
+		return "黄色鸟-23";
 	}
 	const numberDictionary = NumberDictionary.generate({ min: 0, max: 99 });
 	return uniqueNamesGenerator({

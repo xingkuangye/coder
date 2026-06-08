@@ -29,7 +29,7 @@ const ExternalAuthPage: FC = () => {
 	return (
 		<>
 			<SettingsHeader>
-				<SettingsHeaderTitle>External Authentication</SettingsHeaderTitle>
+				<SettingsHeaderTitle>外部认证</SettingsHeaderTitle>
 			</SettingsHeader>
 			<ExternalAuthPageView
 				isLoading={externalAuthsQuery.isLoading}
@@ -43,16 +43,16 @@ const ExternalAuthPage: FC = () => {
 					try {
 						const data = await validateAppMutation.mutateAsync(providerID);
 						if (data.authenticated) {
-							toast.success("Application link is valid.");
+							toast.success("应用链接有效。");
 						} else {
-							toast.error("Application link is not valid.", {
+							toast.error("应用链接无效。", {
 								description:
-									"Please unlink the application and reauthenticate.",
+									"请取消链接该应用并重新认证。",
 							});
 						}
 					} catch (error) {
 						toast.error(
-							getErrorMessage(error, "Error validating application link."),
+							getErrorMessage(error, "验证应用链接时出错。"),
 							{
 								description: getErrorDetail(error),
 							},
@@ -62,14 +62,14 @@ const ExternalAuthPage: FC = () => {
 			/>
 			<DeleteDialog
 				key={appToUnlink?.id}
-				title="Unlink Application"
-				verb="Unlinking"
+				title="取消链接应用"
+				verb="正在取消链接"
 				info={
 					appToUnlink?.supports_revocation
-						? "This action will remove external authentication link and will try to revoke the access token from OAuth2 provider. Auth link will be removed regardless if token revocation is successful."
-						: "This action will not revoke the access token from the OAuth2 provider. It only removes the link on this side. To fully revoke access, you must do so on the OAuth2 provider's side."
+						? "此操作将移除外部认证链接，并尝试从 OAuth2 提供方撤销访问令牌。无论令牌撤销是否成功，认证链接都会被移除。"
+						: "此操作不会从 OAuth2 提供方撤销访问令牌。它仅移除本地的链接。要完全撤销访问权限，您必须在 OAuth2 提供方执行。"
 				}
-				label="Name of the application to unlink"
+				label="要取消链接的应用名称"
 				isOpen={appToUnlink !== undefined}
 				confirmLoading={unlinkAppMutation.isPending}
 				name={appToUnlink?.id ?? ""}
@@ -92,11 +92,11 @@ const ExternalAuthPage: FC = () => {
 						setUnlinked(unlinked + 1);
 						toast.success(
 							unlinkResp.token_revoked
-								? "Successfully deleted external auth link and revoked token from the OAuth2 provider."
-								: "Successfully deleted external auth link. Token has NOT been revoked from the OAuth2 provider.",
+								? "已成功删除外部认证链接并从 OAuth2 提供方撤销令牌。"
+								: "已成功删除外部认证链接。令牌未从 OAuth2 提供方撤销。",
 						);
 					} catch (e) {
-						toast.error(getErrorMessage(e, "Error unlinking application."), {
+						toast.error(getErrorMessage(e, "取消链接应用时出错。"), {
 							description: getErrorDetail(e),
 						});
 					}

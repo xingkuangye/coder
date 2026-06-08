@@ -91,7 +91,7 @@ const ExecuteToolInner: React.FC<ExecuteToolInnerProps> = ({
 	const isRunning = status === "running";
 	const showFailureIndicator = isError && !isRunning;
 	const [outputOpen, setOutputOpen] = useState(outputInitiallyOpen);
-	const outputToggleLabel = outputOpen ? "Collapse command" : "Expand command";
+	const outputToggleLabel = outputOpen ? "折叠命令" : "展开命令";
 	const durationLabel = formatShellDurationMs(durationMs);
 
 	if (!hasCommand) {
@@ -127,28 +127,28 @@ const ExecuteToolInner: React.FC<ExecuteToolInnerProps> = ({
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<span
-								aria-label="Command failed"
+								aria-label="命令失败"
 								role="img"
 								className="flex shrink-0 text-content-secondary"
 							>
 								<TriangleAlertIcon aria-hidden className="size-3.5 shrink-0" />
 							</span>
 						</TooltipTrigger>
-						<TooltipContent>Command failed</TooltipContent>
+						<TooltipContent>命令失败</TooltipContent>
 					</Tooltip>
 				)}
 				{isBackgrounded && !isRunning && (
 					<Tooltip>
 						<TooltipTrigger asChild>
 							<span
-								aria-label="Running in background"
+								aria-label="正在后台运行"
 								role="img"
 								className="flex shrink-0 text-content-secondary"
 							>
 								<LayersIcon aria-hidden className="size-3.5 shrink-0" />
 							</span>
 						</TooltipTrigger>
-						<TooltipContent>Running in background</TooltipContent>
+						<TooltipContent>正在后台运行</TooltipContent>
 					</Tooltip>
 				)}
 				{killedBySignal && !isRunning && (
@@ -163,7 +163,7 @@ const ExecuteToolInner: React.FC<ExecuteToolInnerProps> = ({
 				)}
 				<CopyButton
 					text={command}
-					label="Copy command"
+					label="复制命令"
 					className="-my-0.5 size-6 p-0 opacity-0 transition-opacity hover:bg-surface-tertiary group-hover/exec:opacity-100"
 				/>
 			</TranscriptRow>
@@ -192,9 +192,9 @@ const ShellCommandLine: React.FC<{
 			: "";
 	const commandDisplay = summary || command;
 	const commandLabel = intentLabel
-		? `${intentLabel} using ${commandDisplay}`
-		: `Ran ${commandDisplay}`;
-	const durationSuffix = durationLabel ? ` for ${durationLabel}` : "";
+		? `${intentLabel} 使用 ${commandDisplay}`
+		: `执行了 ${commandDisplay}`;
+	const durationSuffix = durationLabel ? `，耗时 ${durationLabel}` : "";
 
 	return (
 		<>
@@ -267,7 +267,7 @@ export const ExecuteAuthRequiredTool: React.FC<{
 			<div className="flex flex-wrap items-center gap-2 px-3 py-2">
 				<CircleAlertIcon className="size-4 shrink-0 text-content-warning" />
 				<span className="text-[13px] text-content-primary">
-					Authenticate with {providerLabel} to continue this command.
+					在 {providerLabel} 认证以继续执行此命令。
 				</span>
 			</div>
 			<div className="flex flex-wrap items-center gap-2 px-3 pb-2">
@@ -280,7 +280,7 @@ export const ExecuteAuthRequiredTool: React.FC<{
 					className="inline-flex cursor-pointer items-center gap-1 text-xs"
 				>
 					<ExternalLinkIcon className="size-3.5 shrink-0" />
-					Authenticate with {providerLabel}
+					在 {providerLabel} 认证
 				</Button>
 				<a
 					href={authenticateURL}
@@ -289,7 +289,7 @@ export const ExecuteAuthRequiredTool: React.FC<{
 					className="inline-flex items-center gap-1 text-xs text-content-link no-underline hover:underline"
 				>
 					<ExternalLinkIcon className="size-3.5 shrink-0" />
-					Open authentication link
+					打开认证链接
 				</a>
 			</div>
 			{hasCommand && (
@@ -330,24 +330,24 @@ export const WaitForExternalAuthTool: React.FC<{
 	errorMessage,
 }) => {
 	const isRunning = status === "running";
-	let label = `Waiting for ${providerLabel} authentication...`;
+	let label = `正在等待 ${providerLabel} 认证...`;
 	let icon: React.ReactNode = (
 		<LoaderIcon className="size-3.5 shrink-0 animate-spin motion-reduce:animate-none text-content-link" />
 	);
 	if (isError) {
 		label =
 			errorMessage ||
-			`Failed while waiting for ${providerLabel} authentication`;
+			`等待 ${providerLabel} 认证时失败`;
 		icon = (
 			<TriangleAlertIcon className="size-3.5 shrink-0 text-content-secondary" />
 		);
 	} else if (timedOut) {
-		label = `Timed out waiting for ${providerLabel} authentication`;
+		label = `等待 ${providerLabel} 认证超时`;
 		icon = (
 			<CircleAlertIcon className="size-3.5 shrink-0 text-content-warning" />
 		);
 	} else if (authenticated && !isRunning) {
-		label = `Authenticated with ${providerLabel}`;
+		label = `已通过 ${providerLabel} 认证`;
 		icon = <CheckIcon className="size-3.5 shrink-0 text-content-success" />;
 	}
 

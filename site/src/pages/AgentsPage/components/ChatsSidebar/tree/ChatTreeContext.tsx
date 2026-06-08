@@ -33,7 +33,7 @@ export const ChatTreeContext = createContext<ChatTreeContextValue | null>(null);
 export function useChatTree(): ChatTreeContextValue {
 	const ctx = useContext(ChatTreeContext);
 	if (!ctx) {
-		throw new Error("useChatTree must be used within ChatTreeContext.Provider");
+		throw new Error("useChatTree 必须在 ChatTreeContext.Provider 内部使用");
 	}
 	return ctx;
 }

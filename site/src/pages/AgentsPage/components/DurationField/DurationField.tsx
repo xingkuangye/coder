@@ -107,12 +107,12 @@ export const DurationField: FC<DurationFieldProps> = ({
 					onValueChange={(v: string) => handleUnitChange(v as TimeUnit)}
 					disabled={disabled}
 				>
-					<SelectTrigger className="w-[120px]" aria-label="Time unit">
+					<SelectTrigger className="w-[120px]" aria-label="时间单位">
 						<SelectValue />
 					</SelectTrigger>
 					<SelectContent>
-						<SelectItem value="hours">Hours</SelectItem>
-						<SelectItem value="days">Days</SelectItem>
+						<SelectItem value="hours">小时</SelectItem>
+						<SelectItem value="days">天</SelectItem>
 					</SelectContent>
 				</Select>
 			</div>

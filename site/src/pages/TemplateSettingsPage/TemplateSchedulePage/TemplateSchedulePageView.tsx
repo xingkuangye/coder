@@ -30,7 +30,7 @@ export const TemplateSchedulePageView: FC<TemplateSchedulePageViewProps> = ({
 	return (
 		<>
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>Template schedule</PageHeaderTitle>
+				<PageHeaderTitle>模板调度</PageHeaderTitle>
 			</PageHeader>
 
 			<TemplateScheduleForm

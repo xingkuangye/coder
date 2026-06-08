@@ -46,7 +46,7 @@ const MoreRolePill: React.FC<MoreRolePillProps> = ({ roles }) => {
 		<TooltipProvider>
 			<Tooltip delayDuration={0}>
 				<TooltipTrigger asChild>
-					<Badge>+{roles.length} more</Badge>
+					<Badge>+{roles.length} 更多</Badge>
 				</TooltipTrigger>
 
 				<TooltipContent className="flex flex-row flex-wrap content-around gap-x-2 gap-y-3 px-4 py-3 border-surface-quaternary">
@@ -79,7 +79,7 @@ const RoleBadge: React.FC<RoleBadgeProps> = ({ role }) => {
 						<span>{displayName}*</span>
 					</TooltipTrigger>
 					<TooltipContent side="bottom" sideOffset={8}>
-						This user has this role for all organizations.
+						该用户在所有组织中拥有此角色。
 					</TooltipContent>
 				</Tooltip>
 			) : (

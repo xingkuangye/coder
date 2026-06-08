@@ -50,7 +50,7 @@ const estimateFinish = (
 
 	const anyMomentNow: [number | undefined, string] = [
 		undefined,
-		"Any moment now...",
+		"即将完成...",
 	];
 
 	const p50percent = (sinceStart * 100) / p50;
@@ -58,7 +58,7 @@ const estimateFinish = (
 		return anyMomentNow;
 	}
 
-	return [p50percent, `Up to ${highGuess} seconds remaining...`];
+	return [p50percent, `最多还需 ${highGuess} 秒...`];
 };
 
 interface WorkspaceBuildProgressProps {
@@ -80,7 +80,7 @@ export const WorkspaceBuildProgress: FC<WorkspaceBuildProgressProps> = ({
 	const job = workspace.latest_build.job;
 	const [progressValue, setProgressValue] = useState<number | undefined>(0);
 	const [progressText, setProgressText] = useState<string | undefined>(
-		"Finding ETA...",
+		"正在计算...",
 	);
 
 	// By default workspace is updated every second, which can cause visual stutter
@@ -149,7 +149,7 @@ export const WorkspaceBuildProgress: FC<WorkspaceBuildProgressProps> = ({
 			{variant !== "task" && (
 				<div className="flex mt-2.5 justify-between">
 					<div className="block text-xs font-semibold text-content-secondary">
-						{capitalize(workspace.latest_build.status)} workspace...
+						{capitalize(workspace.latest_build.status)} 工作区...
 					</div>
 					<div
 						className="block text-xs font-semibold text-content-secondary"

@@ -116,8 +116,8 @@ const AddTemplateUserOrGroup: FC<AddTemplateUserOrGroupProps> = ({
 						<SelectValue />
 					</SelectTrigger>
 					<SelectContent>
-						<SelectItem value="use">Use</SelectItem>
-						<SelectItem value="admin">Admin</SelectItem>
+						<SelectItem value="use">使用</SelectItem>
+						<SelectItem value="admin">管理员</SelectItem>
 					</SelectContent>
 				</Select>
 
@@ -128,7 +128,7 @@ const AddTemplateUserOrGroup: FC<AddTemplateUserOrGroupProps> = ({
 					<Spinner loading={isLoading}>
 						<UserPlusIcon className="size-icon-sm" />
 					</Spinner>
-					Add
+					添加
 				</Button>
 			</div>
 		</form>
@@ -154,24 +154,25 @@ const RoleSelect: FC<RoleSelectProps> = ({
 		>
 			<SelectTrigger className="h-auto w-[200px]">
 				<SelectValue>
-					<span className="capitalize">{value}</span>
+					<span className="capitalize">
+						{value === "use" ? "使用" : "管理员"}
+					</span>
 				</SelectValue>
 			</SelectTrigger>
 			<SelectContent>
 				<SelectItem value="use" className="w-[250px] flex-col items-start py-2">
-					<div className="text-content-primary">Use</div>
+					<div className="text-content-primary">使用</div>
 					<div className="text-xs leading-[140%] text-content-secondary">
-						Can read and use this template to create workspaces.
+						可以读取并使用此模板创建工作区。
 					</div>
 				</SelectItem>
 				<SelectItem
 					value="admin"
 					className="w-[250px] flex-col items-start py-2"
 				>
-					<div className="text-content-primary">Admin</div>
+					<div className="text-content-primary">管理员</div>
 					<div className="text-xs leading-[140%] text-content-secondary">
-						Can modify all aspects of this template including permissions,
-						metadata, and template versions.
+						可以修改此模板的所有方面，包括权限、元数据和模板版本。
 					</div>
 				</SelectItem>
 			</SelectContent>
@@ -227,7 +228,7 @@ export const TemplatePermissionsPageView: FC<
 	return (
 		<>
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>Permissions</PageHeaderTitle>
+				<PageHeaderTitle>权限</PageHeaderTitle>
 			</PageHeader>
 
 			<div className="flex flex-col gap-2.5">
@@ -246,8 +247,8 @@ export const TemplatePermissionsPageView: FC<
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead className="w-[60%]">Member</TableHead>
-							<TableHead className="w-[40%]">Role</TableHead>
+							<TableHead className="w-[60%]">成员</TableHead>
+							<TableHead className="w-[40%]">角色</TableHead>
 							<TableHead className="w-[1%]" />
 						</TableRow>
 					</TableHeader>
@@ -301,8 +302,8 @@ const MembersTableBody: FC<MembersTableBodyProps> = ({
 			<TableRow>
 				<TableCell colSpan={999}>
 					<EmptyState
-						message="No members yet"
-						description="Add a member using the controls above"
+						message="尚无成员"
+						description="使用上面的控件添加成员"
 					/>
 				</TableCell>
 			</TableRow>
@@ -347,10 +348,10 @@ const MembersTableBody: FC<MembersTableBodyProps> = ({
 									<Button
 										size="icon-lg"
 										variant="subtle"
-										aria-label="Open menu"
+										aria-label="打开菜单"
 									>
 										<EllipsisVerticalIcon aria-hidden="true" />
-										<span className="sr-only">Open menu</span>
+										<span className="sr-only">打开菜单</span>
 									</Button>
 								</DropdownMenuTrigger>
 								<DropdownMenuContent align="end">
@@ -358,7 +359,7 @@ const MembersTableBody: FC<MembersTableBodyProps> = ({
 										className="text-content-destructive focus:text-content-destructive"
 										onClick={() => onRemoveGroup(group)}
 									>
-										Remove
+										删除
 									</DropdownMenuItem>
 								</DropdownMenuContent>
 							</DropdownMenu>
@@ -397,10 +398,10 @@ const MembersTableBody: FC<MembersTableBodyProps> = ({
 									<Button
 										size="icon-lg"
 										variant="subtle"
-										aria-label="Open menu"
+										aria-label="打开菜单"
 									>
 										<EllipsisVerticalIcon aria-hidden="true" />
-										<span className="sr-only">Open menu</span>
+										<span className="sr-only">打开菜单</span>
 									</Button>
 								</DropdownMenuTrigger>
 								<DropdownMenuContent align="end">
@@ -408,7 +409,7 @@ const MembersTableBody: FC<MembersTableBodyProps> = ({
 										className="text-content-destructive focus:text-content-destructive"
 										onClick={() => onRemoveUser(user)}
 									>
-										Remove
+										删除
 									</DropdownMenuItem>
 								</DropdownMenuContent>
 							</DropdownMenu>

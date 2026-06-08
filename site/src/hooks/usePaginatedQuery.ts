@@ -14,13 +14,12 @@ import { type SetURLSearchParams, useSearchParams } from "react-router";
 const DEFAULT_RECORDS_PER_PAGE = 25;
 
 /**
- * The key to use for getting/setting the page number from the search params
+ * 用于从搜索参数中获取/设置页码的键
  */
 const PAGE_NUMBER_PARAMS_KEY = "page";
 
 /**
- * A more specialized version of UseQueryOptions built specifically for
- * paginated queries.
+ * UseQueryOptions 的专用版本，专门为分页查询构建。
  */
 export type UsePaginatedQueryOptions<
 	// Aside from TQueryPayload, all type parameters come from the base React
@@ -33,49 +32,40 @@ export type UsePaginatedQueryOptions<
 > = BasePaginationOptions<TQueryFnData, TError, TData, TQueryKey> &
 	QueryPayloadExtender<TQueryPayload> & {
 		/**
-		 * An optional dependency for React Router's URLSearchParams. If this is
-		 * provided, all URL state changes will go through this object instead of
-		 * an internal value.
+		 * React Router 的 URLSearchParams 的可选依赖。如果提供了此参数，
+		 * 所有 URL 状态更改都将通过此对象而不是内部值。
 		 */
 		searchParams?: URLSearchParams;
 
 		/**
-		 * A function that takes pagination information and produces a full query
-		 * key.
+		 * 一个函数，接收分页信息并生成完整的查询键。
 		 *
-		 * Must be a function so that it can be used for the active query, and then
-		 * reused for any prefetching queries (swapping the page number out).
+		 * 必须是一个函数，以便它既可以用于活动查询，也可以重用于任何预取查询（替换页码）。
 		 */
 		queryKey: (params: QueryPageParamsWithPayload<TQueryPayload>) => TQueryKey;
 
 		/**
-		 * A version of queryFn that is required and that exposes the pagination
-		 * information through its query function context argument
+		 * queryFn 的一个版本，是必需的，并通过其查询函数上下文参数公开分页信息
 		 */
 		queryFn: (
 			context: PaginatedQueryFnContext<TQueryKey, TQueryPayload>,
 		) => TQueryFnData | Promise<TQueryFnData>;
 
 		/**
-		 * A custom, optional function for handling what happens if the user
-		 * navigates to a page that doesn't exist for the paginated data.
+		 * 一个可选的自定义函数，用于处理用户导航到分页数据中不存在的页面的情况。
 		 *
-		 * If this function is not defined/provided when an invalid page is
-		 * encountered, usePaginatedQuery will default to navigating the user to the
-		 * closest valid page.
+		 * 如果遇到无效页面时未定义/提供此函数，usePaginatedQuery 将默认将用户导航到最接近的有效页面。
 		 */
 		onInvalidPageChange?: (params: InvalidPageParams) => void;
 
 		/**
-		 * Defaults to true. Allows you to disable prefetches for pages where making
-		 * a request is very expensive.
+		 * 默认为 true。允许你禁用对请求成本非常高的页面的预取。
 		 */
 		prefetch?: boolean;
 	};
 
 /**
- * The result of calling usePaginatedQuery. Mirrors the result of the base
- * useQuery as closely as possible, while adding extra pagination properties
+ * 调用 usePaginatedQuery 的结果。尽可能镜像基础 useQuery 的结果，同时添加额外的分页属性。
  */
 export type UsePaginatedQueryResult<
 	TData = unknown,
@@ -332,9 +322,7 @@ function parsePage(params: URLSearchParams): number {
 }
 
 /**
- * Strips out the page number from a query so that there aren't mismatches
- * between it and usePaginatedQuery's currentPage property (especially for
- * prefetching)
+ * 从查询中剥离页码，以避免页码与 usePaginatedQuery 的 currentPage 属性不匹配（尤其是在预取时）
  */
 function getParamsWithoutPage(params: URLSearchParams): URLSearchParams {
 	const withoutPage = new URLSearchParams(params);
@@ -343,8 +331,7 @@ function getParamsWithoutPage(params: URLSearchParams): URLSearchParams {
 }
 
 /**
- * All the pagination-properties for UsePaginatedQueryResult. Split up so that
- * the types can be used separately in multiple spots.
+ * UsePaginatedQueryResult 的所有分页属性。拆分开来，以便类型可以在多个地方单独使用。
  */
 export type PaginationResultInfo = {
 	currentPage: number;
@@ -375,16 +362,10 @@ export type PaginationResultInfo = {
 );
 
 /**
- * Papers over how the queryPayload function is defined at the type level, so
- * that UsePaginatedQueryOptions doesn't look as scary.
+ * 在类型层面掩盖 queryPayload 函数的定义方式，使 UsePaginatedQueryOptions 看起来不那么吓人。
  *
- * You're going to see these tuple types in a few different spots in this file;
- * it's a "hack" to get around the function contravariance that pops up when you
- * normally try to share the TQueryPayload between queryPayload, queryKey, and
- * queryFn via the direct/"obvious" way. By throwing the types into tuples
- * (which are naturally covariant), it's a lot easier to share the types without
- * TypeScript complaining all the time or getting so confused that it degrades
- * the type definitions into a bunch of "any" types
+ * 你会在此文件的几个不同地方看到这些元组类型；这是一个“技巧”，用于规避通常通过直接/“明显”方式在 queryPayload、queryKey 和 queryFn 之间共享 TQueryPayload 时出现的函数逆变。
+ * 通过将类型放入元组（它们天生是协变的），可以更容易地共享类型，而不会导致 TypeScript 一直抱怨或变得过于困惑，从而将类型定义降级为一堆 "any" 类型。
  */
 type QueryPayloadExtender<TQueryPayload = never> = [TQueryPayload] extends [
 	never,
@@ -392,68 +373,57 @@ type QueryPayloadExtender<TQueryPayload = never> = [TQueryPayload] extends [
 	? { queryPayload?: never }
 	: {
 			/**
-			 * An optional function for defining reusable "patterns" for taking
-			 * pagination data (current page, etc.), which will be evaluated and
-			 * passed to queryKey and queryFn for active queries and prefetch queries.
+			 * 一个可选函数，用于定义可重用的“模式”，接收分页数据（当前页码等），
+			 * 将被评估并传递给 queryKey 和 queryFn，用于活动查询和预取查询。
 			 *
-			 * queryKey and queryFn can each access the result of queryPayload
-			 * by accessing the "payload" property from their main function argument
+			 * queryKey 和 queryFn 都可以通过从其主函数参数中访问 "payload" 属性来获取 queryPayload 的结果。
 			 */
 			queryPayload: (params: QueryPageParams) => TQueryPayload;
 		};
 
 /**
- * Information about a paginated request. This information is passed into the
- * queryPayload, queryKey, and queryFn properties of the hook.
+ * 分页请求的相关信息。此信息会传递给 hook 的 queryPayload、queryKey 和 queryFn 属性。
  */
 type QueryPageParams = {
 	/**
-	 * The page number used when evaluating queryKey and queryFn. pageNumber will
-	 * be the current page during rendering, but will be the next/previous pages
-	 * for any prefetching.
+	 * 在评估 queryKey 和 queryFn 时使用的页码。在渲染期间，pageNumber 将是当前页，
+	 * 但在任何预取中，它将是下一页/上一页。
 	 */
 	pageNumber: number;
 
 	/**
-	 * The number of data records to pull per query. Currently hard-coded based
-	 * off the value from PaginationWidget's utils file
+	 * 每次查询要拉取的数据记录数。目前根据 PaginationWidget 的 utils 文件中的值硬编码。
 	 */
 	limit: number;
 
 	/**
-	 * The page offset to use for querying. Just here for convenience; can also be
-	 * derived from pageNumber and limit
+	 * 用于查询的页面偏移量。仅为方便而设；也可以从 pageNumber 和 limit 推导得出。
 	 */
 	offset: number;
 
 	/**
-	 * The current URL search params. Useful for letting you grab certain search
-	 * terms from the URL
+	 * 当前的 URL 搜索参数。可用于让你从 URL 中获取某些搜索词。
 	 */
 	searchParams: URLSearchParams;
 };
 
 /**
- * Weird, hard-to-describe type definition, but it's necessary for making sure
- * that the type information involving the queryPayload function narrows
- * properly.
+ * 怪异且难以描述的类型定义，但对于确保涉及 queryPayload 函数的类型信息能正确收窄是必需的。
  */
 type RuntimePayload<TPayload = never> = [TPayload] extends [never]
 	? undefined
 	: TPayload;
 
 /**
- * The query page params, appended with the result of the queryPayload function.
- * This type is passed to both queryKey and queryFn. If queryPayload is
- * undefined, payload will always be undefined
+ * 查询页面参数，附加了 queryPayload 函数的结果。
+ * 此类型传递给 queryKey 和 queryFn。如果 queryPayload 未定义，则 payload 将始终为 undefined。
  */
 type QueryPageParamsWithPayload<TPayload = never> = QueryPageParams & {
 	payload: RuntimePayload<TPayload>;
 };
 
 /**
- * Any JSON-serializable object returned by the API that exposes the total
- * number of records that match a query
+ * API 返回的任何可 JSON 序列化的对象，它公开了匹配查询的记录总数。
  */
 export type PaginatedData = {
 	count: number;
@@ -461,9 +431,8 @@ export type PaginatedData = {
 };
 
 /**
- * React Query's QueryFunctionContext (minus pageParam, which is weird and
- * defaults to type any anyway), plus all properties from
- * QueryPageParamsWithPayload.
+ * React Query 的 QueryFunctionContext（减去 pageParam，因为它很奇怪且默认为 any 类型），
+ * 以及 QueryPageParamsWithPayload 的所有属性。
  */
 type PaginatedQueryFnContext<
 	TQueryKey extends QueryKey = QueryKey,
@@ -472,16 +441,13 @@ type PaginatedQueryFnContext<
 	QueryPageParamsWithPayload<TPayload>;
 
 /**
- * The set of React Query properties that UsePaginatedQueryOptions derives from.
+ * UsePaginatedQueryOptions 所基于的 React Query 属性集。
  *
- * Three properties are stripped from it:
- * - keepPreviousData - The value must always be true to keep pagination feeling
- *   nice, so better to prevent someone from trying to touch it at all
- * - queryFn - Removed to make it easier to swap in a custom queryFn type
- *   definition with a custom context argument
- * - queryKey - Removed so that it can be replaced with the function form of
- *   queryKey
- * - onSuccess/onError - APIs are deprecated and removed in React Query v5
+ * 从中剥离了三个属性：
+ * - keepPreviousData - 必须始终为 true 以保持分页体验良好，因此最好阻止任何人尝试触碰它
+ * - queryFn - 移除，以便更容易地用带有自定义上下文参数的自定义 queryFn 类型定义替换
+ * - queryKey - 移除，以便可以用函数形式的 queryKey 替代
+ * - onSuccess/onError - 在 React Query v5 中已弃用并移除
  */
 type BasePaginationOptions<
 	TQueryFnData extends PaginatedData = PaginatedData,
@@ -494,7 +460,7 @@ type BasePaginationOptions<
 >;
 
 /**
- * The argument passed to a custom onInvalidPageChange callback.
+ * 传递给自定义 onInvalidPageChange 回调的参数。
  */
 type InvalidPageParams = QueryPageParams & {
 	totalPages: number;

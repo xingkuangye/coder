@@ -53,7 +53,7 @@ const groupSyncValidationSchema = Yup.object({
 	mapping: Yup.object()
 		.test(
 			"valid-mapping",
-			"Invalid group sync settings mapping structure",
+			"无效的组同步设置映射结构",
 			(value) => {
 				if (!value) return true;
 				return Object.entries(value).every(
@@ -160,10 +160,10 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 					<div className="flex flex-row items-center gap-5">
 						<div className="grid grid-cols-2 gap-2 grid-rows-[20px_auto_20px]">
 							<Label className="text-sm" htmlFor={`${id}-sync-field`}>
-								Group sync field
+								组同步字段
 							</Label>
 							<Label className="text-sm" htmlFor={`${id}-regex-filter`}>
-								Regex filter
+								正则表达式过滤器
 							</Label>
 							<Input
 								id={`${id}-sync-field`}
@@ -192,11 +192,11 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 									}}
 								>
 									<Spinner loading={form.isSubmitting} />
-									Save
+									保存
 								</Button>
 							</div>
 							<p className="text-content-secondary text-2xs m-0">
-								If empty, group sync is deactivated
+								如果为空，组同步将被停用
 							</p>
 						</div>
 					</div>
@@ -220,7 +220,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 					</Spinner>
 					<span className="flex flex-row items-center gap-1">
 						<Label htmlFor={`${id}-auto-create-missing-groups`}>
-							Auto create missing groups
+							自动创建缺失组
 						</Label>
 						<AutoCreateMissingGroupsHelpPopover />
 					</span>
@@ -228,7 +228,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 				<div className="flex flex-row gap-2 justify-between items-start">
 					<div className="grid items-center gap-1 w-72">
 						<Label className="text-sm" htmlFor={`${id}-idp-group-name`}>
-							IdP group name
+							IdP 组名称
 						</Label>
 						{claimFieldValues ? (
 							<Combobox
@@ -245,14 +245,14 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 												? { label: idpGroupName, value: idpGroupName }
 												: undefined
 										}
-										placeholder="Select IdP group"
+										placeholder="选择 IdP 组"
 									/>
 								</ComboboxTrigger>
 								<ComboboxContent className="w-72">
 									<ComboboxInput
 										value={comboInputValue}
 										onValueChange={setComboInputValue}
-										placeholder="Search..."
+										placeholder="搜索..."
 										onKeyDown={handleKeyDown}
 									/>
 									<ComboboxList>
@@ -287,7 +287,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 					</div>
 					<div className="grid items-center gap-1 flex-1">
 						<Label className="text-sm" htmlFor={`${id}-coder-group`}>
-							Coder group
+							Coder 组
 						</Label>
 						<MultiSelectCombobox
 							inputProps={{
@@ -303,10 +303,10 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 									value: group.id,
 								}))}
 							hidePlaceholderWhenSelected
-							placeholder="Select group"
+							placeholder="选择组"
 							emptyIndicator={
 								<p className="text-center text-md text-content-primary">
-									No more groups to select
+									没有更多可选组
 								</p>
 							}
 						/>
@@ -334,7 +334,7 @@ export const IdpGroupSyncForm: FC<IdpGroupSyncFormProps> = ({
 							<Spinner loading={form.isSubmitting}>
 								<PlusIcon />
 							</Spinner>
-							Add IdP group
+							添加 IdP 组
 						</Button>
 					</div>
 				</div>
@@ -416,9 +416,7 @@ const GroupRow: FC<GroupRowProps> = ({
 								sideOffset={8}
 								className="p-2 text-xs text-content-secondary max-w-sm"
 							>
-								This value has not be seen in the specified claim field before.
-								You might want to check your IdP configuration and ensure that
-								this value is not misspelled.
+								此值在指定的声明字段中未曾出现。您可能需要检查您的 IdP 配置，确保该值没有拼写错误。
 							</TooltipContent>
 						</Tooltip>
 					)}
@@ -434,11 +432,11 @@ const GroupRow: FC<GroupRowProps> = ({
 					variant="outline"
 					size="icon"
 					className="text-content-primary"
-					aria-label="delete"
+					aria-label="删除"
 					onClick={() => onDelete(idpGroup)}
 				>
 					<TrashIcon />
-					<span className="sr-only">Delete IdP mapping</span>
+					<span className="sr-only">删除 IdP 映射</span>
 				</Button>
 			</TableCell>
 		</TableRow>
@@ -451,8 +449,7 @@ const AutoCreateMissingGroupsHelpPopover: FC = () => {
 			<HelpPopoverIconTrigger />
 			<HelpPopoverContent>
 				<HelpPopoverText>
-					Enabling auto create missing groups will automatically create groups
-					returned by the OIDC provider if they do not exist in Coder.
+					启用自动创建缺失组将会在 Coder 中不存在时自动创建 OIDC 提供商返回的组。
 				</HelpPopoverText>
 			</HelpPopoverContent>
 		</HelpPopover>
@@ -463,19 +460,15 @@ const LegacyGroupSyncHeader: FC = () => {
 	return (
 		<h4 className="text-xl font-medium">
 			<div className="flex items-end gap-2">
-				<span>Legacy group sync settings</span>
+				<span>旧版组同步设置</span>
 				<HelpPopover>
 					<HelpPopoverIconTrigger />
 					<HelpPopoverContent>
-						<HelpPopoverTitle>Legacy group sync settings</HelpPopoverTitle>
+						<HelpPopoverTitle>旧版组同步设置</HelpPopoverTitle>
 						<HelpPopoverText>
-							These settings were configured using environment variables, and
-							only apply to the default organization. It is now recommended to
-							configure IdP sync via the CLI or the UI, which enables sync to be
-							configured for any organization, and for those settings to be
-							persisted without manually setting environment variables.{" "}
+							这些设置是通过环境变量配置的，并且仅适用于默认组织。现在建议通过 CLI 或 UI 配置 IdP 同步，这样可以为任何组织配置同步，并且无需手动设置环境变量即可持久化这些设置。{" "}
 							<Link href={docs("/admin/users/idp-sync")}>
-								Learn more&hellip;
+								了解更多&hellip;
 							</Link>
 						</HelpPopoverText>
 					</HelpPopoverContent>

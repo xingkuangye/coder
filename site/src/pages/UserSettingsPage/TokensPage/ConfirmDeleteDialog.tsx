@@ -22,12 +22,12 @@ export const ConfirmDeleteDialog: FC<ConfirmDeleteDialogProps> = ({
 		useDeleteToken(queryKey);
 
 	const onDeleteSuccess = () => {
-		toast.success("Token has been deleted.");
+		toast.success("令牌已删除。");
 		setToken(undefined);
 	};
 
 	const onDeleteError = (error: Error) => {
-		const message = getErrorMessage(error, "Failed to delete token");
+		const message = getErrorMessage(error, "删除令牌失败");
 		toast.error(message, {
 			description: getErrorDetail(error),
 		});
@@ -37,11 +37,11 @@ export const ConfirmDeleteDialog: FC<ConfirmDeleteDialogProps> = ({
 	return (
 		<ConfirmDialog
 			type="delete"
-			title="Delete Token"
+			title="删除令牌"
 			description={
 				<>
-					Are you sure you want to permanently delete token{" "}
-					<strong>{tokenName}</strong>?
+					您确定要永久删除令牌{" "}
+					<strong>{tokenName}</strong>吗？
 				</>
 			}
 			open={Boolean(token) || isDeleting}

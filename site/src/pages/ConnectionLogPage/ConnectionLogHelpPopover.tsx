@@ -16,15 +16,13 @@ export const ConnectionLogHelpPopover: FC = () => {
 			<HelpPopoverIconTrigger />
 
 			<HelpPopoverContent>
-				<HelpPopoverTitle>Why are some events missing?</HelpPopoverTitle>
+				<HelpPopoverTitle>为什么缺少了一些事件？</HelpPopoverTitle>
 				<HelpPopoverText>
-					The connection log is a best-effort log of workspace access. Some
-					events are reported by workspace agents, and receipt of these events
-					by the server is not guaranteed.
+					连接日志是一个尽力而为的工作区访问日志。某些事件由工作区代理报告，服务器对这些事件的接收并不保证。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/monitoring/connection-logs")}>
-						Connection log documentation
+						连接日志文档
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>

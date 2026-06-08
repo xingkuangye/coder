@@ -48,24 +48,24 @@ export const AnnouncementBannerDialog: FC<AnnouncementBannerDialogProps> = ({
 			</div>
 
 			<div css={styles.dialogContent}>
-				<h3 css={styles.dialogTitle}>Announcement banner</h3>
+				<h3 css={styles.dialogTitle}>公告横幅</h3>
 				<div className="flex flex-col gap-4">
 					<div>
-						<h4 css={styles.settingName}>Message</h4>
+						<h4 css={styles.settingName}>消息</h4>
 						<TextField
 							{...bannerFieldHelpers("message", {
-								helperText: "Markdown bold, italics, and links are supported.",
+								helperText: "支持 Markdown 粗体、斜体和链接。",
 							})}
 							fullWidth
 							multiline
 							inputProps={{
-								"aria-label": "Message",
-								placeholder: "Enter a message for the banner",
+								"aria-label": "消息",
+								placeholder: "输入横幅消息",
 							}}
 						/>
 					</div>
 					<div>
-						<h4 css={styles.settingName}>Background color</h4>
+						<h4 css={styles.settingName}>背景颜色</h4>
 						<div className="flex flex-col gap-4">
 							{showHuePicker ? (
 								<SliderPicker
@@ -123,7 +123,7 @@ export const AnnouncementBannerDialog: FC<AnnouncementBannerDialogProps> = ({
 									variant="outline"
 									onClick={() => setShowHuePicker((it) => !it)}
 								>
-									Show {showHuePicker ? "palette" : "slider"}
+									显示{showHuePicker ? "调色板" : "滑块"}
 								</Button>
 							</div>
 						</div>
@@ -133,9 +133,9 @@ export const AnnouncementBannerDialog: FC<AnnouncementBannerDialogProps> = ({
 
 			<DialogActions>
 				<DialogActionButtons
-					cancelText="Cancel"
+					cancelText="取消"
 					confirmLoading={bannerForm.isSubmitting}
-					confirmText="Update"
+					confirmText="更新"
 					disabled={bannerForm.isSubmitting}
 					onCancel={onCancel}
 					onConfirm={bannerForm.handleSubmit}

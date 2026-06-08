@@ -68,6 +68,16 @@ const StatusFilters: ProvisionerJobStatus[] = [
 	"unknown",
 ];
 
+const statusLabels: Record<ProvisionerJobStatus, string> = {
+	succeeded: "成功",
+	failed: "失败",
+	pending: "待处理",
+	running: "运行中",
+	canceling: "取消中",
+	canceled: "已取消",
+	unknown: "未知",
+};
+
 type JobProvisionersFilter = {
 	status: string;
 	ids: string;
@@ -88,9 +98,9 @@ const OrganizationProvisionerJobsPageView: FC<
 	if (!organization) {
 		return (
 			<>
-				<title>{pageTitle("Provisioner Jobs")}</title>
+				<title>{pageTitle("配置器任务")}</title>
 
-				<EmptyState message="Organization not found" />
+				<EmptyState message="未找到组织" />
 			</>
 		);
 	}
@@ -99,18 +109,17 @@ const OrganizationProvisionerJobsPageView: FC<
 		<div className="w-full max-w-screen-2xl pb-10">
 			<title>
 				{pageTitle(
-					"Provisioner Jobs",
+					"配置器任务",
 					organization.display_name || organization.name,
 				)}
 			</title>
 
 			<section>
 				<SettingsHeader>
-					<SettingsHeaderTitle>Provisioner Jobs</SettingsHeaderTitle>
+					<SettingsHeaderTitle>配置器任务</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Provisioner Jobs are the individual tasks assigned to Provisioners
-						when the workspaces are being built.{" "}
-						<Link href={docs("/admin/provisioners")}>View docs</Link>
+						配置器任务是构建工作空间时分配给配置器的单个任务。{" "}
+						<Link href={docs("/admin/provisioners")}>查看文档</Link>
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -130,11 +139,11 @@ const OrganizationProvisionerJobsPageView: FC<
 												onFilterChange({ ...filter, ids: "" });
 											}}
 										>
-											<span className="sr-only">Clear ID</span>
+											<span className="sr-only">清除 ID</span>
 											<XIcon />
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent>Clear ID</TooltipContent>
+									<TooltipContent>清除 ID</TooltipContent>
 								</Tooltip>
 							</div>
 						</div>
@@ -150,7 +159,7 @@ const OrganizationProvisionerJobsPageView: FC<
 						}}
 					>
 						<SelectTrigger className="w-[180px]" data-testid="status-filter">
-							<SelectValue placeholder="All statuses" />
+							<SelectValue placeholder="所有状态" />
 						</SelectTrigger>
 						<SelectContent>
 							<SelectGroup>
@@ -159,7 +168,7 @@ const OrganizationProvisionerJobsPageView: FC<
 										<StatusIndicator variant={variantByStatus[status]}>
 											<StatusIndicatorDot />
 											<span className="block first-letter:uppercase">
-												{status}
+												{statusLabels[status]}
 											</span>
 										</StatusIndicator>
 									</SelectItem>
@@ -172,11 +181,11 @@ const OrganizationProvisionerJobsPageView: FC<
 				<Table className="mt-6">
 					<TableHeader>
 						<TableRow>
-							<TableHead>Created</TableHead>
-							<TableHead>Type</TableHead>
-							<TableHead>Template</TableHead>
-							<TableHead>Tags</TableHead>
-							<TableHead>Status</TableHead>
+							<TableHead>创建时间</TableHead>
+							<TableHead>类型</TableHead>
+							<TableHead>模板</TableHead>
+							<TableHead>标签</TableHead>
+							<TableHead>状态</TableHead>
 							<TableHead />
 						</TableRow>
 					</TableHeader>
@@ -193,7 +202,7 @@ const OrganizationProvisionerJobsPageView: FC<
 							) : (
 								<TableRow>
 									<TableCell colSpan={999}>
-										<EmptyState message="No provisioner jobs found" />
+										<EmptyState message="未找到配置器任务" />
 									</TableCell>
 								</TableRow>
 							)
@@ -201,10 +210,10 @@ const OrganizationProvisionerJobsPageView: FC<
 							<TableRow>
 								<TableCell colSpan={999}>
 									<EmptyState
-										message="Error loading the provisioner jobs"
+										message="加载配置器任务出错"
 										cta={
 											<Button size="sm" onClick={onRetry}>
-												Retry
+												重试
 											</Button>
 										}
 									/>

@@ -1,6 +1,6 @@
 /**
- * Browser-side image re-encoding to a caller-supplied byte budget.
- * Plain TS (no React) so it can be used by any upload pipeline.
+ * 浏览器端图像重新编码，以适应调用方提供的字节预算。
+ * 纯 TypeScript（不含 React），因此可用于任何上传流程。
  */
 
 // Formats we re-encode. GIFs are excluded so we don't flatten
@@ -234,7 +234,7 @@ async function decodeViaImgFallback(file: File): Promise<ImageBitmap | null> {
 		const timer = setTimeout(() => {
 			if (settled) return;
 			cleanup();
-			reject(new Error("image decode timed out"));
+			reject(new Error("图像解码超时"));
 		}, FALLBACK_DECODE_TIMEOUT_MS);
 		img.onload = () => {
 			if (settled) return;
@@ -248,7 +248,7 @@ async function decodeViaImgFallback(file: File): Promise<ImageBitmap | null> {
 			if (settled) return;
 			clearTimeout(timer);
 			cleanup();
-			reject(new Error("image decode failed"));
+			reject(new Error("图像解码失败"));
 		};
 		img.src = url;
 	});

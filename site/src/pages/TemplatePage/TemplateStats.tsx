@@ -20,20 +20,20 @@ export const TemplateStats: FC<TemplateStatsProps> = ({
 	return (
 		<Stats>
 			<StatsItem
-				label="Used by"
+				label="使用者"
 				value={
 					<>
 						{formatTemplateActiveDevelopers(template.active_user_count)}{" "}
-						{template.active_user_count === 1 ? "developer" : "developers"}
+						{template.active_user_count === 1 ? "开发者" : "开发者"}
 					</>
 				}
 			/>
 			<StatsItem
-				label="Build time"
+				label="构建时间"
 				value={formatTemplateBuildTime(template.build_time_stats.start.P50)}
 			/>
 			<StatsItem
-				label="Active version"
+				label="活跃版本"
 				value={
 					<Link to={`versions/${activeVersion.name}`}>
 						{activeVersion.name}
@@ -41,10 +41,10 @@ export const TemplateStats: FC<TemplateStatsProps> = ({
 				}
 			/>
 			<StatsItem
-				label="Last updated"
+				label="最后更新"
 				value={createDayString(template.updated_at)}
 			/>
-			<StatsItem label="Created by" value={template.created_by_name} />
+			<StatsItem label="创建者" value={template.created_by_name} />
 		</Stats>
 	);
 };

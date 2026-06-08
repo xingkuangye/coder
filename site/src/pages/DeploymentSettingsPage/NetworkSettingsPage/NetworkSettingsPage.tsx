@@ -8,7 +8,7 @@ const NetworkSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Network Settings")}</title>
+			<title>{pageTitle("网络设置")}</title>
 
 			<NetworkSettingsPageView options={deploymentConfig.options} />
 		</>

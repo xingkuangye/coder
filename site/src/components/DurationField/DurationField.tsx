@@ -131,11 +131,11 @@ export const DurationField: FC<DurationFieldProps> = (props) => {
 							onChange(newDurationMs);
 						}
 					}}
-					inputProps={{ "aria-label": "Time unit" }}
+					inputProps={{ "aria-label": "时间单位" }}
 					IconComponent={ChevronDownIcon}
 				>
-					<MenuItem value="hours">Hours</MenuItem>
-					<MenuItem value="days">Days</MenuItem>
+					<MenuItem value="hours">小时</MenuItem>
+					<MenuItem value="days">天</MenuItem>
 				</Select>
 			</div>
 

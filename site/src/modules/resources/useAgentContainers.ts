@@ -42,8 +42,8 @@ export function useAgentContainers(
 
 		socket.addEventListener("message", (event) => {
 			if (event.parseError) {
-				toast.error("Failed to update containers.", {
-					description: "Please try refreshing the page.",
+				toast.error("容器更新失败。", {
+					description: "请尝试刷新页面。",
 				});
 				return;
 			}
@@ -52,8 +52,8 @@ export function useAgentContainers(
 		});
 
 		socket.addEventListener("error", () => {
-			toast.error("Failed to load containers.", {
-				description: "Please try refreshing the page.",
+			toast.error("容器加载失败。", {
+				description: "请尝试刷新页面。",
 			});
 		});
 

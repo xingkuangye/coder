@@ -15,14 +15,13 @@ export const RolesHelpPopover: FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger size="small" />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is a role?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是角色？</HelpPopoverTitle>
 				<HelpPopoverText>
-					Coder role-based access control (RBAC) provides fine-grained access
-					management. View our docs on how to use the available roles.
+					Coder 基于角色的访问控制（RBAC）提供了精细的访问管理。查看我们的文档，了解如何使用可用的角色。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/users/groups-roles")}>
-						User Roles
+						用户角色
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>
@@ -35,14 +34,13 @@ export const GroupsHelpPopover: FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger size="small" />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is a group?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是用户组？</HelpPopoverTitle>
 				<HelpPopoverText>
-					Groups can be used with template RBAC to give groups of users access
-					to specific templates. View our docs on how to use groups.
+					用户组可以与模板 RBAC 结合使用，为一组用户授予对特定模板的访问权限。查看我们的文档，了解如何使用用户组。
 				</HelpPopoverText>
 				<HelpPopoverLinksGroup>
 					<HelpPopoverLink href={docs("/admin/users/groups-roles")}>
-						Groups
+						用户组
 					</HelpPopoverLink>
 				</HelpPopoverLinksGroup>
 			</HelpPopoverContent>
@@ -55,10 +53,9 @@ export const AiAddonHelpPopover: FC = () => {
 		<HelpPopover>
 			<HelpPopoverIconTrigger size="small" />
 			<HelpPopoverContent>
-				<HelpPopoverTitle>What is the AI add-on?</HelpPopoverTitle>
+				<HelpPopoverTitle>什么是 AI 附加组件？</HelpPopoverTitle>
 				<HelpPopoverText>
-					Users with access to AI features like AI Bridge or Tasks who are
-					actively consuming a seat.
+					拥有 AI 功能（如 AI Bridge 或 Tasks）访问权限且正在主动消耗席位的用户。
 				</HelpPopoverText>
 			</HelpPopoverContent>
 		</HelpPopover>

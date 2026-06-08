@@ -93,13 +93,13 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 						templates={templates}
 						templatesFetchStatus={templatesFetchStatus}
 					>
-						New workspace
+						新建工作区
 					</WorkspacesButton>
 				}
 			>
 				<PageHeaderTitle>
 					<div className="flex flex-row gap-2 items-center">
-						<span>Workspaces</span>
+						<span>工作区</span>
 						<WorkspaceHelpPopover />
 					</div>
 				</PageHeaderTitle>
@@ -123,9 +123,9 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 				{checkedWorkspaces.length > 0 ? (
 					<>
 						<div>
-							Selected <strong>{checkedWorkspaces.length}</strong> of{" "}
+							已选择 <strong>{checkedWorkspaces.length}</strong> 中的{" "}
 							<strong>{workspaces?.length}</strong>{" "}
-							{workspaces?.length === 1 ? "workspace" : "workspaces"}
+							{workspaces?.length === 1 ? "个工作区" : "个工作区"}
 						</div>
 
 						<DropdownMenu>
@@ -136,7 +136,7 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 									size="sm"
 									className="ml-auto"
 								>
-									Bulk actions
+									批量操作
 									<Spinner loading={isRunningBatchAction}>
 										<ChevronDownIcon />
 									</Spinner>
@@ -153,7 +153,7 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 									}
 									onClick={onBatchStartTransition}
 								>
-									<PlayIcon /> Start
+									<PlayIcon /> 启动
 								</DropdownMenuItem>
 								<DropdownMenuItem
 									disabled={
@@ -163,7 +163,7 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 									}
 									onClick={onBatchStopTransition}
 								>
-									<SquareIcon /> Stop
+									<SquareIcon /> 停止
 								</DropdownMenuItem>
 								<DropdownMenuSeparator />
 								<DropdownMenuItem onClick={onBatchUpdateTransition}>
@@ -171,13 +171,13 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 										className="size-icon-sm"
 										data-testid="bulk-action-update"
 									/>{" "}
-									Update&hellip;
+									更新&hellip;
 								</DropdownMenuItem>
 								<DropdownMenuItem
 									className="text-content-destructive focus:text-content-destructive"
 									onClick={onBatchDeleteTransition}
 								>
-									<TrashIcon /> Delete&hellip;
+									<TrashIcon /> 删除&hellip;
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
@@ -185,7 +185,7 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 				) : (
 					!pageNumberIsInvalid && (
 						<PaginationAmount
-							paginationUnitLabel="workspaces"
+							paginationUnitLabel="个工作区"
 							limit={limit}
 							totalRecords={count}
 							currentOffsetStart={(page - 1) * limit + 1}
@@ -197,15 +197,15 @@ export const WorkspacesPageView: FC<WorkspacesPageViewProps> = ({
 			{pageNumberIsInvalid ? (
 				<EmptyState
 					className="border border-solid border-border rounded-lg"
-					message="Page not found"
-					description="The page you are trying to access does not exist."
+					message="页面未找到"
+					description="您尝试访问的页面不存在。"
 					cta={
 						<Button
 							onClick={() => {
 								onPageChange(1);
 							}}
 						>
-							Back to the first page
+							返回第一页
 						</Button>
 					}
 				/>

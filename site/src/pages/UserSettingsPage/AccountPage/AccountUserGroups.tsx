@@ -28,15 +28,15 @@ export const AccountUserGroups: FC<AccountGroupsProps> = ({
 		<div>
 			<SettingsHeader>
 				<SettingsHeaderTitle hierarchy="secondary">
-					Your groups
+					您的群组
 				</SettingsHeaderTitle>
 				{groups && (
 					<SettingsHeaderDescription>
-						You are in{" "}
+						您在{" "}
 						<em className="not-italic text-content-primary font-semibold">
-							{groups.length} group
-							{groups.length !== 1 && "s"}
+							{groups.length} 个群组
 						</em>
+						中
 					</SettingsHeaderDescription>
 				)}
 			</SettingsHeader>
@@ -56,8 +56,7 @@ export const AccountUserGroups: FC<AccountGroupsProps> = ({
 										group.organization_display_name
 									) : (
 										<>
-											{group.total_member_count} member
-											{group.total_member_count !== 1 && "s"}
+											{group.total_member_count} 位成员
 										</>
 									)
 								}

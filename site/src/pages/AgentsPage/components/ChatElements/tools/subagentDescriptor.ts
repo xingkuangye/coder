@@ -23,17 +23,17 @@ const subagentCatalog: Record<
 	}
 > = {
 	general: {
-		fallbackTitle: "sub-agent",
+		fallbackTitle: "子代理",
 		iconKind: "bot",
 		supportsDesktopAffordance: false,
 	},
 	explore: {
-		fallbackTitle: "Explore agent",
+		fallbackTitle: "探索代理",
 		iconKind: "bot",
 		supportsDesktopAffordance: false,
 	},
 	computer_use: {
-		fallbackTitle: "Computer use sub-agent",
+		fallbackTitle: "计算机操作子代理",
 		iconKind: "monitor",
 		supportsDesktopAffordance: true,
 	},

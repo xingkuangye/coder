@@ -32,33 +32,33 @@ import {
 } from "../../../utils/agentSidebarFilters";
 
 const PR_STATUS_LABELS: Record<AgentPRStatusFilter, string> = {
-	draft: "Draft",
-	open: "Open",
-	merged: "Merged",
-	closed: "Closed",
+	draft: "草稿",
+	open: "开放",
+	merged: "已合并",
+	closed: "已关闭",
 };
 
 const GROUP_OPTIONS: readonly Readonly<{
 	value: AgentSidebarGroupBy;
 	label: string;
 }>[] = [
-	{ value: "date", label: "Date" },
-	{ value: "chat_status", label: "Chat status" },
+	{ value: "date", label: "日期" },
+	{ value: "chat_status", label: "聊天状态" },
 ];
 
 const CHAT_STATUS_LABELS: Record<AgentChatStatusFilter, string> = {
-	unread: "Unread",
-	read: "Read",
+	unread: "未读",
+	read: "已读",
 };
 
 const ARCHIVE_STATUS_LABELS: Record<AgentArchiveStatusFilter, string> = {
-	active: "Active",
-	archived: "Archived",
+	active: "活跃",
+	archived: "已归档",
 };
 
 const SOURCE_LABELS: Record<AgentSourceFilter, string> = {
-	created_by_me: "Created by me",
-	shared_with_me: "Shared with me",
+	created_by_me: "由我创建",
+	shared_with_me: "与我共享",
 };
 
 const CHAT_STATUS_OPTIONS: readonly Readonly<{
@@ -258,7 +258,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 				<Button
 					variant="subtle"
 					size="icon"
-					aria-label="Filter agents"
+					aria-label="筛选代理"
 					className={cn(
 						"h-7 w-7 min-w-0 -mr-0.5 justify-end px-0 text-content-secondary hover:text-content-primary",
 						hasActiveFilters(filters) && "text-content-primary",
@@ -269,13 +269,13 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 			</PopoverTrigger>
 			<PopoverContent
 				align="end"
-				aria-label="Filter agents"
+				aria-label="筛选代理"
 				role="dialog"
 				className="mobile-full-width-dropdown mobile-full-width-dropdown-top-below-header w-64 overflow-hidden p-0 text-sm"
 			>
 				<div className="border-0 border-b border-solid border-border px-3 py-2">
 					<section className="space-y-2">
-						<SectionHeading id={`${id}-group-heading`}>Group</SectionHeading>
+						<SectionHeading id={`${id}-group-heading`}>分组</SectionHeading>
 						<RadioGroup
 							aria-labelledby={`${id}-group-heading`}
 							value={stagedFilters.groupBy}
@@ -306,12 +306,12 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 
 				<div className="px-3 pt-2">
 					<section>
-						<SectionHeading>Filter by</SectionHeading>
+						<SectionHeading>筛选条件</SectionHeading>
 						<SearchField
 							value={optionSearch}
 							onChange={setOptionSearch}
-							placeholder="Search filters..."
-							aria-label="Search filters"
+							placeholder="搜索筛选..."
+							aria-label="搜索筛选"
 							className="mt-2 h-9 [&_input]:h-9 [&_input]:text-xs [&_input]:font-normal [&_svg]:size-4"
 						/>
 						<ScrollArea
@@ -323,7 +323,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 							<div className="space-y-4">
 								{visiblePRStatuses.length > 0 && (
 									<div className="space-y-1.5">
-										<FilterGroupHeading>PR status</FilterGroupHeading>
+										<FilterGroupHeading>PR 状态</FilterGroupHeading>
 										<div className="space-y-2">
 											{visiblePRStatuses.map((status) => {
 												const checked =
@@ -354,7 +354,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 
 								{visibleChatStatusOptions.length > 0 && (
 									<div className="space-y-1.5">
-										<FilterGroupHeading>Chat status</FilterGroupHeading>
+										<FilterGroupHeading>聊天状态</FilterGroupHeading>
 										<div className="space-y-2">
 											{visibleChatStatusOptions.map((option) => {
 												const optionId = `${id}-chat-status-${option.value}`;
@@ -388,7 +388,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 
 								{visibleSourceOptions.length > 0 && (
 									<div className="space-y-1.5">
-										<FilterGroupHeading>Source</FilterGroupHeading>
+										<FilterGroupHeading>来源</FilterGroupHeading>
 										<div className="space-y-2">
 											{visibleSourceOptions.map((option) => {
 												const optionId = `${id}-source-${option.value}`;
@@ -420,7 +420,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 								{visibleArchiveOptions.length > 0 && (
 									<div className="space-y-1.5">
 										<FilterGroupHeading id={`${id}-archive-heading`}>
-											Archive status
+											归档状态
 										</FilterGroupHeading>
 										<RadioGroup
 											aria-labelledby={`${id}-archive-heading`}
@@ -452,7 +452,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 
 								{!showFilterOptions && (
 									<p className="m-0 py-5 text-sm text-content-secondary">
-										No filters found
+										未找到筛选
 									</p>
 								)}
 							</div>
@@ -467,7 +467,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 						onClick={clearFilters}
 						className="h-8 min-w-0 px-0 text-xs font-normal"
 					>
-						Clear all
+						清除全部
 					</Button>
 					<Button
 						variant="default"
@@ -475,7 +475,7 @@ export const FilterPopover: FC<FilterPopoverProps> = ({
 						onClick={applyFilters}
 						className="h-8 min-w-[64px] px-3 text-xs font-normal"
 					>
-						Apply
+						应用
 					</Button>
 				</div>
 			</PopoverContent>

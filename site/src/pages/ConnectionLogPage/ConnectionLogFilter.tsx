@@ -52,7 +52,7 @@ const buildConnectionLogFilterQuery = (
 const CONNECTION_LOG_PRESET_FILTERS = [
 	{
 		query: buildConnectionLogFilterQuery({ status: "ongoing", type: "ssh" }),
-		name: "Active SSH connections",
+		name: "活跃的 SSH 连接",
 	},
 ] satisfies { name: string; query: string }[];
 
@@ -85,7 +85,7 @@ export const ConnectionLogFilter: FC<ConnectionLogFilterProps> = ({
 			error={error}
 			options={
 				<>
-					<UserMenu placeholder="All owners" menu={menus.user} width={width} />
+					<UserMenu placeholder="所有所有者" menu={menus.user} width={width} />
 					<StatusMenu menu={menus.status} width={width} />
 					<TypeMenu menu={menus.type} width={width} />
 					{menus.organization && (
@@ -135,8 +135,8 @@ interface StatusMenuProps {
 const StatusMenu: FC<StatusMenuProps> = ({ menu, width }) => {
 	return (
 		<SelectFilter
-			label="Filter by session status"
-			placeholder="All sessions"
+			label="按会话状态筛选"
+			placeholder="所有会话"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}
@@ -176,8 +176,8 @@ interface TypeMenuProps {
 const TypeMenu: FC<TypeMenuProps> = ({ menu, width }) => {
 	return (
 		<SelectFilter
-			label="Filter by connection type"
-			placeholder="All types"
+			label="按连接类型筛选"
+			placeholder="所有类型"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}

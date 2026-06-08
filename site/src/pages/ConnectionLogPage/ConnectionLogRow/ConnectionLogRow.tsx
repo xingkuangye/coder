@@ -67,7 +67,7 @@ export const ConnectionLogRow: FC<ConnectionLogRowProps> = ({
 									<StatusPill
 										code={code}
 										isHttpCode={isWeb}
-										label={isWeb ? "HTTP Status Code" : "SSH Exit Code"}
+										label={isWeb ? "HTTP 状态码" : "SSH 退出码"}
 									/>
 								)}
 								<Tooltip>
@@ -87,7 +87,7 @@ export const ConnectionLogRow: FC<ConnectionLogRowProps> = ({
 											{userAgent?.os.name && (
 												<div>
 													<h4 className="m-0 text-content-primary text-sm leading-[150%] font-semibold">
-														OS:
+														操作系统:
 													</h4>
 													<div>{userAgent.os.name}</div>
 												</div>
@@ -95,7 +95,7 @@ export const ConnectionLogRow: FC<ConnectionLogRowProps> = ({
 											{userAgent?.browser.name && (
 												<div>
 													<h4 className="m-0 text-content-primary text-sm leading-[150%] font-semibold">
-														Browser:
+														浏览器:
 													</h4>
 													<div>
 														{userAgent.browser.name} {userAgent.browser.version}
@@ -105,7 +105,7 @@ export const ConnectionLogRow: FC<ConnectionLogRowProps> = ({
 											{connectionLog.organization && (
 												<div>
 													<h4 className="m-0 text-content-primary text-sm leading-[150%] font-semibold">
-														Organization:
+														组织:
 													</h4>
 													<Link
 														asChild
@@ -124,7 +124,7 @@ export const ConnectionLogRow: FC<ConnectionLogRowProps> = ({
 											{connectionLog.ssh_info?.disconnect_reason && (
 												<div>
 													<h4 className="m-0 text-content-primary text-sm leading-[150%] font-semibold">
-														Close Reason:
+														关闭原因:
 													</h4>
 													<div>{connectionLog.ssh_info?.disconnect_reason}</div>
 												</div>

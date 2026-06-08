@@ -87,8 +87,8 @@ export const ToolEventCard: FC<ToolEventCardProps> = ({
 
 const TranscriptToolRow: FC<{ msg: MessagePart }> = ({ msg }) => {
 	const isToolCall = msg.kind === "tool-call";
-	const badgeLabel = msg.toolName ?? (isToolCall ? "Tool call" : "Tool result");
-	const payloadLabel = isToolCall ? "Arguments" : "Result";
+	const badgeLabel = msg.toolName ?? (isToolCall ? "工具调用" : "工具结果");
+	const payloadLabel = isToolCall ? "参数" : "结果";
 	const payload = isToolCall ? msg.arguments : msg.result;
 
 	return (
@@ -101,7 +101,7 @@ const TranscriptToolRow: FC<{ msg: MessagePart }> = ({ msg }) => {
 				toolCallId={msg.toolCallId}
 				payloadLabel={payloadLabel}
 				payload={payload}
-				copyLabel={`Copy ${badgeLabel} ${payloadLabel}`}
+				copyLabel={`复制 ${badgeLabel} ${payloadLabel}`}
 			/>
 		</div>
 	);
@@ -149,9 +149,9 @@ const TranscriptTextRow: FC<MessageRowProps> = ({ msg, clamp }) => {
 							type="button"
 							onClick={() => setExpanded((prev) => !prev)}
 							className="border-0 bg-transparent p-0 text-2xs font-medium text-content-link transition-colors hover:underline"
-							aria-label={`See ${expanded ? "less" : "more"} of ${msg.role} message`}
+							aria-label={`查看${msg.role}消息的${expanded ? "更少" : "更多"}部分`}
 						>
-							{expanded ? "see less" : "see more"}
+							{expanded ? "收起" : "显示更多"}
 						</button>
 					) : null}
 				</>

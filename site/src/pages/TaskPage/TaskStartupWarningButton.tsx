@@ -52,7 +52,7 @@ const StartupWarningButtonBase: FC<StartupWarningButtonBaseProps> = ({
 				</TooltipTrigger>
 				<TooltipContent className="max-w-sm bg-surface-secondary p-4">
 					<p className="m-0 text-sm font-normal text-content-primary leading-snug">
-						A workspace{" "}
+						工作区{" "}
 						<Link
 							href={docs(
 								"/admin/templates/troubleshooting#startup-script-exited-with-an-error",
@@ -62,7 +62,7 @@ const StartupWarningButtonBase: FC<StartupWarningButtonBaseProps> = ({
 						>
 							{errorMessage}
 						</Link>
-						. We recommend{" "}
+						。我们建议{" "}
 						<Link
 							href={docs(
 								"/admin/templates/troubleshooting#startup-script-issues",
@@ -70,9 +70,9 @@ const StartupWarningButtonBase: FC<StartupWarningButtonBaseProps> = ({
 							target="_blank"
 							rel="noreferrer"
 						>
-							debugging the startup script
+							调试启动脚本
 						</Link>{" "}
-						because{" "}
+						因为{" "}
 						<Link
 							href={docs(
 								"/admin/templates/troubleshooting#your-workspace-may-be-incomplete",
@@ -80,9 +80,9 @@ const StartupWarningButtonBase: FC<StartupWarningButtonBaseProps> = ({
 							target="_blank"
 							rel="noreferrer"
 						>
-							your workspace may be incomplete
+							你的工作区可能不完整
 						</Link>
-						.
+						。
 					</p>
 				</TooltipContent>
 			</Tooltip>
@@ -93,8 +93,8 @@ const StartupWarningButtonBase: FC<StartupWarningButtonBaseProps> = ({
 const ErrorScriptButton: FC = () => {
 	return (
 		<StartupWarningButtonBase
-			label="Startup Error"
-			errorMessage="startup script has exited with an error"
+			label="启动错误"
+			errorMessage="启动脚本因错误退出"
 		/>
 	);
 };
@@ -102,8 +102,8 @@ const ErrorScriptButton: FC = () => {
 const TimeoutScriptButton: FC = () => {
 	return (
 		<StartupWarningButtonBase
-			label="Startup Timeout"
-			errorMessage="startup script has timed out"
+			label="启动超时"
+			errorMessage="启动脚本超时"
 		/>
 	);
 };

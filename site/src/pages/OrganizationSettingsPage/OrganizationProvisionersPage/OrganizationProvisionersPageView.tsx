@@ -59,11 +59,10 @@ export const OrganizationProvisionersPageView: FC<
 	return (
 		<section className="w-full max-w-screen-2xl pb-10">
 			<SettingsHeader>
-				<SettingsHeaderTitle>Provisioners</SettingsHeaderTitle>
+				<SettingsHeaderTitle>供应商</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Coder server runs provisioner daemons which execute terraform during
-					workspace and template builds.{" "}
-					<Link href={docs("/admin/provisioners")}>View docs</Link>
+					Coder 服务器运行供应程序守护进程，这些守护进程在工作区和模板构建期间执行 Terraform。{" "}
+					<Link href={docs("/admin/provisioners")}>查看文档</Link>
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -83,11 +82,11 @@ export const OrganizationProvisionersPageView: FC<
 											onFilterChange({ ...filter, ids: "" });
 										}}
 									>
-										<span className="sr-only">Clear ID</span>
+										<span className="sr-only">清除 ID</span>
 										<XIcon />
 									</Button>
 								</TooltipTrigger>
-								<TooltipContent>Clear ID</TooltipContent>
+								<TooltipContent>清除 ID</TooltipContent>
 							</Tooltip>
 						</div>
 					</div>
@@ -96,8 +95,8 @@ export const OrganizationProvisionersPageView: FC<
 
 			{showPaywall ? (
 				<PaywallPremium
-					message="Provisioners"
-					description="Provisioners run your Terraform to create templates and workspaces. You need a Premium license to use this feature for multiple organizations."
+					message="供应商"
+					description="供应商运行您的 Terraform 来创建模板和工作区。您需要 Premium 许可证才能为多个组织使用此功能。"
 					documentationLink={docs("/admin/provisioners")}
 				/>
 			) : (
@@ -117,17 +116,17 @@ export const OrganizationProvisionersPageView: FC<
 							htmlFor="offline-filter"
 							className="text-sm font-medium leading-none"
 						>
-							Include offline provisioners
+							包括离线供应商
 						</label>
 					</div>
 					<Table>
 						<TableHeader>
 							<TableRow>
-								<TableHead>Name</TableHead>
-								<TableHead>Key</TableHead>
-								<TableHead>Version</TableHead>
-								<TableHead>Status</TableHead>
-								<TableHead>Tags</TableHead>
+								<TableHead>名称</TableHead>
+								<TableHead>密钥</TableHead>
+								<TableHead>版本</TableHead>
+								<TableHead>状态</TableHead>
+								<TableHead>标签</TableHead>
 								<TableHead>
 									<LastConnectionHead />
 								</TableHead>
@@ -148,12 +147,12 @@ export const OrganizationProvisionersPageView: FC<
 									<TableRow>
 										<TableCell colSpan={999}>
 											<EmptyState
-												message="No provisioners found"
-												description="A provisioner is required before you can create templates and workspaces. You can connect your first provisioner by following our documentation."
+												message="未找到供应商"
+												description="在创建模板和工作区之前，需要一个供应商。您可以按照我们的文档连接第一个供应商。"
 												cta={
 													<Button size="sm" asChild>
 														<Link href={docs("/admin/provisioners")}>
-															Create a provisioner
+															创建供应商
 														</Link>
 													</Button>
 												}
@@ -165,10 +164,10 @@ export const OrganizationProvisionersPageView: FC<
 								<TableRow>
 									<TableCell colSpan={999}>
 										<EmptyState
-											message="Error loading the provisioner jobs"
+											message="加载供应商作业时出错"
 											cta={
 												<Button onClick={onRetry} size="sm">
-													Retry
+													重试
 												</Button>
 											}
 										/>

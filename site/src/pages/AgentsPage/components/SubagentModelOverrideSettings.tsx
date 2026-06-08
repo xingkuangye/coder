@@ -63,8 +63,8 @@ export const SubagentModelOverrideSettings: FC<
 	isSaving,
 	isSaveError,
 	saveErrorMessage,
-	unsetPlaceholder = "Use chat default",
-	unavailableModelWarning = "The saved model is no longer enabled and will be ignored until you choose a new override.",
+	unsetPlaceholder = "使用聊天默认值",
+	unavailableModelWarning = "已保存的模型不再启用，将被忽略，直到您选择新的覆盖。",
 	showHeader = true,
 	disabled = false,
 }) => {
@@ -121,10 +121,10 @@ export const SubagentModelOverrideSettings: FC<
 				onValueChange={(value) => form.setFieldValue("model_config_id", value)}
 				disabled={isFormDisabled}
 				placeholder={
-					isUnavailableSavedModel ? "Unavailable model" : unsetPlaceholder
+					isUnavailableSavedModel ? "不可用模型" : unsetPlaceholder
 				}
 				emptyMessage={
-					isLoading ? "Loading models..." : "No enabled models found."
+					isLoading ? "加载模型中..." : "未找到已启用的模型。"
 				}
 				className="h-10 w-full justify-between rounded-md border border-border border-solid bg-transparent px-3 text-sm shadow-sm"
 				contentClassName="min-w-[18rem]"
@@ -133,7 +133,7 @@ export const SubagentModelOverrideSettings: FC<
 				isUnavailableSavedModel={isUnavailableSavedModel}
 				unavailableMessage={unavailableModelWarning}
 				isMalformedOverride={isMalformedOverride}
-				malformedMessage="The saved override is malformed and is being treated as unset. Click Save to clear it."
+				malformedMessage="已保存的覆盖格式错误，将被视为未设置。点击保存可清除它。"
 				modelConfigsError={modelConfigsError}
 			/>
 			<div className="flex justify-end gap-2">
@@ -146,10 +146,10 @@ export const SubagentModelOverrideSettings: FC<
 					}}
 					disabled={isFormDisabled}
 				>
-					Clear
+					清除
 				</Button>
 				<Button size="sm" type="submit" disabled={isFormDisabled || !canSave}>
-					Save
+					保存
 				</Button>
 			</div>
 			{isSaveError && (

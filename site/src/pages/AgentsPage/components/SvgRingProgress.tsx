@@ -2,12 +2,11 @@ import type { FC } from "react";
 import { cn } from "#/utils/cn";
 
 /**
- * SVG ring (donut) progress indicator.
+ * SVG 环形（甜甜圈）进度指示器。
  *
- * The rendered SVG is aria-hidden; callers must provide an accessible
- * wrapper (e.g. a progressbar role or labeled button).
+ * 渲染的 SVG 设置了 `aria-hidden`；调用者必须提供一个可访问的包装器（例如具有 `progressbar` 角色或带标签的按钮）。
  *
- * @param percent - Fill percentage, clamped to [0, 100].
+ * @param percent - 填充百分比，范围限制在 [0, 100]。
  */
 export const SvgRingProgress: FC<{
 	size: number;

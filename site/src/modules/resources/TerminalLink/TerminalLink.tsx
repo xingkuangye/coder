@@ -12,11 +12,9 @@ interface TerminalLinkProps {
 }
 
 /**
- * Generate a link to a terminal connected to the provided workspace agent.  If
- * no agent is provided connect to the first agent.
+ * 生成一个连接到指定工作区代理的终端链接。如果未提供代理，则连接到第一个代理。
  *
- * If no user name is provided "me" is used however it makes the link not
- * shareable.
+ * 如果未提供用户名，则使用 "me"，但这会使链接不可共享。
  */
 export const TerminalLink: FC<TerminalLinkProps> = ({
 	agentName,

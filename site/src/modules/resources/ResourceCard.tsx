@@ -62,7 +62,7 @@ export const ResourceCard: FC<ResourceCardProps> = ({ resource, agentRow }) => {
 					{resource.daily_cost > 0 && (
 						<div className="font-normal text-sm leading-6">
 							<div className="overflow-hidden text-ellipsis whitespace-nowrap font-normal text-xs text-content-secondary">
-								<b>Daily cost</b>
+								<b>每日成本</b>
 							</div>
 							<div className="overflow-hidden text-ellipsis whitespace-nowrap">
 								{resource.daily_cost}
@@ -120,7 +120,7 @@ export const ResourceCard: FC<ResourceCardProps> = ({ resource, agentRow }) => {
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent side="bottom">
-							{shouldDisplayAllMetadata ? "Hide metadata" : "Show all metadata"}
+							{shouldDisplayAllMetadata ? "隐藏元数据" : "显示所有元数据"}
 						</TooltipContent>
 					</Tooltip>
 				)}

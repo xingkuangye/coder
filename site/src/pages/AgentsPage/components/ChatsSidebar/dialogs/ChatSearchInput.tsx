@@ -65,7 +65,7 @@ export const ChatSearchInput: FC<ChatSearchInputProps> = ({
 							onRemoveFilter(f.key);
 						}}
 						className="inline-flex cursor-pointer items-center border-none bg-transparent p-0 text-content-secondary hover:text-content-primary"
-						aria-label={`Remove ${f.key} filter`}
+						aria-label={`移除 ${f.key} 筛选条件`}
 					>
 						<XIcon className="size-3" />
 					</button>
@@ -81,9 +81,9 @@ export const ChatSearchInput: FC<ChatSearchInputProps> = ({
 				value={value}
 				onChange={onChange}
 				onKeyDown={onKeyDown}
-				placeholder={filters.length > 0 ? "" : "Search chats..."}
+				placeholder={filters.length > 0 ? "" : "搜索聊天..."}
 				className="min-w-[60px] flex-1 border-none bg-transparent py-2 text-sm text-content-primary outline-none placeholder:text-content-disabled"
-				aria-label="Search chats"
+				aria-label="搜索聊天"
 				role="combobox"
 				aria-controls={hasResults ? listboxId : undefined}
 				aria-expanded={hasResults}
@@ -97,7 +97,7 @@ export const ChatSearchInput: FC<ChatSearchInputProps> = ({
 					"inline-flex shrink-0 cursor-pointer items-center border-none bg-transparent p-0 text-content-secondary hover:text-content-primary",
 					isDropdownOpen && "text-content-primary",
 				)}
-				aria-label="Toggle filters"
+				aria-label="切换筛选条件"
 				aria-expanded={isDropdownOpen}
 			>
 				<ListFilterIcon className="size-4" />

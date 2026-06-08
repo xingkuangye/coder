@@ -1,8 +1,6 @@
 /**
- * Adapted from `DropdownMenu.tsx` to wrap Radix's ContextMenu primitive.
- * Shares menu styling with DropdownMenu via `menuClasses.ts` so the
- * click-triggered and right-click-triggered menus stay in visual sync
- * by construction.
+ * 改编自 `DropdownMenu.tsx`，包装了 Radix 的 ContextMenu 原语。
+ * 通过 `menuClasses.ts` 与 DropdownMenu 共享菜单样式，确保单击触发和右键触发的菜单在构造上保持视觉同步。
  * @see {@link https://www.radix-ui.com/primitives/docs/components/context-menu}
  */
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui";

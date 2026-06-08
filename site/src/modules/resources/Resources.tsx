@@ -41,7 +41,7 @@ export const Resources: FC<ResourcesProps> = ({ resources, agentRow }) => {
 						size="sm"
 						onClick={() => setShouldDisplayHideResources((v) => !v)}
 					>
-						{shouldDisplayHideResources ? "Hide" : "Show hidden"} resources
+						{shouldDisplayHideResources ? "隐藏" : "显示隐藏"} 资源
 						<ChevronDownIcon
 							open={shouldDisplayHideResources}
 							className="ml-2"

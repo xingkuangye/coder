@@ -68,7 +68,7 @@ const TemplateVariablesPage: FC = () => {
 		async (versionId: string) => {
 			await sendUpdateActiveTemplateVersion(versionId);
 			toast.success(
-				`Template "${template.name}" variables updated successfully.`,
+				`模板 "${template.name}" 变量更新成功。`,
 			);
 		},
 		[sendUpdateActiveTemplateVersion, template.name],
@@ -95,7 +95,7 @@ const TemplateVariablesPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(template.name, "Template variables")}</title>
+			<title>{pageTitle(template.name, "模板变量")}</title>
 
 			<TemplateVariablesPageView
 				isSubmitting={isSubmitting}

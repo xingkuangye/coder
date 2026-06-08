@@ -48,12 +48,12 @@ const EditUserPage: FC = () => {
 		});
 
 		toast.promise(mutation, {
-			loading: `Saving user "${values.username}"…`,
-			success: `User "${values.username}" updated successfully.`,
+			loading: `正在保存用户"${values.username}"…`,
+			success: `用户"${values.username}"更新成功。`,
 			error: (e) => ({
 				message: getErrorMessage(
 					e,
-					`Failed to update user "${values.username}".`,
+					`无法更新用户"${values.username}"。`,
 				),
 				description: getErrorDetail(e),
 			}),
@@ -62,7 +62,7 @@ const EditUserPage: FC = () => {
 
 	return (
 		<Margins>
-			<title>{pageTitle("Edit User", `${userData.username}`)}</title>
+			<title>{pageTitle("编辑用户", `${userData.username}`)}</title>
 
 			<EditUserForm
 				error={updateProfileMutation.error}

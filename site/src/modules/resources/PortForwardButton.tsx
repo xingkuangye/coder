@@ -97,7 +97,7 @@ export const PortForwardButton: FC<PortForwardButtonProps> = ({
 					<Spinner loading={!listeningPorts}>
 						<span css={styles.portCount}>{listeningPorts?.length}</span>
 					</Spinner>
-					Open ports
+					开放端口
 					<ChevronDownIcon />
 				</Button>
 			</PopoverTrigger>
@@ -222,12 +222,12 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 				{/* Tooltips don't work directly on disabled MenuItem components so you must wrap in div. */}
 				<div>
 					<MenuItem value="public" disabled>
-						Public
+						公开
 					</MenuItem>
 				</div>
 			</TooltipTrigger>
 			<TooltipContent disablePortal>
-				This workspace template does not allow sharing ports publicly.
+				此工作空间模板不允许公开共享端口。
 			</TooltipContent>
 		</Tooltip>
 	);
@@ -238,13 +238,12 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 				{/* Tooltips don't work directly on disabled MenuItem components so you must wrap in div. */}
 				<div>
 					<MenuItem value="authenticated" disabled>
-						Authenticated
+						已验证
 					</MenuItem>
 				</div>
 			</TooltipTrigger>
 			<TooltipContent disablePortal>
-				This workspace template does not allow sharing ports outside of its
-				organization.
+				此工作空间模板不允许在组织外部共享端口。
 			</TooltipContent>
 		</Tooltip>
 	);
@@ -258,17 +257,16 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 						justifyContent="space-between"
 						alignItems="start"
 					>
-						<HelpPopoverTitle>Listening Ports</HelpPopoverTitle>
+						<HelpPopoverTitle>监听端口</HelpPopoverTitle>
 						<HelpPopoverLink
 							href={docs("/admin/networking/port-forwarding#dashboard")}
 						>
-							Learn more
+							了解更多
 						</HelpPopoverLink>
 					</Stack>
 					<Stack direction="column" gap={1}>
 						<HelpPopoverText css={{ color: theme.palette.text.secondary }}>
-							The listening ports are exclusively accessible to you. Selecting
-							HTTP/S will change the protocol for all listening ports.
+							监听端口仅供您个人访问。选择 HTTP/S 将更改所有监听端口的协议。
 						</HelpPopoverText>
 						<Stack direction="row" gap={2} className="pb-2">
 							<FormControl size="small" css={styles.protocolFormControl}>
@@ -308,10 +306,10 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 								}}
 							>
 								<input
-									aria-label="Port number"
+									aria-label="端口号"
 									name="portNumber"
 									type="number"
-									placeholder="Connect to port..."
+									placeholder="连接到端口..."
 									min={9}
 									max={65535}
 									required
@@ -321,17 +319,17 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 									<TooltipTrigger asChild>
 										<Button type="submit" size="icon" variant="subtle">
 											<ExternalLinkIcon />
-											<span className="sr-only">Connect to port</span>
+											<span className="sr-only">连接到端口</span>
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent disablePortal>Connect to port</TooltipContent>
+									<TooltipContent disablePortal>连接到端口</TooltipContent>
 								</Tooltip>
 							</form>
 						</Stack>
 					</Stack>
 					{filteredListeningPorts.length === 0 && (
 						<HelpPopoverText css={styles.noPortText}>
-							No open ports were detected.
+							未检测到开放端口。
 						</HelpPopoverText>
 					)}
 					{filteredListeningPorts.map((port) => {
@@ -395,11 +393,11 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 													}}
 												>
 													<ShareIcon />
-													<span className="sr-only">Share</span>
+													<span className="sr-only">分享</span>
 												</Button>
 											</TooltipTrigger>
 											<TooltipContent disablePortal>
-												Share this port
+												分享此端口
 											</TooltipContent>
 										</Tooltip>
 									)}
@@ -415,11 +413,11 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 					borderTop: `1px solid ${theme.palette.divider}`,
 				}}
 			>
-				<HelpPopoverTitle>Shared Ports</HelpPopoverTitle>
+				<HelpPopoverTitle>共享端口</HelpPopoverTitle>
 				<HelpPopoverText css={{ color: theme.palette.text.secondary }}>
 					{canSharePorts
-						? "Ports can be shared with organization members, other Coder users, or with the public."
-						: "This workspace template does not allow sharing ports. Contact a template administrator to enable port sharing."}
+						? "端口可与组织成员、其他 Coder 用户或公开共享。"
+						: "此工作空间模板不允许共享端口。联系模板管理员以启用端口共享。"}
 				</HelpPopoverText>
 				{canSharePorts && (
 					<div>
@@ -493,16 +491,16 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 													});
 												}}
 											>
-												<MenuItem value="organization">Organization</MenuItem>
+												<MenuItem value="organization">组织</MenuItem>
 												{canSharePortsAuthenticated ? (
 													<MenuItem value="authenticated">
-														Authenticated
+														已验证
 													</MenuItem>
 												) : (
 													disabledAuthenticatedMenuItem
 												)}
 												{canSharePortsPublic ? (
-													<MenuItem value="public">Public</MenuItem>
+													<MenuItem value="public">公开</MenuItem>
 												) : (
 													disabledPublicMenuItem
 												)}
@@ -511,7 +509,7 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 										<Button
 											size="icon"
 											variant="subtle"
-											aria-label="Delete shared port"
+											aria-label="删除共享端口"
 											onClick={async () => {
 												await deleteSharedPortMutation.mutateAsync({
 													agent_name: agent.name,
@@ -537,7 +535,7 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 								<TextField
 									{...getFieldHelpers("port")}
 									disabled={isSubmitting}
-									label="Port"
+									label="端口"
 									size="small"
 									variant="outlined"
 									type="number"
@@ -549,7 +547,7 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 									fullWidth
 									select
 									value={form.values.protocol}
-									label="Protocol"
+									label="协议"
 								>
 									<MenuItem value="http">HTTP</MenuItem>
 									<MenuItem value="https">HTTPS</MenuItem>
@@ -560,23 +558,23 @@ export const PortForwardPopoverView: FC<PortForwardPopoverViewProps> = ({
 									fullWidth
 									select
 									value={form.values.share_level}
-									label="Sharing Level"
+									label="共享级别"
 								>
-									<MenuItem value="organization">Organization</MenuItem>
+									<MenuItem value="organization">组织</MenuItem>
 									{canSharePortsAuthenticated ? (
-										<MenuItem value="authenticated">Authenticated</MenuItem>
+										<MenuItem value="authenticated">已验证</MenuItem>
 									) : (
 										disabledAuthenticatedMenuItem
 									)}
 									{canSharePortsPublic ? (
-										<MenuItem value="public">Public</MenuItem>
+										<MenuItem value="public">公开</MenuItem>
 									) : (
 										disabledPublicMenuItem
 									)}
 								</TextField>
 								<Button type="submit" disabled={!form.isValid || isSubmitting}>
 									<Spinner loading={isSubmitting} />
-									Share Port
+									共享端口
 								</Button>
 							</Stack>
 						</form>

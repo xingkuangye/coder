@@ -18,15 +18,15 @@ const CONFIRM_DIALOG_DEFAULTS: Record<
 	ConfirmDialogTypeConfig
 > = {
 	delete: {
-		confirmText: "Delete",
+		confirmText: "删除",
 		hideCancel: false,
 	},
 	info: {
-		confirmText: "OK",
+		confirmText: "确定",
 		hideCancel: true,
 	},
 	success: {
-		confirmText: "OK",
+		confirmText: "确定",
 		hideCancel: true,
 	},
 };

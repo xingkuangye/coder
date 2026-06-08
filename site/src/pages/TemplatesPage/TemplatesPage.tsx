@@ -40,7 +40,7 @@ const TemplatesPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Templates")}</title>
+			<title>{pageTitle("模板")}</title>
 			<TemplatesPageView
 				error={error}
 				filterState={filterState}

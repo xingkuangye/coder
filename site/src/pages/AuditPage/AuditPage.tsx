@@ -75,7 +75,7 @@ const AuditPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Audit")}</title>
+			<title>{pageTitle("审计")}</title>
 
 			<AuditPageView
 				auditLogs={auditsQuery.data?.audit_logs}

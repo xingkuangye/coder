@@ -17,7 +17,7 @@ const ADMIN_SETTINGS_SECTIONS = new Set([
 ]);
 
 /**
- * Derive the current sidebar view from the URL pathname.
+ * 根据URL路径名获取当前侧边栏视图。
  */
 export function sidebarViewFromPath(pathname: string): SidebarView {
 	if (pathname.startsWith("/agents/analytics")) {

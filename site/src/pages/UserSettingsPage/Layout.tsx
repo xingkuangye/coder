@@ -16,14 +16,14 @@ const Layout: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Settings")}</title>
+			<title>{pageTitle("设置")}</title>
 
 			<div>
 				<Breadcrumb>
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbPage className="text-content-primary">
-								User Settings
+								用户设置
 							</BreadcrumbPage>
 						</BreadcrumbItem>
 					</BreadcrumbList>

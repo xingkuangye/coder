@@ -84,8 +84,8 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 		<section className="space-y-4">
 			{!hideHeader && (
 				<SectionHeader
-					label="Per-user overrides"
-					description="Override the deployment default spend limit for specific users. User overrides take highest priority, followed by group limits, then the deployment default."
+					label="按用户覆盖设置"
+					description="针对特定用户覆盖部署默认的支出限制。用户覆盖优先级最高，其次是组限制，最后是部署默认值。"
 				/>
 			)}
 			<div className="space-y-4">
@@ -93,9 +93,9 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 					<Table>
 						<TableHeader>
 							<TableRow>
-								<TableHead>User</TableHead>
-								<TableHead>Spend limit</TableHead>
-								<TableHead className="w-[160px]">Actions</TableHead>
+								<TableHead>用户</TableHead>
+								<TableHead>支出限制</TableHead>
+								<TableHead className="w-[160px]">操作</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
@@ -112,7 +112,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 									<TableCell>
 										{override.spend_limit_micros !== null
 											? formatCostMicros(override.spend_limit_micros)
-											: "Unlimited"}
+											: "无限制"}
 									</TableCell>
 									<TableCell>
 										<div className="flex gap-2">
@@ -123,7 +123,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 												onClick={() => onEditUserOverride(override)}
 												disabled={deletePending || upsertPending}
 											>
-												Edit
+												编辑
 											</Button>
 											<Button
 												variant="outline"
@@ -132,7 +132,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 												onClick={() => setPendingDeleteUserId(override.user_id)}
 												disabled={deletePending || upsertPending || isEditing}
 											>
-												Delete
+												删除
 											</Button>
 										</div>
 									</TableCell>
@@ -142,13 +142,13 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 					</Table>
 				) : (
 					<div className="rounded-lg border border-border bg-surface-secondary px-4 py-6 text-center text-sm text-content-secondary">
-						No overrides configured.
+						未配置覆盖设置。
 					</div>
 				)}
 
 				{deleteError && (
 					<p className="text-xs text-content-destructive">
-						{getErrorMessage(deleteError, "Failed to delete override.")}
+						{getErrorMessage(deleteError, "删除覆盖设置失败。")}
 					</p>
 				)}
 
@@ -160,7 +160,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 						onClick={() => onShowUserFormChange(true)}
 						disabled={isEditing}
 					>
-						Add User
+						添加用户
 					</Button>
 				) : (
 					<div className="space-y-3 rounded-lg border border-border bg-surface-secondary/40 p-4">
@@ -168,7 +168,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 							<div className="flex-1 space-y-1">
 								{editingUserOverride ? (
 									<>
-										<Label>User</Label>
+										<Label>用户</Label>
 										<div className="rounded-md border border-border bg-surface-primary p-2">
 											<AvatarData
 												title={
@@ -185,12 +185,12 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 									<UserAutocomplete
 										value={selectedUser}
 										onChange={onSelectedUserChange}
-										label="User"
+										label="用户"
 									/>
 								)}
 							</div>
 							<div className="flex-1 space-y-1">
-								<Label htmlFor={userOverrideAmountId}>Spend limit ($)</Label>
+								<Label htmlFor={userOverrideAmountId}>支出限制（$）</Label>
 								<Input
 									id={userOverrideAmountId}
 									type="number"
@@ -223,7 +223,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 									{upsertPending ? (
 										<Spinner loading className="h-4 w-4" />
 									) : null}
-									{isEditing ? "Save" : "Add"}
+									{isEditing ? "保存" : "添加"}
 								</Button>
 								<Button
 									variant="outline"
@@ -236,7 +236,7 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 									}}
 									disabled={upsertPending}
 								>
-									Cancel
+									取消
 								</Button>
 							</div>
 						</div>
@@ -244,18 +244,18 @@ export const UserOverridesSection: FC<UserOverridesSectionProps> = ({
 				)}
 				{!isEditing && selectedUserAlreadyOverridden && (
 					<p className="text-xs text-content-warning">
-						This user already has an override.
+						该用户已有覆盖设置。
 					</p>
 				)}
 				{upsertError && (
 					<p className="text-xs text-content-destructive">
-						{getErrorMessage(upsertError, "Failed to save the override.")}
+						{getErrorMessage(upsertError, "保存覆盖设置失败。")}
 					</p>
 				)}
 			</div>
 			{pendingDeleteUserId && (
 				<ConfirmDeleteDialog
-					entity="user override"
+					entity="用户覆盖设置"
 					onConfirm={() => {
 						void onDeleteOverride(pendingDeleteUserId);
 						setPendingDeleteUserId(null);

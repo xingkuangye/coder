@@ -34,7 +34,7 @@ const EditOAuth2AppPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Edit OAuth2 Application")}</title>
+			<title>{pageTitle("编辑 OAuth2 应用")}</title>
 
 			<EditOAuth2AppPageView
 				app={appQuery.data}
@@ -67,9 +67,9 @@ const EditOAuth2AppPage: FC = () => {
 						},
 					);
 					toast.promise(mutation, {
-						success: `Successfully updated the OAuth2 application "${req.name}".`,
+						success: `成功更新了 OAuth2 应用 "${req.name}"。`,
 						error: (error) => ({
-							message: `Failed to update "${req.name}" OAuth2 application.`,
+							message: `更新 OAuth2 应用 "${req.name}" 失败。`,
 							description: getErrorDetail(error),
 						}),
 					});
@@ -78,15 +78,15 @@ const EditOAuth2AppPage: FC = () => {
 					const mutation = deleteAppMutation.mutateAsync(appId, {
 						onSuccess: () => {
 							toast.success(
-								`You have successfully deleted the "${name}" OAuth2 application.`,
+								`您已成功删除 OAuth2 应用 "${name}"。`,
 							);
 							navigate("/deployment/oauth2-provider/apps?deleted=true");
 						},
 					});
 					toast.promise(mutation, {
-						success: `You have successfully deleted the "${name}" OAuth2 application.`,
+						success: `您已成功删除 OAuth2 应用 "${name}"。`,
 						error: (error) => ({
-							message: `Failed to delete "${name}" OAuth2 application.`,
+							message: `删除 OAuth2 应用 "${name}" 失败。`,
 							description: getErrorDetail(error),
 						}),
 					});
@@ -98,9 +98,9 @@ const EditOAuth2AppPage: FC = () => {
 						},
 					});
 					toast.promise(mutation, {
-						success: "Successfully generated OAuth2 client secret.",
+						success: "成功生成 OAuth2 客户端密钥。",
 						error: (error) => ({
-							message: "Failed to generate OAuth2 client secret.",
+							message: "生成 OAuth2 客户端密钥失败。",
 							description: getErrorDetail(error),
 						}),
 					});
@@ -117,9 +117,9 @@ const EditOAuth2AppPage: FC = () => {
 						},
 					);
 					toast.promise(mutation, {
-						success: "Successfully deleted an OAuth2 client secret.",
+						success: "成功删除 OAuth2 客户端密钥。",
 						error: (error) => ({
-							message: "Failed to delete OAuth2 client secret.",
+							message: "删除 OAuth2 客户端密钥失败。",
 							description: getErrorDetail(error),
 						}),
 					});

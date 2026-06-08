@@ -24,8 +24,8 @@ export interface DialogActionButtonsProps {
  * Quickly handles most modals actions, some combination of a cancel and confirm button
  */
 export const DialogActionButtons: FC<DialogActionButtonsProps> = ({
-	cancelText = "Cancel",
-	confirmText = "Confirm",
+	cancelText = "取消",
+	confirmText = "确认",
 	confirmLoading = false,
 	disabled = false,
 	onCancel,

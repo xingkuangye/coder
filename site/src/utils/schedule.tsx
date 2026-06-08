@@ -20,9 +20,7 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 dayjs.extend(timezone);
 /**
- * @fileoverview Client-side counterpart of the coderd/autostart/schedule Go
- * package. This package is a variation on crontab that uses minute, hour and
- * day of week.
+ * @fileoverview 客户端对应项，对应于 coderd/autostart/schedule Go 包。此包是 crontab 的变体，使用分钟、小时和星期几。
  */
 
 /**
@@ -65,7 +63,7 @@ export const autostartDisplay = (schedule: string | undefined): string => {
 				.replace("At", "")
 		);
 	}
-	return "Manual";
+	return "手动";
 };
 
 const isShuttingDown = (workspace: Workspace, deadline?: Dayjs): boolean => {
@@ -107,16 +105,15 @@ export const autostopDisplay = (
 			const maxDeadline = dayjs(workspace.latest_build.max_deadline);
 			if (hasMaxDeadline && maxDeadline.isBefore(now.add(2, "hour"))) {
 				return {
-					message: "Required to stop soon",
+					message: "需要立即停止",
 					tooltip: (
 						<>
-							<HelpPopoverTitle>Upcoming stop required</HelpPopoverTitle>
-							This workspace will be required to stop by{" "}
+							<HelpPopoverTitle>即将需要停止</HelpPopoverTitle>
+							此工作区需要在{" "}
 							{dayjs(workspace.latest_build.max_deadline).format(
 								"MMMM D [at] h:mm A",
 							)}
-							. You can restart your workspace before then to avoid
-							interruption.
+							前停止。您可以在此之前重启工作区以避免中断。
 						</>
 					),
 					danger: true,
@@ -126,33 +123,32 @@ export const autostopDisplay = (
 
 		if (isShuttingDown(workspace, deadline)) {
 			return {
-				message: "Workspace is shutting down",
+				message: "工作区正在关闭",
 			};
 		}
 		let title = (
-			<HelpPopoverTitle>Template Autostop requirement</HelpPopoverTitle>
+			<HelpPopoverTitle>模板自动停止需求</HelpPopoverTitle>
 		);
-		let reason: ReactNode = ` because the ${template.display_name} template has an autostop requirement.`;
+		let reason: ReactNode = ` 因为 ${template.display_name} 模板有自动停止需求。`;
 		if (template.autostop_requirement && template.allow_user_autostop) {
-			title = <HelpPopoverTitle>Autostop schedule</HelpPopoverTitle>;
+			title = <HelpPopoverTitle>自动停止计划</HelpPopoverTitle>;
 			reason = (
 				<span data-chromatic="ignore">
 					{" "}
-					because this workspace has enabled autostop. You can disable autostop
-					from this workspace&apos;s{" "}
+					因为此工作区已启用自动停止。您可以通过此工作区的{" "}
 					<Link component={RouterLink} to="settings/schedule">
-						schedule settings
+						计划设置
 					</Link>
-					.
+					{" "}来禁用自动停止。
 				</span>
 			);
 		}
 		return {
-			message: `Stop ${deadline.fromNow()}`,
+			message: `停止 ${deadline.fromNow()}`,
 			tooltip: (
 				<span data-chromatic="ignore">
 					{title}
-					This workspace will be stopped on{" "}
+					此工作区将于{" "}
 					{deadline.format("MMMM D [at] h:mm A")}
 					{reason}
 				</span>
@@ -164,14 +160,14 @@ export const autostopDisplay = (
 		// If the workspace is not on, and the ttl is 0 or undefined, then the
 		// workspace is set to manually shutdown.
 		return {
-			message: "Manual",
+			message: "手动",
 		};
 	}
 	// The workspace has a ttl set, but is either in an unknown state or is
 	// not running. Therefore, we derive from workspace.ttl.
 	const duration = dayjs.duration(ttl, "milliseconds");
 	return {
-		message: `Stop ${duration.humanize()} after start`,
+		message: `启动 ${duration.humanize()} 后停止`,
 	};
 };
 
@@ -233,7 +229,7 @@ export const validTime = (time: string): boolean => {
 
 export const timeToCron = (time: string, tz?: string) => {
 	if (!validTime(time)) {
-		throw new Error(`Invalid time: ${time}`);
+		throw new Error(`无效时间: ${time}`);
 	}
 	const [HH, mm] = time.split(":");
 	let prefix = "";
@@ -250,7 +246,7 @@ export const quietHoursDisplay = (
 	now: Date | undefined,
 ): string => {
 	if (!validTime(time)) {
-		return "Invalid time";
+		return "无效时间";
 	}
 
 	// The cron-parser package doesn't accept a timezone in the cron string, but
@@ -275,17 +271,17 @@ export const quietHoursDisplay = (
 	let display = formattedTime;
 
 	if (day.isSame(today, "day")) {
-		display += " today";
+		display += " 今天";
 	} else if (day.isSame(today.add(1, "day"), "day")) {
-		display += " tomorrow";
+		display += " 明天";
 	} else {
 		// This case will rarely ever be hit, as we're dealing with only times and
 		// not dates, but it can be hit due to mismatched browser timezone to cron
 		// timezone or due to daylight savings changes.
-		display += ` on ${day.format("dddd, MMMM D")}`;
+		display += ` 于 ${day.format("dddd, MMMM D")}`;
 	}
 
-	display += ` (${day.from(today)}) in ${tz}`;
+	display += ` (${day.from(today)}) 于 ${tz}`;
 
 	return display;
 };

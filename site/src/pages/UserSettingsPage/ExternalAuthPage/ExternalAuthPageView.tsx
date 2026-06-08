@@ -64,10 +64,10 @@ export const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead>Application</TableHead>
+					<TableHead>应用</TableHead>
 					<TableHead>
 						<span aria-hidden className="sr-only">
-							Link to connect
+							连接链接
 						</span>
 					</TableHead>
 					<TableHead className="w-[1%]" />
@@ -75,7 +75,7 @@ export const ExternalAuthPageView: FC<ExternalAuthPageViewProps> = ({
 			</TableHeader>
 			<TableBody>
 				{auths.providers === null || auths.providers?.length === 0 ? (
-					<TableEmpty message="No providers have been configured" />
+					<TableEmpty message="尚未配置提供程序" />
 				) : (
 					auths.providers?.map((app) => (
 						<ExternalAuthRow
@@ -142,13 +142,13 @@ const ExternalAuthRow: FC<ExternalAuthRowProps> = ({
 								<RefreshCcwIcon className="size-3" />
 							</TooltipTrigger>
 							<TooltipContent side="right" className="max-w-xs">
-								Authentication token will automatically refresh when expired.
+								身份验证令牌将在过期时自动刷新。
 							</TooltipContent>
 						</Tooltip>
 					)}
 					{link?.validate_error && (
 						<span>
-							<span className="pl-[1em] text-content-destructive">Error: </span>
+							<span className="pl-[1em] text-content-destructive">错误：</span>
 							{link?.validate_error}
 						</span>
 					)}
@@ -163,15 +163,15 @@ const ExternalAuthRow: FC<ExternalAuthRowProps> = ({
 					}}
 				>
 					<Spinner loading={externalAuthPollingState === "polling"} />
-					{authenticated ? "Authenticated" : "Click to Login"}
+					{authenticated ? "已认证" : "点击登录"}
 				</Button>
 			</TableCell>
 			<TableCell>
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<Button size="icon-lg" variant="subtle" aria-label="Open menu">
+						<Button size="icon-lg" variant="subtle" aria-label="打开菜单">
 							<EllipsisVerticalIcon aria-hidden="true" />
-							<span className="sr-only">Open menu</span>
+							<span className="sr-only">打开菜单</span>
 						</Button>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent align="end">
@@ -185,7 +185,7 @@ const ExternalAuthRow: FC<ExternalAuthRowProps> = ({
 								await refetch();
 							}}
 						>
-							Test Validate&hellip;
+							测试验证&hellip;
 						</DropdownMenuItem>
 						<DropdownMenuItem
 							className="text-content-destructive focus:text-content-destructive"
@@ -194,7 +194,7 @@ const ExternalAuthRow: FC<ExternalAuthRowProps> = ({
 								await refetch();
 							}}
 						>
-							Unlink&hellip;
+							取消链接&hellip;
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>

@@ -18,7 +18,7 @@ export const ResourceMetadata: FC<ResourceMetadataProps> = ({
 
 	if (resource.daily_cost > 0) {
 		metadata.push({
-			key: "Daily cost",
+			key: "每日费用",
 			value: resource.daily_cost.toString(),
 			sensitive: false,
 		});

@@ -35,10 +35,9 @@ type FormattedQueryOptionsResult<
 };
 
 /**
- * cachedQuery allows the caller to only make a request a single time, and use
- * `initialData` if it is provided. This is particularly helpful for passing
- * values injected via metadata. We do this for the initial user fetch,
- * buildinfo, and a few others to reduce page load time.
+ * cachedQuery 允许调用者仅发出一次请求，并在提供 `initialData` 时使用它。
+ * 这对于传递通过元数据注入的值特别有用。我们为初始用户获取、buildinfo 和
+ * 其他几个场景这样做，以减少页面加载时间。
  */
 export function cachedQuery<
 	TMetadata extends MetadataValue = MetadataValue,

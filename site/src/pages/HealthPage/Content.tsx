@@ -252,7 +252,7 @@ export const Logs: FC<LogsProps> = ({ className, lines, ...divProps }) => {
 				</span>
 			))}
 			{lines.length === 0 && (
-				<span className="text-content-secondary">No logs available</span>
+				<span className="text-content-secondary">暂无日志</span>
 			)}
 		</div>
 	);
@@ -272,7 +272,7 @@ export const HealthMessageDocsLink: FC<HealthMessageDocsLinkProps> = ({
 			rel="noreferrer"
 			className="mx-0"
 		>
-			Docs for {code}
+			{code} 文档
 		</Link>
 	);
 };

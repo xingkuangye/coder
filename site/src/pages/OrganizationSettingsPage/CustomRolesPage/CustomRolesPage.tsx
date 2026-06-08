@@ -54,7 +54,7 @@ const CustomRolesPage: FC = () => {
 			toast.error(
 				getErrorMessage(
 					organizationRolesQuery.error,
-					"Error loading custom roles.",
+					"加载自定义角色失败。",
 				),
 				{
 					description: getErrorDetail(organizationRolesQuery.error),
@@ -64,14 +64,14 @@ const CustomRolesPage: FC = () => {
 	}, [organizationRolesQuery.error]);
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="未找到组织" />;
 	}
 
 	return (
 		<div className="w-full max-w-screen-2xl pb-10">
 			<title>
 				{pageTitle(
-					"Custom Roles",
+					"自定义角色",
 					organization.display_name || organization.name,
 				)}
 			</title>
@@ -81,9 +81,9 @@ const CustomRolesPage: FC = () => {
 			>
 				<div className="flex flex-row gap-4 items-baseline justify-between">
 					<SettingsHeader>
-						<SettingsHeaderTitle>Roles</SettingsHeaderTitle>
+						<SettingsHeaderTitle>角色</SettingsHeaderTitle>
 						<SettingsHeaderDescription>
-							Manage roles for this organization.
+							管理此组织的角色。
 						</SettingsHeaderDescription>
 					</SettingsHeader>
 				</div>
@@ -108,10 +108,10 @@ const CustomRolesPage: FC = () => {
 								organizationId: organization.id,
 								req: { default_org_member_roles: roles },
 							});
-							toast.success("Default roles updated.");
+							toast.success("默认角色已更新。");
 						} catch (error) {
 							toast.error(
-								getErrorMessage(error, "Failed to update default roles."),
+								getErrorMessage(error, "更新默认角色失败。"),
 								{ description: getErrorDetail(error) },
 							);
 						}
@@ -123,7 +123,7 @@ const CustomRolesPage: FC = () => {
 					isOpen={roleToDelete !== undefined}
 					confirmLoading={deleteRoleMutation.isPending}
 					name={roleToDelete?.name ?? ""}
-					entity="role"
+					entity="角色"
 					onCancel={() => setRoleToDelete(undefined)}
 					onConfirm={async () => {
 						try {
@@ -137,12 +137,12 @@ const CustomRolesPage: FC = () => {
 							}
 							toast.success(
 								roleToDelete
-									? `Custom role "${roleToDelete.name}" deleted successfully.`
-									: "Custom role deleted successfully.",
+									? `自定义角色 "${roleToDelete.name}" 已成功删除。`
+									: "自定义角色已成功删除。",
 							);
 						} catch (error) {
 							toast.error(
-								getErrorMessage(error, "Failed to delete custom role."),
+								getErrorMessage(error, "删除自定义角色失败。"),
 								{
 									description: getErrorDetail(error),
 								},

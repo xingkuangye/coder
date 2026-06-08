@@ -1,5 +1,5 @@
 /**
- * Copied from shadc/ui on 12/13/2024
+ * 从 shadc/ui 复制于 12/13/2024
  * @see {@link https://ui.shadcn.com/docs/components/breadcrumb}
  */
 import { MoreHorizontalIcon } from "lucide-react";
@@ -11,7 +11,7 @@ type BreadcrumbProps = React.ComponentPropsWithRef<"nav"> & {
 };
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({ ...props }) => {
-	return <nav aria-label="breadcrumb" {...props} />;
+	return <nav aria-label="面包屑" {...props} />;
 };
 
 export const BreadcrumbList: React.FC<React.ComponentPropsWithRef<"ol">> = ({
@@ -111,7 +111,7 @@ export const BreadcrumbEllipsis: React.FC<
 			{...props}
 		>
 			<MoreHorizontalIcon className="h-4 w-4" />
-			<span className="sr-only">More</span>
+			<span className="sr-only">更多</span>
 		</span>
 	);
 };

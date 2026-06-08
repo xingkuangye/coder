@@ -208,7 +208,7 @@ async function findMatchWorkspace(q: string): Promise<Workspace | undefined> {
 			const firstValidationErrorDetail =
 				err.response.data.validations?.[0].detail;
 			throw new DetailedError(
-				"Invalid match value",
+				"无效的匹配值",
 				firstValidationErrorDetail,
 			);
 		}

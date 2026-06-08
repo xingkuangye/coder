@@ -33,21 +33,18 @@ export const AdminChatDebugLoggingSettings: FC<
 		<div className="space-y-2">
 			<div className="flex items-center gap-2">
 				<h3 className="m-0 text-sm font-semibold text-content-primary">
-					Let users record chat debug logs
+					允许用户记录聊天调试日志
 				</h3>
 			</div>
 			<div className="flex items-center justify-between gap-4">
 				<div className="!mt-0.5 m-0 flex-1 text-xs text-content-secondary">
 					{forcedByDeployment ? (
 						<p className="m-0">
-							Debug logging is already enabled deployment-wide, so this per-user
-							setting has no effect right now.
+							调试日志已在部署范围启用，因此此每用户设置目前无效。
 						</p>
 					) : (
 						<p className="m-0">
-							Lets users turn on debug logging for their own chats from their
-							General settings. When on, Coder saves each chat turn along with
-							the raw API requests and responses sent to the model provider.
+							允许用户从他们的常规设置中为自己的聊天开启调试日志。开启后，Coder 会保存每次对话轮次以及发送给模型提供商的原始 API 请求和响应。
 						</p>
 					)}
 				</div>
@@ -60,7 +57,7 @@ export const AdminChatDebugLoggingSettings: FC<
 							onCheckedChange={(checked) =>
 								onSaveAdminSetting({ allow_users: checked })
 							}
-							aria-label="Allow users to enable chat debug logging"
+							aria-label="允许用户启用聊天调试日志"
 							disabled={
 								forcedByDeployment ||
 								isSavingAdminSetting ||
@@ -72,7 +69,7 @@ export const AdminChatDebugLoggingSettings: FC<
 			</div>
 			{isSaveAdminSettingError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save the admin debug logging setting.
+					保存管理员调试日志设置失败。
 				</p>
 			)}
 		</div>

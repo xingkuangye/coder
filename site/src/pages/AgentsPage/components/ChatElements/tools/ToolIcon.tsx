@@ -54,7 +54,7 @@ export const ToolIcon: React.FC<{
 			<div className="size-4 shrink-0 overflow-hidden">
 				<ExternalImage
 					src={iconUrl}
-					alt={`${name} icon`}
+					alt={`${name} 图标`}
 					className={cn(
 						"block size-4",
 						// Monochrome: brightness-0 strips colour to black,

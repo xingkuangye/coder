@@ -38,8 +38,8 @@ export const ReadFilesTool: FC<{
 	const isError = tools.some((tool) => tool.isError);
 	const hasContent = items.length > 0;
 	const label = isRunning
-		? `Reading ${tools.length} files…`
-		: `Read ${tools.length} files`;
+		? `正在读取 ${tools.length} 个文件…`
+		: `已读取 ${tools.length} 个文件`;
 	const errorMessage = items.find((item) => item.errorMessage)?.errorMessage;
 
 	return (
@@ -63,7 +63,7 @@ export const ReadFilesTool: FC<{
 									<TriangleAlertIcon className="h-3.5 w-3.5 shrink-0 text-current" />
 								</TooltipTrigger>
 								<TooltipContent>
-									{errorMessage || "Failed to read one or more files"}
+									{errorMessage || "无法读取一个或多个文件"}
 								</TooltipContent>
 							</Tooltip>
 						)}

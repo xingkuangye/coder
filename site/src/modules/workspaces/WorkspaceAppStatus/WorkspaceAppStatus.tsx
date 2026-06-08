@@ -19,7 +19,7 @@ export const WorkspaceAppStatus = ({
 	if (!status) {
 		return (
 			<span className="text-content-disabled text-sm">
-				-<span className="sr-only">No activity</span>
+				-<span className="sr-only">无活动</span>
 			</span>
 		);
 	}

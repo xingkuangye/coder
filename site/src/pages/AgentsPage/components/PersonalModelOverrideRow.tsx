@@ -110,9 +110,9 @@ const getUnavailableModelLabel = (
 ): string => {
 	const modelConfigLabel = getModelConfigLabelByID(modelConfigID, modelConfigs);
 	if (!modelConfigLabel) {
-		return `Unavailable model (${modelConfigID})`;
+		return `不可用模型 (${modelConfigID})`;
 	}
-	return `Unavailable: ${modelConfigLabel}`;
+	return `不可用: ${modelConfigLabel}`;
 };
 
 const getDefaultModeOptions = (
@@ -128,12 +128,12 @@ const getChatDefaultDescription = (
 	modelConfigs: readonly TypesGen.ChatModelConfig[],
 ): string => {
 	if (context !== "root") {
-		return "Your current chat model";
+		return "您当前的聊天模型";
 	}
 	const defaultModel = modelConfigs.find((config) => config.is_default);
 	return defaultModel
 		? getModelConfigLabel(defaultModel)
-		: "Model definition default";
+		: "模型定义默认值";
 };
 
 const getDeploymentDefaultDescription = (
@@ -141,18 +141,18 @@ const getDeploymentDefaultDescription = (
 	modelConfigs: readonly TypesGen.ChatModelConfig[],
 ): string => {
 	if (!deploymentDefault) {
-		return "Loading deployment default";
+		return "正在加载部署默认值";
 	}
 	if (deploymentDefault.is_malformed) {
-		return "Invalid deployment default";
+		return "部署默认值无效";
 	}
 	const modelConfigID = deploymentDefault.model_config_id.trim();
 	if (modelConfigID === "") {
-		return "Chat default fallback";
+		return "聊天默认回退";
 	}
 	return (
 		getModelConfigLabelByID(modelConfigID, modelConfigs) ??
-		`Unavailable model (${modelConfigID})`
+		`不可用模型 (${modelConfigID})`
 	);
 };
 
@@ -172,14 +172,14 @@ const getSelectionLabel = ({
 	values: PersonalOverrideFormValues;
 }): string => {
 	if (isInvalidRootDeploymentDefault) {
-		return "Invalid deployment default";
+		return "部署默认值无效";
 	}
 
 	switch (values.mode) {
 		case "chat_default":
-			return `Chat default: ${getChatDefaultDescription(context, modelConfigs)}`;
+			return `聊天默认值: ${getChatDefaultDescription(context, modelConfigs)}`;
 		case "deployment_default":
-			return `Deployment default: ${getDeploymentDefaultDescription(
+			return `部署默认值: ${getDeploymentDefaultDescription(
 				deploymentDefault,
 				modelConfigs,
 			)}`;
@@ -192,7 +192,7 @@ const getSelectionLabel = ({
 				return getModelOptionLabel(modelOption);
 			}
 			return modelConfigID === ""
-				? "Select..."
+				? "选择..."
 				: getUnavailableModelLabel(modelConfigID, modelConfigs);
 		}
 	}
@@ -288,16 +288,16 @@ export const PersonalModelOverrideRow: FC<PersonalModelOverrideRowProps> = ({
 					disabled={isFormDisabled}
 				>
 					<SelectTrigger
-						aria-label={`${title} behavior`}
+						aria-label={`${title} 行为`}
 						className="h-10 w-full justify-between rounded-md border border-border border-solid bg-transparent px-3 text-sm shadow-sm md:w-[18rem]"
 					>
-						<SelectValue placeholder="Select...">{selectionLabel}</SelectValue>
+						<SelectValue placeholder="选择...">{selectionLabel}</SelectValue>
 					</SelectTrigger>
 					<SelectContent className="min-w-[18rem]">
 						{isInvalidRootDeploymentDefault && (
 							<>
 								<SelectItem value="deployment_default" disabled>
-									Invalid deployment default
+									部署默认值无效
 								</SelectItem>
 								<SelectSeparator />
 							</>
@@ -333,7 +333,7 @@ export const PersonalModelOverrideRow: FC<PersonalModelOverrideRowProps> = ({
 							))}
 							{modelOptions.length === 0 && (
 								<SelectItem value="__empty_models__" disabled>
-									{isLoading ? "Loading models..." : "No enabled models found."}
+									{isLoading ? "正在加载模型..." : "未找到已启用的模型。"}
 								</SelectItem>
 							)}
 						</SelectGroup>
@@ -341,17 +341,15 @@ export const PersonalModelOverrideRow: FC<PersonalModelOverrideRowProps> = ({
 				</Select>
 				<ModelOverrideAlerts
 					isUnavailableSavedModel={isUnavailableSavedModel}
-					unavailableMessage="The saved model is unavailable and will be ignored until you choose a valid model override."
+					unavailableMessage="已保存的模型不可用，将被忽略，直到您选择有效的模型覆盖。"
 					isMalformedOverride={isMalformedOverride}
-					malformedMessage="The saved override is malformed. Choose a valid value and save to replace it."
+					malformedMessage="已保存的覆盖格式错误。请选择有效值并保存以替换。"
 					modelConfigsError={modelConfigsError}
 				>
 					{isInvalidRootDeploymentDefault && (
 						<Alert severity="warning">
 							<AlertDescription>
-								The saved root override uses the deployment default, which is
-								not supported for root agents. Choose a valid value and save to
-								replace it.
+								已保存的根覆盖使用了部署默认值，根代理不支持此选项。请选择有效值并保存以替换。
 							</AlertDescription>
 						</Alert>
 					)}
@@ -362,7 +360,7 @@ export const PersonalModelOverrideRow: FC<PersonalModelOverrideRowProps> = ({
 						type="submit"
 						disabled={isFormDisabled || !canSaveSelection}
 					>
-						Save
+						保存
 					</Button>
 				</div>
 				{isSaveError && (
@@ -389,7 +387,7 @@ const DefaultModeSelectItem: FC<DefaultModeSelectItemProps> = ({
 	modelConfigs,
 }) => {
 	const label =
-		mode === "deployment_default" ? "Deployment default" : "Chat default";
+		mode === "deployment_default" ? "部署默认值" : "聊天默认值";
 	const description =
 		mode === "deployment_default"
 			? getDeploymentDefaultDescription(deploymentDefault, modelConfigs)

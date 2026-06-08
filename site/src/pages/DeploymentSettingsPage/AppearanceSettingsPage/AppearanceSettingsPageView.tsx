@@ -64,9 +64,9 @@ export const AppearanceSettingsPageView: FC<
 	return (
 		<>
 			<SettingsHeader>
-				<SettingsHeaderTitle>Appearance</SettingsHeaderTitle>
+				<SettingsHeaderTitle>外观</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Customize the look and feel of your Coder deployment.
+					自定义您的 Coder 部署的外观和感觉。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 
@@ -88,8 +88,8 @@ export const AppearanceSettingsPageView: FC<
 						className="p-0"
 					>
 						<PopoverPaywall
-							message="Appearance"
-							description="With a Premium license, you can customize the appearance and branding of your deployment."
+							message="外观"
+							description="拥有高级许可证，您可以自定义部署的外观和品牌标识。"
 							documentationLink={docs("/admin/setup/appearance")}
 						/>
 					</TooltipContent>
@@ -97,38 +97,37 @@ export const AppearanceSettingsPageView: FC<
 			</Badges>
 
 			<Fieldset
-				title="Application name"
-				subtitle="Specify a custom application name to be displayed on the login page."
-				validation={!isEntitled ? "This is an Enterprise only feature." : ""}
+				title="应用程序名称"
+				subtitle="指定要在登录页面上显示的自定义应用程序名称。"
+				validation={!isEntitled ? "这是仅限企业版的功能。" : ""}
 				onSubmit={applicationNameForm.handleSubmit}
-				button={!isEntitled && <Button disabled>Submit</Button>}
+				button={!isEntitled && <Button disabled>提交</Button>}
 			>
 				<Input
 					{...applicationNameFieldHelpers("application_name")}
-					placeholder='Leave empty to display "Coder".'
+					placeholder='留空以显示“Coder”。'
 					disabled={!isEntitled}
-					aria-label="Application name"
+					aria-label="应用程序名称"
 				/>
 			</Fieldset>
 
 			<Fieldset
-				title="Logo URL"
-				subtitle="Specify a custom URL for your logo to be displayed on the sign in page and in the top left
-          corner of the dashboard."
+				title="徽标 URL"
+				subtitle="指定要在登录页面和仪表板左上角显示的自定义徽标 URL。"
 				validation={
 					isEntitled
-						? "An image with transparency and an aspect ratio of 3:1 or less will look best."
-						: "This is an Enterprise only feature."
+						? "具有透明度且宽高比不超过 3:1 的图片效果最佳。"
+						: "这是仅限企业版的功能。"
 				}
 				onSubmit={logoForm.handleSubmit}
-				button={!isEntitled && <Button disabled>Submit</Button>}
+				button={!isEntitled && <Button disabled>提交</Button>}
 			>
 				<InputGroup>
 					<InputGroupInput
 						{...logoFieldHelpers("logo_url")}
-						placeholder="Leave empty to display the Coder logo."
+						placeholder="留空以显示 Coder 徽标。"
 						disabled={!isEntitled}
-						aria-label="Logo URL"
+						aria-label="徽标 URL"
 					/>
 					<InputGroupAddon align="inline-end">
 						<img

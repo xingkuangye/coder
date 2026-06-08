@@ -31,28 +31,28 @@ const SUBAGENT_VERBS: Record<
 	{ completed: string; running: string; error: string; timeout: string }
 > = {
 	spawn: {
-		completed: "Spawned ",
-		running: "Spawning ",
-		error: "Failed to spawn ",
-		timeout: "Timed out spawning ",
+		completed: "已生成",
+		running: "正在生成",
+		error: "生成失败",
+		timeout: "生成超时",
 	},
 	wait: {
-		completed: "Waited for ",
-		running: "Waiting for ",
-		error: "Failed waiting for ",
-		timeout: "Timed out waiting for ",
+		completed: "已等待",
+		running: "正在等待",
+		error: "等待失败",
+		timeout: "等待超时",
 	},
 	message: {
-		completed: "Messaged ",
-		running: "Messaging ",
-		error: "Failed to message ",
-		timeout: "Timed out messaging ",
+		completed: "已发送消息",
+		running: "正在发送消息",
+		error: "消息发送失败",
+		timeout: "消息发送超时",
 	},
 	close: {
-		completed: "Terminated ",
-		running: "Terminating ",
-		error: "Failed to terminate ",
-		timeout: "Timed out terminating ",
+		completed: "已终止",
+		running: "正在终止",
+		error: "终止失败",
+		timeout: "终止超时",
 	},
 };
 
@@ -70,7 +70,7 @@ function getSubagentLabel(
 	if (showDesktopPreview && toolStatus === "running") {
 		return (
 			<Shimmer as="span" className="text-[13px] leading-6">
-				Using the computer...
+				正在使用电脑...
 			</Shimmer>
 		);
 	}
@@ -81,7 +81,7 @@ function getSubagentLabel(
 	) {
 		return (
 			<>
-				Used the computer <span className="opacity-60">{title}</span>
+				已使用电脑<span className="opacity-60">{title}</span>
 			</>
 		);
 	}
@@ -228,7 +228,7 @@ export const SubagentTool: React.FC<{
 								to={{ pathname: agentChatPath, search: location.search }}
 								onClick={(e) => e.stopPropagation()}
 								className="ml-1 inline-flex align-middle text-content-secondary opacity-50 transition-opacity hover:opacity-100"
-								aria-label="View agent"
+								aria-label="查看代理"
 							>
 								<ExternalLinkIcon className="size-3" />
 							</Link>
@@ -244,7 +244,7 @@ export const SubagentTool: React.FC<{
 					)}
 					{durationLabel && (
 						<span className="ml-auto shrink-0 text-xs">
-							{`Worked for ${durationLabel}`}
+							{`已工作${durationLabel}`}
 						</span>
 					)}
 				</button>

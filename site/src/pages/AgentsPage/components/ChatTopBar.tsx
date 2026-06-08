@@ -80,7 +80,7 @@ const ChatSharingTopBarButton: FC<ChatSharingTopBarButtonProps> = ({
 					variant="subtle"
 					size="icon"
 					className="size-7 text-content-secondary hover:text-content-primary"
-					aria-label="Share chat"
+					aria-label="分享聊天"
 				>
 					<Share2Icon className="size-4" />
 				</Button>
@@ -134,7 +134,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 				>
 					<Link
 						to={{ pathname: "/agents", search: location.search }}
-						aria-label="Back"
+						aria-label="返回"
 					>
 						<ArrowLeftIcon />
 					</Link>
@@ -146,7 +146,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 					variant="subtle"
 					size="icon"
 					onClick={onToggleSidebarCollapsed}
-					aria-label="Expand sidebar"
+					aria-label="展开侧边栏"
 					className="hidden size-7 min-w-0 shrink-0 sm:inline-flex"
 				>
 					<PanelLeftIcon />
@@ -192,12 +192,12 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 						{isSharedChat && (
 							<UsersIcon
 								className="size-3.5 shrink-0 text-content-secondary"
-								aria-label="Shared chat"
+								aria-label="共享聊天"
 							/>
 						)}
 						{isRegeneratingTitle && (
 							<Spinner
-								aria-label="Regenerating title"
+								aria-label="正在重新生成标题"
 								className="h-3.5 w-3.5 shrink-0 text-content-secondary"
 								loading
 							/>
@@ -245,7 +245,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 								size="icon"
 								variant="subtle"
 								className="size-7 text-content-secondary hover:text-content-primary"
-								aria-label="Open agent actions"
+								aria-label="打开代理操作"
 							>
 								<EllipsisIcon className="size-4" />
 							</Button>
@@ -261,7 +261,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 										onSelect={onRegenerateTitle}
 									>
 										<WandSparklesIcon className="size-3.5" />
-										Generate new title
+										生成新标题
 									</DropdownMenuItem>
 									<DropdownMenuSeparator />
 								</>
@@ -269,7 +269,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 							{isArchived ? (
 								<DropdownMenuItem onSelect={onUnarchiveAgent}>
 									<ArchiveRestoreIcon className="size-3.5" />
-									Unarchive Agent
+									取消归档代理
 								</DropdownMenuItem>
 							) : (
 								<>
@@ -278,7 +278,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 										onSelect={onArchiveAgent}
 									>
 										<ArchiveIcon className="size-3.5" />
-										Archive Agent
+										归档代理
 									</DropdownMenuItem>
 									{hasWorkspace && (
 										<DropdownMenuItem
@@ -286,7 +286,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 											onSelect={onArchiveAndDeleteWorkspace}
 										>
 											<Trash2Icon className="size-3.5" />
-											Archive & Delete Workspace
+											归档并删除工作空间
 										</DropdownMenuItem>
 									)}
 								</>
@@ -300,7 +300,7 @@ export const ChatTopBar: FC<ChatTopBarProps> = ({
 						size="icon"
 						onClick={panel.onToggleSidebar}
 						className="size-7 text-content-secondary hover:text-content-primary"
-						aria-label="Toggle panel"
+						aria-label="切换面板"
 					>
 						{panel.showSidebarPanel ? (
 							<PanelRightCloseIcon className="size-4" />

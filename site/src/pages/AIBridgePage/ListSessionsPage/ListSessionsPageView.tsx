@@ -46,8 +46,7 @@ const ThreadTooltip: FC<PropsWithChildren> = ({ children }) => (
 				align="end"
 				className="max-w-xs text-sm font-normal"
 			>
-				A thread is a multi-part interaction between human and agent involving
-				an initial human prompt and a subsequent agentic loop.
+				线程是人机之间的多轮交互，包括初始的人类提示和随后的智能体循环。
 			</TooltipContent>
 		</Tooltip>
 	</TooltipProvider>
@@ -77,23 +76,23 @@ export const ListSessionsPageView: FC<ListSessionsPageViewProps> = ({
 		<>
 			<ListSessionsFilter {...filterProps} />
 
-			<PaginationContainer query={sessionsQuery} paginationUnitLabel="sessions">
+			<PaginationContainer query={sessionsQuery} paginationUnitLabel="会话">
 				<Table className="text-sm font-normal">
 					<TableHeader>
 						<TableRow>
-							<TableHead className="text-nowrap">Last Prompt</TableHead>
-							<TableHead className="text-nowrap">User</TableHead>
-							<TableHead className="text-nowrap">Provider</TableHead>
-							<TableHead className="text-nowrap">Client</TableHead>
-							<TableHead className="text-nowrap">In/Out Tokens</TableHead>
+							<TableHead className="text-nowrap">最近提示</TableHead>
+							<TableHead className="text-nowrap">用户</TableHead>
+							<TableHead className="text-nowrap">提供商</TableHead>
+							<TableHead className="text-nowrap">客户端</TableHead>
+							<TableHead className="text-nowrap">输入/输出令牌</TableHead>
 							<TableHead className="flex items-center flex-nowrap gap-1">
-								Threads
+								线程
 								<ThreadTooltip>
 									<InfoIcon className="size-icon-xs" />
 								</ThreadTooltip>
 							</TableHead>
 							<TableHead className="text-nowrap">
-								Last Prompt At [UTC{utcOffset}]
+								最近提示时间 [UTC{utcOffset}]
 							</TableHead>
 						</TableRow>
 					</TableHeader>
@@ -101,7 +100,7 @@ export const ListSessionsPageView: FC<ListSessionsPageViewProps> = ({
 						{isLoading || isFetching ? (
 							<TableLoader />
 						) : sessions?.length === 0 ? (
-							<TableEmpty message="No session logs available" />
+							<TableEmpty message="没有可用的会话日志" />
 						) : (
 							sessions?.map((session) => (
 								<ListSessionsRow

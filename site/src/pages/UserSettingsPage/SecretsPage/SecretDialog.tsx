@@ -53,7 +53,7 @@ const emptyValues: SecretFormValues = {
 	file_path: "",
 };
 
-const infoText = "Secret values cannot be retrieved once saved.";
+const infoText = "密钥值保存后无法检索。";
 export const SAVED_SECRET_VALUE_DISPLAY = "••••••••••••••••••••";
 
 export const SecretDialog: FC<SecretDialogProps> = ({
@@ -147,7 +147,7 @@ export const SecretDialog: FC<SecretDialogProps> = ({
 				}}
 			>
 				<DialogHeader>
-					<DialogTitle>{secret ? "Edit secret" : "Add secret"}</DialogTitle>
+					<DialogTitle>{secret ? "编辑密钥" : "添加密钥"}</DialogTitle>
 				</DialogHeader>
 
 				<form
@@ -175,9 +175,9 @@ export const SecretDialog: FC<SecretDialogProps> = ({
 							<SecretValueField
 								key={`${secret.name}-${open}`}
 								field={getFieldHelpers("value", {
-									helperText: "Leave blank to keep the existing value.",
+									helperText: "留空以保留现有值。",
 								})}
-								placeholder="Leave blank to keep existing value"
+								placeholder="留空以保留现有值"
 								showSavedValue={open}
 								clearValueRequested={clearValueRequested}
 								onClearValue={() => {
@@ -204,11 +204,11 @@ export const SecretDialog: FC<SecretDialogProps> = ({
 
 					<DialogFooter>
 						<Button variant="outline" disabled={isBusy} onClick={closeDialog}>
-							Cancel
+							取消
 						</Button>
 						<Button type="submit" disabled={confirmDisabled}>
 							<Spinner loading={isSubmitting || form.isSubmitting} />
-							{secret ? "Update" : "Save"}
+							{secret ? "更新" : "保存"}
 						</Button>
 					</DialogFooter>
 				</form>
@@ -236,12 +236,12 @@ const SecretFields: FC<SecretFieldsProps> = ({
 				field={getFieldHelpers("name")}
 				label={
 					showRequiredLabels ? (
-						<RequiredFieldLabel>Name</RequiredFieldLabel>
+						<RequiredFieldLabel>名称</RequiredFieldLabel>
 					) : (
-						"Name"
+						"名称"
 					)
 				}
-				placeholder="Secret name"
+				placeholder="密钥名称"
 				autoComplete="off"
 				className="placeholder:text-content-disabled"
 				disabled={disableName}
@@ -253,9 +253,9 @@ const SecretFields: FC<SecretFieldsProps> = ({
 			<FormField
 				field={getFieldHelpers("env_name", {
 					helperText:
-						"Optional. Exposes the secret as an environment variable with this name in your workspace.",
+						"可选。使用此名称在您的工作区中将密钥公开为环境变量。",
 				})}
-				label="Environment variable"
+				label="环境变量"
 				placeholder="SERVICE_TOKEN"
 				autoComplete="off"
 				className="placeholder:text-content-disabled"
@@ -266,9 +266,9 @@ const SecretFields: FC<SecretFieldsProps> = ({
 			<FormField
 				field={getFieldHelpers("file_path", {
 					helperText:
-						"Optional. Exposes the secret as a file at this path in your workspace. Path must start with ~/ or /.",
+						"可选。在此路径将密钥公开为您工作区中的文件。路径必须以 ~/ 或 / 开头。",
 				})}
-				label="File path"
+				label="文件路径"
 				placeholder="~/api-key.txt"
 				autoComplete="off"
 				className="placeholder:text-content-disabled"
@@ -279,7 +279,7 @@ const SecretFields: FC<SecretFieldsProps> = ({
 			{showValue && (
 				<SecretValueField
 					field={getFieldHelpers("value")}
-					placeholder="Enter secret value"
+					placeholder="输入密钥值"
 					required={showRequiredLabels}
 				/>
 			)}
@@ -337,7 +337,7 @@ const SecretValueField: FC<SecretValueFieldProps> = ({
 				...field,
 				helperText: field.error
 					? field.helperText
-					: "Saved value will be cleared when you update.",
+					: "保存的值将在您更新时清除。",
 			}
 		: field;
 	const errorId = `${field.id}-error`;
@@ -346,7 +346,7 @@ const SecretValueField: FC<SecretValueFieldProps> = ({
 	return (
 		<div className="flex flex-col gap-2">
 			<Label htmlFor={field.id}>
-				{required ? <RequiredFieldLabel>Value</RequiredFieldLabel> : "Value"}
+				{required ? <RequiredFieldLabel>值</RequiredFieldLabel> : "值"}
 			</Label>
 			<div className="flex flex-col gap-2 sm:flex-row sm:items-start">
 				<Input
@@ -402,7 +402,7 @@ const SecretValueField: FC<SecretValueFieldProps> = ({
 						)}
 						onClick={clearValueRequested ? onUndoClearValue : onClearValue}
 					>
-						{clearValueRequested ? "Undo" : "Clear"}
+						{clearValueRequested ? "撤销" : "清除"}
 					</Button>
 				)}
 			</div>
@@ -430,14 +430,14 @@ const SecretDescriptionField: FC<SecretDescriptionFieldProps> = ({ field }) => {
 
 	return (
 		<div className="flex flex-col gap-2">
-			<Label htmlFor={field.id}>Description</Label>
+			<Label htmlFor={field.id}>描述</Label>
 			<Textarea
 				id={field.id}
 				name={field.name}
 				value={field.value}
 				onChange={field.onChange}
 				onBlur={field.onBlur}
-				placeholder="Optional"
+				placeholder="可选"
 				aria-invalid={field.error}
 				aria-describedby={field.error ? errorId : undefined}
 				className={cn(

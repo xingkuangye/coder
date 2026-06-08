@@ -51,7 +51,7 @@ export const OrganizationMembersPageView: React.FC<
 	return (
 		<div className="w-full max-w-screen-2xl pb-10">
 			<SettingsHeader>
-				<SettingsHeaderTitle>Members</SettingsHeaderTitle>
+				<SettingsHeaderTitle>成员</SettingsHeaderTitle>
 			</SettingsHeader>
 
 			<div className="flex flex-col gap-4">
@@ -65,11 +65,11 @@ export const OrganizationMembersPageView: React.FC<
 					<div className="flex flex-row text-content-warning gap-2 items-center text-sm font-medium">
 						<TriangleAlertIcon className="size-icon-sm" />
 						<p>
-							You do not have permission to view members other than yourself.
+							您没有权限查看其他成员。
 						</p>
 					</div>
 				)}
-				<PaginationContainer query={membersQuery} paginationUnitLabel="members">
+				<PaginationContainer query={membersQuery} paginationUnitLabel="成员">
 					<OrganizationMembersTable {...props} />
 				</PaginationContainer>
 			</div>
@@ -96,7 +96,7 @@ const AddUsersDialog: React.FC<AddUsersDialogProps> = ({ onSubmit }) => {
 		<>
 			<Button size="lg" onClick={() => setAddUserDialogOpen(true)}>
 				<UserPlusIcon />
-				Add users
+				添加用户
 			</Button>
 			<Dialog
 				open={addUserDialogOpen}
@@ -111,7 +111,7 @@ const AddUsersDialog: React.FC<AddUsersDialogProps> = ({ onSubmit }) => {
 					className="max-w-md gap-4 border-border-default bg-surface-primary p-8 text-content-primary"
 				>
 					<DialogTitle className="font-semibold text-content-primary">
-						Add user(s)
+						添加用户
 					</DialogTitle>
 					<MultiUserSelect
 						filter={filter}
@@ -131,7 +131,7 @@ const AddUsersDialog: React.FC<AddUsersDialogProps> = ({ onSubmit }) => {
 							onClick={closeDialog}
 							disabled={submitting}
 						>
-							Cancel
+							取消
 						</Button>
 						<Button
 							disabled={submitting || selected.length === 0}
@@ -142,7 +142,7 @@ const AddUsersDialog: React.FC<AddUsersDialogProps> = ({ onSubmit }) => {
 									closeDialog();
 								} catch (error) {
 									toast.error(
-										getErrorMessage(error, "Failed to add members."),
+										getErrorMessage(error, "添加成员失败。"),
 										{
 											description: getErrorDetail(error),
 										},
@@ -153,7 +153,7 @@ const AddUsersDialog: React.FC<AddUsersDialogProps> = ({ onSubmit }) => {
 							}}
 						>
 							<Spinner loading={submitting} />
-							Add users
+							添加用户
 						</Button>
 					</DialogFooter>
 				</DialogContent>

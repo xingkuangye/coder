@@ -23,8 +23,8 @@ const AgentSettingsMCPServersPage: FC = () => {
 	return (
 		<RequirePermission isFeatureVisible={permissions.editDeploymentConfig}>
 			<MCPServerAdminPanel
-				sectionLabel="MCP servers"
-				sectionDescription="Configure external MCP servers that provide additional tools for Coder Agents."
+				sectionLabel="MCP 服务器"
+				sectionDescription="配置外部 MCP 服务器，为 Coder Agents 提供额外工具。"
 				serversData={serversQuery.data}
 				isLoadingServers={serversQuery.isLoading}
 				serversError={serversQuery.isError ? serversQuery.error : null}

@@ -45,7 +45,7 @@ export const TextPreviewDialog: FC<TextPreviewDialogProps> = ({
 				aria-describedby={undefined}
 			>
 				<DialogTitle className="px-4 py-3 border-b border-border-default text-sm font-medium">
-					{fileName ?? "Pasted text"}
+					{fileName ?? "粘贴的文本"}
 				</DialogTitle>
 				<div className="overflow-auto p-4 max-h-[calc(85vh-3rem)]">
 					{renderAsMarkdown ? (

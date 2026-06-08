@@ -158,7 +158,7 @@ export const AttachmentPreview: FC<{
 							) : hasTextAttachment ? (
 								<button
 									type="button"
-									aria-label={`View ${file.name}`}
+									aria-label={`查看 ${file.name}`}
 									className="flex h-16 w-28 flex-col items-start justify-start overflow-hidden rounded-md border-0 bg-surface-tertiary p-2 text-left transition-colors hover:bg-surface-quaternary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-content-link"
 									onClick={async () => {
 										const nextContent = await loadTextAttachmentContent(
@@ -176,7 +176,7 @@ export const AttachmentPreview: FC<{
 								</button>
 							) : (
 								<div className="flex size-16 items-center justify-center rounded-md border border-border-default bg-surface-secondary text-xs text-content-secondary">
-									{file.name.split(".").pop()?.toUpperCase() || "FILE"}
+									{file.name.split(".").pop()?.toUpperCase() || "文件"}
 								</div>
 							)}
 							{hasTextAttachment && (
@@ -190,7 +190,7 @@ export const AttachmentPreview: FC<{
 										onInlineText?.(file, nextContent);
 									}}
 									className="absolute -bottom-2 -right-2 flex size-6 cursor-pointer items-center justify-center rounded-full border-0 bg-surface-primary text-content-secondary shadow-sm opacity-0 transition-opacity hover:bg-surface-secondary hover:text-content-primary group-hover:opacity-100 group-focus-within:opacity-100 focus:opacity-100"
-									aria-label="Paste inline"
+									aria-label="粘贴内联"
 								>
 									<ClipboardPasteIcon aria-hidden="true" className="size-3.5" />
 								</button>
@@ -208,14 +208,14 @@ export const AttachmentPreview: FC<{
 										<div
 											className="absolute inset-0 flex items-center justify-center rounded-md bg-overlay"
 											role="img"
-											aria-label="Upload error"
+											aria-label="上传错误"
 										>
 											<AlertTriangleIcon className="size-5 text-content-warning" />
 										</div>
 									</TooltipTrigger>
 									<TooltipContent side="top">
 										<p className="max-w-xs text-xs">
-											{uploadState.error ?? "Upload failed"}
+											{uploadState.error ?? "上传失败"}
 										</p>
 									</TooltipContent>
 								</Tooltip>
@@ -224,7 +224,7 @@ export const AttachmentPreview: FC<{
 								type="button"
 								onClick={() => onRemove(file)}
 								className="absolute -right-2 -top-2 flex size-6 cursor-pointer items-center justify-center rounded-full border-0 bg-surface-primary text-content-secondary shadow-sm opacity-0 transition-opacity hover:bg-surface-secondary hover:text-content-primary group-hover:opacity-100 group-focus-within:opacity-100 focus:opacity-100"
-								aria-label={`Remove ${file.name}`}
+								aria-label={`移除 ${file.name}`}
 							>
 								<XIcon aria-hidden="true" className="size-3.5" />
 							</button>

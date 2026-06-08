@@ -49,8 +49,8 @@ export const DefaultLimitSection: FC<DefaultLimitSectionProps> = ({
 		<section className="space-y-4">
 			{!hideHeader && (
 				<SectionHeader
-					label="Default spend limit"
-					description="Set a deployment-wide spend cap that applies to all users by default."
+					label="默认消费限额"
+					description="设置默认适用于所有用户的部署级消费上限。"
 					badge={adminBadge}
 				/>
 			)}
@@ -59,16 +59,16 @@ export const DefaultLimitSection: FC<DefaultLimitSectionProps> = ({
 				<div className="flex items-center justify-between gap-4">
 					<div>
 						<p className="m-0 text-sm font-medium text-content-primary">
-							Enable spend limit
+							启用消费限额
 						</p>
 						<p className="m-0 text-xs text-content-secondary">
-							When disabled, users have unlimited spending.
+							禁用时，用户的消费不受限制。
 						</p>
 					</div>
 					<Switch
 						checked={enabled}
 						onCheckedChange={onEnabledChange}
-						aria-label="Enable spend limit"
+						aria-label="启用消费限额"
 					/>
 				</div>
 
@@ -76,15 +76,14 @@ export const DefaultLimitSection: FC<DefaultLimitSectionProps> = ({
 					<div className="flex flex-col gap-3 md:flex-row md:items-end">
 						<div className="flex-1 space-y-1">
 							<div className="flex items-center gap-1">
-								<Label htmlFor={periodId}>Period</Label>
+								<Label htmlFor={periodId}>周期</Label>
 								<TooltipProvider delayDuration={0}>
 									<Tooltip>
 										<TooltipTrigger asChild>
 											<InfoIcon className="size-3.5 shrink-0 cursor-help text-content-secondary" />
 										</TooltipTrigger>
 										<TooltipContent>
-											Only one period can be active at a time. Spend is
-											calculated from the start of the current period.
+											一次只能启用一个周期。消费从当前周期开始计算。
 										</TooltipContent>
 									</Tooltip>
 								</TooltipProvider>
@@ -102,14 +101,14 @@ export const DefaultLimitSection: FC<DefaultLimitSectionProps> = ({
 									<SelectValue />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectItem value="day">Day</SelectItem>
-									<SelectItem value="week">Week</SelectItem>
-									<SelectItem value="month">Month</SelectItem>
+									<SelectItem value="day">天</SelectItem>
+									<SelectItem value="week">周</SelectItem>
+									<SelectItem value="month">月</SelectItem>
 								</SelectContent>
 							</Select>
 						</div>
 						<div className="flex-1 space-y-1">
-							<Label htmlFor={amountId}>Amount ($)</Label>
+							<Label htmlFor={amountId}>金额 ($)</Label>
 							<Input
 								id={amountId}
 								type="number"
@@ -130,9 +129,9 @@ export const DefaultLimitSection: FC<DefaultLimitSectionProps> = ({
 					<TriangleAlertIcon className="size-5 shrink-0 text-content-warning" />
 					<div>
 						{unpricedModelCount === 1
-							? "1 enabled model does not have pricing configured."
-							: `${unpricedModelCount} enabled models do not have pricing configured.`}{" "}
-						Usage of unpriced models cannot be tracked against the spend limit.
+							? "1 个已启用的模型未配置定价。"
+							: `${unpricedModelCount} 个已启用的模型未配置定价。`}{" "}
+						未定价模型的使用无法计入消费限额。
 					</div>
 				</div>
 			)}

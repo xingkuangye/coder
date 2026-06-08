@@ -59,7 +59,7 @@ export const useWebpushNotifications = (): WebpushNotifications => {
 			const permission = await Notification.requestPermission();
 			if (permission !== "granted") {
 				throw new Error(
-					"Notifications are blocked by your browser. Please allow notifications for this site in your browser settings.",
+					"浏览器已阻止通知。请在浏览器设置中允许此站点的通知。",
 				);
 			}
 
@@ -72,7 +72,7 @@ export const useWebpushNotifications = (): WebpushNotifications => {
 			});
 			const json = subscription.toJSON();
 			if (!json.keys || !json.endpoint) {
-				throw new Error("No keys or endpoint found");
+				throw new Error("未找到密钥或端点");
 			}
 
 			await API.createWebPushSubscription("me", {

@@ -66,14 +66,14 @@ export const CreateTokenForm: FC<CreateTokenFormProps> = ({
 	return (
 		<HorizontalForm onSubmit={form.handleSubmit}>
 			<FormSection
-				title="Name"
-				description="What is this token for?"
+				title="名称"
+				description="该令牌的用途是什么？"
 				classes={{ sectionInfo: classNames.sectionInfo }}
 			>
 				<FormFields>
 					<TextField
 						{...getFieldHelpers("name")}
-						label="Name"
+						label="名称"
 						required
 						onChange={onChangeTrimmed(form, () => setFormError(undefined))}
 						autoFocus
@@ -82,20 +82,21 @@ export const CreateTokenForm: FC<CreateTokenFormProps> = ({
 				</FormFields>
 			</FormSection>
 			<FormSection
-				title="Expiration"
+				title="过期"
 				description={
 					form.values.lifetime ? (
 						<>
-							The token will expire on{" "}
+							令牌将于{" "}
 							<span data-chromatic="ignore">
 								{currentTime
 									.add(form.values.lifetime, "days")
 									.utc()
 									.format("MMMM DD, YYYY")}
-							</span>
+							</span>{" "}
+							失效
 						</>
 					) : (
-						"Please set a token expiration."
+						"请设置令牌过期时间。"
 					)
 				}
 				classes={{ sectionInfo: classNames.sectionInfo }}
@@ -104,7 +105,7 @@ export const CreateTokenForm: FC<CreateTokenFormProps> = ({
 					<div className="flex flex-row gap-4">
 						<TextField
 							select
-							label="Lifetime"
+							label="有效期"
 							required
 							defaultValue={determineDefaultLtValue(maxTokenLifetime)}
 							onChange={(event) => {
@@ -128,7 +129,7 @@ export const CreateTokenForm: FC<CreateTokenFormProps> = ({
 						{lifetimeDays === "custom" && (
 							<TextField
 								type="date"
-								label="Expires on"
+								label="失效日期"
 								defaultValue={dayjs().add(expDays, "day").format("YYYY-MM-DD")}
 								onChange={(event) => {
 									const lt = Math.ceil(
@@ -158,11 +159,11 @@ export const CreateTokenForm: FC<CreateTokenFormProps> = ({
 
 			<FormFooter>
 				<Button onClick={() => navigate("/settings/tokens")} variant="outline">
-					Cancel
+					取消
 				</Button>
 				<Button type="submit" disabled={isCreating}>
 					<Spinner loading={isCreating} />
-					{creationFailed ? "Retry" : "Create token"}
+					{creationFailed ? "重试" : "创建令牌"}
 				</Button>
 			</FormFooter>
 		</HorizontalForm>

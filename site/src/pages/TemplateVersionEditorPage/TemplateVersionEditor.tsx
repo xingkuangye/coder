@@ -146,7 +146,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 			await onPreview(fileTree);
 			setSelectedTab("logs");
 		} catch (error) {
-			toast.error(getErrorMessage(error, "Error on previewing the template."), {
+			toast.error(getErrorMessage(error, "预览模板时出错。"), {
 				description: getErrorDetail(error),
 			});
 		}
@@ -194,10 +194,10 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 		) {
 			setDirty(false);
 			toast.success(
-				`Template version "${previousVersion.current.name}" built successfully.`,
+				`模板版本 "${previousVersion.current.name}" 构建成功。`,
 				{
 					action: {
-						label: "View template",
+						label: "查看模板",
 						onClick: () => navigate(templateLink),
 					},
 				},
@@ -228,7 +228,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 								</TopbarIconButton>
 							</TooltipTrigger>
 							<TooltipContent side="bottom">
-								Back to the template
+								返回模板
 							</TooltipContent>
 						</Tooltip>
 					</div>
@@ -259,7 +259,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 									rel="noopener noreferrer"
 									className="flex items-center"
 								>
-									Browse the Coder Registry
+									浏览 Coder Registry
 									<ExternalLinkIcon className="size-icon-sm ml-1" />
 								</a>
 							</Button>
@@ -269,14 +269,14 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 
 						<div className="flex gap-1 items-center">
 							<TopbarButton
-								title="Build template (Ctrl + Enter)"
+								title="构建模板 (Ctrl + Enter)"
 								disabled={!canBuild}
 								onClick={async () => {
 									await triggerPreview();
 								}}
 							>
 								<PlayIcon />
-								Build
+								构建
 							</TopbarButton>
 							<ProvisionerTagsPopover
 								tags={provisionerTags}
@@ -289,7 +289,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 							disabled={dirty || !canPublish}
 							onClick={onPublish}
 						>
-							Publish
+							发布
 						</TopbarButton>
 					</div>
 				</Topbar>
@@ -309,13 +309,13 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 								actions={
 									<Button asChild size="sm">
 										<RouterLink to={createWorkspaceUrl ?? ""}>
-											Create a workspace
+											创建工作区
 										</RouterLink>
 									</Button>
 								}
 							>
 								<AlertTitle>
-									Successfully published {publishedVersion.name}!
+									成功发布 {publishedVersion.name}！
 								</AlertTitle>
 							</Alert>
 						</div>
@@ -323,7 +323,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 
 					<Sidebar>
 						<div className="h-[42px] py-0 pr-2 pl-4 flex items-center">
-							<span className="text-content-primary text-[13px]">Files</span>
+							<span className="text-content-primary text-[13px]">文件</span>
 
 							<div className="ml-auto [&_svg]:fill-content-primary">
 								<Tooltip>
@@ -331,7 +331,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 										<Button
 											size="icon"
 											variant="subtle"
-											aria-label="Create File"
+											aria-label="创建文件"
 											onClick={(event) => {
 												setCreateFileOpen(true);
 												event.currentTarget.blur();
@@ -340,7 +340,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 											<PlusIcon />
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent>Create File</TooltipContent>
+									<TooltipContent>创建文件</TooltipContent>
 								</Tooltip>
 							</div>
 							<CreateFileDialog
@@ -420,8 +420,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 										<div className="flex flex-col items-center max-w-[420px] text-center">
 											<TriangleAlertIcon className="text-content-warning size-icon-lg" />
 											<p className="m-0 p-0 mt-6">
-												The file is not displayed in the text editor because it
-												is either binary or uses an unsupported text encoding.
+												该文件未在文本编辑器中显示，因为它可能是二进制文件或使用了不受支持的文本编码。
 											</p>
 										</div>
 									</div>
@@ -441,7 +440,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 									/>
 								)
 							) : (
-								<div>No file opened</div>
+								<div>未打开文件</div>
 							)}
 						</div>
 
@@ -461,7 +460,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 											setSelectedTab("logs");
 										}}
 									>
-										Output
+										输出
 									</button>
 
 									<button
@@ -472,7 +471,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 											setSelectedTab("resources");
 										}}
 									>
-										Resources
+										资源
 									</button>
 								</div>
 
@@ -483,7 +482,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 										rel="noopener noreferrer"
 										className="flex items-center gap-1 px-3 text-xs text-content-secondary hover:text-content-primary"
 									>
-										View raw logs
+										查看原始日志
 										<ExternalLinkIcon className="size-3" />
 									</a>
 								)}
@@ -509,7 +508,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 									{templateVersion.job.error ? (
 										<div>
 											<ProvisionerAlert
-												title="Error during the build"
+												title="构建期间出错"
 												detail={templateVersion.job.error}
 												severity="error"
 												tags={templateVersion.job.tags}
@@ -594,7 +593,7 @@ export const TemplateVersionEditor: FC<TemplateVersionEditorProps> = ({
 
 const useLeaveSiteWarning = (enabled: boolean) => {
 	const MESSAGE =
-		"You have unpublished changes. Are you sure you want to leave?";
+		"你有未发布的更改。确定要离开吗？";
 
 	// This works for regular browser actions like close tab and back button
 	useEffect(() => {

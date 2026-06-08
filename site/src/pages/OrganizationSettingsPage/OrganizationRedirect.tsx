@@ -30,7 +30,7 @@ const OrganizationRedirect: FC = () => {
 	if (viewableOrg) {
 		return <Navigate to={`/organizations/${viewableOrg.name}`} replace />;
 	}
-	return <EmptyState message="No organizations found" />;
+	return <EmptyState message="未找到组织" />;
 };
 
 export default OrganizationRedirect;

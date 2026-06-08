@@ -164,7 +164,7 @@ export const StagesChart: FC<StagesChartProps> = ({
 											{/** We only want to expand stages with more than one resource */}
 											{t.visibleResources > 1 ? (
 												<ClickableBar
-													aria-label={`View ${t.stage.label} details`}
+													aria-label={`查看 ${t.stage.label} 详情`}
 													scale={scale}
 													value={value}
 													offset={offset}
@@ -184,7 +184,7 @@ export const StagesChart: FC<StagesChartProps> = ({
 												<span>{formatTime(value)}</span>
 											) : (
 												<span className="text-content-destructive">
-													Invalid
+													无效
 												</span>
 											)}
 										</XAxisRow>
@@ -202,41 +202,41 @@ export const StagesChart: FC<StagesChartProps> = ({
 export const provisioningStages: Stage[] = [
 	{
 		name: "init",
-		label: "init",
-		section: "provisioning",
+		label: "初始化",
+		section: "资源配置",
 		tooltip: {
-			heading: "Terraform initialization",
-			description: "Download providers & modules.",
+			heading: "Terraform 初始化",
+			description: "下载提供程序与模块。",
 		},
 	},
 	{
 		name: "plan",
-		label: "plan",
-		section: "provisioning",
+		label: "计划",
+		section: "资源配置",
 		tooltip: {
-			heading: "Terraform plan",
+			heading: "Terraform 计划",
 			description:
-				"Compare state of desired vs actual resources and compute changes to be made.",
+				"比较期望资源与实际资源的状态，计算需要进行的更改。",
 		},
 	},
 	{
 		name: "apply",
-		label: "apply",
-		section: "provisioning",
+		label: "应用",
+		section: "资源配置",
 		tooltip: {
-			heading: "Terraform apply",
+			heading: "Terraform 应用",
 			description:
-				"Execute Terraform plan to create/modify/delete resources into desired states.",
+				"执行 Terraform 计划，创建/修改/删除资源至期望状态。",
 		},
 	},
 	{
 		name: "graph",
-		label: "graph",
-		section: "provisioning",
+		label: "图表",
+		section: "资源配置",
 		tooltip: {
-			heading: "Terraform graph",
+			heading: "Terraform 图表",
 			description:
-				"List all resources in plan, used to update coderd database.",
+				"列出计划中的所有资源，用于更新 coderd 数据库。",
 		},
 	},
 ];
@@ -245,22 +245,22 @@ export const agentStages = (section: string, agentId: string): Stage[] => {
 	return [
 		{
 			name: "connect",
-			label: "connect",
+			label: "连接",
 			section,
 			agentId,
 			tooltip: {
-				heading: "Connect",
-				description: "Establish an RPC connection with the control plane.",
+				heading: "连接",
+				description: "与控制平面建立 RPC 连接。",
 			},
 		},
 		{
 			name: "start",
-			label: "run startup scripts",
+			label: "运行启动脚本",
 			section,
 			agentId,
 			tooltip: {
-				heading: "Run startup scripts",
-				description: "Execute each agent startup script.",
+				heading: "运行启动脚本",
+				description: "执行每一个 agent 启动脚本。",
 			},
 		},
 	];

@@ -15,14 +15,14 @@ export const WorkspaceDeletedBanner: FC<WorkspaceDeletedBannerProps> = ({
 	const createWorkspaceButton = (
 		<Button asChild size="sm">
 			<RouterLink to={createWorkspaceLink}>
-				Create another from {templateName}
+				从 {templateName} 创建另一个
 			</RouterLink>
 		</Button>
 	);
 
 	return (
 		<Alert severity="warning" prominent actions={createWorkspaceButton}>
-			This workspace has been deleted.
+			此工作区已被删除。
 		</Alert>
 	);
 };

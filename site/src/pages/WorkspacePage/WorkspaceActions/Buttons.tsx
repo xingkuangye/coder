@@ -43,20 +43,20 @@ export const UpdateButton: FC<ActionButtonProps> = ({
 				>
 					{requireActiveVersion ? <PlayIcon /> : <CloudIcon />}
 					{loading ? (
-						<>Updating&hellip;</>
+						<>更新中&hellip;</>
 					) : isRunning ? (
-						<>Update and restart&hellip;</>
+						<>更新并重启&hellip;</>
 					) : (
-						<>Update and start&hellip;</>
+						<>更新并启动&hellip;</>
 					)}
 				</TopbarButton>
 			</TooltipTrigger>
 			<TooltipContent side="bottom" className="max-w-xs">
 				{requireActiveVersion
-					? "This template requires automatic updates on workspace startup. Contact your administrator if you want to preserve the template version."
+					? "此模板要求工作区启动时自动更新。若要保留模板版本，请联系您的管理员。"
 					: isRunning
-						? "Stop workspace and restart it with the latest template version."
-						: "Start workspace with the latest template version."}
+						? "停止工作区并使用最新模板版本重启。"
+						: "使用最新模板版本启动工作区。"}
 			</TooltipContent>
 		</Tooltip>
 	);
@@ -69,7 +69,7 @@ export const ActivateButton: FC<ActionButtonProps> = ({
 	return (
 		<TopbarButton disabled={loading} onClick={() => handleAction()}>
 			<PowerIcon />
-			{loading ? <>Activating&hellip;</> : "Activate"}
+			{loading ? <>激活中&hellip;</> : "激活"}
 		</TopbarButton>
 	);
 };
@@ -92,7 +92,7 @@ export const StartButton: FC<ActionButtonPropsWithWorkspace> = ({
 			disabled={disabled || loading}
 		>
 			<PlayIcon />
-			{loading ? <>Starting&hellip;</> : "Start"}
+			{loading ? <>启动中&hellip;</> : "启动"}
 		</TopbarButton>
 	);
 
@@ -111,7 +111,7 @@ export const StartButton: FC<ActionButtonPropsWithWorkspace> = ({
 		<div className="flex gap-1 items-center">
 			{mainButton}
 			<BuildParametersPopover
-				label="Start with build parameters"
+				label="使用构建参数启动"
 				workspace={workspace}
 				disabled={loading}
 				onSubmit={handleAction}
@@ -131,7 +131,7 @@ export const StopButton: FC<ActionButtonProps> = ({
 			data-testid="workspace-stop-button"
 		>
 			<SquareIcon />
-			{loading ? <>Stopping&hellip;</> : "Stop"}
+			{loading ? <>停止中&hellip;</> : "停止"}
 		</TopbarButton>
 	);
 };
@@ -149,10 +149,10 @@ export const RestartButton: FC<ActionButtonPropsWithWorkspace> = ({
 				disabled={loading}
 			>
 				<RotateCcwIcon />
-				{loading ? <>Restarting&hellip;</> : <>Restart&hellip;</>}
+				{loading ? <>重启中&hellip;</> : <>重启&hellip;</>}
 			</TopbarButton>
 			<BuildParametersPopover
-				label="Restart with build parameters"
+				label="使用构建参数重启"
 				workspace={workspace}
 				disabled={loading}
 				onSubmit={handleAction}
@@ -165,7 +165,7 @@ export const CancelButton: FC<ActionButtonProps> = ({ handleAction }) => {
 	return (
 		<TopbarButton onClick={() => handleAction()}>
 			<BanIcon />
-			Cancel
+			取消
 		</TopbarButton>
 	);
 };
@@ -197,7 +197,7 @@ export const FavoriteButton: FC<FavoriteButtonProps> = ({
 	return (
 		<TopbarButton onClick={() => onToggle(workspaceID)}>
 			{isFavorite ? <StarOffIcon /> : <StarIcon />}
-			{isFavorite ? "Unfavorite" : "Favorite"}
+			{isFavorite ? "取消收藏" : "收藏"}
 		</TopbarButton>
 	);
 };

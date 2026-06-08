@@ -61,7 +61,7 @@ const UserRow: FC<{
 	return (
 		<TableRow
 			{...clickableRowProps}
-			aria-label={`View details for ${user.name || user.username}`}
+			aria-label={`查看 ${user.name || user.username} 的详情`}
 			className="text-xs"
 		>
 			<TableCell className="max-w-[200px] px-3 py-2">
@@ -304,8 +304,8 @@ export const AgentSettingsSpendPageView: FC<
 					{(userCtrl) => (
 						<div className="space-y-10">
 							<SectionHeader
-								label="Spend management"
-								description="Configure spend limits and monitor usage across your deployment."
+								label="支出管理"
+								description="配置支出限制并监控部署中的用量。"
 							/>
 
 							{isLoadingConfig ? (
@@ -317,7 +317,7 @@ export const AgentSettingsSpendPageView: FC<
 									<p className="m-0 text-sm text-content-secondary">
 										{getErrorMessage(
 											configError,
-											"Failed to load spend limit settings.",
+											"加载支出限制设置失败。",
 										)}
 									</p>
 									<Button
@@ -326,7 +326,7 @@ export const AgentSettingsSpendPageView: FC<
 										type="button"
 										onClick={() => void refetchConfig()}
 									>
-										Retry
+										重试
 									</Button>
 								</div>
 							) : (
@@ -350,8 +350,8 @@ export const AgentSettingsSpendPageView: FC<
 											<section>
 												<SectionHeader
 													level="section"
-													label="Default spend limit"
-													description="Set a deployment-wide spend cap that applies to all users by default."
+													label="默认支出限制"
+													description="设置全局部署范围内的支出上限，默认适用于所有用户。"
 												/>
 												<DefaultLimitSection
 													hideHeader
@@ -379,12 +379,12 @@ export const AgentSettingsSpendPageView: FC<
 															<p className="m-0 text-content-destructive">
 																{getErrorMessage(
 																	updateConfigError,
-																	"Failed to save the default spend limit.",
+																	"保存默认支出限制失败。",
 																)}
 															</p>
 														)}
 														{isUpdateConfigSuccess && (
-															<p className="m-0 text-content-success">Saved!</p>
+															<p className="m-0 text-content-success">已保存！</p>
 														)}
 													</div>
 													<Button
@@ -396,7 +396,7 @@ export const AgentSettingsSpendPageView: FC<
 														{isUpdatingConfig ? (
 															<Spinner loading className="h-4 w-4" />
 														) : null}
-														Save default limit
+														保存默认限制
 													</Button>
 												</div>
 											</section>
@@ -407,8 +407,8 @@ export const AgentSettingsSpendPageView: FC<
 									<section>
 										<SectionHeader
 											level="section"
-											label="Group limits"
-											description="Override the default limit for specific groups. The lowest group limit applies."
+											label="群组限制"
+											description="为特定群组覆盖默认限制。应用最低的群组限制。"
 										/>
 										<GroupLimitsSection
 											hideHeader
@@ -448,12 +448,12 @@ export const AgentSettingsSpendPageView: FC<
 							<section>
 								<SectionHeader
 									level="section"
-									label="Per-user spend"
-									description="User overrides take highest priority, followed by group limits, then the default."
+									label="按用户支出"
+									description="用户覆盖具有最高优先级，其次是群组限制，然后是默认限制。"
 								/>
 								<div className="flex items-center justify-between pb-4">
 									<span className="text-sm font-medium text-content-primary">
-										Date range
+										日期范围
 									</span>
 									<DateRangePicker
 										value={displayDateRange}
@@ -494,8 +494,8 @@ export const AgentSettingsSpendPageView: FC<
 										<SearchField
 											value={searchFilter}
 											onChange={onSearchFilterChange}
-											placeholder="Search by name or username"
-											aria-label="Search usage by name or username"
+											placeholder="按姓名或用户名搜索"
+											aria-label="按姓名或用户名搜索用量"
 										/>
 									</div>
 								</div>
@@ -503,7 +503,7 @@ export const AgentSettingsSpendPageView: FC<
 								{usersQuery.isLoading && (
 									<div
 										role="status"
-										aria-label="Loading usage"
+										aria-label="正在加载用量"
 										className="flex min-h-[240px] items-center justify-center"
 									>
 										<Spinner
@@ -519,7 +519,7 @@ export const AgentSettingsSpendPageView: FC<
 										<p className="m-0 text-sm text-content-secondary">
 											{getErrorMessage(
 												usersQuery.error,
-												"Failed to load usage data.",
+												"加载用量数据失败。",
 											)}
 										</p>
 										<Button
@@ -528,7 +528,7 @@ export const AgentSettingsSpendPageView: FC<
 											type="button"
 											onClick={() => void usersQuery.refetch()}
 										>
-											Retry
+											重试
 										</Button>
 									</div>
 								)}
@@ -538,7 +538,7 @@ export const AgentSettingsSpendPageView: FC<
 										{usersQuery.isFetching && !usersQuery.isLoading && (
 											<div
 												role="status"
-												aria-label="Refreshing usage"
+												aria-label="正在刷新用量"
 												className="absolute inset-0 z-10 flex items-center justify-center bg-surface-primary/50"
 											>
 												<Spinner
@@ -550,38 +550,38 @@ export const AgentSettingsSpendPageView: FC<
 										)}
 										{usersQuery.data.users.length === 0 ? (
 											<p className="py-12 text-center text-content-secondary">
-												No usage data for this period.
+												此时间段内无用量数据。
 											</p>
 										) : (
 											<PaginationContainer
 												query={usersQuery}
-												paginationUnitLabel="users"
+												paginationUnitLabel="用户"
 											>
 												<div className="overflow-hidden rounded-lg border border-border-default">
-													<Table aria-label="Per-user spend">
+													<Table aria-label="按用户支出">
 														<TableHeader>
 															<TableRow>
-																<TableHead>User</TableHead>
+																<TableHead>用户</TableHead>
 																<TableHead className="text-right">
-																	Cost
+																	费用
 																</TableHead>
 																<TableHead className="text-right">
-																	Messages
+																	消息
 																</TableHead>
 																<TableHead className="text-right">
-																	Chats
+																	对话
 																</TableHead>
 																<TableHead className="text-right">
-																	Input
+																	输入
 																</TableHead>
 																<TableHead className="text-right">
-																	Output
+																	输出
 																</TableHead>
 																<TableHead className="text-right">
-																	Cache Read
+																	缓存读取
 																</TableHead>
 																<TableHead className="text-right">
-																	Cache Write
+																	缓存写入
 																</TableHead>
 															</TableRow>
 														</TableHeader>

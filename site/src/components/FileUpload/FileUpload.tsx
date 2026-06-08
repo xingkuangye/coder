@@ -126,7 +126,7 @@ const useFileDrop = (
 		const extension = file.name.split(".").pop();
 
 		if (!extension) {
-			throw new Error(`File has no extension to compare with ${extensions}`);
+			throw new Error(`文件没有扩展名，无法与 ${extensions} 进行比较`);
 		}
 
 		if (extensions.includes(extension)) {

@@ -41,11 +41,11 @@ export const getUsageLimitPeriodLabel = (
 
 	switch (period) {
 		case "day":
-			return "Daily";
+			return "每日";
 		case "week":
-			return "Weekly";
+			return "每周";
 		case "month":
-			return "Monthly";
+			return "每月";
 		default:
 			return "";
 	}
@@ -82,10 +82,10 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 		return (
 			<div className="flex min-h-[240px] flex-col items-center justify-center gap-4 text-center">
 				<p className="m-0 text-sm text-content-secondary">
-					{getErrorMessage(error, "Failed to load usage details.")}
+					{getErrorMessage(error, "加载使用详情失败。")}
 				</p>
 				<Button variant="outline" size="sm" type="button" onClick={onRetry}>
-					Retry
+					重试
 				</Button>
 			</div>
 		);
@@ -130,13 +130,13 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 	const usageLimitExceeded =
 		showUsageLimitCard && usageLimitCurrentSpend >= usageLimitSpendMicros;
 	const usageLimitStatusText = usageLimitExceeded
-		? "Limit exceeded"
+		? "限额已超出"
 		: `${formatCostMicros(
 				Math.max(usageLimitSpendMicros - usageLimitCurrentSpend, 0),
-			)} remaining`;
+			)} 剩余`;
 	const usageLimitCurrentPeriod =
 		showUsageLimitCard && usageLimit?.period_start && usageLimit?.period_end
-			? `Current period: ${dayjs(usageLimit.period_start).format("MMM D")} – ${dayjs(
+			? `当前周期：${dayjs(usageLimit.period_start).format("MMM D")} – ${dayjs(
 					usageLimit.period_end,
 				).format("MMM D")}`
 			: "";
@@ -150,7 +150,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 			<div className="grid grid-cols-2 gap-4 md:grid-cols-3">
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Total Cost
+						总成本
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{formatCostMicros(summary.total_cost_micros)}
@@ -158,7 +158,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				</div>
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Input Tokens
+						输入词元
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{formatTokenCount(summary.total_input_tokens)}
@@ -166,7 +166,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				</div>
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Output Tokens
+						输出词元
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{formatTokenCount(summary.total_output_tokens)}
@@ -174,7 +174,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				</div>
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Cache read
+						缓存读取
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{formatTokenCount(summary.total_cache_read_tokens)}
@@ -182,7 +182,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				</div>
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Cache write
+						缓存写入
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{formatTokenCount(summary.total_cache_creation_tokens)}
@@ -190,7 +190,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				</div>
 				<div className="rounded-lg border border-border-default bg-surface-secondary p-4">
 					<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-						Messages
+						消息
 					</p>
 					<p className="mt-1 text-2xl font-semibold text-content-primary">
 						{(
@@ -206,7 +206,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 						<div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
 							<div>
 								<p className="text-xs font-medium uppercase tracking-wide text-content-secondary">
-									{usageLimitPeriodLabel} spend limit
+									{usageLimitPeriodLabel} 消费限额
 								</p>
 								{usageLimitCurrentPeriod && (
 									<p className="mt-1 text-sm text-content-secondary">
@@ -219,12 +219,12 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 								</p>
 							</div>
 							<p className="text-sm text-content-secondary">
-								{Math.round(usageProgressPercentage)}% used
+								{Math.round(usageProgressPercentage)}% 已使用
 							</p>
 						</div>
 						<div
 							role="progressbar"
-							aria-label={`${usageLimitPeriodLabel} spend usage`}
+							aria-label={`${usageLimitPeriodLabel} 消费使用情况`}
 							aria-valuemin={0}
 							aria-valuemax={100}
 							aria-valuenow={Math.round(usageProgressPercentage)}
@@ -246,7 +246,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 								{usageLimitStatusText}
 							</p>
 							<p className="text-content-secondary">
-								Resets {usageLimitResetAt}
+								重置时间 {usageLimitResetAt}
 							</p>
 						</div>
 					</div>
@@ -257,9 +257,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 				<div className="flex items-start gap-3 rounded-lg border border-border-warning bg-surface-warning p-4 text-sm text-content-primary">
 					<TriangleAlertIcon className="size-5 shrink-0 text-content-warning" />
 					<span>
-						{summary.unpriced_message_count} message
-						{summary.unpriced_message_count === 1 ? "" : "s"} could not be
-						priced because model pricing data was unavailable.
+						{summary.unpriced_message_count} 条消息由于模型定价数据不可用而无法计算费用。
 					</span>
 				</div>
 			)}
@@ -267,8 +265,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 			<div className="flex items-start gap-3 p-4 text-sm text-content-secondary">
 				<InfoIcon className="size-5 shrink-0" />
 				<span>
-					Automatic title generation uses lightweight models and is not counted
-					towards usage limits.
+					自动标题生成使用轻量级模型，不会计入使用额度。
 				</span>
 			</div>
 
@@ -279,17 +276,17 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 			) : (
 				<>
 					<div>
-						<Table aria-label="Cost breakdown by model">
+						<Table aria-label="按模型划分的成本明细">
 							<TableHeader>
 								<TableRow>
-									<TableHead>Model</TableHead>
-									<TableHead>Provider</TableHead>
-									<TableHead className="text-right">Cost</TableHead>
-									<TableHead className="text-right">Messages</TableHead>
-									<TableHead className="text-right">Input</TableHead>
-									<TableHead className="text-right">Output</TableHead>
-									<TableHead className="text-right">Cache read</TableHead>
-									<TableHead className="text-right">Cache write</TableHead>
+									<TableHead>模型</TableHead>
+									<TableHead>提供商</TableHead>
+									<TableHead className="text-right">成本</TableHead>
+									<TableHead className="text-right">消息</TableHead>
+									<TableHead className="text-right">输入</TableHead>
+									<TableHead className="text-right">输出</TableHead>
+									<TableHead className="text-right">缓存读取</TableHead>
+									<TableHead className="text-right">缓存写入</TableHead>
 								</TableRow>
 							</TableHeader>
 							<TableBody>
@@ -336,16 +333,16 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 					</div>
 
 					<div>
-						<Table aria-label="Cost breakdown by agent">
+						<Table aria-label="按代理划分的成本明细">
 							<TableHeader>
 								<TableRow>
-									<TableHead>Agent</TableHead>
-									<TableHead className="text-right">Cost</TableHead>
-									<TableHead className="text-right">Messages</TableHead>
-									<TableHead className="text-right">Input</TableHead>
-									<TableHead className="text-right">Output</TableHead>
-									<TableHead className="text-right">Cache read</TableHead>
-									<TableHead className="text-right">Cache write</TableHead>
+									<TableHead>代理</TableHead>
+									<TableHead className="text-right">成本</TableHead>
+									<TableHead className="text-right">消息</TableHead>
+									<TableHead className="text-right">输入</TableHead>
+									<TableHead className="text-right">输出</TableHead>
+									<TableHead className="text-right">缓存读取</TableHead>
+									<TableHead className="text-right">缓存写入</TableHead>
 								</TableRow>
 							</TableHeader>
 							<TableBody>
@@ -363,7 +360,7 @@ export const ChatCostSummaryView: FC<ChatCostSummaryViewProps> = ({
 												</Tooltip>
 											) : (
 												<span className="text-content-secondary">
-													Untitled agent
+													未命名代理
 												</span>
 											)}
 										</TableCell>

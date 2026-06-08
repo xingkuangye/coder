@@ -63,7 +63,7 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 						<ChevronRightIcon
 							className={cn("mr-4 transition-transform", isOpen && "rotate-90")}
 						/>
-						<span className="sr-only">({isOpen ? "Hide" : "Show more"})</span>
+						<span className="sr-only">({isOpen ? "隐藏" : "显示更多"})</span>
 						{provisioner.name}
 					</Button>
 				</TableCell>
@@ -86,7 +86,11 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 						>
 							<StatusIndicatorDot />
 							<span className="block first-letter:uppercase">
-								{provisioner.status}
+								{provisioner.status === "idle"
+									? "空闲"
+									: provisioner.status === "busy"
+									? "忙碌"
+									: "离线"}
 							</span>
 						</StatusIndicator>
 					)}
@@ -100,7 +104,7 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 							{relativeTime(new Date(provisioner.last_seen_at))}
 						</span>
 					) : (
-						"Never"
+						"从未"
 					)}
 				</TableCell>
 			</TableRow>
@@ -115,20 +119,20 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 								"[&_dd]:text-content-primary [&_dd]:font-mono [&_dd]:leading-[22px] [&_dt]:font-medium",
 							])}
 						>
-							<dt>Last seen:</dt>
+							<dt>最后上线:</dt>
 							<dd data-chromatic="ignore">{provisioner.last_seen_at}</dd>
 
-							<dt>Creation time:</dt>
+							<dt>创建时间:</dt>
 							<dd data-chromatic="ignore">{provisioner.created_at}</dd>
 
-							<dt>Version:</dt>
+							<dt>版本:</dt>
 							<dd>
 								{provisioner.version === buildVersion
-									? "up to date"
-									: "outdated"}
+									? "最新"
+									: "过时"}
 							</dd>
 
-							<dt>Tags:</dt>
+							<dt>标签:</dt>
 							<dd>
 								<ProvisionerTags>
 									{Object.entries(provisioner.tags).map(([key, value]) => (
@@ -141,10 +145,10 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 
 							{provisioner.current_job && (
 								<>
-									<dt>Current job:</dt>
+									<dt>当前任务:</dt>
 									<dd>{provisioner.current_job.id}</dd>
 
-									<dt>Current job status:</dt>
+									<dt>当前任务状态:</dt>
 									<dd>
 										<JobStatusIndicator
 											status={provisioner.current_job.status}
@@ -155,19 +159,19 @@ export const ProvisionerRow: FC<ProvisionerRowProps> = ({
 
 							{provisioner.previous_job && (
 								<>
-									<dt>Previous job:</dt>
+									<dt>上一个任务:</dt>
 									<dd className="flex items-center gap-2">
 										<span>{provisioner.previous_job.id}</span>
 										<Button size="xs" variant="outline" asChild>
 											<RouterLink
 												to={`../provisioner-jobs?${new URLSearchParams({ ids: provisioner.previous_job.id })}`}
 											>
-												View job
+												查看任务
 											</RouterLink>
 										</Button>
 									</dd>
 
-									<dt>Previous job status:</dt>
+									<dt>上一个任务状态:</dt>
 									<dd>
 										<JobStatusIndicator
 											status={provisioner.previous_job.status}

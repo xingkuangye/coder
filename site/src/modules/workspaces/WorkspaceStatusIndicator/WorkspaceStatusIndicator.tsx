@@ -49,7 +49,7 @@ export const WorkspaceStatusIndicator: FC<WorkspaceStatusIndicatorProps> = ({
 	const statusIndicator = (
 		<StatusIndicator variant={variantByStatusType[type]}>
 			<StatusIndicatorDot />
-			<span className="sr-only">Workspace status:</span> {text}
+			<span className="sr-only">工作区状态：</span> {text}
 			{children}
 		</StatusIndicator>
 	);
@@ -63,13 +63,12 @@ export const WorkspaceStatusIndicator: FC<WorkspaceStatusIndicatorProps> = ({
 			<TooltipTrigger asChild>
 				<StatusIndicator variant={variantByStatusType[type]}>
 					<StatusIndicatorDot />
-					<span className="sr-only">Workspace status:</span> {text}
+					<span className="sr-only">工作区状态：</span> {text}
 					{children}
 				</StatusIndicator>
 			</TooltipTrigger>
 			<TooltipContent>
-				One or more workspace agents need attention. Expand an agent's logs for
-				details.
+				一个或多个工作区代理需要注意。展开代理日志以查看详情。
 			</TooltipContent>
 		</Tooltip>
 	);

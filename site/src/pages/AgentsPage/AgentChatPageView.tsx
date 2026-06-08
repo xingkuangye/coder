@@ -362,9 +362,9 @@ export const AgentChatPageView: FC<AgentChatPageViewProps> = ({
 	const sidebarTabConfigs = [
 		{ id: "git", label: "Git" },
 		...(workspace && workspaceAgent
-			? [{ id: "terminal", label: "Terminal" }]
+			? [{ id: "terminal", label: "终端" }]
 			: []),
-		...(debugLoggingEnabled ? [{ id: "debug", label: "Debug" }] : []),
+		...(debugLoggingEnabled ? [{ id: "debug", label: "调试" }] : []),
 	];
 	const sidebarTabIds = sidebarTabConfigs.map((tab) => tab.id);
 	const effectiveSidebarTabId = getEffectiveTabId(
@@ -431,12 +431,12 @@ export const AgentChatPageView: FC<AgentChatPageViewProps> = ({
 		(chatOwnerUsername ? `@${chatOwnerUsername}` : "another user");
 	const isOtherUserReadOnly = !isArchived && chatOwner !== undefined;
 	const chatOwnerWarning = isOtherUserReadOnly
-		? `This chat is owned by ${chatOwnerLabel}. It is read-only.`
+		? `此聊天由 ${chatOwnerLabel} 拥有。它是只读的。`
 		: undefined;
 
 	const titleElement = (
 		<title>
-			{chatTitle ? pageTitle(chatTitle, "Agents") : pageTitle("Agents")}
+			{chatTitle ? pageTitle(chatTitle, "代理") : pageTitle("代理")}
 		</title>
 	);
 
@@ -510,7 +510,7 @@ export const AgentChatPageView: FC<AgentChatPageViewProps> = ({
 							{isArchived && (
 								<div className="flex shrink-0 items-center gap-2 border-b border-border-default bg-surface-secondary px-4 py-2 text-xs text-content-secondary">
 									<ArchiveIcon className="size-4 shrink-0" />
-									This agent has been archived and is read-only.
+									此代理已归档且为只读。
 								</div>
 							)}
 							<div
@@ -768,7 +768,7 @@ export const AgentChatPageNotFoundView: FC<AgentChatPageNotFoundViewProps> = ({
 				onToggleSidebarCollapsed={onToggleSidebarCollapsed}
 			/>
 			<div className="flex flex-1 items-center justify-center text-content-secondary">
-				Chat not found
+				未找到聊天
 			</div>
 		</div>
 	);

@@ -27,11 +27,11 @@ import {
 } from "#/utils/formUtils";
 
 const MAX_DESCRIPTION_CHAR_LIMIT = 128;
-const MAX_DESCRIPTION_MESSAGE = `Please enter a description that is no longer than ${MAX_DESCRIPTION_CHAR_LIMIT} characters.`;
+const MAX_DESCRIPTION_MESSAGE = `描述不能超过 ${MAX_DESCRIPTION_CHAR_LIMIT} 个字符。`;
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
-	display_name: displayNameValidator("Display name"),
+	name: nameValidator("名称"),
+	display_name: displayNameValidator("显示名称"),
 	description: Yup.string().max(
 		MAX_DESCRIPTION_CHAR_LIMIT,
 		MAX_DESCRIPTION_MESSAGE,
@@ -68,7 +68,7 @@ export const CreateOrganizationPageView: FC<
 					className="flex flex-row items-center gap-2 no-underline text-content-secondary hover:text-content-primary"
 				>
 					<ArrowLeftIcon size={20} />
-					Go Back
+					返回
 				</Link>
 			</div>
 			<div className="flex flex-col gap-4 w-full min-w-96 mx-auto">
@@ -95,8 +95,8 @@ export const CreateOrganizationPageView: FC<
 								className="p-0"
 							>
 								<PopoverPaywall
-									message="Organizations"
-									description="Create multiple organizations within a single Coder deployment, allowing several platform teams to operate with isolated users, templates, and distinct underlying infrastructure."
+									message="组织"
+									description="在单个 Coder 部署中创建多个组织，允许多个平台团队使用隔离的用户、模板和独立的基础设施进行操作。"
 									documentationLink={docs("/admin/users/organizations")}
 								/>
 							</TooltipContent>
@@ -104,18 +104,17 @@ export const CreateOrganizationPageView: FC<
 					</Badges>
 
 					<header className="flex flex-col items-center">
-						<h1 className="text-3xl font-semibold m-0">New Organization</h1>
+						<h1 className="text-3xl font-semibold m-0">新建组织</h1>
 						<p className="max-w-md text-sm text-content-secondary text-center">
-							Organize your deployment into multiple platform teams with unique
-							provisioners, templates, groups, and members.
+							将你的部署组织为多个平台团队，每个团队拥有独立的 provisioner、模板、群组和成员。
 						</p>
 					</header>
 				</div>
 				{!isEntitled ? (
 					<div className="min-w-fit mx-auto">
 						<PaywallPremium
-							message="Organizations"
-							description="Create multiple organizations within a single Coder deployment, allowing several platform teams to operate with isolated users, templates, and distinct underlying infrastructure."
+							message="组织"
+							description="在单个 Coder 部署中创建多个组织，允许多个平台团队使用隔离的用户、模板和独立的基础设施进行操作。"
 							documentationLink={docs("/admin/users/organizations")}
 						/>
 					</div>
@@ -123,7 +122,7 @@ export const CreateOrganizationPageView: FC<
 					<div className="flex flex-col gap-4 w-full max-w-xl min-w-72 mx-auto">
 						<form
 							onSubmit={form.handleSubmit}
-							aria-label="Organization settings form"
+							aria-label="组织设置表单"
 							className="flex flex-col gap-6 w-full"
 						>
 							<fieldset
@@ -134,17 +133,17 @@ export const CreateOrganizationPageView: FC<
 									{...getFieldHelpers("name")}
 									onChange={onChangeTrimmed(form)}
 									fullWidth
-									label="Slug"
+									label="标识"
 								/>
 								<TextField
 									{...getFieldHelpers("display_name")}
 									fullWidth
-									label="Display name"
+									label="显示名称"
 								/>
 								<TextField
 									{...getFieldHelpers("description")}
 									multiline
-									label="Description"
+									label="描述"
 									rows={2}
 								/>
 								<IconField
@@ -156,14 +155,14 @@ export const CreateOrganizationPageView: FC<
 							<div className="flex flex-row gap-2">
 								<Button type="submit" disabled={form.isSubmitting}>
 									{form.isSubmitting && <Spinner />}
-									Save
+									保存
 								</Button>
 								<Button
 									variant="outline"
 									type="button"
 									onClick={() => navigate("/organizations")}
 								>
-									Cancel
+									取消
 								</Button>
 							</div>
 						</form>

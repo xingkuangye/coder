@@ -11,7 +11,7 @@ interface BaseIconProps {
 export const BaseIcon: FC<BaseIconProps> = ({ app, onIconPathError }) => {
 	return app.icon ? (
 		<ExternalImage
-			alt={`${app.display_name} Icon`}
+			alt={`${app.display_name} 图标`}
 			src={app.icon}
 			style={{ pointerEvents: "none" }}
 			onError={() => {

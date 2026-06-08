@@ -54,9 +54,9 @@ export const WorkspaceAutostopSettings: FC<WorkspaceAutostopSettingsProps> = ({
 			.when([], {
 				is: () => isAutostopEnabled,
 				then: (schema) =>
-					schema.moreThan(0, "Duration must be greater than zero."),
+					schema.moreThan(0, "持续时间必须大于零。"),
 			})
-			.max(maxTTLMs, "Must not exceed 30 days (720 hours)."),
+			.max(maxTTLMs, "不得超过 30 天（720 小时）。"),
 	});
 
 	const form = useFormik({
@@ -121,26 +121,24 @@ export const WorkspaceAutostopSettings: FC<WorkspaceAutostopSettingsProps> = ({
 			<div className="flex items-center justify-between gap-4">
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Workspace autostop fallback
+						工作空间自动停止回退
 					</h3>
 				</div>
 				<Switch
 					checked={isAutostopEnabled}
 					onCheckedChange={handleToggleAutostop}
-					aria-label="Enable default autostop"
+					aria-label="启用默认自动停止"
 					disabled={isSavingWorkspaceTTL || isWorkspaceTTLLoading}
 				/>
 			</div>
 			<p className="!mt-0.5 m-0 flex-1 text-xs text-content-secondary">
-				Set a default autostop for agent-created workspaces that don't have one
-				defined in their template. Template-defined autostop rules always take
-				precedence. Active conversations will extend the stop time.
+				为代理创建的工作空间设置一个默认自动停止时间，当模板中未定义自动停止规则时使用。模板定义的自动停止规则始终优先。活跃的会话会延长停止时间。
 			</p>
 			{isAutostopEnabled && (
 				<DurationField
 					valueMs={form.values.workspace_ttl_ms}
 					onChange={handleTTLChange}
-					label="Autostop fallback"
+					label="自动停止回退"
 					disabled={isSavingWorkspaceTTL || isWorkspaceTTLLoading}
 					error={Boolean(fieldError)}
 					helperText={fieldError}
@@ -162,19 +160,19 @@ export const WorkspaceAutostopSettings: FC<WorkspaceAutostopSettingsProps> = ({
 								{isSavingWorkspaceTTL && (
 									<Spinner loading className="h-4 w-4" />
 								)}
-								Save
+								保存
 							</Button>
 						))}
 				</div>
 			)}
 			{isSaveWorkspaceTTLError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save autostop setting.
+					保存自动停止设置失败。
 				</p>
 			)}
 			{isWorkspaceTTLLoadError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load autostop setting.
+					加载自动停止设置失败。
 				</p>
 			)}
 		</form>

@@ -68,25 +68,25 @@ export const PublishTemplateVersionDialog: FC<
 			}}
 			hideCancel={false}
 			type="success"
-			cancelText="Cancel"
-			confirmText="Publish"
-			title="Publish new version"
+			cancelText="取消"
+			confirmText="发布"
+			title="发布新版本"
 			description={
 				<form id="publish-version" onSubmit={form.handleSubmit}>
 					<div className="flex flex-col gap-4">
-						<p>You are about to publish a new version of this template.</p>
+						<p>您即将发布此模板的新版本。</p>
 						<FormFields>
 							<TextField
 								{...getFieldHelpers("name")}
-								label="Version name"
+								label="版本名称"
 								autoFocus
 								disabled={isPublishing}
 							/>
 
 							<TextField
 								{...getFieldHelpers("message")}
-								label="Message"
-								placeholder="Write a short message about the changes you made..."
+								label="消息"
+								placeholder="写下关于您所做更改的简短消息..."
 								disabled={isPublishing}
 								multiline
 								rows={5}
@@ -94,7 +94,7 @@ export const PublishTemplateVersionDialog: FC<
 
 							<div className="flex flex-row gap-4">
 								<FormControlLabel
-									label="Promote to active version"
+									label="提升为活动版本"
 									control={
 										<Checkbox
 											size="small"
@@ -118,10 +118,9 @@ export const PublishTemplateVersionDialog: FC<
 									 * this prop may not need to be set when we switch away from MuiDialog
 									 */}
 									<HelpPopoverContent disablePortal>
-										<HelpPopoverTitle>Active versions</HelpPopoverTitle>
+										<HelpPopoverTitle>活动版本</HelpPopoverTitle>
 										<HelpPopoverText>
-											Templates can enforce that the active version be used for
-											all workspaces <EnterpriseBadge />
+											模板可以强制所有工作区使用活动版本 <EnterpriseBadge />
 										</HelpPopoverText>
 										<HelpPopoverLinksGroup>
 											<HelpPopoverLink
@@ -129,7 +128,7 @@ export const PublishTemplateVersionDialog: FC<
 													"/admin/templates/managing-templates#template-update-policies",
 												)}
 											>
-												Review the documentation
+												查看文档
 											</HelpPopoverLink>
 										</HelpPopoverLinksGroup>
 									</HelpPopoverContent>

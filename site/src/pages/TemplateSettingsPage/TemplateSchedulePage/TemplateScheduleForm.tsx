@@ -281,11 +281,11 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 	return (
 		<HorizontalForm
 			onSubmit={form.handleSubmit}
-			aria-label="Template settings form"
+			aria-label="模板设置表单"
 		>
 			<FormSection
-				title="Autostop"
-				description="Define when workspaces created from this template are stopped."
+				title="自动停止"
+				description="定义从该模板创建的工作区何时停止。"
 			>
 				<FormFields className={FORM_FIELDS_GAP}>
 					<TextField
@@ -297,7 +297,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 						disabled={isSubmitting}
 						fullWidth
 						inputProps={{ min: 0, step: 1 }}
-						label="Default autostop (hours)"
+						label="默认自动停止（小时）"
 						type="number"
 					/>
 
@@ -313,7 +313,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 						disabled={isSubmitting || !form.values.default_ttl_ms}
 						fullWidth
 						inputProps={{ min: 0, step: 1 }}
-						label="Activity bump (hours)"
+						label="活动延长（小时）"
 						type="number"
 					/>
 
@@ -330,19 +330,19 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 							fullWidth
 							select
 							value={form.values.autostop_requirement_days_of_week}
-							label="Days with required stop"
+							label="需要停止的日期"
 						>
 							<MenuItem key="off" value="off">
-								Off
+								关闭
 							</MenuItem>
 							<MenuItem key="daily" value="daily">
-								Daily
+								每天
 							</MenuItem>
 							<MenuItem key="saturday" value="saturday">
-								Saturday
+								周六
 							</MenuItem>
 							<MenuItem key="sunday" value="sunday">
-								Sunday
+								周日
 							</MenuItem>
 						</TextField>
 
@@ -363,7 +363,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 							}
 							fullWidth
 							inputProps={{ min: 1, max: 16, step: 1 }}
-							label="Weeks between required stops"
+							label="需要停止的间隔周数"
 							type="number"
 						/>
 					</div>
@@ -383,11 +383,9 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 						/>
 						<Label htmlFor="allow-user-autostop">
 							<StackLabel>
-								Allow users to customize autostop duration for workspaces.
+								允许用户自定义工作区的自动停止持续时间。
 								<StackLabelHelperText>
-									By default, workspaces will inherit the Autostop timer from
-									this template. Enabling this option allows users to set custom
-									Autostop timers on their workspaces or turn off the timer.
+									默认情况下，工作区将继承此模板的自动停止计时器。启用此选项允许用户为其工作区设置自定义自动停止计时器或关闭计时器。
 								</StackLabelHelperText>
 							</StackLabel>
 						</Label>
@@ -396,8 +394,8 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 			</FormSection>
 
 			<FormSection
-				title="Autostart"
-				description="Allow users to set custom autostart and autostop scheduling options for workspaces created from this template."
+				title="自动启动"
+				description="允许用户为从此模板创建的工作区设置自定义自动启动和自动停止调度选项。"
 			>
 				<div className="flex flex-col gap-4">
 					<div className="flex items-start">
@@ -415,7 +413,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 						/>
 						<Label htmlFor="allow_user_autostart">
 							<StackLabel>
-								Allow users to automatically start workspaces on a schedule.
+								允许用户按计划自动启动工作区。
 							</StackLabel>
 						</Label>
 					</div>
@@ -440,8 +438,8 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 
 			{allowAdvancedScheduling && (
 				<FormSection
-					title="Dormancy"
-					description="When enabled, Coder will mark workspaces as dormant after a period of time with no connections. Dormant workspaces can be auto-deleted (see below) or manually reviewed by the workspace owner or admins."
+					title="休眠"
+					description="启用后，Coder 将在工作区长时间无连接后将其标记为休眠状态。休眠工作区可以自动删除（见下文），或由工作区所有者或管理员手动审查。"
 				>
 					<FormFields className={FORM_FIELDS_GAP}>
 						<div className="flex flex-col gap-8">
@@ -453,7 +451,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 									onCheckedChange={handleToggleInactivityCleanup}
 								/>
 								<Label htmlFor="dormancyThreshold">
-									<StackLabel>Enable Dormancy Threshold</StackLabel>
+									<StackLabel>启用休眠阈值</StackLabel>
 								</Label>
 							</div>
 
@@ -465,7 +463,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 										/>
 									),
 								})}
-								label="Time until dormant"
+								label="进入休眠前时间"
 								valueMs={form.values.time_til_dormant_ms ?? 0}
 								onChange={(v) => form.setFieldValue("time_til_dormant_ms", v)}
 								disabled={
@@ -484,12 +482,11 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 								/>
 								<Label htmlFor="dormancyAutoDeletion">
 									<StackLabel>
-										Enable Dormancy Auto-Deletion
+										启用休眠自动删除
 										<StackLabelHelperText>
-											When enabled, Coder will permanently delete dormant
-											workspaces after a period of time.{" "}
+											启用后，Coder 将在一段时间后永久删除休眠工作区。{" "}
 											<strong>
-												Once a workspace is deleted it cannot be recovered.
+												工作区一旦删除，将无法恢复。
 											</strong>
 										</StackLabelHelperText>
 									</StackLabel>
@@ -503,7 +500,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 										/>
 									),
 								})}
-								label="Time until deletion"
+								label="删除前时间"
 								valueMs={form.values.time_til_dormant_autodelete_ms ?? 0}
 								onChange={(v) =>
 									form.setFieldValue("time_til_dormant_autodelete_ms", v)
@@ -525,10 +522,9 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 								/>
 								<Label htmlFor="failureCleanupEnabled">
 									<StackLabel>
-										Enable Failure Cleanup
+										启用失败清理
 										<StackLabelHelperText>
-											When enabled, Coder will attempt to stop workspaces that
-											are in a failed state after a period of time.
+											启用后，Coder 将尝试在一段时间后停止处于失败状态的工作区。
 										</StackLabelHelperText>
 									</StackLabel>
 								</Label>
@@ -539,7 +535,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 										<FailureTTLHelperText ttl={form.values.failure_ttl_ms} />
 									),
 								})}
-								label="Time until cleanup"
+								label="清理前时间"
 								valueMs={form.values.failure_ttl_ms ?? 0}
 								onChange={(v) => form.setFieldValue("failure_ttl_ms", v)}
 								disabled={isSubmitting || !form.values.failure_cleanup_enabled}
@@ -578,7 +574,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 					onClose={() => {
 						setIsScheduleDialogOpen(false);
 					}}
-					title="Workspace Scheduling"
+					title="工作区调度"
 					updateDormantWorkspaces={(update: boolean) =>
 						form.setFieldValue("update_workspace_dormant_at", update)
 					}
@@ -598,7 +594,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 
 			<FormFooter>
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 
 				<Button
@@ -606,7 +602,7 @@ export const TemplateScheduleForm: FC<TemplateScheduleForm> = ({
 					disabled={isSubmitting || !form.isValid || !form.dirty}
 				>
 					<Spinner loading={isSubmitting} />
-					Save
+					保存
 				</Button>
 			</FormFooter>
 		</HorizontalForm>

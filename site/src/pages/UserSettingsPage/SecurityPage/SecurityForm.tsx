@@ -22,13 +22,13 @@ interface SecurityFormValues {
 }
 
 const validationSchema = Yup.object({
-	old_password: Yup.string().trim().required("Old password is required"),
-	password: Yup.string().trim().required("New password is required"),
+	old_password: Yup.string().trim().required("请输入旧密码"),
+	password: Yup.string().trim().required("请输入新密码"),
 	confirm_password: Yup.string()
 		.trim()
 		.test(
 			"passwords-match",
-			"Password and confirmation must match",
+			"密码和确认密码必须一致",
 			function (value) {
 				return (this.parent as SecurityFormValues).password === value;
 			},
@@ -63,7 +63,7 @@ export const SecurityForm: FC<SecurityFormProps> = ({
 	if (disabled) {
 		return (
 			<Alert severity="info">
-				Password changes are only allowed for password based accounts.
+				只有基于密码的账户才允许更改密码。
 			</Alert>
 		);
 	}
@@ -72,10 +72,10 @@ export const SecurityForm: FC<SecurityFormProps> = ({
 		<>
 			<SettingsHeader>
 				<SettingsHeaderTitle hierarchy="secondary">
-					Password
+					密码
 				</SettingsHeaderTitle>
 				<SettingsHeaderDescription>
-					Update your account password.
+					更新您的账户密码。
 				</SettingsHeaderDescription>
 			</SettingsHeader>
 			<Form onSubmit={form.handleSubmit}>
@@ -83,18 +83,18 @@ export const SecurityForm: FC<SecurityFormProps> = ({
 					{Boolean(error) && <ErrorAlert error={error} />}
 					<FormField
 						field={getFieldHelpers("old_password")}
-						label="Old Password"
+						label="旧密码"
 						type="password"
 						autoComplete="current-password"
 					/>
 					<PasswordField
 						field={getFieldHelpers("password")}
-						label="New Password"
+						label="新密码"
 						autoComplete="new-password"
 					/>
 					<FormField
 						field={getFieldHelpers("confirm_password")}
-						label="Confirm Password"
+						label="确认密码"
 						type="password"
 						autoComplete="new-password"
 					/>
@@ -102,7 +102,7 @@ export const SecurityForm: FC<SecurityFormProps> = ({
 					<div>
 						<Button disabled={isLoading} type="submit">
 							<Spinner loading={isLoading} />
-							Update password
+							更新密码
 						</Button>
 					</div>
 				</FormFields>

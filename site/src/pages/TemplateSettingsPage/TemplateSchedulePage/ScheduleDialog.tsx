@@ -36,7 +36,7 @@ export const ScheduleDialog: FC<ScheduleDialogProps> = ({
 	deletionValueChanged,
 }) => {
 	const defaults = {
-		confirmText: "Delete",
+		confirmText: "删除",
 		hideCancel: false,
 	};
 
@@ -65,18 +65,13 @@ export const ScheduleDialog: FC<ScheduleDialogProps> = ({
 
 				{showDormancyWarning && (
 					<>
-						<h4>Dormancy Threshold</h4>
+						<h4>休眠阈值</h4>
 						<p css={styles.dialogDescription}>
-							This change will result in{" "}
+							此更改将导致{" "}
 							<strong>{inactiveWorkspacesToGoDormant}</strong>{" "}
-							{inactiveWorkspacesToGoDormant === 1 ? "workspace" : "workspaces"}{" "}
-							being immediately transitioned to the dormant state and{" "}
+							个工作区立即转入休眠状态，并在接下来 7 天内导致{" "}
 							<strong>{inactiveWorkspacesToGoDormantInWeek}</strong>{" "}
-							{inactiveWorkspacesToGoDormantInWeek === 1
-								? "workspace"
-								: "workspaces"}{" "}
-							over the next 7 days. To prevent this, do you want to reset the
-							inactivity period for all template workspaces?
+							个工作区转入休眠。要避免此情况，是否要重置所有模板工作区的非活动期？
 						</p>
 						<FormControlLabel
 							className="mt-4"
@@ -88,25 +83,20 @@ export const ScheduleDialog: FC<ScheduleDialogProps> = ({
 									}}
 								/>
 							}
-							label="Prevent Dormancy - Reset all workspace inactivity periods"
+							label="防止休眠 - 重置所有工作区的非活动期"
 						/>
 					</>
 				)}
 
 				{showDeletionWarning && (
 					<>
-						<h4>Dormancy Auto-Deletion</h4>
+						<h4>休眠自动删除</h4>
 						<p css={styles.dialogDescription}>
-							This change will result in{" "}
+							此更改将导致{" "}
 							<strong>{dormantWorkspacesToBeDeleted}</strong>{" "}
-							{dormantWorkspacesToBeDeleted === 1 ? "workspace" : "workspaces"}{" "}
-							being immediately deleted and{" "}
+							个工作区被立即删除，并在接下来 7 天内导致{" "}
 							<strong>{dormantWorkspacesToBeDeletedInWeek}</strong>{" "}
-							{dormantWorkspacesToBeDeletedInWeek === 1
-								? "workspace"
-								: "workspaces"}{" "}
-							over the next 7 days. To prevent this, do you want to reset the
-							dormancy period for all template workspaces?
+							个工作区被删除。要避免此情况，是否要重置所有模板工作区的休眠期？
 						</p>
 						<FormControlLabel
 							className="mt-4"
@@ -118,7 +108,7 @@ export const ScheduleDialog: FC<ScheduleDialogProps> = ({
 									}}
 								/>
 							}
-							label="Prevent Deletion - Reset all workspace dormancy periods"
+							label="防止删除 - 重置所有工作区的休眠期"
 						/>
 					</>
 				)}
@@ -128,7 +118,7 @@ export const ScheduleDialog: FC<ScheduleDialogProps> = ({
 				<DialogActionButtons
 					cancelText={cancelText}
 					confirmLoading={confirmLoading}
-					confirmText="Submit"
+					confirmText="提交"
 					disabled={disabled}
 					onCancel={!hideCancel ? onClose : undefined}
 					onConfirm={onConfirm || onClose}

@@ -25,7 +25,7 @@ export const AIGovernanceSettingsPageView: FC<
 	return (
 		<div className="flex flex-col gap-12">
 			<SettingsHeader>
-				<SettingsHeaderTitle>AI Governance</SettingsHeaderTitle>
+				<SettingsHeaderTitle>AI 治理</SettingsHeaderTitle>
 			</SettingsHeader>
 
 			<div>
@@ -35,10 +35,10 @@ export const AIGovernanceSettingsPageView: FC<
 					}
 				>
 					<SettingsHeaderTitle hierarchy="secondary" level="h2">
-						AI Gateway
+						AI 网关
 					</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Monitor and manage AI requests across your deployment.
+						监控和管理整个部署中的 AI 请求。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -47,15 +47,14 @@ export const AIGovernanceSettingsPageView: FC<
 						{!featureAIBridgeEnabled && (
 							<Alert className="mb-12" severity="warning" prominent>
 								<AlertTitle>
-									AI Gateway is included in your license, but not set up yet.
+									AI 网关已包含在您的许可证中，但尚未设置。
 								</AlertTitle>
 								<AlertDescription>
-									You have access to AI Governance, but it still needs to be
-									setup. Check out the{" "}
+									您有 AI 治理的访问权限，但仍需设置。请查看{" "}
 									<Link href={docs("/ai-coder/ai-gateway")} target="_blank">
-										AI Gateway
+										AI 网关
 									</Link>{" "}
-									documentation to get started.
+									文档以开始使用。
 								</AlertDescription>
 							</Alert>
 						)}

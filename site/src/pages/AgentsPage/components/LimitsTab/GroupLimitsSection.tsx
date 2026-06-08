@@ -92,8 +92,8 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 		<section className="space-y-4">
 			{!hideHeader && (
 				<SectionHeader
-					label="Group limits"
-					description="Override the default limit for specific groups. When a user belongs to multiple groups, the lowest group limit applies."
+					label="群组限制"
+					description="为特定群组覆盖默认限制。当用户属于多个群组时，将应用最低的群组限制。"
 				/>
 			)}
 			<div className="space-y-4">
@@ -101,10 +101,10 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 					<Table>
 						<TableHeader>
 							<TableRow>
-								<TableHead>Group</TableHead>
-								<TableHead>Members</TableHead>
-								<TableHead>Spend limit</TableHead>
-								<TableHead className="w-[160px]">Actions</TableHead>
+								<TableHead>群组</TableHead>
+								<TableHead>成员</TableHead>
+								<TableHead>花费限制</TableHead>
+								<TableHead className="w-[160px]">操作</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
@@ -141,7 +141,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 										<TableCell>
 											{override.spend_limit_micros !== null
 												? formatCostMicros(override.spend_limit_micros)
-												: "Unlimited"}
+												: "无限制"}
 										</TableCell>
 										<TableCell>
 											<div className="flex gap-2">
@@ -152,7 +152,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 													onClick={() => onEditGroupOverride(override)}
 													disabled={deletePending || upsertPending}
 												>
-													Edit
+													编辑
 												</Button>
 												<Button
 													variant="outline"
@@ -163,7 +163,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 													}
 													disabled={deletePending || upsertPending || isEditing}
 												>
-													Delete
+													删除
 												</Button>
 											</div>
 										</TableCell>
@@ -174,13 +174,13 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 					</Table>
 				) : (
 					<div className="rounded-lg border border-border bg-surface-secondary px-4 py-6 text-center text-sm text-content-secondary">
-						No group overrides configured.
+						未配置群组覆盖。
 					</div>
 				)}
 
 				{deleteError && (
 					<p className="text-xs text-content-destructive">
-						{getErrorMessage(deleteError, "Failed to delete group override.")}
+						{getErrorMessage(deleteError, "删除群组覆盖失败。")}
 					</p>
 				)}
 
@@ -194,7 +194,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 							isEditing || groupsLoading || availableGroups.length === 0
 						}
 					>
-						Add Group
+						添加群组
 					</Button>
 				) : (
 					<div className="space-y-3 rounded-lg border border-border bg-surface-secondary/40 p-4">
@@ -202,7 +202,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 							<div className="flex-1 space-y-1">
 								{editingGroupOverride ? (
 									<>
-										<Label>Group</Label>
+										<Label>群组</Label>
 										<div className="rounded-md border border-border bg-surface-primary p-2">
 											<AvatarData
 												title={
@@ -217,7 +217,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 									</>
 								) : (
 									<>
-										<Label htmlFor={groupAutocompleteId}>Group</Label>
+										<Label htmlFor={groupAutocompleteId}>群组</Label>
 										<Autocomplete
 											id={groupAutocompleteId}
 											value={selectedGroup}
@@ -243,7 +243,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 													)}
 												</div>
 											)}
-											placeholder="Search groups..."
+											placeholder="搜索群组..."
 											noOptionsText={groupAutocompleteNoOptionsText}
 											loading={groupsLoading}
 											disabled={groupsLoading}
@@ -253,7 +253,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 								)}
 							</div>
 							<div className="flex-1 space-y-1">
-								<Label htmlFor={groupAmountId}>Spend limit ($)</Label>
+								<Label htmlFor={groupAmountId}>花费限制（$）</Label>
 								<Input
 									id={groupAmountId}
 									type="number"
@@ -283,7 +283,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 									{upsertPending ? (
 										<Spinner loading className="h-4 w-4" />
 									) : null}
-									{isEditing ? "Save" : "Add"}
+									{isEditing ? "保存" : "添加"}
 								</Button>
 								<Button
 									variant="outline"
@@ -296,7 +296,7 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 									}}
 									disabled={upsertPending}
 								>
-									Cancel
+									取消
 								</Button>
 							</div>
 						</div>
@@ -304,18 +304,18 @@ export const GroupLimitsSection: FC<GroupLimitsSectionProps> = ({
 				)}
 				{upsertError && (
 					<p className="text-xs text-content-destructive">
-						{getErrorMessage(upsertError, "Failed to save group override.")}
+						{getErrorMessage(upsertError, "保存群组覆盖失败。")}
 					</p>
 				)}
 				{groupsError && (
 					<p className="text-xs text-content-destructive">
-						{getErrorMessage(groupsError, "Failed to load groups.")}
+						{getErrorMessage(groupsError, "加载群组失败。")}
 					</p>
 				)}
 			</div>
 			{pendingDeleteGroupId && (
 				<ConfirmDeleteDialog
-					entity="group override"
+					entity="群组覆盖"
 					onConfirm={() => {
 						void onDeleteGroupOverride(pendingDeleteGroupId);
 						setPendingDeleteGroupId(null);

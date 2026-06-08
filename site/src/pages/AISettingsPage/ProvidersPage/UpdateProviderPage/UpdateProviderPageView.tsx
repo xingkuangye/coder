@@ -65,8 +65,8 @@ const UpdateProviderPageView: React.FC = () => {
 	const title = (
 		<title>
 			{pageTitle(
-				(provider?.display_name || provider?.name) ?? "Loading...",
-				"AI Providers",
+				(provider?.display_name || provider?.name) ?? "加载中...",
+				"AI 提供商",
 			)}
 		</title>
 	);
@@ -96,12 +96,12 @@ const UpdateProviderPageView: React.FC = () => {
 				{title}
 				<div className="flex flex-col gap-4">
 					<p className="text-content-secondary">
-						{getErrorMessage(providerQuery.error, "Failed to load provider.")}
+						{getErrorMessage(providerQuery.error, "无法加载提供商。")}
 					</p>
 					<Link to={BACK_HREF} className="-ml-3">
 						<Button variant="subtle">
 							<ArrowLeftIcon />
-							<span>Back to providers</span>
+							<span>返回提供商列表</span>
 						</Button>
 					</Link>
 				</div>
@@ -126,7 +126,7 @@ const UpdateProviderPageView: React.FC = () => {
 				<Link to={BACK_HREF} className="-ml-3">
 					<Button variant="subtle">
 						<ArrowLeftIcon />
-						<span>Back to providers</span>
+						<span>返回提供商列表</span>
 					</Button>
 				</Link>
 				<Button
@@ -137,7 +137,7 @@ const UpdateProviderPageView: React.FC = () => {
 						setDeleteDialogOpen(true);
 					}}
 				>
-					<span>Delete</span>
+					<span>删除</span>
 				</Button>
 			</div>
 			<div className="flex flex-col gap-6 pt-6">
@@ -152,16 +152,16 @@ const UpdateProviderPageView: React.FC = () => {
 							{provider.display_name || provider.name}
 						</span>
 					</SettingsHeaderTitle>
-					{!provider.enabled && <Badge variant="default">Disabled</Badge>}
+					{!provider.enabled && <Badge variant="default">已禁用</Badge>}
 				</div>
 				<div className="flex items-center justify-between w-full">
 					<p className="text-sm text-content-secondary m-0">
-						Add or update models for this provider.{" "}
+						为此提供商添加或更新模型。{" "}
 						<a
 							href="/agents/settings/models"
 							className="text-content-link no-underline hover:underline"
 						>
-							Model settings
+							模型设置
 						</a>
 					</p>
 					<div className="flex items-center gap-2">
@@ -177,16 +177,16 @@ const UpdateProviderPageView: React.FC = () => {
 												updated,
 											);
 											toast.success(
-												`Provider "${updated.display_name || updated.name}" ${checked ? "enabled" : "disabled"}.`,
+												`提供商“${updated.display_name || updated.name}”${checked ? "已启用" : "已禁用"}。`,
 											);
 										},
 									},
 								);
 							}}
 							disabled={updateMutation.isPending}
-							aria-label="Provider enabled"
+							aria-label="提供商已启用"
 						/>
-						<span className="text-sm">Enable</span>
+						<span className="text-sm">启用</span>
 					</div>
 				</div>
 				<div className="border border-solid p-6 rounded-lg">
@@ -207,13 +207,13 @@ const UpdateProviderPageView: React.FC = () => {
 								const updated = await updateMutation.mutateAsync(request);
 								queryClient.setQueryData(aiProviderKeyFor(providerId), updated);
 								toast.success(
-									`Provider "${updated.display_name || updated.name}" updated.`,
+									`提供商“${updated.display_name || updated.name}”已更新。`,
 								);
 							} catch (error) {
 								toast.error(
 									getErrorMessage(
 										error,
-										`Failed to update provider "${provider.display_name || provider.name}".`,
+										`无法更新提供商“${provider.display_name || provider.name}”。`,
 									),
 								);
 							}
@@ -223,8 +223,8 @@ const UpdateProviderPageView: React.FC = () => {
 				<DeleteDialog
 					key={provider.name}
 					isOpen={deleteDialogOpen}
-					title="Delete provider"
-					entity="provider"
+					title="删除提供商"
+					entity="提供商"
 					name={provider.name}
 					confirmLoading={deleteMutation.isPending}
 					onCancel={() => {
@@ -234,7 +234,7 @@ const UpdateProviderPageView: React.FC = () => {
 						deleteMutation.mutate(undefined, {
 							onSuccess: () => {
 								toast.success(
-									`Provider "${provider.display_name || provider.name}" deleted.`,
+									`提供商“${provider.display_name || provider.name}”已删除。`,
 								);
 								setDeleteDialogOpen(false);
 								void navigate(BACK_HREF, { replace: true });
@@ -243,7 +243,7 @@ const UpdateProviderPageView: React.FC = () => {
 								toast.error(
 									getErrorMessage(
 										error,
-										`Failed to delete provider "${provider.display_name || provider.name}".`,
+										`无法删除提供商“${provider.display_name || provider.name}”。`,
 									),
 								);
 							},

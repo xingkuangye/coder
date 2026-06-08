@@ -18,7 +18,7 @@ const aiGovernanceOverLimitWarningPrefix =
 const aiGovernanceNearLimitWarningPrefix =
 	LicenseAIGovernance90PercentWarningText.split("%d%%")[0];
 const AI_GOVERNANCE_NEAR_LIMIT_FALLBACK_MESSAGE =
-	"You are approaching your AI Governance add-on seat limit.";
+	"您即将达到 AI Governance 附加组件的席位限制。";
 
 const isAIGovernanceWarning = (message: string): boolean =>
 	message.startsWith(aiGovernanceNearLimitWarningPrefix) ||
@@ -103,7 +103,7 @@ const messageLink = (message: string): LicenseBannerLink => {
 	if (message === LicenseManagedAgentLimitExceededWarningText) {
 		return {
 			href: docs("/ai-coder/ai-governance"),
-			label: "View AI Governance",
+			label: "查看 AI Governance",
 			showExternalIcon: true,
 			target: "_blank",
 		};
@@ -111,13 +111,13 @@ const messageLink = (message: string): LicenseBannerLink => {
 	if (message === LicenseTelemetryRequiredErrorText) {
 		return {
 			href: "mailto:sales@coder.com",
-			label: "Contact sales@coder.com if you need an exception.",
+			label: "如需申请例外，请联系 sales@coder.com。",
 			showExternalIcon: false,
 		};
 	}
 	return {
 		href: "mailto:sales@coder.com",
-		label: "Contact sales@coder.com.",
+		label: "联系 sales@coder.com。",
 		showExternalIcon: false,
 	};
 };

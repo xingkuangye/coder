@@ -223,7 +223,7 @@ export const Filter: FC<FilterProps> = ({
 							ref={textboxInputRef}
 							className="w-full"
 							value={queryCopy}
-							aria-label="Filter"
+							aria-label="筛选"
 							aria-invalid={shouldDisplayError}
 							onChange={(query) => {
 								setQueryCopy(query);
@@ -238,7 +238,7 @@ export const Filter: FC<FilterProps> = ({
 								if (queryCopy === filter.query) return;
 								setQueryCopy(filter.query);
 							}}
-							placeholder="Search..."
+							placeholder="搜索..."
 						/>
 						{hasError(error) && (
 							<span className="text-content-destructive text-sm">
@@ -275,7 +275,7 @@ const PresetMenu: FC<PresetMenuProps> = ({
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline">
 					<SlidersHorizontalIcon />
-					Filters
+					筛选
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent side="bottom" align="start">
@@ -295,7 +295,7 @@ const PresetMenu: FC<PresetMenuProps> = ({
 					<DropdownMenuItem asChild>
 						<a href={learnMoreLink} target="_blank" rel="noreferrer">
 							<ExternalLinkIcon className="size-icon-xs" />
-							View advanced filtering
+							查看高级筛选
 						</a>
 					</DropdownMenuItem>
 				)}

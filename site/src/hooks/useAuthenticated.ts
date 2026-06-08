@@ -18,11 +18,11 @@ export const useAuthenticated = (): AuthenticatedAuthContextValue => {
 	const auth = useAuthContext();
 
 	if (!auth.user) {
-		throw new Error("User is not authenticated.");
+		throw new Error("用户未登录。");
 	}
 
 	if (!auth.permissions) {
-		throw new Error("Permissions are not available.");
+		throw new Error("权限不可用。");
 	}
 
 	return auth as AuthenticatedAuthContextValue;

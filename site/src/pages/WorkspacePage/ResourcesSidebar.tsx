@@ -24,11 +24,10 @@ export const ResourcesSidebar: FC<ResourcesSidebarProps> = ({
 }) => {
 	return (
 		<Sidebar>
-			<SidebarCaption>Resources</SidebarCaption>
+			<SidebarCaption>资源</SidebarCaption>
 			{failed && (
 				<p className="m-0 py-4 text-[13px] text-content-secondary leading-normal">
-					Your workspace build failed, so the necessary resources couldn&apos;t
-					be created.
+					您的工作区构建失败，因此无法创建必要的资源。
 				</p>
 			)}
 			{resources.length === 0 &&

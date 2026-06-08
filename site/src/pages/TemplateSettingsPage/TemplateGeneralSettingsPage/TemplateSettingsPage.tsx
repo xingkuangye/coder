@@ -47,12 +47,12 @@ const TemplateSettingsPage: FC = () => {
 					queryKey: templateByNameKey(template.organization_name, data.name),
 				});
 			}
-			toast.success(`Template "${data.name}" updated successfully.`);
+			toast.success(`模板 "${data.name}" 更新成功。`);
 			navigate(getLink(linkToTemplate(data.organization_name, data.name)));
 		},
 		onError: (error) => {
 			toast.error(
-				getErrorMessage(error, `Failed to update template "${template.name}".`),
+				getErrorMessage(error, `更新模板 "${template.name}" 失败。`),
 				{
 					description: getErrorDetail(error),
 				},
@@ -62,7 +62,7 @@ const TemplateSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(template.name, "General Settings")}</title>
+			<title>{pageTitle(template.name, "常规设置")}</title>
 
 			<TemplateSettingsPageView
 				isSubmitting={isSubmitting}

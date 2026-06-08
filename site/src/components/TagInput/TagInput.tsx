@@ -41,7 +41,7 @@ export const TagInput: FC<TagInputProps> = ({
 							onClick={() => {
 								onChange(values.filter((oldValue) => oldValue !== value));
 							}}
-							aria-label={`Remove ${value}`}
+							aria-label={`删除 ${value}`}
 						>
 							<XIcon className="size-3" />
 						</Button>
@@ -83,7 +83,7 @@ export const TagInput: FC<TagInputProps> = ({
 			</div>
 
 			<p className="text-content-secondary text-xs mt-1">
-				{'Type "," to separate the values'}
+				{'输入“,”分隔值'}
 			</p>
 		</div>
 	);

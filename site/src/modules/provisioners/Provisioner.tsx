@@ -21,6 +21,7 @@ export const Provisioner: FC<ProvisionerProps> = ({
 	warnings,
 }) => {
 	const daemonScope = provisioner.tags.scope || "organization";
+	const daemonScopeLabel = daemonScope === "user" ? "用户" : "组织";
 	const iconScope =
 		daemonScope === "organization" ? (
 			<Building2Icon className="size-icon-sm" />
@@ -54,11 +55,11 @@ export const Provisioner: FC<ProvisionerProps> = ({
 						<TooltipTrigger asChild>
 							<Pill size="lg" icon={iconScope}>
 								<span className="[&::first-letter]:uppercase">
-									{daemonScope}
+									{daemonScopeLabel}
 								</span>
 							</Pill>
 						</TooltipTrigger>
-						<TooltipContent side="bottom">Scope</TooltipContent>
+						<TooltipContent side="bottom">作用域</TooltipContent>
 					</Tooltip>
 					{extraTags.map(([key, value]) => (
 						<ProvisionerTag key={key} tagName={key} tagValue={value} />
@@ -74,11 +75,11 @@ export const Provisioner: FC<ProvisionerProps> = ({
 						))}
 					</div>
 				) : (
-					<span>No warnings</span>
+					<span>没有警告</span>
 				)}
 				{provisioner.last_seen_at && (
 					<span className="text-content-primary" data-chromatic="ignore">
-						Last seen {createDayString(provisioner.last_seen_at)}
+						上次出现 {createDayString(provisioner.last_seen_at)}
 					</span>
 				)}
 			</div>

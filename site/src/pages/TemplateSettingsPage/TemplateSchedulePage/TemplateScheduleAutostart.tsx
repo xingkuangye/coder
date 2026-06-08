@@ -24,13 +24,13 @@ export const TemplateScheduleAutostart: FC<TemplateScheduleAutostartProps> = ({
 			<div className="flex flex-row items-baseline justify-center w-full gap-0.5">
 				{(
 					[
-						{ value: "monday", key: "Mon" },
-						{ value: "tuesday", key: "Tue" },
-						{ value: "wednesday", key: "Wed" },
-						{ value: "thursday", key: "Thu" },
-						{ value: "friday", key: "Fri" },
-						{ value: "saturday", key: "Sat" },
-						{ value: "sunday", key: "Sun" },
+						{ value: "monday", key: "周一" },
+						{ value: "tuesday", key: "周二" },
+						{ value: "wednesday", key: "周三" },
+						{ value: "thursday", key: "周四" },
+						{ value: "friday", key: "周五" },
+						{ value: "saturday", key: "周六" },
+						{ value: "sunday", key: "周日" },
 					] as {
 						value: TemplateAutostartRequirementDaysValue;
 						key: string;
@@ -71,32 +71,31 @@ const AutostartHelperText: FC<AutostartHelperTextProps> = ({
 	days: unsortedDays,
 }) => {
 	if (!allowed) {
-		return <span>Workspaces are not allowed to auto start.</span>;
+		return <span>工作区不允许自动启动。</span>;
 	}
 
 	const days = new Set(unsortedDays);
 
 	if (days.size === 7) {
 		// If every day is allowed, no more explaining is needed.
-		return <span>Workspaces are allowed to auto start on any day.</span>;
+		return <span>工作区允许在任何一天自动启动。</span>;
 	}
 	if (days.size === 0) {
 		return (
 			<span>
-				Workspaces will never auto start. This is effectively the same as
-				disabling autostart.
+				工作区永远不会自动启动。这实际上与禁用自动启动相同。
 			</span>
 		);
 	}
 
-	let daymsg = "Workspaces will never auto start on the weekends.";
+	let daymsg = "工作区在周末永远不会自动启动。";
 	if (days.size !== 5 || days.has("saturday") || days.has("sunday")) {
-		daymsg = `Workspaces can autostart on ${sortedDays
+		daymsg = `工作区可以在 ${sortedDays
 			.filter((day) => days.has(day))
-			.join(", ")}.`;
+			.join(", ")} 自动启动。`;
 	}
 
 	return (
-		<span>{daymsg} These days are relative to the user&apos;s timezone.</span>
+		<span>{daymsg} 这些天相对于用户的时区。</span>
 	);
 };

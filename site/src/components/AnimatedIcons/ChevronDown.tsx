@@ -4,9 +4,7 @@ import { cn } from "#/utils/cn";
 interface ChevronDownIconProps
 	extends React.ComponentProps<typeof LucideChevronDown> {
 	/**
-	 * Explicitly control rotation state. When omitted, rotation is
-	 * driven by Radix's data-state attribute on a parent element
-	 * with className="group".
+	 * 显式控制旋转状态。当省略时，旋转由带有 className="group" 的父元素上的 Radix data-state 属性驱动。
 	 */
 	open?: boolean;
 }

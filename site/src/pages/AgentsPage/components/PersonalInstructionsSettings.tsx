@@ -66,10 +66,10 @@ export const PersonalInstructionsSettings: FC<
 	return (
 		<form className="flex flex-col gap-2" onSubmit={form.handleSubmit}>
 			<h3 className="m-0 text-sm font-semibold text-content-primary">
-				Personal instructions
+				个人指令
 			</h3>
 			<p className="m-0 text-xs text-content-secondary">
-				Applied to all your conversations. Only visible to you.
+				适用于您的所有对话。仅您可见。
 			</p>
 			<TextareaAutosize
 				className={cn(
@@ -77,7 +77,7 @@ export const PersonalInstructionsSettings: FC<
 					isUserPromptOverflowing && "overflow-y-auto [scrollbar-width:thin]",
 				)}
 				name="custom_prompt"
-				placeholder="Additional behavior, style, and tone preferences"
+				placeholder="附加行为、风格和语气偏好设置"
 				value={form.values.custom_prompt}
 				onChange={form.handleChange}
 				onHeightChange={(height) => setIsUserPromptOverflowing(height >= 240)}
@@ -87,9 +87,9 @@ export const PersonalInstructionsSettings: FC<
 			{userInvisibleCharCount > 0 && (
 				<Alert severity="warning">
 					<AlertDescription>
-						This text contains {userInvisibleCharCount} invisible Unicode{" "}
-						{userInvisibleCharCount !== 1 ? "characters" : "character"} that
-						could hide content. These will be stripped on save.
+						此文本包含 {userInvisibleCharCount} 个不可见的 Unicode{" "}
+						{userInvisibleCharCount !== 1 ? "个字符" : "个字符"}
+						，这些字符可能会隐藏内容。保存时将被去除。
 					</AlertDescription>
 				</Alert>
 			)}
@@ -106,7 +106,7 @@ export const PersonalInstructionsSettings: FC<
 								onClick={() => form.setFieldValue("custom_prompt", "")}
 								disabled={isAnyPromptSaving || !form.values.custom_prompt}
 							>
-								Clear
+								清除
 							</Button>
 							<Button
 								size="xs"
@@ -114,14 +114,14 @@ export const PersonalInstructionsSettings: FC<
 								disabled={isAnyPromptSaving || !form.dirty}
 							>
 								{isSavingUserPrompt && <Spinner loading className="h-4 w-4" />}
-								Save
+								保存
 							</Button>
 						</>
 					))}
 			</div>
 			{isSaveUserPromptError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save personal instructions.
+					无法保存个人指令。
 				</p>
 			)}
 		</form>

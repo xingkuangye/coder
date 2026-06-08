@@ -1,10 +1,9 @@
 /**
- * @file Shared WebSocket reconnection utility with capped exponential
- * backoff. Both the chat-list watcher (AgentsPage) and the per-chat
- * stream watcher (ChatContext) use the same reconnect-on-disconnect
- * pattern. This module extracts that logic into a single reusable
- * function so the two call sites stay in sync and the backoff math
- * lives in one place.
+ * @file 共享 WebSocket 重连工具，采用有上限的指数退避策略。
+ * 聊天列表监听器（AgentsPage）和单聊流监听器（ChatContext）
+ * 均使用相同的“断开即重连”模式。本模块将这一逻辑提取为
+ * 一个可复用的函数，以便两个调用点保持同步，并且退避
+ * 数学计算集中在一处。
  *
  * @example
  * ```ts
@@ -29,26 +28,24 @@
  * ```
  */
 
-/** Default base delay for exponential backoff (milliseconds). */
+/** 指数退避的默认基准延迟（毫秒）。 */
 const RECONNECT_BASE_MS = 1_000;
 
-/** Default maximum base delay cap for exponential backoff (milliseconds). */
+/** 指数退避的默认最大延迟上限（毫秒）。 */
 const RECONNECT_MAX_MS = 10_000;
 
-/** Default multiplier applied to the base delay on each retry. */
+/** 每次重试时应用于基准延迟的默认倍数。 */
 const RECONNECT_FACTOR = 2;
 
 /**
- * Default symmetric jitter applied to the computed reconnect delay.
- * `0.3` means the final delay is randomized within ±30% of the base
- * exponential-backoff value.
+ * 应用于计算后的重连延迟的默认对称抖动。
+ * `0.3` 表示最终延迟会在基准指数退避值的 ±30% 范围内随机化。
  */
 const RECONNECT_JITTER = 0.3;
 
 /**
- * Metadata for the reconnect attempt that was just scheduled.
- * `attempt` is 1-based and user-facing: `1` means the first retry after
- * the connection dropped.
+ * 刚刚安排的重连尝试的元数据。
+ * `attempt` 从 1 开始计数，面向用户：`1` 表示连接断开后的第一次重试。
  */
 export type ReconnectSchedule = {
 	attempt: number;
@@ -57,9 +54,8 @@ export type ReconnectSchedule = {
 };
 
 /**
- * A minimal WebSocket-like interface that the reconnection utility can
- * manage. Both native `WebSocket` and `OneWayWebSocket` satisfy this
- * contract.
+ * 一个最小的类 WebSocket 接口，重连工具可以对其进行管理。
+ * 原生 `WebSocket` 和 `OneWayWebSocket` 都满足此契约。
  */
 interface Closable {
 	addEventListener(event: string, handler: (...args: unknown[]) => void): void;
@@ -67,60 +63,56 @@ interface Closable {
 }
 
 /**
- * Configuration for {@link createReconnectingWebSocket}.
+ * {@link createReconnectingWebSocket} 的配置选项。
  *
- * @typeParam TSocket - The concrete socket type returned by the
- *   `connect` function (e.g. `OneWayWebSocket<ServerSentEvent>`).
+ * @typeParam TSocket - `connect` 函数返回的具体套接字类型
+ *   （例如 `OneWayWebSocket<ServerSentEvent>`）。
  */
 interface ReconnectingWebSocketOptions<TSocket extends Closable> {
 	/**
-	 * Factory that creates and returns a new socket. Called on the
-	 * initial connection and on every reconnection attempt. The caller
-	 * is responsible for attaching any `message` listeners to the
-	 * returned socket — this utility only manages the lifecycle
-	 * (`open`, `close`, `error`) events.
+	 * 创建并返回新套接字的工厂函数。在初始连接以及每次重连
+	 * 尝试时调用。调用方负责在返回的套接字上附加 `message`
+	 * 监听器 —— 该工具仅管理生命周期事件（`open`、`close`、`error`）。
 	 */
 	connect: () => TSocket;
 
 	/**
-	 * Called when a connection succeeds (the socket fires `open`). The
-	 * backoff counter is reset before this callback runs.
+	 * 连接成功（套接字触发 `open`）时调用。退避计数器
+	 * 在此回调执行前重置。
 	 */
 	onOpen?: (socket: TSocket) => void;
 
 	/**
-	 * Called on the first disconnect after a successful connection or on a
-	 * connection failure. Fires at most once per socket instance (browsers
-	 * fire both `error` and `close`; only the first is forwarded). The
-	 * callback receives the reconnect attempt that was just scheduled.
+	 * 在首次断开（成功连接后）或连接失败时调用。每个套接字
+	 * 实例最多触发一次（浏览器会同时触发 `error` 和 `close`；
+	 * 仅转发第一个事件）。回调将收到刚刚安排的重连尝试信息。
 	 */
 	onDisconnect?: (reconnect: ReconnectSchedule) => void;
 
-	/** Base delay in milliseconds. Defaults to {@link RECONNECT_BASE_MS}. */
+	/** 基准延迟（毫秒）。默认值为 {@link RECONNECT_BASE_MS}。 */
 	baseMs?: number;
 
 	/**
-	 * Hard upper bound on the reconnect delay in milliseconds. Jitter is
-	 * applied to the capped backoff base, so the final delay never exceeds
-	 * this value.
+	 * 重连延迟的硬性上限（毫秒）。抖动应用于已限制的退避基准值，
+	 * 因此最终延迟不会超过此值。
 	 */
 	maxMs?: number;
 
-	/** Multiplier applied per attempt. Defaults to {@link RECONNECT_FACTOR}. */
+	/** 每次尝试的倍数。默认值为 {@link RECONNECT_FACTOR}。 */
 	factor?: number;
 
 	/**
-	 * Symmetric jitter applied to the computed delay. `0.3` means the
-	 * final delay may vary within ±30% of the base exponential-backoff
-	 * value. Set to `0` to preserve exact legacy timing. Values are
-	 * clamped to `[0, 1]`; non-finite values are treated as `0`.
+	 * 应用于计算后延迟的对称抖动。`0.3` 表示最终延迟可在
+	 * 基准指数退避值的 ±30% 范围内变化。设为 `0` 可保留
+	 * 精确的原有时间逻辑。值会被钳制到 `[0, 1]` 区间；
+	 * 非有限值将被视为 `0`。
 	 */
 	jitter?: number;
 
 	/**
-	 * Random-number source used for jitter. Defaults to `Math.random` and
-	 * exists primarily as a deterministic test seam. Output is normalized
-	 * to `[0, 1]`; non-finite values fall back to `0.5`.
+	 * 用于抖动的随机数源。默认为 `Math.random`，
+	 * 主要作为确定性的测试接缝存在。输出会被归一化到
+	 * `[0, 1]` 区间；非有限值会回退到 `0.5`。
 	 */
 	random?: () => number;
 }
@@ -184,15 +176,13 @@ const getReconnectSchedule = ({
 };
 
 /**
- * Creates a self-reconnecting WebSocket connection with capped
- * exponential backoff.
+ * 创建一个带上限指数退避的自动重连 WebSocket 连接。
  *
- * The returned function disposes of the connection: it closes the
- * active socket (if any), cancels any pending reconnection timer, and
- * prevents further reconnection attempts. It is safe to call the
- * dispose function more than once.
+ * 返回的函数用于销毁连接：它会关闭当前活跃的套接字（如果有），
+ * 取消任何待执行的重连定时器，并阻止后续的重连尝试。多次
+ * 调用该销毁函数也是安全的。
  *
- * Backoff delay formula:
+ * 退避延迟公式：
  * ```
  * rawDelay = baseMs * factor ^ (attempt - 1)
  * cappedDelay = min(rawDelay, maxMs)
@@ -201,9 +191,9 @@ const getReconnectSchedule = ({
  * offset ∈ [-jitter, +jitter]
  * ```
  *
- * The reconnect attempt counter resets after a successful `open`.
+ * 重连尝试计数器在成功 `open` 后重置。
  *
- * @returns A dispose function that tears down the connection.
+ * @returns 用于拆除连接的销毁函数。
  */
 export function createReconnectingWebSocket<TSocket extends Closable>(
 	options: ReconnectingWebSocketOptions<TSocket>,
@@ -292,3 +282,4 @@ export function createReconnectingWebSocket<TSocket extends Closable>(
 		}
 	};
 }
+

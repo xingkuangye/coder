@@ -98,12 +98,12 @@ const OrganizationMembersPage: FC = () => {
 	]);
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="组织未找到" />;
 	}
 
 	const title = (
 		<title>
-			{pageTitle("Members", organization.display_name || organization.name)}
+			{pageTitle("成员", organization.display_name || organization.name)}
 		</title>
 	);
 
@@ -163,11 +163,11 @@ const OrganizationMembersPage: FC = () => {
 							roles,
 						});
 						toast.success(
-							`${memberToEditRoles!.username}'s roles have been updated.`,
+							`${memberToEditRoles!.username}的角色已更新。`,
 						);
 						setMemberToEditRoles(undefined);
 					} catch (e) {
-						toast.error(getErrorMessage(e, "Error updating member roles."), {
+						toast.error(getErrorMessage(e, "更新成员角色时出错。"), {
 							description: getErrorDetail(e),
 						});
 					}
@@ -179,8 +179,8 @@ const OrganizationMembersPage: FC = () => {
 				type="delete"
 				open={memberToRemove !== undefined}
 				onClose={() => setMemberToRemove(undefined)}
-				title="Remove member"
-				confirmText="Remove"
+				title="移除成员"
+				confirmText="移除"
 				onConfirm={() => {
 					if (memberToRemove) {
 						const mutation = removeMemberMutation.mutateAsync(
@@ -192,12 +192,12 @@ const OrganizationMembersPage: FC = () => {
 							},
 						);
 						toast.promise(mutation, {
-							loading: `Removing "${memberToRemove.username}" from "${organization.display_name}"...`,
-							success: `"${memberToRemove.username}" has been removed from "${organization.display_name}".`,
+							loading: `正在从 "${organization.display_name}" 中移除 "${memberToRemove.username}"…`,
+							success: `"${memberToRemove.username}" 已从 "${organization.display_name}" 中移除。`,
 							error: (error) =>
 								getErrorMessage(
 									error,
-									`Failed to remove "${memberToRemove.username}" from "${organization.display_name}".`,
+									`未能从 "${organization.display_name}" 中移除 "${memberToRemove.username}"。`,
 								),
 						});
 						setMemberToRemove(undefined);
@@ -206,18 +206,17 @@ const OrganizationMembersPage: FC = () => {
 				description={
 					<div className="flex flex-col gap-4">
 						<p>
-							Removing this member will:
+							移除该成员将：
 							<ul>
-								<li>Remove the member from all groups in this organization</li>
-								<li>Remove all user role assignments</li>
+								<li>从该组织中的所有群组中移除该成员</li>
+								<li>删除所有用户角色分配</li>
 								<li>
-									Orphan all the member's workspaces associated with this
-									organization
+									使与该组织关联的所有工作区成为孤儿工作区
 								</li>
 							</ul>
 						</p>
 
-						<p className="pb-5">Are you sure you want to remove this member?</p>
+						<p className="pb-5">您确定要移除该成员吗？</p>
 					</div>
 				}
 			/>

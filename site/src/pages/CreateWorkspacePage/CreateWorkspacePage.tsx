@@ -109,7 +109,7 @@ const CreateWorkspacePage: FC = () => {
 		if (templateVersionPresetsQuery.isError) {
 			return {
 				preset: undefined,
-				error: `Failed to load presets: ${templateVersionPresetsQuery.error?.message ?? "unknown error"}. Please try refreshing the page.`,
+				error: `加载预设失败：${templateVersionPresetsQuery.error?.message ?? "未知错误"}。请尝试刷新页面。`,
 			};
 		}
 
@@ -122,7 +122,7 @@ const CreateWorkspacePage: FC = () => {
 			const versionLabel = templateVersionQuery.data?.name ?? realizedVersionId;
 			return {
 				preset: undefined,
-				error: `Preset "${effectivePresetName}" not found on template version "${versionLabel}". Check that the preset name matches exactly (names are case-sensitive).`,
+				error: `在模板版本 "${versionLabel}" 中未找到预设 "${effectivePresetName}"。请检查预设名称是否完全匹配（名称区分大小写）。`,
 			};
 		}
 		return { preset: found, error: undefined };
@@ -231,8 +231,8 @@ const CreateWorkspacePage: FC = () => {
 					if (ws.current === socket) {
 						setWsError(
 							new DetailedError(
-								"Websocket connection for dynamic parameters unexpectedly closed.",
-								"Refresh the page to reset the form.",
+								"用于动态参数的 WebSocket 连接意外关闭。",
+								"刷新页面以重置表单。",
 							),
 						);
 					}
@@ -263,8 +263,8 @@ const CreateWorkspacePage: FC = () => {
 	const loadFormDataError = templateQuery.error ?? permissionsQuery.error;
 
 	const title = autoCreateWorkspaceMutation.isPending
-		? "Creating workspace..."
-		: "Create workspace";
+		? "正在创建工作区..."
+		: "创建工作区";
 
 	const onCreateWorkspace = useCallback(
 		(workspace: Workspace) => {
@@ -335,12 +335,12 @@ const CreateWorkspacePage: FC = () => {
 		// Show an error message to explain _why_ the workspace was not created automatically.
 		const subject =
 			externalAuth?.length === 1
-				? "an external authentication provider that is"
-				: "external authentication providers that are";
+				? "一个未连接的外部认证提供程序"
+				: "未连接的外部认证提供程序";
 		setAutoCreateError({
-			message: `This template requires ${subject} not connected.`,
+			message: `此模板需要${subject}。`,
 			detail:
-				"Auto-creation has been disabled. Please connect all required external authentication providers before continuing.",
+				"自动创建已被禁用。请在继续之前连接所有必需的外部认证提供程序。",
 		});
 	}
 
@@ -354,10 +354,10 @@ const CreateWorkspacePage: FC = () => {
 		setMode("form");
 		autoCreateReady = false;
 		setAutoCreateError({
-			message: "Auto-creation has been disabled.",
+			message: "自动创建已被禁用。",
 			detail:
 				urlPresetResult.error ??
-				"The requested preset could not be resolved. Please check the preset value before continuing.",
+				"无法解析请求的预设。请在继续之前检查预设值。",
 		});
 	}
 

@@ -109,34 +109,34 @@ export const DialogFooter: React.FC<React.ComponentPropsWithRef<"div">> = ({
 };
 
 type DialogActionsProps = {
-	/** Text to display in the confirm button */
+	/** 确认按钮中显示的文本 */
 	confirmText?: React.ReactNode;
-	/** Whether or not confirm is loading, also disables cancel when true */
+	/** 确认按钮是否正在加载，为 true 时也会禁用取消按钮 */
 	confirmLoading?: boolean;
-	/** Whether or not the submit button is disabled */
+	/** 提交按钮是否被禁用 */
 	confirmDisabled?: boolean;
-	/** Whether the confirm button triggers a destructive action or not */
+	/** 确认按钮是否触发破坏性操作 */
 	confirmVariant?: React.ComponentProps<typeof Button>["variant"];
-	/** Called when confirm is clicked */
+	/** 点击确认按钮时调用 */
 	onConfirm?: () => void;
 
-	/** Text to display in the cancel button */
+	/** 取消按钮中显示的文本 */
 	cancelText?: string;
-	/** Called when cancel is clicked */
+	/** 点击取消按钮时调用 */
 	onCancel?: () => void;
 };
 
 /**
- * Quickly handles most modals actions, some combination of a cancel and confirm button
+ * 快速处理大多数模态框操作，通常是取消和确认按钮的组合
  */
 export const DialogActions: React.FC<DialogActionsProps> = ({
-	confirmText = "Confirm",
+	confirmText = "确认",
 	confirmLoading = false,
 	confirmDisabled = false,
 	confirmVariant,
 	onConfirm,
 
-	cancelText = "Cancel",
+	cancelText = "取消",
 	onCancel,
 }) => {
 	return (

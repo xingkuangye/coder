@@ -41,19 +41,19 @@ export const AIGovernanceAddOnCard: FC<AIGovernanceAddOnCardProps> = ({
 								<TooltipTrigger asChild>
 									<button
 										type="button"
-										aria-label="AI Governance seat information"
+										aria-label="AI Governance 席位信息"
 										className="m-0 inline-flex appearance-none border-0 bg-transparent p-0 text-content-secondary"
 									>
 										<InfoIcon className="size-3" />
 									</button>
 								</TooltipTrigger>
 								<TooltipContent side="top">
-									Seats consumed by users using AI Governance features.
+									使用 AI Governance 功能的用户所占用的席位。
 								</TooltipContent>
 							</Tooltip>
 						</div>
 						<Badge variant="magenta" size="sm">
-							AI add-on
+							AI 附加组件
 						</Badge>
 					</div>
 

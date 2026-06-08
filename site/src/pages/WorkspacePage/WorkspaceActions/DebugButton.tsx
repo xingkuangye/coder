@@ -18,7 +18,7 @@ export const DebugButton: FC<DebugButtonProps> = ({
 	const mainAction = (
 		<TopbarButton onClick={() => handleAction()}>
 			<BugIcon />
-			Debug
+			调试
 		</TopbarButton>
 	);
 
@@ -30,7 +30,7 @@ export const DebugButton: FC<DebugButtonProps> = ({
 		<div className="flex gap-1 items-center">
 			{mainAction}
 			<BuildParametersPopover
-				label="Debug with build parameters"
+				label="使用构建参数调试"
 				workspace={workspace}
 				onSubmit={handleAction}
 			/>

@@ -23,8 +23,7 @@ export const ResetPasswordDialog: FC<ResetPasswordDialogProps> = ({
 	const description = (
 		<>
 			<p>
-				You will need to send <strong>{user?.username}</strong> the following
-				password:
+				您需要将以下密码发送给 <strong>{user?.username}</strong>：
 			</p>
 			<CodeExample
 				secret={false}
@@ -41,9 +40,9 @@ export const ResetPasswordDialog: FC<ResetPasswordDialogProps> = ({
 			open={open}
 			onConfirm={onConfirm}
 			onClose={onClose}
-			title="Reset password"
+			title="重置密码"
 			confirmLoading={loading}
-			confirmText="Reset password"
+			confirmText="重置密码"
 			description={description}
 		/>
 	);

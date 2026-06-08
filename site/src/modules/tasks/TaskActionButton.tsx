@@ -19,13 +19,13 @@ type TaskActionButtonProps = {
 const actionConfig = {
 	pause: {
 		icon: PauseIcon,
-		label: "Pause task",
-		tooltip: "Pause the task to save resources. You can resume later.",
+		label: "暂停任务",
+		tooltip: "暂停此任务以节省资源，稍后可恢复。",
 	},
 	resume: {
 		icon: PlayIcon,
-		label: "Resume task",
-		tooltip: "Resuming takes time while the workspace starts.",
+		label: "恢复任务",
+		tooltip: "恢复过程需要时间，因为工作区正在启动中。",
 	},
 } as const;
 

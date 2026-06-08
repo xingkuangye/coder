@@ -30,12 +30,12 @@ const TemplatePermissionsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(template.name, "Permissions")}</title>
+			<title>{pageTitle(template.name, "权限")}</title>
 
 			{!isTemplateRBACEnabled ? (
 				<PaywallPremium
-					message="Template permissions"
-					description="Control users and groups access to templates. You need a Premium license to use this feature."
+					message="模板权限"
+					description="控制用户和群组对模板的访问权限。您需要 Premium 许可证才能使用此功能。"
 					documentationLink={docs("/admin/templates/template-permissions")}
 				/>
 			) : (
@@ -62,14 +62,14 @@ const TemplatePermissionsPage: FC = () => {
 							{
 								onSuccess: () => {
 									toast.success(
-										`Role for "${user.username}" updated to "${role}" successfully.`,
+										`用户 "${user.username}" 的角色已成功更新为 "${role}"。`,
 									);
 								},
 								onError: (error) => {
 									toast.error(
 										getErrorMessage(
 											error,
-											`Failed to update role for "${user.username}".`,
+											`更新用户 "${user.username}" 的角色失败。`,
 										),
 										{
 											description: getErrorDetail(error),
@@ -94,14 +94,14 @@ const TemplatePermissionsPage: FC = () => {
 							{
 								onSuccess: () => {
 									toast.success(
-										`User "${user.username}" removed successfully.`,
+										`用户 "${user.username}" 已成功移除。`,
 									);
 								},
 								onError: (error) => {
 									toast.error(
 										getErrorMessage(
 											error,
-											`Failed to remove user "${user.username}".`,
+											`移除用户 "${user.username}" 失败。`,
 										),
 										{
 											description: getErrorDetail(error),
@@ -130,14 +130,14 @@ const TemplatePermissionsPage: FC = () => {
 							{
 								onSuccess: () => {
 									toast.success(
-										`Role for "${group.display_name || group.name}" updated to "${role}" successfully.`,
+										`群组 "${group.display_name || group.name}" 的角色已成功更新为 "${role}"。`,
 									);
 								},
 								onError: (error) => {
 									toast.error(
 										getErrorMessage(
 											error,
-											`Failed to update role for "${group.display_name || group.name}".`,
+											`更新群组 "${group.display_name || group.name}" 的角色失败。`,
 										),
 										{
 											description: getErrorDetail(error),
@@ -162,14 +162,14 @@ const TemplatePermissionsPage: FC = () => {
 							{
 								onSuccess: () => {
 									toast.success(
-										`Group "${group.display_name || group.name}" removed successfully.`,
+										`群组 "${group.display_name || group.name}" 已成功移除。`,
 									);
 								},
 								onError: (error) => {
 									toast.error(
 										getErrorMessage(
 											error,
-											`Failed to remove group "${group.display_name || group.name}".`,
+											`移除群组 "${group.display_name || group.name}" 失败。`,
 										),
 										{
 											description: getErrorDetail(error),

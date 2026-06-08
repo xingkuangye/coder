@@ -58,8 +58,8 @@ const TemplateEmbedPage: React.FC = () => {
 					if (ws.current === socket) {
 						setWsError(
 							new DetailedError(
-								"Websocket connection for dynamic parameters unexpectedly closed.",
-								"Refresh the page to reset the form.",
+								"用于动态参数的 WebSocket 连接意外关闭。",
+								"刷新页面以重置表单。",
 							),
 						);
 					}

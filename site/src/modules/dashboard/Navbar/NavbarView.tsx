@@ -194,7 +194,7 @@ const NavItems: FC<NavItemsProps> = ({ className, user, canCreateChat }) => {
 				}}
 				to="/workspaces"
 			>
-				Workspaces
+				工作区
 			</NavLink>
 			<NavLink
 				className={({ isActive }) => {
@@ -202,7 +202,7 @@ const NavItems: FC<NavItemsProps> = ({ className, user, canCreateChat }) => {
 				}}
 				to="/templates"
 			>
-				Templates
+				模板
 			</NavLink>
 			<TasksNavItem user={user} />
 			<AgentsNavItem canCreateChat={canCreateChat} />
@@ -246,7 +246,7 @@ const TasksNavItem: FC<TasksNavItemProps> = ({ user }) => {
 				return cn(linkStyles.default, { [linkStyles.active]: isActive });
 			}}
 		>
-			Tasks
+			任务
 			{idleCount > 0 && (
 				<Tooltip>
 					<TooltipTrigger asChild>
@@ -267,7 +267,7 @@ const TasksNavItem: FC<TasksNavItemProps> = ({ user }) => {
 };
 
 function idleTasksLabel(count: number) {
-	return `You have ${count} ${count === 1 ? "task" : "tasks"} waiting for input`;
+	return `您有 ${count} 个等待输入的任务`;
 }
 
 const AgentsNavItem: FC<{ canCreateChat: boolean }> = ({ canCreateChat }) => {
@@ -282,7 +282,7 @@ const AgentsNavItem: FC<{ canCreateChat: boolean }> = ({ canCreateChat }) => {
 			}}
 			to="/agents"
 		>
-			Agents
+			智能体
 		</NavLink>
 	);
 };
@@ -309,7 +309,7 @@ const SupportButton: FC<SupportButtonProps> = ({ name, target, icon }) => {
 			>
 				{icon && <SupportIcon icon={icon} className="text-content-secondary" />}
 				{name}
-				<span className="sr-only"> (link opens in new tab)</span>
+				<span className="sr-only"> （链接在新标签页中打开）</span>
 			</a>
 		</Button>
 	);

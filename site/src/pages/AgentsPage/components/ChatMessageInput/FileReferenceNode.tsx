@@ -80,7 +80,7 @@ export function FileReferenceChip({
 						e.stopPropagation();
 						onRemove();
 					}}
-					aria-label="Remove reference"
+					aria-label="移除引用"
 					tabIndex={-1}
 				>
 					<XIcon className="size-2" />

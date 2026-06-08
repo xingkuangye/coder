@@ -128,8 +128,8 @@ const WorkspaceParametersPageExperimental: FC = () => {
 					if (ws.current === socket) {
 						setWsError(
 							new DetailedError(
-								"Websocket connection for dynamic parameters unexpectedly closed.",
-								"Refresh the page to reset the form.",
+								"动态参数的 WebSocket 连接意外关闭。",
+								"刷新页面以重置表单。",
 							),
 						);
 					}
@@ -234,39 +234,37 @@ const WorkspaceParametersPageExperimental: FC = () => {
 		return <Loader />;
 	}
 
-	let submitLabel = "Update and start";
+	let submitLabel = "更新并启动";
 	if (restartWithParameters.isPending) {
-		submitLabel = "Stopping workspace";
+		submitLabel = "正在停止工作区";
 	} else if (startWithParameters.isPending) {
-		submitLabel = "Starting workspace";
+		submitLabel = "正在启动工作区";
 	} else if (workspace.latest_build.status === "running") {
-		submitLabel = "Update and restart";
+		submitLabel = "更新并重启";
 	}
 
 	return (
 		<div className="flex flex-col gap-6 max-w-screen-md">
-			<title>{pageTitle(workspace.name, "Parameters")}</title>
+			<title>{pageTitle(workspace.name, "参数")}</title>
 
 			<header className="flex flex-col items-start gap-2">
 				<span className="flex flex-row items-center gap-2 justify-between w-full">
 					<span className="flex flex-row items-center gap-2">
-						<h1 className="text-3xl m-0">Workspace parameters</h1>
+						<h1 className="text-3xl m-0">工作区参数</h1>
 						<TooltipProvider delayDuration={100}>
 							<Tooltip>
 								<TooltipTrigger asChild>
 									<CircleHelpIcon className="size-icon-xs text-content-secondary" />
 								</TooltipTrigger>
 								<TooltipContent className="max-w-xs text-sm">
-									Dynamic Parameters enhances Coder's existing parameter system
-									with real-time validation, conditional parameter behavior, and
-									richer input types.
+									动态参数增强了 Coder 现有的参数系统，提供实时验证、条件参数行为以及更丰富的输入类型。
 									<br />
 									<Link
 										href={docs(
 											"/admin/templates/extending-templates/dynamic-parameters",
 										)}
 									>
-										View docs
+										查看文档
 									</Link>
 								</TooltipContent>
 							</Tooltip>
@@ -298,14 +296,14 @@ const WorkspaceParametersPageExperimental: FC = () => {
 			) : (
 				<EmptyState
 					className="border border-border border-solid rounded-md"
-					message="This workspace has no parameters"
+					message="此工作区没有参数"
 					cta={
 						<Link
 							href={docs(
 								"/admin/templates/extending-templates/dynamic-parameters",
 							)}
 						>
-							Learn more about parameters
+							了解更多关于参数
 						</Link>
 					}
 				/>
@@ -320,12 +318,12 @@ const WorkspaceParametersPageExperimental: FC = () => {
 					setConfirmingRestart({ open: false });
 				}}
 				onClose={() => setConfirmingRestart({ open: false })}
-				title="Restart your workspace?"
-				confirmText="Restart"
+				title="重启工作区？"
+				confirmText="重启"
 				description={
 					<>
-						Restarting your workspace will stop all running processes and{" "}
-						<strong>delete non-persistent data</strong>.
+						重启工作区将停止所有正在运行的进程并{" "}
+						<strong>删除非持久化数据</strong>。
 					</>
 				}
 			/>

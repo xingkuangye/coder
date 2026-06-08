@@ -1,7 +1,4 @@
-// The backend's search-query parser toggles its quoted-state on every `"` and
-// has no backslash-escape handling, so escaping quotes here would produce a
-// query the backend cannot parse. Stripping quotes from bare text keeps the
-// resulting `title:"..."` filter well-formed for the backend.
+// 后端的搜索查询解析器在遇到每个 `"` 时切换其引号状态，且不支持反斜杠转义，因此在此处转义引号会产生后端无法解析的查询。从纯文本中移除引号可确保最终的 `title:"..."` 筛选器格式正确，以便后端处理。
 const sanitizeChatSearchValue = (value: string): string => {
 	return value.replaceAll('"', "");
 };
@@ -79,11 +76,10 @@ const getKeyValuePair = (
 };
 
 /**
- * Normalizes raw search input into a query string the chat search API accepts.
+ * 将原始搜索输入规范化为聊天搜索 API 可接受的查询字符串。
  *
- * Bare text and `title:` filters are merged into a single `title:"..."`
- * filter (the backend rejects a parameter that appears more than once).
- * Recognized `key:value` filters pass through unchanged.
+ * 纯文本和 `title:` 过滤器被合并为一个 `title:"..."` 过滤器（后端不允许同一参数出现多次）。
+ * 已知的 `key:value` 过滤器会原样传递。
  */
 export const normalizeChatSearchInput = (
 	rawInput: string,

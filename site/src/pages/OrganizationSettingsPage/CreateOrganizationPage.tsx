@@ -30,7 +30,7 @@ const CreateOrganizationPage: FC = () => {
 						await createOrganizationMutation.mutateAsync(values, {
 							onSuccess: () => {
 								toast.success(
-									`Organization "${values.name}" created successfully.`,
+									`组织 "${values.name}" 创建成功。`,
 								);
 								navigate(`/organizations/${values.name}`);
 							},

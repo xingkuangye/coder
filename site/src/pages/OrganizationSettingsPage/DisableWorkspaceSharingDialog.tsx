@@ -56,42 +56,41 @@ export const DisableWorkspaceSharingDialog: FC<
 				<DialogHeader>
 					<DialogTitle>
 						{isRestrictingToServiceAccounts
-							? "Restrict sharing to service accounts"
-							: "Disable workspace sharing"}
+							? "限制共享至服务账号"
+							: "禁用工作空间共享"}
 					</DialogTitle>
 					<DialogDescription asChild>
 						<div className="flex flex-col gap-4">
 							<p>
 								{isRestrictingToServiceAccounts
-									? "Restricting workspace sharing to service accounts only will immediately unshare any workspaces currently shared by non-service accounts."
-									: "Disabling workspace sharing will immediately remove all existing workspace sharing permissions for all users in this organization."}
+									? "将工作空间共享限制为仅服务账号会立即取消当前由非服务账号共享的所有工作空间共享。"
+									: "禁用工作空间共享将立即删除此组织中所有用户的全部现有工作空间共享权限。"}
 							</p>
 							{isLoadingCount ? (
 								<Skeleton className="h-6 w-4/5" />
 							) : sharedCount > 0 ? (
 								<p className="text-content-danger font-medium m-0">
-									This action will affect{" "}
+									此操作将影响当前共享的{" "}
 									<strong className="text-content-primary">
-										{sharedCount} workspace{sharedCount !== 1 ? "s" : ""}
-									</strong>{" "}
-									that {sharedCount !== 1 ? "are" : "is"} currently shared.
+										{sharedCount} 个工作空间
+									</strong>。
 								</p>
 							) : (
 								<p className="text-content-secondary m-0">
-									No workspaces are currently shared in this organization.
+									此组织中当前没有共享的工作空间。
 								</p>
 							)}
 							<p>
-								Re-enabling workspace sharing will{" "}
-								<strong className="text-content-primary">not restore</strong>{" "}
-								these permissions.
+								重新启用工作空间共享将{" "}
+								<strong className="text-content-primary">不会恢复</strong>{" "}
+								这些权限。
 							</p>
 						</div>
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
 					<Button variant="outline" onClick={onCancel} disabled={isLoading}>
-						Cancel
+						取消
 					</Button>
 					<Button
 						variant="destructive"
@@ -99,9 +98,7 @@ export const DisableWorkspaceSharingDialog: FC<
 						disabled={isLoading}
 					>
 						<Spinner loading={isLoading} />
-						{isRestrictingToServiceAccounts
-							? "Restrict sharing"
-							: "Disable sharing"}
+						{isRestrictingToServiceAccounts ? "限制共享" : "禁用共享"}
 					</Button>
 				</DialogFooter>
 			</DialogContent>

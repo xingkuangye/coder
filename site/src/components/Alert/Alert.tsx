@@ -122,7 +122,7 @@ export const Alert: FC<AlertProps> = ({
 						onDismiss?.();
 					}}
 					data-testid="dismiss-banner-btn"
-					aria-label="Dismiss"
+					aria-label="关闭"
 				>
 					<XIcon className="!p-0 size-icon-lg" />
 				</Button>

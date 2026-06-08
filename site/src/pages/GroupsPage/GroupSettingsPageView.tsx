@@ -22,7 +22,7 @@ type FormData = {
 };
 
 const validationSchema = Yup.object({
-	name: nameValidator("Name"),
+	name: nameValidator("名称"),
 	quota_allowance: Yup.number().required().min(0).integer(),
 });
 
@@ -54,11 +54,10 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 	const getFieldHelpers = getFormHelpers<FormData>(form, errors);
 	const nameField = getFieldHelpers("name");
 	const displayNameField = getFieldHelpers("display_name", {
-		helperText: "Keep empty to default to the name.",
+		helperText: "留空则默认为名称。",
 	});
 	const quotaField = getFieldHelpers("quota_allowance", {
-		helperText: `This group gives ${form.values.quota_allowance} quota credits to each
-            of its members.`,
+		helperText: `该群组为每个成员提供 ${form.values.quota_allowance} 配额点数。`,
 	});
 
 	return (
@@ -66,12 +65,12 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 			<section className="flex flex-col gap-4 max-w-md">
 				<div className="flex flex-col gap-2">
 					<h2 className="text-xl font-semibold text-content-primary m-0">
-						General
+						常规
 					</h2>
 				</div>
 				<div className="flex flex-col gap-6">
 					<div className="flex flex-col items-start gap-2">
-						<Label htmlFor={nameField.id}>Name</Label>
+						<Label htmlFor={nameField.id}>名称</Label>
 						<Input
 							id={nameField.id}
 							name={nameField.name}
@@ -98,7 +97,7 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 					{!isEveryoneGroup(group) && (
 						<>
 							<div className="flex flex-col items-start gap-2">
-								<Label htmlFor={displayNameField.id}>Display name</Label>
+								<Label htmlFor={displayNameField.id}>显示名称</Label>
 								<Input
 									id={displayNameField.id}
 									name={displayNameField.name}
@@ -125,7 +124,7 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 								{...getFieldHelpers("avatar_url")}
 								onChange={onChangeTrimmed(form)}
 								fullWidth
-								label="Avatar URL"
+								label="头像 URL"
 								onPickEmoji={(value) => form.setFieldValue("avatar_url", value)}
 							/>
 						</>
@@ -135,15 +134,15 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 			<section className="flex flex-col gap-8">
 				<div className="flex flex-col gap-2">
 					<h2 className="text-xl font-semibold text-content-primary m-0">
-						Quotas
+						配额
 					</h2>
 					<p className="text-sm leading-none m-0 text-content-secondary">
-						You can use quotas to restrict how many resources a user can create.
+						你可以使用配额来限制用户可创建资源的数量。
 					</p>
 				</div>
 				<div className="flex flex-col gap-6">
 					<div className="flex flex-col items-start gap-2">
-						<Label htmlFor={quotaField.id}>Quota Allowance</Label>
+						<Label htmlFor={quotaField.id}>配额额度</Label>
 						<Input
 							id={quotaField.id}
 							name={quotaField.name}
@@ -171,12 +170,12 @@ const UpdateGroupForm: FC<UpdateGroupFormProps> = ({
 
 			<footer className="flex items-center justify-start space-x-2">
 				<Button onClick={onCancel} variant="outline">
-					Cancel
+					取消
 				</Button>
 
 				<Button type="submit" disabled={isLoading}>
 					<Spinner loading={isLoading} />
-					Save
+					保存
 				</Button>
 			</footer>
 		</form>

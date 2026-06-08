@@ -32,43 +32,43 @@ import {
 
 const loginTypeOptions = {
 	password: {
-		label: "Password",
-		description: "Use an email address and password to log in.",
+		label: "密码",
+		description: "使用电子邮件地址和密码登录。",
 	},
 	oidc: {
 		label: "OpenID Connect",
-		description: "Use an OpenID Connect provider for authentication.",
+		description: "使用 OpenID Connect 提供商进行身份验证。",
 	},
 	github: {
 		label: "GitHub",
-		description: "Use GitHub OAuth for authentication.",
+		description: "使用 GitHub OAuth 进行身份验证。",
 	},
 	none: {
-		label: "Service account",
+		label: "服务账户",
 		description:
-			"Cannot log in interactively. Intended for automated pipelines, bots, and other non-human access.",
+			"不可交互式登录。适用于自动化流水线、机器人及其他非人工访问。",
 	},
 } as const;
 
 const validationSchema = Yup.object({
-	username: nameValidator("Username"),
-	name: displayNameValidator("Full name"),
+	username: nameValidator("用户名"),
+	name: displayNameValidator("姓名"),
 	email: Yup.string()
 		.trim()
 		.when("service_account", {
 			is: false,
 			then: (schema) =>
 				schema
-					.email("Please enter a valid email address.")
-					.required("Please enter an email address."),
+					.email("请输入有效的电子邮件地址。")
+					.required("请输入电子邮件地址。"),
 			otherwise: (schema) => schema.optional(),
 		}),
 	login_type: Yup.string()
 		.oneOf(Object.keys(loginTypeOptions))
-		.required("Please select a login type."),
+		.required("请选择登录类型。"),
 	password: Yup.string().when("login_type", {
 		is: "password",
-		then: (schema) => schema.required("Please enter a password."),
+		then: (schema) => schema.required("请输入密码。"),
 		otherwise: (schema) => schema,
 	}),
 });
@@ -177,11 +177,11 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 	const isServiceAccount = form.values.login_type === "none";
 	const isPasswordLogin = form.values.login_type === "password";
 	const loginTypeField = getFieldHelpers("login_type", {
-		helperText: "Authentication method for this user.",
+		helperText: "此用户的身份验证方法。",
 	});
 
 	return (
-		<FullPageForm title="Create user" size="condensed">
+		<FullPageForm title="创建用户" size="condensed">
 			{isApiError(error) && !hasApiFieldErrors(error) && (
 				<ErrorAlert error={error} className="mb-8" />
 			)}
@@ -193,7 +193,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 				<div className="flex flex-col gap-6">
 					{showOrganizations && (
 						<div className="flex flex-col gap-2 max-w-sm">
-							<Label htmlFor="organization">Organization</Label>
+							<Label htmlFor="organization">组织</Label>
 							<OrganizationAutocomplete
 								id="organization"
 								required
@@ -209,7 +209,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 
 					{/* Login type — "none" is presented as "Service account" */}
 					<div className="flex flex-col gap-2 max-w-sm">
-						<Label htmlFor="login_type">Login type</Label>
+						<Label htmlFor="login_type">登录类型</Label>
 						<Select
 							value={form.values.login_type}
 							onValueChange={async (value) => {
@@ -239,7 +239,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 									loginTypeField.error && "border-border-destructive",
 								)}
 							>
-								<SelectValue placeholder="Select a login type…" />
+								<SelectValue placeholder="选择登录类型…" />
 							</SelectTrigger>
 
 							<SelectContent className="max-w-sm">
@@ -281,7 +281,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 
 					<FormField
 						field={getFieldHelpers("username")}
-						label="Username"
+						label="用户名"
 						id="username"
 						name="username"
 						value={form.values.username}
@@ -296,9 +296,9 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 						field={getFieldHelpers("name")}
 						label={
 							<>
-								Full name{" "}
+								姓名{" "}
 								<span className="font-normal text-content-secondary">
-									(optional)
+									（可选）
 								</span>
 							</>
 						}
@@ -315,7 +315,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 							field={getFieldHelpers("email")}
 							label={
 								<>
-									Email{" "}
+									电子邮件{" "}
 									<span className="text-xs font-bold text-content-destructive">
 										*
 									</span>
@@ -334,7 +334,7 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 					{isPasswordLogin && (
 						<FormField
 							field={getFieldHelpers("password")}
-							label="Password"
+							label="密码"
 							id="password"
 							name="password"
 							value={form.values.password}
@@ -357,11 +357,11 @@ export const CreateUserForm: FC<CreateUserFormProps> = ({
 
 				<FormFooter className="mt-8">
 					<Button onClick={onCancel} variant="outline">
-						Cancel
+						取消
 					</Button>
 					<Button type="submit" disabled={isLoading}>
 						<Spinner loading={isLoading} />
-						Save
+						保存
 					</Button>
 				</FormFooter>
 			</form>

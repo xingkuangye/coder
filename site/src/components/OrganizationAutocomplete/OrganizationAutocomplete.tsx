@@ -57,7 +57,7 @@ export const OrganizationAutocomplete: FC<OrganizationAutocompleteProps> = ({
 						</>
 					) : (
 						<span className="text-content-secondary">
-							Select an organization{required ? "…" : " (optional)"}
+							选择组织{required ? "…" : " (可选)"}
 						</span>
 					)}
 					<ChevronDownIcon className="ml-auto !size-icon-sm shrink-0 text-content-secondary" />
@@ -68,9 +68,9 @@ export const OrganizationAutocomplete: FC<OrganizationAutocompleteProps> = ({
 				className="w-[var(--radix-popover-trigger-width)] p-0"
 			>
 				<Command loop>
-					<CommandInput placeholder="Find organization…" />
+					<CommandInput placeholder="查找组织…" />
 					<CommandList>
-						<CommandEmpty>No organizations found.</CommandEmpty>
+						<CommandEmpty>未找到组织。</CommandEmpty>
 						<CommandGroup>
 							{options.map((org) => (
 								<CommandItem

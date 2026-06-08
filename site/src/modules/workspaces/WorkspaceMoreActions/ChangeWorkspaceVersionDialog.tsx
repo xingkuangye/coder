@@ -50,12 +50,12 @@ export const ChangeWorkspaceVersionDialog: FC<
 			}}
 			hideCancel={false}
 			type="success"
-			cancelText="Cancel"
-			confirmText="Change"
-			title="Change version"
+			cancelText="取消"
+			confirmText="更改"
+			title="更改版本"
 			description={
 				<div className="flex flex-col gap-4">
-					<p>You are about to change the version of this workspace.</p>
+					<p>您即将更改此工作区的版本。</p>
 					{validVersions ? (
 						<>
 							<FormFields>
@@ -100,7 +100,7 @@ export const ChangeWorkspaceVersionDialog: FC<
 															)}
 														</div>
 														{workspace.template_active_version_id ===
-															option.id && <Pill type="success">Active</Pill>}
+															option.id && <Pill type="success">当前</Pill>}
 													</div>
 												}
 												subtitle={createDayString(option.created_at)}
@@ -112,7 +112,7 @@ export const ChangeWorkspaceVersionDialog: FC<
 											<TextField
 												{...params}
 												fullWidth
-												placeholder="Template version name"
+												placeholder="模板版本名称"
 												InputProps={{
 													...params.InputProps,
 													endAdornment: (
@@ -137,7 +137,7 @@ export const ChangeWorkspaceVersionDialog: FC<
 									)}
 									<Alert severity="info">
 										<AlertTitle>
-											Published by {selectedVersion.created_by.username}
+											由 {selectedVersion.created_by.username} 发布
 										</AlertTitle>
 									</Alert>
 								</>

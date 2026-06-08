@@ -87,7 +87,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 			: undefined;
 	const lastTurnSummary = asNonEmptyString(chat.last_turn_summary);
 	const isStreaming = chat.status === "running" || chat.status === "pending";
-	const streamingSubtitle = isStreaming ? `${modelName} streaming…` : undefined;
+	const streamingSubtitle = isStreaming ? `${modelName} 正在生成…` : undefined;
 	const staleTurnSummaryReleaseMs = 10_000;
 	const [streamingSummary, setStreamingSummary] = useState<string | undefined>(
 		isStreaming ? lastTurnSummary : undefined,
@@ -138,7 +138,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 	const deletions = diffStatus?.deletions ?? 0;
 	const hasLineStats = additions > 0 || deletions > 0 || changedFiles > 0;
 	const filesChangedLabel = `${changedFiles} ${
-		changedFiles === 1 ? "file" : "files"
+		changedFiles === 1 ? "个文件" : "个文件"
 	}`;
 	const workspaceId = chat.workspace_id;
 	const isArchivingThisChat = isArchiving && archivingChatId === chat.id;
@@ -162,12 +162,12 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 					{chat.pin_order > 0 ? (
 						<>
 							<PinOffIcon className="size-3.5" />
-							Unpin agent
+							取消置顶代理
 						</>
 					) : (
 						<>
 							<PinIcon className="size-3.5" />
-							Pin agent
+							置顶代理
 						</>
 					)}
 				</Item>
@@ -175,14 +175,14 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 			{chat.archived ? (
 				<Item disabled={isArchiving} onSelect={() => onUnarchiveAgent(chat.id)}>
 					<ArchiveRestoreIcon className="size-3.5" />
-					Unarchive agent
+					取消归档代理
 				</Item>
 			) : (
 				<>
 					{onOpenRenameDialog && (
 						<Item onSelect={() => onOpenRenameDialog(chat)}>
 							<SquarePenIcon className="size-3.5" />
-							Rename chat
+							重命名聊天
 						</Item>
 					)}
 					<Separator />
@@ -192,7 +192,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 						onSelect={() => onArchiveAgent(chat.id)}
 					>
 						<ArchiveIcon className="size-3.5" />
-						Archive agent
+						归档代理
 					</Item>
 					{workspaceId && (
 						<Item
@@ -201,7 +201,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 							onSelect={() => onArchiveAndDeleteWorkspace(chat.id, workspaceId)}
 						>
 							<Trash2Icon className="size-3.5" />
-							Archive & delete workspace
+							归档并删除工作区
 						</Item>
 					)}
 				</>
@@ -255,7 +255,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 										"[@media(hover:hover)]:group-hover/icon:visible",
 									)}
 									data-testid={`agents-tree-toggle-${chat.id}`}
-									aria-label={isExpanded ? "Collapse" : "Expand"}
+									aria-label={isExpanded ? "折叠" : "展开"}
 									aria-expanded={isExpanded}
 								>
 									{isExpanded ? <ChevronDownIcon /> : <ChevronRightIcon />}
@@ -283,11 +283,11 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 											{chat.title}
 										</span>
 										{chat.has_unread && !isActiveChat && (
-											<span className="sr-only">(unread)</span>
+											<span className="sr-only">(未读)</span>
 										)}
 										{isRegeneratingThisChat && (
 											<span className="sr-only" role="status">
-												Regenerating title…
+												正在重新生成标题…
 											</span>
 										)}
 									</div>
@@ -346,7 +346,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 							{isSharedChat && (
 								<UsersIcon
 									className="mt-auto size-3.5 text-content-secondary"
-									aria-label="Shared chat"
+									aria-label="共享聊天"
 								/>
 							)}
 							<DropdownMenu>
@@ -355,7 +355,7 @@ export const ChatTreeNode: FC<ChatTreeNodeProps> = ({ chat, isChildNode }) => {
 										size="icon"
 										variant="subtle"
 										className="absolute inset-0 flex h-6 w-7 min-w-0 justify-end rounded-none px-0 opacity-0 text-content-secondary hover:text-content-primary [@media(hover:hover)]:group-hover:opacity-100 data-[state=open]:opacity-100"
-										aria-label={`Open actions for ${chat.title}`}
+										aria-label={`打开 ${chat.title} 的操作菜单`}
 									>
 										<EllipsisVerticalIcon className="size-3.5" />
 									</Button>

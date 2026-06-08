@@ -66,7 +66,7 @@ export const getFormHelpers =
 			typeof value === "string" &&
 			value.length > maxLength - 30
 		) {
-			helperText = `This cannot be longer than ${maxLength} characters. (${value.length}/${maxLength})`;
+			helperText = `不能超过 ${maxLength} 个字符。(当前 ${value.length}/${maxLength})`;
 			// Show it as an error, rather than a hint
 			if (value.length > maxLength) {
 				lengthError = helperText;
@@ -103,20 +103,20 @@ const displayNameRE = /^[^\s](.*[^\s])?$/;
 // REMARK: see #1756 for name/username semantics
 export const nameValidator = (name: string): Yup.StringSchema =>
 	Yup.string()
-		.required(`Please enter a ${name.toLowerCase()}.`)
-		.matches(usernameRE, "Special characters (e.g.: !, @, #) are not supported")
-		.max(maxLenName, `${name} cannot be longer than ${maxLenName} characters`);
+		.required(`请输入${name.toLowerCase()}。`)
+		.matches(usernameRE, "不支持特殊字符（例如：!、@、#）")
+		.max(maxLenName, `${name} 不能超过 ${maxLenName} 个字符`);
 
 export const displayNameValidator = (displayName: string): Yup.StringSchema =>
 	Yup.string()
 		.matches(
 			displayNameRE,
-			`${displayName} must start and end with non-whitespace character`,
+			`${displayName} 必须以非空白字符开头和结尾`,
 		)
 		.max(
 			displayNameMaxLength,
-			`${displayName} cannot be longer than ${displayNameMaxLength} characters`,
+			`${displayName} 不能超过 ${displayNameMaxLength} 个字符`,
 		)
 		.optional();
 
-export const iconValidator = Yup.string().label("Icon").max(256);
+export const iconValidator = Yup.string().label("图标").max(256);

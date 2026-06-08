@@ -12,12 +12,12 @@ export const AISeatCell: FC<AISeatCellProps> = ({ hasAISeat }) => {
 			{hasAISeat ? (
 				<CircleCheckIcon
 					className="size-5 text-content-success"
-					aria-label="Consuming AI seat"
+					aria-label="占用AI席位"
 				/>
 			) : (
 				<XIcon
 					className="size-5 text-content-disabled"
-					aria-label="Not consuming AI seat"
+					aria-label="未占用AI席位"
 				/>
 			)}
 		</TableCell>

@@ -4,7 +4,7 @@ import { useDashboard } from "#/modules/dashboard/useDashboard";
 import { DeploymentSidebarView } from "./DeploymentSidebarView";
 
 /**
- * A sidebar for deployment settings.
+ * 用于部署设置的侧边栏。
  */
 export const DeploymentSidebar: FC = () => {
 	const { permissions } = useAuthenticated();

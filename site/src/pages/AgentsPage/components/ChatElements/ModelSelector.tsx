@@ -44,7 +44,7 @@ interface ModelSelectorProps {
 const defaultFormatProviderLabel = (provider: string): string => {
 	const normalized = provider.trim().toLowerCase();
 	if (!normalized) {
-		return "Unknown";
+		return "未知";
 	}
 	return `${normalized[0].toUpperCase()}${normalized.slice(1)}`;
 };
@@ -52,10 +52,10 @@ const defaultFormatProviderLabel = (provider: string): string => {
 const formatContextLimit = (tokens: number): string => {
 	if (tokens >= 1_000_000) {
 		const m = tokens / 1_000_000;
-		return `${Number.isInteger(m) ? m : m.toFixed(1)}M context window`;
+		return `${Number.isInteger(m) ? m : m.toFixed(1)}M 上下文窗口`;
 	}
 	const k = Math.round(tokens / 1_000);
-	return `${k}K context window`;
+	return `${k}K 上下文窗口`;
 };
 
 export const ModelSelector: FC<ModelSelectorProps> = ({
@@ -63,8 +63,8 @@ export const ModelSelector: FC<ModelSelectorProps> = ({
 	value,
 	onValueChange,
 	disabled = false,
-	placeholder = "Select model",
-	emptyMessage = "No models found.",
+	placeholder = "选择模型",
+	emptyMessage = "未找到模型。",
 	formatProviderLabel = defaultFormatProviderLabel,
 	className,
 	dropdownSide = "bottom",
@@ -166,8 +166,8 @@ const ModelOptionItem: FC<ModelOptionItemProps> = ({
 			? formatContextLimit(option.contextLimit)
 			: null;
 	const subtext = contextInfo
-		? `via ${providerLabel}, ${contextInfo}`
-		: `via ${providerLabel}`;
+		? `来自 ${providerLabel}，${contextInfo}`
+		: `来自 ${providerLabel}`;
 
 	return (
 		<Tooltip>
@@ -190,7 +190,7 @@ const ModelOptionItem: FC<ModelOptionItemProps> = ({
 				className="hidden px-2.5 py-1.5 md:block"
 			>
 				<span className="block font-semibold text-content-primary leading-tight">
-					{label} via {providerLabel}
+					{label} 来自 {providerLabel}
 				</span>
 				{contextInfo && (
 					<span className="block text-content-secondary leading-tight">

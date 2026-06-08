@@ -46,8 +46,8 @@ export const AgentSettingsInstructionsPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Instructions"
-				description="Control the system prompts and plan mode instructions used across the deployment."
+				label="指令"
+				description="控制整个部署中使用的系统提示和计划模式指令。"
 			/>
 			<SystemInstructionsSettings
 				systemPromptData={systemPromptData}

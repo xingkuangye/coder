@@ -73,7 +73,7 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 	let status = (
 		<p className="flex items-center justify-center gap-2 text-content-disabled">
 			<CircularProgress size={16} color="secondary" data-chromatic="ignore" />
-			Checking for authentication...
+			正在检查认证...
 		</p>
 	);
 	if (deviceExchangeError) {
@@ -86,7 +86,7 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 					<div>
 						{status}
 						<Alert severity="warning">
-							Rate limit reached. Waiting a few seconds before retrying...
+							已达到速率限制。等待几秒后重试...
 						</Alert>
 					</div>
 				);
@@ -94,14 +94,14 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 			case DeviceExchangeError.ExpiredToken:
 				status = (
 					<Alert severity="error">
-						The one-time code has expired. Refresh to get a new one!
+						一次性代码已过期。请刷新以获取新代码！
 					</Alert>
 				);
 				break;
 			case DeviceExchangeError.AccessDenied:
 				status = (
 					<Alert severity="error" prominent>
-						Access to the Git provider was denied.
+						Git 提供商的访问被拒绝。
 					</Alert>
 				);
 				break;
@@ -131,7 +131,7 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 	return (
 		<div>
 			<p className="m-0 text-center text-base leading-relaxed text-content-secondary">
-				Copy your one-time code:&nbsp;
+				复制您的一次性代码：&nbsp;
 				<div className="inline-flex items-center">
 					<span className="font-bold text-content-primary">
 						{externalAuthDevice.user_code}
@@ -139,11 +139,11 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 					&nbsp;{" "}
 					<CopyButton
 						text={externalAuthDevice.user_code}
-						label="Copy user code"
+						label="复制用户代码"
 					/>
 				</div>
 				<br />
-				Then open the link below and paste it:
+				然后打开下面的链接并粘贴：
 			</p>
 			<div className="m-4 flex flex-col gap-1">
 				<Link
@@ -153,7 +153,7 @@ export const GitDeviceAuth: FC<GitDeviceAuthProps> = ({
 					rel="noreferrer"
 				>
 					<ExternalLinkIcon className="size-icon-xs" />
-					Open and Paste
+					打开并粘贴
 				</Link>
 			</div>
 

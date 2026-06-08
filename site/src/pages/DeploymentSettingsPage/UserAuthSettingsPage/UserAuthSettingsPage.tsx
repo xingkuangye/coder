@@ -8,7 +8,7 @@ const UserAuthSettingsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("User Authentication Settings")}</title>
+			<title>{pageTitle("用户认证设置")}</title>
 
 			<UserAuthSettingsPageView options={deploymentConfig.options} />
 		</>

@@ -40,12 +40,12 @@ const DeploymentSettingsLayout: FC = () => {
 				<Breadcrumb>
 					<BreadcrumbList>
 						<BreadcrumbItem>
-							<BreadcrumbPage>Admin Settings</BreadcrumbPage>
+							<BreadcrumbPage>管理设置</BreadcrumbPage>
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
 							<BreadcrumbPage className="text-content-primary">
-								Deployment
+								部署
 							</BreadcrumbPage>
 						</BreadcrumbItem>
 					</BreadcrumbList>

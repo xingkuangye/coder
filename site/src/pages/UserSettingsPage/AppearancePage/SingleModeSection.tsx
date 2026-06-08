@@ -22,7 +22,7 @@ export const SingleModeSection: FC<SingleModeSectionProps> = ({
 }) => {
 	return (
 		<fieldset className="m-0 min-w-0 border-0 p-0">
-			<legend className="sr-only">Theme</legend>
+			<legend className="sr-only">主题</legend>
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 				{SINGLE_MODE_ORDER.map((theme) => (
 					<SingleTile

@@ -22,16 +22,16 @@ type ThinkingDisplayMode = UserPreferenceSettings["thinking_display_mode"];
 type AgentDisplayMode = UserPreferenceSettings["code_diff_display_mode"];
 
 const thinkingDisplayOptions: DisplayModeOption<ThinkingDisplayMode>[] = [
-	{ value: "auto", label: "Auto" },
-	{ value: "preview", label: "Preview" },
-	{ value: "always_expanded", label: "Always expanded" },
-	{ value: "always_collapsed", label: "Always collapsed" },
+	{ value: "auto", label: "自动" },
+	{ value: "preview", label: "预览" },
+	{ value: "always_expanded", label: "始终展开" },
+	{ value: "always_collapsed", label: "始终折叠" },
 ];
 
 const agentDisplayOptions: DisplayModeOption<AgentDisplayMode>[] = [
-	{ value: "auto", label: "Auto" },
-	{ value: "always_expanded", label: "Always expanded" },
-	{ value: "always_collapsed", label: "Always collapsed" },
+	{ value: "auto", label: "自动" },
+	{ value: "always_expanded", label: "始终展开" },
+	{ value: "always_collapsed", label: "始终折叠" },
 ];
 
 type DisplayModeSettingsProps<T extends string> = {
@@ -101,10 +101,10 @@ const DisplayModeSettings = <T extends string>({
 export const ThinkingDisplaySettings: FC = () => {
 	return (
 		<DisplayModeSettings
-			title="Thinking display"
-			description="How thinking blocks should be displayed by default. 'Auto' fully expands during streaming, then auto-collapses when done. 'Preview' auto-expands with a height constraint during streaming. 'Always expanded' shows full content. 'Always collapsed' keeps them collapsed."
-			ariaLabel="Thinking display mode"
-			errorMessage="Failed to save your thinking display preference."
+			title="推理过程显示"
+			description="设置推理块默认如何显示。“自动”在流式输出期间完全展开，完成后自动折叠。“预览”在流式输出期间自动展开并限制高度。“始终展开”始终显示完整内容。“始终折叠”始终保持折叠。"
+			ariaLabel="推理过程显示模式"
+			errorMessage="保存推理显示偏好失败。"
 			defaultValue="auto"
 			options={thinkingDisplayOptions}
 			getMode={(settings) => settings.thinking_display_mode}
@@ -118,10 +118,10 @@ export const ThinkingDisplaySettings: FC = () => {
 export const ShellToolDisplaySettings: FC = () => {
 	return (
 		<DisplayModeSettings
-			title="Shell output display"
-			description="How shell command output should be displayed by default. 'Auto' opens running commands and completed commands with output, then keeps empty output collapsed. 'Always expanded' opens shell output by default. 'Always collapsed' keeps it collapsed."
-			ariaLabel="Shell output display mode"
-			errorMessage="Failed to save your shell output display preference."
+			title="Shell 输出显示"
+			description="设置 shell 命令输出默认如何显示。“自动”会展开正在运行的命令和有输出的已完成命令，无输出时保持折叠。“始终展开”默认展开 shell 输出。“始终折叠”保持折叠。"
+			ariaLabel="Shell 输出显示模式"
+			errorMessage="保存 Shell 输出显示偏好失败。"
 			defaultValue="auto"
 			options={agentDisplayOptions}
 			getMode={(settings) => settings.shell_tool_display_mode}
@@ -135,10 +135,10 @@ export const ShellToolDisplaySettings: FC = () => {
 export const CodeDiffDisplaySettings: FC = () => {
 	return (
 		<DisplayModeSettings
-			title="Code diff display"
-			description="Controls how code edit diffs appear. 'Auto' starts single-file writes collapsed and opens multi-file edits with a height-constrained preview. 'Always expanded' opens diffs by default; 'Always collapsed' keeps them collapsed."
-			ariaLabel="Code diff display mode"
-			errorMessage="Failed to save your code diff display preference."
+			title="代码差异显示"
+			description="控制代码编辑差异的显示方式。“自动”对单文件写入折叠，对多文件编辑自动展开并显示高度受限的预览。“始终展开”默认展开差异；“始终折叠”保持折叠。"
+			ariaLabel="代码差异显示模式"
+			errorMessage="保存代码差异显示偏好失败。"
 			defaultValue="auto"
 			options={agentDisplayOptions}
 			getMode={(settings) => settings.code_diff_display_mode}

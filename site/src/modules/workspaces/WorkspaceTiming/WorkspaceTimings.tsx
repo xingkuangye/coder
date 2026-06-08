@@ -108,7 +108,7 @@ export const WorkspaceTimings: FC<WorkspaceTimingsProps> = ({
 					className="after:content-[''] after:absolute after:inset-0"
 				>
 					<ChevronDownIcon open={isOpen} />
-					<span>Build timeline</span>
+					<span>构建时间线</span>
 				</Button>
 				<span className="ml-auto text-sm text-content-secondary pr-2">
 					{isLoading ? (

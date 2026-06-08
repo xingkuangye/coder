@@ -23,6 +23,15 @@ export const taskStatusToStatusIndicatorVariant: Record<
 	unknown: "warning",
 };
 
+export const taskStatusToDisplayText: Record<TypesGen.TaskStatus, string> = {
+	active: "活跃",
+	error: "错误",
+	initializing: "初始化中",
+	pending: "待处理",
+	paused: "已暂停",
+	unknown: "未知",
+};
+
 export const TaskStatus: FC<TaskStatusProps> = ({ status, stateMessage }) => {
 	return (
 		<StatusIndicator
@@ -31,7 +40,9 @@ export const TaskStatus: FC<TaskStatusProps> = ({ status, stateMessage }) => {
 		>
 			<StatusIndicatorDot className="mt-1" />
 			<div className="flex flex-col">
-				<span className="[&:first-letter]:uppercase">{status}</span>
+				<span className="[&:first-letter]:uppercase">
+					{taskStatusToDisplayText[status]}
+				</span>
 				<span className="text-xs font-normal text-content-secondary truncate max-w-sm">
 					{stateMessage}
 				</span>

@@ -43,7 +43,7 @@ const SecretsPage: FC = () => {
 			}}
 			onCreateSecret={async (request) => {
 				const secret = await createSecretMutation.mutateAsync(request);
-				toast.success(`Created secret "${secret.name}" successfully.`);
+				toast.success(`已成功创建密钥 "${secret.name}"。`);
 				return secret;
 			}}
 			onUpdateSecret={async (name, request) => {
@@ -51,15 +51,15 @@ const SecretsPage: FC = () => {
 					name,
 					request,
 				});
-				toast.success(`Updated secret "${secret.name}" successfully.`);
+				toast.success(`已成功更新密钥 "${secret.name}"。`);
 				return secret;
 			}}
 			onDeleteSecret={async (secret) => {
 				try {
 					await deleteSecretMutation.mutateAsync(secret.name);
-					toast.success(`Deleted secret "${secret.name}" successfully.`);
+					toast.success(`已成功删除密钥 "${secret.name}"。`);
 				} catch (error) {
-					toast.error(getErrorMessage(error, "Failed to delete secret."), {
+					toast.error(getErrorMessage(error, "删除密钥失败。"), {
 						description: getErrorDetail(error),
 					});
 					throw error;

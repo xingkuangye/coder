@@ -24,7 +24,7 @@ export const LocalDiffPanel: FC<LocalDiffPanelProps> = ({
 		<CommentableDiffViewer
 			parsedFiles={parsedFiles}
 			isExpanded={isExpanded}
-			emptyMessage="No file changes."
+			emptyMessage="没有文件更改。"
 			diffStyle={diffStyle}
 			chatInputRef={chatInputRef}
 		/>

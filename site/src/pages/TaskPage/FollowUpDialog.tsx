@@ -50,10 +50,9 @@ export const FollowUpDialog: FC<FollowUpDialogProps> = ({
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			<DialogContent className="max-w-2xl">
 				<DialogHeader>
-					<DialogTitle>Send Follow-up Message</DialogTitle>
+					<DialogTitle>发送跟进消息</DialogTitle>
 					<DialogDescription>
-						Add another message to this task. The task will resume and send this
-						follow-up automatically.
+						为此任务添加另一条消息。任务将恢复并自动发送此跟进消息。
 					</DialogDescription>
 				</DialogHeader>
 
@@ -63,7 +62,7 @@ export const FollowUpDialog: FC<FollowUpDialogProps> = ({
 							htmlFor={`${formId}-message`}
 							className="block text-sm font-medium text-content-primary mb-2"
 						>
-							Follow-up message
+							跟进消息
 						</label>
 						<Textarea
 							id={`${formId}-message`}
@@ -72,21 +71,21 @@ export const FollowUpDialog: FC<FollowUpDialogProps> = ({
 							onChange={formik.handleChange}
 							rows={10}
 							className="w-full"
-							placeholder={`Continue "${task.display_name}" after resume by asking for the next step...`}
+							placeholder={`在恢复后继续"${task.display_name}"，询问下一步...`}
 						/>
 					</div>
 				</form>
 
 				<DialogFooter>
 					<DialogClose asChild>
-						<Button variant="outline">Cancel</Button>
+						<Button variant="outline">取消</Button>
 					</DialogClose>
 					<Button
 						type="submit"
 						form={formId}
 						disabled={formik.values.message.trim().length === 0}
 					>
-						Send Follow-up
+						发送跟进
 					</Button>
 				</DialogFooter>
 			</DialogContent>

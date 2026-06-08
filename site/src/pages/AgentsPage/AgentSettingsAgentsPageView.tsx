@@ -78,8 +78,8 @@ export const AgentSettingsAgentsPageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Agents"
-				description="Configure defaults for delegated agents and other agent-specific capabilities."
+				label="代理"
+				description="配置委托代理及其他代理特定功能的默认选项。"
 			/>
 			<AdminPersonalModelOverridesSettings
 				adminSettings={adminOverridesData}
@@ -91,15 +91,15 @@ export const AgentSettingsAgentsPageView: FC<
 				isSaveAdminSettingError={isSaveAdminOverridesError}
 			/>
 			{showGeneralModelSection && onSaveGeneralModelOverride && (
-				<section aria-label="General model" className="flex flex-col gap-3">
+				<section aria-label="通用模型" className="flex flex-col gap-3">
 					<SectionHeader
-						label="General model"
-						description="Deployment-wide model override for delegated subagents with write capabilities, such as editing files or running commands in the workspace."
+						label="通用模型"
+						description="针对具有写入功能（例如在工作区中编辑文件或运行命令）的委托子代理的部署级模型覆盖。"
 						level="section"
 					/>
 					<SubagentModelOverrideSettings
-						title="General model"
-						description="Deployment-wide model override for delegated subagents with write capabilities, such as editing files or running commands in the workspace."
+						title="通用模型"
+						description="针对具有写入功能（例如在工作区中编辑文件或运行命令）的委托子代理的部署级模型覆盖。"
 						modelOverrideData={generalModelOverrideData}
 						enabledModelConfigs={enabledModelConfigs}
 						modelConfigsError={modelConfigsError}
@@ -107,23 +107,23 @@ export const AgentSettingsAgentsPageView: FC<
 						onSaveModelOverride={onSaveGeneralModelOverride}
 						isSaving={isSavingGeneralModelOverride}
 						isSaveError={isSaveGeneralModelOverrideError}
-						saveErrorMessage="Failed to save general model override."
+						saveErrorMessage="保存通用模型覆盖失败。"
 						showHeader={false}
 					/>
 				</section>
 			)}
 			<section
-				aria-label="Title generation model"
+				aria-label="标题生成模型"
 				className="flex flex-col gap-3"
 			>
 				<SectionHeader
-					label="Title generation model"
-					description="Choose a model for generated chat titles. Leave unset to use Coder's default title algorithm, which currently tries fast title models for configured providers first, for example Claude Haiku, GPT-4o mini, and Gemini Flash, then falls back to the chat's current model. When a model is selected here, Coder uses only that model for title generation. Recommended title models are fast and low cost."
+					label="标题生成模型"
+					description="选择用于生成聊天标题的模型。不设置则使用 Coder 的默认标题算法，该算法当前会首先尝试已配置提供商的快速标题模型，例如 Claude Haiku、GPT-4o mini 和 Gemini Flash，然后回退到聊天的当前模型。在此处选择模型后，Coder 将仅使用该模型进行标题生成。推荐的标题模型速度较快且成本较低。"
 					level="section"
 				/>
 				<SubagentModelOverrideSettings
-					title="Title generation model"
-					description="Choose a model for generated chat titles."
+					title="标题生成模型"
+					description="选择用于生成聊天标题的模型。"
 					modelOverrideData={titleGenerationModelOverrideData}
 					enabledModelConfigs={enabledModelConfigs}
 					modelConfigsError={modelConfigsError}
@@ -131,28 +131,27 @@ export const AgentSettingsAgentsPageView: FC<
 					onSaveModelOverride={onSaveTitleGenerationModel}
 					isSaving={isSavingTitleGenerationModel}
 					isSaveError={isSaveTitleGenerationModelError}
-					saveErrorMessage="Failed to save title generation model."
-					unsetPlaceholder="Use title default"
-					unavailableModelWarning="The selected model is currently unavailable. Title generation will be skipped until you choose another model or clear this setting."
+					saveErrorMessage="保存标题生成模型失败。"
+					unsetPlaceholder="使用标题默认值"
+					unavailableModelWarning="所选模型当前不可用。在您选择另一模型或清除此设置之前，将跳过标题生成。"
 					showHeader={false}
 				/>
 			</section>
 			<section
-				aria-label="Explore subagent model"
+				aria-label="探索子代理模型"
 				className="flex flex-col gap-3"
 			>
 				<SectionHeader
-					label="Explore subagent model"
-					description="Deployment-wide model override for read-only Explore subagents."
+					label="探索子代理模型"
+					description="针对只读探索子代理的部署级模型覆盖。"
 					level="section"
 				/>
 				<SubagentModelOverrideSettings
-					title="Explore subagent model"
+					title="探索子代理模型"
 					description={
 						<>
-							Deployment-wide model override for read-only Explore subagents
-							launched through the <code>spawn_agent</code> tool with a
-							<code>type=explore</code> argument.
+							针对通过 <code>spawn_agent</code> 工具并使用{" "}
+							<code>type=explore</code> 参数启动的只读探索子代理的部署级模型覆盖。
 						</>
 					}
 					modelOverrideData={exploreModelOverrideData}
@@ -162,7 +161,7 @@ export const AgentSettingsAgentsPageView: FC<
 					onSaveModelOverride={onSaveExploreModelOverride}
 					isSaving={isSavingExploreModelOverride}
 					isSaveError={isSaveExploreModelOverrideError}
-					saveErrorMessage="Failed to save Explore model override."
+					saveErrorMessage="保存探索模型覆盖失败。"
 					showHeader={false}
 				/>
 			</section>

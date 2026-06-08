@@ -5,7 +5,7 @@ const NotFoundPage: FC = () => {
 		<div className="w-full h-full flex flex-row justify-center items-center">
 			<p className="flex gap-4">
 				<span className="font-bold">404</span>
-				This page could not be found.
+				无法找到此页面。
 			</p>
 		</div>
 	);

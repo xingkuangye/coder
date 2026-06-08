@@ -32,10 +32,10 @@ interface RetentionPeriodSettingsProps {
 // Keep in sync with retentionDaysMaximum in coderd/exp_chats.go.
 const validationSchema = Yup.object({
 	retention_days: Yup.number()
-		.integer("Retention days must be a whole number.")
-		.min(1, "Retention period must be at least 1 day.")
-		.max(3650, "Must not exceed 3650 days (~10 years).")
-		.required("Retention days is required."),
+		.integer("保留天数必须为整数。")
+		.min(1, "保留期限至少为1天。")
+		.max(3650, "不得超过3650天（约10年）。")
+		.required("保留天数为必填。"),
 });
 
 export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
@@ -107,19 +107,18 @@ export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
 			<div className="flex items-center justify-between gap-4">
 				<div className="flex items-center gap-2">
 					<h3 className="m-0 text-sm font-semibold text-content-primary">
-						Conversation retention period
+						对话保留期限
 					</h3>
 				</div>
 				<Switch
 					checked={isRetentionEnabled}
 					onCheckedChange={handleToggleRetention}
-					aria-label="Enable conversation retention"
+					aria-label="启用对话保留"
 					disabled={isSavingRetentionDays || isRetentionDaysLoading}
 				/>
 			</div>
 			<p className="!mt-0.5 m-0 flex-1 text-xs text-content-secondary">
-				Archived conversations and orphaned files older than this are
-				automatically deleted.
+				超过此期限的已归档对话和孤立文件将自动删除。
 			</p>
 			{isRetentionEnabled && (
 				<>
@@ -130,7 +129,7 @@ export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
 							min={1}
 							max={3650}
 							step={1}
-							aria-label="Conversation retention period in days"
+							aria-label="对话保留天数"
 							value={form.values.retention_days}
 							onChange={form.handleChange}
 							onBlur={form.handleBlur}
@@ -139,7 +138,7 @@ export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
 							className="flex-1"
 						/>
 						<span className="flex h-10 w-[120px] items-center px-3 text-sm text-content-secondary">
-							Days
+							天
 						</span>
 					</div>
 					{form.errors.retention_days && form.touched.retention_days && (
@@ -164,7 +163,7 @@ export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
 									{isSavingRetentionDays && (
 										<Spinner loading className="h-4 w-4" />
 									)}
-									Save
+									保存
 								</Button>
 							))}
 					</div>
@@ -172,12 +171,12 @@ export const RetentionPeriodSettings: FC<RetentionPeriodSettingsProps> = ({
 			)}
 			{isSaveRetentionDaysError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to save retention setting.
+					保存保留设置失败。
 				</p>
 			)}
 			{isRetentionDaysLoadError && (
 				<p className="m-0 text-xs text-content-destructive">
-					Failed to load retention setting.
+					加载保留设置失败。
 				</p>
 			)}
 		</form>

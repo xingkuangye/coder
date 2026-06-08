@@ -56,7 +56,7 @@ export const SetupPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Set up your account")}</title>
+			<title>{pageTitle("设置您的账户")}</title>
 			<SetupPageView
 				authMethods={authMethodsQuery.data}
 				isLoading={isSigningIn || createFirstUserMutation.isPending}

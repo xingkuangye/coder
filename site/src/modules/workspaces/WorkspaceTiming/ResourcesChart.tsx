@@ -84,7 +84,7 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 					]}
 				/>
 				<ChartSearch
-					placeholder="Filter results..."
+					placeholder="筛选结果..."
 					value={filter}
 					onChange={setFilter}
 				/>
@@ -93,11 +93,11 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 			<ChartContent>
 				<YAxis>
 					<YAxisSection>
-						<YAxisHeader>{stage.name} stage</YAxisHeader>
+						<YAxisHeader>{stage.name} 阶段</YAxisHeader>
 						<YAxisLabels>
 							{visibleTimings.map((t) => {
 								const label = isStageBoundary(t.name)
-									? "total stage duration"
+									? "阶段总耗时"
 									: t.name;
 								return (
 									<YAxisLabel key={label} id={encodeURIComponent(t.name)}>
@@ -115,7 +115,7 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 							const stageBoundary = isStageBoundary(t.name);
 							const duration = calcDuration(t.range);
 							const legend = legendsByAction[t.action] ?? { label: t.action };
-							const label = stageBoundary ? "total stage duration" : t.name;
+							const label = stageBoundary ? "阶段总耗时" : t.name;
 
 							return (
 								<XAxisRow
@@ -143,7 +143,7 @@ export const ResourcesChart: FC<ResourcesChartProps> = ({
 													className="flex items-center gap-1 no-underline text-xs text-inherit hover:text-content-primary"
 												>
 													<ExternalLinkIcon className="size-icon-xs" />
-													view template
+													查看模板
 												</Link>
 											)}
 										</TooltipContent>
@@ -180,27 +180,27 @@ function getLegendsByAction(
 ): Record<string, ChartLegend | undefined> {
 	return {
 		"state refresh": {
-			label: "state refresh",
+			label: "状态刷新",
 		},
 		provision: {
-			label: "provision",
+			label: "配置",
 		},
 		create: {
-			label: "create",
+			label: "创建",
 			colors: {
 				fill: theme.roles.success.background,
 				stroke: theme.roles.success.outline,
 			},
 		},
 		delete: {
-			label: "delete",
+			label: "删除",
 			colors: {
 				fill: theme.roles.warning.background,
 				stroke: theme.roles.warning.outline,
 			},
 		},
 		read: {
-			label: "read",
+			label: "读取",
 			colors: {
 				fill: theme.roles.active.background,
 				stroke: theme.roles.active.outline,

@@ -206,7 +206,7 @@ export const handlers = [
 		);
 		if (!secret) {
 			return HttpResponse.json(
-				{ message: "Secret not found." },
+				{ message: "未找到密钥。" },
 				{ status: 404 },
 			);
 		}
@@ -227,7 +227,7 @@ export const handlers = [
 			);
 			if (!existing) {
 				return HttpResponse.json(
-					{ message: "Secret not found." },
+					{ message: "未找到密钥。" },
 					{ status: 404 },
 				);
 			}

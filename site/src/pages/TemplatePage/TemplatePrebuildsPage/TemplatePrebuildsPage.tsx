@@ -14,7 +14,7 @@ const TemplatePrebuildsPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle(`${template.name} - Prebuilds`)}</title>
+			<title>{pageTitle(`${template.name} - 预构建`)}</title>
 			<TemplatePrebuildsPageView templateId={template.id} />
 		</>
 	);
@@ -31,7 +31,7 @@ export const TemplatePrebuildsPageView: FC<TemplatePrebuildsPageViewProps> = ({
 		mutationFn: () => API.invalidateTemplatePresets(templateId),
 		onSuccess: (data: InvalidatePresetsResponse) => {
 			if (data.invalidated.length === 0) {
-				toast.success("No template presets required invalidation.");
+				toast.success("没有模板预设需要失效。");
 				return;
 			}
 
@@ -40,7 +40,7 @@ export const TemplatePrebuildsPageView: FC<TemplatePrebuildsPageViewProps> = ({
 			const count = data.invalidated.length;
 
 			toast.success(
-				`Invalidated ${count} ${count === 1 ? "preset" : "presets"} for version "${template_version_name}".`,
+				`已使版本“${template_version_name}”的 ${count} 个预设失效。`,
 			);
 		},
 	});
@@ -53,12 +53,10 @@ export const TemplatePrebuildsPageView: FC<TemplatePrebuildsPageViewProps> = ({
 				)}
 				<div>
 					<h3 className="text-xl text-content-primary m-0">
-						Invalidate presets
+						使预设失效
 					</h3>
 					<p className="text-sm text-content-secondary">
-						All prebuilt workspaces for the active template version are marked
-						as invalid. This is useful when prebuilds become stale due to
-						repository changes or infrastructure updates and need recycling.
+						活动模板版本的所有预构建工作区被标记为无效。当预构建由于仓库更改或基础设施更新而变得过时并需要回收时，此操作非常有用。
 					</p>
 				</div>
 
@@ -69,7 +67,7 @@ export const TemplatePrebuildsPageView: FC<TemplatePrebuildsPageViewProps> = ({
 						className="gap-2"
 					>
 						<RefreshCwIcon className="size-4" />
-						Invalidate now
+						立即失效
 					</Button>
 				</div>
 			</div>

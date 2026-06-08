@@ -18,7 +18,7 @@ export const RetryButton: FC<RetryButtonProps> = ({
 	const mainAction = (
 		<TopbarButton onClick={() => handleAction()}>
 			<RotateCcwIcon />
-			Retry
+			重试
 		</TopbarButton>
 	);
 
@@ -30,7 +30,7 @@ export const RetryButton: FC<RetryButtonProps> = ({
 		<div className="flex gap-1 items-center">
 			{mainAction}
 			<BuildParametersPopover
-				label="Retry with build parameters"
+				label="使用构建参数重试"
 				workspace={workspace}
 				onSubmit={handleAction}
 			/>

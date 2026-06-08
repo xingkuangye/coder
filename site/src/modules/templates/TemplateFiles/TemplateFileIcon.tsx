@@ -9,7 +9,7 @@ const FileTypeTerraform: FC<ComponentProps<"svg">> = (props) => (
 		fill="#813cf3"
 		{...props}
 	>
-		<title>file_type_terraform</title>
+		<title>Terraform 文件类型</title>
 		<polygon points="12.042 6.858 20.071 11.448 20.071 20.462 12.042 15.868 12.042 6.858 12.042 6.858" />
 		<polygon points="20.5 20.415 28.459 15.84 28.459 6.887 20.5 11.429 20.5 20.415 20.5 20.415" />
 		<polygon points="3.541 11.01 11.571 15.599 11.571 6.59 3.541 2 3.541 11.01 3.541 11.01" />
@@ -23,7 +23,7 @@ const FileTypeMarkdown: FC<ComponentProps<"svg">> = (props) => (
 		viewBox="0 0 32 32"
 		fill="#755838"
 		role="img"
-		aria-label="Markdown icon"
+		aria-label="Markdown 图标"
 		{...props}
 	>
 		<rect

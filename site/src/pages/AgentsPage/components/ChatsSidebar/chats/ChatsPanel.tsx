@@ -61,8 +61,8 @@ import {
 import { LoadMoreSentinel } from "./LoadMoreSentinel";
 import { UserSidebarFooter } from "./UserSidebarFooter";
 
-const UNREAD_SECTION_KEY = "Unread";
-const READ_SECTION_KEY = "Read";
+const UNREAD_SECTION_KEY = "未读";
+const READ_SECTION_KEY = "已读";
 
 interface ChatsPanelProps {
 	readonly chats: readonly Chat[];
@@ -330,10 +330,10 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 	).filter((section) => section.chats.length > 0);
 	const isShowingEmptyState = visibleRootIDs.length === 0;
 	const emptyStateMessage = hasAppliedResultFilters
-		? "No agents match these filters"
+		? "没有符合这些筛选条件的代理"
 		: sidebarFilters.archiveStatus === "archived"
-			? "No archived agents"
-			: "No agents yet";
+			? "没有已归档的代理"
+			: "还没有代理";
 	const clearResultFilters = () => {
 		onSidebarFiltersChange({
 			...sidebarFilters,
@@ -353,7 +353,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 			inert={isSettingsPanel ? true : undefined}
 		>
 			<nav
-				aria-label="Sidebar"
+				aria-label="侧边栏"
 				className="hidden border-b border-border-default px-2 py-1.5 sm:flex sm:flex-col sm:gap-0.5"
 			>
 				<div className="flex items-center justify-between mb-2.5 ml-2.5">
@@ -368,7 +368,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 							asChild
 							variant="subtle"
 							size="icon"
-							aria-label="Settings"
+							aria-label="设置"
 							className={cn(
 								"size-7 min-w-0 text-content-secondary hover:text-content-primary",
 								isSettingsPanel && "text-content-primary",
@@ -386,7 +386,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 								variant="subtle"
 								size="icon"
 								onClick={onCollapse}
-								aria-label="Collapse sidebar"
+								aria-label="收起侧边栏"
 								className="size-7 min-w-0 text-content-secondary hover:text-content-primary"
 							>
 								<PanelLeftCloseIcon />
@@ -396,7 +396,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 				</div>
 				<SettingsNavItem
 					icon={SquarePenIcon}
-					label="New chat"
+					label="新聊天"
 					active={isChatsActive}
 					to={{ pathname: "/agents", search: locationSearch }}
 					onClick={onBeforeNewAgent}
@@ -405,9 +405,9 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 				{onOpenSearchDialog && (
 					<SettingsNavItem
 						icon={SearchIcon}
-						label="Search"
+						label="搜索"
 						active={false}
-						ariaLabel="Search chats"
+						ariaLabel="搜索聊天"
 						onClick={onOpenSearchDialog}
 						className="group focus-visible:bg-surface-tertiary/50 focus-visible:text-content-primary"
 						trailing={
@@ -423,14 +423,14 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 				<div className="mx-2 pt-6 mb-1.5">
 					<div className="ml-2.5 mr-2 flex h-7 items-center justify-between">
 						<h2 className="m-0 text-sm font-normal leading-6 text-content-secondary">
-							Chats
+							聊天
 						</h2>
 						<div className="flex items-center gap-1">
 							{onOpenSearchDialog && (
 								<Button
 									variant="subtle"
 									size="icon"
-									aria-label="Search chats"
+									aria-label="搜索聊天"
 									onClick={onOpenSearchDialog}
 									className="h-7 w-7 sm:hidden"
 								>
@@ -459,7 +459,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 								<ErrorAlert error={loadError} />
 								{onRetryLoad && (
 									<Button size="sm" variant="outline" onClick={onRetryLoad}>
-										Retry
+										重试
 									</Button>
 								)}
 							</div>
@@ -496,7 +496,7 @@ export const ChatsPanel: FC<ChatsPanelProps> = ({
 													className="mt-2 cursor-pointer border-none bg-transparent p-0 text-xs text-content-secondary hover:text-content-primary hover:underline"
 													onClick={clearResultFilters}
 												>
-													Clear filters
+													清除筛选
 												</button>
 											)}
 										</div>

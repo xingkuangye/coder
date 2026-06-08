@@ -69,8 +69,8 @@ export const CustomRolesPageView: FC<CustomRolesPageViewProps> = ({
 		<div className="flex flex-col gap-8">
 			{!isCustomRolesEnabled && (
 				<PaywallPremium
-					message="Custom Roles"
-					description="Create custom roles to grant users a tailored set of granular permissions."
+					message="自定义角色"
+					description="创建自定义角色，为用户授予量身定制的细粒度权限集。"
 					documentationLink={docs("/admin/users/groups-roles")}
 				/>
 			)}
@@ -85,17 +85,16 @@ export const CustomRolesPageView: FC<CustomRolesPageViewProps> = ({
 			)}
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<span>
-					<h2 className="mb-0 text-lg">Custom Roles</h2>
+					<h2 className="mb-0 text-lg">自定义角色</h2>
 					<span className="text-sm text-content-secondary leading-relaxed">
-						Create custom roles to grant users a tailored set of granular
-						permissions.
+						创建自定义角色，为用户授予量身定制的细粒度权限集。
 					</span>
 				</span>
 				{canCreateOrgRole && isCustomRolesEnabled && (
 					<Button variant="outline" asChild>
 						<RouterLink to="create">
 							<PlusIcon />
-							Create custom role
+							创建自定义角色
 						</RouterLink>
 					</Button>
 				)}
@@ -109,10 +108,9 @@ export const CustomRolesPageView: FC<CustomRolesPageViewProps> = ({
 				onDeleteRole={onDeleteRole}
 			/>
 			<span>
-				<h2 className="mb-0 text-lg">Built-In Roles</h2>
+				<h2 className="mb-0 text-lg">内置角色</h2>
 				<span className="text-sm text-content-secondary leading-relaxed">
-					Built-in roles have predefined permissions. You cannot edit or delete
-					built-in roles.
+					内置角色具有预定义的权限。您无法编辑或删除内置角色。
 				</span>
 			</span>
 			<RoleTable
@@ -149,12 +147,11 @@ const DefaultRolesSection: FC<DefaultRolesSectionProps> = ({
 			<div className="flex flex-row gap-4 items-baseline justify-between">
 				<span>
 					<h2 className="mb-0 text-lg flex items-center gap-2">
-						Default Roles
+						默认角色
 						{!defaultRolesEntitled && <PremiumBadge />}
 					</h2>
 					<span className="text-sm text-content-secondary leading-relaxed">
-						Roles attached to every member of this organization. An empty
-						selection limits new members to the floor permissions only.
+						附加到此组织每个成员的角色。空选择仅将新成员限制为最低权限。
 					</span>
 				</span>
 				<Button
@@ -163,13 +160,13 @@ const DefaultRolesSection: FC<DefaultRolesSectionProps> = ({
 					onClick={() => setIsEditing(true)}
 					disabled={isUpdatingDefaultRoles || !defaultRolesEntitled}
 				>
-					Edit default roles
+					编辑默认角色
 				</Button>
 			</div>
 			<div className="text-sm">
 				{organization.default_org_member_roles.length === 0 ? (
 					<span className="text-content-secondary">
-						No default roles. New members receive only the floor.
+						无默认角色。新成员仅获得最低权限。
 					</span>
 				) : (
 					<DefaultRolesSummary
@@ -180,7 +177,7 @@ const DefaultRolesSection: FC<DefaultRolesSectionProps> = ({
 			</div>
 			{!defaultRolesEntitled && (
 				<p className="text-xs text-content-secondary mt-0 mb-0">
-					Editing organization settings requires a Premium license.
+					编辑组织设置需要 Premium 许可证。
 				</p>
 			)}
 			<DefaultRolesDialog
@@ -242,8 +239,8 @@ const RoleTable: FC<RoleTableProps> = ({
 		<Table>
 			<TableHeader>
 				<TableRow>
-					<TableHead className="w-2/5">Name</TableHead>
-					<TableHead className="w-3/5">Permissions</TableHead>
+					<TableHead className="w-2/5">名称</TableHead>
+					<TableHead className="w-3/5">权限</TableHead>
 					<TableHead className="w-auto" />
 				</TableRow>
 			</TableHeader>
@@ -277,13 +274,13 @@ const RoleTableBody: FC<RoleTableProps> = ({
 			<TableRow className="h-14">
 				<TableCell colSpan={999}>
 					<EmptyState
-						message="No custom roles yet"
+						message="尚无自定义角色"
 						description={
 							canCreateOrgRole && isCustomRolesEnabled
-								? "Create your first custom role"
+								? "创建您的第一个自定义角色"
 								: !isCustomRolesEnabled
-									? "Upgrade to a premium license to create a custom role"
-									: "You don't have permission to create a custom role"
+									? "升级到 Premium 许可证以创建自定义角色"
+									: "您没有创建自定义角色的权限"
 						}
 						cta={
 							canCreateOrgRole &&
@@ -291,7 +288,7 @@ const RoleTableBody: FC<RoleTableProps> = ({
 								<Button asChild>
 									<RouterLink to="create">
 										<PlusIcon />
-										Create custom role
+										创建自定义角色
 									</RouterLink>
 								</Button>
 							)
@@ -348,16 +345,16 @@ const RoleRow: FC<RoleRowProps> = ({
 							<ShadcnButton
 								size="icon-lg"
 								variant="subtle"
-								aria-label="Open menu"
+								aria-label="打开菜单"
 							>
 								<EllipsisVerticalIcon aria-hidden="true" />
-								<span className="sr-only">Open menu</span>
+								<span className="sr-only">打开菜单</span>
 							</ShadcnButton>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
 							{canUpdateOrgRole && (
 								<DropdownMenuItem onClick={() => navigate(role.name)}>
-									Edit
+									编辑
 								</DropdownMenuItem>
 							)}
 							{canDeleteOrgRole && (
@@ -365,7 +362,7 @@ const RoleRow: FC<RoleRowProps> = ({
 									className="text-content-destructive focus:text-content-destructive"
 									onClick={onDelete}
 								>
-									Delete&hellip;
+									删除&hellip;
 								</DropdownMenuItem>
 							)}
 						</DropdownMenuContent>

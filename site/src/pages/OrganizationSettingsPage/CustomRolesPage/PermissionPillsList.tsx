@@ -30,7 +30,7 @@ export const PermissionPillsList: FC<PermissionPillsListProps> = ({
 					permissions={permissions}
 				/>
 			) : (
-				<p>None</p>
+				<p>无</p>
 			)}
 
 			{resourceTypes.length > 1 && (
@@ -81,7 +81,7 @@ const OverflowPermissionPill: FC<OverflowPermissionPillProps> = ({
 					className="w-fit"
 					data-testid="overflow-permissions-pill"
 				>
-					+{resources.length} more
+					+{resources.length} 更多
 				</Pill>
 			</TooltipTrigger>
 

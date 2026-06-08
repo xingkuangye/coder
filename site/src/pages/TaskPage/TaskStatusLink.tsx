@@ -32,19 +32,19 @@ export const TaskStatusLink: FC<TaskStatusLinkProps> = ({ uri }) => {
 							icon = <GitPullRequestArrowIcon />;
 							label =
 								number === "new"
-									? `${org}/${repo} open pull request`
+									? `${org}/${repo} 创建拉取请求`
 									: number
 										? `${org}/${repo}#${number}`
-										: `${org}/${repo} pull request`;
+										: `${org}/${repo} 拉取请求`;
 							break;
 						case "issues":
 							icon = <BugIcon />;
 							label =
 								number === "new"
-									? `${org}/${repo} create new issue`
+									? `${org}/${repo} 创建新问题`
 									: number
 										? `${org}/${repo}#${number}`
-										: `${org}/${repo} issue`;
+										: `${org}/${repo} 问题`;
 							break;
 						default:
 							icon = <ExternalImage src="/icon/github.svg" />;

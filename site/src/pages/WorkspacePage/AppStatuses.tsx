@@ -95,7 +95,7 @@ export const AppStatuses: FC<AppStatusesProps> = ({
 									</span>
 								</TooltipTrigger>
 								<TooltipContent>
-									This file is located in your workspace
+									此文件位于你的工作空间
 								</TooltipContent>
 							</Tooltip>
 						) : (
@@ -121,7 +121,7 @@ export const AppStatuses: FC<AppStatusesProps> = ({
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							{displayStatuses ? "Hide statuses" : "Show statuses"}
+							{displayStatuses ? "隐藏状态" : "显示状态"}
 						</TooltipContent>
 					</Tooltip>
 				</div>

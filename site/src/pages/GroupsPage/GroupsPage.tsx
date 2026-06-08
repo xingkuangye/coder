@@ -35,7 +35,7 @@ const GroupsPage: FC = () => {
 	useEffect(() => {
 		if (groupsQuery.error) {
 			toast.error(
-				getErrorMessage(groupsQuery.error, "Unable to load groups."),
+				getErrorMessage(groupsQuery.error, "无法加载用户组。"),
 				{
 					description: getErrorDetail(groupsQuery.error),
 				},
@@ -46,7 +46,7 @@ const GroupsPage: FC = () => {
 	useEffect(() => {
 		if (permissionsQuery.error) {
 			toast.error(
-				getErrorMessage(permissionsQuery.error, "Unable to load permissions."),
+				getErrorMessage(permissionsQuery.error, "无法加载权限。"),
 				{
 					description: getErrorDetail(permissionsQuery.error),
 				},
@@ -55,14 +55,14 @@ const GroupsPage: FC = () => {
 	}, [permissionsQuery.error]);
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="未找到组织" />;
 	}
 
 	if (permissionsQuery.isLoading) {
 		return <Loader />;
 	}
 
-	const title = <title>{pageTitle("Groups")}</title>;
+	const title = <title>{pageTitle("组")}</title>;
 
 	const permissions = permissionsQuery.data?.[organization.id];
 
@@ -81,10 +81,9 @@ const GroupsPage: FC = () => {
 
 			<div className="flex max-w-full flex-row items-baseline justify-between gap-4">
 				<SettingsHeader>
-					<SettingsHeaderTitle>Groups</SettingsHeaderTitle>
+					<SettingsHeaderTitle>组</SettingsHeaderTitle>
 					<SettingsHeaderDescription>
-						Manage groups for this{" "}
-						{showOrganizations ? "organization" : "deployment"}.
+						管理此{showOrganizations ? "组织" : "部署"}的组。
 					</SettingsHeaderDescription>
 				</SettingsHeader>
 
@@ -92,7 +91,7 @@ const GroupsPage: FC = () => {
 					<Button asChild>
 						<RouterLink to="create">
 							<PlusIcon className="size-icon-sm" />
-							Create group
+							创建组
 						</RouterLink>
 					</Button>
 				)}

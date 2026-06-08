@@ -31,10 +31,10 @@ const PaywallPremium = ({
 	...props
 }: PaywallPremiumProps) => {
 	const PREMIUM_FEATURES = [
-		"High availability & workspace proxies",
-		"Multi-org & role-based access control",
-		"24x7 global support with SLA",
-		"Unlimited Git & external auth integrations",
+		"高可用性与工作区代理",
+		"多组织与基于角色的访问控制",
+		"7x24小时全球支持（含SLA）",
+		"无限Git与外部身份验证集成",
 	];
 
 	return (
@@ -61,7 +61,7 @@ const PaywallPremium = ({
 					{description}
 				</PaywallDescription>
 				<PaywallDocumentationLink href={documentationLink}>
-					Read the documentation
+					阅读文档
 				</PaywallDocumentationLink>
 			</PaywallContent>
 			<PaywallSeparator className="h-[180px]" />
@@ -77,7 +77,7 @@ const PaywallPremium = ({
 					))}
 				</PaywallFeatures>
 				<PaywallCTA href="https://coder.com/pricing#compare-plans">
-					Learn about Premium
+					了解高级版
 				</PaywallCTA>
 			</PaywallStack>
 		</Paywall>

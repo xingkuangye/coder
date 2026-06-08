@@ -18,20 +18,20 @@ export const ClassicParameterFlowDeprecationWarning: FC<
 	return (
 		<Alert severity="warning" className="mb-2" prominent>
 			<div>
-				This template is using the classic parameter flow, which will be{" "}
-				<strong>deprecated</strong> and removed in a future release. Please
-				migrate to{" "}
+				此模板正在使用经典参数流，该参数流将{" "}
+				<strong>被弃用</strong>并在未来版本中移除。请{" "}
+				迁移到{" "}
 				<a
 					href={docs("/admin/templates/extending-templates/dynamic-parameters")}
 					className="text-content-link"
 				>
-					dynamic parameters
+					动态参数
 				</a>{" "}
-				on template settings for improved functionality.
+				（在模板设置中）以获得改进的功能。
 			</div>
 
 			<Link className="text-xs" href={templateSettingsLink}>
-				Go to Template Settings
+				前往模板设置
 			</Link>
 		</Alert>
 	);

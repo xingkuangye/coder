@@ -1,17 +1,17 @@
 /**
- * Incremental JSON parser for streaming tool call arguments.
+ * 增量 JSON 解析器，用于流式工具调用参数。
  *
- * LLM tool calls arrive as partial JSON fragments via server-sent events.
- * This module provides utilities to extract usable data from incomplete
- * JSON strings without waiting for the full payload.
+ * LLM 工具调用以部分 JSON 片段形式通过服务器发送事件到达。
+ * 该模块提供实用工具，从尚不完整的 JSON 字符串中提取可用数据，
+ * 无需等待完整负载。
  *
- * Guarantees:
- * - Partial object recovery (returns fields parsed so far).
- * - Graceful handling of truncated strings, numbers, and booleans.
+ * 保证：
+ * - 部分对象恢复（返回当前已解析的字段）。
+ * - 优雅处理截断的字符串、数字和布尔值。
  *
- * Known limitations:
- * - Does not handle partial arrays.
- * - Does not handle \uXXXX unicode escape sequences in strings.
+ * 已知限制：
+ * - 不处理部分数组。
+ * - 不处理字符串中的 \uXXXX unicode 转义序列。
  */
 
 const tryParseJSONObject = (value: string): unknown | null => {

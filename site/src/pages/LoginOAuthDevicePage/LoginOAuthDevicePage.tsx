@@ -26,7 +26,7 @@ const LoginOAuthDevicePage: FC = () => {
 	if (!state) {
 		return (
 			<SignInLayout>
-				<Welcome>Missing OAuth2 state</Welcome>
+				<Welcome>缺少 OAuth2 状态</Welcome>
 			</SignInLayout>
 		);
 	}

@@ -6,13 +6,12 @@ function findMockedUserById(id: string): User | undefined {
 	return user;
 }
 
-// These values were retrieved from the Coder API. Sensitive information such as
-// usernames, names, and emails has been replaced with fake user data to protect
-// privacy. This user data comes from the MockUsers to keep consistency.
+// 这些值是从 Coder API 获取的。为了保护隐私，用户名、姓名和电子邮件等敏感信息已替换为虚假用户数据。
+// 这些用户数据来自 MockUsers，以保持一致性。
 export const MockGroups: Group[] = [
 	{
 		id: "7621bbb4-5b04-4957-8419-cf4a683ac59a",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "7621bbb4-5b04-4957-8419-cf4a683ac59a",
 		members: [findMockedUserById("5ccd3128-cbbb-4cfb-8139-5a1edbb60c71")],
@@ -21,11 +20,11 @@ export const MockGroups: Group[] = [
 		quota_allowance: 0,
 		source: "user",
 		organization_name: "data-platform",
-		organization_display_name: "Data Platform",
+		organization_display_name: "数据平台",
 	},
 	{
 		id: "d6f9d037-b9cd-4716-b424-64ef8f81e7f7",
-		name: "Contractors",
+		name: "承包商",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -41,7 +40,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "82773b01-c3b3-4747-a956-d824293dd857",
-		name: "Empty-other",
+		name: "空-其他",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -77,7 +76,7 @@ export const MockGroups: Group[] = [
 	{
 		id: "d00ea21b-3eec-4f63-a0cd-acb00e3a2116",
 		name: "ms-test-group",
-		display_name: "display-name",
+		display_name: "显示名称",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [findMockedUserById("ef2eebf7-9708-4076-9f71-a34af71f5d24")],
 		total_member_count: 1,
@@ -89,7 +88,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "f7200783-62c0-4bfa-ae30-a542fc82dc8d",
-		name: "Tinkerers",
+		name: "修补匠",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -120,7 +119,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "fd6ea877-06b6-4c03-b7c0-ea8f0707425b",
-		name: "Sales",
+		name: "销售",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -152,7 +151,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "a26c335f-1498-48e2-bd66-c6a5783fa5f2",
-		name: "bruno-group",
+		name: "bruno-群组",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [findMockedUserById("1c2baba2-40d6-4b9e-a788-fe393c1dbdbb")],
@@ -191,7 +190,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "5f8996c6-b3ba-4e39-97a1-dd44a73951de",
-		name: "Winners",
+		name: "获胜者",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [findMockedUserById("c5eb8310-cf4f-444c-b223-0e991f828b40")],
@@ -204,7 +203,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "0c6c1222-b65e-44c1-8bff-078d27fc10e6",
-		name: "Some-group",
+		name: "某个群组",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [],
@@ -217,8 +216,8 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "394222ed-7559-47a8-a57c-1bc7998c0357",
-		name: "kira-test",
-		display_name: "kira-test",
+		name: "kira-测试",
+		display_name: "kira-测试",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [],
 		total_member_count: 0,
@@ -230,7 +229,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -361,7 +360,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "0b912bbd-743e-4415-9036-8217269de663",
-		name: "Engineers",
+		name: "工程师",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -392,8 +391,8 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "4f7d2a59-3999-4d03-b346-8070a4d601dc",
-		name: "test-group",
-		display_name: "Test Group",
+		name: "测试群组",
+		display_name: "测试群组",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [],
 		total_member_count: 0,
@@ -405,8 +404,8 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "125b6423-a3c4-4419-abf9-dfcbbd7e8749",
-		name: "bruno-group-2",
-		display_name: "Bruno Group 2",
+		name: "bruno-群组-2",
+		display_name: "Bruno 群组 2",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [],
 		total_member_count: 0,
@@ -418,7 +417,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "cab1a90d-15be-4efe-8ddf-4dc83f3e547e",
-		name: "bq-test-group",
+		name: "bq-测试群组",
 		display_name: "",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
@@ -435,7 +434,7 @@ export const MockGroups: Group[] = [
 	{
 		id: "1446698f-4f73-49e9-9dd2-e282a58f58e4",
 		name: "wowzers",
-		display_name: "Something else",
+		display_name: "其他内容",
 		organization_id: "703f72a1-76f6-4f89-9de6-8a3989693fe5",
 		members: [
 			findMockedUserById("86185021-756c-4b51-874f-a1deb00983f0"),
@@ -450,7 +449,7 @@ export const MockGroups: Group[] = [
 	},
 	{
 		id: "21dfa187-531e-4a77-acb8-1ac6af314703",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "21dfa187-531e-4a77-acb8-1ac6af314703",
 		members: [findMockedUserById("61099b0d-71b3-44f2-ae15-45d8af34c614")],
@@ -458,12 +457,12 @@ export const MockGroups: Group[] = [
 		avatar_url: "",
 		quota_allowance: 0,
 		source: "user",
-		organization_name: "test-test",
-		organization_display_name: "test-test",
+		organization_name: "测试-测试",
+		organization_display_name: "测试-测试",
 	},
 	{
 		id: "163a803e-1c99-44ec-927e-5a5ccb37c6aa",
-		name: "test",
+		name: "测试",
 		display_name: "",
 		organization_id: "21dfa187-531e-4a77-acb8-1ac6af314703",
 		members: [],
@@ -471,12 +470,12 @@ export const MockGroups: Group[] = [
 		avatar_url: "",
 		quota_allowance: 0,
 		source: "user",
-		organization_name: "test-test",
-		organization_display_name: "test-test",
+		organization_name: "测试-测试",
+		organization_display_name: "测试-测试",
 	},
 	{
 		id: "cbdcf774-9412-4118-8cd9-b3f502c84dfb",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "cbdcf774-9412-4118-8cd9-b3f502c84dfb",
 		members: [findMockedUserById("5ccd3128-cbbb-4cfb-8139-5a1edbb60c71")],
@@ -485,11 +484,11 @@ export const MockGroups: Group[] = [
 		quota_allowance: 0,
 		source: "user",
 		organization_name: "shared-compute",
-		organization_display_name: "Shared Compute",
+		organization_display_name: "共享计算",
 	},
 	{
 		id: "e2815018-6d5a-4751-a18d-e64641dee559",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "e2815018-6d5a-4751-a18d-e64641dee559",
 		members: [findMockedUserById("8b474a55-d414-4b53-a6ba-760f3d4eed7b")],
@@ -498,11 +497,11 @@ export const MockGroups: Group[] = [
 		quota_allowance: 0,
 		source: "user",
 		organization_name: "docs-team",
-		organization_display_name: "Documentors",
+		organization_display_name: "文档编写者",
 	},
 	{
 		id: "d79144d9-b30a-448a-9af8-7dac83b2e4ec",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "d79144d9-b30a-448a-9af8-7dac83b2e4ec",
 		members: [findMockedUserById("1c3e3fff-6a0e-4179-9ba3-27f5443e6fce")],
@@ -511,11 +510,11 @@ export const MockGroups: Group[] = [
 		quota_allowance: 0,
 		source: "user",
 		organization_name: "data-science",
-		organization_display_name: "Data Science",
+		organization_display_name: "数据科学",
 	},
 	{
 		id: "8efa9208-656a-422d-842d-b9dec0cf1bf3",
-		name: "Everyone",
+		name: "所有人",
 		display_name: "",
 		organization_id: "8efa9208-656a-422d-842d-b9dec0cf1bf3",
 		members: [
@@ -536,9 +535,7 @@ export const MockGroups: Group[] = [
 ].map((g) => ({
 	...g,
 	source: g.source as GroupSource,
-	// The mock data from MockUsers contains only 25 users. It is possible that
-	// some group members are not included in these mocked users. Therefore, we
-	// should remove any group members that are not present in the mocked users
-	// during testing.
+	// MockUsers 中的模拟数据仅包含 25 个用户。某些组成员可能不在这些模拟用户中。
+	// 因此，在测试过程中，我们应移除 mock 用户中不存在的任何组成员。
 	members: g.members.filter((m) => m !== undefined),
 }));

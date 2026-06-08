@@ -43,7 +43,7 @@ export const PaginationWidgetBase: FC<PaginationWidgetBaseProps> = ({
 		<div className="flex flex-row items-center justify-center px-5 gap-x-1.5">
 			<PaginationNavButton
 				disabled={isPrevDisabled}
-				aria-label="Previous page"
+				aria-label="上一页"
 				onClick={() => {
 					if (!isPrevDisabled) {
 						onPageChange(currentPage - 1);
@@ -70,7 +70,7 @@ export const PaginationWidgetBase: FC<PaginationWidgetBaseProps> = ({
 
 			<PaginationNavButton
 				disabled={isNextDisabled}
-				aria-label="Next page"
+				aria-label="下一页"
 				onClick={() => {
 					if (!isNextDisabled) {
 						onPageChange(currentPage + 1);

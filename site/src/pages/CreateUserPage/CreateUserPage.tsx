@@ -22,7 +22,7 @@ const CreateUserPage: FC = () => {
 
 	return (
 		<Margins>
-			<title>{pageTitle("Create User")}</title>
+			<title>{pageTitle("创建用户")}</title>
 
 			<CreateUserForm
 				error={createUserMutation.error}
@@ -47,12 +47,12 @@ const CreateUserPage: FC = () => {
 						},
 					);
 					toast.promise(mutation, {
-						loading: `Creating user "${user.username}"...`,
-						success: `User "${user.username}" created successfully.`,
+						loading: `正在创建用户 "${user.username}"...`,
+						success: `用户 "${user.username}" 创建成功。`,
 						error: (e) => ({
 							message: getErrorMessage(
 								e,
-								`Failed to create user "${user.username}".`,
+								`创建用户 "${user.username}" 失败。`,
 							),
 							description: getErrorDetail(e),
 						}),

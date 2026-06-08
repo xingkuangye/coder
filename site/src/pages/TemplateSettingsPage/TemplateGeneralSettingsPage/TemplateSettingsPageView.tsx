@@ -34,7 +34,7 @@ export const TemplateSettingsPageView: FC<TemplateSettingsPageViewProps> = ({
 	return (
 		<>
 			<PageHeader className="pt-0">
-				<PageHeaderTitle>General Settings</PageHeaderTitle>
+				<PageHeaderTitle>常规设置</PageHeaderTitle>
 			</PageHeader>
 
 			<TemplateSettingsForm

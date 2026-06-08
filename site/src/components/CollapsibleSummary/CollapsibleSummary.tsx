@@ -95,7 +95,7 @@ export const CollapsibleSummary: FC<CollapsibleSummaryProps> = ({
 					/>
 				</div>
 				<span className="sr-only">
-					({isOpen ? "Hide" : "Show"}) {label}
+					({isOpen ? "隐藏" : "显示"}) {label}
 				</span>
 				<span className="[&:first-letter]:uppercase">{label}</span>
 			</button>

@@ -55,9 +55,9 @@ export const TemplatesFilter: FC<TemplatesFilterProps> = ({
 	return (
 		<Filter
 			presets={[
-				{ query: "", name: "All templates" },
-				{ query: "author:me", name: "Templates you authored" },
-				{ query: "deprecated:true", name: "Deprecated templates" },
+				{ query: "", name: "所有模板" },
+				{ query: "author:me", name: "您创建的模板" },
+				{ query: "deprecated:true", name: "已弃用的模板" },
 			]}
 			// TODO: Add docs for this
 			// learnMoreLink={docs("/templates#template-filtering")}
@@ -68,8 +68,8 @@ export const TemplatesFilter: FC<TemplatesFilterProps> = ({
 				<>
 					{userMenu && <UserMenu width={width} menu={userMenu} />}
 					<SelectFilter
-						placeholder="All organizations"
-						label="Select an organization"
+						placeholder="所有组织"
+						label="选择组织"
 						options={organizationMenu.searchOptions}
 						selectedOption={organizationMenu.selectedOption ?? undefined}
 						onSelect={organizationMenu.selectOption}

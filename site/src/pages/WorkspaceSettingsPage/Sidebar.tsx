@@ -31,17 +31,17 @@ export const Sidebar: React.FC = () => {
 			/>
 
 			<SidebarNavItem href="" icon={GeneralIcon}>
-				General
+				通用
 			</SidebarNavItem>
 			<SidebarNavItem href="parameters" icon={ParameterIcon}>
-				Parameters
+				参数
 			</SidebarNavItem>
 			<SidebarNavItem href="schedule" icon={ScheduleIcon}>
-				Schedule
+				计划
 			</SidebarNavItem>
 			{permissions?.shareWorkspace && (
 				<SidebarNavItem href="sharing" icon={SharingIcon}>
-					Sharing
+					分享
 				</SidebarNavItem>
 			)}
 		</BaseSidebar>

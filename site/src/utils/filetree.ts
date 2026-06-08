@@ -13,7 +13,7 @@ export const createFile = (
 	value: string,
 ): FileTree => {
 	if (existsFile(path, fileTree)) {
-		throw new Error(`File ${path} already exists`);
+		throw new Error(`文件 ${path} 已存在`);
 	}
 	const pathError = validatePath(path, fileTree);
 	if (pathError) {
@@ -34,7 +34,7 @@ export const validatePath = (
 		const path = paths.slice(0, i + 1);
 		const pathStr = path.join("/");
 		if (existsFile(pathStr, fileTree) && !isFolder(pathStr, fileTree)) {
-			return `Invalid path. The path ${path} is not a folder`;
+			return `路径无效。路径 ${path} 不是一个文件夹`;
 		}
 	}
 };
@@ -65,7 +65,7 @@ export const moveFile = (
 ) => {
 	const content = getFileContent(currentPath, fileTree);
 	if (typeof content !== "string") {
-		throw new Error("Move folders is not allowed");
+		throw new Error("不允许移动文件夹");
 	}
 	fileTree = removeFile(currentPath, fileTree);
 	fileTree = createFile(newPath, fileTree, content);
@@ -79,7 +79,7 @@ export const getFileContent = (path: string, fileTree: FileTree) => {
 export const getFileText = (path: string, fileTree: FileTree) => {
 	const content = getFileContent(path, fileTree);
 	if (typeof content !== "string") {
-		throw new Error("File is not a text file");
+		throw new Error("文件不是文本文件");
 	}
 	return content;
 };

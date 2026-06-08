@@ -140,21 +140,21 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 											onCheckChange(workspaces);
 										}
 									}}
-									aria-label="Select all workspaces"
+									aria-label="选择所有工作区"
 									className="my-0"
 								/>
-								Name
+								名称
 							</div>
 						)}
 					</TableHead>
 					<TableHead className={cn("w-1/3", hideHeaders && "invisible")}>
-						Template
+						模板
 					</TableHead>
 					<TableHead className={cn("w-1/3", hideHeaders && "invisible")}>
-						Status
+						状态
 					</TableHead>
 					<TableHead className="w-0">
-						<span className="sr-only">Actions</span>
+						<span className="sr-only">操作</span>
 					</TableHead>
 				</TableRow>
 			</TableHeader>
@@ -203,7 +203,7 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 												);
 											}
 										}}
-										aria-label={`Select workspace ${workspace.name}`}
+										aria-label={`选择工作区 ${workspace.name}`}
 									/>
 									<AvatarData
 										title={
@@ -219,7 +219,7 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 												)}
 												{workspace.task_id && (
 													<Badge size="xs" variant="default">
-														Task
+														任务
 													</Badge>
 												)}
 												{chatsByWorkspace?.[workspace.id] && (
@@ -227,9 +227,9 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 														<Link
 															to={`/agents/${chatsByWorkspace[workspace.id]}`}
 															onClick={(e) => e.stopPropagation()}
-															aria-label={`View agent conversation for ${workspace.name}`}
+															aria-label={`查看 ${workspace.name} 的智能体对话`}
 														>
-															Agent
+															智能体
 														</Link>
 													</Badge>
 												)}
@@ -237,7 +237,7 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 										}
 										subtitle={
 											<div className="flex items-center gap-1">
-												<span className="sr-only">Owner: </span>
+												<span className="sr-only">所有者：</span>
 												<div className="flex gap-2">
 													{workspace.owner_name}
 													{workspace.shared_with &&
@@ -271,7 +271,7 @@ export const WorkspacesTable: FC<WorkspacesTableProps> = ({
 									subtitle={
 										dashboard.showOrganizations && (
 											<>
-												<span className="sr-only">Organization:</span>{" "}
+												<span className="sr-only">组织：</span>{" "}
 												{activeOrg?.display_name || workspace.organization_name}
 											</>
 										)
@@ -494,7 +494,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 					<PrimaryAction
 						onClick={() => startWorkspaceMutation.mutate({})}
 						isLoading={startWorkspaceMutation.isPending}
-						label="Start workspace"
+						label="启动工作区"
 					>
 						<PlayIcon />
 					</PrimaryAction>
@@ -505,7 +505,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 						<PrimaryAction
 							onClick={workspaceUpdate.update}
 							isLoading={workspaceUpdate.isUpdating}
-							label="Update and start workspace"
+							label="更新并启动工作区"
 						>
 							<CloudIcon />
 						</PrimaryAction>
@@ -518,7 +518,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 						<PrimaryAction
 							onClick={workspaceUpdate.update}
 							isLoading={workspaceUpdate.isUpdating}
-							label="This template requires automatic updates on workspace startup. Contact your administrator if you want to preserve the template version."
+							label="此模板要求在工作区启动时自动更新。若要保留模板版本，请联系管理员。"
 						>
 							<PlayIcon />
 						</PrimaryAction>
@@ -531,7 +531,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 						<PrimaryAction
 							onClick={workspaceUpdate.update}
 							isLoading={workspaceUpdate.isUpdating}
-							label="Update and restart workspace"
+							label="更新并重启工作区"
 						>
 							<CloudIcon />
 						</PrimaryAction>
@@ -544,7 +544,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 						<PrimaryAction
 							onClick={workspaceUpdate.update}
 							isLoading={workspaceUpdate.isUpdating}
-							label="This template requires automatic updates on workspace restart. Contact your administrator if you want to preserve the template version."
+							label="此模板要求在工作区重启时自动更新。若要保留模板版本，请联系管理员。"
 						>
 							<PlayIcon />
 						</PrimaryAction>
@@ -556,7 +556,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 					<PrimaryAction
 						onClick={() => setIsCancelConfirmOpen(true)}
 						isLoading={cancelBuildMutation.isPending}
-						label="Cancel build"
+						label="取消构建"
 					>
 						<BanIcon />
 					</PrimaryAction>
@@ -566,7 +566,7 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 					<PrimaryAction
 						onClick={retry}
 						isLoading={isRetrying}
-						label="Retry build"
+						label="重试构建"
 					>
 						<RefreshCcwIcon />
 					</PrimaryAction>
@@ -587,9 +587,9 @@ const WorkspaceActionsCell: FC<WorkspaceActionsCellProps> = ({
 			{/* Stop workspace confirmation dialog */}
 			<ConfirmDialog
 				open={isStopConfirmOpen}
-				title="Stop workspace"
-				description={`Are you sure you want to stop the workspace "${workspace.name}"? This will terminate all running processes and disconnect any active sessions.`}
-				confirmText="Stop"
+				title="停止工作区"
+				description={`确定要停止工作区“${workspace.name}”吗？这将终止所有正在运行的进程并断开所有活动会话。`}
+				confirmText="停止"
 				onClose={() => setIsStopConfirmOpen(false)}
 				onConfirm={() => {
 					stopWorkspaceMutation.mutate({});
@@ -687,7 +687,7 @@ const WorkspaceApps: FC<WorkspaceAppsProps> = ({ workspace }) => {
 			<VSCodeIconLink
 				key="vscode"
 				variant="vscode"
-				label="Open VSCode"
+				label="打开 VSCode"
 				owner={workspace.owner_name}
 				workspace={workspace.name}
 				agent={agent.name}
@@ -703,7 +703,7 @@ const WorkspaceApps: FC<WorkspaceAppsProps> = ({ workspace }) => {
 			<VSCodeIconLink
 				key="vscode-insiders"
 				variant="vscode-insiders"
-				label="Open VSCode Insiders"
+				label="打开 VSCode Insiders"
 				owner={workspace.owner_name}
 				workspace={workspace.name}
 				agent={agent.name}
@@ -739,7 +739,7 @@ const WorkspaceApps: FC<WorkspaceAppsProps> = ({ workspace }) => {
 					e.preventDefault();
 					openAppInNewWindow(href);
 				}}
-				label="Open Terminal"
+				label="打开终端"
 			>
 				<SquareTerminalIcon className="!size-7" />
 			</BaseIconLink>,
@@ -798,7 +798,7 @@ const IconAppLink: FC<IconAppLinkProps> = ({ app, workspace, agent }) => {
 	return (
 		<BaseIconLink
 			key={app.id}
-			label={`Open ${link.label}`}
+			label={`打开 ${link.label}`}
 			href={link.href}
 			onClick={link.onClick}
 		>

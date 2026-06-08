@@ -23,7 +23,7 @@ const SSHKeysPage: FC = () => {
 	return (
 		<>
 			<SettingsHeader>
-				<SettingsHeaderTitle>SSH keys</SettingsHeaderTitle>
+				<SettingsHeaderTitle>SSH 密钥</SettingsHeaderTitle>
 			</SettingsHeader>
 			<SSHKeysPageView
 				isLoading={userSSHKeyQuery.isLoading}
@@ -37,17 +37,17 @@ const SSHKeysPage: FC = () => {
 				hideCancel={false}
 				open={isConfirmingRegeneration}
 				confirmLoading={regenerateSSHKeyMutation.isPending}
-				title="Regenerate SSH key?"
-				description="You will need to replace the public SSH key on services you use it with, and you'll need to rebuild existing workspaces."
-				confirmText="Confirm"
+				title="重新生成 SSH 密钥？"
+				description="您需要在使用的服务上替换公钥，并且需要重新构建现有的工作空间。"
+				confirmText="确认"
 				onClose={() => setIsConfirmingRegeneration(false)}
 				onConfirm={async () => {
 					try {
 						await regenerateSSHKeyMutation.mutateAsync();
-						toast.success("SSH Key regenerated successfully.");
+						toast.success("SSH 密钥已成功重新生成。");
 					} catch (error) {
 						toast.error(
-							getErrorMessage(error, "Failed to regenerate SSH key"),
+							getErrorMessage(error, "重新生成 SSH 密钥失败"),
 							{
 								description: getErrorDetail(error),
 							},

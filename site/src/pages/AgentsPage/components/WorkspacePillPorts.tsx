@@ -107,8 +107,8 @@ export const PortsMenuItem: FC<{
 
 	const label =
 		portsData.totalCount !== undefined
-			? `Ports (${portsData.totalCount})`
-			: "Ports";
+			? `端口 (${portsData.totalCount})`
+			: "端口";
 
 	useEffect(() => {
 		if (!focusOnMount || !isBelowMd) {
@@ -176,7 +176,7 @@ export const MobilePortsPanel: FC<{
 				}}
 			>
 				<ArrowLeftIcon className="size-3.5" />
-				Back
+				返回
 			</DropdownMenuItem>
 			<DropdownMenuSeparator className="my-1" />
 			<PortsList
@@ -203,7 +203,7 @@ const PortsList: FC<{
 			{privateListeningPorts.length > 0 && (
 				<div className="px-2 pb-1.5 pt-1">
 					<span className="text-xs font-semibold text-content-secondary">
-						Listening Ports
+						监听端口
 					</span>
 				</div>
 			)}
@@ -225,7 +225,7 @@ const PortsList: FC<{
 				privateListeningPorts.length === 0 &&
 				sharedPorts.length === 0 && (
 					<p className="px-2 py-2 text-center text-xs text-content-tertiary">
-						No open ports detected.
+						未检测到打开的端口。
 					</p>
 				)}
 
@@ -234,7 +234,7 @@ const PortsList: FC<{
 					<DropdownMenuSeparator className="my-1" />
 					<div className="px-2 pb-1.5 pt-1">
 						<span className="text-xs font-semibold text-content-secondary">
-							Shared Ports
+							共享端口
 						</span>
 					</div>
 					{(sharedPorts ?? []).map((share) => (
@@ -254,7 +254,7 @@ const PortsList: FC<{
 			<DropdownMenuItem asChild>
 				<Link to={route} target="_blank" rel="noreferrer">
 					<ExternalLinkIcon className="size-3.5" />
-					Manage sharing
+					管理共享
 				</Link>
 			</DropdownMenuItem>
 		</>
@@ -314,13 +314,21 @@ const SharedPortItem: FC<{
 			: share.share_level === "organization"
 				? BuildingIcon
 				: LockIcon;
+
+	const shareLevelMap: Record<string, string> = {
+		public: "公开",
+		organization: "组织",
+		authenticated: "已认证",
+	};
+	const shareLabel = shareLevelMap[share.share_level] ?? share.share_level;
+
 	return (
 		<DropdownMenuItem asChild>
 			<a href={url} target="_blank" rel="noreferrer">
 				<ShareIcon className="size-3.5 shrink-0" />
 				<span className="font-mono tabular-nums">{share.port}</span>
 				<span className="truncate capitalize text-content-tertiary">
-					{share.share_level}
+					{shareLabel}
 				</span>
 				<ExternalLinkIcon className="ml-auto size-3.5 shrink-0 opacity-50" />
 			</a>

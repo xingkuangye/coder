@@ -87,7 +87,7 @@ const ProcessOutputToolInner: React.FC<ProcessOutputToolInnerProps> = ({
 			displayMode={shellToolDisplayMode}
 			autoDisplayState={autoDisplayState}
 			ariaLabel={(expanded) =>
-				expanded ? "Collapse process output" : "Expand process output"
+				expanded ? "折叠进程输出" : "展开进程输出"
 			}
 			header={
 				<>
@@ -96,7 +96,7 @@ const ProcessOutputToolInner: React.FC<ProcessOutputToolInnerProps> = ({
 						isError={isError}
 						isRunning={isRunning}
 					/>
-					<span className="text-[13px] leading-6">Process output</span>
+					<span className="text-[13px] leading-6">进程输出</span>
 				</>
 			}
 			headerStatus={
@@ -119,13 +119,13 @@ const ProcessOutputToolInner: React.FC<ProcessOutputToolInnerProps> = ({
 						)}
 						{showExitCode && (
 							<span className="rounded px-1.5 py-0.5 font-mono text-2xs leading-none bg-surface-red text-content-destructive">
-								exit {exitCode}
+								退出 {exitCode}
 							</span>
 						)}
 						{hasOutput && (
 							<CopyButton
 								text={output}
-								label="Copy output"
+								label="复制输出"
 								className="-my-0.5 size-6 p-0"
 							/>
 						)}
@@ -161,8 +161,8 @@ const ProcessOutputToolInner: React.FC<ProcessOutputToolInnerProps> = ({
 					className="border-0 bg-transparent m-0 mt-0.5 font-[inherit] text-[inherit] flex w-full cursor-pointer items-center justify-center rounded-md py-0.5 text-content-secondary transition-colors hover:bg-surface-secondary hover:text-content-primary"
 					aria-label={
 						outputFullyExpanded
-							? "Collapse full process output"
-							: "Expand full process output"
+							? "折叠完整进程输出"
+							: "展开完整进程输出"
 					}
 				>
 					<ChevronDownIcon

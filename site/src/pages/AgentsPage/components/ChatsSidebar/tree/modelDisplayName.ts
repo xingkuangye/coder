@@ -10,7 +10,7 @@ export const getModelDisplayName = (
 ) => {
 	const normalizedModelConfigID = asString(lastModelConfigID).trim();
 	if (!normalizedModelConfigID) {
-		return "Default model";
+		return "默认模型";
 	}
 
 	const modelOption = modelOptions.find(
@@ -31,7 +31,7 @@ export const getModelDisplayName = (
 		if (legacyModelOption?.displayName) {
 			return legacyModelOption.displayName;
 		}
-		return "Default model";
+		return "默认模型";
 	}
 
 	const displayName = asString(modelConfig.display_name).trim();
@@ -41,7 +41,7 @@ export const getModelDisplayName = (
 
 	const { provider, model } = getNormalizedModelRef(modelConfig);
 	if (!provider || !model) {
-		return "Default model";
+		return "默认模型";
 	}
 
 	const fallbackModelOption = modelOptions.find(

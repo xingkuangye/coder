@@ -518,7 +518,7 @@ export const DiffViewer: FC<DiffViewerProps> = ({
 	isExpanded,
 	isLoading,
 	error,
-	emptyMessage = "No file changes to display.",
+	emptyMessage = "没有文件变更要显示。",
 	diffStyle,
 	onLineNumberClick,
 	onLineSelected,
@@ -774,7 +774,7 @@ export const DiffViewer: FC<DiffViewerProps> = ({
 									/>
 									{isLast && (
 										<div className="flex items-center justify-center py-4 text-xs text-content-secondary">
-											{`${sortedFiles.length} ${sortedFiles.length === 1 ? "file" : "files"} changed`}
+											{`${sortedFiles.length} ${sortedFiles.length === 1 ? "文件" : "文件"} 已变更`}
 										</div>
 									)}
 								</div>

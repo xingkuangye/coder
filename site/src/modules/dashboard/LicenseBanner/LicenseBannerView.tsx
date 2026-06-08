@@ -72,8 +72,8 @@ const getBannerVariant = (
 
 const bannerTitle = (variant: LicenseBannerVariant): string =>
 	variant === "error"
-		? "License errors require attention"
-		: "Your license limits have been exceeded";
+		? "许可证错误需要处理"
+		: "您的许可额度已超出";
 
 const bannerRole = (variant: LicenseBannerVariant): "alert" | "status" =>
 	variant === "error" ? "alert" : "status";

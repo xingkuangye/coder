@@ -26,15 +26,14 @@ const WorkspaceSharingPage: FC = () => {
 
 	return (
 		<div className="flex flex-col gap-12">
-			<title>{pageTitle(workspace.name, "Sharing")}</title>
+			<title>{pageTitle(workspace.name, "共享")}</title>
 
 			<header className="flex flex-col">
 				<div className="flex flex-col gap-2">
-					<h1 className="text-3xl m-0">Workspace sharing</h1>
+					<h1 className="text-3xl m-0">工作区共享</h1>
 					<p className="flex flex-row gap-1 text-sm text-content-secondary font-medium m-0">
-						Workspace sharing allows you to share workspaces with other users
-						and groups.{" "}
-						<Link href={docs("/user-guides/shared-workspaces")}>View docs</Link>
+						工作区共享允许您与其他用户和组共享工作区。{" "}
+						<Link href={docs("/user-guides/shared-workspaces")}>查看文档</Link>
 					</p>
 				</div>
 			</header>

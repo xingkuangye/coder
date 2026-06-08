@@ -67,10 +67,10 @@ export const TaskPrompt: FC<TaskPromptProps> = ({
 		<CreateTaskForm
 			templates={templates}
 			onSuccess={(task) => {
-				toast.success(`Task "${task.name}" created successfully.`, {
+				toast.success(`任务 "${task.name}" 创建成功。`, {
 					description: `"${task.initial_prompt}"`,
 					action: {
-						label: "View task",
+						label: "查看任务",
 						onClick: () => navigate(`/tasks/${task.owner_name}/${task.id}`),
 					},
 				});
@@ -87,14 +87,14 @@ const TaskPromptLoadingError: FC<{
 		<div className="border border-solid rounded-lg w-full min-h-80 flex items-center justify-center">
 			<div className="flex flex-col items-center">
 				<h3 className="m-0 font-medium text-content-primary text-base">
-					{getErrorMessage(error, "Error loading Task templates")}
+					{getErrorMessage(error, "加载任务模板时出错")}
 				</h3>
 				<span className="text-content-secondary text-sm">
-					{getErrorDetail(error) ?? "Please try again"}
+					{getErrorDetail(error) ?? "请重试"}
 				</span>
 				<Button size="sm" onClick={onRetry} className="mt-4">
 					<RotateCcwIcon />
-					Try again
+					重试
 				</Button>
 			</div>
 		</div>
@@ -121,13 +121,13 @@ const TaskPromptEmpty: FC = () => {
 		<div className="rounded-lg border border-solid border-border w-full min-h-80 p-4 flex items-center justify-center">
 			<div className="flex flex-col items-center">
 				<h3 className="m-0 font-medium text-content-primary text-base">
-					No Task templates found
+					未找到任务模板
 				</h3>
 				<span className="text-content-secondary text-sm">
 					<Link href={docs("/ai-coder/tasks")} target="_blank" rel="noreferrer">
-						Learn about Tasks
+						了解任务
 					</Link>{" "}
-					to get started.
+					开始使用。
 				</span>
 			</div>
 		</div>
@@ -239,7 +239,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 	return (
 		<form
 			onSubmit={onSubmit}
-			aria-label="Create AI task"
+			aria-label="创建 AI 任务"
 			className="flex flex-col gap-4"
 		>
 			{externalAuthError && <ErrorAlert error={externalAuthError} />}
@@ -249,7 +249,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 				disabled={createTaskMutation.isPending}
 			>
 				<label htmlFor="prompt" className="sr-only">
-					Prompt
+					提示
 				</label>
 				<PromptTextarea
 					required
@@ -262,7 +262,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 					<div className="flex items-center gap-1 flex-1 min-w-0">
 						<div className="min-w-0 max-w-[33.3%]">
 							<label htmlFor="templateID" className="sr-only">
-								Select template
+								选择模板
 							</label>
 							<Select
 								name="templateID"
@@ -275,8 +275,8 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 								defaultValue={templates[0].id}
 								required
 							>
-								<PromptSelectTrigger id="templateID" tooltip="Template">
-									<SelectValue placeholder="Select a template" />
+								<PromptSelectTrigger id="templateID" tooltip="模板">
+									<SelectValue placeholder="选择模板" />
 								</PromptSelectTrigger>
 								<SelectContent>
 									{templates.map((template) => {
@@ -304,7 +304,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 						{permissions.updateTemplates && (
 							<div className="min-w-0 max-w-[33.3%]">
 								<label htmlFor="versionId" className="sr-only">
-									Template version
+									模板版本
 								</label>
 								<TemplateVersionSelect
 									templateId={selectedTemplateId}
@@ -317,7 +317,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 
 						<div className="flex-1 min-w-0">
 							<label htmlFor="presetID" className="sr-only">
-								Preset
+								预设
 							</label>
 							{isLoadingPresets ? (
 								<Skeleton className="w-[140px] h-8 rounded-full" />
@@ -333,10 +333,10 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 									>
 										<PromptSelectTrigger
 											id="presetID"
-											tooltip="Preset"
+											tooltip="预设"
 											className="max-w-full [&_[data-slot=preset-name]]:truncate [&_[data-slot=preset-name]]:min-w-0 [&_[data-slot=preset-description]]:hidden"
 										>
-											<SelectValue placeholder="Select a preset" />
+											<SelectValue placeholder="选择预设" />
 										</PromptSelectTrigger>
 										<SelectContent>
 											{presets?.toSorted(sortByDefault).map((preset) => (
@@ -358,7 +358,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 														</span>
 														{preset.Default && (
 															<Badge size="xs" className="shrink-0">
-																Default
+																默认
 															</Badge>
 														)}
 														{preset.Description && (
@@ -409,7 +409,7 @@ const CreateTaskForm: FC<CreateTaskFormProps> = ({ templates, onSuccess }) => {
 									>
 										<ArrowUpIcon />
 									</Spinner>
-									<span className="sr-only">Run task</span>
+									<span className="sr-only">运行任务</span>
 								</Button>
 							</TooltipTrigger>
 							<TooltipContent align="end">
@@ -462,7 +462,7 @@ const ExternalAuthButtons: FC<ExternalAuthButtonProps> = ({
 					<Spinner loading={isPollingExternalAuth}>
 						<ExternalImage src={auth.display_icon} />
 					</Spinner>
-					Connect to {auth.display_name}
+					连接到 {auth.display_name}
 				</Button>
 
 				{shouldRetry && !auth.authenticated && (
@@ -474,11 +474,11 @@ const ExternalAuthButtons: FC<ExternalAuthButtonProps> = ({
 								onClick={startPollingExternalAuth}
 							>
 								<RedoIcon />
-								<span className="sr-only">Refresh external auth</span>
+								<span className="sr-only">刷新外部认证</span>
 							</Button>
 						</TooltipTrigger>
 						<TooltipContent>
-							Retry connecting to {auth.display_name}
+							重试连接到 {auth.display_name}
 						</TooltipContent>
 					</Tooltip>
 				)}
@@ -528,7 +528,7 @@ const PromptTextarea: FC<PromptTextareaProps> = ({
 				required
 				id="prompt"
 				name="prompt"
-				placeholder="Prompt your AI agent to start a task..."
+				placeholder="提示 AI 代理开始任务..."
 				className={`border-0 px-3 py-2 resize-none w-full h-full bg-transparent rounded-lg
 							outline-none flex min-h-24 text-sm shadow-sm text-content-primary
 							placeholder:text-content-secondary md:text-sm ${props.readOnly || isSubmitting ? "opacity-60 cursor-not-allowed" : ""}`}

@@ -1,5 +1,5 @@
 /**
- * Copied from shadcn/ui and modified on 12/13/2024
+ * 从 shadcn/ui 复制并于 2024年12月13日修改
  * @see {@link https://ui.shadcn.com/docs/components/popover}
  */
 import { Popover as PopoverPrimitive } from "radix-ui";

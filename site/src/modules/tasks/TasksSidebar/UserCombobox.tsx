@@ -68,10 +68,10 @@ export const UserCombobox: FC<UserComboboxProps> = ({
 						selectedOption ? (
 							<UserItem option={selectedOption} className="-ml-2" />
 						) : (
-							"All users"
+							"所有用户"
 						)
 					) : (
-						"Loading users..."
+						"正在加载用户..."
 					)}
 
 					<ChevronsUpDownIcon className="shrink-0 opacity-50" />
@@ -84,13 +84,13 @@ export const UserCombobox: FC<UserComboboxProps> = ({
 			>
 				<Command className="flex-1 min-h-0">
 					<CommandInput
-						placeholder="Search user..."
+						placeholder="搜索用户..."
 						value={search}
 						onValueChange={setSearch}
-						aria-label="Search user"
+						aria-label="搜索用户"
 					/>
 					<CommandList className="flex-1 min-h-0 max-h-none">
-						<CommandEmpty>No users found.</CommandEmpty>
+						<CommandEmpty>未找到用户。</CommandEmpty>
 						<CommandGroup>
 							{options?.map((option) => (
 								<CommandItem

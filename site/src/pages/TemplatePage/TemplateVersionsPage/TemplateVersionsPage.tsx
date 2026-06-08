@@ -41,11 +41,11 @@ const TemplateVersionsPage = () => {
 			setSelectedVersionIdToPromote(undefined);
 			toast.success(
 				versionName
-					? `Version "${versionName}" promoted successfully.`
-					: "Version promoted successfully.",
+					? `版本 "${versionName}" 已成功提升。`
+					: "版本已成功提升。",
 				{
 					action: {
-						label: "View template",
+						label: "查看模板",
 						onClick: () => navigate(templateLink),
 					},
 				},
@@ -59,8 +59,8 @@ const TemplateVersionsPage = () => {
 				getErrorMessage(
 					error,
 					versionName
-						? `Failed to promote version "${versionName}".`
-						: "Failed to promote version.",
+						? `提升版本 "${versionName}" 失败。`
+						: "提升版本失败。",
 				),
 				{
 					description: getErrorDetail(error),
@@ -78,7 +78,7 @@ const TemplateVersionsPage = () => {
 				queryKey: templateVersionsQueryKey(template.id),
 			});
 			setSelectedVersionIdToArchive(undefined);
-			toast.success(`Version "${data.name}" archived successfully.`);
+			toast.success(`版本 "${data.name}" 已成功归档。`);
 		},
 		onError: (error) => {
 			const versionName = data?.find(
@@ -88,8 +88,8 @@ const TemplateVersionsPage = () => {
 				getErrorMessage(
 					error,
 					versionName
-						? `Failed to archive version "${versionName}".`
-						: "Failed to archive version.",
+						? `归档版本 "${versionName}" 失败。`
+						: "归档版本失败。",
 				),
 				{
 					description: getErrorDetail(error),
@@ -107,7 +107,7 @@ const TemplateVersionsPage = () => {
 
 	return (
 		<>
-			<title>{getTemplatePageTitle("Versions", template)}</title>
+			<title>{getTemplatePageTitle("版本", template)}</title>
 
 			<VersionsTable
 				versions={data}
@@ -123,7 +123,7 @@ const TemplateVersionsPage = () => {
 				}
 				activeVersionId={latestActiveVersion}
 			/>
-			{/* Promote confirm */}
+			{/* 提升确认 */}
 			<ConfirmDialog
 				type="info"
 				hideCancel={false}
@@ -132,12 +132,12 @@ const TemplateVersionsPage = () => {
 					promoteVersion(selectedVersionIdToPromote as string);
 				}}
 				onClose={() => setSelectedVersionIdToPromote(undefined)}
-				title="Promote version"
+				title="提升版本"
 				confirmLoading={isPromoting}
-				confirmText="Promote"
-				description="Are you sure you want to promote this version? Workspaces will be prompted to “Update” to this version once promoted."
+				confirmText="提升"
+				description="确定要提升此版本吗？提升后，工作区将收到“更新”到此版本的提示。"
 			/>
-			{/* Archive Confirm */}
+			{/* 归档确认 */}
 			<ConfirmDialog
 				type="info"
 				hideCancel={false}
@@ -146,10 +146,10 @@ const TemplateVersionsPage = () => {
 					archiveVersion(selectedVersionIdToArchive as string);
 				}}
 				onClose={() => setSelectedVersionIdToArchive(undefined)}
-				title="Archive version"
+				title="归档版本"
 				confirmLoading={isArchiving}
-				confirmText="Archive"
-				description="Are you sure you want to archive this version (this is reversible)? Archived versions cannot be used by workspaces."
+				confirmText="归档"
+				description="确定要归档此版本吗（此操作可逆）？归档后，工作区将无法使用此版本。"
 			/>
 		</>
 	);

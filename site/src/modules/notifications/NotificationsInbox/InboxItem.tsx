@@ -60,7 +60,7 @@ export const InboxItem: FC<InboxItemProps> = ({
 				{notification.read_at === null && (
 					<>
 						<div className="group-focus:hidden group-hover:hidden size-2.5 rounded-full bg-highlight-sky">
-							<span className="sr-only">Unread</span>
+							<span className="sr-only">未读</span>
 						</div>
 
 						<Button
@@ -70,7 +70,7 @@ export const InboxItem: FC<InboxItemProps> = ({
 							size="sm"
 						>
 							<SquareCheckBigIcon />
-							mark as read
+							标记为已读
 						</Button>
 					</>
 				)}

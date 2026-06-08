@@ -407,7 +407,7 @@ export const BlockList: FC<{
 							return (
 								<Tool
 									key={block.id}
-									name="Tool"
+									name="工具"
 									status="running"
 									isError={false}
 									shellToolDisplayMode={shellToolDisplayMode}
@@ -661,7 +661,7 @@ const ChatMessageItem = memo<{
 							{displayState.hasCopyableContent && (
 								<CopyButton
 									text={parsed.markdown}
-									label="Copy message"
+									label="复制消息"
 									className="size-6"
 									tooltipSide="bottom"
 								/>
@@ -673,7 +673,7 @@ const ChatMessageItem = memo<{
 											size="icon"
 											variant="subtle"
 											className="size-6"
-											aria-label="Edit message"
+											aria-label="编辑消息"
 											onClick={() => {
 												const { text, fileBlocks } =
 													getEditableUserMessagePayload(message);
@@ -681,10 +681,10 @@ const ChatMessageItem = memo<{
 											}}
 										>
 											<PencilIcon />
-											<span className="sr-only">Edit message</span>
+											<span className="sr-only">编辑消息</span>
 										</Button>
 									</TooltipTrigger>
-									<TooltipContent side="bottom">Edit message</TooltipContent>
+									<TooltipContent side="bottom">编辑消息</TooltipContent>
 								</Tooltip>
 							)}
 							{isUser &&
@@ -698,7 +698,7 @@ const ChatMessageItem = memo<{
 													size="icon"
 													variant="subtle"
 													className="size-6"
-													aria-label="Jump to previous user message"
+													aria-label="跳转到上一条用户消息"
 													disabled={prevUserMessageId === undefined}
 													onClick={() => {
 														if (prevUserMessageId !== undefined) {
@@ -708,12 +708,12 @@ const ChatMessageItem = memo<{
 												>
 													<ChevronLeftIcon />
 													<span className="sr-only">
-														Jump to previous user message
+														跳转到上一条用户消息
 													</span>
 												</Button>
 											</TooltipTrigger>
 											<TooltipContent side="bottom">
-												Jump to previous user message
+												跳转到上一条用户消息
 											</TooltipContent>
 										</Tooltip>
 										<Tooltip>
@@ -722,7 +722,7 @@ const ChatMessageItem = memo<{
 													size="icon"
 													variant="subtle"
 													className="size-6"
-													aria-label="Jump to next user message"
+													aria-label="跳转到下一条用户消息"
 													disabled={nextUserMessageId === undefined}
 													onClick={() => {
 														if (nextUserMessageId !== undefined) {
@@ -732,12 +732,12 @@ const ChatMessageItem = memo<{
 												>
 													<ChevronRightIcon />
 													<span className="sr-only">
-														Jump to next user message
+														跳转到下一条用户消息
 													</span>
 												</Button>
 											</TooltipTrigger>
 											<TooltipContent side="bottom">
-												Jump to next user message
+												跳转到下一条用户消息
 											</TooltipContent>
 										</Tooltip>
 									</>

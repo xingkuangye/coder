@@ -63,22 +63,17 @@ function playChimeAudio(): void {
 // when the Web Locks API is unavailable.
 
 /**
- * How long to hold the lock after playing the chime (ms). This
- * prevents other tabs whose WebSocket event arrives slightly
- * later from also acquiring the lock for the same transition.
+ * 播放提示音后持有锁的时长（毫秒）。这样可以避免其他标签页中稍晚到达的同一转换事件也获取到锁。
  */
 export const LOCK_HOLD_MS = 2000;
 
 /**
- * Coordinate across tabs so that only one tab plays the chime
- * for a given chatID. Uses navigator.locks.request() with
- * ifAvailable: true — the first tab to acquire the lock plays,
- * all others silently skip. The lock is held for LOCK_HOLD_MS
- * to cover the window in which other tabs receive the same
- * WebSocket event.
+ * 跨标签页协调，使仅有一个标签页为指定的 chatID 播放提示音。
+ * 使用 navigator.locks.request()，并设置 ifAvailable: true ——
+ * 首个获取到锁的标签页会播放，而其他标签页会静默跳过。
+ * 锁会保持 LOCK_HOLD_MS 毫秒，以覆盖其他标签页收到相同 WebSocket 事件的窗口期。
  *
- * Falls back to playing immediately when the Web Locks API is
- * not available (preserving the original single-tab behavior).
+ * 当 Web Locks API 不可用时，将回退为立即播放（保持原始单标签页行为）。
  */
 function playChime(chatID: string): void {
 	if (typeof navigator === "undefined" || !navigator.locks) {
@@ -109,17 +104,16 @@ function playChime(chatID: string): void {
 }
 
 /**
- * Check whether a chat status transition should trigger a chime
- * and play it if so. The chime fires on these transitions:
+ * 检查聊天状态的转换是否应触发提示音，并在需要时进行播放。
+ * 提示音会在以下转换中触发：
  *
- *   running → waiting   (normal completion via per-chat WS)
- *   running → pending   (normal completion via per-chat WS)
- *   pending → waiting   (watchChats WS skipped "running")
+ *   running → waiting   （通过 per-chat WS 的正常完成）
+ *   running → pending   （通过 per-chat WS 的正常完成）
+ *   pending → waiting   （watchChats WS 跳过了 "running" 状态）
  *
- * Note that "pending" appears as both a source and a target:
- * it is an active state when the agent is queued, and a resting
- * state after the agent finishes. The chime is suppressed when
- * the chat is currently visible to the user.
+ * 注意，"pending" 同时作为源状态和目标状态出现：
+ * 当代理排队时它是一个活跃状态，代理完成后它也是一个休眠状态。
+ * 如果用户当前正在查看该聊天，则不会播放提示音。
  */
 export function maybePlayChime(
 	prevStatus: string | undefined,

@@ -19,16 +19,16 @@ const AISettingsSidebarView: FC<AISettingsSidebarViewProps> = ({
 			<div className="flex flex-col gap-1">
 				{permissions.viewDeploymentConfig && (
 					<SidebarNavItem href="/ai/settings/governance">
-						AI Governance
+						AI 治理
 					</SidebarNavItem>
 				)}
 				<SidebarNavItem href="/ai/settings" end>
-					Providers
+					提供者
 				</SidebarNavItem>
 				{permissions.editDeploymentConfig && (
 					<SidebarNavItem href="/agents/settings/agents">
 						<div className="flex flex-row items-center gap-1">
-							Manage Coder Agents <ArrowUpRightIcon size={16} />
+							管理 Coder 代理 <ArrowUpRightIcon size={16} />
 						</div>
 					</SidebarNavItem>
 				)}

@@ -80,12 +80,12 @@ const IdpSyncPage: FC = () => {
 	);
 
 	if (!organization) {
-		return <EmptyState message="Organization not found" />;
+		return <EmptyState message="组织未找到" />;
 	}
 
 	const title = (
 		<title>
-			{pageTitle("IdP Sync", organization.display_name || organization.name)}
+			{pageTitle("IdP 同步", organization.display_name || organization.name)}
 		</title>
 	);
 
@@ -119,18 +119,17 @@ const IdpSyncPage: FC = () => {
 			<div className="flex flex-col gap-12">
 				<header className="flex flex-row items-baseline justify-between">
 					<div className="flex flex-col gap-2">
-						<h1 className="text-3xl m-0">IdP Sync</h1>
+						<h1 className="text-3xl m-0">IdP 同步</h1>
 						<p className="flex flex-row gap-1 text-sm text-content-secondary font-medium m-0">
-							Automatically assign groups or roles to a user based on their IdP
-							claims.
-							<Link href={docs("/admin/users/idp-sync")}>View docs</Link>
+							根据用户的 IdP 声明自动分配组或角色。
+							<Link href={docs("/admin/users/idp-sync")}>查看文档</Link>
 						</p>
 					</div>
 				</header>
 				{!isIdpSyncEnabled ? (
 					<PaywallPremium
-						message="IdP Sync"
-						description="Configure group and role mappings to manage permissions outside of Coder. You need a Premium license to use this feature."
+						message="IdP 同步"
+						description="配置组和角色映射以在 Coder 外部管理权限。您需要 Premium 许可证才能使用此功能。"
 						documentationLink={docs("/admin/users/idp-sync")}
 					/>
 				) : (
@@ -149,12 +148,12 @@ const IdpSyncPage: FC = () => {
 						onSubmitGroupSyncSettings={async (data) => {
 							const mutation = patchGroupSyncSettingsMutation.mutateAsync(data);
 							toast.promise(mutation, {
-								loading: "Updating IdP group sync settings...",
-								success: "IdP group sync settings updated.",
+								loading: "正在更新 IdP 组同步设置...",
+								success: "IdP 组同步设置已更新。",
 								error: (error) => ({
 									message: getErrorMessage(
 										error,
-										"Failed to update IdP group sync settings.",
+										"更新 IdP 组同步设置失败。",
 									),
 									description: getErrorDetail(error),
 								}),
@@ -163,12 +162,12 @@ const IdpSyncPage: FC = () => {
 						onSubmitRoleSyncSettings={async (data) => {
 							try {
 								await patchRoleSyncSettingsMutation.mutateAsync(data);
-								toast.success("IdP Role sync settings updated.");
+								toast.success("IdP 角色同步设置已更新。");
 							} catch (error) {
 								toast.error(
 									getErrorMessage(
 										error,
-										"Failed to update IdP role sync settings.",
+										"更新 IdP 角色同步设置失败。",
 									),
 									{
 										description: getErrorDetail(error),

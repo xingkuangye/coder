@@ -28,17 +28,17 @@ export const useStatusFilterMenu = ({
 	const statusOptions: SelectFilterOption[] = [
 		{
 			value: "active",
-			label: "Active",
+			label: "活跃",
 			startIcon: <StatusIndicatorDot variant="success" />,
 		},
 		{
 			value: "dormant",
-			label: "Dormant",
+			label: "休眠",
 			startIcon: <StatusIndicatorDot variant="warning" />,
 		},
 		{
 			value: "suspended",
-			label: "Suspended",
+			label: "已停用",
 			startIcon: <StatusIndicatorDot variant="inactive" />,
 		},
 	];
@@ -55,9 +55,9 @@ export const useStatusFilterMenu = ({
 type StatusFilterMenu = ReturnType<typeof useStatusFilterMenu>;
 
 const PRESET_FILTERS = [
-	{ query: userFilterQuery.active, name: "Active users" },
-	{ query: userFilterQuery.serviceAccount, name: "Service accounts" },
-	{ query: userFilterQuery.all, name: "All users" },
+	{ query: userFilterQuery.active, name: "活跃用户" },
+	{ query: userFilterQuery.serviceAccount, name: "服务账户" },
+	{ query: userFilterQuery.all, name: "所有用户" },
 ];
 
 interface UsersFilterProps {
@@ -73,7 +73,7 @@ export const UsersFilter: FC<UsersFilterProps> = ({ filter, error, menus }) => {
 		<Filter
 			presets={PRESET_FILTERS}
 			learnMoreLink={docs("/admin/users#user-filtering")}
-			learnMoreLabel2="User status"
+			learnMoreLabel2="用户状态"
 			learnMoreLink2={docs("/admin/users#user-status")}
 			isLoading={menus?.status?.isInitializing ?? false}
 			filter={filter}
@@ -87,8 +87,8 @@ export const UsersFilter: FC<UsersFilterProps> = ({ filter, error, menus }) => {
 const StatusMenu = (menu: StatusFilterMenu) => {
 	return (
 		<SelectFilter
-			label="Select a status"
-			placeholder="All statuses"
+			label="选择状态"
+			placeholder="全部状态"
 			options={menu.searchOptions}
 			onSelect={menu.selectOption}
 			selectedOption={menu.selectedOption ?? undefined}

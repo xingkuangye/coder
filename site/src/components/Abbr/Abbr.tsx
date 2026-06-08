@@ -11,13 +11,12 @@ type AbbrProps = HTMLAttributes<HTMLElement> & {
 };
 
 /**
- * A more sophisticated version of the native <abbr> element.
+ * 一个比原生 <abbr> 元素更复杂的版本。
  *
- * Features:
- * - Better type-safety (requiring you to include certain properties)
- * - All built-in HTML styling is stripped away by default
- * - Better integration with screen readers (like exposing the title prop to
- *   them), with more options for influencing how they pronounce text
+ * 特性：
+ * - 更好的类型安全（要求你包含某些属性）
+ * - 默认会剥离所有内置 HTML 样式
+ * - 更好地与屏幕阅读器集成（例如向它们暴露 title 属性），并提供更多选项来影响文本的发音方式
  */
 export const Abbr: FC<AbbrProps> = ({
 	children,

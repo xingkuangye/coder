@@ -13,9 +13,7 @@ type PasswordFieldProps = InputProps & {
 };
 
 /**
- * A password field component that validates the password against the API with
- * debounced calls. It uses a debounced value to minimize the number of API
- * calls and displays validation errors.
+ * 一个密码输入字段组件，通过防抖调用API验证密码。它使用防抖值以减少API调用次数，并显示验证错误。
  */
 export const PasswordField: FC<PasswordFieldProps> = ({
 	label,

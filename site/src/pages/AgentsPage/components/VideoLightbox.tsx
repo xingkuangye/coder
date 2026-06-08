@@ -21,7 +21,7 @@ export const VideoLightbox: FC<VideoLightboxProps> = ({
 				className="max-h-[85vh] max-w-[90vw] w-fit border-0 bg-transparent p-0 shadow-none"
 				aria-describedby={undefined}
 			>
-				<DialogTitle className="sr-only">Recording playback</DialogTitle>
+				<DialogTitle className="sr-only">录制回放</DialogTitle>
 				{videoError ? (
 					<div className="flex items-center justify-center rounded bg-surface-secondary p-8 text-sm text-content-secondary">
 						{RECORDING_UNAVAILABLE_TEXT}

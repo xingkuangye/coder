@@ -37,13 +37,13 @@ export const DismissWarningButton = (props: { healthcheck: HealthSection }) => {
 					await enableMutation.mutateAsync({
 						dismissed_healthchecks: updatedSettings,
 					});
-					toast.success("Warnings enabled successfully.");
+					toast.success("警告已成功启用。");
 				}}
 			>
 				<Spinner loading={enableMutation.isPending}>
 					<BellOffIcon />
 				</Spinner>
-				Enable warnings
+				启用警告
 			</Button>
 		);
 	}
@@ -57,13 +57,13 @@ export const DismissWarningButton = (props: { healthcheck: HealthSection }) => {
 				await dismissMutation.mutateAsync({
 					dismissed_healthchecks: updatedSettings,
 				});
-				toast.success("Dismissed warnings successfully.");
+				toast.success("警告已成功忽略。");
 			}}
 		>
 			<Spinner loading={dismissMutation.isPending}>
 				<BellIcon />
 			</Spinner>
-			Dismiss warnings
+			忽略警告
 		</Button>
 	);
 };

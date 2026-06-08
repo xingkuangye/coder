@@ -72,20 +72,20 @@ export const useAppLink = (
 				const isCoderApp = app.url?.startsWith("coder:");
 
 				if (isJetBrainsGateway) {
-					toast.error(`Failed to open "${label}".`, {
-						description: "JetBrains Gateway must be installed.",
+					toast.error(`打开 "${label}" 失败。`, {
+						description: "必须安装 JetBrains Gateway。",
 					});
 				} else if (isJetBrainsToolbox) {
-					toast.error(`Failed to open "${label}".`, {
-						description: "JetBrains Toolbox must be installed.",
+					toast.error(`打开 "${label}" 失败。`, {
+						description: "必须安装 JetBrains Toolbox。",
 					});
 				} else if (isCoderApp) {
-					toast.error(`Failed to open "${label}".`, {
-						description: "Coder Desktop must be installed.",
+					toast.error(`打开 "${label}" 失败。`, {
+						description: "必须安装 Coder Desktop。",
 					});
 				} else {
-					toast.error(`Failed to open "${label}".`, {
-						description: "The app must be installed first.",
+					toast.error(`打开 "${label}" 失败。`, {
+						description: "必须先安装该应用。",
 					});
 				}
 			}, openAppExternallyFailedTimeout);

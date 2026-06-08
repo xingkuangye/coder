@@ -22,7 +22,7 @@ const RequestOTPPage: FC = () => {
 
 	return (
 		<>
-			<title>{pageTitle("Reset Password", applicationName)}</title>
+			<title>{pageTitle("重置密码", applicationName)}</title>
 
 			<main className="p-6 flex items-center justify-center flex-col min-h-full text-center">
 				<div>
@@ -57,8 +57,8 @@ type RequestOTPProps = {
 const validationSchema = Yup.object({
 	email: Yup.string()
 		.trim()
-		.email("Please enter a valid email address.")
-		.required("Please enter an email address."),
+		.email("请输入有效的邮箱地址。")
+		.required("请输入邮箱地址。"),
 });
 
 const RequestOTP: FC<RequestOTPProps> = ({
@@ -82,7 +82,7 @@ const RequestOTP: FC<RequestOTPProps> = ({
 		<div className="w-full max-w-xs flex flex-col items-center">
 			<div>
 				<h1 className="m-0 mb-6 text-xl font-semibold leading-7">
-					Enter your email to reset the password
+					输入您的邮箱以重置密码
 				</h1>
 				{error ? <ErrorAlert error={error} className="mb-6" /> : null}
 				<form
@@ -92,7 +92,7 @@ const RequestOTP: FC<RequestOTPProps> = ({
 					<fieldset disabled={isRequesting} className="flex flex-col gap-5">
 						<div className="flex flex-col items-start gap-2">
 							<Label htmlFor={emailField.id}>
-								Email{" "}
+								邮箱{" "}
 								<span className="text-xs text-content-destructive font-bold">
 									*
 								</span>
@@ -122,10 +122,10 @@ const RequestOTP: FC<RequestOTPProps> = ({
 								className="w-full"
 							>
 								<Spinner loading={isRequesting} />
-								Reset password
+								重置密码
 							</Button>
 							<Button asChild size="lg" variant="outline" className="w-full">
-								<RouterLink to="/login">Cancel</RouterLink>
+								<RouterLink to="/login">取消</RouterLink>
 							</Button>
 						</div>
 					</fieldset>
@@ -140,18 +140,17 @@ const RequestOTPSuccess: FC<{ email: string }> = ({ email }) => {
 		<div className="w-full max-w-[380px] flex flex-col items-center font-medium text-sm leading-6">
 			<div>
 				<p className="m-0 mb-14">
-					If the account{" "}
+					如果账户{" "}
 					<span className="font-semibold text-content-secondary">{email}</span>{" "}
-					exists, you will get an email with instructions on resetting your
-					password.
+					存在，您将收到一封包含重置密码说明的电子邮件。
 				</p>
 
 				<p className="m-0 text-xs leading-4 text-content-secondary mb-12">
-					Contact your deployment administrator if you encounter issues.
+					如果遇到问题，请联系您的部署管理员。
 				</p>
 
 				<Button asChild variant="default">
-					<RouterLink to="/login">Back to login</RouterLink>
+					<RouterLink to="/login">返回登录</RouterLink>
 				</Button>
 			</div>
 		</div>

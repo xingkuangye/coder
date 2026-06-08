@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 /**
- * Injects PWA-related <head> tags while the Agents page is mounted
- * (manifest, apple-touch-icon, mobile-web-app metas) and tweaks the
- * viewport to prevent zooming. Everything is cleaned up on unmount.
+ * 在智能体页面挂载时注入 PWA 相关的 <head> 标签
+ * （manifest、apple-touch-icon、mobile-web-app 元数据）并调整
+ * viewport 以防止缩放。卸载时清理所有内容。
  */
 export function useAgentsPWA() {
 	useEffect(() => {
@@ -31,7 +31,7 @@ export function useAgentsPWA() {
 
 		const appleMobileWebAppTitle = document.createElement("meta");
 		appleMobileWebAppTitle.name = "apple-mobile-web-app-title";
-		appleMobileWebAppTitle.content = "Agents";
+		appleMobileWebAppTitle.content = "智能体";
 
 		const injected = [
 			manifest,

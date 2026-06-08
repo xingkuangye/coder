@@ -17,11 +17,11 @@ import { getFormHelpers } from "#/utils/formUtils";
 import { pageTitle } from "#/utils/page";
 
 const validationSchema = yup.object({
-	password: yup.string().required("Password is required"),
+	password: yup.string().required("密码为必填项"),
 	confirmPassword: yup
 		.string()
-		.required("Confirm password is required")
-		.test("passwords-match", "Passwords must match", function (value) {
+		.required("确认密码为必填项")
+		.test("passwords-match", "两次密码输入不一致", function (value) {
 			return this.parent.password === value;
 		}),
 });
@@ -57,7 +57,7 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 				},
 				{
 					onSuccess: () => {
-						toast.success("Password reset successfully.");
+						toast.success("密码重置成功。");
 						if (redirect) {
 							navigate("/login");
 						}
@@ -72,7 +72,7 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 
 	return (
 		<>
-			<title>{pageTitle("Reset Password", applicationName)}</title>
+			<title>{pageTitle("重置密码", applicationName)}</title>
 
 			<div className="p-6 flex items-center justify-center flex-col min-h-full text-center">
 				<main className="w-full max-w-xs flex flex-col items-center">
@@ -80,7 +80,7 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 						<ProductLogo />
 					</div>
 					<h1 className="m-0 mb-6 text-xl font-semibold leading-7">
-						Choose a new password
+						选择新密码
 					</h1>
 					{changePasswordMutation.error &&
 					!isApiValidationError(changePasswordMutation.error) ? (
@@ -96,7 +96,7 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 						>
 							<div className="flex flex-col items-start gap-2">
 								<Label htmlFor={passwordField.id}>
-									Password{" "}
+									密码{" "}
 									<span className="text-xs text-content-destructive font-bold">
 										*
 									</span>
@@ -121,7 +121,7 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 
 							<div className="flex flex-col items-start gap-2">
 								<Label htmlFor={confirmPasswordField.id}>
-									Confirm password{" "}
+									确认密码{" "}
 									<span className="text-xs text-content-destructive font-bold">
 										*
 									</span>
@@ -151,10 +151,10 @@ const ChangePasswordPage: FC<ChangePasswordChangeProps> = ({ redirect }) => {
 									className="w-full"
 								>
 									<Spinner loading={form.isSubmitting} />
-									Reset password
+									重置密码
 								</Button>
 								<Button size="lg" className="w-full" variant="subtle" asChild>
-									<RouterLink to="/login">Back to login</RouterLink>
+									<RouterLink to="/login">返回登录</RouterLink>
 								</Button>
 							</div>
 						</fieldset>

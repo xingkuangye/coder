@@ -85,8 +85,8 @@ export const AgentSettingsLifecyclePageView: FC<
 	return (
 		<div className="flex flex-col gap-8">
 			<SectionHeader
-				label="Lifecycle"
-				description="Control workspace lifecycle and conversation retention."
+				label="生命周期"
+				description="管理工作空间生命周期和对话保留策略。"
 			/>
 			<WorkspaceAutostopSettings
 				workspaceTTLData={workspaceTTLData}

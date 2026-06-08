@@ -31,7 +31,7 @@ export const WeekPicker: FC<WeekPickerProps> = ({ value, onChange }) => {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline">
-					Last {numberOfWeeks} weeks
+					最近 {numberOfWeeks} 周
 					<ChevronDownIcon />
 				</Button>
 			</DropdownMenuTrigger>
@@ -42,7 +42,7 @@ export const WeekPicker: FC<WeekPickerProps> = ({ value, onChange }) => {
 				>
 					{numberOfWeeksOptions.map((option) => (
 						<DropdownMenuRadioItem key={option} value={String(option)}>
-							Last {option} weeks
+							最近 {option} 周
 						</DropdownMenuRadioItem>
 					))}
 				</DropdownMenuRadioGroup>
