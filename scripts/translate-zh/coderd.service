@@ -1,0 +1,19 @@
+[Unit]
+Description=Coder Server (Chinese)
+After=docker.service
+Requires=docker.service
+Wants=coder-pg.service
+
+[Service]
+Type=simple
+User=xingkuangye
+WorkingDirectory=/home/xingkuangye/coder
+EnvironmentFile=/home/xingkuangye/coder/.env
+ExecStart=/home/xingkuangye/coder/out/coder server --http-address 0.0.0.0:3000 --access-url http://154.44.25.57:3000 --swagger-enable --dangerous-allow-cors-requests=true --enable-terraform-debug-mode
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/xingkuangye/coder/coderd.log
+StandardError=append:/home/xingkuangye/coder/coderd.log
+
+[Install]
+WantedBy=multi-user.target

@@ -19,7 +19,7 @@ import { AppearanceSettingsPageView } from "./AppearanceSettingsPageView";
 // exception because the Service Banner is visual, and configuring it from
 // the command line would be a significantly worse user experience.
 const AppearanceSettingsPage: FC = () => {
-	const { appearance, entitlements } = useDashboard();
+	const { appearance } = useDashboard();
 	const { multiple_organizations: hasPremiumLicense } = useFeatureVisibility();
 	const queryClient = useQueryClient();
 	const updateAppearanceMutation = useMutation(updateAppearance(queryClient));
@@ -58,9 +58,7 @@ const AppearanceSettingsPage: FC = () => {
 				<AppearanceSettingsPageView
 					appearance={appearance}
 					onSaveAppearance={onSaveAppearance}
-					isEntitled={
-						entitlements.features.appearance.entitlement !== "not_entitled"
-					}
+					isEntitled={true}
 					isPremium={hasPremiumLicense}
 				/>
 			</RequirePermission>
